@@ -7,7 +7,7 @@ export interface MyButtonProps extends PressableProps {
 
 const MyButton = ({ title, onPress, ...rest }: MyButtonProps) => {
   return (
-    <Pressable style={styles.btn} onPress={onPress} hitSlop={1000} pressRetentionOffset={1000} {...rest}>
+    <Pressable style={styles.btn} onPress={onPress} {...rest}>
       <Text>{title}</Text>
     </Pressable>
   );
