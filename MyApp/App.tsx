@@ -1,5 +1,5 @@
 import { StatusBar } from "expo-status-bar";
-import { Alert, FlatList, StyleSheet, Text, View } from "react-native";
+import { Alert, FlatList, Image, StyleSheet, Text, View } from "react-native";
 import { MyButton } from "./components";
 
 const myList = [
@@ -25,6 +25,7 @@ export default function App() {
       <Text>Open up App.tsx to start working on your app!</Text>
       <StatusBar style="auto" />
       <MyButton title="Press here" onPress={handlePress} />
+      <Image style={styles.img} source={require('./assets/image.jpg')} />
       <FlatList
         data={myList}
         renderItem={({ item }) => <Text>{item.title}</Text>}
@@ -40,4 +41,8 @@ const styles = StyleSheet.create({
     alignItems: "center",
     justifyContent: "center",
   },
+  img: {
+    width: 300,
+    height: 400,
+  }
 });
