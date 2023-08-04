@@ -1,6 +1,21 @@
 import { StatusBar } from "expo-status-bar";
-import { Alert, StyleSheet, Text, View } from "react-native";
+import { Alert, FlatList, StyleSheet, Text, View } from "react-native";
 import { MyButton } from "./components";
+
+const myList = [
+  {
+    id: 1,
+    title: "item 1",
+  },
+  {
+    id: 2,
+    title: "item 2",
+  },
+  {
+    id: 3,
+    title: "item 3",
+  },
+];
 
 export default function App() {
   const handlePress = () => Alert.alert("Oke");
@@ -10,6 +25,10 @@ export default function App() {
       <Text>Open up App.tsx to start working on your app!</Text>
       <StatusBar style="auto" />
       <MyButton title="Press here" onPress={handlePress} />
+      <FlatList
+        data={myList}
+        renderItem={({ item }) => <Text>{item.title}</Text>}
+      />
     </View>
   );
 }
