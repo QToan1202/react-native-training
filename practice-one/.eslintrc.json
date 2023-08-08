@@ -29,7 +29,7 @@
       "error",
       { "namedComponents": ["arrow-function", "function-declaration", "function-expression"] }
     ],
-    "react/jsx-filename-extension": ["warn", { "extensions": [".js", ".jsx", "ts", "tsx"] }],
+    "react/jsx-filename-extension": ["error", { "extensions": ["ts", "tsx"] }],
     "react/react-in-jsx-scope": "off",
     "react-hooks/rules-of-hooks": "error",
     "react-hooks/exhaustive-deps": "warn"
