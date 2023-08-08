@@ -21,6 +21,10 @@
   },
   "plugins": ["@typescript-eslint", "react", "react-hooks", "jsx-a11y", "import"],
   "rules": {
+    "camelcase": [
+      "error",
+      { "properties": "never", "ignoreDestructuring": true, "ignoreImports": true }
+    ],
     "react/function-component-definition": [
       "error",
       { "namedComponents": ["arrow-function", "function-declaration", "function-expression"] }
