@@ -21,7 +21,7 @@ MediumHeading.args = {
 }
 
 export const HeadingWithCustomStyle = Template.bind({})
-MediumHeading.args = {
+HeadingWithCustomStyle.args = {
   content: 'My custom heading',
   textMedium: true,
   style: {
