@@ -11,6 +11,8 @@ import {
 } from '@expo-google-fonts/montserrat'
 import StorybookUI from './.storybook'
 
+SplashScreen.preventAutoHideAsync()
+
 const App = () => {
   const [fontsLoaded] = useFonts({
     Montserrat_400Regular,
