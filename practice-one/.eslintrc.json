@@ -21,6 +21,10 @@
   },
   "plugins": ["@typescript-eslint", "react", "react-hooks", "jsx-a11y", "import"],
   "rules": {
+    "react/jsx-props-no-spreading": "off",
+    "import/no-extraneous-dependencies": "off",
+    "react/require-default-props": "off",
+    "import/extensions": ["warn", "never"],
     "camelcase": [
       "error",
       { "properties": "never", "ignoreDestructuring": true, "ignoreImports": true }
