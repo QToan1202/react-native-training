@@ -8,6 +8,7 @@ import {
   Montserrat_600SemiBold,
   Montserrat_700Bold,
 } from '@expo-google-fonts/montserrat'
+import StorybookUI from './.storybook'
 
 const App = () => {
   const [fontsLoaded] = useFonts({
@@ -27,7 +28,9 @@ const App = () => {
   )
 }
 
-export default App
+const ENABLE_SB = true
+
+export default ENABLE_SB ? StorybookUI : App
 
 const styles = StyleSheet.create({
   container: {

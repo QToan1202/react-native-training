@@ -1,0 +1,12 @@
+yarn add v1.22.19
+[1/4] Resolving packages...
+warning @storybook/addon-actions > uuid-browser@3.1.0: Package no longer supported and required. Use the uuid package or crypto.randomUUID instead
+warning @storybook/addon-controls > @storybook/store > stable@0.1.8: Modern JS already guarantees Array#sort() is a stable sort, so this library is deprecated. See the compatibility table on MDN: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/sort#browser_compatibility
+warning @storybook/addon-controls > @storybook/core-common > fork-ts-checker-webpack-plugin > memfs@3.6.0: this will be v4
+info There appears to be trouble with your network connection. Retrying...
+warning @storybook/addon-controls > @storybook/core-common > webpack > watchpack > watchpack-chokidar2 > chokidar@2.1.8: Chokidar 2 does not receive security updates since 2019. Upgrade to chokidar 3 with 15x fewer dependencies
+warning @storybook/addon-controls > @storybook/core-common > webpack > watchpack > watchpack-chokidar2 > chokidar > fsevents@1.2.13: The v1 package contains DANGEROUS / INSECURE binaries. Upgrade to safe fsevents v2
+warning @storybook/addon-controls > @storybook/core-common > webpack > micromatch > snapdragon > source-map-resolve@0.5.3: See https://github.com/lydell/source-map-resolve#deprecated
+warning @storybook/addon-controls > @storybook/core-common > webpack > micromatch > snapdragon > source-map-resolve > source-map-url@0.4.1: See https://github.com/lydell/source-map-url#deprecated
+warning @storybook/addon-controls > @storybook/core-common > webpack > micromatch > snapdragon > source-map-resolve > resolve-url@0.2.1: https://github.com/lydell/resolve-url#deprecated
+warning @storybook/addon-controls > @storybook/core-common > webpack > micromatch > snapdragon > source-map-resolve > urix@0.1.0: Please see https://github.com/lydell/urix#deprecated
