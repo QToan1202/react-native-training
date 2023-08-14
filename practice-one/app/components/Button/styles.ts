@@ -34,6 +34,13 @@ const styles = StyleSheet.create({
     color: COLORS.BLACK,
     borderRadius: 0,
   },
+  btnContent: {
+    display: 'flex',
+    flexDirection: 'row',
+    justifyContent: 'center',
+    alignItems: 'center',
+    columnGap: 6,
+  },
   btnTitle: {
     fontFamily: FONT_FAMILY.MONTSERRAT[500],
     textAlign: 'center',
