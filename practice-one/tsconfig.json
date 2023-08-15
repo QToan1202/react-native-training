@@ -1,0 +1,28 @@
+{
+  "extends": "@tsconfig/react-native/tsconfig.json",
+  "compilerOptions": {
+    "strict": true,
+    "target": "es6",
+    "jsx": "react-native",
+    "noEmit": true,
+    "moduleResolution": "node",
+    "allowSyntheticDefaultImports": true,
+    "esModuleInterop": true,
+    "forceConsistentCasingInFileNames": true,
+    "allowJs": false,
+    "baseUrl": ".",
+    "paths": {
+      "@*": ["app/*"],
+      "@components/*": ["app/components/*"],
+      "@screens/*": ["app/screens/*"],
+      "@assets/*": ["assets/*"],
+      "@constants/*": ["app/constants/*"],
+      "@utils/*": ["app/utils/*"],
+      "@types/*": ["app/types/*"],
+      "@hooks/*": ["app/hooks/*"],
+      "@navigation/*": ["app/navigation/*"],
+      "@services/*": ["app/services/*"]
+    }
+  },
+  "exclude": ["node_modules"]
+}
