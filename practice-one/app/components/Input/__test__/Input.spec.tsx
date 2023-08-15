@@ -6,7 +6,7 @@ import { IUserForms } from '@types'
 import Input from '../index'
 
 describe('Testing Input component', () => {
-  it.only('Render Input component success', () => {
+  it('Render Input component success', () => {
     const { result } = renderHook(() => useForm<IUserForms>())
     const { control } = result.current
     const component = render(
@@ -16,7 +16,7 @@ describe('Testing Input component', () => {
     expect(component).toMatchSnapshot()
   })
 
-  it.only('Input can change text', () => {
+  it('Input can change text', () => {
     const { result } = renderHook(() => useForm<IUserForms>())
     const { control } = result.current
     const { getByPlaceholderText } = render(
