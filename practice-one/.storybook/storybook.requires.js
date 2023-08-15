@@ -52,6 +52,7 @@ const getStories = () => {
     "./app/components/Heading/Heading.stories.tsx": require("../app/components/Heading/Heading.stories.tsx"),
     "./app/components/IconButton/IconButton.stories.tsx": require("../app/components/IconButton/IconButton.stories.tsx"),
     "./app/components/Input/Input.stories.tsx": require("../app/components/Input/Input.stories.tsx"),
+    "./app/components/Picker/Picker.stories.tsx": require("../app/components/Picker/Picker.stories.tsx"),
     "./app/components/Search/Search.stories.tsx": require("../app/components/Search/Search.stories.tsx"),
     "./app/components/Text/Text.stories.tsx": require("../app/components/Text/Text.stories.tsx"),
   };
