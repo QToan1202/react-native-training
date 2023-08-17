@@ -1,0 +1,20 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Render heading component 1`] = `
+<Text
+  style={
+    [
+      {
+        "color": "#fff",
+        "fontFamily": "Montserrat_700Bold",
+        "fontSize": 24,
+        "textTransform": "capitalize",
+      },
+      false,
+      {},
+    ]
+  }
+>
+  my heading
+</Text>
+`;

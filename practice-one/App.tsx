@@ -1,6 +1,7 @@
+import { useCallback } from 'react'
 import { StatusBar } from 'expo-status-bar'
 import { StyleSheet, Text, View } from 'react-native'
-import AppLoading from 'expo-app-loading'
+import * as SplashScreen from 'expo-splash-screen'
 import {
   useFonts,
   Montserrat_400Regular,
@@ -10,6 +11,8 @@ import {
 } from '@expo-google-fonts/montserrat'
 import StorybookUI from './.storybook'
 
+SplashScreen.preventAutoHideAsync()
+
 const App = () => {
   const [fontsLoaded] = useFonts({
     Montserrat_400Regular,
@@ -18,10 +21,16 @@ const App = () => {
     Montserrat_700Bold,
   })
 
-  if (!fontsLoaded) return <AppLoading />
+  const onLayoutRootView = useCallback(async () => {
+    if (fontsLoaded) {
+      await SplashScreen.hideAsync()
+    }
+  }, [fontsLoaded])
+
+  if (!fontsLoaded) return null
 
   return (
-    <View style={styles.container}>
+    <View style={styles.container} onLayout={onLayoutRootView}>
       <Text>Open up App.tsx to start working on your app!</Text>
       <StatusBar style="auto" />
     </View>

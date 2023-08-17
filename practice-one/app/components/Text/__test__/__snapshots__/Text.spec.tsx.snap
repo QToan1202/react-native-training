@@ -1,0 +1,20 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Render text component 1`] = `
+<Text
+  style={
+    [
+      {
+        "color": "#fff",
+        "fontFamily": "Montserrat_400Regular",
+      },
+      {
+        "fontSize": 14,
+      },
+      {},
+    ]
+  }
+>
+  my normal text
+</Text>
+`;
