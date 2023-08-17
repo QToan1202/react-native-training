@@ -1,11 +1,11 @@
-import { TouchableOpacity, View, ViewStyle } from 'react-native'
+import { TouchableOpacity, TouchableOpacityProps, View, ViewStyle } from 'react-native'
 
 import { ReactNode } from 'react'
 
 import Paragraph from '@components/Paragraph'
 import styles from './styles'
 
-export interface ButtonProps {
+export interface ButtonProps extends TouchableOpacityProps {
   title: string
   leftIcon?: ReactNode
   rightIcon?: ReactNode
@@ -23,11 +23,13 @@ const Button = ({
   shrink = false,
   style,
   onPress,
+  ...rest
 }: ButtonProps) => {
   return (
     <TouchableOpacity
       style={[styles.btn, styles[variant], shrink && styles.btnSmall, style]}
       onPress={onPress}
+      {...rest}
     >
       <View style={styles.btnContent}>
         {leftIcon}
