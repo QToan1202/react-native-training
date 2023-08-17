@@ -12,6 +12,12 @@ export interface SearchProps extends TextInputProps {
 
 const Search = ({ value, placeholder, onChangeText, ...rest }: SearchProps) => {
   const searchInput = useRef<TextInput>(null)
+
+  /**
+   * Provide a focus to input when user press on the touchable element
+   * User may press on the icon
+   * but it will focus in the input element though
+   */
   const handlePress = useCallback(() => {
     searchInput.current?.focus()
   }, [])
