@@ -3,7 +3,7 @@ import { SubmitHandler, useForm } from 'react-hook-form'
 import { ComponentMeta, ComponentStory } from '@storybook/react-native'
 
 import { COLORS } from '@constants'
-import { IUserForms } from '@types'
+import { IForm } from '@types'
 
 import { Button, Input } from '../index'
 import { InputProps } from './index'
@@ -22,8 +22,8 @@ const styles = StyleSheet.create({
 })
 
 const Template: ComponentStory<typeof Input> = (arg: Omit<InputProps, 'control'>) => {
-  const { control, handleSubmit } = useForm<IUserForms>()
-  const onSubmit: SubmitHandler<IUserForms> = (data) => {
+  const { control, handleSubmit } = useForm<IForm>()
+  const onSubmit: SubmitHandler<IForm> = (data) => {
     Alert.alert(JSON.stringify(data))
   }
 

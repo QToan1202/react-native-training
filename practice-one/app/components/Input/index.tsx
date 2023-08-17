@@ -3,18 +3,18 @@ import { TextInput, TextInputProps } from 'react-native'
 import { Control, useController } from 'react-hook-form'
 
 import Paragraph from '@components/Paragraph'
-import { IUserForms } from '@types'
+import { IForm } from '@types'
 
 import styles from './styles'
 
 export interface InputProps extends TextInputProps {
   label?: string
-  name: keyof IUserForms
-  control: Control<IUserForms>
+  name: keyof IForm
+  control: Control<IForm>
 }
 
 const Input = ({ label, name, control, ...rest }: InputProps) => {
-  const { field } = useController<IUserForms>({
+  const { field } = useController<IForm>({
     control,
     defaultValue: '',
     name,
