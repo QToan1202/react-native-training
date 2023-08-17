@@ -2,14 +2,16 @@ import { TouchableOpacity, TouchableOpacityProps, View, ViewStyle } from 'react-
 
 import { ReactNode } from 'react'
 
+import { TButtonVariant } from '@types'
 import Paragraph from '@components/Paragraph'
+
 import styles from './styles'
 
 export interface ButtonProps extends TouchableOpacityProps {
   title: string
   leftIcon?: ReactNode
   rightIcon?: ReactNode
-  variant?: 'primary' | 'secondary' | 'tertiary' | 'quaternary'
+  variant?: TButtonVariant
   shrink?: boolean
   style?: ViewStyle | ViewStyle[]
   onPress: () => void

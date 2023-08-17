@@ -1,9 +1,12 @@
 import { Text, TextProps, TextStyle } from 'react-native'
+
+import { TSize } from '@types'
+
 import styles from './styles'
 
 export interface ParagraphProps extends TextProps {
   content: string
-  size?: 'sm' | 'md' | 'lg' | 'xl'
+  size?: TSize
   style?: TextStyle | TextStyle[]
 }
 
