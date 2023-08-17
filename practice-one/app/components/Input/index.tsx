@@ -2,7 +2,7 @@ import { useState } from 'react'
 import { TextInput, TextInputProps } from 'react-native'
 import { Control, useController } from 'react-hook-form'
 
-import Text from '@components/Text'
+import Paragraph from '@components/Paragraph'
 import { IUserForms } from '@types'
 
 import styles from './styles'
@@ -26,7 +26,7 @@ const Input = ({ label, name, control, ...rest }: InputProps) => {
   return (
     <>
       {label && (
-        <Text
+        <Paragraph
           size="sm"
           content={label}
           style={isFocus ? [styles.label, styles.labelFocus] : styles.label}

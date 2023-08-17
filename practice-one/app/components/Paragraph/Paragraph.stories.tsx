@@ -1,13 +1,13 @@
 import { ComponentMeta, ComponentStory } from '@storybook/react-native'
 
-import { Text } from '../index'
+import { Paragraph } from '../index'
 
 export default {
-  title: 'Text',
-  component: Text,
-} as ComponentMeta<typeof Text>
+  title: 'Paragraph',
+  component: Paragraph,
+} as ComponentMeta<typeof Paragraph>
 
-const Template: ComponentStory<typeof Text> = (args) => <Text {...args} />
+const Template: ComponentStory<typeof Paragraph> = (args) => <Paragraph {...args} />
 
 export const Default = Template.bind({})
 Default.args = {

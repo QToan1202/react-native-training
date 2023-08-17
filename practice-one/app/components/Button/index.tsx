@@ -2,7 +2,7 @@ import { TouchableOpacity, View, ViewStyle } from 'react-native'
 
 import { ReactNode } from 'react'
 
-import Text from '@components/Text'
+import Paragraph from '@components/Paragraph'
 import styles from './styles'
 
 export interface ButtonProps {
@@ -31,7 +31,7 @@ const Button = ({
     >
       <View style={styles.btnContent}>
         {leftIcon}
-        <Text size="md" style={[styles[variant], styles.btnTitle]} content={title} />
+        <Paragraph size="md" style={[styles[variant], styles.btnTitle]} content={title} />
         {rightIcon}
       </View>
     </TouchableOpacity>
