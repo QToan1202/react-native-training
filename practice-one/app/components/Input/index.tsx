@@ -13,7 +13,7 @@ export interface InputProps extends TextInputProps {
   control: Control<IForm>
 }
 
-const Input = ({ label, name, control, ...rest }: InputProps) => {
+const Input = forwardRef<TextInput, InputProps>(({ label, name, control, ...rest }, ref) => {
   const { field } = useController<IForm>({
     control,
     defaultValue: '',
@@ -33,6 +33,7 @@ const Input = ({ label, name, control, ...rest }: InputProps) => {
         />
       )}
       <TextInput
+        ref={ref}
         style={[
           label ? styles.inputWithLabel : styles.input, // Style when an input have label or not
           isFocus && styles.inputFocus, // Change style of the input that have label when focus
@@ -45,6 +46,6 @@ const Input = ({ label, name, control, ...rest }: InputProps) => {
       />
     </>
   )
-}
+})
 
 export default Input
