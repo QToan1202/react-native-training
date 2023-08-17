@@ -16,6 +16,7 @@
   },
   "dependencies": {
     "@expo-google-fonts/montserrat": "^0.2.3",
+    "@react-native-picker/picker": "2.4.10",
     "expo": "~49.0.5",
     "expo-app-loading": "^2.1.1",
     "expo-font": "~11.4.0",
