@@ -49,7 +49,9 @@ exports[`Testing Search component Render Search component success 1`] = `
     }
   />
   <TextInput
+    onBlur={[Function]}
     onChangeText={[Function]}
+    onFocus={[Function]}
     placeholder="my search input"
     placeholderTextColor="#4f4f4f"
     style={
