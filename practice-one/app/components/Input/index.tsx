@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { forwardRef, useCallback, useState } from 'react'
 import { TextInput, TextInputProps } from 'react-native'
 import { Control, useController } from 'react-hook-form'
 
@@ -20,8 +20,8 @@ const Input = ({ label, name, control, ...rest }: InputProps) => {
     name,
   })
   const [isFocus, setIsFocus] = useState(false)
-  const handleFocus = () => setIsFocus(true)
-  const handleBlur = () => setIsFocus(false)
+  const handleFocus = useCallback(() => setIsFocus(true), [])
+  const handleBlur = useCallback(() => setIsFocus(false), [])
 
   return (
     <>

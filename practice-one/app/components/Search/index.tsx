@@ -1,4 +1,4 @@
-import { useRef } from 'react'
+import { useCallback, useRef } from 'react'
 import { Image, TextInput, TextInputProps, TouchableWithoutFeedback, View } from 'react-native'
 
 import { COLORS } from '@constants'
@@ -12,9 +12,9 @@ export interface SearchProps extends TextInputProps {
 
 const Search = ({ value, placeholder, onChangeText, ...rest }: SearchProps) => {
   const searchInput = useRef<TextInput>(null)
-  const handlePress = () => {
+  const handlePress = useCallback(() => {
     searchInput.current?.focus()
-  }
+  }, [])
 
   return (
     <TouchableWithoutFeedback onPress={handlePress}>
