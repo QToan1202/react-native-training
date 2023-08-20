@@ -1,5 +1,5 @@
-import { Alert, Image } from 'react-native'
 import { ComponentMeta, ComponentStory } from '@storybook/react-native'
+import { action } from '@storybook/addon-actions'
 
 import { IconButton } from '../index'
 
@@ -10,24 +10,16 @@ export default {
 
 const Template: ComponentStory<typeof IconButton> = (args) => <IconButton {...args} />
 
-const Icon = (
-  <Image
-    source={require('@assets/favicon.png')}
-    fadeDuration={0}
-    style={{ width: 24, height: 24 }}
-  />
-)
-
 export const Default = Template.bind({})
 Default.args = {
-  children: Icon,
+  icon: require('@assets/favicon.png'),
   accessibilityLabel: 'like button',
-  onPress: () => Alert.alert('Pressing'),
+  onPress: action('Pressing'),
 }
 
 export const ButtonWithoutBg = Template.bind({})
 ButtonWithoutBg.args = {
-  children: Icon,
+  icon: require('@assets/favicon.png'),
   noBackground: true,
-  onPress: () => Alert.alert('Pressing'),
+  onPress: action('Pressing'),
 }

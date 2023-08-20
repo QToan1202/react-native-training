@@ -40,9 +40,10 @@ exports[`Testing icon button component Render button component with an icon 1`] 
   }
 >
   <Image
-    source={
+    style={
       {
-        "testUri": "../../../assets/favicon.png",
+        "height": 24,
+        "width": 24,
       }
     }
   />

@@ -1,16 +1,17 @@
-import { ReactNode } from 'react'
-import { TouchableOpacity, TouchableOpacityProps } from 'react-native'
+import { Image, ImageProps, TouchableOpacity, TouchableOpacityProps } from 'react-native'
+
+import { imageStyles } from '@styles'
 import styles from './styles'
 
 export interface IconButtonProps extends TouchableOpacityProps {
-  children: ReactNode
+  icon: ImageProps['source']
   noBackground?: boolean
   accessibilityLabel?: string
   onPress: () => void
 }
 
 const IconButton = ({
-  children,
+  icon,
   noBackground = false,
   accessibilityLabel,
   onPress,
@@ -23,7 +24,7 @@ const IconButton = ({
       onPress={onPress}
       {...rest}
     >
-      {children}
+      <Image source={icon} style={imageStyles.icon} />
     </TouchableOpacity>
   )
 }

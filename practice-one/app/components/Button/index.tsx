@@ -1,16 +1,22 @@
-import { TouchableOpacity, TouchableOpacityProps, View, ViewStyle } from 'react-native'
-
-import { ReactNode } from 'react'
+import {
+  Image,
+  ImageProps,
+  TouchableOpacity,
+  TouchableOpacityProps,
+  View,
+  ViewStyle,
+} from 'react-native'
 
 import { TButtonVariant } from '@types'
 import Paragraph from '@components/Paragraph'
 
+import { imageStyles } from '@styles'
 import styles from './styles'
 
 export interface ButtonProps extends TouchableOpacityProps {
   title: string
-  leftIcon?: ReactNode
-  rightIcon?: ReactNode
+  leftIcon?: ImageProps['source']
+  rightIcon?: ImageProps['source']
   variant?: TButtonVariant
   shrink?: boolean
   style?: ViewStyle | ViewStyle[]
@@ -34,9 +40,9 @@ const Button = ({
       {...rest}
     >
       <View style={styles.btnContent}>
-        {leftIcon}
+        {leftIcon && <Image source={leftIcon} style={imageStyles.icon} />}
         <Paragraph size="md" style={[styles[variant], styles.btnTitle]} content={title} />
-        {rightIcon}
+        {rightIcon && <Image source={rightIcon} style={imageStyles.icon} />}
       </View>
     </TouchableOpacity>
   )
