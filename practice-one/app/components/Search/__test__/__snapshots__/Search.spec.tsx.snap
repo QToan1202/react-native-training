@@ -21,17 +21,20 @@ exports[`Testing Search component Render Search component success 1`] = `
   onResponderTerminationRequest={[Function]}
   onStartShouldSetResponder={[Function]}
   style={
-    {
-      "alignItems": "center",
-      "backgroundColor": "#fff",
-      "borderRadius": 50,
-      "columnGap": 20,
-      "display": "flex",
-      "flexDirection": "row",
-      "justifyContent": "center",
-      "paddingLeft": 17,
-      "paddingVertical": 10,
-    }
+    [
+      {
+        "alignItems": "center",
+        "backgroundColor": "#fff",
+        "borderRadius": 50,
+        "columnGap": 20,
+        "display": "flex",
+        "flexDirection": "row",
+        "justifyContent": "center",
+        "paddingLeft": 17,
+        "paddingVertical": 10,
+      },
+      undefined,
+    ]
   }
 >
   <Image
