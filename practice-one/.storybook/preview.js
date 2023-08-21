@@ -5,10 +5,10 @@ export const decorators = [withBackgrounds]
 
 export const parameters = {
   backgrounds: {
-    default: 'light',
+    default: 'dark',
     values: [
       { name: 'light', value: '#fff' },
-      { name: 'dark', value: '#000' },
+      { name: 'dark', value: '#3e3a3a' },
     ],
   },
 
