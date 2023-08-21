@@ -16,6 +16,13 @@ global.STORIES = [
     importPathMatcher:
       "^\\.[\\\\/](?:app[\\\\/]components(?:[\\\\/](?!\\.)(?:(?:(?!(?:^|[\\\\/])\\.).)*?)[\\\\/]|[\\\\/]|$)(?!\\.)(?=.)[^\\\\/]*?\\.stories\\.(?:ts|tsx|js|jsx)?)$",
   },
+  {
+    titlePrefix: "",
+    directory: "./app/navigation",
+    files: "**/*.stories.?(ts|tsx|js|jsx)",
+    importPathMatcher:
+      "^\\.[\\\\/](?:app[\\\\/]navigation(?:[\\\\/](?!\\.)(?:(?:(?!(?:^|[\\\\/])\\.).)*?)[\\\\/]|[\\\\/]|$)(?!\\.)(?=.)[^\\\\/]*?\\.stories\\.(?:ts|tsx|js|jsx)?)$",
+  },
 ];
 
 import "@storybook/addon-ondevice-controls/register";
@@ -56,6 +63,7 @@ const getStories = () => {
     "./app/components/Paragraph/Paragraph.stories.tsx": require("../app/components/Paragraph/Paragraph.stories.tsx"),
     "./app/components/Picker/Picker.stories.tsx": require("../app/components/Picker/Picker.stories.tsx"),
     "./app/components/Search/Search.stories.tsx": require("../app/components/Search/Search.stories.tsx"),
+    "./app/navigation/Tabs/Tabs.stories.tsx": require("../app/navigation/Tabs/Tabs.stories.tsx"),
   };
 };
 
