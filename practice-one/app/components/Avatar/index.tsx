@@ -22,7 +22,7 @@ const Avatar = ({ source, name, size = 'sm', align = 'inline', style, ...rest }:
         style={[imageStyles.round, styles[size]]}
         accessibilityLabel={`${name}-avatar`}
       />
-      <Paragraph content={name} style={styles.name} />
+      <Paragraph content={name} style={styles.name} numberOfLines={1} />
     </View>
   )
 }
