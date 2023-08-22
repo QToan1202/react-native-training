@@ -55,6 +55,7 @@ try {
 
 const getStories = () => {
   return {
+    "./app/components/Avatar/Avatar.stories.tsx": require("../app/components/Avatar/Avatar.stories.tsx"),
     "./app/components/Bar/Bar.stories.tsx": require("../app/components/Bar/Bar.stories.tsx"),
     "./app/components/Button/Button.stories.tsx": require("../app/components/Button/Button.stories.tsx"),
     "./app/components/Heading/Heading.stories.tsx": require("../app/components/Heading/Heading.stories.tsx"),
@@ -63,7 +64,7 @@ const getStories = () => {
     "./app/components/Paragraph/Paragraph.stories.tsx": require("../app/components/Paragraph/Paragraph.stories.tsx"),
     "./app/components/Picker/Picker.stories.tsx": require("../app/components/Picker/Picker.stories.tsx"),
     "./app/components/Search/Search.stories.tsx": require("../app/components/Search/Search.stories.tsx"),
-    "./app/navigation/Tabs/Tab.stories.tsx": require("../app/navigation/Tabs/Tab.stories.tsx"),
+    "./app/navigation/Tab/Tab.stories.tsx": require("../app/navigation/Tab/Tab.stories.tsx"),
   };
 };
 

@@ -17,3 +17,5 @@ export interface IIconList {
   icon: ImageProps['source']
   action: () => void
 }
+
+export type TAlignAvatar = 'inline' | 'block'
