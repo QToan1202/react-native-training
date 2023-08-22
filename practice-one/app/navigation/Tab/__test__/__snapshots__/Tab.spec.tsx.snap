@@ -292,6 +292,7 @@ exports[`Testing bottom tab navigation Render tab successfully 1`] = `
                   {
                     "tintColor": "#33907C",
                   },
+                  undefined,
                 ]
               }
             />
@@ -329,6 +330,7 @@ exports[`Testing bottom tab navigation Render tab successfully 1`] = `
                   {
                     "tintColor": "#4f4f4f",
                   },
+                  undefined,
                 ]
               }
             />
@@ -453,6 +455,7 @@ exports[`Testing bottom tab navigation Render tab successfully 1`] = `
                   {
                     "tintColor": "#33907C",
                   },
+                  undefined,
                 ]
               }
             />
@@ -490,6 +493,7 @@ exports[`Testing bottom tab navigation Render tab successfully 1`] = `
                   {
                     "tintColor": "#4f4f4f",
                   },
+                  undefined,
                 ]
               }
             />
@@ -614,6 +618,7 @@ exports[`Testing bottom tab navigation Render tab successfully 1`] = `
                   {
                     "tintColor": "#33907C",
                   },
+                  undefined,
                 ]
               }
             />
@@ -651,6 +656,7 @@ exports[`Testing bottom tab navigation Render tab successfully 1`] = `
                   {
                     "tintColor": "#4f4f4f",
                   },
+                  undefined,
                 ]
               }
             />
@@ -775,6 +781,7 @@ exports[`Testing bottom tab navigation Render tab successfully 1`] = `
                   {
                     "tintColor": "#33907C",
                   },
+                  undefined,
                 ]
               }
             />
@@ -812,6 +819,7 @@ exports[`Testing bottom tab navigation Render tab successfully 1`] = `
                   {
                     "tintColor": "#4f4f4f",
                   },
+                  undefined,
                 ]
               }
             />
@@ -936,6 +944,7 @@ exports[`Testing bottom tab navigation Render tab successfully 1`] = `
                   {
                     "tintColor": "#33907C",
                   },
+                  undefined,
                 ]
               }
             />
@@ -973,6 +982,7 @@ exports[`Testing bottom tab navigation Render tab successfully 1`] = `
                   {
                     "tintColor": "#4f4f4f",
                   },
+                  undefined,
                 ]
               }
             />

@@ -35,10 +35,8 @@ exports[`Testing button component Render button component with primary variant 1
       "borderColor": "#33907C",
       "borderRadius": 50,
       "borderWidth": 2,
-      "color": "#fff",
       "opacity": 1,
       "paddingVertical": 13,
-      "textTransform": "capitalize",
     }
   }
 >
@@ -65,13 +63,14 @@ exports[`Testing button component Render button component with primary variant 1
           },
           [
             {
-              "backgroundColor": "#33907C",
               "color": "#fff",
             },
             {
               "fontFamily": "Montserrat_500Medium",
               "textAlign": "center",
+              "textTransform": "capitalize",
             },
+            undefined,
           ],
         ]
       }

@@ -36,6 +36,7 @@ exports[`Testing avatar component Render avatar successfully 1`] = `
     }
   />
   <Text
+    numberOfLines={1}
     style={
       [
         {
