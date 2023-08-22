@@ -10,6 +10,11 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     columnGap: 4,
   },
+  block: {
+    flexDirection: 'column',
+    alignItems: 'center',
+    columnGap: 4,
+  },
 })
 
 export default styles
