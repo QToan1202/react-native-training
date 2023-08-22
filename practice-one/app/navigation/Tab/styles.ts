@@ -10,7 +10,7 @@ const styles = StyleSheet.create({
     marginVertical: 13,
   },
   label: {
-    fontFamily: FONT_FAMILY.MONTSERRAT[700],
+    fontFamily: FONT_FAMILY.MONTSERRAT[500],
     fontSize: 10,
   },
 })

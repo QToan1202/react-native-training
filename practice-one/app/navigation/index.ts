@@ -1,1 +1,1 @@
-export { default as BottomNav } from './Tabs'
+export { default as BottomNav } from './Tab'
