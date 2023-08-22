@@ -1,5 +1,7 @@
 import { StyleSheet } from 'react-native'
 
+import { COLORS } from '@constants'
+
 const styles = StyleSheet.create({
   container: {
     paddingHorizontal: 16,
@@ -14,6 +16,14 @@ const styles = StyleSheet.create({
     flexDirection: 'column',
     alignItems: 'center',
     columnGap: 4,
+  },
+  card: {
+    borderRadius: 10,
+    borderWidth: 1,
+    borderStyle: 'solid',
+    borderColor: COLORS.BORDER_CARD,
+    backgroundColor: COLORS.WHITE,
+    overflow: 'hidden',
   },
 })
 
