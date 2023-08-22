@@ -1,6 +1,9 @@
+import { useMemo } from 'react'
 import {
   Image,
   ImageProps,
+  StyleProp,
+  TextStyle,
   TouchableOpacity,
   TouchableOpacityProps,
   View,
@@ -9,8 +12,9 @@ import {
 
 import { TButtonVariant } from '@types'
 import Paragraph from '@components/Paragraph'
-
 import { imageStyles } from '@styles'
+import { COLORS } from '@constants'
+
 import styles from './styles'
 
 export interface ButtonProps extends TouchableOpacityProps {
@@ -19,7 +23,8 @@ export interface ButtonProps extends TouchableOpacityProps {
   rightIcon?: ImageProps['source']
   variant?: TButtonVariant
   shrink?: boolean
-  style?: ViewStyle | ViewStyle[]
+  style?: StyleProp<ViewStyle>
+  titleStyle?: StyleProp<TextStyle>
   onPress: () => void
 }
 
@@ -30,9 +35,25 @@ const Button = ({
   variant = 'primary',
   shrink = false,
   style,
+  titleStyle,
   onPress,
   ...rest
 }: ButtonProps) => {
+  const titleVariantStyle = useMemo((): TextStyle => {
+    switch (variant) {
+      case 'primary':
+        return { color: COLORS.WHITE }
+      case 'secondary':
+        return { color: COLORS.PRIMARY }
+      case 'tertiary':
+        return { color: COLORS.WHITE }
+      case 'quaternary':
+        return { color: COLORS.BLACK }
+      default:
+        return { color: COLORS.WHITE }
+    }
+  }, [variant])
+
   return (
     <TouchableOpacity
       style={[styles.btn, styles[variant], shrink && styles.btnSmall, style]}
@@ -41,7 +62,11 @@ const Button = ({
     >
       <View style={styles.btnContent}>
         {leftIcon && <Image source={leftIcon} style={imageStyles.icon} />}
-        <Paragraph size="md" style={[styles[variant], styles.btnTitle]} content={title} />
+        <Paragraph
+          size="md"
+          style={[titleVariantStyle, styles.btnTitle, titleStyle]}
+          content={title}
+        />
         {rightIcon && <Image source={rightIcon} style={imageStyles.icon} />}
       </View>
     </TouchableOpacity>

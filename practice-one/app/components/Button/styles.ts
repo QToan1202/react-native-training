@@ -8,7 +8,6 @@ const styles = StyleSheet.create({
     borderRadius: 50,
     borderWidth: 2,
     borderColor: COLORS.PRIMARY,
-    textTransform: 'capitalize',
   },
   btnSmall: {
     alignSelf: 'flex-start',
@@ -17,21 +16,17 @@ const styles = StyleSheet.create({
   },
   primary: {
     backgroundColor: COLORS.PRIMARY,
-    color: COLORS.WHITE,
   },
   secondary: {
     backgroundColor: COLORS.SECONDARY,
-    color: COLORS.PRIMARY,
     borderColor: COLORS.TRANSPARENT,
   },
   tertiary: {
     backgroundColor: COLORS.TRANSPARENT,
-    color: COLORS.WHITE,
     borderColor: COLORS.WHITE,
   },
   quaternary: {
     backgroundColor: COLORS.WHITE,
-    color: COLORS.BLACK,
     borderRadius: 0,
   },
   btnContent: {
@@ -44,6 +39,7 @@ const styles = StyleSheet.create({
   btnTitle: {
     fontFamily: FONT_FAMILY.MONTSERRAT[500],
     textAlign: 'center',
+    textTransform: 'capitalize',
   },
 })
 
