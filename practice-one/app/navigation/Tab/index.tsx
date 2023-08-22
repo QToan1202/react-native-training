@@ -1,5 +1,5 @@
 import { View } from 'react-native'
-import { NavigationContainer, NavigationProp } from '@react-navigation/native'
+import { NavigationProp } from '@react-navigation/native'
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs'
 
 import { Bar, TabIcon } from '@components'
@@ -43,25 +43,23 @@ const Header = (title: string) => <Bar title={title} />
 
 const BottomNav = () => {
   return (
-    <NavigationContainer>
-      <Tab.Navigator
-        screenOptions={({ route, navigation }) => ({
-          header: () => Header(route.name),
-          tabBarIcon: ({ color }) => renderTabIcon(route.name, navigation, color),
-          tabBarActiveTintColor: COLORS.PRIMARY,
-          tabBarInactiveTintColor: COLORS.GRAY_50,
-          tabBarLabelStyle: styles.label,
-          tabBarStyle: styles.tab,
-          tabBarItemStyle: styles.items,
-        })}
-      >
-        <Tab.Screen name="Home" component={Fragment} />
-        <Tab.Screen name="Browse" component={Fragment} />
-        <Tab.Screen name="Product" component={Fragment} />
-        <Tab.Screen name="Order History" component={Fragment} />
-        <Tab.Screen name="Profile" component={Fragment} />
-      </Tab.Navigator>
-    </NavigationContainer>
+    <Tab.Navigator
+      screenOptions={({ route, navigation }) => ({
+        header: () => Header(route.name),
+        tabBarIcon: ({ color }) => renderTabIcon(route.name, navigation, color),
+        tabBarActiveTintColor: COLORS.PRIMARY,
+        tabBarInactiveTintColor: COLORS.GRAY_50,
+        tabBarLabelStyle: styles.label,
+        tabBarStyle: styles.tab,
+        tabBarItemStyle: styles.items,
+      })}
+    >
+      <Tab.Screen name="Home" component={Fragment} />
+      <Tab.Screen name="Browse" component={Fragment} />
+      <Tab.Screen name="Product" component={Fragment} />
+      <Tab.Screen name="Order History" component={Fragment} />
+      <Tab.Screen name="Profile" component={Fragment} />
+    </Tab.Navigator>
   )
 }
 
