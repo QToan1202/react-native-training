@@ -12,7 +12,8 @@
     "format": "prettier --check app/",
     "storybook-watch": "sb-rn-watcher",
     "test": "jest",
-    "test:watch": "yarn test --watch"
+    "test:watch": "jest --watch",
+    "test:coverage": "jest --coverage"
   },
   "dependencies": {
     "@expo-google-fonts/montserrat": "^0.2.3",
