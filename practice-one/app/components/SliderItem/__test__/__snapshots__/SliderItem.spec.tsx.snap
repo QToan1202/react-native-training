@@ -1,0 +1,150 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Testing Slider Item component Render Slider Item component success 1`] = `
+<View
+  accessibilityIgnoresInvertColors={true}
+  style={
+    [
+      {
+        "alignSelf": "flex-start",
+        "borderRadius": 8,
+        "minWidth": 300,
+        "paddingBottom": 32,
+        "paddingTop": 50,
+        "rowGap": 20,
+      },
+      undefined,
+    ]
+  }
+>
+  <Image
+    source={
+      {
+        "testUri": "../../../assets/slider/deliver.png",
+      }
+    }
+    style={
+      [
+        {
+          "bottom": 0,
+          "left": 0,
+          "position": "absolute",
+          "right": 0,
+          "top": 0,
+        },
+        {
+          "height": undefined,
+          "width": undefined,
+        },
+        undefined,
+      ]
+    }
+  />
+  <Text
+    style={
+      [
+        {
+          "color": "#fff",
+          "fontFamily": "Montserrat_400Regular",
+        },
+        {
+          "fontSize": 14,
+        },
+        {
+          "fontFamily": "Montserrat_600SemiBold",
+          "marginLeft": 17,
+          "maxWidth": 200,
+          "textTransform": "uppercase",
+        },
+      ]
+    }
+  >
+    my item
+  </Text>
+  <View
+    accessibilityState={
+      {
+        "busy": undefined,
+        "checked": undefined,
+        "disabled": undefined,
+        "expanded": undefined,
+        "selected": undefined,
+      }
+    }
+    accessibilityValue={
+      {
+        "max": undefined,
+        "min": undefined,
+        "now": undefined,
+        "text": undefined,
+      }
+    }
+    accessible={true}
+    collapsable={false}
+    focusable={true}
+    onClick={[Function]}
+    onResponderGrant={[Function]}
+    onResponderMove={[Function]}
+    onResponderRelease={[Function]}
+    onResponderTerminate={[Function]}
+    onResponderTerminationRequest={[Function]}
+    onStartShouldSetResponder={[Function]}
+    style={
+      {
+        "alignSelf": "flex-start",
+        "backgroundColor": "transparent",
+        "borderColor": "#fff",
+        "borderRadius": 50,
+        "borderWidth": 2,
+        "marginLeft": 12,
+        "opacity": 1,
+        "paddingHorizontal": 13,
+        "paddingVertical": 4,
+      }
+    }
+  >
+    <View
+      style={
+        {
+          "alignItems": "center",
+          "columnGap": 6,
+          "display": "flex",
+          "flexDirection": "row",
+          "justifyContent": "center",
+        }
+      }
+    >
+      <Text
+        style={
+          [
+            {
+              "color": "#fff",
+              "fontFamily": "Montserrat_400Regular",
+            },
+            {
+              "fontSize": 16,
+            },
+            [
+              {
+                "color": "#fff",
+              },
+              {
+                "fontFamily": "Montserrat_500Medium",
+                "textAlign": "center",
+                "textTransform": "capitalize",
+              },
+              {
+                "fontFamily": "Montserrat_700Bold",
+                "fontSize": 12,
+                "textTransform": "uppercase",
+              },
+            ],
+          ]
+        }
+      >
+        buy
+      </Text>
+    </View>
+  </View>
+</View>
+`;
