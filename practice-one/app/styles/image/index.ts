@@ -8,6 +8,10 @@ const styles = StyleSheet.create({
     width: 24,
     height: 24,
   },
+  menu: {
+    width: 93,
+    height: 93,
+  },
 })
 
 export default styles
