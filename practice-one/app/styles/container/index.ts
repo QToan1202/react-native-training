@@ -25,6 +25,9 @@ const styles = StyleSheet.create({
     backgroundColor: COLORS.WHITE,
     overflow: 'hidden',
   },
+  spaceBetween: {
+    justifyContent: 'space-between',
+  },
 })
 
 export default styles

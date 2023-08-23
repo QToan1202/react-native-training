@@ -63,6 +63,7 @@ const getStories = () => {
     "./app/components/Input/Input.stories.tsx": require("../app/components/Input/Input.stories.tsx"),
     "./app/components/Paragraph/Paragraph.stories.tsx": require("../app/components/Paragraph/Paragraph.stories.tsx"),
     "./app/components/Picker/Picker.stories.tsx": require("../app/components/Picker/Picker.stories.tsx"),
+    "./app/components/ProductCard/ProductCard.stories.tsx": require("../app/components/ProductCard/ProductCard.stories.tsx"),
     "./app/components/Search/Search.stories.tsx": require("../app/components/Search/Search.stories.tsx"),
     "./app/components/StoreCard/StoreCard.stories.tsx": require("../app/components/StoreCard/StoreCard.stories.tsx"),
     "./app/navigation/Tab/Tab.stories.tsx": require("../app/navigation/Tab/Tab.stories.tsx"),
