@@ -24,3 +24,9 @@ VisaCard.args = {
   cvc: 312,
   expires: '12/2027',
 }
+
+export const SelectedCard = Template.bind({})
+SelectedCard.args = {
+  ...VisaCard.args,
+  isSelected: true,
+}

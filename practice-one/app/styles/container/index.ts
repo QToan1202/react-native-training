@@ -28,6 +28,9 @@ const styles = StyleSheet.create({
   spaceBetween: {
     justifyContent: 'space-between',
   },
+  shrink: {
+    alignSelf: 'flex-start',
+  },
 })
 
 export default styles

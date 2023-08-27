@@ -10,6 +10,7 @@ describe('Testing Payment Card component', () => {
         cardNumber="5627215898548869"
         cvc={123}
         expires="01/2019"
+        isSelected
         testID="payment-card"
       />
     )
@@ -17,7 +18,13 @@ describe('Testing Payment Card component', () => {
 
   it('Render Payment Card component success', () => {
     const component = render(
-      <PaymentCard name="card" cardNumber="5627215898548869" cvc={123} expires="01/2019" />
+      <PaymentCard
+        name="card"
+        cardNumber="5627215898548869"
+        cvc={123}
+        expires="01/2019"
+        isSelected
+      />
     ).toJSON()
 
     expect(component).toMatchSnapshot()
