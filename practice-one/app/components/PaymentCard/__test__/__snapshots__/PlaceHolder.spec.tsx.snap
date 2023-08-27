@@ -1,0 +1,50 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Testing Payment Card placeholder component Render Payment Card placeholder component success 1`] = `
+<View
+  style={
+    [
+      {
+        "alignItems": "center",
+        "alignSelf": "flex-start",
+        "borderColor": "#00000033",
+        "borderRadius": 10,
+        "borderStyle": "dashed",
+        "borderWidth": 2,
+        "paddingHorizontal": 38.5,
+        "paddingVertical": 36,
+        "rowGap": 20,
+      },
+    ]
+  }
+>
+  <Image
+    source={
+      {
+        "testUri": "../../../assets/payment/icon.png",
+      }
+    }
+  />
+  <Text
+    style={
+      [
+        {
+          "color": "#fff",
+          "fontFamily": "Montserrat_400Regular",
+        },
+        {
+          "fontSize": 14,
+        },
+        {
+          "color": "#00000033",
+          "letterSpacing": 0.5,
+          "lineHeight": 28,
+          "textTransform": "capitalize",
+        },
+      ]
+    }
+  >
+    add payment method
+  </Text>
+</View>
+`;

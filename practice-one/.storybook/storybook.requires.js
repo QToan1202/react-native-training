@@ -64,6 +64,7 @@ const getStories = () => {
     "./app/components/MenuCard/MenuCard.stories.tsx": require("../app/components/MenuCard/MenuCard.stories.tsx"),
     "./app/components/Paragraph/Paragraph.stories.tsx": require("../app/components/Paragraph/Paragraph.stories.tsx"),
     "./app/components/PaymentCard/PaymentCard.stories.tsx": require("../app/components/PaymentCard/PaymentCard.stories.tsx"),
+    "./app/components/PaymentCard/Placeholder.stories.tsx": require("../app/components/PaymentCard/Placeholder.stories.tsx"),
     "./app/components/Picker/Picker.stories.tsx": require("../app/components/Picker/Picker.stories.tsx"),
     "./app/components/ProductCard/ProductCard.stories.tsx": require("../app/components/ProductCard/ProductCard.stories.tsx"),
     "./app/components/Search/Search.stories.tsx": require("../app/components/Search/Search.stories.tsx"),

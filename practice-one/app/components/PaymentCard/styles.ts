@@ -30,6 +30,29 @@ const styles = StyleSheet.create({
   cvc: {
     textAlign: 'right',
   },
+  checkIcon: {
+    position: 'absolute',
+    zIndex: 3,
+    right: -1,
+    bottom: -10,
+  },
+  placeHolder: {
+    paddingVertical: 36,
+    paddingHorizontal: 38.5,
+    alignSelf: 'flex-start',
+    alignItems: 'center',
+    rowGap: 20,
+    borderWidth: 2,
+    borderRadius: 10,
+    borderColor: COLORS.GRAY_300,
+    borderStyle: 'dashed',
+  },
+  placeHolderText: {
+    color: COLORS.GRAY_300,
+    textTransform: 'capitalize',
+    lineHeight: 28,
+    letterSpacing: 0.5,
+  },
 })
 
 export default styles
