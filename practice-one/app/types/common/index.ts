@@ -26,3 +26,5 @@ export interface IRadioItem {
   id: string
   name: string
 }
+
+export type TTrackerStatus = 'order placed' | 'payment confirmed' | 'processed' | 'delivered'

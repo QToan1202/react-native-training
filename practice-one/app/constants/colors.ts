@@ -8,9 +8,11 @@ const COLORS = {
   GRAY_100: '#3a2c3c',
   GRAY_200: '#b7b7b7',
   GRAY_300: '#00000033',
+  GRAY_400: '#606a7b',
   BORDER_CARD: '#0000001a',
   RADIO_NORMAL: '#ced2d9',
   RADIO_ACTIVE: '#13b58c',
   SEPARATOR: '#d8d8d8',
+  DARK_50: '#212121',
 }
 export default COLORS

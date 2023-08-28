@@ -71,6 +71,7 @@ const getStories = () => {
     "./app/components/Search/Search.stories.tsx": require("../app/components/Search/Search.stories.tsx"),
     "./app/components/SliderItem/SliderItem.stories.tsx": require("../app/components/SliderItem/SliderItem.stories.tsx"),
     "./app/components/StoreCard/StoreCard.stories.tsx": require("../app/components/StoreCard/StoreCard.stories.tsx"),
+    "./app/components/TrackerItem/TrackerItem.stories.tsx": require("../app/components/TrackerItem/TrackerItem.stories.tsx"),
     "./app/navigation/Tab/Tab.stories.tsx": require("../app/navigation/Tab/Tab.stories.tsx"),
   };
 };
