@@ -21,3 +21,8 @@ export interface IIconList {
 export type TAlignAvatar = 'inline' | 'block'
 
 export type TCard = 'visa' | 'mastercard' | 'normal'
+
+export interface IRadioItem {
+  id: string
+  name: string
+}
