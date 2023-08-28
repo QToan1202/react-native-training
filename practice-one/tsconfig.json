@@ -22,7 +22,8 @@
       "@styles/*": ["app/styles/*"],
       "@hooks/*": ["app/hooks/*"],
       "@navigation/*": ["app/navigation/*"],
-      "@services/*": ["app/services/*"]
+      "@services/*": ["app/services/*"],
+      "@animations/*": ["app/animations/*"]
     }
   },
   "exclude": ["node_modules"]
