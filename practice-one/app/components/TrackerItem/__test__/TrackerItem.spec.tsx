@@ -2,6 +2,10 @@ import { render, screen } from '@testing-library/react-native'
 
 import TrackerItem from '../index'
 
+const mockedDate = new Date(2023, 7, 28)
+jest.useFakeTimers()
+jest.setSystemTime(mockedDate)
+
 describe('Testing Tracker item component', () => {
   beforeEach(() => {
     render(
