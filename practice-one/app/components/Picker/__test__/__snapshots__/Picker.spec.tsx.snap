@@ -40,7 +40,7 @@ exports[`Testing Picker component Render Picker component success 1`] = `
           "flexDirection": "row",
         },
         {
-          "gap": 7,
+          "columnGap": 7,
         },
       ]
     }

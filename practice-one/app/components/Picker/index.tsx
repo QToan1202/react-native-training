@@ -22,7 +22,7 @@ export interface PickerProps<T> extends TouchableWithoutFeedbackProps {
 }
 
 const Picker = <T extends IDropDownItem>({ listData, ...rest }: PickerProps<T>) => {
-  const getFirstItemValue: string = useMemo(() => listData[0].value || '', [listData])
+  const getFirstItemValue: string = useMemo(() => listData[0]?.value || ' ', [listData])
   const [selectedItem, setSelectedItem] = useState<string>(getFirstItemValue)
   const [isShow, setIsShow] = useState<boolean>(false)
   const animate: Animated.Value = useRef(new Animated.Value(0)).current
@@ -64,7 +64,7 @@ const Picker = <T extends IDropDownItem>({ listData, ...rest }: PickerProps<T>) 
   return (
     <View style={[containerStyles.shrink, styles.container]}>
       <TouchableWithoutFeedback onPress={toggleDropdown} {...rest}>
-        <View style={[containerStyles.inline, { gap: 7 }]}>
+        <View style={[containerStyles.inline, styles.spacing]}>
           <Heading content={selectedItem} style={styles.selected} />
           <Animated.Image source={require('@assets/arrow.png')} style={imageStyle} />
         </View>

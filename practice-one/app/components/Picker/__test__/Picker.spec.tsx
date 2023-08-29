@@ -33,6 +33,12 @@ describe('Testing Picker component', () => {
     expect(component).toBeOnTheScreen()
   })
 
+  it('Render component with empty list will show on the screen', () => {
+    const { getByTestId } = render(<Picker listData={[]} testID="empty-picker" />)
+
+    expect(getByTestId('empty-picker')).toBeOnTheScreen()
+  })
+
   it('When tap on the picker show items as a dropdown component', async () => {
     const component = screen.getByTestId('picker')
     fireEvent.press(component)
@@ -45,5 +51,8 @@ describe('Testing Picker component', () => {
 
     expect(firstDropdownItem.pop()).toBeOnTheScreen()
     expect(secondDropdownItem).toBeOnTheScreen()
+
+    fireEvent.press(secondDropdownItem)
+    expect(secondDropdownItem).not.toBeOnTheScreen()
   })
 })
