@@ -6,8 +6,13 @@ const styles = StyleSheet.create({
   container: {
     overflow: 'hidden',
   },
+  spacing: {
+    columnGap: 7,
+  },
   selected: {
+    width: 35,
     fontSize: 18,
+    letterSpacing: -0.4,
   },
   list: {
     width: '100%',
@@ -15,7 +20,7 @@ const styles = StyleSheet.create({
     backgroundColor: COLORS.WHITE,
   },
   listContent: {
-    paddingHorizontal: 10,
+    paddingHorizontal: 9,
     paddingVertical: 5,
     color: 'black',
     fontSize: 16,

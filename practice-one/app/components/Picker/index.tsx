@@ -12,7 +12,7 @@ import {
 import Heading from '@components/Heading'
 import { containerStyles } from '@styles'
 import { toggleAnim } from '@animations'
-import { IPhoneList } from '@types'
+import { IDropDownItem } from '@types'
 
 import DropdownList from './DropdownList'
 import styles from './styles'
@@ -21,12 +21,9 @@ export interface PickerProps<T> extends TouchableWithoutFeedbackProps {
   listData: T[]
 }
 
-const Picker = <T extends IPhoneList>({ listData, ...rest }: PickerProps<T>) => {
-  const [selectedItem, setSelectedItem] = useState<IPhoneList>({
-    id: 'vn',
-    name: 'vietnam',
-    value: '+91',
-  })
+const Picker = <T extends IDropDownItem>({ listData, ...rest }: PickerProps<T>) => {
+  const getFirstItemValue: string = useMemo(() => listData[0].value || '', [listData])
+  const [selectedItem, setSelectedItem] = useState<string>(getFirstItemValue)
   const [isShow, setIsShow] = useState<boolean>(false)
   const animate: Animated.Value = useRef(new Animated.Value(0)).current
 
@@ -49,22 +46,30 @@ const Picker = <T extends IPhoneList>({ listData, ...rest }: PickerProps<T>) => 
     () => ({
       transform: [
         {
-          rotateX: arrowTransform,
+          rotateZ: arrowTransform,
         },
       ],
     }),
     [arrowTransform]
   )
 
+  const handleSelectItem = useCallback(
+    (item: T) => {
+      setSelectedItem(item.value)
+      toggleDropdown()
+    },
+    [toggleDropdown]
+  )
+
   return (
     <View style={[containerStyles.shrink, styles.container]}>
       <TouchableWithoutFeedback onPress={toggleDropdown} {...rest}>
-        <View style={containerStyles.inline}>
-          <Heading content={selectedItem.value} style={styles.selected} />
+        <View style={[containerStyles.inline, { gap: 7 }]}>
+          <Heading content={selectedItem} style={styles.selected} />
           <Animated.Image source={require('@assets/arrow.png')} style={imageStyle} />
         </View>
       </TouchableWithoutFeedback>
-      {isShow && <DropdownList listData={listData} onSetSelectedItem={setSelectedItem} />}
+      {isShow && <DropdownList listData={listData} onSelect={handleSelectItem} />}
     </View>
   )
 }

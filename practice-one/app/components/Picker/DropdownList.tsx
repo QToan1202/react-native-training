@@ -1,27 +1,35 @@
-import { FlatList, TouchableOpacity, TouchableOpacityProps, View } from 'react-native'
+import { FlatList, TouchableHighlight, TouchableHighlightProps, View } from 'react-native'
 
 import Heading from '@components/Heading'
-import { IPhoneList } from '@types'
+import { IDropDownItem } from '@types'
+import { COLORS } from '@constants'
 
 import styles from './styles'
 
-export interface DropDownListProps extends TouchableOpacityProps {
-  listData: IPhoneList[]
-  onSetSelectedItem: React.Dispatch<React.SetStateAction<IPhoneList>>
+export interface DropDownListProps<T> extends TouchableHighlightProps {
+  listData: T[]
+  onSelect: (item: T) => void
 }
 
-const DropdownList = ({ listData, style, onSetSelectedItem, ...rest }: DropDownListProps) => {
+const DropdownList = <T extends IDropDownItem>({
+  listData,
+  style,
+  onSelect,
+  ...rest
+}: DropDownListProps<T>) => {
   return (
     <View style={[styles.list, style]}>
       <FlatList
         data={listData}
         renderItem={({ item }) => (
-          <TouchableOpacity
-            onPress={() => onSetSelectedItem((prevState) => ({ ...prevState, item }))}
+          <TouchableHighlight
+            underlayColor={COLORS.GRAY_200}
+            activeOpacity={0.5}
+            onPress={() => onSelect(item)}
             {...rest}
           >
-            <Heading content={item.value} style={styles.listContent} />
-          </TouchableOpacity>
+            <Heading content={item.value} style={styles.listContent} numberOfLines={1} />
+          </TouchableHighlight>
         )}
       />
     </View>
