@@ -58,6 +58,7 @@ const getStories = () => {
     "./app/components/Avatar/Avatar.stories.tsx": require("../app/components/Avatar/Avatar.stories.tsx"),
     "./app/components/Bar/Bar.stories.tsx": require("../app/components/Bar/Bar.stories.tsx"),
     "./app/components/Button/Button.stories.tsx": require("../app/components/Button/Button.stories.tsx"),
+    "./app/components/CartItem/CartItem.stories.tsx": require("../app/components/CartItem/CartItem.stories.tsx"),
     "./app/components/Heading/Heading.stories.tsx": require("../app/components/Heading/Heading.stories.tsx"),
     "./app/components/IconButton/IconButton.stories.tsx": require("../app/components/IconButton/IconButton.stories.tsx"),
     "./app/components/Input/Input.stories.tsx": require("../app/components/Input/Input.stories.tsx"),
