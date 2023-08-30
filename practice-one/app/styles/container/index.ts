@@ -31,6 +31,9 @@ const styles = StyleSheet.create({
   shrink: {
     alignSelf: 'flex-start',
   },
+  expand: {
+    flex: 1,
+  },
 })
 
 export default styles
