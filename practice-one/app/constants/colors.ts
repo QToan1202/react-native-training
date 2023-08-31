@@ -14,5 +14,6 @@ const COLORS = {
   RADIO_ACTIVE: '#13b58c',
   SEPARATOR: '#d8d8d8',
   DARK_50: '#212121',
+  RED: '#ff5880',
 }
 export default COLORS

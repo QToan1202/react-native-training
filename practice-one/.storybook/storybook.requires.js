@@ -81,6 +81,7 @@ const getStories = () => {
     "./app/components/StoreCard/StoreCard.stories.tsx": require("../app/components/StoreCard/StoreCard.stories.tsx"),
     "./app/components/TrackerItem/TrackerItem.stories.tsx": require("../app/components/TrackerItem/TrackerItem.stories.tsx"),
     "./app/navigation/Tab/Tab.stories.tsx": require("../app/navigation/Tab/Tab.stories.tsx"),
+    "./app/screens/Login/Login.stories.tsx": require("../app/screens/Login/Login.stories.tsx"),
     "./app/screens/Onboarding/Onboarding.stories.tsx": require("../app/screens/Onboarding/Onboarding.stories.tsx"),
   };
 };
