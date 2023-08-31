@@ -1,25 +1,39 @@
-import { render } from '@testing-library/react-native'
+import { render, screen } from '@testing-library/react-native'
 
 import { COLORS } from '@constants'
+import { IIconList } from '@types'
 
 import Bar from '../index'
 
+const iconList: IIconList[] = [
+  {
+    label: 'favicon',
+    icon: require('@assets/favicon.png'),
+    action: () => undefined,
+  },
+]
+
 describe('Testing Bar component', () => {
+  beforeEach(() => {
+    render(<Bar title="heading" iconList={iconList} testID="bar" />)
+  })
+
   it('Render Bar component success', () => {
-    const component = render(<Bar title="home" />).toJSON()
+    const component = render(<Bar title="home" iconList={[]} />).toJSON()
 
     expect(component).toMatchSnapshot()
   })
 
   it('Bar component render with primary color', () => {
-    const { getByTestId } = render(<Bar title="heading" testID="bar" />)
+    const component = screen.getByTestId('bar')
 
-    expect(getByTestId('bar')).toHaveStyle({ backgroundColor: COLORS.PRIMARY })
+    expect(component).toHaveStyle({ backgroundColor: COLORS.PRIMARY })
   })
 
   it('Bar component contain text component that match with title prop', () => {
-    const { getByTestId, getByText } = render(<Bar title="heading" testID="bar" />)
+    const bar = screen.getByTestId('bar')
+    const title = screen.getByText('heading')
 
-    expect(getByTestId('bar')).toContainElement(getByText('heading'))
+    expect(bar).toContainElement(title)
   })
 })

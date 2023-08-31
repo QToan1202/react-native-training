@@ -51,6 +51,19 @@ exports[`Testing button component Render button component with primary variant 1
       }
     }
   >
+    <Image
+      source={
+        {
+          "testUri": "../../../assets/icon.png",
+        }
+      }
+      style={
+        {
+          "height": 24,
+          "width": 24,
+        }
+      }
+    />
     <Text
       style={
         [
@@ -77,6 +90,19 @@ exports[`Testing button component Render button component with primary variant 1
     >
       press here
     </Text>
+    <Image
+      source={
+        {
+          "testUri": "../../../assets/icon.png",
+        }
+      }
+      style={
+        {
+          "height": 24,
+          "width": 24,
+        }
+      }
+    />
   </View>
 </View>
 `;

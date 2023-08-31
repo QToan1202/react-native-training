@@ -39,7 +39,6 @@ exports[`Testing Bar component Render Bar component success 1`] = `
             "color": "#fff",
             "fontFamily": "Montserrat_700Bold",
             "fontSize": 24,
-            "textTransform": "capitalize",
           },
           false,
           {},
@@ -48,6 +47,15 @@ exports[`Testing Bar component Render Bar component success 1`] = `
     >
       home
     </Text>
+    <View
+      style={
+        {
+          "alignItems": "center",
+          "columnGap": 4,
+          "flexDirection": "row",
+        }
+      }
+    />
   </View>
   <View
     style={

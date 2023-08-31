@@ -7,10 +7,9 @@ describe('Testing Payment Card component', () => {
     render(
       <PaymentCard
         name="card"
-        cardNumber="5627215898548869"
+        cardNumber="4627215898548869"
         cvc={123}
         expires="01/2019"
-        isSelected
         testID="payment-card"
       />
     )

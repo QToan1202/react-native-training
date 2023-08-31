@@ -11,7 +11,6 @@ describe('Testing Cart item component', () => {
         image={require('@assets/cart/item.png')}
         name="coca cola"
         price={50}
-        discountPrice={25}
         quantity={1}
         testID="cart-item"
       />
@@ -40,7 +39,7 @@ describe('Testing Cart item component', () => {
   })
 
   it('Item price must have the primary color', () => {
-    const component = screen.getByText(/25/)
+    const component = screen.getByText(/50/)
 
     expect(component).toHaveStyle({ color: COLORS.PRIMARY })
   })

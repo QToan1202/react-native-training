@@ -117,7 +117,6 @@ exports[`Testing bottom tab navigation Render tab successfully 1`] = `
                       "color": "#fff",
                       "fontFamily": "Montserrat_700Bold",
                       "fontSize": 24,
-                      "textTransform": "capitalize",
                     },
                     false,
                     {},

@@ -36,6 +36,7 @@ exports[`Testing Input component Render Input component success 1`] = `
           "paddingVertical": 5,
         },
         false,
+        undefined,
       ]
     }
     value=""

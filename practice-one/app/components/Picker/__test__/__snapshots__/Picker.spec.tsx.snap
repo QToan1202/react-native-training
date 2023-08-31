@@ -52,7 +52,6 @@ exports[`Testing Picker component Render Picker component success 1`] = `
             "color": "#fff",
             "fontFamily": "Montserrat_700Bold",
             "fontSize": 24,
-            "textTransform": "capitalize",
           },
           false,
           {

@@ -8,9 +8,10 @@ exports[`Render heading component 1`] = `
         "color": "#fff",
         "fontFamily": "Montserrat_700Bold",
         "fontSize": 24,
-        "textTransform": "capitalize",
       },
-      false,
+      {
+        "fontFamily": "Montserrat_500Medium",
+      },
       {},
     ]
   }
