@@ -37,20 +37,22 @@ const Picker = <T extends IDropDownItem>({ listData, ...rest }: PickerProps<T>) 
     setIsShow((prevState) => !prevState)
   }, [animate, isShow])
 
-  const arrowTransform = animate.interpolate({
-    inputRange: [0, 1],
-    outputRange: ['0deg', '180deg'],
-  })
+  const arrowTransform = useRef<Animated.AnimatedInterpolation<string>>(
+    animate.interpolate({
+      inputRange: [0, 1],
+      outputRange: ['0deg', '180deg'],
+    })
+  )
 
   const imageStyle: StyleProp<ImageStyle> = useMemo(
     () => ({
       transform: [
         {
-          rotateZ: arrowTransform,
+          rotateZ: arrowTransform.current,
         },
       ],
     }),
-    [arrowTransform]
+    []
   )
 
   const handleSelectItem = useCallback(
