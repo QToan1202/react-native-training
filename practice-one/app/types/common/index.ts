@@ -22,15 +22,19 @@ export type TAlignAvatar = 'inline' | 'block'
 
 export type TCard = 'visa' | 'mastercard' | 'normal'
 
-export interface IRadioItem {
+export interface IFlatListBase {
   id: string
+  key?: string
+  name?: string
+}
+
+export interface IRadioItem extends IFlatListBase {
   name: string
 }
 
 export type TTrackerStatus = 'order placed' | 'payment confirmed' | 'processed' | 'delivered'
 
-export interface IDropDownItem {
-  id: string
+export interface IDropDownItem extends IFlatListBase {
   name: string
   value: string
 }
