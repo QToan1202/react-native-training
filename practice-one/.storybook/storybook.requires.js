@@ -83,6 +83,7 @@ const getStories = () => {
     "./app/navigation/Tab/Tab.stories.tsx": require("../app/navigation/Tab/Tab.stories.tsx"),
     "./app/screens/Login/Login.stories.tsx": require("../app/screens/Login/Login.stories.tsx"),
     "./app/screens/Onboarding/Onboarding.stories.tsx": require("../app/screens/Onboarding/Onboarding.stories.tsx"),
+    "./app/screens/SignUp/SignUp.stories.tsx": require("../app/screens/SignUp/SignUp.stories.tsx"),
   };
 };
 

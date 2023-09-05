@@ -1,0 +1,354 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Testing Sign Up screen Render screen successfully 1`] = `
+<RNCSafeAreaView
+  edges={
+    {
+      "bottom": "additive",
+      "left": "additive",
+      "right": "additive",
+      "top": "additive",
+    }
+  }
+  style={
+    {
+      "backgroundColor": "#33907C",
+      "flex": 1,
+      "justifyContent": "center",
+      "paddingHorizontal": 32,
+    }
+  }
+>
+  <View
+    style={
+      {
+        "alignItems": "center",
+        "marginBottom": 25,
+        "rowGap": 54,
+      }
+    }
+  >
+    <Text
+      style={
+        [
+          {
+            "color": "#fff",
+            "fontFamily": "Montserrat_700Bold",
+            "fontSize": 24,
+          },
+          {
+            "fontFamily": "Montserrat_500Medium",
+          },
+          {},
+        ]
+      }
+    >
+      Welcome to tradly
+    </Text>
+    <Text
+      style={
+        [
+          {
+            "color": "#fff",
+            "fontFamily": "Montserrat_400Regular",
+          },
+          {
+            "fontSize": 16,
+          },
+          undefined,
+        ]
+      }
+    >
+      Signup to your account
+    </Text>
+  </View>
+  <View
+    style={
+      {
+        "rowGap": 16,
+      }
+    }
+  >
+    <TextInput
+      onBlur={[Function]}
+      onChangeText={[Function]}
+      onFocus={[Function]}
+      placeholder="First Name"
+      placeholderTextColor="#fff"
+      style={
+        [
+          {
+            "borderColor": "#fff",
+            "borderRadius": 50,
+            "borderWidth": 1,
+            "color": "#fff",
+            "fontFamily": "Montserrat_400Regular",
+            "fontSize": 18,
+            "paddingLeft": 15,
+            "paddingVertical": 12,
+          },
+          false,
+          undefined,
+        ]
+      }
+      value=""
+    />
+    <TextInput
+      onBlur={[Function]}
+      onChangeText={[Function]}
+      onFocus={[Function]}
+      placeholder="Last Name"
+      placeholderTextColor="#fff"
+      style={
+        [
+          {
+            "borderColor": "#fff",
+            "borderRadius": 50,
+            "borderWidth": 1,
+            "color": "#fff",
+            "fontFamily": "Montserrat_400Regular",
+            "fontSize": 18,
+            "paddingLeft": 15,
+            "paddingVertical": 12,
+          },
+          false,
+          undefined,
+        ]
+      }
+      value=""
+    />
+    <TextInput
+      onBlur={[Function]}
+      onChangeText={[Function]}
+      onFocus={[Function]}
+      placeholder="Email/Mobile Number"
+      placeholderTextColor="#fff"
+      style={
+        [
+          {
+            "borderColor": "#fff",
+            "borderRadius": 50,
+            "borderWidth": 1,
+            "color": "#fff",
+            "fontFamily": "Montserrat_400Regular",
+            "fontSize": 18,
+            "paddingLeft": 15,
+            "paddingVertical": 12,
+          },
+          false,
+          undefined,
+        ]
+      }
+      value=""
+    />
+    <TextInput
+      onBlur={[Function]}
+      onChangeText={[Function]}
+      onFocus={[Function]}
+      placeholder="Password"
+      placeholderTextColor="#fff"
+      secureTextEntry={true}
+      style={
+        [
+          {
+            "borderColor": "#fff",
+            "borderRadius": 50,
+            "borderWidth": 1,
+            "color": "#fff",
+            "fontFamily": "Montserrat_400Regular",
+            "fontSize": 18,
+            "paddingLeft": 15,
+            "paddingVertical": 12,
+          },
+          false,
+          undefined,
+        ]
+      }
+      value=""
+    />
+    <TextInput
+      onBlur={[Function]}
+      onChangeText={[Function]}
+      onFocus={[Function]}
+      placeholder="Re-enter password"
+      placeholderTextColor="#fff"
+      secureTextEntry={true}
+      style={
+        [
+          {
+            "borderColor": "#fff",
+            "borderRadius": 50,
+            "borderWidth": 1,
+            "color": "#fff",
+            "fontFamily": "Montserrat_400Regular",
+            "fontSize": 18,
+            "paddingLeft": 15,
+            "paddingVertical": 12,
+          },
+          false,
+          undefined,
+        ]
+      }
+      value=""
+    />
+  </View>
+  <View
+    accessibilityState={
+      {
+        "busy": undefined,
+        "checked": undefined,
+        "disabled": undefined,
+        "expanded": undefined,
+        "selected": undefined,
+      }
+    }
+    accessibilityValue={
+      {
+        "max": undefined,
+        "min": undefined,
+        "now": undefined,
+        "text": undefined,
+      }
+    }
+    accessible={true}
+    collapsable={false}
+    focusable={true}
+    onClick={[Function]}
+    onResponderGrant={[Function]}
+    onResponderMove={[Function]}
+    onResponderRelease={[Function]}
+    onResponderTerminate={[Function]}
+    onResponderTerminationRequest={[Function]}
+    onStartShouldSetResponder={[Function]}
+    style={
+      {
+        "backgroundColor": "#fff",
+        "borderColor": "transparent",
+        "borderRadius": 50,
+        "borderWidth": 2,
+        "marginVertical": 40,
+        "opacity": 1,
+        "paddingVertical": 13,
+      }
+    }
+  >
+    <View
+      style={
+        {
+          "alignItems": "center",
+          "columnGap": 6,
+          "display": "flex",
+          "flexDirection": "row",
+          "justifyContent": "center",
+        }
+      }
+    >
+      <Text
+        style={
+          [
+            {
+              "color": "#fff",
+              "fontFamily": "Montserrat_400Regular",
+            },
+            {
+              "fontSize": 16,
+            },
+            [
+              {
+                "color": "#33907C",
+              },
+              {
+                "fontFamily": "Montserrat_500Medium",
+                "textAlign": "center",
+                "textTransform": "capitalize",
+              },
+              undefined,
+            ],
+          ]
+        }
+      >
+        create
+      </Text>
+    </View>
+  </View>
+  <View
+    style={
+      {
+        "columnGap": 3,
+        "flexDirection": "row",
+        "justifyContent": "center",
+      }
+    }
+  >
+    <Text
+      style={
+        [
+          {
+            "color": "#fff",
+            "fontFamily": "Montserrat_400Regular",
+          },
+          {
+            "fontSize": 18,
+          },
+          undefined,
+        ]
+      }
+    >
+      Have an account?
+    </Text>
+    <View
+      accessibilityState={
+        {
+          "busy": undefined,
+          "checked": undefined,
+          "disabled": undefined,
+          "expanded": undefined,
+          "selected": undefined,
+        }
+      }
+      accessibilityValue={
+        {
+          "max": undefined,
+          "min": undefined,
+          "now": undefined,
+          "text": undefined,
+        }
+      }
+      accessible={true}
+      collapsable={false}
+      focusable={false}
+      onClick={[Function]}
+      onResponderGrant={[Function]}
+      onResponderMove={[Function]}
+      onResponderRelease={[Function]}
+      onResponderTerminate={[Function]}
+      onResponderTerminationRequest={[Function]}
+      onStartShouldSetResponder={[Function]}
+      style={
+        {
+          "opacity": 1,
+        }
+      }
+    >
+      <Text
+        style={
+          [
+            {
+              "color": "#fff",
+              "fontFamily": "Montserrat_400Regular",
+            },
+            {
+              "fontSize": 18,
+            },
+            {
+              "fontFamily": "Montserrat_600SemiBold",
+            },
+          ]
+        }
+      >
+        Sign in
+      </Text>
+    </View>
+  </View>
+</RNCSafeAreaView>
+`;
