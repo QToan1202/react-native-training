@@ -1,7 +1,7 @@
 import { Alert, KeyboardAvoidingView, Platform, TouchableOpacity, View } from 'react-native'
 import { SubmitHandler, useForm } from 'react-hook-form'
 
-import { Button, Heading, Input, Paragraph } from '@components'
+import { Button, ErrorMessage, Heading, Input, Paragraph } from '@components'
 import { IForm } from '@types'
 import { COLORS } from '@constants'
 
@@ -22,54 +22,69 @@ const SignUp = () => {
         <Heading content="Welcome to tradly" textMedium />
         <Paragraph content="Signup to your account" size="md" />
       </View>
-      <View style={styles.form}>
-        <Input
-          name="firstName"
-          control={control}
-          placeholder="First Name"
-          placeholderTextColor={COLORS.WHITE}
-          rules={{
-            required: 'First Name is required',
-          }}
-        />
-        <Input
-          name="lastName"
-          control={control}
-          placeholder="Last Name"
-          placeholderTextColor={COLORS.WHITE}
-          rules={{
-            required: 'Last Name is required',
-          }}
-        />
-        <Input
-          name="email"
-          control={control}
-          placeholder="Email/Mobile Number"
-          placeholderTextColor={COLORS.WHITE}
-          rules={{
-            required: 'Enter email or mobile number',
-          }}
-        />
-        <Input
-          name="password"
-          secureTextEntry
-          control={control}
-          placeholder="Password"
-          placeholderTextColor={COLORS.WHITE}
-          rules={{
-            required: 'Password is required',
-          }}
-        />
-        <Input
-          name="password"
-          secureTextEntry
-          control={control}
-          placeholder="Re-enter password"
-          placeholderTextColor={COLORS.WHITE}
-          rules={{
-            required: 'Password is required',
-          }}
-        />
+      <View>
+        <View>
+          <Input
+            name="firstName"
+            control={control}
+            placeholder="First Name"
+            placeholderTextColor={COLORS.WHITE}
+            rules={{
+              required: 'First Name is required',
+            }}
+          />
+          <ErrorMessage error={errors.firstName} />
+        </View>
+        <View>
+          <Input
+            name="lastName"
+            control={control}
+            placeholder="Last Name"
+            placeholderTextColor={COLORS.WHITE}
+            rules={{
+              required: 'Last Name is required',
+            }}
+          />
+          <ErrorMessage error={errors.lastName} />
+        </View>
+        <View>
+          <Input
+            name="email"
+            control={control}
+            placeholder="Email/Mobile Number"
+            placeholderTextColor={COLORS.WHITE}
+            rules={{
+              required: 'Enter email or mobile number',
+            }}
+          />
+          <ErrorMessage error={errors.email} />
+        </View>
+        <View>
+          <Input
+            name="password"
+            secureTextEntry
+            control={control}
+            placeholder="Password"
+            placeholderTextColor={COLORS.WHITE}
+            rules={{
+              required: 'Password is required',
+            }}
+          />
+          <ErrorMessage error={errors.password} />
+        </View>
+        <View>
+          <Input
+            name="confirmPassword"
+            secureTextEntry
+            control={control}
+            placeholder="Re-enter password"
+            placeholderTextColor={COLORS.WHITE}
+            rules={{
+              required: 'Re-enter password is required',
+            }}
+          />
+          <ErrorMessage error={errors.confirmPassword} />
+        </View>
       </View>
       <Button
         style={styles.btn}

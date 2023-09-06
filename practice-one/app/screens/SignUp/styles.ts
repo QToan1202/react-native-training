@@ -14,9 +14,6 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     marginBottom: 25,
   },
-  form: {
-    rowGap: 16,
-  },
   btn: {
     marginVertical: 40,
   },

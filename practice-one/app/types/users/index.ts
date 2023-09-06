@@ -4,6 +4,7 @@ export interface IRegisterForm {
   email: string
   phone: string
   password: string
+  confirmPassword: string
 }
 
 export type TLoginForm = Pick<IRegisterForm, 'email' | 'phone' | 'password'>

@@ -1,11 +1,10 @@
 import { Alert, KeyboardAvoidingView, Platform, TouchableOpacity, View } from 'react-native'
 import { SubmitHandler, useForm } from 'react-hook-form'
-import { SafeAreaView } from 'react-native-safe-area-context'
 
-import { Button, Heading, Input, Paragraph } from '@components'
+import { Button, ErrorMessage, Heading, Input, Paragraph } from '@components'
 import { IForm } from '@types'
 import { COLORS } from '@constants'
-import { containerStyles, textStyles } from '@styles'
+import { containerStyles } from '@styles'
 
 import styles from './styles'
 
@@ -39,11 +38,7 @@ const Login = () => {
               required: 'Enter email or mobile number',
             }}
           />
-          <View style={textStyles.errorWrapper}>
-            {errors.email && (
-              <Heading style={[textStyles.error]} content={String(errors.email.message)} />
-            )}
-          </View>
+          <ErrorMessage error={errors.email} />
         </View>
         <View>
           <Input
@@ -60,11 +55,7 @@ const Login = () => {
               },
             }}
           />
-          <View style={textStyles.errorWrapper}>
-            {errors.password && (
-              <Heading style={[textStyles.error]} content={String(errors.password.message)} />
-            )}
-          </View>
+          <ErrorMessage error={errors.password} />
         </View>
       </View>
       <Button

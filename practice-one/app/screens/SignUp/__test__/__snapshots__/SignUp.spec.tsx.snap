@@ -1,22 +1,20 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Testing Sign Up screen Render screen successfully 1`] = `
-<RNCSafeAreaView
-  edges={
-    {
-      "bottom": "additive",
-      "left": "additive",
-      "right": "additive",
-      "top": "additive",
-    }
-  }
+<View
+  onLayout={[Function]}
   style={
-    {
-      "backgroundColor": "#33907C",
-      "flex": 1,
-      "justifyContent": "center",
-      "paddingHorizontal": 32,
-    }
+    [
+      {
+        "backgroundColor": "#33907C",
+        "flex": 1,
+        "justifyContent": "center",
+        "paddingHorizontal": 32,
+      },
+      {
+        "paddingBottom": 0,
+      },
+    ]
   }
 >
   <View
@@ -39,7 +37,7 @@ exports[`Testing Sign Up screen Render screen successfully 1`] = `
           {
             "fontFamily": "Montserrat_500Medium",
           },
-          {},
+          undefined,
         ]
       }
     >
@@ -62,135 +60,174 @@ exports[`Testing Sign Up screen Render screen successfully 1`] = `
       Signup to your account
     </Text>
   </View>
-  <View
-    style={
-      {
-        "rowGap": 16,
-      }
-    }
-  >
-    <TextInput
-      onBlur={[Function]}
-      onChangeText={[Function]}
-      onFocus={[Function]}
-      placeholder="First Name"
-      placeholderTextColor="#fff"
-      style={
-        [
+  <View>
+    <View>
+      <TextInput
+        onBlur={[Function]}
+        onChangeText={[Function]}
+        onFocus={[Function]}
+        placeholder="First Name"
+        placeholderTextColor="#fff"
+        style={
+          [
+            {
+              "borderColor": "#fff",
+              "borderRadius": 50,
+              "borderWidth": 1,
+              "color": "#fff",
+              "fontFamily": "Montserrat_400Regular",
+              "fontSize": 18,
+              "paddingLeft": 15,
+              "paddingVertical": 12,
+            },
+            {},
+            undefined,
+          ]
+        }
+        value=""
+      />
+      <View
+        style={
           {
-            "borderColor": "#fff",
-            "borderRadius": 50,
-            "borderWidth": 1,
-            "color": "#fff",
-            "fontFamily": "Montserrat_400Regular",
-            "fontSize": 18,
-            "paddingLeft": 15,
-            "paddingVertical": 12,
-          },
-          false,
-          undefined,
-        ]
-      }
-      value=""
-    />
-    <TextInput
-      onBlur={[Function]}
-      onChangeText={[Function]}
-      onFocus={[Function]}
-      placeholder="Last Name"
-      placeholderTextColor="#fff"
-      style={
-        [
+            "height": 20,
+          }
+        }
+      />
+    </View>
+    <View>
+      <TextInput
+        onBlur={[Function]}
+        onChangeText={[Function]}
+        onFocus={[Function]}
+        placeholder="Last Name"
+        placeholderTextColor="#fff"
+        style={
+          [
+            {
+              "borderColor": "#fff",
+              "borderRadius": 50,
+              "borderWidth": 1,
+              "color": "#fff",
+              "fontFamily": "Montserrat_400Regular",
+              "fontSize": 18,
+              "paddingLeft": 15,
+              "paddingVertical": 12,
+            },
+            {},
+            undefined,
+          ]
+        }
+        value=""
+      />
+      <View
+        style={
           {
-            "borderColor": "#fff",
-            "borderRadius": 50,
-            "borderWidth": 1,
-            "color": "#fff",
-            "fontFamily": "Montserrat_400Regular",
-            "fontSize": 18,
-            "paddingLeft": 15,
-            "paddingVertical": 12,
-          },
-          false,
-          undefined,
-        ]
-      }
-      value=""
-    />
-    <TextInput
-      onBlur={[Function]}
-      onChangeText={[Function]}
-      onFocus={[Function]}
-      placeholder="Email/Mobile Number"
-      placeholderTextColor="#fff"
-      style={
-        [
+            "height": 20,
+          }
+        }
+      />
+    </View>
+    <View>
+      <TextInput
+        onBlur={[Function]}
+        onChangeText={[Function]}
+        onFocus={[Function]}
+        placeholder="Email/Mobile Number"
+        placeholderTextColor="#fff"
+        style={
+          [
+            {
+              "borderColor": "#fff",
+              "borderRadius": 50,
+              "borderWidth": 1,
+              "color": "#fff",
+              "fontFamily": "Montserrat_400Regular",
+              "fontSize": 18,
+              "paddingLeft": 15,
+              "paddingVertical": 12,
+            },
+            {},
+            undefined,
+          ]
+        }
+        value=""
+      />
+      <View
+        style={
           {
-            "borderColor": "#fff",
-            "borderRadius": 50,
-            "borderWidth": 1,
-            "color": "#fff",
-            "fontFamily": "Montserrat_400Regular",
-            "fontSize": 18,
-            "paddingLeft": 15,
-            "paddingVertical": 12,
-          },
-          false,
-          undefined,
-        ]
-      }
-      value=""
-    />
-    <TextInput
-      onBlur={[Function]}
-      onChangeText={[Function]}
-      onFocus={[Function]}
-      placeholder="Password"
-      placeholderTextColor="#fff"
-      secureTextEntry={true}
-      style={
-        [
+            "height": 20,
+          }
+        }
+      />
+    </View>
+    <View>
+      <TextInput
+        onBlur={[Function]}
+        onChangeText={[Function]}
+        onFocus={[Function]}
+        placeholder="Password"
+        placeholderTextColor="#fff"
+        secureTextEntry={true}
+        style={
+          [
+            {
+              "borderColor": "#fff",
+              "borderRadius": 50,
+              "borderWidth": 1,
+              "color": "#fff",
+              "fontFamily": "Montserrat_400Regular",
+              "fontSize": 18,
+              "paddingLeft": 15,
+              "paddingVertical": 12,
+            },
+            {},
+            undefined,
+          ]
+        }
+        value=""
+      />
+      <View
+        style={
           {
-            "borderColor": "#fff",
-            "borderRadius": 50,
-            "borderWidth": 1,
-            "color": "#fff",
-            "fontFamily": "Montserrat_400Regular",
-            "fontSize": 18,
-            "paddingLeft": 15,
-            "paddingVertical": 12,
-          },
-          false,
-          undefined,
-        ]
-      }
-      value=""
-    />
-    <TextInput
-      onBlur={[Function]}
-      onChangeText={[Function]}
-      onFocus={[Function]}
-      placeholder="Re-enter password"
-      placeholderTextColor="#fff"
-      secureTextEntry={true}
-      style={
-        [
+            "height": 20,
+          }
+        }
+      />
+    </View>
+    <View>
+      <TextInput
+        onBlur={[Function]}
+        onChangeText={[Function]}
+        onFocus={[Function]}
+        placeholder="Re-enter password"
+        placeholderTextColor="#fff"
+        secureTextEntry={true}
+        style={
+          [
+            {
+              "borderColor": "#fff",
+              "borderRadius": 50,
+              "borderWidth": 1,
+              "color": "#fff",
+              "fontFamily": "Montserrat_400Regular",
+              "fontSize": 18,
+              "paddingLeft": 15,
+              "paddingVertical": 12,
+            },
+            {},
+            undefined,
+          ]
+        }
+        value=""
+      />
+      <View
+        style={
           {
-            "borderColor": "#fff",
-            "borderRadius": 50,
-            "borderWidth": 1,
-            "color": "#fff",
-            "fontFamily": "Montserrat_400Regular",
-            "fontSize": 18,
-            "paddingLeft": 15,
-            "paddingVertical": 12,
-          },
-          false,
-          undefined,
-        ]
-      }
-      value=""
-    />
+            "height": 20,
+          }
+        }
+      />
+    </View>
   </View>
   <View
     accessibilityState={
@@ -350,5 +387,5 @@ exports[`Testing Sign Up screen Render screen successfully 1`] = `
       </Text>
     </View>
   </View>
-</RNCSafeAreaView>
+</View>
 `;
