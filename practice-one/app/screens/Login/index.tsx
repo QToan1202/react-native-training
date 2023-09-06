@@ -1,5 +1,6 @@
 import { Alert, KeyboardAvoidingView, Platform, TouchableOpacity, View } from 'react-native'
 import { SubmitHandler, useForm } from 'react-hook-form'
+import { SafeAreaView } from 'react-native-safe-area-context'
 
 import { Button, ErrorMessage, Heading, Input, Paragraph } from '@components'
 import { IForm } from '@types'
@@ -19,15 +20,15 @@ const Login = () => {
   }
 
   return (
-    <KeyboardAvoidingView
-      behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
-      style={styles.container}
-    >
+    <SafeAreaView style={styles.container}>
       <View style={styles.titleWrapper}>
         <Heading textMedium content="Welcome to tradly" />
         <Paragraph size="md" content="Login to your account" />
       </View>
-      <View style={styles.input}>
+      <KeyboardAvoidingView
+        behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
+        style={styles.input}
+      >
         <View>
           <Input
             name="email"
@@ -57,7 +58,7 @@ const Login = () => {
           />
           <ErrorMessage error={errors.password} />
         </View>
-      </View>
+      </KeyboardAvoidingView>
       <Button
         style={styles.loginBtn}
         title="login"
@@ -73,7 +74,7 @@ const Login = () => {
           </TouchableOpacity>
         </View>
       </View>
-    </KeyboardAvoidingView>
+    </SafeAreaView>
   )
 }
 
