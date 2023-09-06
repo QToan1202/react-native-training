@@ -1,4 +1,4 @@
-import { ImageProps } from 'react-native'
+import { ImageProps, ImageSourcePropType } from 'react-native'
 
 import { IUserForms } from '../users'
 
@@ -37,4 +37,10 @@ export type TTrackerStatus = 'order placed' | 'payment confirmed' | 'processed' 
 export interface IDropDownItem extends IFlatListBase {
   name: string
   value: string
+}
+
+export interface IOnboardingScreenView {
+  id: string
+  img: ImageSourcePropType
+  title: string
 }
