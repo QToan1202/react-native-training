@@ -35,7 +35,7 @@ exports[`Testing Input component Render Input component success 1`] = `
           "fontSize": 16,
           "paddingVertical": 5,
         },
-        false,
+        {},
         undefined,
       ]
     }

@@ -39,7 +39,7 @@ const Input = forwardRef<TextInput, InputProps>(
           ref={ref}
           style={[
             label ? styles.inputWithLabel : styles.input, // Style when an input have label or not
-            isFocus && styles.inputFocus, // Change style of the input that have label when focus
+            isFocus && label ? styles.inputFocus : {}, // Change style of the input that have label when focus
             style,
           ]}
           value={String(field.value)}

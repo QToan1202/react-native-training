@@ -12,7 +12,7 @@ exports[`Render heading component 1`] = `
       {
         "fontFamily": "Montserrat_500Medium",
       },
-      {},
+      undefined,
     ]
   }
 >
