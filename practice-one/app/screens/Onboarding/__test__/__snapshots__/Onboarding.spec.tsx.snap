@@ -266,7 +266,7 @@ exports[`Testing onboarding screen Render screen successfully 1`] = `
             ]
           }
         >
-           Donate, Invest & Support infrastructure projects
+          Donate, Invest & Support infrastructure projects
         </Text>
       </View>
     </View>
