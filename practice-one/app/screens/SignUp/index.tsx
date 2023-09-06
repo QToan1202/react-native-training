@@ -1,5 +1,4 @@
-import { Alert, TouchableOpacity, View } from 'react-native'
-import { SafeAreaView } from 'react-native-safe-area-context'
+import { Alert, KeyboardAvoidingView, Platform, TouchableOpacity, View } from 'react-native'
 import { SubmitHandler, useForm } from 'react-hook-form'
 
 import { Button, Heading, Input, Paragraph } from '@components'
@@ -15,7 +14,10 @@ const SignUp = () => {
   }
 
   return (
-    <SafeAreaView style={styles.container}>
+    <KeyboardAvoidingView
+      behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
+      style={styles.container}
+    >
       <View style={styles.titleContainer}>
         <Heading content="Welcome to tradly" textMedium />
         <Paragraph content="Signup to your account" size="md" />
@@ -81,7 +83,7 @@ const SignUp = () => {
           <Paragraph style={styles.signInBtn} size="lg" content="Sign in" />
         </TouchableOpacity>
       </View>
-    </SafeAreaView>
+    </KeyboardAvoidingView>
   )
 }
 
