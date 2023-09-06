@@ -8,7 +8,13 @@ import { COLORS } from '@constants'
 import styles from './styles'
 
 const SignUp = () => {
-  const { control, handleSubmit } = useForm<IForm>()
+  const {
+    control,
+    handleSubmit,
+    watch,
+    formState: { errors },
+  } = useForm<IForm>()
+  const observePassword: string = watch('password')
   const onSubmit: SubmitHandler<IForm> = (data) => {
     Alert.alert(JSON.stringify(data))
   }
@@ -81,6 +87,7 @@ const SignUp = () => {
             placeholderTextColor={COLORS.WHITE}
             rules={{
               required: 'Re-enter password is required',
+              validate: (value) => value === observePassword || 'Oops! Password not match',
             }}
           />
           <ErrorMessage error={errors.confirmPassword} />
