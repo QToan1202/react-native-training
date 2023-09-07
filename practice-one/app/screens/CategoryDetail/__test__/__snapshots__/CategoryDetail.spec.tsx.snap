@@ -1,0 +1,707 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Testing Category Detail screen Render screen successfully 1`] = `
+<RCTScrollView
+  contentContainerStyle={
+    {
+      "alignSelf": "center",
+      "paddingVertical": 30,
+      "rowGap": 10,
+    }
+  }
+  data={
+    [
+      {
+        "avatar": {
+          "testUri": "../../../assets/avatar.png",
+        },
+        "id": "1",
+        "img": {
+          "testUri": "../../../assets/product/coca.png",
+        },
+        "onPress": [Function],
+        "price": 222.6,
+        "storeName": "tradly",
+        "title": "coca cola",
+      },
+      {
+        "avatar": {
+          "testUri": "../../../assets/avatar.png",
+        },
+        "id": "2",
+        "img": {
+          "testUri": "../../../assets/product/coca.png",
+        },
+        "onPress": [Function],
+        "price": 222.6,
+        "storeName": "tradly",
+        "title": "coca cola",
+      },
+      {
+        "avatar": {
+          "testUri": "../../../assets/avatar.png",
+        },
+        "discountPrice": 12,
+        "id": "3",
+        "img": {
+          "testUri": "../../../assets/product/coca.png",
+        },
+        "onPress": [Function],
+        "price": 222.6,
+        "storeName": "tradly",
+        "title": "coca cola",
+      },
+    ]
+  }
+  getItem={[Function]}
+  getItemCount={[Function]}
+  keyExtractor={[Function]}
+  onContentSizeChange={[Function]}
+  onLayout={[Function]}
+  onMomentumScrollBegin={[Function]}
+  onMomentumScrollEnd={[Function]}
+  onScroll={[Function]}
+  onScrollBeginDrag={[Function]}
+  onScrollEndDrag={[Function]}
+  removeClippedSubviews={false}
+  renderItem={[Function]}
+  scrollEventThrottle={50}
+  showsHorizontalScrollIndicator={false}
+  stickyHeaderIndices={[]}
+  style={
+    {
+      "backgroundColor": "#fff",
+    }
+  }
+  viewabilityConfigCallbackPairs={[]}
+>
+  <View>
+    <View
+      onFocusCapture={[Function]}
+      onLayout={[Function]}
+      style={null}
+    >
+      <View
+        style={
+          [
+            {
+              "flexDirection": "row",
+            },
+            {
+              "columnGap": 10,
+              "justifyContent": "flex-start",
+            },
+          ]
+        }
+      >
+        <View
+          accessibilityState={
+            {
+              "busy": undefined,
+              "checked": undefined,
+              "disabled": undefined,
+              "expanded": undefined,
+              "selected": undefined,
+            }
+          }
+          accessibilityValue={
+            {
+              "max": undefined,
+              "min": undefined,
+              "now": undefined,
+              "text": undefined,
+            }
+          }
+          accessible={true}
+          collapsable={false}
+          focusable={true}
+          onClick={[Function]}
+          onResponderGrant={[Function]}
+          onResponderMove={[Function]}
+          onResponderRelease={[Function]}
+          onResponderTerminate={[Function]}
+          onResponderTerminationRequest={[Function]}
+          onStartShouldSetResponder={[Function]}
+          style={
+            {
+              "alignSelf": "flex-start",
+              "backgroundColor": "#fff",
+              "borderColor": "#0000001a",
+              "borderRadius": 10,
+              "borderStyle": "solid",
+              "borderWidth": 1,
+              "opacity": 1,
+              "overflow": "hidden",
+            }
+          }
+        >
+          <Image
+            source={
+              {
+                "testUri": "../../../assets/product/coca.png",
+              }
+            }
+            style={
+              {
+                "height": 128,
+                "width": 160,
+              }
+            }
+          />
+          <View
+            style={
+              {
+                "padding": 12,
+                "rowGap": 16,
+              }
+            }
+          >
+            <Text
+              numberOfLines={1}
+              style={
+                [
+                  {
+                    "color": "#fff",
+                    "fontFamily": "Montserrat_400Regular",
+                  },
+                  {
+                    "fontSize": 14,
+                  },
+                  {
+                    "color": "#000",
+                    "fontFamily": "Montserrat_500Medium",
+                    "maxWidth": 140,
+                    "textTransform": "capitalize",
+                  },
+                ]
+              }
+            >
+              coca cola
+            </Text>
+            <View
+              style={
+                [
+                  {
+                    "alignItems": "center",
+                    "columnGap": 4,
+                    "flexDirection": "row",
+                  },
+                  {
+                    "justifyContent": "space-between",
+                  },
+                ]
+              }
+            >
+              <View
+                style={
+                  [
+                    {
+                      "alignItems": "center",
+                      "columnGap": 4,
+                      "flexDirection": "row",
+                    },
+                    {
+                      "columnGap": 10,
+                    },
+                    undefined,
+                  ]
+                }
+              >
+                <Image
+                  accessibilityLabel="tradly-avatar"
+                  source={
+                    {
+                      "testUri": "../../../assets/avatar.png",
+                    }
+                  }
+                  style={
+                    [
+                      {
+                        "borderRadius": 50,
+                      },
+                      {
+                        "height": 20,
+                        "width": 20,
+                      },
+                    ]
+                  }
+                />
+                <Text
+                  numberOfLines={1}
+                  style={
+                    [
+                      {
+                        "color": "#fff",
+                        "fontFamily": "Montserrat_400Regular",
+                      },
+                      {
+                        "fontSize": 14,
+                      },
+                      {
+                        "color": "#4f4f4f",
+                        "fontFamily": "Montserrat_500Medium",
+                        "textTransform": "capitalize",
+                      },
+                    ]
+                  }
+                >
+                  tradly
+                </Text>
+              </View>
+              <View
+                style={
+                  {
+                    "alignItems": "center",
+                    "columnGap": 4,
+                    "flexDirection": "row",
+                  }
+                }
+              >
+                <Text
+                  numberOfLines={1}
+                  style={
+                    [
+                      {
+                        "color": "#fff",
+                        "fontFamily": "Montserrat_400Regular",
+                      },
+                      {
+                        "fontSize": 14,
+                      },
+                      {
+                        "color": "#33907C",
+                        "fontFamily": "Montserrat_600SemiBold",
+                        "maxWidth": 35,
+                      },
+                    ]
+                  }
+                >
+                  $223
+                </Text>
+              </View>
+            </View>
+          </View>
+        </View>
+        <View
+          accessibilityState={
+            {
+              "busy": undefined,
+              "checked": undefined,
+              "disabled": undefined,
+              "expanded": undefined,
+              "selected": undefined,
+            }
+          }
+          accessibilityValue={
+            {
+              "max": undefined,
+              "min": undefined,
+              "now": undefined,
+              "text": undefined,
+            }
+          }
+          accessible={true}
+          collapsable={false}
+          focusable={true}
+          onClick={[Function]}
+          onResponderGrant={[Function]}
+          onResponderMove={[Function]}
+          onResponderRelease={[Function]}
+          onResponderTerminate={[Function]}
+          onResponderTerminationRequest={[Function]}
+          onStartShouldSetResponder={[Function]}
+          style={
+            {
+              "alignSelf": "flex-start",
+              "backgroundColor": "#fff",
+              "borderColor": "#0000001a",
+              "borderRadius": 10,
+              "borderStyle": "solid",
+              "borderWidth": 1,
+              "opacity": 1,
+              "overflow": "hidden",
+            }
+          }
+        >
+          <Image
+            source={
+              {
+                "testUri": "../../../assets/product/coca.png",
+              }
+            }
+            style={
+              {
+                "height": 128,
+                "width": 160,
+              }
+            }
+          />
+          <View
+            style={
+              {
+                "padding": 12,
+                "rowGap": 16,
+              }
+            }
+          >
+            <Text
+              numberOfLines={1}
+              style={
+                [
+                  {
+                    "color": "#fff",
+                    "fontFamily": "Montserrat_400Regular",
+                  },
+                  {
+                    "fontSize": 14,
+                  },
+                  {
+                    "color": "#000",
+                    "fontFamily": "Montserrat_500Medium",
+                    "maxWidth": 140,
+                    "textTransform": "capitalize",
+                  },
+                ]
+              }
+            >
+              coca cola
+            </Text>
+            <View
+              style={
+                [
+                  {
+                    "alignItems": "center",
+                    "columnGap": 4,
+                    "flexDirection": "row",
+                  },
+                  {
+                    "justifyContent": "space-between",
+                  },
+                ]
+              }
+            >
+              <View
+                style={
+                  [
+                    {
+                      "alignItems": "center",
+                      "columnGap": 4,
+                      "flexDirection": "row",
+                    },
+                    {
+                      "columnGap": 10,
+                    },
+                    undefined,
+                  ]
+                }
+              >
+                <Image
+                  accessibilityLabel="tradly-avatar"
+                  source={
+                    {
+                      "testUri": "../../../assets/avatar.png",
+                    }
+                  }
+                  style={
+                    [
+                      {
+                        "borderRadius": 50,
+                      },
+                      {
+                        "height": 20,
+                        "width": 20,
+                      },
+                    ]
+                  }
+                />
+                <Text
+                  numberOfLines={1}
+                  style={
+                    [
+                      {
+                        "color": "#fff",
+                        "fontFamily": "Montserrat_400Regular",
+                      },
+                      {
+                        "fontSize": 14,
+                      },
+                      {
+                        "color": "#4f4f4f",
+                        "fontFamily": "Montserrat_500Medium",
+                        "textTransform": "capitalize",
+                      },
+                    ]
+                  }
+                >
+                  tradly
+                </Text>
+              </View>
+              <View
+                style={
+                  {
+                    "alignItems": "center",
+                    "columnGap": 4,
+                    "flexDirection": "row",
+                  }
+                }
+              >
+                <Text
+                  numberOfLines={1}
+                  style={
+                    [
+                      {
+                        "color": "#fff",
+                        "fontFamily": "Montserrat_400Regular",
+                      },
+                      {
+                        "fontSize": 14,
+                      },
+                      {
+                        "color": "#33907C",
+                        "fontFamily": "Montserrat_600SemiBold",
+                        "maxWidth": 35,
+                      },
+                    ]
+                  }
+                >
+                  $223
+                </Text>
+              </View>
+            </View>
+          </View>
+        </View>
+      </View>
+    </View>
+    <View
+      onFocusCapture={[Function]}
+      onLayout={[Function]}
+      style={null}
+    >
+      <View
+        style={
+          [
+            {
+              "flexDirection": "row",
+            },
+            {
+              "columnGap": 10,
+              "justifyContent": "flex-start",
+            },
+          ]
+        }
+      >
+        <View
+          accessibilityState={
+            {
+              "busy": undefined,
+              "checked": undefined,
+              "disabled": undefined,
+              "expanded": undefined,
+              "selected": undefined,
+            }
+          }
+          accessibilityValue={
+            {
+              "max": undefined,
+              "min": undefined,
+              "now": undefined,
+              "text": undefined,
+            }
+          }
+          accessible={true}
+          collapsable={false}
+          focusable={true}
+          onClick={[Function]}
+          onResponderGrant={[Function]}
+          onResponderMove={[Function]}
+          onResponderRelease={[Function]}
+          onResponderTerminate={[Function]}
+          onResponderTerminationRequest={[Function]}
+          onStartShouldSetResponder={[Function]}
+          style={
+            {
+              "alignSelf": "flex-start",
+              "backgroundColor": "#fff",
+              "borderColor": "#0000001a",
+              "borderRadius": 10,
+              "borderStyle": "solid",
+              "borderWidth": 1,
+              "opacity": 1,
+              "overflow": "hidden",
+            }
+          }
+        >
+          <Image
+            source={
+              {
+                "testUri": "../../../assets/product/coca.png",
+              }
+            }
+            style={
+              {
+                "height": 128,
+                "width": 160,
+              }
+            }
+          />
+          <View
+            style={
+              {
+                "padding": 12,
+                "rowGap": 16,
+              }
+            }
+          >
+            <Text
+              numberOfLines={1}
+              style={
+                [
+                  {
+                    "color": "#fff",
+                    "fontFamily": "Montserrat_400Regular",
+                  },
+                  {
+                    "fontSize": 14,
+                  },
+                  {
+                    "color": "#000",
+                    "fontFamily": "Montserrat_500Medium",
+                    "maxWidth": 140,
+                    "textTransform": "capitalize",
+                  },
+                ]
+              }
+            >
+              coca cola
+            </Text>
+            <View
+              style={
+                [
+                  {
+                    "alignItems": "center",
+                    "columnGap": 4,
+                    "flexDirection": "row",
+                  },
+                  {
+                    "justifyContent": "space-between",
+                  },
+                ]
+              }
+            >
+              <View
+                style={
+                  [
+                    {
+                      "alignItems": "center",
+                      "columnGap": 4,
+                      "flexDirection": "row",
+                    },
+                    {
+                      "columnGap": 10,
+                    },
+                    undefined,
+                  ]
+                }
+              >
+                <Image
+                  accessibilityLabel="tradly-avatar"
+                  source={
+                    {
+                      "testUri": "../../../assets/avatar.png",
+                    }
+                  }
+                  style={
+                    [
+                      {
+                        "borderRadius": 50,
+                      },
+                      {
+                        "height": 20,
+                        "width": 20,
+                      },
+                    ]
+                  }
+                />
+                <Text
+                  numberOfLines={1}
+                  style={
+                    [
+                      {
+                        "color": "#fff",
+                        "fontFamily": "Montserrat_400Regular",
+                      },
+                      {
+                        "fontSize": 14,
+                      },
+                      {
+                        "color": "#4f4f4f",
+                        "fontFamily": "Montserrat_500Medium",
+                        "textTransform": "capitalize",
+                      },
+                    ]
+                  }
+                >
+                  tradly
+                </Text>
+              </View>
+              <View
+                style={
+                  {
+                    "alignItems": "center",
+                    "columnGap": 4,
+                    "flexDirection": "row",
+                  }
+                }
+              >
+                <Text
+                  numberOfLines={1}
+                  style={
+                    [
+                      {
+                        "color": "#fff",
+                        "fontFamily": "Montserrat_400Regular",
+                      },
+                      {
+                        "fontSize": 14,
+                      },
+                      {
+                        "color": "#4f4f4f",
+                        "fontSize": 10,
+                        "maxWidth": 35,
+                        "textDecorationLine": "line-through",
+                      },
+                    ]
+                  }
+                >
+                  $223
+                </Text>
+                <Text
+                  numberOfLines={1}
+                  style={
+                    [
+                      {
+                        "color": "#fff",
+                        "fontFamily": "Montserrat_400Regular",
+                      },
+                      {
+                        "fontSize": 14,
+                      },
+                      {
+                        "color": "#33907C",
+                        "fontFamily": "Montserrat_600SemiBold",
+                        "maxWidth": 35,
+                      },
+                    ]
+                  }
+                >
+                  $12
+                </Text>
+              </View>
+            </View>
+          </View>
+        </View>
+      </View>
+    </View>
+  </View>
+</RCTScrollView>
+`;
