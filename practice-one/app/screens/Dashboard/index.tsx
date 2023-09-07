@@ -3,7 +3,7 @@ import { FlatList, ListRenderItemInfo, ScrollView, View } from 'react-native'
 
 import { Button, Heading, MenuCard, ProductCard, SliderItem, StoreCard } from '@components'
 import { DASHBOARD } from '@constants'
-import { IProductItem } from '@constants/dashboard'
+import { IProductItem } from '@constants/screens/dashboard'
 import { containerStyles } from '@styles'
 import { IFlatListBase } from '@types'
 
