@@ -1410,7 +1410,7 @@ exports[`Testing Dashboard screen Render screen successfully 1`] = `
                       "textTransform": "capitalize",
                     },
                     {
-                      "fontSize": 10,
+                      "fontSize": 12,
                     },
                   ],
                 ]
@@ -2225,7 +2225,7 @@ exports[`Testing Dashboard screen Render screen successfully 1`] = `
                       "textTransform": "capitalize",
                     },
                     {
-                      "fontSize": 10,
+                      "fontSize": 12,
                     },
                   ],
                 ]
@@ -3065,7 +3065,7 @@ exports[`Testing Dashboard screen Render screen successfully 1`] = `
                       "textTransform": "capitalize",
                     },
                     {
-                      "fontSize": 10,
+                      "fontSize": 12,
                     },
                   ],
                 ]

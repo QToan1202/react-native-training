@@ -53,7 +53,7 @@ const styles = StyleSheet.create({
     paddingVertical: 4,
   },
   btnTitle: {
-    fontSize: 10,
+    fontSize: 12,
   },
 })
 
