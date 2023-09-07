@@ -9,7 +9,6 @@ const styles = StyleSheet.create({
     height: 24,
   },
   menu: {
-    width: 93,
     height: 93,
   },
 })

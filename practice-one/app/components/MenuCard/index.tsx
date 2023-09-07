@@ -22,7 +22,7 @@ export interface MenuCardProps extends ImageBackgroundProps {
 
 const MenuCard = ({ source, name, style, imageStyle, onPress, ...rest }: MenuCardProps) => {
   return (
-    <TouchableOpacity activeOpacity={0.8} onPress={onPress}>
+    <TouchableOpacity activeOpacity={0.8} onPress={onPress} style={styles.container}>
       <ImageBackground
         source={source}
         style={[imageStyles.menu, styles.content, style]}
