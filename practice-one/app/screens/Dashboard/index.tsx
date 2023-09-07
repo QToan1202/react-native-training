@@ -1,18 +1,13 @@
 import { useCallback } from 'react'
-import { FlatList, ListRenderItemInfo, ScrollView, View } from 'react-native'
+import { FlatList, ScrollView, View } from 'react-native'
 
 import { Button, Heading, MenuCard, ProductCard, SliderItem, StoreCard } from '@components'
 import { DASHBOARD } from '@constants'
 import { IProductItem } from '@constants/screens/dashboard'
 import { containerStyles } from '@styles'
-import { IFlatListBase } from '@types'
+import { renderItem } from '@utils'
 
 import styles from './styles'
-
-const renderItem =
-  <T extends IFlatListBase>(Element: React.JSX.ElementType) =>
-  // eslint-disable-next-line react/function-component-definition
-  ({ item: { ...rest } }: ListRenderItemInfo<T>) => <Element {...rest} />
 
 const Dashboard = () => {
   const handleSeeAllProducts = useCallback(() => undefined, []) // TODO: Replacing with navigate to another screen
