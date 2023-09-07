@@ -24,6 +24,7 @@
     "global-require": "off",
     "react/jsx-props-no-spreading": "off",
     "import/no-extraneous-dependencies": "off",
+    "import/no-cycle": ["error", { "maxDepth": 1 }],
     "react/require-default-props": "off",
     "import/extensions": ["warn", "never"],
     "camelcase": [
