@@ -4,6 +4,8 @@ import { createBottomTabNavigator } from '@react-navigation/bottom-tabs'
 
 import { Bar, TabIcon } from '@components'
 import { COLORS } from '@constants'
+import { Dashboard } from '@screens'
+
 import styles from './styles'
 
 export type TabParamsList = {
@@ -54,7 +56,7 @@ const BottomNav = () => {
         tabBarItemStyle: styles.items,
       })}
     >
-      <Tab.Screen name="Home" component={Fragment} />
+      <Tab.Screen name="Home" component={Dashboard} />
       <Tab.Screen name="Browse" component={Fragment} />
       <Tab.Screen name="Product" component={Fragment} />
       <Tab.Screen name="Order History" component={Fragment} />
