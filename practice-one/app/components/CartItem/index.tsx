@@ -1,4 +1,3 @@
-import { useMemo } from 'react'
 import {
   Image,
   ImageSourcePropType,
@@ -9,6 +8,7 @@ import {
 
 import Paragraph from '@components/Paragraph'
 import { containerStyles } from '@styles'
+import { calculateDiscount } from '@utils'
 
 import styles from './styles'
 
@@ -29,11 +29,6 @@ const CartItem = ({
   style,
   ...rest
 }: CartItemProps) => {
-  const calculateDiscountPercent = useMemo((): string => {
-    if (!discountPrice) return ''
-    return `${(100 - (discountPrice / price) * 100).toFixed()}% off`
-  }, [discountPrice, price])
-
   return (
     <TouchableOpacity style={[styles.wrapper, style]} activeOpacity={0.5} {...rest}>
       <View style={styles.container}>
@@ -54,7 +49,7 @@ const CartItem = ({
                   numberOfLines={1}
                 />
                 <Paragraph
-                  content={calculateDiscountPercent}
+                  content={calculateDiscount(price, discountPrice)}
                   style={styles.text}
                   numberOfLines={1}
                 />
