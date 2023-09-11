@@ -2,7 +2,7 @@ import { useCallback } from 'react'
 import { ScrollView, View } from 'react-native'
 
 import { Button, CartItem, Price } from '@components'
-import { PRICE_DETAILS } from '@constants'
+import { CHECKOUT } from '@constants'
 
 import styles from './styles'
 
@@ -27,7 +27,7 @@ const Cart = () => {
           onPress={handlePress}
         />
       </View>
-      <Price data={PRICE_DETAILS} total={25} />
+      <Price data={CHECKOUT.PRICE_DETAILS} total={25} />
     </ScrollView>
   )
 }
