@@ -62,6 +62,7 @@ try {
 
 const getStories = () => {
   return {
+    "./app/components/Address/Address.stories.tsx": require("../app/components/Address/Address.stories.tsx"),
     "./app/components/Avatar/Avatar.stories.tsx": require("../app/components/Avatar/Avatar.stories.tsx"),
     "./app/components/Bar/Bar.stories.tsx": require("../app/components/Bar/Bar.stories.tsx"),
     "./app/components/Button/Button.stories.tsx": require("../app/components/Button/Button.stories.tsx"),
