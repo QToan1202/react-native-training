@@ -26,6 +26,7 @@ const styles = StyleSheet.create({
     borderColor: COLORS.WHITE,
   },
   quaternary: {
+    borderColor: COLORS.WHITE,
     backgroundColor: COLORS.WHITE,
     borderRadius: 0,
   },

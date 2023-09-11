@@ -16,5 +16,6 @@ const COLORS = {
   DARK_50: '#212121',
   RED: '#ff5880',
   BG_LAYER: '#f6f9ff',
+  DIVIDER: '#0000001a',
 }
 export default COLORS
