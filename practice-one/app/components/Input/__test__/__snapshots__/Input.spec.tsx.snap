@@ -28,8 +28,8 @@ exports[`Testing Input component Render Input component success 1`] = `
     style={
       [
         {
-          "borderBottomColor": "#4f4f4f",
-          "borderBottomWidth": 1,
+          "borderBottomColor": "#dbdbde",
+          "borderBottomWidth": 0.5,
           "color": "#000",
           "fontFamily": "Montserrat_500Medium",
           "fontSize": 16,

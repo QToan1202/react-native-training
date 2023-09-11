@@ -22,8 +22,8 @@ const styles = StyleSheet.create({
   },
   inputWithLabel: {
     paddingVertical: 5,
-    borderBottomWidth: 1,
-    borderBottomColor: COLORS.GRAY_50,
+    borderBottomWidth: StyleSheet.hairlineWidth,
+    borderBottomColor: COLORS.INPUT_BORDER,
     fontFamily: FONT_FAMILY.MONTSERRAT[500],
     fontSize: 16,
     color: COLORS.BLACK,
