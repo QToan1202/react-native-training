@@ -17,5 +17,7 @@ const COLORS = {
   RED: '#ff5880',
   BG_LAYER: '#f6f9ff',
   DIVIDER: '#0000001a',
+  INPUT_BORDER: '#dbdbde',
+  BLUE: '#4ea0ff',
 }
 export default COLORS
