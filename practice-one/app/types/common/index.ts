@@ -44,3 +44,9 @@ export interface IOnboardingScreenView {
   img: ImageSourcePropType
   title: string
 }
+
+export interface IDetailInfo {
+  id: string | number
+  label: string
+  value: string
+}
