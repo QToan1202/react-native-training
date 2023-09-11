@@ -371,11 +371,14 @@ exports[`Testing Cart screen Render screen successfully 1`] = `
     </View>
     <View
       style={
-        {
-          "backgroundColor": "#fff",
-          "paddingBottom": 15,
-          "paddingHorizontal": 15,
-        }
+        [
+          {
+            "backgroundColor": "#fff",
+            "paddingBottom": 15,
+            "paddingHorizontal": 15,
+          },
+          undefined,
+        ]
       }
     >
       <Text
@@ -471,9 +474,14 @@ exports[`Testing Cart screen Render screen successfully 1`] = `
         </View>
         <View
           style={
-            {
-              "rowGap": 10,
-            }
+            [
+              {
+                "rowGap": 10,
+              },
+              {
+                "alignItems": "flex-end",
+              },
+            ]
           }
         >
           <Text
@@ -531,33 +539,78 @@ exports[`Testing Cart screen Render screen successfully 1`] = `
           }
         }
       />
-      <Text
+      <View
         style={
           [
             {
-              "color": "#fff",
-              "fontFamily": "Montserrat_700Bold",
-              "fontSize": 24,
+              "alignItems": "center",
+              "columnGap": 4,
+              "flexDirection": "row",
             },
-            false,
-            [
-              {
-                "color": "#000",
-                "fontFamily": "Montserrat_500Medium",
-                "lineHeight": 20,
-                "textTransform": "capitalize",
-              },
-              {
-                "fontFamily": "Montserrat_600SemiBold",
-                "fontSize": 18,
-                "paddingVertical": 14,
-              },
-            ],
+            {
+              "justifyContent": "space-between",
+            },
           ]
         }
       >
-        total amount
-      </Text>
+        <Text
+          style={
+            [
+              {
+                "color": "#fff",
+                "fontFamily": "Montserrat_700Bold",
+                "fontSize": 24,
+              },
+              false,
+              [
+                {
+                  "color": "#000",
+                  "fontFamily": "Montserrat_500Medium",
+                  "lineHeight": 20,
+                  "textTransform": "capitalize",
+                },
+                {
+                  "fontFamily": "Montserrat_600SemiBold",
+                  "fontSize": 18,
+                  "paddingVertical": 14,
+                },
+              ],
+            ]
+          }
+        >
+          total amount
+        </Text>
+        <Text
+          style={
+            [
+              {
+                "color": "#fff",
+                "fontFamily": "Montserrat_700Bold",
+                "fontSize": 24,
+              },
+              false,
+              [
+                {
+                  "color": "#000",
+                  "fontFamily": "Montserrat_500Medium",
+                  "lineHeight": 20,
+                  "textTransform": "capitalize",
+                },
+                {
+                  "fontFamily": "Montserrat_600SemiBold",
+                  "fontSize": 18,
+                  "paddingVertical": 14,
+                },
+                {
+                  "fontFamily": "Montserrat_700Bold",
+                },
+              ],
+            ]
+          }
+        >
+          $25
+        </Text>
+      </View>
     </View>
   </View>
 </RCTScrollView>

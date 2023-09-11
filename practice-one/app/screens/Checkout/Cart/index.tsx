@@ -1,8 +1,8 @@
 import { useCallback } from 'react'
 import { ScrollView, View } from 'react-native'
 
-import { Button, CartItem, Heading, Paragraph } from '@components'
-import { containerStyles } from '@styles'
+import { Button, CartItem, Price } from '@components'
+import { PRICE_DETAILS } from '@constants'
 
 import styles from './styles'
 
@@ -27,21 +27,7 @@ const Cart = () => {
           onPress={handlePress}
         />
       </View>
-      <View style={styles.detailWrapper}>
-        <Heading style={[styles.text, styles.title]} content="price details" />
-        <View style={[containerStyles.inline, containerStyles.spaceBetween]}>
-          <View style={styles.spacing}>
-            <Paragraph style={styles.text} content="price (1 item)" />
-            <Paragraph style={styles.text} content="delivery fee" />
-          </View>
-          <View style={styles.spacing}>
-            <Paragraph style={styles.text} content="$25" />
-            <Paragraph style={styles.text} content="info" />
-          </View>
-        </View>
-        <View style={styles.line} />
-        <Heading style={[styles.text, styles.title]} content="total amount" />
-      </View>
+      <Price data={PRICE_DETAILS} total={25} />
     </ScrollView>
   )
 }
