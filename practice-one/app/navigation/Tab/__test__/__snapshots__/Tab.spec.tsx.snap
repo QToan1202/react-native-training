@@ -1482,7 +1482,7 @@ exports[`Testing bottom tab navigation Render tab successfully 1`] = `
                                 "textTransform": "capitalize",
                               },
                               {
-                                "fontSize": 10,
+                                "fontSize": 12,
                               },
                             ],
                           ]
@@ -2297,7 +2297,7 @@ exports[`Testing bottom tab navigation Render tab successfully 1`] = `
                                 "textTransform": "capitalize",
                               },
                               {
-                                "fontSize": 10,
+                                "fontSize": 12,
                               },
                             ],
                           ]
@@ -3137,7 +3137,7 @@ exports[`Testing bottom tab navigation Render tab successfully 1`] = `
                                 "textTransform": "capitalize",
                               },
                               {
-                                "fontSize": 10,
+                                "fontSize": 12,
                               },
                             ],
                           ]

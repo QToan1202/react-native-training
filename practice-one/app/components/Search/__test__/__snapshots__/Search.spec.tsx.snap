@@ -69,7 +69,7 @@ exports[`Testing Search component Render Search component success 1`] = `
           "paddingLeft": 15,
           "paddingVertical": 12,
         },
-        false,
+        {},
         {
           "color": "#000",
           "flex": 1,
