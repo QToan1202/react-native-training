@@ -2,11 +2,10 @@ import { useCallback, useEffect, useMemo, useRef, useState } from 'react'
 import { Image, View, ViewProps } from 'react-native'
 import { SafeAreaView } from 'react-native-safe-area-context'
 import PagerView, { PagerViewOnPageSelectedEvent } from 'react-native-pager-view'
-import { StatusBar } from 'expo-status-bar'
 
 import { Button, Paragraph } from '@components'
 import { containerStyles } from '@styles'
-import { COLORS, ONBOARDING_VIEW_DATA } from '@constants'
+import { ONBOARDING_VIEW_DATA } from '@constants'
 import { IOnboardingScreenView } from '@types'
 
 import styles from './styles'
@@ -22,9 +21,9 @@ const Onboarding = ({ style, ...rest }: OnboardingProps) => {
       prevState !== numOfPagerView.current ? prevState + 1 : prevState
     )
   }, [])
-  const handlePageSelected = (e: PagerViewOnPageSelectedEvent) => {
+  const handlePageSelected = useCallback((e: PagerViewOnPageSelectedEvent) => {
     setCurrentPage(e.nativeEvent.position)
-  }
+  }, [])
   const renderViewPagerChildren: React.JSX.Element[] = useMemo(
     () =>
       ONBOARDING_VIEW_DATA.map(({ id, img, title }: IOnboardingScreenView) => (
@@ -54,7 +53,6 @@ const Onboarding = ({ style, ...rest }: OnboardingProps) => {
 
   return (
     <SafeAreaView style={[containerStyles.expand, styles.container, style]} {...rest}>
-      <StatusBar style="light" backgroundColor={COLORS.PRIMARY} />
       <View style={styles.bgContainer} />
       <PagerView
         initialPage={currentPage}
