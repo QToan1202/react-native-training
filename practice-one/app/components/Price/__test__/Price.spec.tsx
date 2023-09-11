@@ -1,6 +1,6 @@
 import { render, screen } from '@testing-library/react-native'
 
-import { PRICE_DETAILS } from '@constants'
+import { CHECKOUT } from '@constants'
 
 import Price from '../index'
 
@@ -8,7 +8,7 @@ describe('Testing Price component', () => {
   beforeEach(() => {
     render(
       <Price
-        data={PRICE_DETAILS}
+        data={CHECKOUT.PRICE_DETAILS}
         header="price details"
         footer="totals"
         total={25}
@@ -19,7 +19,7 @@ describe('Testing Price component', () => {
 
   it('Render component successfully', () => {
     const component = render(
-      <Price data={PRICE_DETAILS} header="price details" footer="totals" total={25} />
+      <Price data={CHECKOUT.PRICE_DETAILS} header="price details" footer="totals" total={25} />
     ).toJSON()
 
     expect(component).toMatchSnapshot()
