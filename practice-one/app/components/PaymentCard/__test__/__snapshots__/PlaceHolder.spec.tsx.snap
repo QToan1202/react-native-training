@@ -15,6 +15,7 @@ exports[`Testing Payment Card placeholder component Render Payment Card placehol
         "paddingVertical": 36,
         "rowGap": 20,
       },
+      undefined,
     ]
   }
 >

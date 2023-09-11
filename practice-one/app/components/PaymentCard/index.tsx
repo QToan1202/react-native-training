@@ -38,10 +38,10 @@ const PaymentCard = ({
   const visaBg = useRef(checkCardType(cardNumber) === 'visa' && require('@assets/payment/visa.png'))
 
   return (
-    <View style={containerStyles.shrink}>
+    <View style={[containerStyles.shrink, style]}>
       <ImageBackground
         source={masterBg.current || visaBg.current}
-        style={[styles.container, style]}
+        style={styles.container}
         {...rest}
       >
         <View style={styles.rowSpacing}>
@@ -55,6 +55,7 @@ const PaymentCard = ({
             <Paragraph
               style={styles.cardNumber}
               size="md"
+              numberOfLines={1}
               content={cardNumber.replace(/(\d{4})/g, '$1 ')}
             />
           </View>

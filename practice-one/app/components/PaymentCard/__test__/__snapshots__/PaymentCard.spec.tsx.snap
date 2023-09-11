@@ -3,27 +3,27 @@
 exports[`Testing Payment Card component Render Payment Card component success 1`] = `
 <View
   style={
-    {
-      "alignSelf": "flex-start",
-    }
+    [
+      {
+        "alignSelf": "flex-start",
+      },
+      undefined,
+    ]
   }
 >
   <View
     accessibilityIgnoresInvertColors={true}
     style={
-      [
-        {
-          "alignItems": "flex-end",
-          "alignSelf": "flex-start",
-          "borderRadius": 9,
-          "columnGap": 17,
-          "flexDirection": "row",
-          "overflow": "hidden",
-          "paddingHorizontal": 17,
-          "paddingVertical": 13,
-        },
-        undefined,
-      ]
+      {
+        "alignItems": "flex-end",
+        "alignSelf": "flex-start",
+        "borderRadius": 9,
+        "columnGap": 17,
+        "flexDirection": "row",
+        "overflow": "hidden",
+        "paddingHorizontal": 17,
+        "paddingVertical": 13,
+      }
     }
   >
     <Image
@@ -116,6 +116,7 @@ exports[`Testing Payment Card component Render Payment Card component success 1`
           card number
         </Text>
         <Text
+          numberOfLines={1}
           style={
             [
               {
