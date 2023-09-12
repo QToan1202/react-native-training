@@ -12,9 +12,12 @@ const styles = StyleSheet.create({
     columnGap: 17,
     borderRadius: 9,
     overflow: 'hidden',
+    maxHeight: 146,
+    maxWidth: 246,
   },
   rowSpacing: {
-    rowGap: 5,
+    height: '100%',
+    justifyContent: 'space-between',
   },
   title: {
     color: COLORS.GRAY_200,

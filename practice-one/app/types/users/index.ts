@@ -21,8 +21,8 @@ export interface IAddressForm {
 export interface ICardForm {
   number: string
   name: string
-  expiresDate: Date
-  cvc: number
+  expiresDate: string
+  cvc: string
 }
 
 export interface IUserForms extends IRegisterForm, TLoginForm, IAddressForm, ICardForm {}

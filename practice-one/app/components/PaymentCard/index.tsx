@@ -1,5 +1,13 @@
-import { useCallback, useRef } from 'react'
-import { Image, ImageBackground, ImageBackgroundProps, TouchableOpacity, View } from 'react-native'
+import { useCallback, useMemo } from 'react'
+import {
+  Image,
+  ImageBackground,
+  ImageBackgroundProps,
+  StyleProp,
+  TouchableOpacity,
+  View,
+  ViewStyle,
+} from 'react-native'
 
 import Paragraph from '@components/Paragraph'
 import { checkCardType } from '@utils'
@@ -10,6 +18,7 @@ import styles from './styles'
 
 export interface PaymentCardProps extends ICardInformation, Omit<ImageBackgroundProps, 'source'> {
   isSelected?: boolean
+  contentContainerStyle?: StyleProp<ViewStyle>
   onCardSelected?: (data: ICardInformation) => void
 }
 
@@ -20,13 +29,20 @@ const PaymentCard = ({
   expires,
   isSelected = false,
   style,
+  contentContainerStyle,
   onCardSelected,
   ...rest
 }: PaymentCardProps) => {
-  const masterBg = useRef(
-    checkCardType(cardNumber) === 'mastercard' && require('@assets/payment/mastercard.png')
-  )
-  const visaBg = useRef(checkCardType(cardNumber) === 'visa' && require('@assets/payment/visa.png'))
+  const cardBg = useMemo(() => {
+    switch (checkCardType(cardNumber)) {
+      case 'mastercard':
+        return require('@assets/payment/mastercard.png')
+      case 'visa':
+        return require('@assets/payment/visa.png')
+      default:
+        return require('@assets/payment/normal.png')
+    }
+  }, [cardNumber])
   const handleSelectCard = useCallback(
     () => onCardSelected && onCardSelected({ name, cardNumber, cvc, expires }),
     [cardNumber, cvc, expires, name, onCardSelected]
@@ -40,14 +56,14 @@ const PaymentCard = ({
     >
       <>
         <ImageBackground
-          source={masterBg.current || visaBg.current}
-          style={styles.container}
+          source={cardBg}
+          style={[styles.container, contentContainerStyle]}
           {...rest}
         >
           <View style={styles.rowSpacing}>
             <View>
               <Paragraph style={styles.title} content="holder name" />
-              <Paragraph content={name} />
+              <Paragraph content={name} numberOfLines={1} />
             </View>
 
             <View>
@@ -68,7 +84,7 @@ const PaymentCard = ({
 
           <View>
             <Paragraph style={[styles.title, styles.titleUppercase]} content="cvc" />
-            <Paragraph style={styles.cvc} content={cvc.toString()} />
+            <Paragraph style={styles.cvc} content={cvc} />
           </View>
         </ImageBackground>
         {isSelected && <Image source={require('@assets/check.png')} style={styles.checkIcon} />}

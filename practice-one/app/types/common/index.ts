@@ -54,6 +54,6 @@ export interface IDetailInfo {
 export interface ICardInformation {
   name: string
   cardNumber: string
-  cvc: number
+  cvc: string
   expires: string
 }
