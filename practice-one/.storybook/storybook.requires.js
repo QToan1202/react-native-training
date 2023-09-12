@@ -85,6 +85,7 @@ const getStories = () => {
     "./app/navigation/Tab/Tab.stories.tsx": require("../app/navigation/Tab/Tab.stories.tsx"),
     "./app/screens/CategoryDetail/CategoryDetail.stories.tsx": require("../app/screens/CategoryDetail/CategoryDetail.stories.tsx"),
     "./app/screens/Checkout/AddAddress/AddAddress.stories.tsx": require("../app/screens/Checkout/AddAddress/AddAddress.stories.tsx"),
+    "./app/screens/Checkout/AddCard/AddCard.stories.tsx": require("../app/screens/Checkout/AddCard/AddCard.stories.tsx"),
     "./app/screens/Checkout/Cart/Cart.stories.tsx": require("../app/screens/Checkout/Cart/Cart.stories.tsx"),
     "./app/screens/Checkout/Payment/Payment.stories.tsx": require("../app/screens/Checkout/Payment/Payment.stories.tsx"),
     "./app/screens/Dashboard/Dashboard.stories.tsx": require("../app/screens/Dashboard/Dashboard.stories.tsx"),
