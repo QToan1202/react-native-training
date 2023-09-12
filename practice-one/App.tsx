@@ -1,6 +1,5 @@
 import { useCallback } from 'react'
-import { StatusBar } from 'expo-status-bar'
-import { StyleSheet, Text, View } from 'react-native'
+import { SafeAreaProvider } from 'react-native-safe-area-context'
 import * as SplashScreen from 'expo-splash-screen'
 import {
   useFonts,
@@ -9,9 +8,15 @@ import {
   Montserrat_600SemiBold,
   Montserrat_700Bold,
 } from '@expo-google-fonts/montserrat'
+
+import { NavigationContainer } from '@react-navigation/native'
+import { StackNavigation } from '@navigation'
+
+import styles from './App.styles'
 import StorybookUI from './.storybook'
 
 SplashScreen.preventAutoHideAsync()
+const FAKE_IS_LOGIN = false
 
 const App = () => {
   const [fontsLoaded] = useFonts({
@@ -30,22 +35,18 @@ const App = () => {
   if (!fontsLoaded) return null
 
   return (
-    <View style={styles.container} onLayout={onLayoutRootView}>
-      <Text>Open up App.tsx to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
+    <SafeAreaProvider style={styles.container} onLayout={onLayoutRootView}>
+      <NavigationContainer>
+        {!FAKE_IS_LOGIN ? (
+          <StackNavigation.PublicStackNavigator />
+        ) : (
+          <StackNavigation.PrivateStackNavigator />
+        )}
+      </NavigationContainer>
+    </SafeAreaProvider>
   )
 }
 
-const ENABLE_SB = true
+const ENABLE_SB = false
 
 export default ENABLE_SB ? StorybookUI : App
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-})
