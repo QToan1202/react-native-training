@@ -18,6 +18,13 @@ const CARDS: ICardItem[] = [
     cvc: 111,
     expires: '01/2019',
   },
+  {
+    id: '2',
+    name: 'Tradly Team',
+    cardNumber: '4627215898548869',
+    cvc: 123,
+    expires: '12/2023',
+  },
 ]
 
 export default { PRICE_DETAILS, CARDS }

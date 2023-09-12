@@ -6,7 +6,6 @@ exports[`Testing Payment screen Render screen successfully 1`] = `
     {
       "backgroundColor": "#f6f9ff",
       "flex": 1,
-      "paddingTop": 16,
       "rowGap": 16,
     }
   }
@@ -14,60 +13,708 @@ exports[`Testing Payment screen Render screen successfully 1`] = `
   <View
     style={
       {
-        "alignItems": "center",
         "backgroundColor": "#fff",
         "justifyContent": "center",
-        "minHeight": 250,
       }
     }
   >
-    <View>
+    <RNCViewPager
+      initialPage={0}
+      layoutDirection="ltr"
+      onMoveShouldSetResponderCapture={[Function]}
+      onPageScroll={[Function]}
+      onPageScrollStateChanged={[Function]}
+      onPageSelected={[Function]}
+      style={
+        {
+          "height": 300,
+          "marginVertical": 20,
+          "width": 750,
+        }
+      }
+    >
       <View
+        collapsable={false}
         style={
-          [
-            {
-              "alignItems": "center",
-              "alignSelf": "flex-start",
-              "borderColor": "#00000033",
-              "borderRadius": 10,
-              "borderStyle": "dashed",
-              "borderWidth": 2,
-              "paddingHorizontal": 38.5,
-              "paddingVertical": 36,
-              "rowGap": 20,
-            },
-          ]
+          {
+            "bottom": 0,
+            "left": 0,
+            "position": "absolute",
+            "right": 0,
+            "top": 0,
+          }
         }
       >
-        <Image
-          source={
-            {
-              "testUri": "../../../assets/payment/icon.png",
-            }
-          }
-        />
-        <Text
+        <View
           style={
             [
+              undefined,
               {
-                "color": "#fff",
-                "fontFamily": "Montserrat_400Regular",
-              },
-              {
-                "fontSize": 14,
-              },
-              {
-                "color": "#00000033",
-                "letterSpacing": 0.5,
-                "lineHeight": 28,
-                "textTransform": "capitalize",
+                "bottom": 0,
+                "left": 0,
+                "position": "absolute",
+                "right": 0,
+                "top": 0,
               },
             ]
           }
         >
-          add payment method
-        </Text>
+          <View
+            accessibilityState={
+              {
+                "busy": undefined,
+                "checked": undefined,
+                "disabled": undefined,
+                "expanded": undefined,
+                "selected": undefined,
+              }
+            }
+            accessibilityValue={
+              {
+                "max": undefined,
+                "min": undefined,
+                "now": undefined,
+                "text": undefined,
+              }
+            }
+            accessible={true}
+            collapsable={false}
+            focusable={true}
+            onClick={[Function]}
+            onResponderGrant={[Function]}
+            onResponderMove={[Function]}
+            onResponderRelease={[Function]}
+            onResponderTerminate={[Function]}
+            onResponderTerminationRequest={[Function]}
+            onStartShouldSetResponder={[Function]}
+            style={
+              {
+                "alignSelf": "center",
+                "opacity": 1,
+              }
+            }
+          >
+            <View
+              accessibilityIgnoresInvertColors={true}
+              style={
+                {
+                  "alignItems": "flex-end",
+                  "alignSelf": "flex-start",
+                  "borderRadius": 9,
+                  "columnGap": 17,
+                  "flexDirection": "row",
+                  "overflow": "hidden",
+                  "paddingHorizontal": 17,
+                  "paddingVertical": 13,
+                }
+              }
+            >
+              <Image
+                id="1"
+                source={
+                  {
+                    "testUri": "../../../assets/payment/mastercard.png",
+                  }
+                }
+                style={
+                  [
+                    {
+                      "bottom": 0,
+                      "left": 0,
+                      "position": "absolute",
+                      "right": 0,
+                      "top": 0,
+                    },
+                    {
+                      "height": undefined,
+                      "width": undefined,
+                    },
+                    undefined,
+                  ]
+                }
+              />
+              <View
+                style={
+                  {
+                    "rowGap": 5,
+                  }
+                }
+              >
+                <View>
+                  <Text
+                    style={
+                      [
+                        {
+                          "color": "#fff",
+                          "fontFamily": "Montserrat_400Regular",
+                        },
+                        {
+                          "fontSize": 14,
+                        },
+                        {
+                          "color": "#b7b7b7",
+                          "fontSize": 13,
+                          "textTransform": "capitalize",
+                        },
+                      ]
+                    }
+                  >
+                    holder name
+                  </Text>
+                  <Text
+                    style={
+                      [
+                        {
+                          "color": "#fff",
+                          "fontFamily": "Montserrat_400Regular",
+                        },
+                        {
+                          "fontSize": 14,
+                        },
+                        undefined,
+                      ]
+                    }
+                  >
+                    Tradly Team
+                  </Text>
+                </View>
+                <View>
+                  <Text
+                    style={
+                      [
+                        {
+                          "color": "#fff",
+                          "fontFamily": "Montserrat_400Regular",
+                        },
+                        {
+                          "fontSize": 14,
+                        },
+                        {
+                          "color": "#b7b7b7",
+                          "fontSize": 13,
+                          "textTransform": "capitalize",
+                        },
+                      ]
+                    }
+                  >
+                    card number
+                  </Text>
+                  <Text
+                    numberOfLines={1}
+                    style={
+                      [
+                        {
+                          "color": "#fff",
+                          "fontFamily": "Montserrat_400Regular",
+                        },
+                        {
+                          "fontSize": 16,
+                        },
+                        {
+                          "width": 167,
+                        },
+                      ]
+                    }
+                  >
+                    5627 2158 9854 8869 
+                  </Text>
+                </View>
+                <View>
+                  <Text
+                    style={
+                      [
+                        {
+                          "color": "#fff",
+                          "fontFamily": "Montserrat_400Regular",
+                        },
+                        {
+                          "fontSize": 14,
+                        },
+                        {
+                          "color": "#b7b7b7",
+                          "fontSize": 13,
+                          "textTransform": "capitalize",
+                        },
+                      ]
+                    }
+                  >
+                    exp. date
+                  </Text>
+                  <Text
+                    style={
+                      [
+                        {
+                          "color": "#fff",
+                          "fontFamily": "Montserrat_400Regular",
+                        },
+                        {
+                          "fontSize": 14,
+                        },
+                        undefined,
+                      ]
+                    }
+                  >
+                    01/2019
+                  </Text>
+                </View>
+              </View>
+              <View>
+                <Text
+                  style={
+                    [
+                      {
+                        "color": "#fff",
+                        "fontFamily": "Montserrat_400Regular",
+                      },
+                      {
+                        "fontSize": 14,
+                      },
+                      [
+                        {
+                          "color": "#b7b7b7",
+                          "fontSize": 13,
+                          "textTransform": "capitalize",
+                        },
+                        {
+                          "textTransform": "uppercase",
+                        },
+                      ],
+                    ]
+                  }
+                >
+                  cvc
+                </Text>
+                <Text
+                  style={
+                    [
+                      {
+                        "color": "#fff",
+                        "fontFamily": "Montserrat_400Regular",
+                      },
+                      {
+                        "fontSize": 14,
+                      },
+                      {
+                        "textAlign": "right",
+                      },
+                    ]
+                  }
+                >
+                  111
+                </Text>
+              </View>
+            </View>
+          </View>
+        </View>
       </View>
+      <View
+        collapsable={false}
+        style={
+          {
+            "bottom": 0,
+            "left": 0,
+            "position": "absolute",
+            "right": 0,
+            "top": 0,
+          }
+        }
+      >
+        <View
+          style={
+            [
+              undefined,
+              {
+                "bottom": 0,
+                "left": 0,
+                "position": "absolute",
+                "right": 0,
+                "top": 0,
+              },
+            ]
+          }
+        >
+          <View
+            accessibilityState={
+              {
+                "busy": undefined,
+                "checked": undefined,
+                "disabled": undefined,
+                "expanded": undefined,
+                "selected": undefined,
+              }
+            }
+            accessibilityValue={
+              {
+                "max": undefined,
+                "min": undefined,
+                "now": undefined,
+                "text": undefined,
+              }
+            }
+            accessible={true}
+            collapsable={false}
+            focusable={true}
+            onClick={[Function]}
+            onResponderGrant={[Function]}
+            onResponderMove={[Function]}
+            onResponderRelease={[Function]}
+            onResponderTerminate={[Function]}
+            onResponderTerminationRequest={[Function]}
+            onStartShouldSetResponder={[Function]}
+            style={
+              {
+                "alignSelf": "center",
+                "opacity": 1,
+              }
+            }
+          >
+            <View
+              accessibilityIgnoresInvertColors={true}
+              style={
+                {
+                  "alignItems": "flex-end",
+                  "alignSelf": "flex-start",
+                  "borderRadius": 9,
+                  "columnGap": 17,
+                  "flexDirection": "row",
+                  "overflow": "hidden",
+                  "paddingHorizontal": 17,
+                  "paddingVertical": 13,
+                }
+              }
+            >
+              <Image
+                id="2"
+                source={
+                  {
+                    "testUri": "../../../assets/payment/visa.png",
+                  }
+                }
+                style={
+                  [
+                    {
+                      "bottom": 0,
+                      "left": 0,
+                      "position": "absolute",
+                      "right": 0,
+                      "top": 0,
+                    },
+                    {
+                      "height": undefined,
+                      "width": undefined,
+                    },
+                    undefined,
+                  ]
+                }
+              />
+              <View
+                style={
+                  {
+                    "rowGap": 5,
+                  }
+                }
+              >
+                <View>
+                  <Text
+                    style={
+                      [
+                        {
+                          "color": "#fff",
+                          "fontFamily": "Montserrat_400Regular",
+                        },
+                        {
+                          "fontSize": 14,
+                        },
+                        {
+                          "color": "#b7b7b7",
+                          "fontSize": 13,
+                          "textTransform": "capitalize",
+                        },
+                      ]
+                    }
+                  >
+                    holder name
+                  </Text>
+                  <Text
+                    style={
+                      [
+                        {
+                          "color": "#fff",
+                          "fontFamily": "Montserrat_400Regular",
+                        },
+                        {
+                          "fontSize": 14,
+                        },
+                        undefined,
+                      ]
+                    }
+                  >
+                    Tradly Team
+                  </Text>
+                </View>
+                <View>
+                  <Text
+                    style={
+                      [
+                        {
+                          "color": "#fff",
+                          "fontFamily": "Montserrat_400Regular",
+                        },
+                        {
+                          "fontSize": 14,
+                        },
+                        {
+                          "color": "#b7b7b7",
+                          "fontSize": 13,
+                          "textTransform": "capitalize",
+                        },
+                      ]
+                    }
+                  >
+                    card number
+                  </Text>
+                  <Text
+                    numberOfLines={1}
+                    style={
+                      [
+                        {
+                          "color": "#fff",
+                          "fontFamily": "Montserrat_400Regular",
+                        },
+                        {
+                          "fontSize": 16,
+                        },
+                        {
+                          "width": 167,
+                        },
+                      ]
+                    }
+                  >
+                    4627 2158 9854 8869 
+                  </Text>
+                </View>
+                <View>
+                  <Text
+                    style={
+                      [
+                        {
+                          "color": "#fff",
+                          "fontFamily": "Montserrat_400Regular",
+                        },
+                        {
+                          "fontSize": 14,
+                        },
+                        {
+                          "color": "#b7b7b7",
+                          "fontSize": 13,
+                          "textTransform": "capitalize",
+                        },
+                      ]
+                    }
+                  >
+                    exp. date
+                  </Text>
+                  <Text
+                    style={
+                      [
+                        {
+                          "color": "#fff",
+                          "fontFamily": "Montserrat_400Regular",
+                        },
+                        {
+                          "fontSize": 14,
+                        },
+                        undefined,
+                      ]
+                    }
+                  >
+                    12/2023
+                  </Text>
+                </View>
+              </View>
+              <View>
+                <Text
+                  style={
+                    [
+                      {
+                        "color": "#fff",
+                        "fontFamily": "Montserrat_400Regular",
+                      },
+                      {
+                        "fontSize": 14,
+                      },
+                      [
+                        {
+                          "color": "#b7b7b7",
+                          "fontSize": 13,
+                          "textTransform": "capitalize",
+                        },
+                        {
+                          "textTransform": "uppercase",
+                        },
+                      ],
+                    ]
+                  }
+                >
+                  cvc
+                </Text>
+                <Text
+                  style={
+                    [
+                      {
+                        "color": "#fff",
+                        "fontFamily": "Montserrat_400Regular",
+                      },
+                      {
+                        "fontSize": 14,
+                      },
+                      {
+                        "textAlign": "right",
+                      },
+                    ]
+                  }
+                >
+                  123
+                </Text>
+              </View>
+            </View>
+          </View>
+        </View>
+      </View>
+      <View
+        collapsable={false}
+        style={
+          {
+            "bottom": 0,
+            "left": 0,
+            "position": "absolute",
+            "right": 0,
+            "top": 0,
+          }
+        }
+      >
+        <View
+          style={
+            [
+              undefined,
+              {
+                "bottom": 0,
+                "left": 0,
+                "position": "absolute",
+                "right": 0,
+                "top": 0,
+              },
+            ]
+          }
+        >
+          <View
+            style={
+              [
+                {
+                  "alignItems": "center",
+                  "alignSelf": "flex-start",
+                  "borderColor": "#00000033",
+                  "borderRadius": 10,
+                  "borderStyle": "dashed",
+                  "borderWidth": 2,
+                  "paddingHorizontal": 38.5,
+                  "paddingVertical": 36,
+                  "rowGap": 20,
+                },
+                {
+                  "alignSelf": "center",
+                },
+              ]
+            }
+          >
+            <Image
+              source={
+                {
+                  "testUri": "../../../assets/payment/icon.png",
+                }
+              }
+            />
+            <Text
+              style={
+                [
+                  {
+                    "color": "#fff",
+                    "fontFamily": "Montserrat_400Regular",
+                  },
+                  {
+                    "fontSize": 14,
+                  },
+                  {
+                    "color": "#00000033",
+                    "letterSpacing": 0.5,
+                    "lineHeight": 28,
+                    "textTransform": "capitalize",
+                  },
+                ]
+              }
+            >
+              add payment method
+            </Text>
+          </View>
+        </View>
+      </View>
+    </RNCViewPager>
+    <View
+      style={
+        {
+          "alignItems": "center",
+          "columnGap": 15,
+          "flexDirection": "row",
+          "justifyContent": "center",
+          "marginBottom": 25,
+        }
+      }
+    >
+      <View
+        style={
+          [
+            {
+              "borderRadius": 50,
+              "height": 10,
+              "opacity": 0.7,
+              "width": 10,
+            },
+            {
+              "backgroundColor": "#33907C",
+            },
+          ]
+        }
+      />
+      <View
+        style={
+          [
+            {
+              "borderRadius": 50,
+              "height": 10,
+              "opacity": 0.7,
+              "width": 10,
+            },
+            {
+              "backgroundColor": "#00000033",
+            },
+          ]
+        }
+      />
+      <View
+        style={
+          [
+            {
+              "borderRadius": 50,
+              "height": 10,
+              "opacity": 0.7,
+              "width": 10,
+            },
+            {
+              "backgroundColor": "#00000033",
+            },
+          ]
+        }
+      />
     </View>
   </View>
   <View>
