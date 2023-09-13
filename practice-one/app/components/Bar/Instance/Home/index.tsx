@@ -2,13 +2,12 @@ import { BottomTabHeaderProps } from '@react-navigation/bottom-tabs'
 
 import { BAR } from '@constants'
 import Search from '@components/Search'
-
-import Bar from '../index'
+import Bar from '@components/Bar'
 
 const HomeBar = ({ options, route }: BottomTabHeaderProps) => {
   return (
     <Bar
-      title={String(options.headerTitle) || route.name}
+      title={options.headerTitle?.toString() || route.name}
       iconList={BAR.HOME}
       align="space-between"
       iconNoBg
