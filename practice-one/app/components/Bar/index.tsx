@@ -39,7 +39,7 @@ const Bar = ({
 
   return (
     <View style={[containerStyles.container, styles.bar, style]} {...rest}>
-      <View style={[containerStyles.inline, styles.headingContainer, align && headingAlign]}>
+      <View style={[containerStyles.inline, align && headingAlign]}>
         <Heading content={title} />
         {Array.isArray(iconList) && <View style={containerStyles.inline}>{IconButtons}</View>}
       </View>

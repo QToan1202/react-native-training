@@ -5,12 +5,9 @@ import { COLORS } from '@constants'
 const styles = StyleSheet.create({
   bar: {
     backgroundColor: COLORS.PRIMARY,
-  },
-  headingContainer: {
-    marginBottom: 14,
+    rowGap: 24,
   },
   itemsContainer: {
-    marginVertical: 14,
     justifyContent: 'space-between',
   },
 })

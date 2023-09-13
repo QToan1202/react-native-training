@@ -4036,6 +4036,7 @@ exports[`Testing bottom tab navigation Render tab successfully 1`] = `
                 },
                 {
                   "backgroundColor": "#33907C",
+                  "rowGap": 24,
                 },
                 undefined,
               ]
@@ -4048,9 +4049,6 @@ exports[`Testing bottom tab navigation Render tab successfully 1`] = `
                     "alignItems": "center",
                     "columnGap": 4,
                     "flexDirection": "row",
-                  },
-                  {
-                    "marginBottom": 14,
                   },
                   {
                     "justifyContent": "space-between",
@@ -4198,7 +4196,6 @@ exports[`Testing bottom tab navigation Render tab successfully 1`] = `
                   },
                   {
                     "justifyContent": "space-between",
-                    "marginVertical": 14,
                   },
                 ]
               }
