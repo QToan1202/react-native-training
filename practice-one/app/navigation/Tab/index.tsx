@@ -1,8 +1,8 @@
 import { View } from 'react-native'
 import { NavigationProp } from '@react-navigation/native'
-import { createBottomTabNavigator } from '@react-navigation/bottom-tabs'
+import { BottomTabHeaderProps, createBottomTabNavigator } from '@react-navigation/bottom-tabs'
 
-import { Bar, TabIcon } from '@components'
+import { Bar, BrowseBar, HomeBar, TabIcon } from '@components'
 import { COLORS } from '@constants'
 import { Dashboard } from '@screens'
 
@@ -42,6 +42,9 @@ const renderTabIcon = (
 }
 
 const Header = (title: string) => <Bar title={title} />
+const CustomHeader = (Element: React.JSX.ElementType, props: BottomTabHeaderProps) => (
+  <Element {...props} />
+)
 
 const BottomNav = () => {
   return (
@@ -56,8 +59,21 @@ const BottomNav = () => {
         tabBarItemStyle: styles.items,
       })}
     >
-      <Tab.Screen name="Home" component={Dashboard} />
-      <Tab.Screen name="Browse" component={Fragment} />
+      <Tab.Screen
+        name="Home"
+        component={Dashboard}
+        options={() => ({
+          headerTitle: 'Groceries',
+          header: (props: BottomTabHeaderProps) => CustomHeader(HomeBar, props),
+        })}
+      />
+      <Tab.Screen
+        name="Browse"
+        component={Fragment}
+        options={() => ({
+          header: (props: BottomTabHeaderProps) => CustomHeader(BrowseBar, props),
+        })}
+      />
       <Tab.Screen name="Product" component={Fragment} />
       <Tab.Screen name="Order History" component={Fragment} />
       <Tab.Screen name="Profile" component={Fragment} />
