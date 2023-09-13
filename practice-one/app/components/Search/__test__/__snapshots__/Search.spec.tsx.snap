@@ -74,6 +74,7 @@ exports[`Testing Search component Render Search component success 1`] = `
           "flex": 1,
           "fontFamily": "Montserrat_500Medium",
           "fontSize": 14,
+          "paddingLeft": 0,
           "paddingVertical": 8,
         },
       ]
