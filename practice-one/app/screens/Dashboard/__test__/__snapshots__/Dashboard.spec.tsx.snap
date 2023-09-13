@@ -1297,7 +1297,6 @@ exports[`Testing Dashboard screen Render screen successfully 1`] = `
     <View
       style={
         {
-          "marginLeft": 20,
           "marginVertical": 12,
         }
       }
@@ -1315,7 +1314,7 @@ exports[`Testing Dashboard screen Render screen successfully 1`] = `
             },
             {
               "marginVertical": 16,
-              "paddingRight": 20,
+              "paddingHorizontal": 20,
             },
           ]
         }
@@ -1425,6 +1424,7 @@ exports[`Testing Dashboard screen Render screen successfully 1`] = `
         contentContainerStyle={
           {
             "columnGap": 10,
+            "paddingLeft": 20,
           }
         }
         data={
@@ -2130,7 +2130,7 @@ exports[`Testing Dashboard screen Render screen successfully 1`] = `
             },
             {
               "marginVertical": 16,
-              "paddingRight": 20,
+              "paddingHorizontal": 20,
             },
           ]
         }
@@ -2240,6 +2240,7 @@ exports[`Testing Dashboard screen Render screen successfully 1`] = `
         contentContainerStyle={
           {
             "columnGap": 10,
+            "paddingLeft": 20,
           }
         }
         data={
@@ -2933,13 +2934,7 @@ exports[`Testing Dashboard screen Render screen successfully 1`] = `
         </View>
       </RCTScrollView>
     </View>
-    <View
-      style={
-        {
-          "paddingLeft": 20,
-        }
-      }
-    >
+    <View>
       <View
         style={
           {
@@ -2965,7 +2960,7 @@ exports[`Testing Dashboard screen Render screen successfully 1`] = `
             },
             {
               "marginVertical": 16,
-              "paddingRight": 20,
+              "paddingHorizontal": 20,
             },
           ]
         }
@@ -3080,6 +3075,7 @@ exports[`Testing Dashboard screen Render screen successfully 1`] = `
         contentContainerStyle={
           {
             "columnGap": 10,
+            "paddingLeft": 20,
           }
         }
         data={

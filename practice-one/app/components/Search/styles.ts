@@ -10,7 +10,6 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     columnGap: 20,
     borderRadius: 50,
-    paddingVertical: 10,
     paddingLeft: 17,
     backgroundColor: COLORS.WHITE,
   },
@@ -23,7 +22,8 @@ const styles = StyleSheet.create({
     flex: 1,
     fontFamily: FONT_FAMILY.MONTSERRAT[500],
     fontSize: 14,
-    color: COLORS.BLACK,
+    color: COLORS.GRAY_50,
+    paddingVertical: 8,
   },
 })
 

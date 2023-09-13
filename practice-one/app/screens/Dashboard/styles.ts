@@ -28,17 +28,14 @@ const styles = StyleSheet.create({
   },
   productContainer: {
     marginVertical: 12,
-    marginLeft: 20,
   },
   productHeading: {
     marginVertical: 16,
-    paddingRight: 20,
+    paddingHorizontal: 20,
   },
   itemSpacing: {
-    columnGap: 10,
-  },
-  storeContainer: {
     paddingLeft: 20,
+    columnGap: 10,
   },
   bgStore: {
     position: 'absolute',

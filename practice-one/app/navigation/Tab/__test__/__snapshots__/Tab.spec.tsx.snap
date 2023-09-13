@@ -1369,7 +1369,6 @@ exports[`Testing bottom tab navigation Render tab successfully 1`] = `
               <View
                 style={
                   {
-                    "marginLeft": 20,
                     "marginVertical": 12,
                   }
                 }
@@ -1387,7 +1386,7 @@ exports[`Testing bottom tab navigation Render tab successfully 1`] = `
                       },
                       {
                         "marginVertical": 16,
-                        "paddingRight": 20,
+                        "paddingHorizontal": 20,
                       },
                     ]
                   }
@@ -1497,6 +1496,7 @@ exports[`Testing bottom tab navigation Render tab successfully 1`] = `
                   contentContainerStyle={
                     {
                       "columnGap": 10,
+                      "paddingLeft": 20,
                     }
                   }
                   data={
@@ -2202,7 +2202,7 @@ exports[`Testing bottom tab navigation Render tab successfully 1`] = `
                       },
                       {
                         "marginVertical": 16,
-                        "paddingRight": 20,
+                        "paddingHorizontal": 20,
                       },
                     ]
                   }
@@ -2312,6 +2312,7 @@ exports[`Testing bottom tab navigation Render tab successfully 1`] = `
                   contentContainerStyle={
                     {
                       "columnGap": 10,
+                      "paddingLeft": 20,
                     }
                   }
                   data={
@@ -3005,13 +3006,7 @@ exports[`Testing bottom tab navigation Render tab successfully 1`] = `
                   </View>
                 </RCTScrollView>
               </View>
-              <View
-                style={
-                  {
-                    "paddingLeft": 20,
-                  }
-                }
-              >
+              <View>
                 <View
                   style={
                     {
@@ -3037,7 +3032,7 @@ exports[`Testing bottom tab navigation Render tab successfully 1`] = `
                       },
                       {
                         "marginVertical": 16,
-                        "paddingRight": 20,
+                        "paddingHorizontal": 20,
                       },
                     ]
                   }
@@ -3152,6 +3147,7 @@ exports[`Testing bottom tab navigation Render tab successfully 1`] = `
                   contentContainerStyle={
                     {
                       "columnGap": 10,
+                      "paddingLeft": 20,
                     }
                   }
                   data={
@@ -4057,7 +4053,7 @@ exports[`Testing bottom tab navigation Render tab successfully 1`] = `
                     "marginBottom": 14,
                   },
                   {
-                    "justifyContent": "flex-start",
+                    "justifyContent": "space-between",
                   },
                 ]
               }
@@ -4075,8 +4071,122 @@ exports[`Testing bottom tab navigation Render tab successfully 1`] = `
                   ]
                 }
               >
-                Home
+                Groceries
               </Text>
+              <View
+                style={
+                  {
+                    "alignItems": "center",
+                    "columnGap": 4,
+                    "flexDirection": "row",
+                  }
+                }
+              >
+                <View
+                  accessibilityState={
+                    {
+                      "busy": undefined,
+                      "checked": undefined,
+                      "disabled": undefined,
+                      "expanded": undefined,
+                      "selected": undefined,
+                    }
+                  }
+                  accessibilityValue={
+                    {
+                      "max": undefined,
+                      "min": undefined,
+                      "now": undefined,
+                      "text": undefined,
+                    }
+                  }
+                  accessible={true}
+                  collapsable={false}
+                  focusable={true}
+                  onClick={[Function]}
+                  onResponderGrant={[Function]}
+                  onResponderMove={[Function]}
+                  onResponderRelease={[Function]}
+                  onResponderTerminate={[Function]}
+                  onResponderTerminationRequest={[Function]}
+                  onStartShouldSetResponder={[Function]}
+                  style={
+                    {
+                      "alignSelf": "flex-start",
+                      "backgroundColor": "transparent",
+                      "borderRadius": 50,
+                      "opacity": 1,
+                      "padding": 7,
+                    }
+                  }
+                >
+                  <Image
+                    source={
+                      {
+                        "testUri": "../../../assets/love.png",
+                      }
+                    }
+                    style={
+                      {
+                        "height": 24,
+                        "width": 24,
+                      }
+                    }
+                  />
+                </View>
+                <View
+                  accessibilityState={
+                    {
+                      "busy": undefined,
+                      "checked": undefined,
+                      "disabled": undefined,
+                      "expanded": undefined,
+                      "selected": undefined,
+                    }
+                  }
+                  accessibilityValue={
+                    {
+                      "max": undefined,
+                      "min": undefined,
+                      "now": undefined,
+                      "text": undefined,
+                    }
+                  }
+                  accessible={true}
+                  collapsable={false}
+                  focusable={true}
+                  onClick={[Function]}
+                  onResponderGrant={[Function]}
+                  onResponderMove={[Function]}
+                  onResponderRelease={[Function]}
+                  onResponderTerminate={[Function]}
+                  onResponderTerminationRequest={[Function]}
+                  onStartShouldSetResponder={[Function]}
+                  style={
+                    {
+                      "alignSelf": "flex-start",
+                      "backgroundColor": "transparent",
+                      "borderRadius": 50,
+                      "opacity": 1,
+                      "padding": 7,
+                    }
+                  }
+                >
+                  <Image
+                    source={
+                      {
+                        "testUri": "../../../assets/cart.png",
+                      }
+                    }
+                    style={
+                      {
+                        "height": 24,
+                        "width": 24,
+                      }
+                    }
+                  />
+                </View>
+              </View>
             </View>
             <View
               style={
@@ -4092,7 +4202,88 @@ exports[`Testing bottom tab navigation Render tab successfully 1`] = `
                   },
                 ]
               }
-            />
+            >
+              <View
+                accessibilityState={
+                  {
+                    "busy": undefined,
+                    "checked": undefined,
+                    "disabled": undefined,
+                    "expanded": undefined,
+                    "selected": undefined,
+                  }
+                }
+                accessible={true}
+                focusable={true}
+                onClick={[Function]}
+                onResponderGrant={[Function]}
+                onResponderMove={[Function]}
+                onResponderRelease={[Function]}
+                onResponderTerminate={[Function]}
+                onResponderTerminationRequest={[Function]}
+                onStartShouldSetResponder={[Function]}
+                style={
+                  [
+                    {
+                      "alignItems": "center",
+                      "backgroundColor": "#fff",
+                      "borderRadius": 50,
+                      "columnGap": 20,
+                      "display": "flex",
+                      "flexDirection": "row",
+                      "justifyContent": "center",
+                      "paddingLeft": 17,
+                    },
+                    undefined,
+                  ]
+                }
+              >
+                <Image
+                  source={
+                    {
+                      "testUri": "../../../assets/search.png",
+                    }
+                  }
+                  style={
+                    {
+                      "height": 24,
+                      "resizeMode": "cover",
+                      "width": 24,
+                    }
+                  }
+                />
+                <TextInput
+                  onBlur={[Function]}
+                  onChangeText={[Function]}
+                  onFocus={[Function]}
+                  placeholder="Search Product"
+                  placeholderTextColor="#4f4f4f"
+                  style={
+                    [
+                      {
+                        "borderColor": "#fff",
+                        "borderRadius": 50,
+                        "borderWidth": 1,
+                        "color": "#fff",
+                        "fontFamily": "Montserrat_400Regular",
+                        "fontSize": 18,
+                        "paddingLeft": 15,
+                        "paddingVertical": 12,
+                      },
+                      {},
+                      {
+                        "color": "#4f4f4f",
+                        "flex": 1,
+                        "fontFamily": "Montserrat_500Medium",
+                        "fontSize": 14,
+                        "paddingVertical": 8,
+                      },
+                    ]
+                  }
+                  value=""
+                />
+              </View>
+            </View>
           </View>
         </View>
       </View>

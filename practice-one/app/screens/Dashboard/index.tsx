@@ -53,7 +53,7 @@ const Dashboard = () => {
         {renderProducts('New Product', DASHBOARD.PRODUCT_DATA)}
         {renderProducts('Popular Product', DASHBOARD.PRODUCT_DATA)}
       </View>
-      <View style={styles.storeContainer}>
+      <View>
         <View style={styles.bgStore} />
         <View style={[containerStyles.inline, containerStyles.spaceBetween, styles.productHeading]}>
           <Heading style={[styles.heading, styles.headingWhite]} content="Store to follow" />
