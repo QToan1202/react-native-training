@@ -1,4 +1,5 @@
-import { createNativeStackNavigator } from '@react-navigation/native-stack'
+import { NativeStackHeaderProps, createNativeStackNavigator } from '@react-navigation/native-stack'
+
 import BottomNav, { TabParamsList } from '@navigation/Tab'
 import {
   AddAddress,
@@ -13,6 +14,7 @@ import {
   ProductDetail,
   SignUp,
 } from '@screens'
+import { CategoryBar } from '@components'
 
 export type RootStackParamList = {
   Tabs: undefined
@@ -30,6 +32,9 @@ export type RootStackParamList = {
 } & TabParamsList
 
 const Stack = createNativeStackNavigator<RootStackParamList>()
+const CustomHeader = (Element: React.JSX.ElementType, props: NativeStackHeaderProps) => (
+  <Element {...props} />
+)
 
 const PublicStackNavigator = () => (
   <Stack.Navigator initialRouteName="Onboarding" screenOptions={{ headerShown: false }}>
@@ -43,7 +48,14 @@ const PrivateStackNavigator = () => (
   <Stack.Navigator screenOptions={{ headerShown: false }}>
     <Stack.Screen name="Tabs" component={BottomNav} />
     <Stack.Screen name="Home" component={Dashboard} />
-    <Stack.Screen name="CategoryDetail" component={CategoryDetail} />
+    <Stack.Screen
+      name="CategoryDetail"
+      component={CategoryDetail}
+      options={{
+        headerShown: true,
+        header: (props: NativeStackHeaderProps) => CustomHeader(CategoryBar, props),
+      }}
+    />
     <Stack.Screen name="ProductDetail" component={ProductDetail} />
     <Stack.Screen name="Cart" component={Cart} />
     <Stack.Screen name="AddAddress" component={AddAddress} />
