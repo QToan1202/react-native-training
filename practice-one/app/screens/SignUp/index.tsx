@@ -1,6 +1,9 @@
+import { useCallback } from 'react'
 import { Alert, KeyboardAvoidingView, Platform, TouchableOpacity, View } from 'react-native'
 import { SubmitHandler, useForm } from 'react-hook-form'
 import { SafeAreaView } from 'react-native-safe-area-context'
+import { NativeStackScreenProps } from '@react-navigation/native-stack'
+import { RootStackParamList } from '@navigation/Stack'
 
 import { Button, ErrorMessage, Heading, Input, Paragraph } from '@components'
 import { IForm } from '@types'
@@ -8,7 +11,9 @@ import { COLORS } from '@constants'
 
 import styles from './styles'
 
-const SignUp = () => {
+export interface SignUpScreenProps extends NativeStackScreenProps<RootStackParamList, 'SignUp'> {}
+
+const SignUp = ({ navigation }: SignUpScreenProps) => {
   const {
     control,
     handleSubmit,
@@ -19,6 +24,7 @@ const SignUp = () => {
   const onSubmit: SubmitHandler<IForm> = (data) => {
     Alert.alert(JSON.stringify(data))
   }
+  const handleToLoginScreen = useCallback(() => navigation.navigate('Login'), [navigation])
 
   return (
     <SafeAreaView style={styles.container}>
@@ -99,7 +105,7 @@ const SignUp = () => {
       />
       <View style={styles.info}>
         <Paragraph size="lg" content="Have an account?" />
-        <TouchableOpacity>
+        <TouchableOpacity onPress={handleToLoginScreen}>
           <Paragraph style={styles.signInBtn} size="lg" content="Sign in" />
         </TouchableOpacity>
       </View>

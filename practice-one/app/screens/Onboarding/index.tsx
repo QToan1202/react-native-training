@@ -2,6 +2,8 @@ import { useCallback, useEffect, useMemo, useRef, useState } from 'react'
 import { Image, View, ViewProps } from 'react-native'
 import { SafeAreaView } from 'react-native-safe-area-context'
 import PagerView, { PagerViewOnPageSelectedEvent } from 'react-native-pager-view'
+import { NativeStackScreenProps } from '@react-navigation/native-stack'
+import { RootStackParamList } from '@navigation/Stack'
 
 import { Button, Paragraph } from '@components'
 import { containerStyles } from '@styles'
@@ -10,17 +12,20 @@ import { IOnboardingScreenView } from '@types'
 
 import styles from './styles'
 
-export interface OnboardingProps extends ViewProps {}
+export interface OnboardingProps
+  extends ViewProps,
+    NativeStackScreenProps<RootStackParamList, 'Onboarding'> {}
 
-const Onboarding = ({ style, ...rest }: OnboardingProps) => {
+const Onboarding = ({ navigation, style, ...rest }: OnboardingProps) => {
   const pagerView = useRef<PagerView>(null)
   const numOfPagerView = useRef<number>(ONBOARDING_VIEW_DATA.length - 1)
   const [currentPage, setCurrentPage] = useState<number>(0)
   const handleMoveToNextScreen = useCallback(() => {
+    if (currentPage === numOfPagerView.current) navigation.navigate('Login')
     setCurrentPage((prevState) =>
       prevState !== numOfPagerView.current ? prevState + 1 : prevState
     )
-  }, [])
+  }, [currentPage, navigation])
   const handlePageSelected = useCallback((e: PagerViewOnPageSelectedEvent) => {
     setCurrentPage(e.nativeEvent.position)
   }, [])
