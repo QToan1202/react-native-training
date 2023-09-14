@@ -10,7 +10,7 @@ import styles from './styles'
 
 export type TabParamsList = {
   Home: undefined
-  Browse: undefined
+  Browse: { search: string } | undefined // Search keyword
   Product: undefined
   ['Order History']: undefined
   Profile: undefined

@@ -19,9 +19,7 @@ export type RootStackParamList = {
   Onboarding: undefined
   Login: undefined
   SignUp: undefined
-  Home: undefined
-  CategoryDetail: { id: string } // ID of the corresponding category
-  Browse: { search: string } // Search keyword
+  CategoryDetail: { id: string; name: string } // ID of the corresponding category
   ProductDetail: { id: string } // ID of the product
   Wishlist: { id: string } // ID of the current login user
   Cart: undefined
