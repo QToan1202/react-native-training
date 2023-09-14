@@ -62,17 +62,17 @@ const BottomNav = () => {
       <Tab.Screen
         name="Home"
         component={Dashboard}
-        options={() => ({
+        options={{
           headerTitle: 'Groceries',
           header: (props: BottomTabHeaderProps) => CustomHeader(HomeBar, props),
-        })}
+        }}
       />
       <Tab.Screen
         name="Browse"
         component={Fragment}
-        options={() => ({
+        options={{
           header: (props: BottomTabHeaderProps) => CustomHeader(BrowseBar, props),
-        })}
+        }}
       />
       <Tab.Screen name="Product" component={Fragment} />
       <Tab.Screen name="Order History" component={Fragment} />
