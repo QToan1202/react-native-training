@@ -1,16 +1,26 @@
 import { useCallback } from 'react'
 import { FlatList, ScrollView, View } from 'react-native'
+import { NativeStackScreenProps } from '@react-navigation/native-stack'
+import { RootStackParamList } from '@navigation/Stack'
 
 import { Button, Heading, MenuCard, ProductCard, SliderItem, StoreCard } from '@components'
 import { DASHBOARD } from '@constants'
-import { IProductItem } from '@constants/screens/dashboard'
+import { ICategoryItem, IProductItem } from '@constants/screens/dashboard'
 import { containerStyles } from '@styles'
 import { renderItem } from '@utils'
 
 import styles from './styles'
 
-const Dashboard = () => {
+export interface HomeScreenProps extends NativeStackScreenProps<RootStackParamList, 'Home'> {}
+
+const Dashboard = ({ navigation }: HomeScreenProps) => {
   const handleSeeAllProducts = useCallback(() => undefined, []) // TODO: Replacing with navigate to another screen
+  const handleMoveToCategoryScreen = useCallback(
+    ({ id, name }: ICategoryItem) => {
+      navigation.navigate('CategoryDetail', { id, name })
+    },
+    [navigation]
+  )
   const renderProducts = <T extends IProductItem[]>(title: string, data: T) => (
     <>
       <View style={[containerStyles.inline, containerStyles.spaceBetween, styles.productHeading]}>
@@ -44,7 +54,7 @@ const Dashboard = () => {
       />
       <FlatList
         data={DASHBOARD.CATEGORY_DATA}
-        renderItem={renderItem(MenuCard)}
+        renderItem={renderItem(MenuCard, handleMoveToCategoryScreen)}
         numColumns={4}
         columnWrapperStyle={styles.menuItem}
         scrollEnabled={false}
