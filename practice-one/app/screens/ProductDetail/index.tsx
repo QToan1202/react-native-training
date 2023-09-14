@@ -1,11 +1,17 @@
 import { useCallback } from 'react'
 import { ImageBackground, ScrollView, View } from 'react-native'
+import { NativeStackScreenProps } from '@react-navigation/native-stack'
+import { RootStackParamList } from '@navigation/Stack'
 
 import { Avatar, Button, Heading, IconButton, Paragraph } from '@components'
 import { containerStyles } from '@styles'
 import styles from './styles'
 
-const ProductDetail = () => {
+export interface ProductDetailProps
+  extends NativeStackScreenProps<RootStackParamList, 'ProductDetail'> {}
+
+const ProductDetail = ({ navigation }: ProductDetailProps) => {
+  const handleBackPress = useCallback(() => navigation.goBack(), [navigation])
   const handlePress = useCallback(() => undefined, [])
 
   return (
@@ -15,7 +21,7 @@ const ProductDetail = () => {
           style={[containerStyles.inline, containerStyles.spaceBetween, styles.img]}
           source={require('@assets/cart/item.png')}
         >
-          <IconButton icon={require('@assets/back.png')} onPress={handlePress} />
+          <IconButton icon={require('@assets/back.png')} onPress={handleBackPress} />
           <View style={[containerStyles.inline]}>
             <IconButton icon={require('@assets/share.png')} onPress={handlePress} />
             <IconButton icon={require('@assets/heart.png')} onPress={handlePress} />
