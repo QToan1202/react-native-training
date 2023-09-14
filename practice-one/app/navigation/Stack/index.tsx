@@ -68,11 +68,13 @@ const PrivateStackNavigator = () => (
       }}
     />
     <Stack.Screen name="ProductDetail" component={ProductDetail} />
-    <Stack.Screen name="Cart" component={Cart} />
-    <Stack.Screen name="AddAddress" component={AddAddress} />
-    <Stack.Screen name="AddCard" component={AddCard} />
-    <Stack.Screen name="Payment" component={Payment} />
-    <Stack.Screen name="OrderDetail" component={OrderDetail} />
+    <Stack.Group screenOptions={{ headerShown: true }}>
+      <Stack.Screen name="Cart" component={Cart} />
+      <Stack.Screen name="AddAddress" component={AddAddress} />
+      <Stack.Screen name="AddCard" component={AddCard} />
+      <Stack.Screen name="Payment" component={Payment} />
+      <Stack.Screen name="OrderDetail" component={OrderDetail} />
+    </Stack.Group>
   </Stack.Navigator>
 )
 
