@@ -15,6 +15,7 @@ import {
   SignUp,
 } from '@screens'
 import { CategoryBar } from '@components'
+import { COLORS } from '@constants'
 
 export type RootStackParamList = {
   Tabs: undefined
@@ -40,7 +41,17 @@ const PublicStackNavigator = () => (
   <Stack.Navigator initialRouteName="Onboarding" screenOptions={{ headerShown: false }}>
     <Stack.Screen name="Onboarding" component={Onboarding} />
     <Stack.Screen name="Login" component={Login} />
-    <Stack.Screen name="SignUp" component={SignUp} />
+    <Stack.Screen
+      name="SignUp"
+      component={SignUp}
+      options={{
+        headerShown: true,
+        headerTitle: '',
+        headerStyle: { backgroundColor: COLORS.PRIMARY },
+        headerShadowVisible: false,
+        headerTintColor: COLORS.WHITE,
+      }}
+    />
   </Stack.Navigator>
 )
 
