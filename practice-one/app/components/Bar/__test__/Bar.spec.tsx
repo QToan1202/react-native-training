@@ -12,10 +12,19 @@ const iconList: IIconList[] = [
     action: () => undefined,
   },
 ]
+const mockPressBackFn = jest.fn()
 
 describe('Testing Bar component', () => {
   beforeEach(() => {
-    render(<Bar title="heading" iconList={iconList} testID="bar" />)
+    render(
+      <Bar
+        title="heading"
+        iconList={iconList}
+        showBackBtn
+        onPressBack={mockPressBackFn}
+        testID="bar"
+      />
+    )
   })
 
   it('Render Bar component success', () => {

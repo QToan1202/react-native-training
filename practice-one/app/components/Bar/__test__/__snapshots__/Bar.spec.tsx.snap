@@ -39,7 +39,9 @@ exports[`Testing Bar component Render Bar component success 1`] = `
             "fontSize": 24,
           },
           false,
-          undefined,
+          {
+            "textTransform": "capitalize",
+          },
         ]
       }
     >

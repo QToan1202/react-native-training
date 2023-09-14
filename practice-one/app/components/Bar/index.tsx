@@ -1,4 +1,4 @@
-import React, { ReactNode, useMemo } from 'react'
+import React, { ReactNode, useCallback, useMemo } from 'react'
 import { StyleProp, View, ViewProps, ViewStyle } from 'react-native'
 
 import Heading from '@components/Heading'
@@ -10,20 +10,24 @@ import styles from './styles'
 
 export interface BarProps extends ViewProps {
   title: string
+  showBackBtn?: boolean
   align?: ViewStyle['justifyContent']
   iconList?: IIconList[]
   iconNoBg?: boolean
   style?: StyleProp<ViewStyle>
   children?: ReactNode
+  onPressBack?: () => void
 }
 
 const Bar = ({
   title,
+  showBackBtn = false,
   align = 'flex-start',
   iconList,
   iconNoBg = false,
   style,
   children,
+  onPressBack,
   ...rest
 }: BarProps) => {
   const IconButtons: React.JSX.Element[] = useMemo(() => {
@@ -36,11 +40,20 @@ const Bar = ({
   }, [iconList, iconNoBg])
 
   const headingAlign: ViewStyle = useMemo(() => ({ justifyContent: align }), [align])
+  const handlePressBack = useCallback(() => onPressBack && onPressBack(), [onPressBack])
 
   return (
     <View style={[containerStyles.container, styles.bar, style]} {...rest}>
       <View style={[containerStyles.inline, align && headingAlign]}>
-        <Heading content={title} />
+        {showBackBtn && (
+          <IconButton
+            style={styles.backBtn}
+            icon={require('@assets/back.png')}
+            onPress={handlePressBack}
+            noBackground
+          />
+        )}
+        <Heading style={styles.title} content={title} />
         {Array.isArray(iconList) && <View style={containerStyles.inline}>{IconButtons}</View>}
       </View>
       <View style={[containerStyles.inline, styles.itemsContainer]}>{children}</View>
