@@ -14,12 +14,13 @@ const IconButton = ({
   icon,
   noBackground = false,
   accessibilityLabel,
+  style,
   onPress,
   ...rest
 }: IconButtonProps) => {
   return (
     <TouchableOpacity
-      style={[styles.btn, noBackground && styles.transparent]}
+      style={[styles.btn, noBackground && styles.transparent, style]}
       accessibilityLabel={accessibilityLabel}
       onPress={onPress}
       {...rest}
