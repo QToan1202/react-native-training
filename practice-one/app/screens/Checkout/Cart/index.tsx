@@ -1,13 +1,17 @@
 import { useCallback } from 'react'
 import { ScrollView, View } from 'react-native'
+import { NativeStackScreenProps } from '@react-navigation/native-stack'
+import { RootStackParamList } from '@navigation/Stack'
 
 import { Button, CartItem, Price } from '@components'
 import { CHECKOUT } from '@constants'
 
 import styles from './styles'
 
-const Cart = () => {
-  const handlePress = useCallback(() => undefined, [])
+export interface CartScreenProps extends NativeStackScreenProps<RootStackParamList, 'Cart'> {}
+
+const Cart = ({ navigation }: CartScreenProps) => {
+  const handlePress = useCallback(() => navigation.navigate('AddCard'), [navigation])
 
   return (
     <ScrollView contentContainerStyle={styles.container}>
