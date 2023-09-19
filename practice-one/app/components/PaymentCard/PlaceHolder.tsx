@@ -1,17 +1,21 @@
-import { Image, View, ViewProps } from 'react-native'
+import { Image, TouchableWithoutFeedback, View, ViewProps } from 'react-native'
 
 import Paragraph from '@components/Paragraph'
 
 import styles from './styles'
 
-export interface PlaceHolderProps extends ViewProps {}
+export interface PlaceHolderProps extends ViewProps {
+  onTouchPlaceHolder?: () => void
+}
 
-const PlaceHolder = ({ style, ...rest }: PlaceHolderProps) => {
+const PlaceHolder = ({ style, onTouchPlaceHolder, ...rest }: PlaceHolderProps) => {
   return (
-    <View style={[styles.placeHolder, style]} {...rest}>
-      <Image source={require('@assets/payment/icon.png')} />
-      <Paragraph style={styles.placeHolderText} content="add payment method" />
-    </View>
+    <TouchableWithoutFeedback onPress={onTouchPlaceHolder}>
+      <View style={[styles.placeHolder, style]} {...rest}>
+        <Image source={require('@assets/payment/icon.png')} />
+        <Paragraph style={styles.placeHolderText} content="add payment method" />
+      </View>
+    </TouchableWithoutFeedback>
   )
 }
 
