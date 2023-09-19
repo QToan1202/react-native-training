@@ -1,5 +1,6 @@
 import React, { ReactNode, useCallback, useMemo } from 'react'
 import { StyleProp, View, ViewProps, ViewStyle } from 'react-native'
+import { useSafeAreaInsets } from 'react-native-safe-area-context'
 
 import Heading from '@components/Heading'
 import IconButton from '@components/IconButton'
@@ -42,9 +43,13 @@ const Bar = ({
   const headingAlign: ViewStyle = useMemo(() => ({ justifyContent: align }), [align])
   const handlePressBack = useCallback(() => onPressBack && onPressBack(), [onPressBack])
   const checkProps = title || showBackBtn || Array.isArray(iconList)
+  const insets = useSafeAreaInsets()
 
   return (
-    <View style={[containerStyles.container, styles.bar, style]} {...rest}>
+    <View
+      style={[containerStyles.container, styles.bar, { paddingTop: insets.top }, style]}
+      {...rest}
+    >
       {checkProps && (
         <View style={[containerStyles.inline, align && headingAlign]}>
           {showBackBtn && (

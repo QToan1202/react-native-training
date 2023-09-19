@@ -1,4 +1,6 @@
+import { useRef } from 'react'
 import { Platform } from 'react-native'
+import { useSafeAreaInsets } from 'react-native-safe-area-context'
 
 import Bar, { BarProps } from '@components/Bar'
 import Button from '@components/Button'
@@ -12,11 +14,17 @@ export interface TabBar extends BarProps {
 }
 
 const TabBar = ({ title, onPress, style, ...rest }: TabBar) => {
-  const isAndroid = Platform.OS === 'android'
+  const isAndroid = useRef<boolean>(Platform.OS === 'android')
+  const insets = useSafeAreaInsets()
 
   return (
     <Bar
-      style={[styles.container, isAndroid ? styles.elevation : styles.shadow, style]}
+      style={[
+        styles.container,
+        isAndroid.current ? styles.elevation : styles.shadow,
+        { paddingTop: 12, paddingBottom: insets.bottom },
+        style,
+      ]}
       title=""
       {...rest}
     >

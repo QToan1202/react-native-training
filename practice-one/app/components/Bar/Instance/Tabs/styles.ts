@@ -4,7 +4,6 @@ import { COLORS } from '@constants'
 
 const styles = StyleSheet.create({
   container: {
-    paddingVertical: 12,
     paddingHorizontal: 32,
     backgroundColor: COLORS.WHITE,
   },
