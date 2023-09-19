@@ -4,10 +4,7 @@ import { FONT_FAMILY } from '@constants'
 
 const styles = StyleSheet.create({
   tab: {
-    height: 60,
-  },
-  items: {
-    marginVertical: 13,
+    paddingTop: 13,
   },
   label: {
     fontFamily: FONT_FAMILY.MONTSERRAT[500],

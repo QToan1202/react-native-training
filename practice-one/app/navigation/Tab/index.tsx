@@ -56,7 +56,6 @@ const BottomNav = () => {
         tabBarInactiveTintColor: COLORS.GRAY_50,
         tabBarLabelStyle: styles.label,
         tabBarStyle: styles.tab,
-        tabBarItemStyle: styles.items,
       })}
     >
       <Tab.Screen
