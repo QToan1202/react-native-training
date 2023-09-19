@@ -1,15 +1,18 @@
 import { useCallback } from 'react'
 import { Image, ScrollView, View } from 'react-native'
+import { NativeStackScreenProps } from '@react-navigation/native-stack'
+import { RootStackParamList } from '@navigation/Stack'
 
 import { Button, CartItem, Heading, Paragraph, TrackerItem } from '@components'
 import { containerStyles } from '@styles'
 
 import styles from './styles'
 
-const OrderDetail = () => {
-  const handlePress = useCallback(() => {
-    throw new Error('Function not implemented.')
-  }, [])
+export interface OrderDetailScreenProps
+  extends NativeStackScreenProps<RootStackParamList, 'OrderDetail'> {}
+
+const OrderDetail = ({ navigation }: OrderDetailScreenProps) => {
+  const handleNavigateToHome = useCallback(() => navigation.navigate('Tabs'), [navigation])
 
   return (
     <ScrollView contentContainerStyle={styles.container} showsVerticalScrollIndicator={false}>
@@ -82,7 +85,7 @@ const OrderDetail = () => {
         titleStyle={styles.btnTitle}
         title="Back to Home"
         variant="quaternary"
-        onPress={handlePress}
+        onPress={handleNavigateToHome}
       />
     </ScrollView>
   )

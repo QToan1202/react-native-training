@@ -9,7 +9,7 @@ import { containerStyles } from '@styles'
 import styles from './styles'
 
 export interface BarProps extends ViewProps {
-  title: string
+  title?: string
   showBackBtn?: boolean
   align?: ViewStyle['justifyContent']
   iconList?: IIconList[]
@@ -41,21 +41,24 @@ const Bar = ({
 
   const headingAlign: ViewStyle = useMemo(() => ({ justifyContent: align }), [align])
   const handlePressBack = useCallback(() => onPressBack && onPressBack(), [onPressBack])
+  const checkProps = title || showBackBtn || Array.isArray(iconList)
 
   return (
     <View style={[containerStyles.container, styles.bar, style]} {...rest}>
-      <View style={[containerStyles.inline, align && headingAlign]}>
-        {showBackBtn && (
-          <IconButton
-            style={styles.backBtn}
-            icon={require('@assets/back.png')}
-            onPress={handlePressBack}
-            noBackground
-          />
-        )}
-        <Heading style={styles.title} content={title} />
-        {Array.isArray(iconList) && <View style={containerStyles.inline}>{IconButtons}</View>}
-      </View>
+      {checkProps && (
+        <View style={[containerStyles.inline, align && headingAlign]}>
+          {showBackBtn && (
+            <IconButton
+              style={styles.backBtn}
+              icon={require('@assets/back.png')}
+              onPress={handlePressBack}
+              noBackground
+            />
+          )}
+          {title && <Heading style={styles.title} content={title} />}
+          {Array.isArray(iconList) && <View style={containerStyles.inline}>{IconButtons}</View>}
+        </View>
+      )}
       <View style={[containerStyles.inline, styles.itemsContainer]}>{children}</View>
     </View>
   )
