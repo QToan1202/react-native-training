@@ -14,7 +14,7 @@ import {
   ProductDetail,
   SignUp,
 } from '@screens'
-import { CategoryBar } from '@components'
+import { CategoryBar, CheckoutBar } from '@components'
 import { COLORS } from '@constants'
 
 export type RootStackParamList = {
@@ -68,11 +68,24 @@ const PrivateStackNavigator = () => (
       }}
     />
     <Stack.Screen name="ProductDetail" component={ProductDetail} />
-    <Stack.Group screenOptions={{ headerShown: true }}>
-      <Stack.Screen name="Cart" component={Cart} />
-      <Stack.Screen name="AddAddress" component={AddAddress} />
-      <Stack.Screen name="AddCard" component={AddCard} />
-      <Stack.Screen name="Payment" component={Payment} />
+    <Stack.Group
+      screenOptions={{
+        headerShown: true,
+        header: (props: NativeStackHeaderProps) => CustomHeader(CheckoutBar, props),
+      }}
+    >
+      <Stack.Screen name="Cart" component={Cart} options={{ headerTitle: 'my cart' }} />
+      <Stack.Screen
+        name="AddAddress"
+        component={AddAddress}
+        options={{ headerTitle: 'add a new address' }}
+      />
+      <Stack.Screen name="AddCard" component={AddCard} options={{ headerTitle: 'add card' }} />
+      <Stack.Screen
+        name="Payment"
+        component={Payment}
+        options={{ headerTitle: 'payment option' }}
+      />
       <Stack.Screen name="OrderDetail" component={OrderDetail} />
     </Stack.Group>
   </Stack.Navigator>
