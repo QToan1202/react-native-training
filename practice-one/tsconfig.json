@@ -23,7 +23,8 @@
       "@hooks/*": ["app/hooks/*"],
       "@navigation/*": ["app/navigation/*"],
       "@services/*": ["app/services/*"],
-      "@animations/*": ["app/animations/*"]
+      "@animations/*": ["app/animations/*"],
+      "test-utils": ["app/utils/test-utils"]
     }
   },
   "exclude": ["node_modules"]
