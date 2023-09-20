@@ -19,7 +19,7 @@ const ProductDetail = ({ navigation }: ProductDetailProps) => {
   const Categories: React.JSX.Element[] = useMemo(
     () =>
       CATEGORY.map((item: string) => (
-        <Paragraph style={[styles.text, styles.textTransform]} content={item} />
+        <Paragraph key={item} style={[styles.text, styles.textTransform]} content={item} />
       )),
     []
   )
