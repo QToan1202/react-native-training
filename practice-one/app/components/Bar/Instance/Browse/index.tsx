@@ -1,13 +1,16 @@
-import { useCallback } from 'react'
+import { useCallback, useMemo } from 'react'
 import { View } from 'react-native'
 import { BottomTabHeaderProps } from '@react-navigation/bottom-tabs'
 
 import { BAR } from '@constants'
 import Button, { ButtonProps } from '@components/Button'
 import Search from '@components/Search'
+import IconButton from '@components/IconButton'
 
 import { containerStyles } from '@styles'
 import Bar from '@components/Bar'
+import { IIconList } from '@types'
+
 import styles from './styles'
 
 const BrowseBar = ({ options, route }: BottomTabHeaderProps) => {
@@ -27,13 +30,16 @@ const BrowseBar = ({ options, route }: BottomTabHeaderProps) => {
     ),
     []
   )
+  const IconList = useMemo(
+    () => BAR.HOME.map(({ label, ...rest }: IIconList) => <IconButton key={label} {...rest} />),
+    []
+  )
 
   return (
     <Bar
       title={options.headerTitle?.toString() || route.name}
-      iconList={BAR.HOME}
+      IconList={IconList}
       align="space-between"
-      iconNoBg
     >
       <View style={styles.content}>
         <Search placeholder="Search Product" />
