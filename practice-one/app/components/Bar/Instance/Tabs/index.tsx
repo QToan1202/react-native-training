@@ -22,7 +22,7 @@ const TabBar = ({ title, onPress, style, ...rest }: TabBar) => {
       style={[
         styles.container,
         isAndroid.current ? styles.elevation : styles.shadow,
-        { paddingTop: 12, paddingBottom: insets.bottom },
+        { paddingTop: 12, paddingBottom: insets.bottom + 12 },
         style,
       ]}
       title=""
