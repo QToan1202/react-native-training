@@ -1,360 +1,494 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Testing Add Address screen Render screen successfully 1`] = `
-<RCTScrollView
-  contentContainerStyle={
-    {
-      "backgroundColor": "#f6f9ff",
-      "flex": 1,
+[
+  <RCTScrollView
+    contentContainerStyle={
+      {
+        "backgroundColor": "#f6f9ff",
+        "flex": 1,
+      }
     }
-  }
->
-  <View>
-    <View
-      accessibilityState={
-        {
-          "busy": undefined,
-          "checked": undefined,
-          "disabled": undefined,
-          "expanded": undefined,
-          "selected": undefined,
-        }
-      }
-      accessibilityValue={
-        {
-          "max": undefined,
-          "min": undefined,
-          "now": undefined,
-          "text": undefined,
-        }
-      }
-      accessible={true}
-      collapsable={false}
-      focusable={true}
-      onClick={[Function]}
-      onResponderGrant={[Function]}
-      onResponderMove={[Function]}
-      onResponderRelease={[Function]}
-      onResponderTerminate={[Function]}
-      onResponderTerminationRequest={[Function]}
-      onStartShouldSetResponder={[Function]}
-      style={
-        {
-          "backgroundColor": "#fff",
-          "borderColor": "#fff",
-          "borderRadius": 0,
-          "borderWidth": 2,
-          "opacity": 1,
-          "paddingVertical": 13,
-        }
-      }
-    >
+  >
+    <View>
       <View
+        accessibilityState={
+          {
+            "busy": undefined,
+            "checked": undefined,
+            "disabled": undefined,
+            "expanded": undefined,
+            "selected": undefined,
+          }
+        }
+        accessibilityValue={
+          {
+            "max": undefined,
+            "min": undefined,
+            "now": undefined,
+            "text": undefined,
+          }
+        }
+        accessible={true}
+        collapsable={false}
+        focusable={true}
+        onClick={[Function]}
+        onResponderGrant={[Function]}
+        onResponderMove={[Function]}
+        onResponderRelease={[Function]}
+        onResponderTerminate={[Function]}
+        onResponderTerminationRequest={[Function]}
+        onStartShouldSetResponder={[Function]}
         style={
           {
-            "alignItems": "center",
-            "columnGap": 6,
-            "display": "flex",
-            "flexDirection": "row",
-            "justifyContent": "center",
+            "backgroundColor": "#fff",
+            "borderColor": "#fff",
+            "borderRadius": 0,
+            "borderWidth": 2,
+            "opacity": 1,
+            "paddingVertical": 13,
           }
         }
       >
-        <Image
-          source={
-            {
-              "testUri": "../../../assets/location.png",
-            }
-          }
+        <View
           style={
             {
-              "height": 24,
-              "width": 24,
+              "alignItems": "center",
+              "columnGap": 6,
+              "display": "flex",
+              "flexDirection": "row",
+              "justifyContent": "center",
             }
           }
-        />
-        <Text
-          style={
-            [
+        >
+          <Image
+            source={
               {
-                "color": "#fff",
-                "fontFamily": "Montserrat_400Regular",
-              },
+                "testUri": "../../../assets/location.png",
+              }
+            }
+            style={
               {
-                "fontSize": 16,
-              },
+                "height": 24,
+                "width": 24,
+              }
+            }
+          />
+          <Text
+            style={
               [
                 {
-                  "color": "#000",
+                  "color": "#fff",
+                  "fontFamily": "Montserrat_400Regular",
                 },
                 {
-                  "fontFamily": "Montserrat_500Medium",
-                  "textAlign": "center",
-                  "textTransform": "capitalize",
+                  "fontSize": 16,
                 },
-                {
-                  "color": "#4ea0ff",
-                  "textTransform": "none",
-                },
-              ],
-            ]
+                [
+                  {
+                    "color": "#000",
+                  },
+                  {
+                    "fontFamily": "Montserrat_500Medium",
+                    "textAlign": "center",
+                    "textTransform": "capitalize",
+                  },
+                  {
+                    "color": "#4ea0ff",
+                    "textTransform": "none",
+                  },
+                ],
+              ]
+            }
+          >
+            Use current location
+          </Text>
+        </View>
+      </View>
+      <View
+        onLayout={[Function]}
+        style={
+          {
+            "marginHorizontal": 27,
+            "marginTop": 36,
+            "rowGap": 6,
           }
-        >
-          Use current location
-        </Text>
+        }
+      >
+        <View>
+          <Text
+            style={
+              [
+                {
+                  "color": "#fff",
+                  "fontFamily": "Montserrat_400Regular",
+                },
+                {
+                  "fontSize": 14,
+                },
+                {
+                  "color": "#3a2c3c",
+                  "fontFamily": "Montserrat_500Medium",
+                },
+              ]
+            }
+          >
+            Name
+          </Text>
+          <TextInput
+            onBlur={[Function]}
+            onChangeText={[Function]}
+            onFocus={[Function]}
+            style={
+              [
+                {
+                  "borderBottomColor": "#dbdbde",
+                  "borderBottomWidth": 0.5,
+                  "color": "#000",
+                  "fontFamily": "Montserrat_500Medium",
+                  "fontSize": 16,
+                  "paddingVertical": 5,
+                },
+                {},
+                undefined,
+              ]
+            }
+            value=""
+          />
+          <View
+            style={
+              {
+                "height": 20,
+              }
+            }
+          />
+        </View>
+        <View>
+          <Text
+            style={
+              [
+                {
+                  "color": "#fff",
+                  "fontFamily": "Montserrat_400Regular",
+                },
+                {
+                  "fontSize": 14,
+                },
+                {
+                  "color": "#3a2c3c",
+                  "fontFamily": "Montserrat_500Medium",
+                },
+              ]
+            }
+          >
+            Phone
+          </Text>
+          <TextInput
+            onBlur={[Function]}
+            onChangeText={[Function]}
+            onFocus={[Function]}
+            style={
+              [
+                {
+                  "borderBottomColor": "#dbdbde",
+                  "borderBottomWidth": 0.5,
+                  "color": "#000",
+                  "fontFamily": "Montserrat_500Medium",
+                  "fontSize": 16,
+                  "paddingVertical": 5,
+                },
+                {},
+                undefined,
+              ]
+            }
+            value=""
+          />
+          <View
+            style={
+              {
+                "height": 20,
+              }
+            }
+          />
+        </View>
+        <View>
+          <Text
+            style={
+              [
+                {
+                  "color": "#fff",
+                  "fontFamily": "Montserrat_400Regular",
+                },
+                {
+                  "fontSize": 14,
+                },
+                {
+                  "color": "#3a2c3c",
+                  "fontFamily": "Montserrat_500Medium",
+                },
+              ]
+            }
+          >
+            Street address
+          </Text>
+          <TextInput
+            onBlur={[Function]}
+            onChangeText={[Function]}
+            onFocus={[Function]}
+            style={
+              [
+                {
+                  "borderBottomColor": "#dbdbde",
+                  "borderBottomWidth": 0.5,
+                  "color": "#000",
+                  "fontFamily": "Montserrat_500Medium",
+                  "fontSize": 16,
+                  "paddingVertical": 5,
+                },
+                {},
+                undefined,
+              ]
+            }
+            value=""
+          />
+          <View
+            style={
+              {
+                "height": 20,
+              }
+            }
+          />
+        </View>
+        <View>
+          <Text
+            style={
+              [
+                {
+                  "color": "#fff",
+                  "fontFamily": "Montserrat_400Regular",
+                },
+                {
+                  "fontSize": 14,
+                },
+                {
+                  "color": "#3a2c3c",
+                  "fontFamily": "Montserrat_500Medium",
+                },
+              ]
+            }
+          >
+            State
+          </Text>
+          <TextInput
+            onBlur={[Function]}
+            onChangeText={[Function]}
+            onFocus={[Function]}
+            style={
+              [
+                {
+                  "borderBottomColor": "#dbdbde",
+                  "borderBottomWidth": 0.5,
+                  "color": "#000",
+                  "fontFamily": "Montserrat_500Medium",
+                  "fontSize": 16,
+                  "paddingVertical": 5,
+                },
+                {},
+                undefined,
+              ]
+            }
+            value=""
+          />
+          <View
+            style={
+              {
+                "height": 20,
+              }
+            }
+          />
+        </View>
+        <View>
+          <Text
+            style={
+              [
+                {
+                  "color": "#fff",
+                  "fontFamily": "Montserrat_400Regular",
+                },
+                {
+                  "fontSize": 14,
+                },
+                {
+                  "color": "#3a2c3c",
+                  "fontFamily": "Montserrat_500Medium",
+                },
+              ]
+            }
+          >
+            Zipcode
+          </Text>
+          <TextInput
+            onBlur={[Function]}
+            onChangeText={[Function]}
+            onFocus={[Function]}
+            style={
+              [
+                {
+                  "borderBottomColor": "#dbdbde",
+                  "borderBottomWidth": 0.5,
+                  "color": "#000",
+                  "fontFamily": "Montserrat_500Medium",
+                  "fontSize": 16,
+                  "paddingVertical": 5,
+                },
+                {},
+                undefined,
+              ]
+            }
+            value=""
+          />
+          <View
+            style={
+              {
+                "height": 20,
+              }
+            }
+          />
+        </View>
       </View>
     </View>
-    <View
-      onLayout={[Function]}
-      style={
+  </RCTScrollView>,
+  <View
+    style={
+      [
         {
-          "marginHorizontal": 27,
-          "marginTop": 36,
-          "rowGap": 6,
-        }
+          "paddingHorizontal": 16,
+          "paddingVertical": 22,
+        },
+        {
+          "backgroundColor": "#33907C",
+          "rowGap": 24,
+        },
+        {
+          "paddingTop": 0,
+        },
+        [
+          {
+            "backgroundColor": "#fff",
+            "paddingHorizontal": 32,
+          },
+          {
+            "shadowColor": "#000",
+            "shadowOffset": {
+              "height": 12,
+              "width": 0,
+            },
+            "shadowOpacity": 0.6,
+            "shadowRadius": 16,
+          },
+          {
+            "paddingBottom": 12,
+            "paddingTop": 12,
+          },
+          undefined,
+        ],
+      ]
+    }
+  >
+    <View
+      style={
+        [
+          {
+            "alignItems": "center",
+            "columnGap": 4,
+            "flexDirection": "row",
+          },
+          {
+            "justifyContent": "space-between",
+          },
+        ]
       }
     >
-      <View>
-        <Text
-          style={
-            [
-              {
-                "color": "#fff",
-                "fontFamily": "Montserrat_400Regular",
-              },
-              {
-                "fontSize": 14,
-              },
-              {
-                "color": "#3a2c3c",
-                "fontFamily": "Montserrat_500Medium",
-              },
-            ]
+      <View
+        accessibilityState={
+          {
+            "busy": undefined,
+            "checked": undefined,
+            "disabled": undefined,
+            "expanded": undefined,
+            "selected": undefined,
           }
-        >
-          Name
-        </Text>
-        <TextInput
-          onBlur={[Function]}
-          onChangeText={[Function]}
-          onFocus={[Function]}
-          style={
-            [
-              {
-                "borderBottomColor": "#dbdbde",
-                "borderBottomWidth": 0.5,
-                "color": "#000",
-                "fontFamily": "Montserrat_500Medium",
-                "fontSize": 16,
-                "paddingVertical": 5,
-              },
-              {},
-              undefined,
-            ]
+        }
+        accessibilityValue={
+          {
+            "max": undefined,
+            "min": undefined,
+            "now": undefined,
+            "text": undefined,
           }
-          value=""
-        />
+        }
+        accessible={true}
+        collapsable={false}
+        focusable={true}
+        onClick={[Function]}
+        onResponderGrant={[Function]}
+        onResponderMove={[Function]}
+        onResponderRelease={[Function]}
+        onResponderTerminate={[Function]}
+        onResponderTerminationRequest={[Function]}
+        onStartShouldSetResponder={[Function]}
+        style={
+          {
+            "backgroundColor": "#33907C",
+            "borderColor": "#33907C",
+            "borderRadius": 50,
+            "borderWidth": 2,
+            "flex": 1,
+            "opacity": 1,
+            "paddingVertical": 13,
+          }
+        }
+      >
         <View
           style={
             {
-              "height": 20,
+              "alignItems": "center",
+              "columnGap": 6,
+              "display": "flex",
+              "flexDirection": "row",
+              "justifyContent": "center",
             }
-          }
-        />
-      </View>
-      <View>
-        <Text
-          style={
-            [
-              {
-                "color": "#fff",
-                "fontFamily": "Montserrat_400Regular",
-              },
-              {
-                "fontSize": 14,
-              },
-              {
-                "color": "#3a2c3c",
-                "fontFamily": "Montserrat_500Medium",
-              },
-            ]
           }
         >
-          Phone
-        </Text>
-        <TextInput
-          onBlur={[Function]}
-          onChangeText={[Function]}
-          onFocus={[Function]}
-          style={
-            [
-              {
-                "borderBottomColor": "#dbdbde",
-                "borderBottomWidth": 0.5,
-                "color": "#000",
-                "fontFamily": "Montserrat_500Medium",
-                "fontSize": 16,
-                "paddingVertical": 5,
-              },
-              {},
-              undefined,
-            ]
-          }
-          value=""
-        />
-        <View
-          style={
-            {
-              "height": 20,
+          <Text
+            style={
+              [
+                {
+                  "color": "#fff",
+                  "fontFamily": "Montserrat_400Regular",
+                },
+                {
+                  "fontSize": 16,
+                },
+                [
+                  {
+                    "color": "#fff",
+                  },
+                  {
+                    "fontFamily": "Montserrat_500Medium",
+                    "textAlign": "center",
+                    "textTransform": "capitalize",
+                  },
+                  undefined,
+                ],
+              ]
             }
-          }
-        />
-      </View>
-      <View>
-        <Text
-          style={
-            [
-              {
-                "color": "#fff",
-                "fontFamily": "Montserrat_400Regular",
-              },
-              {
-                "fontSize": 14,
-              },
-              {
-                "color": "#3a2c3c",
-                "fontFamily": "Montserrat_500Medium",
-              },
-            ]
-          }
-        >
-          Street address
-        </Text>
-        <TextInput
-          onBlur={[Function]}
-          onChangeText={[Function]}
-          onFocus={[Function]}
-          style={
-            [
-              {
-                "borderBottomColor": "#dbdbde",
-                "borderBottomWidth": 0.5,
-                "color": "#000",
-                "fontFamily": "Montserrat_500Medium",
-                "fontSize": 16,
-                "paddingVertical": 5,
-              },
-              {},
-              undefined,
-            ]
-          }
-          value=""
-        />
-        <View
-          style={
-            {
-              "height": 20,
-            }
-          }
-        />
-      </View>
-      <View>
-        <Text
-          style={
-            [
-              {
-                "color": "#fff",
-                "fontFamily": "Montserrat_400Regular",
-              },
-              {
-                "fontSize": 14,
-              },
-              {
-                "color": "#3a2c3c",
-                "fontFamily": "Montserrat_500Medium",
-              },
-            ]
-          }
-        >
-          State
-        </Text>
-        <TextInput
-          onBlur={[Function]}
-          onChangeText={[Function]}
-          onFocus={[Function]}
-          style={
-            [
-              {
-                "borderBottomColor": "#dbdbde",
-                "borderBottomWidth": 0.5,
-                "color": "#000",
-                "fontFamily": "Montserrat_500Medium",
-                "fontSize": 16,
-                "paddingVertical": 5,
-              },
-              {},
-              undefined,
-            ]
-          }
-          value=""
-        />
-        <View
-          style={
-            {
-              "height": 20,
-            }
-          }
-        />
-      </View>
-      <View>
-        <Text
-          style={
-            [
-              {
-                "color": "#fff",
-                "fontFamily": "Montserrat_400Regular",
-              },
-              {
-                "fontSize": 14,
-              },
-              {
-                "color": "#3a2c3c",
-                "fontFamily": "Montserrat_500Medium",
-              },
-            ]
-          }
-        >
-          Zipcode
-        </Text>
-        <TextInput
-          onBlur={[Function]}
-          onChangeText={[Function]}
-          onFocus={[Function]}
-          style={
-            [
-              {
-                "borderBottomColor": "#dbdbde",
-                "borderBottomWidth": 0.5,
-                "color": "#000",
-                "fontFamily": "Montserrat_500Medium",
-                "fontSize": 16,
-                "paddingVertical": 5,
-              },
-              {},
-              undefined,
-            ]
-          }
-          value=""
-        />
-        <View
-          style={
-            {
-              "height": 20,
-            }
-          }
-        />
+          >
+            Save
+          </Text>
+        </View>
       </View>
     </View>
-  </View>
-</RCTScrollView>
+  </View>,
+]
 `;

@@ -1,6 +1,7 @@
 import { render, screen } from '@testing-library/react-native'
 
 import { COLORS } from '@constants'
+import IconButton from '@components/IconButton'
 import { IIconList } from '@types'
 
 import Bar from '../index'
@@ -9,7 +10,6 @@ const iconList: IIconList[] = [
   {
     label: 'favicon',
     icon: require('@assets/favicon.png'),
-    action: () => undefined,
   },
 ]
 const mockPressBackFn = jest.fn()
@@ -19,7 +19,9 @@ describe('Testing Bar component', () => {
     render(
       <Bar
         title="heading"
-        iconList={iconList}
+        IconList={iconList.map(({ icon, label }) => (
+          <IconButton key={label} icon={icon} />
+        ))}
         showBackBtn
         onPressBack={mockPressBackFn}
         testID="bar"
@@ -28,7 +30,7 @@ describe('Testing Bar component', () => {
   })
 
   it('Render Bar component success', () => {
-    const component = render(<Bar title="home" iconList={[]} />).toJSON()
+    const component = render(<Bar title="home" IconList={[]} />).toJSON()
 
     expect(component).toMatchSnapshot()
   })

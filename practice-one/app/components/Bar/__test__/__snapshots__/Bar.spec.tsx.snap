@@ -12,6 +12,9 @@ exports[`Testing Bar component Render Bar component success 1`] = `
         "backgroundColor": "#33907C",
         "rowGap": 24,
       },
+      {
+        "paddingTop": 0,
+      },
       undefined,
     ]
   }

@@ -1,15 +1,10 @@
-import { render } from '@testing-library/react-native'
-import { NavigationContainer } from '@react-navigation/native'
+import { render } from 'test-utils'
 
 import BottomNav from '../index'
 
 describe('Testing bottom tab navigation', () => {
   it('Render tab successfully', () => {
-    const component = render(
-      <NavigationContainer>
-        <BottomNav />
-      </NavigationContainer>
-    ).toJSON()
+    const component = render(<BottomNav />).toJSON()
 
     expect(component).toMatchSnapshot()
   })

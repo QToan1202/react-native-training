@@ -1,14 +1,22 @@
-import { fireEvent, render, screen } from '@testing-library/react-native'
+import { fireEvent, screen } from '@testing-library/react-native'
+import { render } from 'test-utils'
 
 import Onboarding from '../index'
 
+const props = {
+  navigation: {
+    navigate: jest.fn(),
+    goBack: jest.fn(),
+  },
+}
+
 describe('Testing onboarding screen', () => {
   beforeEach(() => {
-    render(<Onboarding testID="viewpager" />)
+    render(<Onboarding {...props} testID="viewpager" />)
   })
 
   it('Render screen successfully', () => {
-    const component = render(<Onboarding />).toJSON()
+    const component = render(<Onboarding {...props} />).toJSON()
 
     expect(component).toMatchSnapshot()
   })
@@ -23,6 +31,6 @@ describe('Testing onboarding screen', () => {
     expect(finishBtn).toBeOnTheScreen()
 
     fireEvent.press(finishBtn)
-    expect(finishBtn).toBeOnTheScreen()
+    expect(props.navigation.navigate).toBeCalledTimes(1)
   })
 })

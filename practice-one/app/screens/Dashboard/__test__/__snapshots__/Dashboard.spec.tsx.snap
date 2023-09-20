@@ -3163,6 +3163,7 @@ exports[`Testing Dashboard screen Render screen successfully 1`] = `
           >
             <View
               id="1"
+              onPress={[Function]}
               style={
                 [
                   {
@@ -3362,6 +3363,7 @@ exports[`Testing Dashboard screen Render screen successfully 1`] = `
           >
             <View
               id="2"
+              onPress={[Function]}
               style={
                 [
                   {
@@ -3561,6 +3563,7 @@ exports[`Testing Dashboard screen Render screen successfully 1`] = `
           >
             <View
               id="3"
+              onPress={[Function]}
               style={
                 [
                   {
@@ -3760,6 +3763,7 @@ exports[`Testing Dashboard screen Render screen successfully 1`] = `
           >
             <View
               id="4"
+              onPress={[Function]}
               style={
                 [
                   {
