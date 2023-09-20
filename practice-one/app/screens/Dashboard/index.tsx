@@ -21,6 +21,12 @@ const Dashboard = ({ navigation }: HomeScreenProps) => {
     },
     [navigation]
   )
+  const handleMoveToProduct = useCallback(
+    ({ id }: IProductItem) => {
+      navigation.navigate('ProductDetail', { id })
+    },
+    [navigation]
+  )
   const renderProducts = <T extends IProductItem[]>(title: string, data: T) => (
     <>
       <View style={[containerStyles.inline, containerStyles.spaceBetween, styles.productHeading]}>
@@ -35,7 +41,7 @@ const Dashboard = ({ navigation }: HomeScreenProps) => {
       </View>
       <FlatList
         data={data}
-        renderItem={renderItem(ProductCard)}
+        renderItem={renderItem(ProductCard, handleMoveToProduct)}
         horizontal
         contentContainerStyle={styles.itemSpacing}
         showsHorizontalScrollIndicator={false}
