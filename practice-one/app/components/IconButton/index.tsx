@@ -7,7 +7,6 @@ export interface IconButtonProps extends TouchableOpacityProps {
   icon: ImageProps['source']
   noBackground?: boolean
   accessibilityLabel?: string
-  onPress: () => void
 }
 
 const IconButton = ({
@@ -15,14 +14,12 @@ const IconButton = ({
   noBackground = false,
   accessibilityLabel,
   style,
-  onPress,
   ...rest
 }: IconButtonProps) => {
   return (
     <TouchableOpacity
       style={[styles.btn, noBackground && styles.transparent, style]}
       accessibilityLabel={accessibilityLabel}
-      onPress={onPress}
       {...rest}
     >
       <Image source={icon} style={imageStyles.icon} />
