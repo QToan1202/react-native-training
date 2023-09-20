@@ -15,7 +15,7 @@ export type TSize = 'sm' | 'md' | 'lg' | 'xl'
 export interface IIconList {
   label: string
   icon: ImageProps['source']
-  action: () => void
+  noBackground?: boolean
 }
 
 export type TAlignAvatar = 'inline' | 'block'
