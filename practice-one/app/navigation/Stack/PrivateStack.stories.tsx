@@ -1,11 +1,11 @@
 import { ComponentMeta, ComponentStory } from '@storybook/react-native'
 import { NavigationContainer } from '@react-navigation/native'
 
-import BottomNav from './index'
+import Stack from './index'
 
 export default {
-  title: 'navigation/Bottom Tab Navigation',
-  component: BottomNav,
+  title: 'navigation/Private Stack Navigation',
+  component: Stack.PrivateStackNavigator,
   decorators: [
     (Story) => (
       <NavigationContainer>
@@ -13,9 +13,11 @@ export default {
       </NavigationContainer>
     ),
   ],
-} as ComponentMeta<typeof BottomNav>
+} as ComponentMeta<typeof Stack.PrivateStackNavigator>
 
-const Template: ComponentStory<typeof BottomNav> = () => <BottomNav />
+const Template: ComponentStory<typeof Stack.PrivateStackNavigator> = () => (
+  <Stack.PrivateStackNavigator />
+)
 
 export const Default = Template.bind({})
 Default.args = {}

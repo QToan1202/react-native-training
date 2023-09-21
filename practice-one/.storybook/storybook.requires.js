@@ -82,6 +82,8 @@ const getStories = () => {
     "./app/components/SliderItem/SliderItem.stories.tsx": require("../app/components/SliderItem/SliderItem.stories.tsx"),
     "./app/components/StoreCard/StoreCard.stories.tsx": require("../app/components/StoreCard/StoreCard.stories.tsx"),
     "./app/components/TrackerItem/TrackerItem.stories.tsx": require("../app/components/TrackerItem/TrackerItem.stories.tsx"),
+    "./app/navigation/Stack/PrivateStack.stories.tsx": require("../app/navigation/Stack/PrivateStack.stories.tsx"),
+    "./app/navigation/Stack/PublicStack.stories.tsx": require("../app/navigation/Stack/PublicStack.stories.tsx"),
     "./app/navigation/Tab/Tab.stories.tsx": require("../app/navigation/Tab/Tab.stories.tsx"),
     "./app/screens/CategoryDetail/CategoryDetail.stories.tsx": require("../app/screens/CategoryDetail/CategoryDetail.stories.tsx"),
     "./app/screens/Checkout/AddAddress/AddAddress.stories.tsx": require("../app/screens/Checkout/AddAddress/AddAddress.stories.tsx"),
