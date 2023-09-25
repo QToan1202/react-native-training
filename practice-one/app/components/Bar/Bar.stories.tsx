@@ -1,12 +1,14 @@
 import { ComponentMeta, ComponentStory } from '@storybook/react-native'
 import { action } from '@storybook/addon-actions'
 
-import { Bar, Button, Search } from '../index'
+import { Bar, Button, IconButton, Search } from '../index'
 
 export default {
   title: 'components/Bar',
   component: Bar,
 } as ComponentMeta<typeof Bar>
+
+const IconList = <IconButton icon={require('@assets/favicon.png')} onPress={action('press')} />
 
 const Template: ComponentStory<typeof Bar> = (args) => <Bar {...args} />
 
@@ -20,13 +22,7 @@ export const BarWithButton = Template.bind({})
 BarWithButton.args = {
   title: 'Heading',
   align: 'space-between',
-  iconList: [
-    {
-      label: 'favicon',
-      icon: require('@assets/favicon.png'),
-      action: action('press'),
-    },
-  ],
+  IconList,
   children: (
     <>
       <Button
