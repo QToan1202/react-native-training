@@ -3,7 +3,7 @@ import { ComponentMeta, ComponentStory } from '@storybook/react-native'
 import { CartItem } from '../index'
 
 export default {
-  title: 'Cart Item',
+  title: 'components/Cart Item',
   component: CartItem,
 } as ComponentMeta<typeof CartItem>
 

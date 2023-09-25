@@ -3,7 +3,7 @@ import { ComponentMeta, ComponentStory } from '@storybook/react-native'
 import { TrackerItem } from '../index'
 
 export default {
-  title: 'Tracker Item',
+  title: 'components/Tracker Item',
   component: TrackerItem,
 } as ComponentMeta<typeof TrackerItem>
 

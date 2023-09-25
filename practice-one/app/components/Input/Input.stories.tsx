@@ -9,7 +9,7 @@ import { Button, Input } from '../index'
 import { InputProps } from './index'
 
 export default {
-  title: 'Input',
+  title: 'components/Input',
   component: Input,
 } as ComponentMeta<typeof Input>
 

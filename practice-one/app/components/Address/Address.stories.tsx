@@ -4,7 +4,7 @@ import { action } from '@storybook/addon-actions'
 import { Address } from '../index'
 
 export default {
-  title: 'Address',
+  title: 'components/Address',
   component: Address,
 } as ComponentMeta<typeof Address>
 

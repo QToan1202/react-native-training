@@ -4,7 +4,7 @@ import { action } from '@storybook/addon-actions'
 import { MenuCard } from '../index'
 
 export default {
-  title: 'Menu Card',
+  title: 'components/Menu Card',
   component: MenuCard,
 } as ComponentMeta<typeof MenuCard>
 

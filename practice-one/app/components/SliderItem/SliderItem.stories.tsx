@@ -4,7 +4,7 @@ import { action } from '@storybook/addon-actions'
 import { SliderItem } from '../index'
 
 export default {
-  title: 'Slider Item',
+  title: 'components/Slider Item',
   component: SliderItem,
 } as ComponentMeta<typeof SliderItem>
 

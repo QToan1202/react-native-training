@@ -3,7 +3,7 @@ import { ComponentMeta, ComponentStory } from '@storybook/react-native'
 import { Search } from '../index'
 
 export default {
-  title: 'Search',
+  title: 'components/Search',
   component: Search,
 } as ComponentMeta<typeof Search>
 

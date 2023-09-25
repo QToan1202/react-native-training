@@ -4,7 +4,7 @@ import { action } from '@storybook/addon-actions'
 import { Button } from '../index'
 
 export default {
-  title: 'Button',
+  title: 'components/Button',
   component: Button,
 } as ComponentMeta<typeof Button>
 

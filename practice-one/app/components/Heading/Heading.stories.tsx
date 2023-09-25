@@ -3,7 +3,7 @@ import { ComponentMeta, ComponentStory } from '@storybook/react-native'
 import { Heading } from '../index'
 
 export default {
-  title: 'Heading',
+  title: 'components/Heading',
   component: Heading,
 } as ComponentMeta<typeof Heading>
 

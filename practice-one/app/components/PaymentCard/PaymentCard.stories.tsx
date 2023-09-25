@@ -3,7 +3,7 @@ import { ComponentMeta, ComponentStory } from '@storybook/react-native'
 import { PaymentCard } from '../index'
 
 export default {
-  title: 'Payment Card',
+  title: 'components/Payment Card',
   component: PaymentCard,
 } as ComponentMeta<typeof PaymentCard>
 

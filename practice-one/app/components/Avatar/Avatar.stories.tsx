@@ -3,7 +3,7 @@ import { ComponentMeta, ComponentStory } from '@storybook/react-native'
 import { Avatar } from '../index'
 
 export default {
-  title: 'Avatar',
+  title: 'components/Avatar',
   component: Avatar,
 } as ComponentMeta<typeof Avatar>
 

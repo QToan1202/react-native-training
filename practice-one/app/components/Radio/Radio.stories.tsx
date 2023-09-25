@@ -5,7 +5,7 @@ import { PAYMENT_METHODS } from '@constants'
 import { Radio } from '../index'
 
 export default {
-  title: 'Radio',
+  title: 'components/Radio',
   component: Radio,
 } as ComponentMeta<typeof Radio>
 

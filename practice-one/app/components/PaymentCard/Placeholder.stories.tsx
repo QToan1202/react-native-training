@@ -3,7 +3,7 @@ import { ComponentMeta, ComponentStory } from '@storybook/react-native'
 import { PaymentCardPlaceholder } from '../index'
 
 export default {
-  title: 'Payment Card Place Holder',
+  title: 'components/Payment Card Place Holder',
   component: PaymentCardPlaceholder,
 } as ComponentMeta<typeof PaymentCardPlaceholder>
 

@@ -4,7 +4,7 @@ import { action } from '@storybook/addon-actions'
 import { IconButton } from '../index'
 
 export default {
-  title: 'IconButton',
+  title: 'components/IconButton',
   component: IconButton,
 } as ComponentMeta<typeof IconButton>
 

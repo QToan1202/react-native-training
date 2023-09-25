@@ -3,7 +3,7 @@ import { ComponentMeta, ComponentStory } from '@storybook/react-native'
 import { Picker } from '../index'
 
 export default {
-  title: 'Picker',
+  title: 'components/Picker',
   component: Picker,
 } as ComponentMeta<typeof Picker>
 

@@ -4,7 +4,7 @@ import { action } from '@storybook/addon-actions'
 import { StoreCard } from '../index'
 
 export default {
-  title: 'StoreCard',
+  title: 'components/StoreCard',
   component: StoreCard,
 } as ComponentMeta<typeof StoreCard>
 

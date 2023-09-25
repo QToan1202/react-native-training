@@ -3,7 +3,7 @@ import { ComponentMeta, ComponentStory } from '@storybook/react-native'
 import { Paragraph } from '../index'
 
 export default {
-  title: 'Paragraph',
+  title: 'components/Paragraph',
   component: Paragraph,
 } as ComponentMeta<typeof Paragraph>
 
