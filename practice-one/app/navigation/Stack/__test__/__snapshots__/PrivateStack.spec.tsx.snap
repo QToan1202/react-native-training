@@ -185,7 +185,6 @@ exports[`Testing private stack navigation Render stack successfully 1`] = `
                               {
                                 "btnTitle": "Start Shopping",
                                 "id": "1",
-                                "onPress": [Function],
                                 "source": {
                                   "testUri": "../../../assets/slider/deliver.png",
                                 },
@@ -194,7 +193,6 @@ exports[`Testing private stack navigation Render stack successfully 1`] = `
                               {
                                 "btnTitle": "Start Shopping",
                                 "id": "2",
-                                "onPress": [Function],
                                 "source": {
                                   "testUri": "../../../assets/slider/deliver.png",
                                 },
@@ -549,7 +547,6 @@ exports[`Testing private stack navigation Render stack successfully 1`] = `
                               {
                                 "id": "1",
                                 "name": "beverages",
-                                "onPress": [Function],
                                 "source": {
                                   "testUri": "../../../assets/menu/beverages.png",
                                 },
@@ -557,7 +554,6 @@ exports[`Testing private stack navigation Render stack successfully 1`] = `
                               {
                                 "id": "2",
                                 "name": "bread & bakery",
-                                "onPress": [Function],
                                 "source": {
                                   "testUri": "../../../assets/menu/bread.png",
                                 },
@@ -565,7 +561,6 @@ exports[`Testing private stack navigation Render stack successfully 1`] = `
                               {
                                 "id": "3",
                                 "name": "vegetables",
-                                "onPress": [Function],
                                 "source": {
                                   "testUri": "../../../assets/menu/vegetables.png",
                                 },
@@ -573,7 +568,6 @@ exports[`Testing private stack navigation Render stack successfully 1`] = `
                               {
                                 "id": "4",
                                 "name": "fruit",
-                                "onPress": [Function],
                                 "source": {
                                   "testUri": "../../../assets/menu/fruit.png",
                                 },
@@ -581,7 +575,6 @@ exports[`Testing private stack navigation Render stack successfully 1`] = `
                               {
                                 "id": "5",
                                 "name": "egg",
-                                "onPress": [Function],
                                 "source": {
                                   "testUri": "../../../assets/menu/egg.png",
                                 },
@@ -589,7 +582,6 @@ exports[`Testing private stack navigation Render stack successfully 1`] = `
                               {
                                 "id": "6",
                                 "name": "frozen veg",
-                                "onPress": [Function],
                                 "source": {
                                   "testUri": "../../../assets/menu/frozen.png",
                                 },
@@ -597,7 +589,6 @@ exports[`Testing private stack navigation Render stack successfully 1`] = `
                               {
                                 "id": "7",
                                 "name": "homecare",
-                                "onPress": [Function],
                                 "source": {
                                   "testUri": "../../../assets/menu/homecare.png",
                                 },
@@ -605,7 +596,6 @@ exports[`Testing private stack navigation Render stack successfully 1`] = `
                               {
                                 "id": "8",
                                 "name": "pet care",
-                                "onPress": [Function],
                                 "source": {
                                   "testUri": "../../../assets/menu/pet.png",
                                 },
@@ -1599,7 +1589,6 @@ exports[`Testing private stack navigation Render stack successfully 1`] = `
                                   "img": {
                                     "testUri": "../../../assets/product/coca.png",
                                   },
-                                  "onPress": [Function],
                                   "price": 222.6,
                                   "storeName": "tradly",
                                   "title": "coca cola",
@@ -1612,7 +1601,6 @@ exports[`Testing private stack navigation Render stack successfully 1`] = `
                                   "img": {
                                     "testUri": "../../../assets/product/coca.png",
                                   },
-                                  "onPress": [Function],
                                   "price": 222.6,
                                   "storeName": "tradly",
                                   "title": "coca cola",
@@ -1626,7 +1614,6 @@ exports[`Testing private stack navigation Render stack successfully 1`] = `
                                   "img": {
                                     "testUri": "../../../assets/product/coca.png",
                                   },
-                                  "onPress": [Function],
                                   "price": 222.6,
                                   "storeName": "tradly",
                                   "title": "coca cola",
@@ -2415,7 +2402,6 @@ exports[`Testing private stack navigation Render stack successfully 1`] = `
                                   "img": {
                                     "testUri": "../../../assets/product/coca.png",
                                   },
-                                  "onPress": [Function],
                                   "price": 222.6,
                                   "storeName": "tradly",
                                   "title": "coca cola",
@@ -2428,7 +2414,6 @@ exports[`Testing private stack navigation Render stack successfully 1`] = `
                                   "img": {
                                     "testUri": "../../../assets/product/coca.png",
                                   },
-                                  "onPress": [Function],
                                   "price": 222.6,
                                   "storeName": "tradly",
                                   "title": "coca cola",
@@ -2442,7 +2427,6 @@ exports[`Testing private stack navigation Render stack successfully 1`] = `
                                   "img": {
                                     "testUri": "../../../assets/product/coca.png",
                                   },
-                                  "onPress": [Function],
                                   "price": 222.6,
                                   "storeName": "tradly",
                                   "title": "coca cola",
@@ -3249,7 +3233,6 @@ exports[`Testing private stack navigation Render stack successfully 1`] = `
                                     "testUri": "../../../assets/store/tradly.png",
                                   },
                                   "name": "tradly store",
-                                  "onPressBtn": [Function],
                                   "source": {
                                     "testUri": "../../../assets/avatar.png",
                                   },
@@ -3261,7 +3244,6 @@ exports[`Testing private stack navigation Render stack successfully 1`] = `
                                     "testUri": "../../../assets/store/tradly.png",
                                   },
                                   "name": "tradly store",
-                                  "onPressBtn": [Function],
                                   "source": {
                                     "testUri": "../../../assets/avatar.png",
                                   },
@@ -3273,7 +3255,6 @@ exports[`Testing private stack navigation Render stack successfully 1`] = `
                                     "testUri": "../../../assets/store/tradly.png",
                                   },
                                   "name": "tradly store",
-                                  "onPressBtn": [Function],
                                   "source": {
                                     "testUri": "../../../assets/avatar.png",
                                   },
@@ -3285,7 +3266,6 @@ exports[`Testing private stack navigation Render stack successfully 1`] = `
                                     "testUri": "../../../assets/store/tradly.png",
                                   },
                                   "name": "tradly store",
-                                  "onPressBtn": [Function],
                                   "source": {
                                     "testUri": "../../../assets/avatar.png",
                                   },
@@ -3446,7 +3426,7 @@ exports[`Testing private stack navigation Render stack successfully 1`] = `
                                       }
                                       accessible={true}
                                       collapsable={false}
-                                      focusable={true}
+                                      focusable={false}
                                       onClick={[Function]}
                                       onResponderGrant={[Function]}
                                       onResponderMove={[Function]}
@@ -3646,7 +3626,7 @@ exports[`Testing private stack navigation Render stack successfully 1`] = `
                                       }
                                       accessible={true}
                                       collapsable={false}
-                                      focusable={true}
+                                      focusable={false}
                                       onClick={[Function]}
                                       onResponderGrant={[Function]}
                                       onResponderMove={[Function]}
@@ -3846,7 +3826,7 @@ exports[`Testing private stack navigation Render stack successfully 1`] = `
                                       }
                                       accessible={true}
                                       collapsable={false}
-                                      focusable={true}
+                                      focusable={false}
                                       onClick={[Function]}
                                       onResponderGrant={[Function]}
                                       onResponderMove={[Function]}
@@ -4046,7 +4026,7 @@ exports[`Testing private stack navigation Render stack successfully 1`] = `
                                       }
                                       accessible={true}
                                       collapsable={false}
-                                      focusable={true}
+                                      focusable={false}
                                       onClick={[Function]}
                                       onResponderGrant={[Function]}
                                       onResponderMove={[Function]}

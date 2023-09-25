@@ -19,7 +19,6 @@ exports[`Testing Category Detail screen Render screen successfully 1`] = `
         "img": {
           "testUri": "../../../assets/product/coca.png",
         },
-        "onPress": [Function],
         "price": 222.6,
         "storeName": "tradly",
         "title": "coca cola",
@@ -32,7 +31,6 @@ exports[`Testing Category Detail screen Render screen successfully 1`] = `
         "img": {
           "testUri": "../../../assets/product/coca.png",
         },
-        "onPress": [Function],
         "price": 222.6,
         "storeName": "tradly",
         "title": "coca cola",
@@ -46,7 +44,6 @@ exports[`Testing Category Detail screen Render screen successfully 1`] = `
         "img": {
           "testUri": "../../../assets/product/coca.png",
         },
-        "onPress": [Function],
         "price": 222.6,
         "storeName": "tradly",
         "title": "coca cola",

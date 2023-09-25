@@ -12,7 +12,6 @@ exports[`Testing renderItem function Function that using by FlatList must stable
         "img": {
           "testUri": "../../../assets/product/coca.png",
         },
-        "onPress": [Function],
         "price": 222.6,
         "storeName": "tradly",
         "title": "coca cola",
@@ -25,7 +24,6 @@ exports[`Testing renderItem function Function that using by FlatList must stable
         "img": {
           "testUri": "../../../assets/product/coca.png",
         },
-        "onPress": [Function],
         "price": 222.6,
         "storeName": "tradly",
         "title": "coca cola",
@@ -39,7 +37,6 @@ exports[`Testing renderItem function Function that using by FlatList must stable
         "img": {
           "testUri": "../../../assets/product/coca.png",
         },
-        "onPress": [Function],
         "price": 222.6,
         "storeName": "tradly",
         "title": "coca cola",

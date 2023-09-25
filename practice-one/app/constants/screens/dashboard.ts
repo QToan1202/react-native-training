@@ -5,7 +5,7 @@ import { MenuCardProps } from '@components/MenuCard'
 import { ProductCardProps } from '@components/ProductCard'
 import { StoreCardProps } from '@components/StoreCard'
 
-export interface ISliderItem extends IFlatListBase, Omit<SliderItemProps, 'id'> {}
+export interface ISliderItem extends IFlatListBase, Omit<SliderItemProps, 'id' | 'onPress'> {}
 
 const SLIDER_DATA: ISliderItem[] = [
   {
@@ -13,18 +13,18 @@ const SLIDER_DATA: ISliderItem[] = [
     title: 'Ready to deliver to your home',
     btnTitle: 'Start Shopping',
     source: require('@assets/slider/deliver.png'),
-    onPress: () => undefined,
   },
   {
     id: '2',
     title: 'Ready to deliver to your home',
     btnTitle: 'Start Shopping',
     source: require('@assets/slider/deliver.png'),
-    onPress: () => undefined,
   },
 ]
 
-export interface ICategoryItem extends IFlatListBase, Omit<MenuCardProps, 'name' | 'id'> {
+export interface ICategoryItem
+  extends IFlatListBase,
+    Omit<MenuCardProps, 'name' | 'id' | 'onPress'> {
   name: string
 }
 
@@ -33,53 +33,45 @@ const CATEGORY_DATA: ICategoryItem[] = [
     id: '1',
     source: require('@assets/menu/beverages.png'),
     name: 'beverages',
-    onPress: () => undefined,
   },
   {
     id: '2',
     source: require('@assets/menu/bread.png'),
     name: 'bread & bakery',
-    onPress: () => undefined,
   },
   {
     id: '3',
     source: require('@assets/menu/vegetables.png'),
     name: 'vegetables',
-    onPress: () => undefined,
   },
   {
     id: '4',
     source: require('@assets/menu/fruit.png'),
     name: 'fruit',
-    onPress: () => undefined,
   },
   {
     id: '5',
     source: require('@assets/menu/egg.png'),
     name: 'egg',
-    onPress: () => undefined,
   },
   {
     id: '6',
     source: require('@assets/menu/frozen.png'),
     name: 'frozen veg',
-    onPress: () => undefined,
   },
   {
     id: '7',
     source: require('@assets/menu/homecare.png'),
     name: 'homecare',
-    onPress: () => undefined,
   },
   {
     id: '8',
     source: require('@assets/menu/pet.png'),
     name: 'pet care',
-    onPress: () => undefined,
   },
 ]
 
-export interface IProductItem extends IFlatListBase, Omit<ProductCardProps, 'id'> {}
+export interface IProductItem extends IFlatListBase, Omit<ProductCardProps, 'id' | 'onPress'> {}
 
 const PRODUCT_DATA: IProductItem[] = [
   {
@@ -89,7 +81,6 @@ const PRODUCT_DATA: IProductItem[] = [
     avatar: require('@assets/avatar.png'),
     storeName: 'tradly',
     price: 222.6,
-    onPress: () => undefined,
   },
   {
     id: '2',
@@ -98,7 +89,6 @@ const PRODUCT_DATA: IProductItem[] = [
     avatar: require('@assets/avatar.png'),
     storeName: 'tradly',
     price: 222.6,
-    onPress: () => undefined,
   },
   {
     id: '3',
@@ -108,11 +98,10 @@ const PRODUCT_DATA: IProductItem[] = [
     storeName: 'tradly',
     price: 222.6,
     discountPrice: 12,
-    onPress: () => undefined,
   },
 ]
 
-export interface IStoreItem extends IFlatListBase, Omit<StoreCardProps, 'id'> {
+export interface IStoreItem extends IFlatListBase, Omit<StoreCardProps, 'id' | 'onPressBtn'> {
   name: string
 }
 
@@ -123,7 +112,6 @@ const STORE_DATA: IStoreItem[] = [
     source: require('@assets/avatar.png'),
     name: 'tradly store',
     btnTitle: 'follow',
-    onPressBtn: () => undefined,
   },
   {
     id: '2',
@@ -131,7 +119,6 @@ const STORE_DATA: IStoreItem[] = [
     source: require('@assets/avatar.png'),
     name: 'tradly store',
     btnTitle: 'follow',
-    onPressBtn: () => undefined,
   },
   {
     id: '3',
@@ -139,7 +126,6 @@ const STORE_DATA: IStoreItem[] = [
     source: require('@assets/avatar.png'),
     name: 'tradly store',
     btnTitle: 'follow',
-    onPressBtn: () => undefined,
   },
   {
     id: '4',
@@ -147,7 +133,6 @@ const STORE_DATA: IStoreItem[] = [
     source: require('@assets/avatar.png'),
     name: 'tradly store',
     btnTitle: 'follow',
-    onPressBtn: () => undefined,
   },
 ]
 

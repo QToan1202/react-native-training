@@ -8,8 +8,9 @@ import renderItem from '../index'
 
 describe('Testing renderItem function', () => {
   it('Function that using by FlatList must stable on every render', () => {
+    const mockFn = jest.fn()
     const component = render(
-      <FlatList data={DASHBOARD.PRODUCT_DATA} renderItem={renderItem(ProductCard)} />
+      <FlatList data={DASHBOARD.PRODUCT_DATA} renderItem={renderItem(ProductCard, mockFn)} />
     ).toJSON()
 
     expect(component).toMatchSnapshot()
