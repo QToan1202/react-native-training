@@ -26,6 +26,11 @@ const styles = StyleSheet.create({
   },
   signUpBtn: {
     fontFamily: FONT_FAMILY.MONTSERRAT[600],
+    fontSize: 18,
+    textTransform: 'none',
+  },
+  btn: {
+    borderColor: COLORS.TRANSPARENT,
   },
 })
 

@@ -1,5 +1,5 @@
 import { useCallback } from 'react'
-import { Alert, KeyboardAvoidingView, Platform, TouchableOpacity, View } from 'react-native'
+import { Alert, KeyboardAvoidingView, Platform, View } from 'react-native'
 import { SubmitHandler, useForm } from 'react-hook-form'
 import { SafeAreaView } from 'react-native-safe-area-context'
 import { NativeStackScreenProps } from '@react-navigation/native-stack'
@@ -75,9 +75,13 @@ const Login = ({ navigation }: LoginScreenProps) => {
         <Paragraph size="lg" content="Forgot your password?" />
         <View style={containerStyles.inline}>
           <Paragraph size="lg" content="Don't have an account?" />
-          <TouchableOpacity onPress={handleToSignUpScreen}>
-            <Paragraph style={styles.signUpBtn} size="lg" content="Sign up" />
-          </TouchableOpacity>
+          <Button
+            style={styles.btn}
+            titleStyle={styles.signUpBtn}
+            title="Sign up"
+            variant="tertiary"
+            onPress={handleToSignUpScreen}
+          />
         </View>
       </View>
     </SafeAreaView>

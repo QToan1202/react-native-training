@@ -20,10 +20,14 @@ const styles = StyleSheet.create({
   info: {
     flexDirection: 'row',
     justifyContent: 'center',
+    alignItems: 'baseline',
     columnGap: 3,
   },
-  signInBtn: {
+  btnTitle: {
     fontFamily: FONT_FAMILY.MONTSERRAT[600],
+  },
+  signInBtn: {
+    borderColor: COLORS.TRANSPARENT,
   },
 })
 
