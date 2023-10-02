@@ -31,6 +31,7 @@ const Radio = ({ radioList, style, ...rest }: RadioProps) => {
   return (
     <FlatList
       data={radioList}
+      keyExtractor={({ id }: IRadioItem): string => id}
       renderItem={({ item }) => (
         <TouchableOpacity
           style={[styles.radio, style]}

@@ -21,6 +21,7 @@ const DropdownList = <T extends IDropDownItem>({
     <View style={[styles.list, style]}>
       <FlatList
         data={listData}
+        keyExtractor={({ id, value }: T): string => id || value}
         renderItem={({ item }) => (
           <TouchableHighlight
             underlayColor={COLORS.GRAY_200}

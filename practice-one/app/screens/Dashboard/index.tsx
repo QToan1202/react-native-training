@@ -5,7 +5,7 @@ import { RootStackParamList } from '@navigation/Stack'
 
 import { Button, Heading, MenuCard, ProductCard, SliderItem, StoreCard } from '@components'
 import { DASHBOARD } from '@constants'
-import { ICategoryItem, IProductItem } from '@constants/screens/dashboard'
+import { ICategoryItem, IProductItem, ISliderItem, IStoreItem } from '@constants/screens/dashboard'
 import { containerStyles } from '@styles'
 import { renderItem } from '@utils'
 
@@ -40,6 +40,7 @@ const Dashboard = ({ navigation }: HomeScreenProps) => {
         />
       </View>
       <FlatList
+        keyExtractor={({ id }: IProductItem): string => id}
         data={data}
         renderItem={renderItem(ProductCard, handleMoveToProduct)}
         horizontal
@@ -52,6 +53,7 @@ const Dashboard = ({ navigation }: HomeScreenProps) => {
   return (
     <ScrollView style={styles.container}>
       <FlatList
+        keyExtractor={({ id }: ISliderItem): string => id}
         data={DASHBOARD.SLIDER_DATA}
         renderItem={renderItem(SliderItem)}
         horizontal
@@ -59,6 +61,7 @@ const Dashboard = ({ navigation }: HomeScreenProps) => {
         contentContainerStyle={styles.sliderItem}
       />
       <FlatList
+        keyExtractor={({ id }: ICategoryItem): string => id}
         data={DASHBOARD.CATEGORY_DATA}
         renderItem={renderItem(MenuCard, handleMoveToCategoryScreen)}
         numColumns={4}
@@ -83,6 +86,7 @@ const Dashboard = ({ navigation }: HomeScreenProps) => {
           />
         </View>
         <FlatList
+          keyExtractor={({ id }: IStoreItem): string => id}
           data={DASHBOARD.STORE_DATA}
           renderItem={renderItem(StoreCard)}
           horizontal
