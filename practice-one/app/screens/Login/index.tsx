@@ -7,7 +7,7 @@ import { RootStackParamList } from '@navigation/Stack'
 
 import { Button, ErrorMessage, Heading, Input, Paragraph } from '@components'
 import { IForm } from '@types'
-import { COLORS } from '@constants'
+import { COLORS, ERROR_MESSAGES } from '@constants'
 import { containerStyles } from '@styles'
 
 import styles from './styles'
@@ -23,7 +23,7 @@ const Login = ({ navigation }: LoginScreenProps) => {
   const onSubmit: SubmitHandler<IForm> = (data) => {
     Alert.alert(JSON.stringify(data))
   }
-  const handleToSignUpScreen = useCallback(() => navigation.navigate('SignUp'), [navigation])
+  const handleToSignUpScreen = useCallback(() => navigation.navigate('SignUp'), [])
 
   return (
     <SafeAreaView style={styles.container}>
@@ -42,7 +42,7 @@ const Login = ({ navigation }: LoginScreenProps) => {
             placeholder="Email/Mobile Number"
             placeholderTextColor={COLORS.WHITE}
             rules={{
-              required: 'Enter email or mobile number',
+              required: ERROR_MESSAGES.ACCOUNT.REQUIRED,
             }}
           />
           <ErrorMessage error={errors.email} />
@@ -55,10 +55,10 @@ const Login = ({ navigation }: LoginScreenProps) => {
             placeholder="Password"
             placeholderTextColor={COLORS.WHITE}
             rules={{
-              required: 'Password is required',
+              required: ERROR_MESSAGES.PASSWORD.REQUIRED,
               minLength: {
                 value: 6,
-                message: 'Password too short',
+                message: ERROR_MESSAGES.PASSWORD.MIN_LENGTH,
               },
             }}
           />

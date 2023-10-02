@@ -7,7 +7,7 @@ import { RootStackParamList } from '@navigation/Stack'
 
 import { Button, ErrorMessage, Heading, Input, Paragraph } from '@components'
 import { IForm } from '@types'
-import { COLORS } from '@constants'
+import { COLORS, ERROR_MESSAGES } from '@constants'
 
 import styles from './styles'
 
@@ -40,7 +40,7 @@ const SignUp = ({ navigation }: SignUpScreenProps) => {
             placeholder="First Name"
             placeholderTextColor={COLORS.WHITE}
             rules={{
-              required: 'First Name is required',
+              required: ERROR_MESSAGES.FIRST_NAME.REQUIRED,
             }}
           />
           <ErrorMessage error={errors.firstName} />
@@ -52,7 +52,7 @@ const SignUp = ({ navigation }: SignUpScreenProps) => {
             placeholder="Last Name"
             placeholderTextColor={COLORS.WHITE}
             rules={{
-              required: 'Last Name is required',
+              required: ERROR_MESSAGES.LAST_NAME.REQUIRED,
             }}
           />
           <ErrorMessage error={errors.lastName} />
@@ -64,7 +64,7 @@ const SignUp = ({ navigation }: SignUpScreenProps) => {
             placeholder="Email/Mobile Number"
             placeholderTextColor={COLORS.WHITE}
             rules={{
-              required: 'Enter email or mobile number',
+              required: ERROR_MESSAGES.ACCOUNT.REQUIRED,
             }}
           />
           <ErrorMessage error={errors.email} />
@@ -77,7 +77,7 @@ const SignUp = ({ navigation }: SignUpScreenProps) => {
             placeholder="Password"
             placeholderTextColor={COLORS.WHITE}
             rules={{
-              required: 'Password is required',
+              required: ERROR_MESSAGES.PASSWORD.REQUIRED,
             }}
           />
           <ErrorMessage error={errors.password} />
@@ -90,8 +90,8 @@ const SignUp = ({ navigation }: SignUpScreenProps) => {
             placeholder="Re-enter password"
             placeholderTextColor={COLORS.WHITE}
             rules={{
-              required: 'Re-enter password is required',
-              validate: (value) => value === observePassword || 'Oops! Password not match',
+              required: ERROR_MESSAGES.CONFIRM_PASS.REQUIRED,
+              validate: (value) => value === observePassword || ERROR_MESSAGES.CONFIRM_PASS.MATCH,
             }}
           />
           <ErrorMessage error={errors.confirmPassword} />
