@@ -1,3 +1,5 @@
+import { memo } from 'react'
+import isEqual from 'react-fast-compare'
 import { Text, TextProps } from 'react-native'
 
 import styles from './styles'
@@ -15,4 +17,4 @@ const Heading = ({ content, textMedium = false, style, ...rest }: HeadingProps) 
   )
 }
 
-export default Heading
+export default memo(Heading, isEqual)

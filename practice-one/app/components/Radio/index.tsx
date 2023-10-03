@@ -1,4 +1,5 @@
-import { useCallback, useState } from 'react'
+import { memo, useCallback, useState } from 'react'
+import isEqual from 'react-fast-compare'
 import {
   FlatList,
   StyleProp,
@@ -53,4 +54,4 @@ const Radio = ({ radioList, style, ...rest }: RadioProps) => {
   )
 }
 
-export default Radio
+export default memo(Radio, isEqual)

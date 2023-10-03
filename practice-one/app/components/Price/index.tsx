@@ -1,3 +1,5 @@
+import { memo } from 'react'
+import isEqual from 'react-fast-compare'
 import { View, ViewProps } from 'react-native'
 
 import Heading from '@components/Heading'
@@ -46,4 +48,4 @@ const Price = ({
   )
 }
 
-export default Price
+export default memo(Price, isEqual)

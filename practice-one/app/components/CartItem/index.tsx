@@ -1,3 +1,5 @@
+import { memo } from 'react'
+import isEqual from 'react-fast-compare'
 import {
   Image,
   ImageSourcePropType,
@@ -63,4 +65,4 @@ const CartItem = ({
   )
 }
 
-export default CartItem
+export default memo(CartItem, isEqual)

@@ -1,3 +1,5 @@
+import { memo } from 'react'
+import isEqual from 'react-fast-compare'
 import { View, ViewProps } from 'react-native'
 
 import Button from '@components/Button'
@@ -27,4 +29,4 @@ const Address = ({ name, streetAddress, style, onPress, ...rest }: AddressProps)
   )
 }
 
-export default Address
+export default memo(Address, isEqual)

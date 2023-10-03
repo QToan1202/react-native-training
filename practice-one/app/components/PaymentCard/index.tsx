@@ -1,4 +1,5 @@
-import { useCallback, useMemo } from 'react'
+import { memo, useCallback, useMemo } from 'react'
+import isEqual from 'react-fast-compare'
 import {
   Image,
   ImageBackground,
@@ -93,4 +94,4 @@ const PaymentCard = ({
   )
 }
 
-export default PaymentCard
+export default memo(PaymentCard, isEqual)

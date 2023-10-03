@@ -1,4 +1,5 @@
-import React, { ReactNode, useMemo } from 'react'
+import React, { ReactNode, memo, useMemo } from 'react'
+import isEqual from 'react-fast-compare'
 import { StyleProp, View, ViewProps, ViewStyle } from 'react-native'
 import { useSafeAreaInsets } from 'react-native-safe-area-context'
 
@@ -56,4 +57,4 @@ const Bar = ({
   )
 }
 
-export default Bar
+export default memo(Bar, isEqual)

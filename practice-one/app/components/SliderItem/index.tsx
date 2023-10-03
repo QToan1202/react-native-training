@@ -1,3 +1,5 @@
+import { memo } from 'react'
+import isEqual from 'react-fast-compare'
 import {
   ImageBackground,
   ImageBackgroundProps,
@@ -49,4 +51,4 @@ const SliderItem = ({
   )
 }
 
-export default SliderItem
+export default memo(SliderItem, isEqual)

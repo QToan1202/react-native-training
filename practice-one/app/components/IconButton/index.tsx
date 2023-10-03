@@ -1,3 +1,5 @@
+import { memo } from 'react'
+import isEqual from 'react-fast-compare'
 import { Image, ImageProps, TouchableOpacity, TouchableOpacityProps } from 'react-native'
 
 import { imageStyles } from '@styles'
@@ -27,4 +29,4 @@ const IconButton = ({
   )
 }
 
-export default IconButton
+export default memo(IconButton, isEqual)

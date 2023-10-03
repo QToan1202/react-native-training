@@ -1,3 +1,5 @@
+import { memo } from 'react'
+import isEqual from 'react-fast-compare'
 import { Image, ImageBackgroundProps, StyleProp, View, ViewProps, ViewStyle } from 'react-native'
 
 import Avatar, { AvatarProps } from '@components/Avatar'
@@ -39,4 +41,4 @@ const StoreCard = ({
   )
 }
 
-export default StoreCard
+export default memo(StoreCard, isEqual)

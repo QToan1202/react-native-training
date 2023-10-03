@@ -1,3 +1,5 @@
+import { memo } from 'react'
+import isEqual from 'react-fast-compare'
 import {
   ImageBackground,
   ImageBackgroundProps,
@@ -35,4 +37,4 @@ const MenuCard = ({ source, name, style, imageStyle, onPress, ...rest }: MenuCar
   )
 }
 
-export default MenuCard
+export default memo(MenuCard, isEqual)

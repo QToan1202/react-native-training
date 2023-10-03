@@ -1,4 +1,5 @@
-import { forwardRef, useCallback, useState } from 'react'
+import { forwardRef, memo, useCallback, useState } from 'react'
+import isEqual from 'react-fast-compare'
 import { TextInput, TextInputProps, View } from 'react-native'
 import { Control, UseControllerProps, useController } from 'react-hook-form'
 
@@ -59,4 +60,4 @@ const Input = forwardRef<TextInput, InputProps>(
   }
 )
 
-export default Input
+export default memo(Input, isEqual)

@@ -1,3 +1,5 @@
+import { memo } from 'react'
+import isEqual from 'react-fast-compare'
 import { View, ViewProps } from 'react-native'
 
 import Paragraph from '@components/Paragraph'
@@ -34,4 +36,4 @@ const TrackerItem = ({
   )
 }
 
-export default TrackerItem
+export default memo(TrackerItem, isEqual)

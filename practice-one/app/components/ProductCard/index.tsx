@@ -1,3 +1,5 @@
+import { memo } from 'react'
+import isEqual from 'react-fast-compare'
 import {
   Image,
   ImageProps,
@@ -70,4 +72,4 @@ const ProductCard = ({
   )
 }
 
-export default ProductCard
+export default memo(ProductCard, isEqual)

@@ -1,3 +1,5 @@
+import { memo } from 'react'
+import isEqual from 'react-fast-compare'
 import { Image, ImageProps, StyleProp, View, ViewProps, ViewStyle } from 'react-native'
 
 import { containerStyles, imageStyles } from '@styles'
@@ -27,4 +29,4 @@ const Avatar = ({ source, name, size = 'sm', align = 'inline', style, ...rest }:
   )
 }
 
-export default Avatar
+export default memo(Avatar, isEqual)

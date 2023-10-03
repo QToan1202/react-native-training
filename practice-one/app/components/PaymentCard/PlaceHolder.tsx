@@ -1,3 +1,5 @@
+import { memo } from 'react'
+import isEqual from 'react-fast-compare'
 import { Image, TouchableWithoutFeedback, View, ViewProps } from 'react-native'
 
 import Paragraph from '@components/Paragraph'
@@ -19,4 +21,4 @@ const PlaceHolder = ({ style, onTouchPlaceHolder, ...rest }: PlaceHolderProps) =
   )
 }
 
-export default PlaceHolder
+export default memo(PlaceHolder, isEqual)

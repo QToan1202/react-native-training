@@ -1,3 +1,5 @@
+import { memo } from 'react'
+import isEqual from 'react-fast-compare'
 import { StyleProp, Text, TextProps, TextStyle } from 'react-native'
 
 import { TSize } from '@types'
@@ -18,4 +20,4 @@ const Paragraph = ({ content, size = 'sm', style, ...rest }: ParagraphProps) => 
   )
 }
 
-export default Paragraph
+export default memo(Paragraph, isEqual)

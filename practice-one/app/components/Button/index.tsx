@@ -1,4 +1,5 @@
-import { useMemo } from 'react'
+import { memo, useMemo } from 'react'
+import isEqual from 'react-fast-compare'
 import {
   Image,
   ImageProps,
@@ -73,4 +74,4 @@ const Button = ({
   )
 }
 
-export default Button
+export default memo(Button, isEqual)

@@ -1,4 +1,5 @@
-import { useCallback, useMemo, useRef, useState } from 'react'
+import { memo, useCallback, useMemo, useRef, useState } from 'react'
+import isEqual from 'react-fast-compare'
 import {
   Animated,
   ImageStyle,
@@ -76,4 +77,4 @@ const Picker = <T extends IDropDownItem>({ listData, ...rest }: PickerProps<T>) 
   )
 }
 
-export default Picker
+export default memo(Picker, isEqual)
