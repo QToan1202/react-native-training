@@ -5,7 +5,7 @@ import { SafeAreaView } from 'react-native-safe-area-context'
 import { NativeStackScreenProps } from '@react-navigation/native-stack'
 import { RootStackParamList } from '@navigation/Stack'
 
-import { Button, ErrorMessage, Heading, Input, Paragraph } from '@components'
+import { Button, Heading, Input, Paragraph } from '@components'
 import { IForm } from '@types'
 import { COLORS, ERROR_MESSAGES } from '@constants'
 import { containerStyles } from '@styles'
@@ -15,15 +15,11 @@ import styles from './styles'
 export interface LoginScreenProps extends NativeStackScreenProps<RootStackParamList, 'Login'> {}
 
 const Login = ({ navigation }: LoginScreenProps) => {
-  const {
-    control,
-    handleSubmit,
-    formState: { errors },
-  } = useForm<IForm>()
+  const { control, handleSubmit } = useForm<IForm>()
   const onSubmit: SubmitHandler<IForm> = (data) => {
     Alert.alert(JSON.stringify(data))
   }
-  const handleToSignUpScreen = useCallback(() => navigation.navigate('SignUp'), [])
+  const handleToSignUpScreen = useCallback(() => navigation.navigate('SignUp'), [navigation])
 
   return (
     <SafeAreaView style={styles.container}>
@@ -35,35 +31,27 @@ const Login = ({ navigation }: LoginScreenProps) => {
         behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
         style={styles.input}
       >
-        <View>
-          <Input
-            name="email"
-            control={control}
-            placeholder="Email/Mobile Number"
-            placeholderTextColor={COLORS.WHITE}
-            rules={{
-              required: ERROR_MESSAGES.ACCOUNT.REQUIRED,
-            }}
-          />
-          <ErrorMessage error={errors.email} />
-        </View>
-        <View>
-          <Input
-            name="password"
-            secureTextEntry
-            control={control}
-            placeholder="Password"
-            placeholderTextColor={COLORS.WHITE}
-            rules={{
-              required: ERROR_MESSAGES.PASSWORD.REQUIRED,
-              minLength: {
-                value: 6,
-                message: ERROR_MESSAGES.PASSWORD.MIN_LENGTH,
-              },
-            }}
-          />
-          <ErrorMessage error={errors.password} />
-        </View>
+        <Input
+          name="email"
+          isShowError
+          control={control}
+          placeholder="Email/Mobile Number"
+          placeholderTextColor={COLORS.WHITE}
+          rules={{
+            required: ERROR_MESSAGES.ACCOUNT.REQUIRED,
+          }}
+        />
+        <Input
+          name="password"
+          isShowError
+          secureTextEntry
+          control={control}
+          placeholder="Password"
+          placeholderTextColor={COLORS.WHITE}
+          rules={{
+            required: ERROR_MESSAGES.PASSWORD.REQUIRED,
+          }}
+        />
       </KeyboardAvoidingView>
       <Button
         style={styles.loginBtn}

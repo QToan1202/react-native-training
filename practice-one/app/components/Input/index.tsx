@@ -1,8 +1,9 @@
 import { forwardRef, useCallback, useState } from 'react'
-import { TextInput, TextInputProps } from 'react-native'
+import { TextInput, TextInputProps, View } from 'react-native'
 import { Control, UseControllerProps, useController } from 'react-hook-form'
 
 import Paragraph from '@components/Paragraph'
+import ErrorMessage from '@components/ErrorMessage'
 import { IForm } from '@types'
 
 import styles from './styles'
@@ -12,11 +13,15 @@ export interface InputProps extends TextInputProps {
   name: keyof IForm
   control: Control<IForm>
   rules?: UseControllerProps['rules']
+  isShowError?: boolean
 }
 
 const Input = forwardRef<TextInput, InputProps>(
-  ({ label, name, control, rules, style, ...rest }, ref) => {
-    const { field } = useController<IForm>({
+  ({ label, name, control, rules, isShowError = false, style, ...rest }, ref) => {
+    const {
+      field,
+      formState: { errors },
+    } = useController<IForm>({
       control,
       defaultValue: '',
       name,
@@ -27,7 +32,7 @@ const Input = forwardRef<TextInput, InputProps>(
     const handleBlur = useCallback(() => setIsFocus(false), [])
 
     return (
-      <>
+      <View>
         {label && (
           <Paragraph
             size="sm"
@@ -48,7 +53,8 @@ const Input = forwardRef<TextInput, InputProps>(
           onBlur={handleBlur}
           {...rest}
         />
-      </>
+        {isShowError && <ErrorMessage error={errors[name]} />}
+      </View>
     )
   }
 )
