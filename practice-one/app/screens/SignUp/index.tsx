@@ -22,7 +22,9 @@ const SignUp = ({ navigation }: SignUpScreenProps) => {
   const handleToLoginScreen = useCallback(() => navigation.navigate('Login'), [navigation])
   const SignUpInputs = useMemo(
     () =>
-      SIGN_UP_INPUTS(observePassword).map(({ ...props }) => <Input {...props} control={control} />),
+      SIGN_UP_INPUTS(observePassword).map(({ name, ...props }) => (
+        <Input key={name} {...props} control={control} name={name} />
+      )),
     [control, observePassword]
   )
 
