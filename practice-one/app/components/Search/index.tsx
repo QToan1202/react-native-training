@@ -13,6 +13,7 @@ import {
 import { COLORS } from '@constants'
 import Input from '@components/Input'
 import { IForm } from '@types'
+import { containerStyles } from '@styles'
 
 import styles from './styles'
 
@@ -39,6 +40,7 @@ const Search = ({ placeholder, style, ...rest }: SearchProps) => {
       <View style={[styles.container, style]}>
         <Image style={styles.icon} source={require('@assets/search.png')} />
         <Input
+          containerStyle={containerStyles.expand}
           ref={searchInput}
           name="search"
           control={control}

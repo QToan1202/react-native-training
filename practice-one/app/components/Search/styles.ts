@@ -6,7 +6,6 @@ const styles = StyleSheet.create({
   container: {
     display: 'flex',
     flexDirection: 'row',
-    justifyContent: 'center',
     alignItems: 'center',
     columnGap: 20,
     borderRadius: 50,
@@ -19,7 +18,6 @@ const styles = StyleSheet.create({
     resizeMode: 'cover',
   },
   search: {
-    flex: 1,
     fontFamily: FONT_FAMILY.MONTSERRAT[500],
     fontSize: 14,
     color: COLORS.GRAY_50,

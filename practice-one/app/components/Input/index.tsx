@@ -1,6 +1,6 @@
 import { forwardRef, memo, useCallback, useState } from 'react'
 import isEqual from 'react-fast-compare'
-import { TextInput, TextInputProps, View } from 'react-native'
+import { StyleProp, TextInput, TextInputProps, View, ViewStyle } from 'react-native'
 import { Control, UseControllerProps, useController } from 'react-hook-form'
 
 import Paragraph from '@components/Paragraph'
@@ -15,10 +15,11 @@ export interface InputProps extends TextInputProps {
   control: Control<IForm>
   rules?: UseControllerProps['rules']
   isShowError?: boolean
+  containerStyle?: StyleProp<ViewStyle>
 }
 
 const Input = forwardRef<TextInput, InputProps>(
-  ({ label, name, control, rules, isShowError = false, style, ...rest }, ref) => {
+  ({ label, name, control, rules, isShowError = false, style, containerStyle, ...rest }, ref) => {
     const {
       field,
       formState: { errors },
@@ -33,7 +34,7 @@ const Input = forwardRef<TextInput, InputProps>(
     const handleBlur = useCallback(() => setIsFocus(false), [])
 
     return (
-      <View>
+      <View style={containerStyle}>
         {label && (
           <Paragraph
             size="sm"
