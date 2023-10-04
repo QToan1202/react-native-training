@@ -58,6 +58,30 @@ const PublicStackNavigator = () => (
 const PrivateStackNavigator = () => (
   <Stack.Navigator screenOptions={{ headerShown: false }}>
     <Stack.Screen name="Tabs" component={BottomNav} />
+  </Stack.Navigator>
+)
+
+const CheckOutStack = (
+  <Stack.Group
+    screenOptions={{
+      headerShown: true,
+      header: (props: NativeStackHeaderProps) => CustomHeader(CheckoutBar, props),
+    }}
+  >
+    <Stack.Screen name="Cart" component={Cart} options={{ headerTitle: 'my cart' }} />
+    <Stack.Screen
+      name="AddAddress"
+      component={AddAddress}
+      options={{ headerTitle: 'add a new address' }}
+    />
+    <Stack.Screen name="AddCard" component={AddCard} options={{ headerTitle: 'add card' }} />
+    <Stack.Screen name="Payment" component={Payment} options={{ headerTitle: 'payment option' }} />
+    <Stack.Screen name="OrderDetail" component={OrderDetail} />
+  </Stack.Group>
+)
+
+const HomeStack = () => (
+  <Stack.Navigator screenOptions={{ headerShown: false }}>
     <Stack.Screen name="Home" component={Dashboard} />
     <Stack.Screen
       name="CategoryDetail"
@@ -68,27 +92,12 @@ const PrivateStackNavigator = () => (
       }}
     />
     <Stack.Screen name="ProductDetail" component={ProductDetail} />
-    <Stack.Group
-      screenOptions={{
-        headerShown: true,
-        header: (props: NativeStackHeaderProps) => CustomHeader(CheckoutBar, props),
-      }}
-    >
-      <Stack.Screen name="Cart" component={Cart} options={{ headerTitle: 'my cart' }} />
-      <Stack.Screen
-        name="AddAddress"
-        component={AddAddress}
-        options={{ headerTitle: 'add a new address' }}
-      />
-      <Stack.Screen name="AddCard" component={AddCard} options={{ headerTitle: 'add card' }} />
-      <Stack.Screen
-        name="Payment"
-        component={Payment}
-        options={{ headerTitle: 'payment option' }}
-      />
-      <Stack.Screen name="OrderDetail" component={OrderDetail} />
-    </Stack.Group>
+    {CheckOutStack}
   </Stack.Navigator>
 )
 
-export default { PrivateStackNavigator, PublicStackNavigator }
+const BrowseStack = () => (
+  <Stack.Navigator screenOptions={{ headerShown: false }}>{CheckOutStack}</Stack.Navigator>
+)
+
+export default { PrivateStackNavigator, PublicStackNavigator, HomeStack, BrowseStack }

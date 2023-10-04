@@ -4,7 +4,7 @@ import { BottomTabHeaderProps, createBottomTabNavigator } from '@react-navigatio
 
 import { Bar, BrowseBar, HomeBar, TabIcon } from '@components'
 import { COLORS } from '@constants'
-import { Dashboard } from '@screens'
+import Stack from '@navigation/Stack'
 
 import styles from './styles'
 
@@ -60,7 +60,7 @@ const BottomNav = () => {
     >
       <Tab.Screen
         name="Home"
-        component={Dashboard}
+        component={Stack.HomeStack}
         options={{
           headerTitle: 'Groceries',
           header: (props: BottomTabHeaderProps) => CustomHeader(HomeBar, props),
@@ -68,7 +68,7 @@ const BottomNav = () => {
       />
       <Tab.Screen
         name="Browse"
-        component={Fragment}
+        component={Stack.BrowseStack}
         options={{
           header: (props: BottomTabHeaderProps) => CustomHeader(BrowseBar, props),
         }}
