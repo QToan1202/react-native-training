@@ -1,19 +1,19 @@
 import { View } from 'react-native'
 import { NavigationProp } from '@react-navigation/native'
-import { BottomTabHeaderProps, createBottomTabNavigator } from '@react-navigation/bottom-tabs'
+import { createBottomTabNavigator } from '@react-navigation/bottom-tabs'
 
-import { Bar, BrowseBar, HomeBar, TabIcon } from '@components'
+import { TabIcon } from '@components'
 import { COLORS } from '@constants'
 import Stack from '@navigation/Stack'
 
 import styles from './styles'
 
 export type TabParamsList = {
-  Home: undefined
-  Browse: { search: string } | undefined // Search keyword
-  Product: undefined
-  ['Order History']: undefined
-  Profile: undefined
+  HomeTab: undefined
+  BrowseTab: undefined
+  ProductTab: undefined
+  OrderHistoryTab: undefined
+  ProfileTab: undefined
 }
 
 const Tab = createBottomTabNavigator<TabParamsList>()
@@ -26,31 +26,26 @@ const renderTabIcon = (
   color: string
 ): React.JSX.Element => {
   switch (route) {
-    case 'Home':
+    case 'HomeTab':
       return <TabIcon.Home color={color} />
-    case 'Browse':
+    case 'BrowseTab':
       return <TabIcon.Search color={color} />
-    case 'Product':
+    case 'ProductTab':
       return <TabIcon.Store color={color} />
-    case 'Order History':
+    case 'OrderHistoryTab':
       return <TabIcon.Order color={color} />
-    case 'Profile':
+    case 'ProfileTab':
       return <TabIcon.Profile color={color} />
     default:
       return Fragment()
   }
 }
 
-const Header = (title: string) => <Bar title={title} />
-const CustomHeader = (Element: React.JSX.ElementType, props: BottomTabHeaderProps) => (
-  <Element {...props} />
-)
-
 const BottomNav = () => {
   return (
     <Tab.Navigator
       screenOptions={({ route, navigation }) => ({
-        header: () => Header(route.name),
+        headerShown: false,
         tabBarIcon: ({ color }) => renderTabIcon(route.name, navigation, color),
         tabBarActiveTintColor: COLORS.PRIMARY,
         tabBarInactiveTintColor: COLORS.GRAY_50,
@@ -59,23 +54,26 @@ const BottomNav = () => {
       })}
     >
       <Tab.Screen
-        name="Home"
+        name="HomeTab"
         component={Stack.HomeStack}
         options={{
-          headerTitle: 'Groceries',
-          header: (props: BottomTabHeaderProps) => CustomHeader(HomeBar, props),
+          tabBarLabel: 'Home',
         }}
       />
       <Tab.Screen
-        name="Browse"
+        name="BrowseTab"
         component={Stack.BrowseStack}
         options={{
-          header: (props: BottomTabHeaderProps) => CustomHeader(BrowseBar, props),
+          tabBarLabel: 'Browse',
         }}
       />
-      <Tab.Screen name="Product" component={Fragment} />
-      <Tab.Screen name="Order History" component={Fragment} />
-      <Tab.Screen name="Profile" component={Fragment} />
+      <Tab.Screen name="ProductTab" component={Fragment} options={{ tabBarLabel: 'Product' }} />
+      <Tab.Screen
+        name="OrderHistoryTab"
+        component={Fragment}
+        options={{ tabBarLabel: 'Order History' }}
+      />
+      <Tab.Screen name="ProfileTab" component={Fragment} options={{ tabBarLabel: 'Profile' }} />
     </Tab.Navigator>
   )
 }

@@ -4,6 +4,7 @@ import BottomNav, { TabParamsList } from '@navigation/Tab'
 import {
   AddAddress,
   AddCard,
+  Browse,
   Cart,
   CategoryDetail,
   Dashboard,
@@ -14,11 +15,13 @@ import {
   ProductDetail,
   SignUp,
 } from '@screens'
-import { CategoryBar, CheckoutBar } from '@components'
+import { BrowseBar, CategoryBar, CheckoutBar, HomeBar } from '@components'
 import { COLORS } from '@constants'
 
 export type RootStackParamList = {
   Tabs: undefined
+  Home: undefined
+  Browse: { search: string } | undefined // Search keyword
   Onboarding: undefined
   Login: undefined
   SignUp: undefined
@@ -58,13 +61,13 @@ const PublicStackNavigator = () => (
 const PrivateStackNavigator = () => (
   <Stack.Navigator screenOptions={{ headerShown: false }}>
     <Stack.Screen name="Tabs" component={BottomNav} />
+    <Stack.Screen name="ProductDetail" component={ProductDetail} options={{ headerShown: false }} />
   </Stack.Navigator>
 )
 
 const CheckOutStack = (
   <Stack.Group
     screenOptions={{
-      headerShown: true,
       header: (props: NativeStackHeaderProps) => CustomHeader(CheckoutBar, props),
     }}
   >
@@ -76,28 +79,46 @@ const CheckOutStack = (
     />
     <Stack.Screen name="AddCard" component={AddCard} options={{ headerTitle: 'add card' }} />
     <Stack.Screen name="Payment" component={Payment} options={{ headerTitle: 'payment option' }} />
-    <Stack.Screen name="OrderDetail" component={OrderDetail} />
+    <Stack.Screen
+      name="OrderDetail"
+      component={OrderDetail}
+      options={{ headerTitle: 'order details' }}
+    />
   </Stack.Group>
 )
 
 const HomeStack = () => (
-  <Stack.Navigator screenOptions={{ headerShown: false }}>
-    <Stack.Screen name="Home" component={Dashboard} />
+  <Stack.Navigator>
+    <Stack.Screen
+      name="Home"
+      component={Dashboard}
+      options={{
+        headerTitle: 'Groceries',
+        header: (props: NativeStackHeaderProps) => CustomHeader(HomeBar, props),
+      }}
+    />
     <Stack.Screen
       name="CategoryDetail"
       component={CategoryDetail}
       options={{
-        headerShown: true,
         header: (props: NativeStackHeaderProps) => CustomHeader(CategoryBar, props),
       }}
     />
-    <Stack.Screen name="ProductDetail" component={ProductDetail} />
     {CheckOutStack}
   </Stack.Navigator>
 )
 
 const BrowseStack = () => (
-  <Stack.Navigator screenOptions={{ headerShown: false }}>{CheckOutStack}</Stack.Navigator>
+  <Stack.Navigator>
+    <Stack.Screen
+      name="Browse"
+      component={Browse}
+      options={{
+        header: (props: NativeStackHeaderProps) => CustomHeader(BrowseBar, props),
+      }}
+    />
+    {CheckOutStack}
+  </Stack.Navigator>
 )
 
 export default { PrivateStackNavigator, PublicStackNavigator, HomeStack, BrowseStack }
