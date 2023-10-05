@@ -86,6 +86,7 @@ const getStories = () => {
     "./app/navigation/Stack/PrivateStack.stories.tsx": require("../app/navigation/Stack/PrivateStack.stories.tsx"),
     "./app/navigation/Stack/PublicStack.stories.tsx": require("../app/navigation/Stack/PublicStack.stories.tsx"),
     "./app/navigation/Tab/Tab.stories.tsx": require("../app/navigation/Tab/Tab.stories.tsx"),
+    "./app/screens/Browse/Browse.stories.tsx": require("../app/screens/Browse/Browse.stories.tsx"),
     "./app/screens/CategoryDetail/CategoryDetail.stories.tsx": require("../app/screens/CategoryDetail/CategoryDetail.stories.tsx"),
     "./app/screens/Checkout/AddAddress/AddAddress.stories.tsx": require("../app/screens/Checkout/AddAddress/AddAddress.stories.tsx"),
     "./app/screens/Checkout/AddCard/AddCard.stories.tsx": require("../app/screens/Checkout/AddCard/AddCard.stories.tsx"),
