@@ -1,11 +1,11 @@
 import { useCallback } from 'react'
-import { BottomTabHeaderProps } from '@react-navigation/bottom-tabs'
+import { NativeStackHeaderProps } from '@react-navigation/native-stack'
 
 import Button, { ButtonProps } from '@components/Button'
 import Bar from '@components/Bar'
 import { containerStyles } from '@styles'
 
-const CategoryBar = ({ options, route, navigation }: BottomTabHeaderProps) => {
+const CategoryBar = ({ options, route, navigation }: NativeStackHeaderProps) => {
   const handlePress = () => {
     throw new Error('Function not implemented.')
   }

@@ -1,6 +1,6 @@
 import { useCallback, useMemo } from 'react'
 import { View } from 'react-native'
-import { BottomTabHeaderProps } from '@react-navigation/bottom-tabs'
+import { NativeStackHeaderProps } from '@react-navigation/native-stack'
 
 import { BAR } from '@constants'
 import Button, { ButtonProps } from '@components/Button'
@@ -13,7 +13,9 @@ import { IIconList } from '@types'
 
 import styles from './styles'
 
-const BrowseBar = ({ options, route }: BottomTabHeaderProps) => {
+const BrowseBar = ({ navigation, options, route }: NativeStackHeaderProps) => {
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  const handleNavigateToCart = useCallback(() => navigation.navigate('Cart'), [])
   const handlePress = () => {
     throw new Error('Function not implemented.')
   }
@@ -31,8 +33,15 @@ const BrowseBar = ({ options, route }: BottomTabHeaderProps) => {
     []
   )
   const IconList = useMemo(
-    () => BAR.HOME.map(({ label, ...rest }: IIconList) => <IconButton key={label} {...rest} />),
-    []
+    () =>
+      BAR.HOME.map(({ label, ...rest }: IIconList) => (
+        <IconButton
+          key={label}
+          onPress={label === 'cart' ? handleNavigateToCart : undefined}
+          {...rest}
+        />
+      )),
+    [handleNavigateToCart]
   )
 
   return (
