@@ -12,7 +12,7 @@ export interface OrderDetailScreenProps
   extends NativeStackScreenProps<RootStackParamList, 'OrderDetail'> {}
 
 const OrderDetail = ({ navigation }: OrderDetailScreenProps) => {
-  const handleNavigateToHome = useCallback(() => navigation.navigate('Tabs'), [navigation])
+  const handleNavigateToHome = useCallback(() => navigation.navigate('Home'), [navigation])
 
   return (
     <ScrollView contentContainerStyle={styles.container} showsVerticalScrollIndicator={false}>
