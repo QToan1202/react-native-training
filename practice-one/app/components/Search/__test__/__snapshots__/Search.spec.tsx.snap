@@ -29,7 +29,6 @@ exports[`Testing Search component Render Search component success 1`] = `
         "columnGap": 20,
         "display": "flex",
         "flexDirection": "row",
-        "justifyContent": "center",
         "paddingLeft": 17,
       },
       undefined,
@@ -50,36 +49,43 @@ exports[`Testing Search component Render Search component success 1`] = `
       }
     }
   />
-  <TextInput
-    onBlur={[Function]}
-    onChangeText={[Function]}
-    onFocus={[Function]}
-    placeholder="my search input"
-    placeholderTextColor="#4f4f4f"
+  <View
     style={
-      [
-        {
-          "borderColor": "#fff",
-          "borderRadius": 50,
-          "borderWidth": 1,
-          "color": "#fff",
-          "fontFamily": "Montserrat_400Regular",
-          "fontSize": 18,
-          "paddingLeft": 15,
-          "paddingVertical": 12,
-        },
-        {},
-        {
-          "color": "#4f4f4f",
-          "flex": 1,
-          "fontFamily": "Montserrat_500Medium",
-          "fontSize": 14,
-          "paddingLeft": 0,
-          "paddingVertical": 8,
-        },
-      ]
+      {
+        "flex": 1,
+      }
     }
-    value=""
-  />
+  >
+    <TextInput
+      onBlur={[Function]}
+      onChangeText={[Function]}
+      onFocus={[Function]}
+      placeholder="my search input"
+      placeholderTextColor="#4f4f4f"
+      style={
+        [
+          {
+            "borderColor": "#fff",
+            "borderRadius": 50,
+            "borderWidth": 1,
+            "color": "#fff",
+            "fontFamily": "Montserrat_400Regular",
+            "fontSize": 18,
+            "paddingLeft": 15,
+            "paddingVertical": 12,
+          },
+          {},
+          {
+            "color": "#4f4f4f",
+            "fontFamily": "Montserrat_500Medium",
+            "fontSize": 14,
+            "paddingLeft": 0,
+            "paddingVertical": 8,
+          },
+        ]
+      }
+      value=""
+    />
+  </View>
 </View>
 `;

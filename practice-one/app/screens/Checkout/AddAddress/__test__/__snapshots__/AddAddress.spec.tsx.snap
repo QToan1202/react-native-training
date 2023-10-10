@@ -116,45 +116,47 @@ exports[`Testing Add Address screen Render screen successfully 1`] = `
         }
       >
         <View>
-          <Text
-            style={
-              [
-                {
-                  "color": "#fff",
-                  "fontFamily": "Montserrat_400Regular",
-                },
-                {
-                  "fontSize": 14,
-                },
-                {
-                  "color": "#3a2c3c",
-                  "fontFamily": "Montserrat_500Medium",
-                },
-              ]
-            }
-          >
-            Name
-          </Text>
-          <TextInput
-            onBlur={[Function]}
-            onChangeText={[Function]}
-            onFocus={[Function]}
-            style={
-              [
-                {
-                  "borderBottomColor": "#dbdbde",
-                  "borderBottomWidth": 0.5,
-                  "color": "#000",
-                  "fontFamily": "Montserrat_500Medium",
-                  "fontSize": 16,
-                  "paddingVertical": 5,
-                },
-                {},
-                undefined,
-              ]
-            }
-            value=""
-          />
+          <View>
+            <Text
+              style={
+                [
+                  {
+                    "color": "#fff",
+                    "fontFamily": "Montserrat_400Regular",
+                  },
+                  {
+                    "fontSize": 14,
+                  },
+                  {
+                    "color": "#3a2c3c",
+                    "fontFamily": "Montserrat_500Medium",
+                  },
+                ]
+              }
+            >
+              Name
+            </Text>
+            <TextInput
+              onBlur={[Function]}
+              onChangeText={[Function]}
+              onFocus={[Function]}
+              style={
+                [
+                  {
+                    "borderBottomColor": "#dbdbde",
+                    "borderBottomWidth": 0.5,
+                    "color": "#000",
+                    "fontFamily": "Montserrat_500Medium",
+                    "fontSize": 16,
+                    "paddingVertical": 5,
+                  },
+                  {},
+                  undefined,
+                ]
+              }
+              value=""
+            />
+          </View>
           <View
             style={
               {
@@ -164,45 +166,47 @@ exports[`Testing Add Address screen Render screen successfully 1`] = `
           />
         </View>
         <View>
-          <Text
-            style={
-              [
-                {
-                  "color": "#fff",
-                  "fontFamily": "Montserrat_400Regular",
-                },
-                {
-                  "fontSize": 14,
-                },
-                {
-                  "color": "#3a2c3c",
-                  "fontFamily": "Montserrat_500Medium",
-                },
-              ]
-            }
-          >
-            Phone
-          </Text>
-          <TextInput
-            onBlur={[Function]}
-            onChangeText={[Function]}
-            onFocus={[Function]}
-            style={
-              [
-                {
-                  "borderBottomColor": "#dbdbde",
-                  "borderBottomWidth": 0.5,
-                  "color": "#000",
-                  "fontFamily": "Montserrat_500Medium",
-                  "fontSize": 16,
-                  "paddingVertical": 5,
-                },
-                {},
-                undefined,
-              ]
-            }
-            value=""
-          />
+          <View>
+            <Text
+              style={
+                [
+                  {
+                    "color": "#fff",
+                    "fontFamily": "Montserrat_400Regular",
+                  },
+                  {
+                    "fontSize": 14,
+                  },
+                  {
+                    "color": "#3a2c3c",
+                    "fontFamily": "Montserrat_500Medium",
+                  },
+                ]
+              }
+            >
+              Phone
+            </Text>
+            <TextInput
+              onBlur={[Function]}
+              onChangeText={[Function]}
+              onFocus={[Function]}
+              style={
+                [
+                  {
+                    "borderBottomColor": "#dbdbde",
+                    "borderBottomWidth": 0.5,
+                    "color": "#000",
+                    "fontFamily": "Montserrat_500Medium",
+                    "fontSize": 16,
+                    "paddingVertical": 5,
+                  },
+                  {},
+                  undefined,
+                ]
+              }
+              value=""
+            />
+          </View>
           <View
             style={
               {
@@ -212,45 +216,47 @@ exports[`Testing Add Address screen Render screen successfully 1`] = `
           />
         </View>
         <View>
-          <Text
-            style={
-              [
-                {
-                  "color": "#fff",
-                  "fontFamily": "Montserrat_400Regular",
-                },
-                {
-                  "fontSize": 14,
-                },
-                {
-                  "color": "#3a2c3c",
-                  "fontFamily": "Montserrat_500Medium",
-                },
-              ]
-            }
-          >
-            Street address
-          </Text>
-          <TextInput
-            onBlur={[Function]}
-            onChangeText={[Function]}
-            onFocus={[Function]}
-            style={
-              [
-                {
-                  "borderBottomColor": "#dbdbde",
-                  "borderBottomWidth": 0.5,
-                  "color": "#000",
-                  "fontFamily": "Montserrat_500Medium",
-                  "fontSize": 16,
-                  "paddingVertical": 5,
-                },
-                {},
-                undefined,
-              ]
-            }
-            value=""
-          />
+          <View>
+            <Text
+              style={
+                [
+                  {
+                    "color": "#fff",
+                    "fontFamily": "Montserrat_400Regular",
+                  },
+                  {
+                    "fontSize": 14,
+                  },
+                  {
+                    "color": "#3a2c3c",
+                    "fontFamily": "Montserrat_500Medium",
+                  },
+                ]
+              }
+            >
+              Street address
+            </Text>
+            <TextInput
+              onBlur={[Function]}
+              onChangeText={[Function]}
+              onFocus={[Function]}
+              style={
+                [
+                  {
+                    "borderBottomColor": "#dbdbde",
+                    "borderBottomWidth": 0.5,
+                    "color": "#000",
+                    "fontFamily": "Montserrat_500Medium",
+                    "fontSize": 16,
+                    "paddingVertical": 5,
+                  },
+                  {},
+                  undefined,
+                ]
+              }
+              value=""
+            />
+          </View>
           <View
             style={
               {
@@ -260,45 +266,47 @@ exports[`Testing Add Address screen Render screen successfully 1`] = `
           />
         </View>
         <View>
-          <Text
-            style={
-              [
-                {
-                  "color": "#fff",
-                  "fontFamily": "Montserrat_400Regular",
-                },
-                {
-                  "fontSize": 14,
-                },
-                {
-                  "color": "#3a2c3c",
-                  "fontFamily": "Montserrat_500Medium",
-                },
-              ]
-            }
-          >
-            State
-          </Text>
-          <TextInput
-            onBlur={[Function]}
-            onChangeText={[Function]}
-            onFocus={[Function]}
-            style={
-              [
-                {
-                  "borderBottomColor": "#dbdbde",
-                  "borderBottomWidth": 0.5,
-                  "color": "#000",
-                  "fontFamily": "Montserrat_500Medium",
-                  "fontSize": 16,
-                  "paddingVertical": 5,
-                },
-                {},
-                undefined,
-              ]
-            }
-            value=""
-          />
+          <View>
+            <Text
+              style={
+                [
+                  {
+                    "color": "#fff",
+                    "fontFamily": "Montserrat_400Regular",
+                  },
+                  {
+                    "fontSize": 14,
+                  },
+                  {
+                    "color": "#3a2c3c",
+                    "fontFamily": "Montserrat_500Medium",
+                  },
+                ]
+              }
+            >
+              State
+            </Text>
+            <TextInput
+              onBlur={[Function]}
+              onChangeText={[Function]}
+              onFocus={[Function]}
+              style={
+                [
+                  {
+                    "borderBottomColor": "#dbdbde",
+                    "borderBottomWidth": 0.5,
+                    "color": "#000",
+                    "fontFamily": "Montserrat_500Medium",
+                    "fontSize": 16,
+                    "paddingVertical": 5,
+                  },
+                  {},
+                  undefined,
+                ]
+              }
+              value=""
+            />
+          </View>
           <View
             style={
               {
@@ -308,45 +316,47 @@ exports[`Testing Add Address screen Render screen successfully 1`] = `
           />
         </View>
         <View>
-          <Text
-            style={
-              [
-                {
-                  "color": "#fff",
-                  "fontFamily": "Montserrat_400Regular",
-                },
-                {
-                  "fontSize": 14,
-                },
-                {
-                  "color": "#3a2c3c",
-                  "fontFamily": "Montserrat_500Medium",
-                },
-              ]
-            }
-          >
-            Zipcode
-          </Text>
-          <TextInput
-            onBlur={[Function]}
-            onChangeText={[Function]}
-            onFocus={[Function]}
-            style={
-              [
-                {
-                  "borderBottomColor": "#dbdbde",
-                  "borderBottomWidth": 0.5,
-                  "color": "#000",
-                  "fontFamily": "Montserrat_500Medium",
-                  "fontSize": 16,
-                  "paddingVertical": 5,
-                },
-                {},
-                undefined,
-              ]
-            }
-            value=""
-          />
+          <View>
+            <Text
+              style={
+                [
+                  {
+                    "color": "#fff",
+                    "fontFamily": "Montserrat_400Regular",
+                  },
+                  {
+                    "fontSize": 14,
+                  },
+                  {
+                    "color": "#3a2c3c",
+                    "fontFamily": "Montserrat_500Medium",
+                  },
+                ]
+              }
+            >
+              Zipcode
+            </Text>
+            <TextInput
+              onBlur={[Function]}
+              onChangeText={[Function]}
+              onFocus={[Function]}
+              style={
+                [
+                  {
+                    "borderBottomColor": "#dbdbde",
+                    "borderBottomWidth": 0.5,
+                    "color": "#000",
+                    "fontFamily": "Montserrat_500Medium",
+                    "fontSize": 16,
+                    "paddingVertical": 5,
+                  },
+                  {},
+                  undefined,
+                ]
+              }
+              value=""
+            />
+          </View>
           <View
             style={
               {

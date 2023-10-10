@@ -103,7 +103,7 @@ exports[`Testing public stack navigation Render stack successfully 1`] = `
             }
             route={
               {
-                "key": "Onboarding-t6aWOcOIdVD8XMCnTmCOb",
+                "key": "Onboarding-j9OwHgCf2Z7F5jroqSfF4",
                 "name": "Onboarding",
                 "params": undefined,
               }

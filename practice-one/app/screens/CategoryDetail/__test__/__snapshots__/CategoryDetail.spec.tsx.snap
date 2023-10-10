@@ -3,11 +3,14 @@
 exports[`Testing Category Detail screen Render screen successfully 1`] = `
 <RCTScrollView
   contentContainerStyle={
-    {
-      "alignSelf": "center",
-      "paddingVertical": 30,
-      "rowGap": 10,
-    }
+    [
+      {
+        "alignSelf": "center",
+        "paddingVertical": 30,
+        "rowGap": 10,
+      },
+      undefined,
+    ]
   }
   data={
     [
@@ -84,10 +87,13 @@ exports[`Testing Category Detail screen Render screen successfully 1`] = `
             {
               "flexDirection": "row",
             },
-            {
-              "columnGap": 10,
-              "justifyContent": "flex-start",
-            },
+            [
+              {
+                "columnGap": 10,
+                "justifyContent": "flex-start",
+              },
+              undefined,
+            ],
           ]
         }
       >
@@ -480,10 +486,13 @@ exports[`Testing Category Detail screen Render screen successfully 1`] = `
             {
               "flexDirection": "row",
             },
-            {
-              "columnGap": 10,
-              "justifyContent": "flex-start",
-            },
+            [
+              {
+                "columnGap": 10,
+                "justifyContent": "flex-start",
+              },
+              undefined,
+            ],
           ]
         }
       >
