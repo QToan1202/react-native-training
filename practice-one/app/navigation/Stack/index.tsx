@@ -1,6 +1,5 @@
 import { NativeStackHeaderProps, createNativeStackNavigator } from '@react-navigation/native-stack'
 
-import BottomNav, { TabParamsList } from '@navigation/Tab'
 import {
   AddAddress,
   AddCard,
@@ -33,7 +32,7 @@ export type RootStackParamList = {
   AddCard: undefined
   Payment: undefined
   OrderDetail: undefined
-} & TabParamsList
+}
 
 const Stack = createNativeStackNavigator<RootStackParamList>()
 const CustomHeader = (Element: React.JSX.ElementType, props: NativeStackHeaderProps) => (
@@ -60,7 +59,6 @@ const PublicStackNavigator = () => (
 
 const PrivateStackNavigator = () => (
   <Stack.Navigator screenOptions={{ headerShown: false }}>
-    <Stack.Screen name="Tabs" component={BottomNav} />
     <Stack.Screen name="ProductDetail" component={ProductDetail} options={{ headerShown: false }} />
   </Stack.Navigator>
 )
@@ -97,6 +95,7 @@ const HomeStack = () => (
         header: (props: NativeStackHeaderProps) => CustomHeader(HomeBar, props),
       }}
     />
+    <Stack.Screen name="ProductDetail" component={ProductDetail} options={{ headerShown: false }} />
     <Stack.Screen
       name="CategoryDetail"
       component={CategoryDetail}

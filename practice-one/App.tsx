@@ -11,7 +11,7 @@ import {
 import { StatusBar, StatusBarStyle } from 'expo-status-bar'
 
 import { NavigationContainer } from '@react-navigation/native'
-import { StackNavigation } from '@navigation'
+import { BottomNav, StackNavigation } from '@navigation'
 import { asyncStoreService } from '@services'
 
 import styles from './App.styles'
@@ -59,11 +59,7 @@ const App = () => {
     <SafeAreaProvider style={styles.container} onLayout={onLayoutRootView}>
       <StatusBar style={theme.current} />
       <NavigationContainer>
-        {!FAKE_IS_LOGIN ? (
-          <StackNavigation.PublicStackNavigator />
-        ) : (
-          <StackNavigation.PrivateStackNavigator />
-        )}
+        {!FAKE_IS_LOGIN ? <StackNavigation.PublicStackNavigator /> : <BottomNav />}
       </NavigationContainer>
     </SafeAreaProvider>
   )
