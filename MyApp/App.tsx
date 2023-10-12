@@ -12,7 +12,7 @@ import {
   View,
 } from "react-native";
 import { MyButton } from "./components";
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 
 const myList = [
   {
@@ -33,6 +33,11 @@ export default function App() {
   const handlePress = () => Alert.alert("Oke");
   const handleHideKeyboard = () => Keyboard.dismiss();
   const [keyboardStatus, setKeyboardStatus] = useState<string>("");
+  const getTodos = useCallback(() => {
+    return fetch("https://jsonplaceholder.typicode.com/todos/1")
+      .then((response) => response.json())
+      .then((json) => console.log(json));
+  }, []);
 
   useEffect(() => {
     const showKeyboardEvent = Keyboard.addListener("keyboardDidShow", () => {
@@ -42,6 +47,8 @@ export default function App() {
     const hideKeyboardEvent = Keyboard.addListener("keyboardDidHide", () => {
       setKeyboardStatus("Keyboard Hidden");
     });
+
+    getTodos();
 
     return () => {
       showKeyboardEvent.remove();
