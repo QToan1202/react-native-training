@@ -13,6 +13,7 @@ import {
 } from "react-native";
 import { MyButton } from "./components";
 import { useCallback, useEffect, useState } from "react";
+import AsyncStorage from "@react-native-async-storage/async-storage";
 
 const myList = [
   {
@@ -36,7 +37,23 @@ export default function App() {
   const getTodos = useCallback(() => {
     return fetch("https://jsonplaceholder.typicode.com/todos/1")
       .then((response) => response.json())
-      .then((json) => console.log(json));
+      .then((json) => AsyncStorage.setItem("@todo", JSON.stringify(json)))
+      .catch((error) => error instanceof Error && console.log(error.message));
+  }, []);
+  const shouldGetTodos = useCallback(async () => {
+    try {
+      const storeTodo = await AsyncStorage.getItem("@todo");
+
+      if (storeTodo === null) {
+        console.log("Store empty: Get new todo");
+        getTodos();
+        return;
+      }
+
+      console.log("Store data:", storeTodo);
+    } catch (error) {
+      if (error instanceof Error) console.log(error.message);
+    }
   }, []);
 
   useEffect(() => {
@@ -48,7 +65,7 @@ export default function App() {
       setKeyboardStatus("Keyboard Hidden");
     });
 
-    getTodos();
+    shouldGetTodos();
 
     return () => {
       showKeyboardEvent.remove();
