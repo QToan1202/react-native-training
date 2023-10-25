@@ -14,6 +14,9 @@ import {
 import { MyButton } from "./components";
 import { useCallback, useEffect, useState } from "react";
 import AsyncStorage from "@react-native-async-storage/async-storage";
+import { Button, TamaguiProvider } from "tamagui";
+import config from "./tamagui.config";
+import { useFonts } from "expo-font";
 
 const myList = [
   {
@@ -31,6 +34,10 @@ const myList = [
 ];
 
 export default function App() {
+  const [loaded] = useFonts({
+    Inter: require("@tamagui/font-inter/otf/Inter-Medium.otf"),
+    InterBold: require("@tamagui/font-inter/otf/Inter-Bold.otf"),
+  });
   const handlePress = () => Alert.alert("Oke");
   const handleHideKeyboard = () => Keyboard.dismiss();
   const [keyboardStatus, setKeyboardStatus] = useState<string>("");
@@ -57,6 +64,16 @@ export default function App() {
   }, []);
 
   useEffect(() => {
+    if (loaded) {
+      // can hide splash screen here
+    }
+  }, [loaded]);
+
+  if (!loaded) {
+    return null;
+  }
+
+  useEffect(() => {
     const showKeyboardEvent = Keyboard.addListener("keyboardDidShow", () => {
       setKeyboardStatus("Keyboard Shown");
     });
@@ -74,19 +91,22 @@ export default function App() {
   }, []);
 
   return (
-    <KeyboardAvoidingView behavior="padding" style={styles.container}>
-      <Text>Open up App.tsx to start working on your app!</Text>
-      <StatusBar style="auto" />
-      <MyButton title="Press here" onPress={handlePress} />
-      <Image style={styles.img} source={require("./assets/image.jpg")} />
-      <TextInput style={styles.input} placeholder="Type in here" />
-      <Text>Current keyboard status: {keyboardStatus}</Text>
-      <MyButton title="Hide keyboard" onPress={handleHideKeyboard} />
-      {/* <FlatList
-          data={myList}
-          renderItem={({ item }) => <Text>{item.title}</Text>}
-        /> */}
-    </KeyboardAvoidingView>
+    <TamaguiProvider config={config}>
+      <KeyboardAvoidingView behavior="padding" style={styles.container}>
+        <Text>Open up App.tsx to start working on your app!</Text>
+        <StatusBar style="auto" />
+        <MyButton title="Press here" onPress={handlePress} />
+        <Image style={styles.img} source={require("./assets/image.jpg")} />
+        <TextInput style={styles.input} placeholder="Type in here" />
+        <Text>Current keyboard status: {keyboardStatus}</Text>
+        <MyButton title="Hide keyboard" onPress={handleHideKeyboard} />
+        {/* <FlatList
+        data={myList}
+        renderItem={({ item }) => <Text>{item.title}</Text>}
+      /> */}
+        <Button>Tamagui Button</Button>
+      </KeyboardAvoidingView>
+    </TamaguiProvider>
   );
 }
 
