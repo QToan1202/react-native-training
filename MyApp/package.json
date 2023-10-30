@@ -12,6 +12,7 @@
     "@react-native-async-storage/async-storage": "1.18.2",
     "@tamagui/babel-plugin": "^1.75.4",
     "@tamagui/config": "^1.75.4",
+    "@tamagui/react-native-media-driver": "^1.75.7",
     "expo": "~49.0.5",
     "expo-font": "^11.6.0",
     "expo-status-bar": "~1.6.0",
