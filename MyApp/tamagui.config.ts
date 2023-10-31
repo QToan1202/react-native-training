@@ -1,6 +1,7 @@
 import { config as nativeConfig } from "@tamagui/config/v2-native";
 import { createMedia } from '@tamagui/react-native-media-driver'
 import { createFont, createTamagui } from "tamagui";
+import { animations } from "./animations";
 
 const interFont = createFont({
   family: 'Inter, Helvetica, Arial, sans-serif',
@@ -31,6 +32,7 @@ const interFont = createFont({
 
 const tamaguiConfig = createTamagui({
   ...nativeConfig,
+  animations,
   fonts: {
     heading: interFont,
     body: interFont,
