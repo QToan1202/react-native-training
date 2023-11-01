@@ -14,7 +14,7 @@ import {
 import { MyButton } from "./components";
 import { useCallback, useEffect, useState } from "react";
 import AsyncStorage from "@react-native-async-storage/async-storage";
-import { Button, TamaguiProvider } from "tamagui";
+import { Button, TamaguiProvider, XStack, YStack } from "tamagui";
 import config from "./tamagui.config";
 import { useFonts } from "expo-font";
 
@@ -104,7 +104,16 @@ export default function App() {
         data={myList}
         renderItem={({ item }) => <Text>{item.title}</Text>}
       /> */}
-        <Button>Tamagui Button</Button>
+        <YStack space>
+          <Button size={"$5"}>Tamagui Button</Button>
+          <Button size={"$5"}>Tamagui Button</Button>
+          <Button size={"$5"}>Tamagui Button</Button>
+        </YStack>
+        <XStack space>
+          <Text>Tamagui</Text>
+          <Text>Tamagui</Text>
+          <Text>Tamagui</Text>
+        </XStack>
       </KeyboardAvoidingView>
     </TamaguiProvider>
   );
