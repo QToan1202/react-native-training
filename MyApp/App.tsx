@@ -11,7 +11,7 @@ import {
   TextInput,
   View,
 } from "react-native";
-import { MyButton } from "./components";
+import { MyButton, CustomText } from "./components";
 import { useCallback, useEffect, useState } from "react";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import { Button, TamaguiProvider, XStack, YStack } from "tamagui";
@@ -110,6 +110,7 @@ export default function App() {
           <Button size={"$5"}>Tamagui Button</Button>
         </YStack>
         <XStack space>
+          <CustomText size={"$5"}>My custom Text</CustomText>
           <Text>Tamagui</Text>
           <Text>Tamagui</Text>
           <Text>Tamagui</Text>
