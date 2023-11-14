@@ -1,0 +1,120 @@
+{
+  "users": [
+    {
+      "firstName": "tradly",
+      "lastName": "team",
+      "email": "info@tradly.co",
+      "phone": "+1 9998887776",
+      "password": "123456",
+      "id": 1
+    }
+  ],
+  "address": [
+    {
+      "name": "Tradly team",
+      "phone": "+621234567890",
+      "streetAddress": "Kualalumpur Malaysia",
+      "city": "Kualalumpur",
+      "state": "Malaysia",
+      "zipcode": "75119",
+      "userId": 1,
+      "id": 1
+    }
+  ],
+  "card": [
+    {
+      "number": "5627215898548869",
+      "name": "tradly",
+      "expired": "12/08",
+      "cvc": 111,
+      "userId": 1,
+      "id": 1
+    }
+  ],
+  "categories": [
+    {
+      "name": "beverages",
+      "id": 1
+    },
+    {
+      "name": "bread & bakery",
+      "id": 2
+    },
+    {
+      "name": "vegetables",
+      "id": 3
+    },
+    {
+      "name": "fruit",
+      "id": 4
+    },
+    {
+      "name": "egg",
+      "id": 5
+    },
+    {
+      "name": "frozen veg",
+      "id": 6
+    },
+    {
+      "name": "home care",
+      "id": 7
+    },
+    {
+      "name": "pet care",
+      "id": 8
+    }
+  ],
+  "stores": [
+    {
+      "name": "tradly store",
+      "id": 1
+    },
+    {
+      "name": "groceries store",
+      "id": 2
+    }
+  ],
+  "orderStates": [
+    {
+      "name": "order placed",
+      "id": 1
+    },
+    {
+      "name": "payment confirmed",
+      "id": 2
+    },
+    {
+      "name": "processed",
+      "id": 3
+    },
+    {
+      "name": "delivered",
+      "id": 4
+    }
+  ],
+  "products": [
+    {
+      "name": "coca cola",
+      "price": 25,
+      "discountPrice": 0,
+      "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lobortis cras placerat diam ipsum ut. Nisi vel adipiscing massa bibendum diam. Suspendisse mattis dui maecenas duis mattis. Mattis aliquam at arcu, semper nunc, venenatis et pellentesque eu. Id tristique maecenas tristique habitasse eu elementum sed. Aliquam eget lacus, arcu, adipiscing eget feugiat in dolor sagittis.Non commodo, a justo massa porttitor sed placerat in. Orci tristique etiam tempus sed. Mi varius morbi egestas dictum tempor nisl. In ",
+      "condition": "organic",
+      "priceType": "fixed",
+      "location": "Kualalumpur, Malaysia",
+      "delivery": "home delivery available, cash on delivery",
+      "storeId": 1,
+      "categoryId": 1,
+      "id": 1
+    }
+  ],
+  "orders": [
+    {
+      "productId": 1,
+      "quantity": 3,
+      "orderStateId": 1,
+      "userId": 1,
+      "id": 1
+    }
+  ]
+}
