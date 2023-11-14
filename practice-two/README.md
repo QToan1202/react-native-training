@@ -1,4 +1,4 @@
-# React Native Practice One
+# React Native Practice Two
 
 ## Design
 
@@ -10,7 +10,7 @@ Grocery Marketplace Tradly App
 
 ## Timeline
 
-Estimate: **~7 days** (_Aug 08, 2023 - Aug 29, 2023_)
+Estimate: **6 days** (_Nov 13, 2023 - Nov 30, 2023_)
 
 ## Team size
 
@@ -20,7 +20,7 @@ Estimate: **~7 days** (_Aug 08, 2023 - Aug 29, 2023_)
 
 ## Details plan
 
-- Estimation details plan: [**_Dev Plan_**](https://docs.google.com/document/d/10b_e-IrjX3i-QiNhli3eYnho9xHdWJPf/edit)
+- Estimation details plan: [**_Dev Plan_**](https://docs.google.com/document/d/1-LcXGMQ97Oqgk4i9iVP6HPkMoUYDQgi5/edit?usp=sharing&ouid=106375431505893946552&rtpof=true&sd=true)
 
 ## Technical Stack
 
@@ -32,13 +32,21 @@ Estimate: **~7 days** (_Aug 08, 2023 - Aug 29, 2023_)
 - Jest
 - Storybook
 - TypeScript
+- Json-server
+- Tamagui
+- Tanstack query
+- Async Storage
+- Flipper
 
 ## Target
 
-- Build React Native app
-- Applying Storybook
-- Unit test coverage should greater than 80%
-- Apply React Navigation
+- Create mocking APIs and integrate with current application
+- Apply Deep linking and use local notifications to handle notification
+- Use Flipper for the debugging process
+- Optimize application performance
+  - Create a Google Sheet log current application performance
+  - Add result after optimized performance for comparison
+- Using React Native UI Kit library: Tamagui
 
 ## Install and Run
 
@@ -50,10 +58,10 @@ Open Windows PowerShell or cmd or [Windows Terminal](https://www.microsoft.com/e
 git clone --single-branch --branch develop git@github.com:QToan1202/react-native-training.git
 ```
 
-**_Step 2:_** Move to _practice-one_ folder
+**_Step 2:_** Move to _practice-two_ folder
 
 ```bash
-cd react-native-training/practice-one
+cd react-native-training/practice-two
 ```
 
 **_Step 3:_** Install project
