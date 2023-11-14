@@ -9,6 +9,7 @@ import {
   Montserrat_700Bold,
 } from '@expo-google-fonts/montserrat'
 import { StatusBar, StatusBarStyle } from 'expo-status-bar'
+import { TamaguiProvider } from 'tamagui'
 
 import { NavigationContainer } from '@react-navigation/native'
 import { BottomNav, StackNavigation } from '@navigation'
@@ -16,6 +17,7 @@ import { asyncStoreService } from '@services'
 
 import styles from './App.styles'
 import StorybookUI from './.storybook'
+import config from './tamagui.config'
 
 SplashScreen.preventAutoHideAsync()
 const FAKE_IS_LOGIN = true
@@ -56,12 +58,14 @@ const App = () => {
   if (!fontsLoaded) return null
 
   return (
-    <SafeAreaProvider style={styles.container} onLayout={onLayoutRootView}>
-      <StatusBar style={theme.current} />
-      <NavigationContainer>
-        {!FAKE_IS_LOGIN ? <StackNavigation.PublicStackNavigator /> : <BottomNav />}
-      </NavigationContainer>
-    </SafeAreaProvider>
+    <TamaguiProvider config={config}>
+      <SafeAreaProvider style={styles.container} onLayout={onLayoutRootView}>
+        <StatusBar style={theme.current} />
+        <NavigationContainer>
+          {!FAKE_IS_LOGIN ? <StackNavigation.PublicStackNavigator /> : <BottomNav />}
+        </NavigationContainer>
+      </SafeAreaProvider>
+    </TamaguiProvider>
   )
 }
 
