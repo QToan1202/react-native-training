@@ -36,3 +36,6 @@ yarn-error.*
 
 # test coverage
 coverage
+
+#tamagui config json
+.tamagui/
