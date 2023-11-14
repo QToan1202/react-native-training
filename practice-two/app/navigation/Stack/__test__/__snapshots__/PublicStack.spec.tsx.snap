@@ -1,0 +1,516 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Testing public stack navigation Render stack successfully 1`] = `
+<View
+  style={
+    [
+      {
+        "flex": 1,
+      },
+      undefined,
+    ]
+  }
+>
+  <RNSScreenStack
+    style={
+      {
+        "flex": 1,
+      }
+    }
+  >
+    <RNSScreen
+      collapsable={false}
+      gestureResponseDistance={
+        {
+          "bottom": -1,
+          "end": -1,
+          "start": -1,
+          "top": -1,
+        }
+      }
+      nativeBackButtonDismissalEnabled={false}
+      onAppear={[Function]}
+      onDisappear={[Function]}
+      onDismissed={[Function]}
+      onHeaderBackButtonClicked={[Function]}
+      onNativeDismissCancelled={[Function]}
+      onTransitionProgress={[Function]}
+      onWillDisappear={[Function]}
+      replaceAnimation="push"
+      sheetAllowedDetents="large"
+      sheetCornerRadius={-1}
+      sheetExpandsWhenScrolledToEdge={true}
+      sheetGrabberVisible={false}
+      sheetLargestUndimmedDetent="all"
+      stackPresentation="push"
+      style={
+        {
+          "bottom": 0,
+          "left": 0,
+          "position": "absolute",
+          "right": 0,
+          "top": 0,
+        }
+      }
+      swipeDirection="horizontal"
+    >
+      <RNSScreenStackHeaderConfig
+        backButtonInCustomView={false}
+        backTitleVisible={true}
+        backgroundColor="rgb(255, 255, 255)"
+        color="rgb(0, 122, 255)"
+        direction="ltr"
+        disableBackButtonMenu={false}
+        hidden={true}
+        hideBackButton={false}
+        largeTitleHideShadow={false}
+        title="Onboarding"
+        titleColor="rgb(28, 28, 30)"
+        topInsetEnabled={false}
+        translucent={false}
+      />
+      <View
+        accessibilityElementsHidden={false}
+        importantForAccessibility="auto"
+        style={
+          {
+            "flex": 1,
+            "flexDirection": "column-reverse",
+          }
+        }
+      >
+        <View
+          style={
+            [
+              {
+                "flex": 1,
+              },
+              {
+                "backgroundColor": "rgb(242, 242, 242)",
+              },
+              undefined,
+            ]
+          }
+        >
+          <RNCSafeAreaView
+            edges={
+              {
+                "bottom": "additive",
+                "left": "additive",
+                "right": "additive",
+                "top": "additive",
+              }
+            }
+            route={
+              {
+                "key": "Onboarding-j9OwHgCf2Z7F5jroqSfF4",
+                "name": "Onboarding",
+                "params": undefined,
+              }
+            }
+            style={
+              [
+                {
+                  "flex": 1,
+                },
+                {
+                  "backgroundColor": "#fff",
+                  "paddingVertical": 20,
+                },
+                undefined,
+              ]
+            }
+          >
+            <View
+              style={
+                {
+                  "backgroundColor": "#33907C",
+                  "height": "40%",
+                  "left": 0,
+                  "position": "absolute",
+                  "top": 0,
+                  "width": 750,
+                }
+              }
+            />
+            <RNCViewPager
+              initialPage={0}
+              layoutDirection="ltr"
+              onMoveShouldSetResponderCapture={[Function]}
+              onPageScroll={[Function]}
+              onPageScrollStateChanged={[Function]}
+              onPageSelected={[Function]}
+              style={
+                {
+                  "flex": 1,
+                }
+              }
+            >
+              <View
+                collapsable={false}
+                style={
+                  {
+                    "bottom": 0,
+                    "left": 0,
+                    "position": "absolute",
+                    "right": 0,
+                    "top": 0,
+                  }
+                }
+              >
+                <View
+                  style={
+                    [
+                      {
+                        "alignItems": "center",
+                        "flex": 1,
+                        "justifyContent": "center",
+                        "rowGap": 42,
+                      },
+                      {
+                        "bottom": 0,
+                        "left": 0,
+                        "position": "absolute",
+                        "right": 0,
+                        "top": 0,
+                      },
+                    ]
+                  }
+                >
+                  <View
+                    style={
+                      {
+                        "backgroundColor": "#fff",
+                        "borderRadius": 10,
+                        "paddingBottom": 30,
+                        "paddingTop": 60,
+                      }
+                    }
+                  >
+                    <Image
+                      source={
+                        {
+                          "testUri": "../../../assets/onboarding/onboarding-1.png",
+                        }
+                      }
+                    />
+                  </View>
+                  <Text
+                    style={
+                      [
+                        {
+                          "color": "#fff",
+                          "fontFamily": "Montserrat_400Regular",
+                        },
+                        {
+                          "fontSize": 20,
+                        },
+                        {
+                          "color": "#33907C",
+                          "fontFamily": "Montserrat_500Medium",
+                          "letterSpacing": -0.5,
+                          "lineHeight": 30,
+                          "maxWidth": 300,
+                          "textAlign": "center",
+                        },
+                      ]
+                    }
+                  >
+                    Empowering Artisans, Farmers & Micro Business
+                  </Text>
+                </View>
+              </View>
+              <View
+                collapsable={false}
+                style={
+                  {
+                    "bottom": 0,
+                    "left": 0,
+                    "position": "absolute",
+                    "right": 0,
+                    "top": 0,
+                  }
+                }
+              >
+                <View
+                  style={
+                    [
+                      {
+                        "alignItems": "center",
+                        "flex": 1,
+                        "justifyContent": "center",
+                        "rowGap": 42,
+                      },
+                      {
+                        "bottom": 0,
+                        "left": 0,
+                        "position": "absolute",
+                        "right": 0,
+                        "top": 0,
+                      },
+                    ]
+                  }
+                >
+                  <View
+                    style={
+                      {
+                        "backgroundColor": "#fff",
+                        "borderRadius": 10,
+                        "paddingBottom": 30,
+                        "paddingTop": 60,
+                      }
+                    }
+                  >
+                    <Image
+                      source={
+                        {
+                          "testUri": "../../../assets/onboarding/onboarding-2.png",
+                        }
+                      }
+                    />
+                  </View>
+                  <Text
+                    style={
+                      [
+                        {
+                          "color": "#fff",
+                          "fontFamily": "Montserrat_400Regular",
+                        },
+                        {
+                          "fontSize": 20,
+                        },
+                        {
+                          "color": "#33907C",
+                          "fontFamily": "Montserrat_500Medium",
+                          "letterSpacing": -0.5,
+                          "lineHeight": 30,
+                          "maxWidth": 300,
+                          "textAlign": "center",
+                        },
+                      ]
+                    }
+                  >
+                    Connecting NGOs, Social Enterprises with Communities
+                  </Text>
+                </View>
+              </View>
+              <View
+                collapsable={false}
+                style={
+                  {
+                    "bottom": 0,
+                    "left": 0,
+                    "position": "absolute",
+                    "right": 0,
+                    "top": 0,
+                  }
+                }
+              >
+                <View
+                  style={
+                    [
+                      {
+                        "alignItems": "center",
+                        "flex": 1,
+                        "justifyContent": "center",
+                        "rowGap": 42,
+                      },
+                      {
+                        "bottom": 0,
+                        "left": 0,
+                        "position": "absolute",
+                        "right": 0,
+                        "top": 0,
+                      },
+                    ]
+                  }
+                >
+                  <View
+                    style={
+                      {
+                        "backgroundColor": "#fff",
+                        "borderRadius": 10,
+                        "paddingBottom": 30,
+                        "paddingTop": 60,
+                      }
+                    }
+                  >
+                    <Image
+                      source={
+                        {
+                          "testUri": "../../../assets/onboarding/onboarding-3.png",
+                        }
+                      }
+                    />
+                  </View>
+                  <Text
+                    style={
+                      [
+                        {
+                          "color": "#fff",
+                          "fontFamily": "Montserrat_400Regular",
+                        },
+                        {
+                          "fontSize": 20,
+                        },
+                        {
+                          "color": "#33907C",
+                          "fontFamily": "Montserrat_500Medium",
+                          "letterSpacing": -0.5,
+                          "lineHeight": 30,
+                          "maxWidth": 300,
+                          "textAlign": "center",
+                        },
+                      ]
+                    }
+                  >
+                    Donate, Invest & Support infrastructure projects
+                  </Text>
+                </View>
+              </View>
+            </RNCViewPager>
+            <View
+              style={
+                {
+                  "alignItems": "center",
+                  "columnGap": 10,
+                  "flexDirection": "row",
+                  "justifyContent": "center",
+                  "marginBottom": 50,
+                }
+              }
+            >
+              <View
+                style={
+                  [
+                    {
+                      "alignSelf": "flex-start",
+                      "borderRadius": 50,
+                      "height": 12,
+                      "width": 12,
+                    },
+                    {
+                      "backgroundColor": "#33907C",
+                    },
+                  ]
+                }
+              />
+              <View
+                style={
+                  [
+                    {
+                      "alignSelf": "flex-start",
+                      "borderRadius": 50,
+                      "height": 12,
+                      "width": 12,
+                    },
+                    {
+                      "backgroundColor": "#33907C",
+                      "opacity": 0.6,
+                    },
+                  ]
+                }
+              />
+              <View
+                style={
+                  [
+                    {
+                      "alignSelf": "flex-start",
+                      "borderRadius": 50,
+                      "height": 12,
+                      "width": 12,
+                    },
+                    {
+                      "backgroundColor": "#33907C",
+                      "opacity": 0.6,
+                    },
+                  ]
+                }
+              />
+            </View>
+            <View
+              accessibilityState={
+                {
+                  "busy": undefined,
+                  "checked": undefined,
+                  "disabled": undefined,
+                  "expanded": undefined,
+                  "selected": undefined,
+                }
+              }
+              accessibilityValue={
+                {
+                  "max": undefined,
+                  "min": undefined,
+                  "now": undefined,
+                  "text": undefined,
+                }
+              }
+              accessible={true}
+              collapsable={false}
+              focusable={true}
+              onClick={[Function]}
+              onResponderGrant={[Function]}
+              onResponderMove={[Function]}
+              onResponderRelease={[Function]}
+              onResponderTerminate={[Function]}
+              onResponderTerminationRequest={[Function]}
+              onStartShouldSetResponder={[Function]}
+              style={
+                {
+                  "backgroundColor": "#33907C",
+                  "borderColor": "#33907C",
+                  "borderRadius": 50,
+                  "borderWidth": 2,
+                  "marginHorizontal": 34,
+                  "opacity": 1,
+                  "paddingVertical": 13,
+                }
+              }
+            >
+              <View
+                style={
+                  {
+                    "alignItems": "center",
+                    "columnGap": 6,
+                    "display": "flex",
+                    "flexDirection": "row",
+                    "justifyContent": "center",
+                  }
+                }
+              >
+                <Text
+                  style={
+                    [
+                      {
+                        "color": "#fff",
+                        "fontFamily": "Montserrat_400Regular",
+                      },
+                      {
+                        "fontSize": 16,
+                      },
+                      [
+                        {
+                          "color": "#fff",
+                        },
+                        {
+                          "fontFamily": "Montserrat_500Medium",
+                          "textAlign": "center",
+                          "textTransform": "capitalize",
+                        },
+                        undefined,
+                      ],
+                    ]
+                  }
+                >
+                  next
+                </Text>
+              </View>
+            </View>
+          </RNCSafeAreaView>
+        </View>
+      </View>
+    </RNSScreen>
+  </RNSScreenStack>
+</View>
+`;

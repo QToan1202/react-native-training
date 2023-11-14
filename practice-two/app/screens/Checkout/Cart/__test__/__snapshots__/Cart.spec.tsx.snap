@@ -1,0 +1,751 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Testing Cart screen Render screen successfully 1`] = `
+[
+  <RCTScrollView
+    contentContainerStyle={
+      {
+        "backgroundColor": "#f6f9ff",
+        "flex": 1,
+      }
+    }
+  >
+    <View>
+      <View
+        accessibilityState={
+          {
+            "busy": undefined,
+            "checked": undefined,
+            "disabled": undefined,
+            "expanded": undefined,
+            "selected": undefined,
+          }
+        }
+        accessibilityValue={
+          {
+            "max": undefined,
+            "min": undefined,
+            "now": undefined,
+            "text": undefined,
+          }
+        }
+        accessible={true}
+        collapsable={false}
+        focusable={true}
+        onClick={[Function]}
+        onResponderGrant={[Function]}
+        onResponderMove={[Function]}
+        onResponderRelease={[Function]}
+        onResponderTerminate={[Function]}
+        onResponderTerminationRequest={[Function]}
+        onStartShouldSetResponder={[Function]}
+        style={
+          {
+            "backgroundColor": "#fff",
+            "borderColor": "#fff",
+            "borderRadius": 0,
+            "borderWidth": 2,
+            "opacity": 1,
+            "paddingVertical": 13,
+          }
+        }
+      >
+        <View
+          style={
+            {
+              "alignItems": "center",
+              "columnGap": 6,
+              "display": "flex",
+              "flexDirection": "row",
+              "justifyContent": "center",
+            }
+          }
+        >
+          <Text
+            style={
+              [
+                {
+                  "color": "#fff",
+                  "fontFamily": "Montserrat_400Regular",
+                },
+                {
+                  "fontSize": 16,
+                },
+                [
+                  {
+                    "color": "#000",
+                  },
+                  {
+                    "fontFamily": "Montserrat_500Medium",
+                    "textAlign": "center",
+                    "textTransform": "capitalize",
+                  },
+                  undefined,
+                ],
+              ]
+            }
+          >
+            + add new address
+          </Text>
+        </View>
+      </View>
+      <View
+        style={
+          {
+            "marginBottom": 60,
+            "marginTop": 10,
+          }
+        }
+      >
+        <View
+          accessibilityState={
+            {
+              "busy": undefined,
+              "checked": undefined,
+              "disabled": undefined,
+              "expanded": undefined,
+              "selected": undefined,
+            }
+          }
+          accessibilityValue={
+            {
+              "max": undefined,
+              "min": undefined,
+              "now": undefined,
+              "text": undefined,
+            }
+          }
+          accessible={true}
+          collapsable={false}
+          focusable={false}
+          onClick={[Function]}
+          onResponderGrant={[Function]}
+          onResponderMove={[Function]}
+          onResponderRelease={[Function]}
+          onResponderTerminate={[Function]}
+          onResponderTerminationRequest={[Function]}
+          onStartShouldSetResponder={[Function]}
+          style={
+            {
+              "backgroundColor": "#fff",
+              "opacity": 1,
+              "paddingBottom": 12,
+              "paddingLeft": 16,
+              "paddingTop": 29,
+            }
+          }
+        >
+          <View
+            style={
+              {
+                "flexDirection": "row",
+                "gap": 15,
+              }
+            }
+          >
+            <Image
+              source={
+                {
+                  "testUri": "../../../assets/cart/item.png",
+                }
+              }
+              style={
+                {
+                  "borderRadius": 10,
+                  "height": 102,
+                  "width": 102,
+                }
+              }
+            />
+            <View
+              style={
+                {
+                  "justifyContent": "center",
+                  "rowGap": 12.5,
+                }
+              }
+            >
+              <Text
+                style={
+                  [
+                    {
+                      "color": "#fff",
+                      "fontFamily": "Montserrat_400Regular",
+                    },
+                    {
+                      "fontSize": 14,
+                    },
+                    {
+                      "color": "#4f4f4f",
+                      "fontFamily": "Montserrat_500Medium",
+                      "textTransform": "capitalize",
+                    },
+                  ]
+                }
+              >
+                coca cola
+              </Text>
+              <View
+                style={
+                  [
+                    {
+                      "alignItems": "center",
+                      "columnGap": 4,
+                      "flexDirection": "row",
+                    },
+                  ]
+                }
+              >
+                <Text
+                  numberOfLines={1}
+                  style={
+                    [
+                      {
+                        "color": "#fff",
+                        "fontFamily": "Montserrat_400Regular",
+                      },
+                      {
+                        "fontSize": 14,
+                      },
+                      {
+                        "color": "#33907C",
+                        "fontFamily": "Montserrat_700Bold",
+                        "fontSize": 18,
+                      },
+                    ]
+                  }
+                >
+                  $25
+                </Text>
+                <Text
+                  numberOfLines={1}
+                  style={
+                    [
+                      {
+                        "color": "#fff",
+                        "fontFamily": "Montserrat_400Regular",
+                      },
+                      {
+                        "fontSize": 14,
+                      },
+                      [
+                        {
+                          "color": "#4f4f4f",
+                          "fontFamily": "Montserrat_500Medium",
+                          "textTransform": "capitalize",
+                        },
+                        {
+                          "textDecorationLine": "line-through",
+                        },
+                      ],
+                    ]
+                  }
+                >
+                  $50
+                </Text>
+                <Text
+                  numberOfLines={1}
+                  style={
+                    [
+                      {
+                        "color": "#fff",
+                        "fontFamily": "Montserrat_400Regular",
+                      },
+                      {
+                        "fontSize": 14,
+                      },
+                      {
+                        "color": "#4f4f4f",
+                        "fontFamily": "Montserrat_500Medium",
+                        "textTransform": "capitalize",
+                      },
+                    ]
+                  }
+                >
+                  50% off
+                </Text>
+              </View>
+              <Text
+                style={
+                  [
+                    {
+                      "color": "#fff",
+                      "fontFamily": "Montserrat_400Regular",
+                    },
+                    {
+                      "fontSize": 14,
+                    },
+                    {
+                      "color": "#4f4f4f",
+                      "fontFamily": "Montserrat_500Medium",
+                      "textTransform": "capitalize",
+                    },
+                  ]
+                }
+              >
+                qty: 1
+              </Text>
+            </View>
+          </View>
+        </View>
+        <View
+          accessibilityState={
+            {
+              "busy": undefined,
+              "checked": undefined,
+              "disabled": undefined,
+              "expanded": undefined,
+              "selected": undefined,
+            }
+          }
+          accessibilityValue={
+            {
+              "max": undefined,
+              "min": undefined,
+              "now": undefined,
+              "text": undefined,
+            }
+          }
+          accessible={true}
+          collapsable={false}
+          focusable={true}
+          onClick={[Function]}
+          onResponderGrant={[Function]}
+          onResponderMove={[Function]}
+          onResponderRelease={[Function]}
+          onResponderTerminate={[Function]}
+          onResponderTerminationRequest={[Function]}
+          onStartShouldSetResponder={[Function]}
+          style={
+            {
+              "backgroundColor": "#fff",
+              "borderColor": "#fff",
+              "borderRadius": 0,
+              "borderWidth": 2,
+              "opacity": 1,
+              "paddingVertical": 13,
+            }
+          }
+        >
+          <View
+            style={
+              {
+                "alignItems": "center",
+                "columnGap": 6,
+                "display": "flex",
+                "flexDirection": "row",
+                "justifyContent": "center",
+              }
+            }
+          >
+            <Text
+              style={
+                [
+                  {
+                    "color": "#fff",
+                    "fontFamily": "Montserrat_400Regular",
+                  },
+                  {
+                    "fontSize": 16,
+                  },
+                  [
+                    {
+                      "color": "#000",
+                    },
+                    {
+                      "fontFamily": "Montserrat_500Medium",
+                      "textAlign": "center",
+                      "textTransform": "capitalize",
+                    },
+                    {
+                      "color": "#4f4f4f",
+                      "opacity": 0.5,
+                    },
+                  ],
+                ]
+              }
+            >
+              remove
+            </Text>
+          </View>
+        </View>
+      </View>
+      <View
+        style={
+          [
+            {
+              "backgroundColor": "#fff",
+              "paddingBottom": 15,
+              "paddingHorizontal": 15,
+            },
+            undefined,
+          ]
+        }
+      >
+        <Text
+          style={
+            [
+              {
+                "color": "#fff",
+                "fontFamily": "Montserrat_700Bold",
+                "fontSize": 24,
+              },
+              false,
+              [
+                {
+                  "color": "#000",
+                  "fontFamily": "Montserrat_500Medium",
+                  "lineHeight": 20,
+                  "textTransform": "capitalize",
+                },
+                {
+                  "fontFamily": "Montserrat_600SemiBold",
+                  "fontSize": 18,
+                  "paddingVertical": 14,
+                },
+              ],
+            ]
+          }
+        >
+          price details
+        </Text>
+        <View
+          style={
+            [
+              {
+                "alignItems": "center",
+                "columnGap": 4,
+                "flexDirection": "row",
+              },
+              {
+                "justifyContent": "space-between",
+              },
+            ]
+          }
+        >
+          <View
+            style={
+              {
+                "rowGap": 10,
+              }
+            }
+          >
+            <Text
+              style={
+                [
+                  {
+                    "color": "#fff",
+                    "fontFamily": "Montserrat_400Regular",
+                  },
+                  {
+                    "fontSize": 14,
+                  },
+                  {
+                    "color": "#000",
+                    "fontFamily": "Montserrat_500Medium",
+                    "lineHeight": 20,
+                    "textTransform": "capitalize",
+                  },
+                ]
+              }
+            >
+              price (1 item)
+            </Text>
+            <Text
+              style={
+                [
+                  {
+                    "color": "#fff",
+                    "fontFamily": "Montserrat_400Regular",
+                  },
+                  {
+                    "fontSize": 14,
+                  },
+                  {
+                    "color": "#000",
+                    "fontFamily": "Montserrat_500Medium",
+                    "lineHeight": 20,
+                    "textTransform": "capitalize",
+                  },
+                ]
+              }
+            >
+              delivery fee
+            </Text>
+          </View>
+          <View
+            style={
+              [
+                {
+                  "rowGap": 10,
+                },
+                {
+                  "alignItems": "flex-end",
+                },
+              ]
+            }
+          >
+            <Text
+              style={
+                [
+                  {
+                    "color": "#fff",
+                    "fontFamily": "Montserrat_400Regular",
+                  },
+                  {
+                    "fontSize": 14,
+                  },
+                  {
+                    "color": "#000",
+                    "fontFamily": "Montserrat_500Medium",
+                    "lineHeight": 20,
+                    "textTransform": "capitalize",
+                  },
+                ]
+              }
+            >
+              $25
+            </Text>
+            <Text
+              style={
+                [
+                  {
+                    "color": "#fff",
+                    "fontFamily": "Montserrat_400Regular",
+                  },
+                  {
+                    "fontSize": 14,
+                  },
+                  {
+                    "color": "#000",
+                    "fontFamily": "Montserrat_500Medium",
+                    "lineHeight": 20,
+                    "textTransform": "capitalize",
+                  },
+                ]
+              }
+            >
+              info
+            </Text>
+          </View>
+        </View>
+        <View
+          style={
+            {
+              "borderBottomColor": "#0000001a",
+              "borderBottomWidth": 0.5,
+              "marginLeft": -14,
+              "marginTop": 24,
+              "width": 750,
+            }
+          }
+        />
+        <View
+          style={
+            [
+              {
+                "alignItems": "center",
+                "columnGap": 4,
+                "flexDirection": "row",
+              },
+              {
+                "justifyContent": "space-between",
+              },
+            ]
+          }
+        >
+          <Text
+            style={
+              [
+                {
+                  "color": "#fff",
+                  "fontFamily": "Montserrat_700Bold",
+                  "fontSize": 24,
+                },
+                false,
+                [
+                  {
+                    "color": "#000",
+                    "fontFamily": "Montserrat_500Medium",
+                    "lineHeight": 20,
+                    "textTransform": "capitalize",
+                  },
+                  {
+                    "fontFamily": "Montserrat_600SemiBold",
+                    "fontSize": 18,
+                    "paddingVertical": 14,
+                  },
+                ],
+              ]
+            }
+          >
+            total amount
+          </Text>
+          <Text
+            style={
+              [
+                {
+                  "color": "#fff",
+                  "fontFamily": "Montserrat_700Bold",
+                  "fontSize": 24,
+                },
+                false,
+                [
+                  {
+                    "color": "#000",
+                    "fontFamily": "Montserrat_500Medium",
+                    "lineHeight": 20,
+                    "textTransform": "capitalize",
+                  },
+                  {
+                    "fontFamily": "Montserrat_600SemiBold",
+                    "fontSize": 18,
+                    "paddingVertical": 14,
+                  },
+                  {
+                    "fontFamily": "Montserrat_700Bold",
+                  },
+                ],
+              ]
+            }
+          >
+            $25
+          </Text>
+        </View>
+      </View>
+    </View>
+  </RCTScrollView>,
+  <View
+    style={
+      [
+        {
+          "paddingHorizontal": 16,
+          "paddingVertical": 22,
+        },
+        {
+          "backgroundColor": "#33907C",
+          "rowGap": 24,
+        },
+        {
+          "paddingTop": 0,
+        },
+        [
+          {
+            "backgroundColor": "#fff",
+            "paddingHorizontal": 32,
+          },
+          {
+            "shadowColor": "#000",
+            "shadowOffset": {
+              "height": 12,
+              "width": 0,
+            },
+            "shadowOpacity": 0.6,
+            "shadowRadius": 16,
+          },
+          {
+            "paddingBottom": 12,
+            "paddingTop": 12,
+          },
+          undefined,
+        ],
+      ]
+    }
+  >
+    <View
+      style={
+        [
+          {
+            "alignItems": "center",
+            "columnGap": 4,
+            "flexDirection": "row",
+          },
+          {
+            "justifyContent": "space-between",
+          },
+        ]
+      }
+    >
+      <View
+        accessibilityState={
+          {
+            "busy": undefined,
+            "checked": undefined,
+            "disabled": undefined,
+            "expanded": undefined,
+            "selected": undefined,
+          }
+        }
+        accessibilityValue={
+          {
+            "max": undefined,
+            "min": undefined,
+            "now": undefined,
+            "text": undefined,
+          }
+        }
+        accessible={true}
+        collapsable={false}
+        focusable={true}
+        onClick={[Function]}
+        onResponderGrant={[Function]}
+        onResponderMove={[Function]}
+        onResponderRelease={[Function]}
+        onResponderTerminate={[Function]}
+        onResponderTerminationRequest={[Function]}
+        onStartShouldSetResponder={[Function]}
+        style={
+          {
+            "backgroundColor": "#33907C",
+            "borderColor": "#33907C",
+            "borderRadius": 50,
+            "borderWidth": 2,
+            "flex": 1,
+            "opacity": 1,
+            "paddingVertical": 13,
+          }
+        }
+      >
+        <View
+          style={
+            {
+              "alignItems": "center",
+              "columnGap": 6,
+              "display": "flex",
+              "flexDirection": "row",
+              "justifyContent": "center",
+            }
+          }
+        >
+          <Text
+            style={
+              [
+                {
+                  "color": "#fff",
+                  "fontFamily": "Montserrat_400Regular",
+                },
+                {
+                  "fontSize": 16,
+                },
+                [
+                  {
+                    "color": "#fff",
+                  },
+                  {
+                    "fontFamily": "Montserrat_500Medium",
+                    "textAlign": "center",
+                    "textTransform": "capitalize",
+                  },
+                  undefined,
+                ],
+              ]
+            }
+          >
+            Continue to Payment
+          </Text>
+        </View>
+      </View>
+    </View>
+  </View>,
+]
+`;

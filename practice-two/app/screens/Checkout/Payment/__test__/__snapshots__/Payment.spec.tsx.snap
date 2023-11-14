@@ -1,0 +1,1738 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Testing Payment screen Render screen successfully 1`] = `
+[
+  <View
+    style={
+      {
+        "backgroundColor": "#f6f9ff",
+        "flex": 1,
+        "rowGap": 16,
+      }
+    }
+  >
+    <View
+      style={
+        {
+          "backgroundColor": "#fff",
+          "justifyContent": "center",
+        }
+      }
+    >
+      <RNCViewPager
+        initialPage={0}
+        layoutDirection="ltr"
+        onMoveShouldSetResponderCapture={[Function]}
+        onPageScroll={[Function]}
+        onPageScrollStateChanged={[Function]}
+        onPageSelected={[Function]}
+        style={
+          {
+            "height": 300,
+            "marginVertical": 20,
+            "width": 750,
+          }
+        }
+      >
+        <View
+          collapsable={false}
+          style={
+            {
+              "bottom": 0,
+              "left": 0,
+              "position": "absolute",
+              "right": 0,
+              "top": 0,
+            }
+          }
+        >
+          <View
+            style={
+              [
+                undefined,
+                {
+                  "bottom": 0,
+                  "left": 0,
+                  "position": "absolute",
+                  "right": 0,
+                  "top": 0,
+                },
+              ]
+            }
+          >
+            <View
+              accessibilityState={
+                {
+                  "busy": undefined,
+                  "checked": undefined,
+                  "disabled": undefined,
+                  "expanded": undefined,
+                  "selected": undefined,
+                }
+              }
+              accessibilityValue={
+                {
+                  "max": undefined,
+                  "min": undefined,
+                  "now": undefined,
+                  "text": undefined,
+                }
+              }
+              accessible={true}
+              collapsable={false}
+              focusable={true}
+              onClick={[Function]}
+              onResponderGrant={[Function]}
+              onResponderMove={[Function]}
+              onResponderRelease={[Function]}
+              onResponderTerminate={[Function]}
+              onResponderTerminationRequest={[Function]}
+              onStartShouldSetResponder={[Function]}
+              style={
+                {
+                  "alignSelf": "center",
+                  "opacity": 1,
+                }
+              }
+            >
+              <View
+                accessibilityIgnoresInvertColors={true}
+                style={
+                  [
+                    {
+                      "alignItems": "flex-end",
+                      "alignSelf": "flex-start",
+                      "borderRadius": 9,
+                      "columnGap": 17,
+                      "flexDirection": "row",
+                      "maxHeight": 146,
+                      "maxWidth": 246,
+                      "overflow": "hidden",
+                      "paddingHorizontal": 17,
+                      "paddingVertical": 13,
+                    },
+                    undefined,
+                  ]
+                }
+              >
+                <Image
+                  id="1"
+                  source={
+                    {
+                      "testUri": "../../../assets/payment/mastercard.png",
+                    }
+                  }
+                  style={
+                    [
+                      {
+                        "bottom": 0,
+                        "left": 0,
+                        "position": "absolute",
+                        "right": 0,
+                        "top": 0,
+                      },
+                      {
+                        "height": undefined,
+                        "width": undefined,
+                      },
+                      undefined,
+                    ]
+                  }
+                />
+                <View
+                  style={
+                    {
+                      "height": "100%",
+                      "justifyContent": "space-between",
+                    }
+                  }
+                >
+                  <View>
+                    <Text
+                      style={
+                        [
+                          {
+                            "color": "#fff",
+                            "fontFamily": "Montserrat_400Regular",
+                          },
+                          {
+                            "fontSize": 14,
+                          },
+                          {
+                            "color": "#b7b7b7",
+                            "fontSize": 13,
+                            "textTransform": "capitalize",
+                          },
+                        ]
+                      }
+                    >
+                      holder name
+                    </Text>
+                    <Text
+                      numberOfLines={1}
+                      style={
+                        [
+                          {
+                            "color": "#fff",
+                            "fontFamily": "Montserrat_400Regular",
+                          },
+                          {
+                            "fontSize": 14,
+                          },
+                          undefined,
+                        ]
+                      }
+                    >
+                      Tradly Team
+                    </Text>
+                  </View>
+                  <View>
+                    <Text
+                      style={
+                        [
+                          {
+                            "color": "#fff",
+                            "fontFamily": "Montserrat_400Regular",
+                          },
+                          {
+                            "fontSize": 14,
+                          },
+                          {
+                            "color": "#b7b7b7",
+                            "fontSize": 13,
+                            "textTransform": "capitalize",
+                          },
+                        ]
+                      }
+                    >
+                      card number
+                    </Text>
+                    <Text
+                      numberOfLines={1}
+                      style={
+                        [
+                          {
+                            "color": "#fff",
+                            "fontFamily": "Montserrat_400Regular",
+                          },
+                          {
+                            "fontSize": 16,
+                          },
+                          {
+                            "width": 167,
+                          },
+                        ]
+                      }
+                    >
+                      5627 2158 9854 8869 
+                    </Text>
+                  </View>
+                  <View>
+                    <Text
+                      style={
+                        [
+                          {
+                            "color": "#fff",
+                            "fontFamily": "Montserrat_400Regular",
+                          },
+                          {
+                            "fontSize": 14,
+                          },
+                          {
+                            "color": "#b7b7b7",
+                            "fontSize": 13,
+                            "textTransform": "capitalize",
+                          },
+                        ]
+                      }
+                    >
+                      exp. date
+                    </Text>
+                    <Text
+                      style={
+                        [
+                          {
+                            "color": "#fff",
+                            "fontFamily": "Montserrat_400Regular",
+                          },
+                          {
+                            "fontSize": 14,
+                          },
+                          undefined,
+                        ]
+                      }
+                    >
+                      01/2019
+                    </Text>
+                  </View>
+                </View>
+                <View>
+                  <Text
+                    style={
+                      [
+                        {
+                          "color": "#fff",
+                          "fontFamily": "Montserrat_400Regular",
+                        },
+                        {
+                          "fontSize": 14,
+                        },
+                        [
+                          {
+                            "color": "#b7b7b7",
+                            "fontSize": 13,
+                            "textTransform": "capitalize",
+                          },
+                          {
+                            "textTransform": "uppercase",
+                          },
+                        ],
+                      ]
+                    }
+                  >
+                    cvc
+                  </Text>
+                  <Text
+                    style={
+                      [
+                        {
+                          "color": "#fff",
+                          "fontFamily": "Montserrat_400Regular",
+                        },
+                        {
+                          "fontSize": 14,
+                        },
+                        {
+                          "textAlign": "right",
+                        },
+                      ]
+                    }
+                  >
+                    111
+                  </Text>
+                </View>
+              </View>
+            </View>
+          </View>
+        </View>
+        <View
+          collapsable={false}
+          style={
+            {
+              "bottom": 0,
+              "left": 0,
+              "position": "absolute",
+              "right": 0,
+              "top": 0,
+            }
+          }
+        >
+          <View
+            style={
+              [
+                undefined,
+                {
+                  "bottom": 0,
+                  "left": 0,
+                  "position": "absolute",
+                  "right": 0,
+                  "top": 0,
+                },
+              ]
+            }
+          >
+            <View
+              accessibilityState={
+                {
+                  "busy": undefined,
+                  "checked": undefined,
+                  "disabled": undefined,
+                  "expanded": undefined,
+                  "selected": undefined,
+                }
+              }
+              accessibilityValue={
+                {
+                  "max": undefined,
+                  "min": undefined,
+                  "now": undefined,
+                  "text": undefined,
+                }
+              }
+              accessible={true}
+              collapsable={false}
+              focusable={true}
+              onClick={[Function]}
+              onResponderGrant={[Function]}
+              onResponderMove={[Function]}
+              onResponderRelease={[Function]}
+              onResponderTerminate={[Function]}
+              onResponderTerminationRequest={[Function]}
+              onStartShouldSetResponder={[Function]}
+              style={
+                {
+                  "alignSelf": "center",
+                  "opacity": 1,
+                }
+              }
+            >
+              <View
+                accessibilityIgnoresInvertColors={true}
+                style={
+                  [
+                    {
+                      "alignItems": "flex-end",
+                      "alignSelf": "flex-start",
+                      "borderRadius": 9,
+                      "columnGap": 17,
+                      "flexDirection": "row",
+                      "maxHeight": 146,
+                      "maxWidth": 246,
+                      "overflow": "hidden",
+                      "paddingHorizontal": 17,
+                      "paddingVertical": 13,
+                    },
+                    undefined,
+                  ]
+                }
+              >
+                <Image
+                  id="2"
+                  source={
+                    {
+                      "testUri": "../../../assets/payment/visa.png",
+                    }
+                  }
+                  style={
+                    [
+                      {
+                        "bottom": 0,
+                        "left": 0,
+                        "position": "absolute",
+                        "right": 0,
+                        "top": 0,
+                      },
+                      {
+                        "height": undefined,
+                        "width": undefined,
+                      },
+                      undefined,
+                    ]
+                  }
+                />
+                <View
+                  style={
+                    {
+                      "height": "100%",
+                      "justifyContent": "space-between",
+                    }
+                  }
+                >
+                  <View>
+                    <Text
+                      style={
+                        [
+                          {
+                            "color": "#fff",
+                            "fontFamily": "Montserrat_400Regular",
+                          },
+                          {
+                            "fontSize": 14,
+                          },
+                          {
+                            "color": "#b7b7b7",
+                            "fontSize": 13,
+                            "textTransform": "capitalize",
+                          },
+                        ]
+                      }
+                    >
+                      holder name
+                    </Text>
+                    <Text
+                      numberOfLines={1}
+                      style={
+                        [
+                          {
+                            "color": "#fff",
+                            "fontFamily": "Montserrat_400Regular",
+                          },
+                          {
+                            "fontSize": 14,
+                          },
+                          undefined,
+                        ]
+                      }
+                    >
+                      Tradly Team
+                    </Text>
+                  </View>
+                  <View>
+                    <Text
+                      style={
+                        [
+                          {
+                            "color": "#fff",
+                            "fontFamily": "Montserrat_400Regular",
+                          },
+                          {
+                            "fontSize": 14,
+                          },
+                          {
+                            "color": "#b7b7b7",
+                            "fontSize": 13,
+                            "textTransform": "capitalize",
+                          },
+                        ]
+                      }
+                    >
+                      card number
+                    </Text>
+                    <Text
+                      numberOfLines={1}
+                      style={
+                        [
+                          {
+                            "color": "#fff",
+                            "fontFamily": "Montserrat_400Regular",
+                          },
+                          {
+                            "fontSize": 16,
+                          },
+                          {
+                            "width": 167,
+                          },
+                        ]
+                      }
+                    >
+                      4627 2158 9854 8869 
+                    </Text>
+                  </View>
+                  <View>
+                    <Text
+                      style={
+                        [
+                          {
+                            "color": "#fff",
+                            "fontFamily": "Montserrat_400Regular",
+                          },
+                          {
+                            "fontSize": 14,
+                          },
+                          {
+                            "color": "#b7b7b7",
+                            "fontSize": 13,
+                            "textTransform": "capitalize",
+                          },
+                        ]
+                      }
+                    >
+                      exp. date
+                    </Text>
+                    <Text
+                      style={
+                        [
+                          {
+                            "color": "#fff",
+                            "fontFamily": "Montserrat_400Regular",
+                          },
+                          {
+                            "fontSize": 14,
+                          },
+                          undefined,
+                        ]
+                      }
+                    >
+                      12/2023
+                    </Text>
+                  </View>
+                </View>
+                <View>
+                  <Text
+                    style={
+                      [
+                        {
+                          "color": "#fff",
+                          "fontFamily": "Montserrat_400Regular",
+                        },
+                        {
+                          "fontSize": 14,
+                        },
+                        [
+                          {
+                            "color": "#b7b7b7",
+                            "fontSize": 13,
+                            "textTransform": "capitalize",
+                          },
+                          {
+                            "textTransform": "uppercase",
+                          },
+                        ],
+                      ]
+                    }
+                  >
+                    cvc
+                  </Text>
+                  <Text
+                    style={
+                      [
+                        {
+                          "color": "#fff",
+                          "fontFamily": "Montserrat_400Regular",
+                        },
+                        {
+                          "fontSize": 14,
+                        },
+                        {
+                          "textAlign": "right",
+                        },
+                      ]
+                    }
+                  >
+                    123
+                  </Text>
+                </View>
+              </View>
+            </View>
+          </View>
+        </View>
+        <View
+          collapsable={false}
+          style={
+            {
+              "bottom": 0,
+              "left": 0,
+              "position": "absolute",
+              "right": 0,
+              "top": 0,
+            }
+          }
+        >
+          <View
+            style={
+              [
+                undefined,
+                {
+                  "bottom": 0,
+                  "left": 0,
+                  "position": "absolute",
+                  "right": 0,
+                  "top": 0,
+                },
+              ]
+            }
+          >
+            <View
+              accessibilityState={
+                {
+                  "busy": undefined,
+                  "checked": undefined,
+                  "disabled": undefined,
+                  "expanded": undefined,
+                  "selected": undefined,
+                }
+              }
+              accessible={true}
+              focusable={true}
+              onClick={[Function]}
+              onResponderGrant={[Function]}
+              onResponderMove={[Function]}
+              onResponderRelease={[Function]}
+              onResponderTerminate={[Function]}
+              onResponderTerminationRequest={[Function]}
+              onStartShouldSetResponder={[Function]}
+              style={
+                [
+                  {
+                    "alignItems": "center",
+                    "alignSelf": "flex-start",
+                    "borderColor": "#00000033",
+                    "borderRadius": 10,
+                    "borderStyle": "dashed",
+                    "borderWidth": 2,
+                    "paddingHorizontal": 38.5,
+                    "paddingVertical": 36,
+                    "rowGap": 20,
+                  },
+                  {
+                    "alignSelf": "center",
+                  },
+                ]
+              }
+            >
+              <Image
+                source={
+                  {
+                    "testUri": "../../../assets/payment/icon.png",
+                  }
+                }
+              />
+              <Text
+                style={
+                  [
+                    {
+                      "color": "#fff",
+                      "fontFamily": "Montserrat_400Regular",
+                    },
+                    {
+                      "fontSize": 14,
+                    },
+                    {
+                      "color": "#00000033",
+                      "letterSpacing": 0.5,
+                      "lineHeight": 28,
+                      "textTransform": "capitalize",
+                    },
+                  ]
+                }
+              >
+                add payment method
+              </Text>
+            </View>
+          </View>
+        </View>
+      </RNCViewPager>
+      <View
+        style={
+          {
+            "alignItems": "center",
+            "columnGap": 15,
+            "flexDirection": "row",
+            "justifyContent": "center",
+            "marginBottom": 25,
+          }
+        }
+      >
+        <View
+          style={
+            [
+              {
+                "borderRadius": 50,
+                "height": 10,
+                "opacity": 0.7,
+                "width": 10,
+              },
+              {
+                "backgroundColor": "#33907C",
+              },
+            ]
+          }
+        />
+        <View
+          style={
+            [
+              {
+                "borderRadius": 50,
+                "height": 10,
+                "opacity": 0.7,
+                "width": 10,
+              },
+              {
+                "backgroundColor": "#00000033",
+              },
+            ]
+          }
+        />
+        <View
+          style={
+            [
+              {
+                "borderRadius": 50,
+                "height": 10,
+                "opacity": 0.7,
+                "width": 10,
+              },
+              {
+                "backgroundColor": "#00000033",
+              },
+            ]
+          }
+        />
+      </View>
+    </View>
+    <View>
+      <RCTScrollView
+        ItemSeparatorComponent={[Function]}
+        data={
+          [
+            {
+              "id": "1",
+              "name": "Debit / Credit Card",
+            },
+            {
+              "id": "2",
+              "name": "Netbanking",
+            },
+            {
+              "id": "3",
+              "name": "Cash on Delivery",
+            },
+            {
+              "id": "4",
+              "name": "Wallet",
+            },
+          ]
+        }
+        getItem={[Function]}
+        getItemCount={[Function]}
+        keyExtractor={[Function]}
+        onContentSizeChange={[Function]}
+        onLayout={[Function]}
+        onMomentumScrollBegin={[Function]}
+        onMomentumScrollEnd={[Function]}
+        onScroll={[Function]}
+        onScrollBeginDrag={[Function]}
+        onScrollEndDrag={[Function]}
+        removeClippedSubviews={false}
+        renderItem={[Function]}
+        scrollEventThrottle={50}
+        stickyHeaderIndices={[]}
+        viewabilityConfigCallbackPairs={[]}
+      >
+        <View>
+          <View
+            onFocusCapture={[Function]}
+            onLayout={[Function]}
+            style={null}
+          >
+            <View
+              accessibilityState={
+                {
+                  "busy": undefined,
+                  "checked": undefined,
+                  "disabled": undefined,
+                  "expanded": undefined,
+                  "selected": undefined,
+                }
+              }
+              accessibilityValue={
+                {
+                  "max": undefined,
+                  "min": undefined,
+                  "now": undefined,
+                  "text": undefined,
+                }
+              }
+              accessible={true}
+              collapsable={false}
+              focusable={true}
+              onClick={[Function]}
+              onResponderGrant={[Function]}
+              onResponderMove={[Function]}
+              onResponderRelease={[Function]}
+              onResponderTerminate={[Function]}
+              onResponderTerminationRequest={[Function]}
+              onStartShouldSetResponder={[Function]}
+              style={
+                {
+                  "backgroundColor": "#fff",
+                  "opacity": 1,
+                  "paddingLeft": 16,
+                  "paddingVertical": 13.5,
+                }
+              }
+            >
+              <View
+                style={
+                  [
+                    {
+                      "alignItems": "center",
+                      "columnGap": 4,
+                      "flexDirection": "row",
+                    },
+                    {
+                      "columnGap": 8,
+                    },
+                  ]
+                }
+              >
+                <View
+                  style={
+                    [
+                      {
+                        "alignItems": "center",
+                        "borderRadius": 50,
+                        "borderWidth": 1,
+                        "height": 18,
+                        "justifyContent": "center",
+                        "width": 18,
+                      },
+                      {
+                        "borderColor": "#ced2d9",
+                      },
+                    ]
+                  }
+                />
+                <Text
+                  style={
+                    [
+                      {
+                        "color": "#fff",
+                        "fontFamily": "Montserrat_400Regular",
+                      },
+                      {
+                        "fontSize": 14,
+                      },
+                      {
+                        "color": "#4f4f4f",
+                        "fontFamily": "Montserrat_600SemiBold",
+                        "lineHeight": 21,
+                      },
+                    ]
+                  }
+                >
+                  Debit / Credit Card
+                </Text>
+              </View>
+            </View>
+            <View
+              style={
+                {
+                  "backgroundColor": "#d8d8d8",
+                  "height": 1,
+                }
+              }
+            />
+          </View>
+          <View
+            onFocusCapture={[Function]}
+            onLayout={[Function]}
+            style={null}
+          >
+            <View
+              accessibilityState={
+                {
+                  "busy": undefined,
+                  "checked": undefined,
+                  "disabled": undefined,
+                  "expanded": undefined,
+                  "selected": undefined,
+                }
+              }
+              accessibilityValue={
+                {
+                  "max": undefined,
+                  "min": undefined,
+                  "now": undefined,
+                  "text": undefined,
+                }
+              }
+              accessible={true}
+              collapsable={false}
+              focusable={true}
+              onClick={[Function]}
+              onResponderGrant={[Function]}
+              onResponderMove={[Function]}
+              onResponderRelease={[Function]}
+              onResponderTerminate={[Function]}
+              onResponderTerminationRequest={[Function]}
+              onStartShouldSetResponder={[Function]}
+              style={
+                {
+                  "backgroundColor": "#fff",
+                  "opacity": 1,
+                  "paddingLeft": 16,
+                  "paddingVertical": 13.5,
+                }
+              }
+            >
+              <View
+                style={
+                  [
+                    {
+                      "alignItems": "center",
+                      "columnGap": 4,
+                      "flexDirection": "row",
+                    },
+                    {
+                      "columnGap": 8,
+                    },
+                  ]
+                }
+              >
+                <View
+                  style={
+                    [
+                      {
+                        "alignItems": "center",
+                        "borderRadius": 50,
+                        "borderWidth": 1,
+                        "height": 18,
+                        "justifyContent": "center",
+                        "width": 18,
+                      },
+                      {
+                        "borderColor": "#ced2d9",
+                      },
+                    ]
+                  }
+                />
+                <Text
+                  style={
+                    [
+                      {
+                        "color": "#fff",
+                        "fontFamily": "Montserrat_400Regular",
+                      },
+                      {
+                        "fontSize": 14,
+                      },
+                      {
+                        "color": "#4f4f4f",
+                        "fontFamily": "Montserrat_600SemiBold",
+                        "lineHeight": 21,
+                      },
+                    ]
+                  }
+                >
+                  Netbanking
+                </Text>
+              </View>
+            </View>
+            <View
+              style={
+                {
+                  "backgroundColor": "#d8d8d8",
+                  "height": 1,
+                }
+              }
+            />
+          </View>
+          <View
+            onFocusCapture={[Function]}
+            onLayout={[Function]}
+            style={null}
+          >
+            <View
+              accessibilityState={
+                {
+                  "busy": undefined,
+                  "checked": undefined,
+                  "disabled": undefined,
+                  "expanded": undefined,
+                  "selected": undefined,
+                }
+              }
+              accessibilityValue={
+                {
+                  "max": undefined,
+                  "min": undefined,
+                  "now": undefined,
+                  "text": undefined,
+                }
+              }
+              accessible={true}
+              collapsable={false}
+              focusable={true}
+              onClick={[Function]}
+              onResponderGrant={[Function]}
+              onResponderMove={[Function]}
+              onResponderRelease={[Function]}
+              onResponderTerminate={[Function]}
+              onResponderTerminationRequest={[Function]}
+              onStartShouldSetResponder={[Function]}
+              style={
+                {
+                  "backgroundColor": "#fff",
+                  "opacity": 1,
+                  "paddingLeft": 16,
+                  "paddingVertical": 13.5,
+                }
+              }
+            >
+              <View
+                style={
+                  [
+                    {
+                      "alignItems": "center",
+                      "columnGap": 4,
+                      "flexDirection": "row",
+                    },
+                    {
+                      "columnGap": 8,
+                    },
+                  ]
+                }
+              >
+                <View
+                  style={
+                    [
+                      {
+                        "alignItems": "center",
+                        "borderRadius": 50,
+                        "borderWidth": 1,
+                        "height": 18,
+                        "justifyContent": "center",
+                        "width": 18,
+                      },
+                      {
+                        "borderColor": "#ced2d9",
+                      },
+                    ]
+                  }
+                />
+                <Text
+                  style={
+                    [
+                      {
+                        "color": "#fff",
+                        "fontFamily": "Montserrat_400Regular",
+                      },
+                      {
+                        "fontSize": 14,
+                      },
+                      {
+                        "color": "#4f4f4f",
+                        "fontFamily": "Montserrat_600SemiBold",
+                        "lineHeight": 21,
+                      },
+                    ]
+                  }
+                >
+                  Cash on Delivery
+                </Text>
+              </View>
+            </View>
+            <View
+              style={
+                {
+                  "backgroundColor": "#d8d8d8",
+                  "height": 1,
+                }
+              }
+            />
+          </View>
+          <View
+            onFocusCapture={[Function]}
+            onLayout={[Function]}
+            style={null}
+          >
+            <View
+              accessibilityState={
+                {
+                  "busy": undefined,
+                  "checked": undefined,
+                  "disabled": undefined,
+                  "expanded": undefined,
+                  "selected": undefined,
+                }
+              }
+              accessibilityValue={
+                {
+                  "max": undefined,
+                  "min": undefined,
+                  "now": undefined,
+                  "text": undefined,
+                }
+              }
+              accessible={true}
+              collapsable={false}
+              focusable={true}
+              onClick={[Function]}
+              onResponderGrant={[Function]}
+              onResponderMove={[Function]}
+              onResponderRelease={[Function]}
+              onResponderTerminate={[Function]}
+              onResponderTerminationRequest={[Function]}
+              onStartShouldSetResponder={[Function]}
+              style={
+                {
+                  "backgroundColor": "#fff",
+                  "opacity": 1,
+                  "paddingLeft": 16,
+                  "paddingVertical": 13.5,
+                }
+              }
+            >
+              <View
+                style={
+                  [
+                    {
+                      "alignItems": "center",
+                      "columnGap": 4,
+                      "flexDirection": "row",
+                    },
+                    {
+                      "columnGap": 8,
+                    },
+                  ]
+                }
+              >
+                <View
+                  style={
+                    [
+                      {
+                        "alignItems": "center",
+                        "borderRadius": 50,
+                        "borderWidth": 1,
+                        "height": 18,
+                        "justifyContent": "center",
+                        "width": 18,
+                      },
+                      {
+                        "borderColor": "#ced2d9",
+                      },
+                    ]
+                  }
+                />
+                <Text
+                  style={
+                    [
+                      {
+                        "color": "#fff",
+                        "fontFamily": "Montserrat_400Regular",
+                      },
+                      {
+                        "fontSize": 14,
+                      },
+                      {
+                        "color": "#4f4f4f",
+                        "fontFamily": "Montserrat_600SemiBold",
+                        "lineHeight": 21,
+                      },
+                    ]
+                  }
+                >
+                  Wallet
+                </Text>
+              </View>
+            </View>
+          </View>
+        </View>
+      </RCTScrollView>
+    </View>
+    <View
+      style={
+        [
+          {
+            "alignItems": "center",
+            "columnGap": 4,
+            "flexDirection": "row",
+          },
+          {
+            "justifyContent": "space-between",
+          },
+          {
+            "backgroundColor": "#fff",
+            "paddingHorizontal": 20,
+            "paddingVertical": 15,
+          },
+          undefined,
+        ]
+      }
+    >
+      <View
+        style={
+          {
+            "rowGap": 4,
+          }
+        }
+      >
+        <Text
+          style={
+            [
+              {
+                "color": "#fff",
+                "fontFamily": "Montserrat_400Regular",
+              },
+              {
+                "fontSize": 14,
+              },
+              {
+                "color": "#4f4f4f",
+                "fontFamily": "Montserrat_500Medium",
+              },
+            ]
+          }
+        >
+          Deliver to Tradly Team, 75119
+        </Text>
+        <Text
+          style={
+            [
+              {
+                "color": "#fff",
+                "fontFamily": "Montserrat_400Regular",
+              },
+              {
+                "fontSize": 14,
+              },
+              [
+                {
+                  "color": "#4f4f4f",
+                  "fontFamily": "Montserrat_500Medium",
+                },
+                {
+                  "opacity": 0.7,
+                },
+              ],
+            ]
+          }
+        >
+          Kualalumpur, Malaysia
+        </Text>
+      </View>
+      <View
+        accessibilityState={
+          {
+            "busy": undefined,
+            "checked": undefined,
+            "disabled": undefined,
+            "expanded": undefined,
+            "selected": undefined,
+          }
+        }
+        accessibilityValue={
+          {
+            "max": undefined,
+            "min": undefined,
+            "now": undefined,
+            "text": undefined,
+          }
+        }
+        accessible={true}
+        collapsable={false}
+        focusable={true}
+        onClick={[Function]}
+        onResponderGrant={[Function]}
+        onResponderMove={[Function]}
+        onResponderRelease={[Function]}
+        onResponderTerminate={[Function]}
+        onResponderTerminationRequest={[Function]}
+        onStartShouldSetResponder={[Function]}
+        style={
+          {
+            "backgroundColor": "#33907C",
+            "borderColor": "#33907C",
+            "borderRadius": 50,
+            "borderWidth": 2,
+            "opacity": 1,
+            "paddingHorizontal": 23,
+            "paddingVertical": 4,
+          }
+        }
+      >
+        <View
+          style={
+            {
+              "alignItems": "center",
+              "columnGap": 6,
+              "display": "flex",
+              "flexDirection": "row",
+              "justifyContent": "center",
+            }
+          }
+        >
+          <Text
+            style={
+              [
+                {
+                  "color": "#fff",
+                  "fontFamily": "Montserrat_400Regular",
+                },
+                {
+                  "fontSize": 16,
+                },
+                [
+                  {
+                    "color": "#fff",
+                  },
+                  {
+                    "fontFamily": "Montserrat_500Medium",
+                    "textAlign": "center",
+                    "textTransform": "capitalize",
+                  },
+                  {
+                    "fontSize": 12,
+                  },
+                ],
+              ]
+            }
+          >
+            change
+          </Text>
+        </View>
+      </View>
+    </View>
+    <RCTScrollView>
+      <View>
+        <View
+          style={
+            [
+              {
+                "backgroundColor": "#fff",
+                "paddingBottom": 15,
+                "paddingHorizontal": 15,
+              },
+              undefined,
+            ]
+          }
+        >
+          <Text
+            style={
+              [
+                {
+                  "color": "#fff",
+                  "fontFamily": "Montserrat_700Bold",
+                  "fontSize": 24,
+                },
+                false,
+                [
+                  {
+                    "color": "#000",
+                    "fontFamily": "Montserrat_500Medium",
+                    "lineHeight": 20,
+                    "textTransform": "capitalize",
+                  },
+                  {
+                    "fontFamily": "Montserrat_600SemiBold",
+                    "fontSize": 18,
+                    "paddingVertical": 14,
+                  },
+                ],
+              ]
+            }
+          >
+            price details
+          </Text>
+          <View
+            style={
+              [
+                {
+                  "alignItems": "center",
+                  "columnGap": 4,
+                  "flexDirection": "row",
+                },
+                {
+                  "justifyContent": "space-between",
+                },
+              ]
+            }
+          >
+            <View
+              style={
+                {
+                  "rowGap": 10,
+                }
+              }
+            >
+              <Text
+                style={
+                  [
+                    {
+                      "color": "#fff",
+                      "fontFamily": "Montserrat_400Regular",
+                    },
+                    {
+                      "fontSize": 14,
+                    },
+                    {
+                      "color": "#000",
+                      "fontFamily": "Montserrat_500Medium",
+                      "lineHeight": 20,
+                      "textTransform": "capitalize",
+                    },
+                  ]
+                }
+              >
+                price (1 item)
+              </Text>
+              <Text
+                style={
+                  [
+                    {
+                      "color": "#fff",
+                      "fontFamily": "Montserrat_400Regular",
+                    },
+                    {
+                      "fontSize": 14,
+                    },
+                    {
+                      "color": "#000",
+                      "fontFamily": "Montserrat_500Medium",
+                      "lineHeight": 20,
+                      "textTransform": "capitalize",
+                    },
+                  ]
+                }
+              >
+                delivery fee
+              </Text>
+            </View>
+            <View
+              style={
+                [
+                  {
+                    "rowGap": 10,
+                  },
+                  {
+                    "alignItems": "flex-end",
+                  },
+                ]
+              }
+            >
+              <Text
+                style={
+                  [
+                    {
+                      "color": "#fff",
+                      "fontFamily": "Montserrat_400Regular",
+                    },
+                    {
+                      "fontSize": 14,
+                    },
+                    {
+                      "color": "#000",
+                      "fontFamily": "Montserrat_500Medium",
+                      "lineHeight": 20,
+                      "textTransform": "capitalize",
+                    },
+                  ]
+                }
+              >
+                $25
+              </Text>
+              <Text
+                style={
+                  [
+                    {
+                      "color": "#fff",
+                      "fontFamily": "Montserrat_400Regular",
+                    },
+                    {
+                      "fontSize": 14,
+                    },
+                    {
+                      "color": "#000",
+                      "fontFamily": "Montserrat_500Medium",
+                      "lineHeight": 20,
+                      "textTransform": "capitalize",
+                    },
+                  ]
+                }
+              >
+                info
+              </Text>
+            </View>
+          </View>
+          <View
+            style={
+              {
+                "borderBottomColor": "#0000001a",
+                "borderBottomWidth": 0.5,
+                "marginLeft": -14,
+                "marginTop": 24,
+                "width": 750,
+              }
+            }
+          />
+          <View
+            style={
+              [
+                {
+                  "alignItems": "center",
+                  "columnGap": 4,
+                  "flexDirection": "row",
+                },
+                {
+                  "justifyContent": "space-between",
+                },
+              ]
+            }
+          >
+            <Text
+              style={
+                [
+                  {
+                    "color": "#fff",
+                    "fontFamily": "Montserrat_700Bold",
+                    "fontSize": 24,
+                  },
+                  false,
+                  [
+                    {
+                      "color": "#000",
+                      "fontFamily": "Montserrat_500Medium",
+                      "lineHeight": 20,
+                      "textTransform": "capitalize",
+                    },
+                    {
+                      "fontFamily": "Montserrat_600SemiBold",
+                      "fontSize": 18,
+                      "paddingVertical": 14,
+                    },
+                  ],
+                ]
+              }
+            >
+              total amount
+            </Text>
+            <Text
+              style={
+                [
+                  {
+                    "color": "#fff",
+                    "fontFamily": "Montserrat_700Bold",
+                    "fontSize": 24,
+                  },
+                  false,
+                  [
+                    {
+                      "color": "#000",
+                      "fontFamily": "Montserrat_500Medium",
+                      "lineHeight": 20,
+                      "textTransform": "capitalize",
+                    },
+                    {
+                      "fontFamily": "Montserrat_600SemiBold",
+                      "fontSize": 18,
+                      "paddingVertical": 14,
+                    },
+                    {
+                      "fontFamily": "Montserrat_700Bold",
+                    },
+                  ],
+                ]
+              }
+            >
+              $25
+            </Text>
+          </View>
+        </View>
+      </View>
+    </RCTScrollView>
+  </View>,
+  <View
+    style={
+      [
+        {
+          "paddingHorizontal": 16,
+          "paddingVertical": 22,
+        },
+        {
+          "backgroundColor": "#33907C",
+          "rowGap": 24,
+        },
+        {
+          "paddingTop": 0,
+        },
+        [
+          {
+            "backgroundColor": "#fff",
+            "paddingHorizontal": 32,
+          },
+          {
+            "shadowColor": "#000",
+            "shadowOffset": {
+              "height": 12,
+              "width": 0,
+            },
+            "shadowOpacity": 0.6,
+            "shadowRadius": 16,
+          },
+          {
+            "paddingBottom": 12,
+            "paddingTop": 12,
+          },
+          undefined,
+        ],
+      ]
+    }
+  >
+    <View
+      style={
+        [
+          {
+            "alignItems": "center",
+            "columnGap": 4,
+            "flexDirection": "row",
+          },
+          {
+            "justifyContent": "space-between",
+          },
+        ]
+      }
+    >
+      <View
+        accessibilityState={
+          {
+            "busy": undefined,
+            "checked": undefined,
+            "disabled": undefined,
+            "expanded": undefined,
+            "selected": undefined,
+          }
+        }
+        accessibilityValue={
+          {
+            "max": undefined,
+            "min": undefined,
+            "now": undefined,
+            "text": undefined,
+          }
+        }
+        accessible={true}
+        collapsable={false}
+        focusable={true}
+        onClick={[Function]}
+        onResponderGrant={[Function]}
+        onResponderMove={[Function]}
+        onResponderRelease={[Function]}
+        onResponderTerminate={[Function]}
+        onResponderTerminationRequest={[Function]}
+        onStartShouldSetResponder={[Function]}
+        style={
+          {
+            "backgroundColor": "#33907C",
+            "borderColor": "#33907C",
+            "borderRadius": 50,
+            "borderWidth": 2,
+            "flex": 1,
+            "opacity": 1,
+            "paddingVertical": 13,
+          }
+        }
+      >
+        <View
+          style={
+            {
+              "alignItems": "center",
+              "columnGap": 6,
+              "display": "flex",
+              "flexDirection": "row",
+              "justifyContent": "center",
+            }
+          }
+        >
+          <Text
+            style={
+              [
+                {
+                  "color": "#fff",
+                  "fontFamily": "Montserrat_400Regular",
+                },
+                {
+                  "fontSize": 16,
+                },
+                [
+                  {
+                    "color": "#fff",
+                  },
+                  {
+                    "fontFamily": "Montserrat_500Medium",
+                    "textAlign": "center",
+                    "textTransform": "capitalize",
+                  },
+                  undefined,
+                ],
+              ]
+            }
+          >
+            Checkout
+          </Text>
+        </View>
+      </View>
+    </View>
+  </View>,
+]
+`;
