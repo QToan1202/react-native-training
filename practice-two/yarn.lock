@@ -3720,7 +3720,7 @@
     "@tamagui/compose-refs" "1.76.0"
     "@tamagui/web" "1.76.0"
 
-"@tamagui/font-inter@1.76.0", "@tamagui/font-inter@^1.76.0":
+"@tamagui/font-inter@1.76.0":
   version "1.76.0"
   resolved "https://registry.yarnpkg.com/@tamagui/font-inter/-/font-inter-1.76.0.tgz#1b2f9e60b61f61604ebb5cd3fb811748ccce678a"
   integrity sha512-+kVEJus4SJtN/4vNcnwQzNRVNj9hU/oyHoKHjkujnNdApcCMYBzlZ4TccMb9SakwOfaf9ODk+ZcYg2F2JBXeyQ==

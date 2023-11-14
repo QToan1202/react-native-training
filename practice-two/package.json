@@ -25,7 +25,6 @@
     "@tamagui/animations-moti": "^1.76.0",
     "@tamagui/babel-plugin": "^1.76.0",
     "@tamagui/config": "^1.76.0",
-    "@tamagui/font-inter": "^1.76.0",
     "@tamagui/lucide-icons": "^1.76.0",
     "@tamagui/shorthands": "^1.76.0",
     "@tamagui/themes": "^1.76.0",
