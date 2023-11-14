@@ -1,7 +1,15 @@
 import { withBackgrounds } from '@storybook/addon-ondevice-backgrounds'
-import { View } from 'react-native'
+import { TamaguiProvider } from 'tamagui'
+import config from '../tamagui.config'
 
-export const decorators = [withBackgrounds]
+export const decorators = [
+  withBackgrounds,
+  (StoryFn) => (
+    <TamaguiProvider config={config}>
+      <StoryFn />
+    </TamaguiProvider>
+  ),
+]
 
 export const parameters = {
   backgrounds: {
