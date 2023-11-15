@@ -4,7 +4,6 @@ import {
   SizableText,
   Stack,
   createStyledContext,
-  getTokens,
   styled,
   withStaticProperties,
 } from 'tamagui'
@@ -32,7 +31,7 @@ const CustomButtonFrame = styled(Stack, {
   flexDirection: 'row',
   justifyContent: 'center',
   alignItems: 'center',
-  columnGap: getTokens().space[2].val - 1,
+  columnGap: 6, // getTokens().space[2].val - 1
   pressStyle: {
     opacity: 0.5,
   },
@@ -69,7 +68,7 @@ const CustomButtonFrame = styled(Stack, {
       true: {
         alignSelf: 'flex-start',
         paddingVertical: '$space.2',
-        paddingHorizontal: getTokens().space[4].val + 2,
+        paddingHorizontal: 6,
       },
     },
   } as const,
@@ -83,10 +82,18 @@ const ButtonText = styled(SizableText, {
   name: 'Button',
   context: ButtonContext,
   userSelect: 'none',
-  size: '$2',
   fontWeight: '$2',
   textTransform: 'capitalize',
   textAlign: 'center',
+  lineHeight: '$2',
+
+  variants: {
+    size: {
+      '...fontSize': (name, { font }) => ({
+        fontSize: font?.size[name],
+      }),
+    },
+  } as const,
 })
 
 const ButtonStyled = withStaticProperties(CustomButtonFrame, {
@@ -95,6 +102,6 @@ const ButtonStyled = withStaticProperties(CustomButtonFrame, {
   Props: ButtonContext.Provider,
 })
 
-export type ButtonProps = GetProps<typeof CustomButtonFrame>
+export type ButtonProps = GetProps<typeof ButtonText> & GetProps<typeof CustomButtonFrame>
 
 export default ButtonStyled

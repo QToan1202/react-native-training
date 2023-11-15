@@ -6,11 +6,11 @@ import { imageStyles } from '@styles'
 
 import ButtonStyled, { ButtonProps as StyledButtonProps } from './styles'
 
-export interface ButtonProps extends StyledButtonProps {
+export type ButtonProps = {
   title: string
   leftIcon?: ImageSourcePropType
   rightIcon?: ImageSourcePropType
-}
+} & StyledButtonProps
 
 const Button = ({ title, leftIcon, rightIcon, ...rest }: ButtonProps) => {
   return (
