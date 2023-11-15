@@ -17,14 +17,12 @@ Default.args = {
 export const MediumHeading = Template.bind({})
 MediumHeading.args = {
   content: 'My medium heading',
-  textMedium: true,
+  fontWeight: '$2',
 }
 
 export const HeadingWithCustomStyle = Template.bind({})
 HeadingWithCustomStyle.args = {
   content: 'My custom heading',
-  textMedium: true,
-  style: {
-    color: '#000',
-  },
+  fontWeight: '$2',
+  color: '#000',
 }

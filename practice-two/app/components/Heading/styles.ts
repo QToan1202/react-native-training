@@ -1,16 +1,18 @@
-import { StyleSheet } from 'react-native'
+import { GetProps, Heading, styled } from 'tamagui'
 
-import { COLORS, FONT_FAMILY } from '@constants'
-
-const styles = StyleSheet.create({
-  heading_bold: {
-    fontFamily: FONT_FAMILY.MONTSERRAT[700],
-    fontSize: 24,
-    color: COLORS.WHITE,
-  },
-  heading_medium: {
-    fontFamily: FONT_FAMILY.MONTSERRAT[500],
-  },
+const StyledHeading = styled(Heading, {
+  variants: {
+    size: {
+      '...fontSize': (value, { font }) => {
+        return {
+          fontSize: font?.size[value] ?? value,
+          lineHeight: font?.lineHeight[value] ?? value,
+        }
+      },
+    },
+  } as const,
 })
 
-export default styles
+export type StyledHeadingProps = GetProps<typeof StyledHeading>
+
+export default StyledHeading
