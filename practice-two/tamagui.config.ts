@@ -14,6 +14,7 @@ const animations = createAnimations({
 const customTokens = createTokens({
   ...tokens,
   color: {
+    ...tokens.color,
     white: '#fff',
     black: '#000',
     transparent: 'transparent',
