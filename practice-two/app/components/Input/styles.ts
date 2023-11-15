@@ -1,36 +1,55 @@
 import { StyleSheet } from 'react-native'
+import { GetProps, Input, SizableText, styled } from 'tamagui'
 
-import { COLORS, FONT_FAMILY } from '@constants'
+export const Label = styled(SizableText, {
+  fontSize: 14,
+  color: '$color.gray_100',
+  fontWeight: '$2',
+  lineHeight: '$2',
 
-const styles = StyleSheet.create({
-  label: {
-    fontFamily: FONT_FAMILY.MONTSERRAT[500],
-    color: COLORS.GRAY_100,
-  },
-  labelFocus: {
-    color: COLORS.PRIMARY,
-  },
-  input: {
-    paddingVertical: 12,
-    paddingLeft: 15,
-    borderWidth: 1,
-    borderColor: COLORS.WHITE,
-    borderRadius: 50,
-    fontFamily: FONT_FAMILY.MONTSERRAT[400],
-    fontSize: 18,
-    color: COLORS.WHITE,
-  },
-  inputWithLabel: {
-    paddingVertical: 5,
-    borderBottomWidth: StyleSheet.hairlineWidth,
-    borderBottomColor: COLORS.INPUT_BORDER,
-    fontFamily: FONT_FAMILY.MONTSERRAT[500],
-    fontSize: 16,
-    color: COLORS.BLACK,
-  },
-  inputFocus: {
-    borderBottomColor: COLORS.PRIMARY,
+  focusStyle: {
+    fontWeight: '$2',
+    color: '$color.primary',
   },
 })
 
-export default styles
+export type LabelProps = GetProps<typeof Label>
+
+export const StyledInput = styled(Input, {
+  unstyled: true, // Reset Tamagui Input component style
+  backgroundColor: '$color.transparent',
+
+  variants: {
+    label: {
+      true: {
+        paddingVertical: 5,
+        borderBottomWidth: StyleSheet.hairlineWidth,
+        borderBottomColor: '$color.input_border',
+        fontWeight: '$2',
+        fontSize: '$2',
+        color: '$color.black',
+
+        focusable: true,
+        focusStyle: {
+          borderBottomColor: '$color.primary',
+        },
+      },
+      false: {
+        paddingVertical: 12,
+        paddingLeft: 15,
+        borderWidth: 1,
+        borderColor: '$color.white',
+        borderRadius: '$radius.12',
+        fontWeight: '$1',
+        fontSize: '$3',
+        color: '$color.white',
+      },
+    },
+  } as const,
+
+  defaultVariants: {
+    label: false,
+  },
+})
+
+export type StyledInputProps = GetProps<typeof StyledInput>

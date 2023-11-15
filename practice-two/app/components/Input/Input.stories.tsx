@@ -1,8 +1,8 @@
 import { Alert, StyleSheet, View } from 'react-native'
 import { SubmitHandler, useForm } from 'react-hook-form'
 import { ComponentMeta, ComponentStory } from '@storybook/react-native'
+import { getTokens } from 'tamagui'
 
-import { COLORS } from '@constants'
 import { IForm } from '@types'
 
 import { Button, Input } from '../index'
@@ -38,14 +38,18 @@ const Template: ComponentStory<typeof Input> = (arg: Omit<InputProps, 'control'>
 export const Default = Template.bind({})
 Default.args = {
   name: 'email',
-  placeholder: 'Enter your email',
-  placeholderTextColor: COLORS.WHITE,
+  inputStyle: {
+    placeholder: 'Enter your email',
+    placeholderTextColor: getTokens().color.white.val,
+  },
 }
 
 export const InputWithLabel = Template.bind({})
 InputWithLabel.args = {
   label: 'First name',
   name: 'firstName',
-  placeholder: 'Enter your name',
-  placeholderTextColor: COLORS.BLACK,
+  inputStyle: {
+    placeholder: 'Enter your name',
+    placeholderTextColor: getTokens().color.black.val,
+  },
 }

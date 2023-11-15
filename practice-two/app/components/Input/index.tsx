@@ -1,25 +1,25 @@
-import { forwardRef, memo, useCallback, useState } from 'react'
+import { forwardRef, memo } from 'react'
 import isEqual from 'react-fast-compare'
-import { StyleProp, TextInput, TextInputProps, View, ViewStyle } from 'react-native'
 import { Control, UseControllerProps, useController } from 'react-hook-form'
+import { Stack, StackProps } from 'tamagui'
+import { TextInput } from 'react-native'
 
-import Paragraph from '@components/Paragraph'
 import ErrorMessage from '@components/ErrorMessage'
 import { IForm } from '@types'
 
-import styles from './styles'
+import { Label, StyledInput, StyledInputProps } from './styles'
 
-export interface InputProps extends TextInputProps {
+export type InputProps = {
   label?: string
   name: keyof IForm
   control: Control<IForm>
   rules?: UseControllerProps['rules']
   isShowError?: boolean
-  containerStyle?: StyleProp<ViewStyle>
-}
+  inputStyle?: StyledInputProps
+} & StackProps
 
 const Input = forwardRef<TextInput, InputProps>(
-  ({ label, name, control, rules, isShowError = false, style, containerStyle, ...rest }, ref) => {
+  ({ label, name, control, rules, isShowError = false, inputStyle, ...rest }, ref) => {
     const {
       field,
       formState: { errors },
@@ -29,34 +29,19 @@ const Input = forwardRef<TextInput, InputProps>(
       name,
       rules,
     })
-    const [isFocus, setIsFocus] = useState(false)
-    const handleFocus = useCallback(() => setIsFocus(true), [])
-    const handleBlur = useCallback(() => setIsFocus(false), [])
 
     return (
-      <View style={containerStyle}>
-        {label && (
-          <Paragraph
-            size="sm"
-            content={label}
-            style={isFocus ? [styles.label, styles.labelFocus] : styles.label}
-          />
-        )}
-        <TextInput
+      <Stack {...rest}>
+        {label && <Label>{label}</Label>}
+        <StyledInput
           ref={ref}
-          style={[
-            label ? styles.inputWithLabel : styles.input, // Style when an input have label or not
-            isFocus && label ? styles.inputFocus : {}, // Change style of the input that have label when focus
-            style,
-          ]}
+          label={!!label}
           value={String(field.value)}
           onChangeText={field.onChange}
-          onFocus={handleFocus}
-          onBlur={handleBlur}
-          {...rest}
+          {...inputStyle}
         />
         {isShowError && <ErrorMessage error={errors[name]} />}
-      </View>
+      </Stack>
     )
   }
 )
