@@ -9,7 +9,7 @@ export type HeadingProps = {
 
 const Heading = ({ content, ...rest }: HeadingProps) => {
   return (
-    <StyledHeading size="$5" fontWeight="$4" color="$color.white" {...rest}>
+    <StyledHeading size="$5" fontWeight="$4" color="$color.white" letterSpacing="$2" {...rest}>
       {content}
     </StyledHeading>
   )
