@@ -15,11 +15,11 @@ export type InputProps = {
   control: Control<IForm>
   rules?: UseControllerProps['rules']
   isShowError?: boolean
-  inputStyle?: StyledInputProps
-} & StackProps
+  containerStyle?: StackProps
+} & StyledInputProps
 
 const Input = forwardRef<TextInput, InputProps>(
-  ({ label, name, control, rules, isShowError = false, inputStyle, ...rest }, ref) => {
+  ({ label, name, control, rules, isShowError = false, containerStyle, ...rest }, ref) => {
     const {
       field,
       formState: { errors },
@@ -31,14 +31,14 @@ const Input = forwardRef<TextInput, InputProps>(
     })
 
     return (
-      <Stack {...rest}>
+      <Stack {...containerStyle}>
         {label && <Label>{label}</Label>}
         <StyledInput
           ref={ref}
           label={!!label}
           value={String(field.value)}
           onChangeText={field.onChange}
-          {...inputStyle}
+          {...rest}
         />
         {isShowError && <ErrorMessage error={errors[name]} />}
       </Stack>
