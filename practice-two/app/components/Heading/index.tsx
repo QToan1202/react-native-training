@@ -1,19 +1,17 @@
 import { memo } from 'react'
 import isEqual from 'react-fast-compare'
-import { Text, TextProps } from 'react-native'
 
-import styles from './styles'
+import StyledHeading, { StyledHeadingProps } from './styles'
 
-export interface HeadingProps extends TextProps {
+export type HeadingProps = {
   content: string
-  textMedium?: boolean
-}
+} & StyledHeadingProps
 
-const Heading = ({ content, textMedium = false, style, ...rest }: HeadingProps) => {
+const Heading = ({ content, ...rest }: HeadingProps) => {
   return (
-    <Text style={[styles.heading_bold, textMedium && styles.heading_medium, style]} {...rest}>
+    <StyledHeading size="$5" fontWeight="$4" color="$color.white" {...rest}>
       {content}
-    </Text>
+    </StyledHeading>
   )
 }
 
