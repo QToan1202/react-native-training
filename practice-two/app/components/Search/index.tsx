@@ -1,28 +1,19 @@
 import { useCallback, useRef } from 'react'
 import { useForm } from 'react-hook-form'
-import {
-  Image,
-  StyleProp,
-  TextInput,
-  TextInputProps,
-  TouchableWithoutFeedback,
-  View,
-  ViewStyle,
-} from 'react-native'
+import { Image, TextInput } from 'react-native'
+import { Stack, XStack, getTokenValue } from 'tamagui'
 
-import { COLORS } from '@constants'
 import Input from '@components/Input'
 import { IForm } from '@types'
-import { containerStyles } from '@styles'
 
+import { StyledInputProps } from '@components/Input/styles'
 import styles from './styles'
 
-export interface SearchProps extends TextInputProps {
+export type SearchProps = {
   placeholder: string
-  style?: StyleProp<ViewStyle>
-}
+} & Omit<StyledInputProps, 'label'>
 
-const Search = ({ placeholder, style, ...rest }: SearchProps) => {
+const Search = ({ placeholder, ...rest }: SearchProps) => {
   const { control } = useForm<IForm>()
   const searchInput = useRef<TextInput>(null)
 
@@ -36,21 +27,31 @@ const Search = ({ placeholder, style, ...rest }: SearchProps) => {
   }, [])
 
   return (
-    <TouchableWithoutFeedback onPress={handlePress}>
-      <View style={[styles.container, style]}>
-        <Image style={styles.icon} source={require('@assets/search.png')} />
+    <XStack>
+      <XStack
+        flex={1}
+        alignItems="center"
+        space="$space.4"
+        paddingHorizontal="$space.4"
+        borderRadius="$radius.12"
+        backgroundColor="$color.white"
+        onPress={handlePress}
+      >
+        <Stack width="$icon.width" height="$icon.height">
+          <Image source={require('@assets/search.png')} resizeMode="cover" />
+        </Stack>
         <Input
-          containerStyle={containerStyles.expand}
+          containerStyle={{ flex: 1 }}
           ref={searchInput}
           name="search"
           control={control}
           style={styles.search}
           placeholder={placeholder}
-          placeholderTextColor={COLORS.GRAY_50}
+          placeholderTextColor={getTokenValue('$color.gray_50')}
           {...rest}
         />
-      </View>
-    </TouchableWithoutFeedback>
+      </XStack>
+    </XStack>
   )
 }
 

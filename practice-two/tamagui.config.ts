@@ -42,6 +42,10 @@ const customTokens = createTokens({
     lg: 48,
     xl: 64,
   },
+  icon: {
+    width: 24,
+    height: 24,
+  },
 })
 
 const montserratFont = createFont({
