@@ -1,23 +1,14 @@
 import { memo } from 'react'
 import isEqual from 'react-fast-compare'
-import { StyleProp, Text, TextProps, TextStyle } from 'react-native'
 
-import { TSize } from '@types'
+import StyledParagraph, { StyledParagraphProps } from './styles'
 
-import styles from './styles'
-
-export interface ParagraphProps extends TextProps {
+export type ParagraphProps = {
   content: string
-  size?: TSize
-  style?: StyleProp<TextStyle>
-}
+} & StyledParagraphProps
 
-const Paragraph = ({ content, size = 'sm', style, ...rest }: ParagraphProps) => {
-  return (
-    <Text style={[styles.text, styles[size], style]} {...rest}>
-      {content}
-    </Text>
-  )
+const Paragraph = ({ content, ...rest }: ParagraphProps) => {
+  return <StyledParagraph {...rest}>{content}</StyledParagraph>
 }
 
 export default memo(Paragraph, isEqual)

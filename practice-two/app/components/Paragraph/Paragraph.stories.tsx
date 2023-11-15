@@ -17,13 +17,11 @@ Default.args = {
 export const TextWithSize = Template.bind({})
 TextWithSize.args = {
   content: 'My bigger text',
-  size: 'lg',
+  size: '$2',
 }
 
 export const TextWithCustomStyle = Template.bind({})
 TextWithCustomStyle.args = {
   content: 'My text is colorful',
-  style: {
-    color: 'aqua',
-  },
+  color: 'aqua',
 }

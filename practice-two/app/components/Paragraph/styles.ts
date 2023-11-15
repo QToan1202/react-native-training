@@ -1,24 +1,10 @@
-import { StyleSheet } from 'react-native'
+import { GetProps, Paragraph, styled } from 'tamagui'
 
-import { COLORS, FONT_FAMILY } from '@constants'
-
-const styles = StyleSheet.create({
-  text: {
-    fontFamily: FONT_FAMILY.MONTSERRAT[400],
-    color: COLORS.WHITE,
-  },
-  sm: {
-    fontSize: 14,
-  },
-  md: {
-    fontSize: 16,
-  },
-  lg: {
-    fontSize: 18,
-  },
-  xl: {
-    fontSize: 20,
-  },
+const StyledParagraph = styled(Paragraph, {
+  fontWeight: '$true',
+  color: '$color.white',
 })
 
-export default styles
+export type StyledParagraphProps = GetProps<typeof StyledParagraph>
+
+export default StyledParagraph
