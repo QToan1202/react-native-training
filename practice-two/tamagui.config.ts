@@ -36,6 +36,12 @@ const customTokens = createTokens({
     input_border: '#dbdbde',
     blue: '#4ea0ff',
   },
+  avatar: {
+    sm: 20,
+    md: 32,
+    lg: 48,
+    xl: 64,
+  },
 })
 
 const montserratFont = createFont({

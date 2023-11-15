@@ -1,31 +1,33 @@
 import { memo } from 'react'
 import isEqual from 'react-fast-compare'
-import { Image, ImageProps, StyleProp, View, ViewProps, ViewStyle } from 'react-native'
+import { Image, ImageProps } from 'react-native'
+import { Circle, StackProps, Tokens, getTokens } from 'tamagui'
 
-import { containerStyles, imageStyles } from '@styles'
+import { imageStyles } from '@styles'
 import Paragraph from '@components/Paragraph'
-import { TAlignAvatar, TSize } from '@types'
 
-import styles from './styles'
+import StyledStack from './styles'
 
-export interface AvatarProps extends ViewProps {
+export type AvatarProps = {
   source: ImageProps['source']
   name: string
-  size?: TSize
-  align?: TAlignAvatar
-  style?: StyleProp<ViewStyle>
-}
+  size: keyof Tokens['avatar']
+} & StackProps
 
-const Avatar = ({ source, name, size = 'sm', align = 'inline', style, ...rest }: AvatarProps) => {
+const Avatar = ({ source, name, size = 'sm', ...rest }: AvatarProps) => {
   return (
-    <View style={[containerStyles[align], styles.spacing, style]} {...rest}>
-      <Image
-        source={source}
-        style={[imageStyles.round, styles[size]]}
-        accessibilityLabel={`${name}-avatar`}
+    <StyledStack space={10} {...rest}>
+      <Circle size={getTokens().avatar[size].val}>
+        <Image source={source} style={imageStyles.round} accessibilityLabel={`${name}-avatar`} />
+      </Circle>
+      <Paragraph
+        numberOfLines={1}
+        color="$color.gray_50"
+        textTransform="capitalize"
+        fontWeight="$2"
+        content={name}
       />
-      <Paragraph content={name} style={styles.name} numberOfLines={1} />
-    </View>
+    </StyledStack>
   )
 }
 

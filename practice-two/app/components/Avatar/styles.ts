@@ -1,32 +1,29 @@
-import { StyleSheet } from 'react-native'
+import { GetProps, Stack, styled } from 'tamagui'
 
-import { COLORS, FONT_FAMILY } from '@constants'
+const StyledStack = styled(Stack, {
+  space: 10,
+  alignItems: 'center',
+  columnGap: 4,
 
-const styles = StyleSheet.create({
-  spacing: {
-    columnGap: 10,
-  },
-  name: {
-    fontFamily: FONT_FAMILY.MONTSERRAT[500],
-    color: COLORS.GRAY_50,
-    textTransform: 'capitalize',
-  },
-  sm: {
-    width: 20,
-    height: 20,
-  },
-  md: {
-    width: 32,
-    height: 32,
-  },
-  lg: {
-    width: 48,
-    height: 48,
-  },
-  xl: {
-    width: 64,
-    height: 64,
+  variants: {
+    inline: {
+      true: {
+        flexDirection: 'row',
+      },
+    },
+
+    block: {
+      true: {
+        flexDirection: 'column',
+      },
+    },
+  } as const,
+
+  defaultVariants: {
+    inline: true,
   },
 })
 
-export default styles
+export type StyledStackProps = GetProps<typeof StyledStack>
+
+export default StyledStack
