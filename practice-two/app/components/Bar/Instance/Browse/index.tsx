@@ -1,5 +1,5 @@
 import { useCallback, useMemo } from 'react'
-import { View } from 'react-native'
+import { XStack, YStack } from 'tamagui'
 import { NativeStackHeaderProps } from '@react-navigation/native-stack'
 
 import { BAR } from '@constants'
@@ -7,7 +7,6 @@ import Button, { ButtonProps } from '@components/Button'
 import Search from '@components/Search'
 import IconButton from '@components/IconButton'
 
-import { containerStyles } from '@styles'
 import Bar from '@components/Bar'
 import { IIconList } from '@types'
 
@@ -50,9 +49,9 @@ const BrowseBar = ({ navigation, options, route }: NativeStackHeaderProps) => {
       IconList={IconList}
       align="space-between"
     >
-      <View style={styles.content}>
+      <YStack flex={1} space={28}>
         <Search placeholder="Search Product" />
-        <View style={containerStyles.inline}>
+        <XStack space={4} alignItems="center">
           {renderButton({
             title: 'sort by',
             leftIcon: require('@assets/sort.png'),
@@ -68,8 +67,8 @@ const BrowseBar = ({ navigation, options, route }: NativeStackHeaderProps) => {
             leftIcon: require('@assets/category.png'),
             onPress: handlePress,
           })}
-        </View>
-      </View>
+        </XStack>
+      </YStack>
     </Bar>
   )
 }

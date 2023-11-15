@@ -3,13 +3,6 @@ import { StyleSheet } from 'react-native'
 import { COLORS } from '@constants'
 
 const styles = StyleSheet.create({
-  container: {
-    paddingHorizontal: 32,
-    backgroundColor: COLORS.WHITE,
-  },
-  elevation: {
-    elevation: 24,
-  },
   shadow: {
     shadowColor: COLORS.BLACK,
     shadowOffset: {

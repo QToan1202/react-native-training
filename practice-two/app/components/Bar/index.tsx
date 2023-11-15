@@ -1,45 +1,45 @@
-import React, { ReactNode, memo, useMemo } from 'react'
+import React, { ReactNode, memo } from 'react'
 import isEqual from 'react-fast-compare'
-import { StyleProp, View, ViewProps, ViewStyle } from 'react-native'
 import { useSafeAreaInsets } from 'react-native-safe-area-context'
+import { XStack, XStackProps, YStack, YStackProps } from 'tamagui'
 
 import Heading from '@components/Heading'
 import IconButton from '@components/IconButton'
-import { containerStyles } from '@styles'
 
 import styles from './styles'
 
-export interface BarProps extends ViewProps {
+export type BarProps = {
   title?: string
   showBackBtn?: boolean
-  align?: ViewStyle['justifyContent']
+  align?: XStackProps['justifyContent']
   IconList?: ReactNode
-  style?: StyleProp<ViewStyle>
   children?: ReactNode
   onPressBack?: () => void
-}
+} & YStackProps
 
 const Bar = ({
   title,
   showBackBtn = false,
   align = 'flex-start',
   IconList,
-  style,
   children,
   onPressBack,
   ...rest
 }: BarProps) => {
-  const headingAlign: ViewStyle = useMemo(() => ({ justifyContent: align }), [align])
   const checkProps = title || showBackBtn || IconList
   const insets = useSafeAreaInsets()
 
   return (
-    <View
-      style={[containerStyles.container, styles.bar, { paddingTop: insets.top }, style]}
+    <YStack
+      paddingHorizontal={16}
+      paddingTop={insets.top}
+      paddingBottom={22}
+      backgroundColor="$color.primary"
+      space="$space.5"
       {...rest}
     >
       {checkProps && (
-        <View style={[containerStyles.inline, align && headingAlign]}>
+        <XStack space={4} alignItems="center" justifyContent={align}>
           {showBackBtn && (
             <IconButton
               style={styles.backBtn}
@@ -48,12 +48,18 @@ const Bar = ({
               noBackground
             />
           )}
-          {title && <Heading style={styles.title} content={title} />}
-          {IconList && <View style={containerStyles.inline}>{IconList}</View>}
-        </View>
+          {title && <Heading content={title} textTransform="capitalize" />}
+          {IconList && (
+            <XStack space={4} alignItems="center">
+              {IconList}
+            </XStack>
+          )}
+        </XStack>
       )}
-      <View style={[containerStyles.inline, styles.itemsContainer]}>{children}</View>
-    </View>
+      <XStack space={4} alignItems="center" justifyContent="space-between">
+        {children}
+      </XStack>
+    </YStack>
   )
 }
 

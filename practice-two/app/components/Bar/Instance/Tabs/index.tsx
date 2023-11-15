@@ -1,10 +1,8 @@
-import { useRef } from 'react'
-import { Platform } from 'react-native'
 import { useSafeAreaInsets } from 'react-native-safe-area-context'
+import { getTokenValue } from 'tamagui'
 
 import Bar, { BarProps } from '@components/Bar'
 import Button from '@components/Button'
-import { containerStyles } from '@styles'
 
 import styles from './styles'
 
@@ -13,22 +11,21 @@ export interface TabBar extends BarProps {
   onPress: () => void
 }
 
-const TabBar = ({ title, onPress, style, ...rest }: TabBar) => {
-  const isAndroid = useRef<boolean>(Platform.OS === 'android')
+const TabBar = ({ title, onPress, ...rest }: TabBar) => {
   const insets = useSafeAreaInsets()
 
   return (
     <Bar
-      style={[
-        styles.container,
-        isAndroid.current ? styles.elevation : styles.shadow,
-        { paddingTop: 12, paddingBottom: insets.bottom + 12 },
-        style,
-      ]}
+      $platform-ios={styles.shadow}
+      $platform-android={{ elevation: 24 }}
+      paddingHorizontal="$space.6"
+      backgroundColor="$color.white"
+      paddingTop="$space.3"
+      paddingBottom={getTokenValue('$space.3') + insets.bottom}
       title=""
       {...rest}
     >
-      <Button style={containerStyles.expand} title={title} onPress={onPress} />
+      <Button flex={1} title={title} onPress={onPress} />
     </Bar>
   )
 }
