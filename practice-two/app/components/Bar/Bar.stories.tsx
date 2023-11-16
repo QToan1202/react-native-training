@@ -57,5 +57,5 @@ export const BarWithSearch = Template.bind({})
 BarWithSearch.args = {
   title: 'Search',
   align: 'space-between',
-  children: <Search placeholder="Search Product" style={{ flex: 1 }} />,
+  children: <Search placeholder="Search Product" />,
 }
