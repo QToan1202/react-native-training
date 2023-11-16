@@ -37,14 +37,28 @@ const SliderItem = ({
       imageStyle={imageStyle}
       {...rest}
     >
-      <Paragraph content={title} style={styles.content} />
+      <Paragraph
+        content={title}
+        maxWidth={200}
+        marginLeft="$space.4"
+        lineHeight="$2"
+        letterSpacing="$6"
+        fontWeight="$3"
+        textTransform="uppercase"
+        textOverflow="ellipsis"
+      />
       <Button
-        title={btnTitle}
-        style={styles.btn}
-        titleStyle={styles.btnTitle}
-        variant="tertiary"
         shrink
-        activeOpacity={0.6}
+        title={btnTitle}
+        marginLeft="$space.3"
+        paddingVertical={4}
+        paddingHorizontal="$space.3"
+        variant="tertiary"
+        fontWeight="$4"
+        lineHeight="$4"
+        fontSize={12}
+        textTransform="uppercase"
+        pressStyle={{ opacity: 0.6 }}
         onPress={onPress}
       />
     </ImageBackground>

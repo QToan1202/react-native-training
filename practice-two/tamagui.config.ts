@@ -79,6 +79,7 @@ const montserratFont = createFont({
     3: -0.5,
     4: -0.4,
     5: 0.2,
+    6: 1.2,
   },
   face: {
     400: { normal: 'Montserrat_400Regular' },
