@@ -1,6 +1,7 @@
 import { memo } from 'react'
 import isEqual from 'react-fast-compare'
-import { Image, ImageBackgroundProps, StyleProp, View, ViewProps, ViewStyle } from 'react-native'
+import { Image, ImageBackgroundProps, ViewProps } from 'react-native'
+import { Stack, YStack } from 'tamagui'
 
 import Avatar, { AvatarProps } from '@components/Avatar'
 import Button from '@components/Button'
@@ -8,16 +9,15 @@ import { containerStyles } from '@styles'
 
 import styles from './styles'
 
-export interface StoreCardProps extends AvatarProps, ViewProps {
+export type StoreCardProps = {
   image: ImageBackgroundProps['source']
   btnTitle: string
-  style?: StyleProp<ViewStyle>
   onPressBtn: () => void
-}
+} & ViewProps &
+  Pick<AvatarProps, 'source' | 'name' | 'size'>
 
 const StoreCard = ({
   image,
-  style,
   source,
   name,
   size = 'xl',
@@ -26,18 +26,27 @@ const StoreCard = ({
   ...rest
 }: StoreCardProps) => {
   return (
-    <View style={[containerStyles.card, styles.container, style]} {...rest}>
+    <Stack
+      alignSelf="baseline"
+      paddingTop="$space.9"
+      paddingBottom="$space.4"
+      paddingHorizontal="$space.5"
+      style={containerStyles.card}
+      {...rest}
+    >
       <Image source={image} style={styles.img} />
-      <View style={styles.content}>
-        <Avatar source={source} name={name} size={size} align="block" />
+      <YStack justifyContent="center" alignItems="center">
+        <Avatar source={source} name={name} size={size} block />
         <Button
+          marginTop="$space.4"
+          paddingHorizontal="$space.5"
+          paddingVertical={4}
+          fontSize={10}
           title={btnTitle}
           onPress={onPressBtn}
-          style={styles.btn}
-          titleStyle={styles.btnTitle}
         />
-      </View>
-    </View>
+      </YStack>
+    </Stack>
   )
 }
 
