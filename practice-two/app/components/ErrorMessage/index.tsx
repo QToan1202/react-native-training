@@ -1,18 +1,24 @@
-import { TextProps, View } from 'react-native'
 import { FieldError } from 'react-hook-form'
+import { SizableText, SizableTextProps } from 'tamagui'
 
 import Heading from '@components/Heading'
 
-import styles from './styles'
-
-export interface ErrorMessageProps extends TextProps {
+export type ErrorMessageProps = {
   error: FieldError | undefined
-}
+} & SizableTextProps
 
-const ErrorMessage = ({ error, style, ...rest }: ErrorMessageProps) => (
-  <View style={styles.errorWrapper}>
-    {error && <Heading style={[styles.error, style]} content={String(error.message)} {...rest} />}
-  </View>
+const ErrorMessage = ({ error, ...rest }: ErrorMessageProps) => (
+  <SizableText lineHeight="$4" {...rest}>
+    {error && (
+      <Heading
+        paddingLeft="$space.4"
+        color="$color.red"
+        fontSize={13}
+        content={String(error.message)}
+        {...rest}
+      />
+    )}
+  </SizableText>
 )
 
 export default ErrorMessage
