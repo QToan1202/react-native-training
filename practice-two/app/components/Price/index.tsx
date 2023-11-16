@@ -26,12 +26,18 @@ const Price = ({
   return (
     <YStack
       paddingHorizontal="$space.3"
-      paddingBottom="$space.3"
+      paddingBottom="$space.5"
       backgroundColor="$color.white"
       {...rest}
     >
-      <Heading fontWeight="$3" fontSize="$3" style={styles.title} content={header} />
-      <XStack alignItems="center" justifyContent="space-between">
+      <Heading
+        fontWeight="$3"
+        fontSize="$3"
+        color="$color.black"
+        textTransform="capitalize"
+        content={header}
+      />
+      <XStack paddingTop="$space.3" alignItems="center" justifyContent="space-between">
         <YStack space={10}>
           {data.map(({ id, label }) => (
             <Paragraph key={id} style={styles.text} content={label} />
