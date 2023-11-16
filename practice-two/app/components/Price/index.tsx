@@ -1,50 +1,60 @@
 import { memo } from 'react'
 import isEqual from 'react-fast-compare'
-import { View, ViewProps } from 'react-native'
+import { Dimensions } from 'react-native'
+import { Separator, XStack, YStack, YStackProps } from 'tamagui'
 
 import Heading from '@components/Heading'
 import Paragraph from '@components/Paragraph'
-import { containerStyles } from '@styles'
 import { IDetailInfo } from '@types'
 
 import styles from './styles'
 
-export interface PriceProps extends ViewProps {
+export type PriceProps = {
   data: IDetailInfo[]
   total: number
   header?: string
   footer?: string
-}
+} & YStackProps
 
 const Price = ({
   data,
   total,
   header = 'price details',
   footer = 'total amount',
-  style,
   ...rest
 }: PriceProps) => {
   return (
-    <View style={[styles.detailWrapper, style]} {...rest}>
-      <Heading style={[styles.text, styles.title]} content={header} />
-      <View style={[containerStyles.inline, containerStyles.spaceBetween]}>
-        <View style={styles.spacing}>
+    <YStack
+      paddingHorizontal="$space.3"
+      paddingBottom="$space.3"
+      backgroundColor="$color.white"
+      {...rest}
+    >
+      <Heading fontWeight="$3" fontSize="$3" style={styles.title} content={header} />
+      <XStack alignItems="center" justifyContent="space-between">
+        <YStack space={10}>
           {data.map(({ id, label }) => (
             <Paragraph key={id} style={styles.text} content={label} />
           ))}
-        </View>
-        <View style={[styles.spacing, styles.align]}>
+        </YStack>
+        <YStack space={10} alignItems="flex-end">
           {data.map(({ id, value }) => (
             <Paragraph key={id} style={styles.text} content={value} />
           ))}
-        </View>
-      </View>
-      <View style={styles.line} />
-      <View style={[containerStyles.inline, containerStyles.spaceBetween]}>
+        </YStack>
+      </XStack>
+      <Separator
+        alignSelf="stretch"
+        marginTop="$space.5"
+        marginLeft="$space.-3.5"
+        borderBottomColor="$color.divider"
+        width={Dimensions.get('window').width}
+      />
+      <XStack alignItems="center" justifyContent="space-between">
         <Heading style={[styles.text, styles.title]} content={footer} />
-        <Heading style={[styles.text, styles.title, styles.bold]} content={`$${total}`} />
-      </View>
-    </View>
+        <Heading style={[styles.text, styles.title]} fontWeight="$4" content={`$${total}`} />
+      </XStack>
+    </YStack>
   )
 }
 
