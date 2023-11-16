@@ -16,6 +16,7 @@ const customTokens = createTokens({
   color: {
     ...tokens.color,
     white: '#fff',
+    blur_white: '#ffffff80',
     black: '#000',
     transparent: 'transparent',
     primary: '#33907C',

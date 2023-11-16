@@ -1,17 +1,26 @@
-import { StyleSheet } from 'react-native'
+import { Circle, GetProps, styled } from 'tamagui'
 
-import { COLORS } from '@constants'
-
-const styles = StyleSheet.create({
-  btn: {
-    alignSelf: 'flex-start',
-    padding: 7,
-    borderRadius: 50,
-    backgroundColor: 'rgba(255, 255, 255, 0.5)',
+const CustomButton = styled(Circle, {
+  name: 'IconButton',
+  alignSelf: 'flex-start',
+  padding: '$space.2',
+  backgroundColor: '$color.blur_white',
+  pressStyle: {
+    opacity: 0.6,
   },
-  transparent: {
-    backgroundColor: COLORS.TRANSPARENT,
+
+  variants: {
+    noBackground: {
+      true: {
+        backgroundColor: '$color.transparent',
+      },
+    },
+  } as const,
+  defaultVariants: {
+    noBackground: false,
   },
 })
 
-export default styles
+export type CustomButtonProps = GetProps<typeof CustomButton>
+
+export default CustomButton
