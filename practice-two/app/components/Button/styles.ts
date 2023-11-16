@@ -19,6 +19,7 @@ const ButtonContext = createStyledContext({
   maxFontSizeMultiplier: undefined,
   size: undefined,
   textAlign: undefined,
+  lineHeight: undefined,
 })
 
 const CustomButtonFrame = styled(Stack, {
@@ -82,18 +83,26 @@ const ButtonText = styled(SizableText, {
   name: 'Button',
   context: ButtonContext,
   userSelect: 'none',
-  fontWeight: '$2',
-  textTransform: 'capitalize',
-  textAlign: 'center',
-  lineHeight: '$2',
 
   variants: {
+    default: {
+      true: {
+        fontWeight: '$2',
+        textTransform: 'capitalize',
+        textAlign: 'center',
+        lineHeight: '$2',
+      },
+    },
     size: {
       '...fontSize': (name, { font }) => ({
         fontSize: font?.size[name],
       }),
     },
   } as const,
+
+  defaultVariants: {
+    default: true,
+  },
 })
 
 const ButtonStyled = withStaticProperties(CustomButtonFrame, {
