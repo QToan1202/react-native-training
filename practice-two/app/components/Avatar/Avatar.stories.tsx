@@ -25,5 +25,5 @@ export const AvatarFullOtp = Template.bind({})
 AvatarFullOtp.args = {
   ...Default.args,
   size: 'xl',
-  align: 'inline',
+  inline: true,
 }

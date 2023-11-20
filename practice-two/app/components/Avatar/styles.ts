@@ -1,3 +1,4 @@
+import { Image } from 'react-native'
 import { GetProps, Stack, styled } from 'tamagui'
 
 const StyledStack = styled(Stack, {
@@ -25,5 +26,12 @@ const StyledStack = styled(Stack, {
 })
 
 export type StyledStackProps = GetProps<typeof StyledStack>
+
+export const StyledImage = styled(Image, {
+  name: 'Image',
+  source: { uri: '' },
+})
+
+export type StyledImageProps = GetProps<typeof StyledImage>
 
 export default StyledStack
