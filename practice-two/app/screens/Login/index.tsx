@@ -1,5 +1,6 @@
 import { useCallback } from 'react'
-import { Alert, KeyboardAvoidingView, Platform, View } from 'react-native'
+import { Alert, KeyboardAvoidingView, Platform } from 'react-native'
+import { XStack, YStack } from 'tamagui'
 import { SubmitHandler, useForm } from 'react-hook-form'
 import { SafeAreaView } from 'react-native-safe-area-context'
 import { NativeStackScreenProps } from '@react-navigation/native-stack'
@@ -8,7 +9,6 @@ import { RootStackParamList } from '@navigation/Stack'
 import { Button, Heading, Input, Paragraph } from '@components'
 import { IForm } from '@types'
 import { COLORS, ERROR_MESSAGES } from '@constants'
-import { containerStyles } from '@styles'
 
 import styles from './styles'
 
@@ -23,10 +23,10 @@ const Login = ({ navigation }: LoginScreenProps) => {
 
   return (
     <SafeAreaView style={styles.container}>
-      <View style={styles.titleWrapper}>
-        <Heading textMedium content="Welcome to tradly" />
-        <Paragraph size="md" content="Login to your account" />
-      </View>
+      <YStack space="$space.9" alignItems="center">
+        <Heading content="Welcome to tradly" fontWeight="$2" letterSpacing="$2" />
+        <Paragraph content="Login to your account" fontSize="$2" letterSpacing="$4" />
+      </YStack>
       <KeyboardAvoidingView
         behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
         style={styles.input}
@@ -54,24 +54,27 @@ const Login = ({ navigation }: LoginScreenProps) => {
         />
       </KeyboardAvoidingView>
       <Button
-        style={styles.loginBtn}
+        marginBottom="$space.6"
         title="login"
         variant="secondary"
         onPress={handleSubmit(onSubmit)}
       />
-      <View style={styles.info}>
-        <Paragraph size="lg" content="Forgot your password?" />
-        <View style={containerStyles.inline}>
-          <Paragraph size="lg" content="Don't have an account?" />
+      <YStack alignItems="center" space="$space.8">
+        <Paragraph content="Forgot your password?" fontSize="$3" lineHeight="$4" />
+        <XStack alignItems="center" columnGap="$space.1.5">
+          <Paragraph content="Don't have an account?" fontSize="$3" lineHeight="$4" />
           <Button
-            style={styles.btn}
-            titleStyle={styles.signUpBtn}
-            title="Sign up"
             variant="tertiary"
+            borderColor="$color.transparent"
+            fontWeight="$3"
+            fontSize="$3"
+            lineHeight="$4"
+            textTransform="none"
+            title="Sign up"
             onPress={handleToSignUpScreen}
           />
-        </View>
-      </View>
+        </XStack>
+      </YStack>
     </SafeAreaView>
   )
 }
