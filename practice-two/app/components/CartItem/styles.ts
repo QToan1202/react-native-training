@@ -1,40 +1,22 @@
-import { StyleSheet } from 'react-native'
+import { GetProps, getTokenValue, styled } from 'tamagui'
+import { Image } from 'react-native'
 
-import { COLORS, FONT_FAMILY } from '@constants'
+import Paragraph from '@components/Paragraph'
 
-const styles = StyleSheet.create({
-  wrapper: {
-    paddingTop: 29,
-    paddingLeft: 16,
-    paddingBottom: 12,
-    backgroundColor: COLORS.WHITE,
-  },
-  container: {
-    flexDirection: 'row',
-    gap: 15,
-  },
-  img: {
-    width: 102,
-    height: 102,
-    borderRadius: 10,
-  },
-  text: {
-    fontFamily: FONT_FAMILY.MONTSERRAT[500],
-    color: COLORS.GRAY_50,
-    textTransform: 'capitalize',
-  },
-  content: {
-    rowGap: 12.5,
-    justifyContent: 'center',
-  },
-  discount: {
-    textDecorationLine: 'line-through',
-  },
-  price: {
-    fontFamily: FONT_FAMILY.MONTSERRAT[700],
-    fontSize: 18,
-    color: COLORS.PRIMARY,
-  },
+export const StyledText = styled(Paragraph, {
+  content: '',
+  fontWeight: '$2',
+  color: '$color.gray_50',
+  textTransform: 'capitalize',
 })
 
-export default styles
+export type StyledTextProps = GetProps<typeof StyledText>
+
+export const StyledImage = styled(Image, {
+  source: { uri: '' },
+  width: 102,
+  height: 102,
+  borderRadius: getTokenValue('$radius.5'),
+})
+
+export type StyledImageProps = GetProps<typeof StyledImage>

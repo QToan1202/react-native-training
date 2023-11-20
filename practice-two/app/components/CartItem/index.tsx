@@ -1,20 +1,14 @@
 import { memo } from 'react'
 import isEqual from 'react-fast-compare'
-import {
-  Image,
-  ImageSourcePropType,
-  TouchableOpacity,
-  TouchableOpacityProps,
-  View,
-} from 'react-native'
+import { ImageSourcePropType } from 'react-native'
+import { XStack, XStackProps, YStack } from 'tamagui'
 
 import Paragraph from '@components/Paragraph'
-import { containerStyles } from '@styles'
 import { calculateDiscount } from '@utils'
 
-import styles from './styles'
+import { StyledImage, StyledText } from './styles'
 
-export interface CartItemProps extends TouchableOpacityProps {
+export type CartItemProps = XStackProps & {
   image: ImageSourcePropType
   name: string
   price: number
@@ -22,46 +16,44 @@ export interface CartItemProps extends TouchableOpacityProps {
   quantity: number
 }
 
-const CartItem = ({
-  image,
-  name,
-  price,
-  discountPrice,
-  quantity,
-  style,
-  ...rest
-}: CartItemProps) => {
+const CartItem = ({ image, name, price, discountPrice, quantity, ...rest }: CartItemProps) => {
   return (
-    <TouchableOpacity style={[styles.wrapper, style]} activeOpacity={0.5} {...rest}>
-      <View style={styles.container}>
-        <Image source={image} style={styles.img} />
-        <View style={styles.content}>
-          <Paragraph style={styles.text} content={name} />
-          <View style={[containerStyles.inline]}>
+    <XStack
+      paddingTop={29}
+      paddingLeft="$space.3.5"
+      paddingBottom="$space.3"
+      backgroundColor="$color.white"
+      pressStyle={{ opacity: 0.5 }}
+      {...rest}
+    >
+      <XStack space="$space.3.5">
+        <StyledImage source={image} />
+        <YStack space="$space.3" justifyContent="center">
+          <StyledText content={name} />
+          <XStack alignItems="center" columnGap="$space.1.5">
             <Paragraph
               content={`$${discountPrice ? discountPrice.toFixed(0) : price.toFixed(0)}`}
-              style={styles.price}
+              fontWeight="$4"
+              fontSize="$3"
+              lineHeight="$4"
+              color="$color.primary"
               numberOfLines={1}
             />
             {discountPrice && (
               <>
-                <Paragraph
+                <StyledText
                   content={`$${price.toFixed(0)}`}
-                  style={[styles.text, styles.discount]}
+                  textDecorationLine="line-through"
                   numberOfLines={1}
                 />
-                <Paragraph
-                  content={calculateDiscount(price, discountPrice)}
-                  style={styles.text}
-                  numberOfLines={1}
-                />
+                <StyledText content={calculateDiscount(price, discountPrice)} numberOfLines={1} />
               </>
             )}
-          </View>
-          <Paragraph style={styles.text} content={`qty: ${quantity}`} />
-        </View>
-      </View>
-    </TouchableOpacity>
+          </XStack>
+          <StyledText content={`qty: ${quantity}`} />
+        </YStack>
+      </XStack>
+    </XStack>
   )
 }
 
