@@ -1,22 +1,11 @@
-import { StyleSheet } from 'react-native'
+import { GetProps, styled } from 'tamagui'
+import { ImageBackground } from 'react-native'
 
-import { FONT_FAMILY } from '@constants'
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'stretch',
-  },
-  content: {
-    justifyContent: 'center',
-    alignItems: 'center',
-  },
-  name: {
-    fontFamily: FONT_FAMILY.MONTSERRAT[600],
-    fontSize: 11,
-    textTransform: 'capitalize',
-  },
+const StyledImageBackground = styled(ImageBackground, {
+  name: 'ImageBackground',
+  source: { uri: '' },
 })
 
-export default styles
+export type StyledImageBackgroundProps = GetProps<typeof StyledImageBackground>
+
+export default StyledImageBackground
