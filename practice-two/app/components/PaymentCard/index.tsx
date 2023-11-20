@@ -1,27 +1,20 @@
 import { memo, useCallback, useMemo } from 'react'
 import isEqual from 'react-fast-compare'
-import {
-  Image,
-  ImageBackground,
-  ImageBackgroundProps,
-  StyleProp,
-  TouchableOpacity,
-  View,
-  ViewStyle,
-} from 'react-native'
+import { ImageBackgroundProps, StyleProp, ViewStyle } from 'react-native'
+import { Stack, YStack } from 'tamagui'
 
 import Paragraph from '@components/Paragraph'
 import { checkCardType } from '@utils'
-import { containerStyles } from '@styles'
 import { ICardInformation } from '@types'
 
-import styles from './styles'
+import { StyledImage, StyledImageBackground, StyledTitle } from './styles'
 
-export interface PaymentCardProps extends ICardInformation, Omit<ImageBackgroundProps, 'source'> {
-  isSelected?: boolean
-  contentContainerStyle?: StyleProp<ViewStyle>
-  onCardSelected?: (data: ICardInformation) => void
-}
+export type PaymentCardProps = ICardInformation &
+  Omit<ImageBackgroundProps, 'source'> & {
+    isSelected?: boolean
+    contentContainerStyle?: StyleProp<ViewStyle>
+    onCardSelected?: (data: ICardInformation) => void
+  }
 
 const PaymentCard = ({
   name,
@@ -29,7 +22,6 @@ const PaymentCard = ({
   cvc,
   expires,
   isSelected = false,
-  style,
   contentContainerStyle,
   onCardSelected,
   ...rest
@@ -50,47 +42,39 @@ const PaymentCard = ({
   )
 
   return (
-    <TouchableOpacity
-      style={[containerStyles.shrink, style]}
-      activeOpacity={0.8}
-      onPress={handleSelectCard}
-    >
+    <Stack alignSelf="flex-start" pressStyle={{ opacity: 0.8 }} onPress={handleSelectCard}>
       <>
-        <ImageBackground
-          source={cardBg}
-          style={[styles.container, contentContainerStyle]}
-          {...rest}
-        >
-          <View style={styles.rowSpacing}>
-            <View>
-              <Paragraph style={styles.title} content="holder name" />
+        <StyledImageBackground source={cardBg} style={contentContainerStyle} {...rest}>
+          <YStack justifyContent="space-between" height="100%">
+            <Stack>
+              <StyledTitle content="holder name" />
               <Paragraph content={name} numberOfLines={1} />
-            </View>
+            </Stack>
 
-            <View>
-              <Paragraph style={styles.title} content="card number" />
+            <Stack>
+              <StyledTitle content="card number" />
               <Paragraph
-                style={styles.cardNumber}
-                size="md"
+                fontSize="$2"
+                width={167}
                 numberOfLines={1}
                 content={cardNumber.replace(/(\d{4})/g, '$1 ')}
               />
-            </View>
+            </Stack>
 
-            <View>
-              <Paragraph style={styles.title} content="exp. date" />
+            <Stack>
+              <StyledTitle content="exp. date" />
               <Paragraph content={expires} />
-            </View>
-          </View>
+            </Stack>
+          </YStack>
 
-          <View>
-            <Paragraph style={[styles.title, styles.titleUppercase]} content="cvc" />
-            <Paragraph style={styles.cvc} content={cvc} />
-          </View>
-        </ImageBackground>
-        {isSelected && <Image source={require('@assets/check.png')} style={styles.checkIcon} />}
+          <Stack>
+            <StyledTitle content="cvc" textTransform="uppercase" />
+            <Paragraph content={cvc} textAlign="right" />
+          </Stack>
+        </StyledImageBackground>
+        {isSelected && <StyledImage source={require('@assets/check.png')} />}
       </>
-    </TouchableOpacity>
+    </Stack>
   )
 }
 
