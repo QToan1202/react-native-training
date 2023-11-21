@@ -1,44 +1,39 @@
 import { StyleSheet } from 'react-native'
+import { GetProps, RadioGroup, styled } from 'tamagui'
 
-import { COLORS, FONT_FAMILY } from '@constants'
+import { COLORS } from '@constants'
 
 const styles = StyleSheet.create({
-  separator: {
-    backgroundColor: COLORS.SEPARATOR,
-    height: 1,
-  },
-  radio: {
-    paddingVertical: 13.5,
-    paddingLeft: 16,
-  },
-  spacing: {
-    columnGap: 8,
-  },
-  outline: {
-    justifyContent: 'center',
-    alignItems: 'center',
-    width: 18,
-    height: 18,
-    borderRadius: 50,
-    borderWidth: 1,
-  },
-  dot: {
-    backgroundColor: COLORS.RADIO_ACTIVE,
-    width: 10,
-    height: 10,
-    borderRadius: 50,
-  },
   normal: {
     borderColor: COLORS.RADIO_NORMAL,
   },
   selected: {
     borderColor: COLORS.RADIO_ACTIVE,
   },
-  title: {
-    fontFamily: FONT_FAMILY.MONTSERRAT[600],
-    color: COLORS.GRAY_50,
-    lineHeight: 21,
-  },
 })
+
+export const StyledItem = styled(RadioGroup.Item, {
+  unstyled: true,
+  value: '',
+  id: undefined,
+  justifyContent: 'center',
+  alignItems: 'center',
+  width: '$radio.frame',
+  height: '$radio.frame',
+  borderRadius: '$radius.12',
+  borderWidth: '$space.0.5',
+})
+
+export type StyledItemProps = GetProps<typeof StyledItem>
+
+export const StyledIndicator = styled(RadioGroup.Indicator, {
+  unstyled: true,
+  width: '$radio.indicator',
+  height: '$radio.indicator',
+  backgroundColor: '$color.radio_active',
+  borderRadius: '$radius.12',
+})
+
+export type StyledIndicatorProps = GetProps<typeof StyledIndicator>
 
 export default styles

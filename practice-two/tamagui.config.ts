@@ -47,6 +47,10 @@ const customTokens = createTokens({
     width: 24,
     height: 24,
   },
+  radio: {
+    frame: 18,
+    indicator: 10,
+  },
 })
 
 const montserratFont = createFont({

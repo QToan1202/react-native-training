@@ -1,56 +1,67 @@
-import { memo, useCallback, useState } from 'react'
+import { memo, useCallback, useMemo, useState } from 'react'
 import isEqual from 'react-fast-compare'
+import { FlatList, ListRenderItem } from 'react-native'
 import {
-  FlatList,
-  StyleProp,
-  TouchableOpacity,
-  TouchableOpacityProps,
-  View,
-  ViewStyle,
-} from 'react-native'
+  Label,
+  RadioGroup,
+  RadioGroupProps,
+  Separator as TSeparator,
+  XStack,
+  YStack,
+} from 'tamagui'
 
-import Paragraph from '@components/Paragraph'
 import { IRadioItem } from '@types'
-import { containerStyles } from '@styles'
 
-import styles from './styles'
+import styles, { StyledIndicator, StyledItem } from './styles'
 
-export interface RadioProps extends TouchableOpacityProps {
+export type RadioProps = RadioGroupProps & {
   radioList: IRadioItem[]
-  style?: StyleProp<ViewStyle>
 }
 
-const Separator = () => <View style={styles.separator} />
+const Separator = () => <TSeparator alignSelf="stretch" borderColor="$color.divider" />
 
-const Radio = ({ radioList, style, ...rest }: RadioProps) => {
-  const [selectedItemID, setSelectedItemID] = useState<string>()
-  const handleSelectedRadio = useCallback(
-    (item: IRadioItem): void => setSelectedItemID(item.id),
-    []
+const Radio = ({ radioList, ...rest }: RadioProps) => {
+  const [selectedItem, setSelectedItem] = useState<string>()
+  const handleSelectedRadio = useCallback((value: string): void => setSelectedItem(value), [])
+  const renderItem: ListRenderItem<IRadioItem> = useCallback(
+    ({ item: { id, name } }) => (
+      <XStack
+        alignItems="center"
+        space="$space.2"
+        paddingLeft="$space.3.5"
+        paddingVertical="$space.3"
+      >
+        <StyledItem
+          value={name}
+          id={id}
+          style={selectedItem === name ? styles.selected : styles.normal}
+        >
+          <StyledIndicator />
+        </StyledItem>
+
+        <Label unstyled htmlFor={id} fontWeight="$3" color="$color.gray_50" lineHeight="$4">
+          {name}
+        </Label>
+      </XStack>
+    ),
+    [selectedItem]
+  )
+  const renderList = useMemo(
+    () => (
+      <FlatList
+        data={radioList}
+        keyExtractor={({ id }: IRadioItem): string => id}
+        renderItem={renderItem}
+        ItemSeparatorComponent={Separator}
+      />
+    ),
+    [radioList, renderItem]
   )
 
   return (
-    <FlatList
-      data={radioList}
-      keyExtractor={({ id }: IRadioItem): string => id}
-      renderItem={({ item }) => (
-        <TouchableOpacity
-          style={[styles.radio, style]}
-          onPress={() => handleSelectedRadio(item)}
-          {...rest}
-        >
-          <View style={[containerStyles.inline, styles.spacing]}>
-            <View
-              style={[styles.outline, selectedItemID === item.id ? styles.selected : styles.normal]}
-            >
-              {selectedItemID === item.id && <View style={styles.dot} />}
-            </View>
-            <Paragraph style={styles.title} content={item.name} />
-          </View>
-        </TouchableOpacity>
-      )}
-      ItemSeparatorComponent={Separator}
-    />
+    <RadioGroup onValueChange={handleSelectedRadio} {...rest}>
+      <YStack>{renderList}</YStack>
+    </RadioGroup>
   )
 }
 
