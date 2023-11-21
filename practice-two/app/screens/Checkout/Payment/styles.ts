@@ -3,25 +3,6 @@ import { Dimensions, StyleSheet } from 'react-native'
 import { COLORS } from '@constants'
 
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: COLORS.BG_LAYER,
-    rowGap: 16,
-  },
-  card: {
-    backgroundColor: COLORS.WHITE,
-    justifyContent: 'center',
-  },
-  radio: {
-    backgroundColor: COLORS.WHITE,
-  },
-  dotGroup: {
-    marginBottom: 25,
-    flexDirection: 'row',
-    alignItems: 'center',
-    justifyContent: 'center',
-    columnGap: 15,
-  },
   dot: {
     width: 10,
     height: 10,
@@ -38,9 +19,6 @@ const styles = StyleSheet.create({
     marginVertical: 20,
     width: Dimensions.get('window').width,
     height: Dimensions.get('window').width / 2.5,
-  },
-  cardItem: {
-    alignSelf: 'center',
   },
 })
 
