@@ -1,6 +1,5 @@
 import { memo } from 'react'
 import isEqual from 'react-fast-compare'
-import { ImageBackgroundProps, StyleProp, ViewStyle } from 'react-native'
 import { Stack } from 'tamagui'
 
 import Paragraph from '@components/Paragraph'
@@ -9,10 +8,9 @@ import { imageStyles } from '@styles'
 import StyledImageBackground, { StyledImageBackgroundProps } from './styles'
 
 export type MenuCardProps = StyledImageBackgroundProps & {
-  source: ImageBackgroundProps['source']
+  source: StyledImageBackgroundProps['source']
   name: string
   onPress: () => void
-  style?: StyleProp<ViewStyle>
 }
 
 const MenuCard = ({ source, name, onPress, ...rest }: MenuCardProps) => {
