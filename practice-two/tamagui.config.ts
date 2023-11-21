@@ -69,6 +69,7 @@ const montserratFont = createFont({
     3: 18,
     4: 24,
     5: 26,
+    6: 30,
   },
   weight: {
     1: '400',
