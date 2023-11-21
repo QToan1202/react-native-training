@@ -10,7 +10,7 @@ import styles from './styles'
 
 export interface BrowseScreenProps extends NativeStackScreenProps<RootStackParamList, 'Browse'> {}
 
-const CategoryDetail = () => {
+const Browse = () => {
   return (
     <WrapList
       keyExtractor={({ id }: IProductItem): string => id}
@@ -23,4 +23,4 @@ const CategoryDetail = () => {
   )
 }
 
-export default CategoryDetail
+export default Browse
