@@ -1,4 +1,4 @@
-import { GetProps, getTokenValue, styled } from 'tamagui'
+import { GetProps, styled } from 'tamagui'
 import { Image } from 'react-native'
 
 import Paragraph from '@components/Paragraph'
@@ -16,7 +16,7 @@ export const StyledImage = styled(Image, {
   source: { uri: '' },
   width: 102,
   height: 102,
-  borderRadius: getTokenValue('$radius.5'),
+  borderRadius: 10, // getTokenValue('$radius.5')
 })
 
 export type StyledImageProps = GetProps<typeof StyledImage>
