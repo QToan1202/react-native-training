@@ -24,8 +24,8 @@ const AddAddress = ({ navigation }: AddAddressScreenProps) => {
   }, [])
   const renderFormFields = useMemo(
     () =>
-      ADDRESS_FORM_FIELDS.map((fieldData: TAddressFormFields) => (
-        <Input {...fieldData} control={control} isShowError />
+      ADDRESS_FORM_FIELDS.map(({ id, ...fieldData }: TAddressFormFields) => (
+        <Input {...fieldData} key={id} control={control} isShowError />
       )),
     // eslint-disable-next-line react-hooks/exhaustive-deps
     []
