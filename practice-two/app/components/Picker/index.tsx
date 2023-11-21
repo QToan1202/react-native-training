@@ -1,24 +1,15 @@
 import { memo, useCallback, useMemo, useRef, useState } from 'react'
 import isEqual from 'react-fast-compare'
-import {
-  Animated,
-  ImageStyle,
-  LayoutAnimation,
-  StyleProp,
-  TouchableWithoutFeedback,
-  TouchableWithoutFeedbackProps,
-  View,
-} from 'react-native'
+import { Animated, ImageStyle, LayoutAnimation, StyleProp } from 'react-native'
+import { XStack, XStackProps, YStack } from 'tamagui'
 
 import Heading from '@components/Heading'
-import { containerStyles } from '@styles'
 import { toggleAnim } from '@animations'
 import { IDropDownItem } from '@types'
 
 import DropdownList from './DropdownList'
-import styles from './styles'
 
-export interface PickerProps<T> extends TouchableWithoutFeedbackProps {
+export type PickerProps<T> = XStackProps & {
   listData: T[]
 }
 
@@ -65,15 +56,13 @@ const Picker = <T extends IDropDownItem>({ listData, ...rest }: PickerProps<T>) 
   )
 
   return (
-    <View style={[containerStyles.shrink, styles.container]}>
-      <TouchableWithoutFeedback onPress={toggleDropdown} {...rest}>
-        <View style={[containerStyles.inline, styles.spacing]}>
-          <Heading content={selectedItem} style={styles.selected} />
-          <Animated.Image source={require('@assets/arrow.png')} style={imageStyle} />
-        </View>
-      </TouchableWithoutFeedback>
+    <YStack alignSelf="flex-start" overflow="hidden">
+      <XStack alignItems="center" space="$space.2" onPress={toggleDropdown} {...rest}>
+        <Heading content={selectedItem} fontSize="$3" letterSpacing="$4" width={35} />
+        <Animated.Image source={require('@assets/arrow.png')} style={imageStyle} />
+      </XStack>
       {isShow && <DropdownList listData={listData} onSelect={handleSelectItem} />}
-    </View>
+    </YStack>
   )
 }
 

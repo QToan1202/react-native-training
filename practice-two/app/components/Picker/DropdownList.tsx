@@ -1,39 +1,49 @@
-import { FlatList, TouchableHighlight, TouchableHighlightProps, View } from 'react-native'
+import { useCallback } from 'react'
+import { Stack, StackProps } from 'tamagui'
+import { FlatList, ListRenderItem } from 'react-native'
 
-import Heading from '@components/Heading'
 import { IDropDownItem } from '@types'
-import { COLORS } from '@constants'
+import Button from '@components/Button'
 
-import styles from './styles'
-
-export interface DropDownListProps<T> extends TouchableHighlightProps {
+export type DropDownListProps<T> = StackProps & {
   listData: T[]
   onSelect: (item: T) => void
 }
 
 const DropdownList = <T extends IDropDownItem>({
   listData,
-  style,
   onSelect,
   ...rest
 }: DropDownListProps<T>) => {
+  const renderItem: ListRenderItem<T> = useCallback(
+    ({ item }) => {
+      const handleSetSelectItem = () => onSelect(item)
+
+      return (
+        <Button
+          title={item.value}
+          variant="tertiary"
+          borderColor="$color.transparent"
+          paddingHorizontal="$space.2.5"
+          paddingVertical="$space.1.5"
+          fontSize="$2"
+          fontWeight="$4"
+          color="$color.black"
+          onPress={handleSetSelectItem}
+        />
+      )
+    },
+    [onSelect]
+  )
+
   return (
-    <View style={[styles.list, style]}>
+    <Stack width="100%" alignItems="center" backgroundColor="$color.white" {...rest}>
       <FlatList
         data={listData}
         keyExtractor={({ id, value }: T): string => id || value}
-        renderItem={({ item }) => (
-          <TouchableHighlight
-            underlayColor={COLORS.GRAY_200}
-            activeOpacity={0.5}
-            onPress={() => onSelect(item)}
-            {...rest}
-          >
-            <Heading content={item.value} style={styles.listContent} numberOfLines={1} />
-          </TouchableHighlight>
-        )}
+        renderItem={renderItem}
       />
-    </View>
+    </Stack>
   )
 }
 
