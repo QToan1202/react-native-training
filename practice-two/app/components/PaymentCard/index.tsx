@@ -1,7 +1,6 @@
 import { memo, useCallback, useMemo } from 'react'
 import isEqual from 'react-fast-compare'
-import { StyleProp, ViewStyle } from 'react-native'
-import { Stack, YStack } from 'tamagui'
+import { Stack, StackProps, YStack } from 'tamagui'
 
 import Paragraph from '@components/Paragraph'
 import { checkCardType } from '@utils'
@@ -17,7 +16,7 @@ import {
 export type PaymentCardProps = ICardInformation &
   StyledImageBackgroundProps & {
     isSelected?: boolean
-    contentContainerStyle?: StyleProp<ViewStyle>
+    containerStyle?: StackProps
     onCardSelected?: (data: ICardInformation) => void
   }
 
@@ -27,6 +26,7 @@ const PaymentCard = ({
   cvc,
   expires,
   isSelected = false,
+  containerStyle,
   onCardSelected,
   ...rest
 }: PaymentCardProps) => {
@@ -46,7 +46,12 @@ const PaymentCard = ({
   )
 
   return (
-    <Stack alignSelf="flex-start" pressStyle={{ opacity: 0.8 }} onPress={handleSelectCard}>
+    <Stack
+      alignSelf="flex-start"
+      pressStyle={{ opacity: 0.8 }}
+      onPress={handleSelectCard}
+      {...containerStyle}
+    >
       <>
         <StyledImageBackground {...rest} source={cardBg}>
           <YStack justifyContent="space-between" height="100%">
