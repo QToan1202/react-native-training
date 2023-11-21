@@ -1,87 +1,50 @@
-import { useCallback } from 'react'
-import { KeyboardAvoidingView, ScrollView, View } from 'react-native'
+import { useCallback, useMemo } from 'react'
+import { KeyboardAvoidingView } from 'react-native'
 import { useForm } from 'react-hook-form'
 import { NativeStackScreenProps } from '@react-navigation/native-stack'
-import { RootStackParamList } from '@navigation/Stack'
+import { ScrollView } from 'tamagui'
 
-import { Button, ErrorMessage, Input, TabBar } from '@components'
+import { RootStackParamList } from '@navigation/Stack'
+import { Button, Input, TabBar } from '@components'
 import { IForm } from '@types'
+import { ADDRESS_FORM_FIELDS } from '@constants'
+import { TAddressFormFields } from '@constants/screens/addAddressFields'
 
 import styles from './styles'
 
-export interface AddAddressScreenProps
-  extends NativeStackScreenProps<RootStackParamList, 'AddAddress'> {}
+export type AddAddressScreenProps = NativeStackScreenProps<RootStackParamList, 'AddAddress'>
 
 const AddAddress = ({ navigation }: AddAddressScreenProps) => {
-  const {
-    control,
-    formState: { errors },
-  } = useForm<IForm>()
+  const { control, handleSubmit } = useForm<IForm>()
   const handlePress = useCallback(() => undefined, [])
   const handleSaveAddress = useCallback(() => {
     // TODO: Save address to context
     navigation.navigate('Cart')
-  }, [navigation])
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [])
+  const renderFormFields = useMemo(
+    () =>
+      ADDRESS_FORM_FIELDS.map((fieldData: TAddressFormFields) => (
+        <Input {...fieldData} control={control} isShowError />
+      )),
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    []
+  )
 
   return (
     <>
-      <ScrollView contentContainerStyle={styles.container}>
+      <ScrollView flex={1} backgroundColor="$color.bg_layer">
         <Button
-          titleStyle={styles.btnTitle}
-          variant="quaternary"
           title="Use current location"
+          variant="quaternary"
+          color="$color.blue"
+          textTransform="none"
           leftIcon={require('@assets/location.png')}
           onPress={handlePress}
         />
-        <KeyboardAvoidingView style={styles.form}>
-          <View>
-            <Input
-              name="name"
-              control={control}
-              label="Name"
-              rules={{ required: 'Please enter name of location' }}
-            />
-            <ErrorMessage error={errors.name} style={styles.error} />
-          </View>
-          <View>
-            <Input
-              name="phone"
-              control={control}
-              label="Phone"
-              rules={{ required: 'Please enter name of location' }}
-            />
-            <ErrorMessage error={errors.phone} style={styles.error} />
-          </View>
-          <View>
-            <Input
-              name="streetAddress"
-              control={control}
-              label="Street address"
-              rules={{ required: 'Please enter your address' }}
-            />
-            <ErrorMessage error={errors.streetAddress} style={styles.error} />
-          </View>
-          <View>
-            <Input
-              name="state"
-              control={control}
-              label="State"
-              rules={{ required: 'Please enter state' }}
-            />
-            <ErrorMessage error={errors.state} style={styles.error} />
-          </View>
-          <View>
-            <Input
-              name="zipCode"
-              control={control}
-              label="Zipcode"
-              rules={{ required: 'Please provide zipcode' }}
-            />
-            <ErrorMessage error={errors.zipCode} style={styles.error} />
-          </View>
-        </KeyboardAvoidingView>
+        <KeyboardAvoidingView style={styles.form}>{renderFormFields}</KeyboardAvoidingView>
       </ScrollView>
-      <TabBar title="Save" onPress={handleSaveAddress} />
+      <TabBar title="Save" onPress={handleSubmit(handleSaveAddress)} />
     </>
   )
 }
