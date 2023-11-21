@@ -1,6 +1,6 @@
 import { Dimensions, StyleSheet } from 'react-native'
 
-import { COLORS, FONT_FAMILY } from '@constants'
+import { COLORS } from '@constants'
 
 const styles = StyleSheet.create({
   container: {
@@ -27,21 +27,6 @@ const styles = StyleSheet.create({
     paddingTop: 60,
     paddingBottom: 30,
   },
-  title: {
-    maxWidth: 300,
-    fontFamily: FONT_FAMILY.MONTSERRAT[500],
-    color: COLORS.PRIMARY,
-    textAlign: 'center',
-    lineHeight: 30,
-    letterSpacing: -0.5,
-  },
-  dotGroup: {
-    marginBottom: 50,
-    flexDirection: 'row',
-    alignItems: 'center',
-    justifyContent: 'center',
-    columnGap: 10,
-  },
   dot: {
     alignSelf: 'flex-start',
     width: 12,
@@ -54,9 +39,6 @@ const styles = StyleSheet.create({
   },
   active: {
     backgroundColor: COLORS.PRIMARY,
-  },
-  btn: {
-    marginHorizontal: 34,
   },
 })
 

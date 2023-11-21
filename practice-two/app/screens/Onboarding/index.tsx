@@ -1,10 +1,11 @@
 import { useCallback, useEffect, useMemo, useRef, useState } from 'react'
-import { Image, View, ViewProps } from 'react-native'
+import { Image, View } from 'react-native'
 import { SafeAreaView } from 'react-native-safe-area-context'
 import PagerView, { PagerViewOnPageSelectedEvent } from 'react-native-pager-view'
 import { NativeStackScreenProps } from '@react-navigation/native-stack'
-import { RootStackParamList } from '@navigation/Stack'
+import { XStack } from 'tamagui'
 
+import { RootStackParamList } from '@navigation/Stack'
 import { Button, Paragraph } from '@components'
 import { containerStyles } from '@styles'
 import { ONBOARDING_VIEW_DATA } from '@constants'
@@ -12,11 +13,9 @@ import { IOnboardingScreenView } from '@types'
 
 import styles from './styles'
 
-export interface OnboardingProps
-  extends ViewProps,
-    NativeStackScreenProps<RootStackParamList, 'Onboarding'> {}
+export type OnboardingProps = NativeStackScreenProps<RootStackParamList, 'Onboarding'>
 
-const Onboarding = ({ navigation, style, ...rest }: OnboardingProps) => {
+const Onboarding = ({ navigation }: OnboardingProps) => {
   const pagerView = useRef<PagerView>(null)
   const numOfPagerView = useRef<number>(ONBOARDING_VIEW_DATA.length - 1)
   const [currentPage, setCurrentPage] = useState<number>(0)
@@ -32,11 +31,20 @@ const Onboarding = ({ navigation, style, ...rest }: OnboardingProps) => {
   const renderViewPagerChildren: React.JSX.Element[] = useMemo(
     () =>
       ONBOARDING_VIEW_DATA.map(({ id, img, title }: IOnboardingScreenView) => (
-        <View style={styles.page} key={id}>
+        <View key={id} style={styles.page} collapsable>
           <View style={styles.imgContainer}>
             <Image source={img} />
           </View>
-          <Paragraph style={styles.title} size="xl" content={title} />
+          <Paragraph
+            content={title}
+            maxWidth={300}
+            fontWeight="$2"
+            color="$color.primary"
+            textAlign="center"
+            letterSpacing="$3"
+            lineHeight="$6"
+            fontSize="$4"
+          />
         </View>
       )),
     []
@@ -57,7 +65,7 @@ const Onboarding = ({ navigation, style, ...rest }: OnboardingProps) => {
   }, [currentPage])
 
   return (
-    <SafeAreaView style={[containerStyles.expand, styles.container, style]} {...rest}>
+    <SafeAreaView style={[containerStyles.expand, styles.container]}>
       <View style={styles.bgContainer} />
       <PagerView
         initialPage={currentPage}
@@ -67,10 +75,17 @@ const Onboarding = ({ navigation, style, ...rest }: OnboardingProps) => {
       >
         {renderViewPagerChildren}
       </PagerView>
-      <View style={styles.dotGroup}>{renderPagerIndex}</View>
+      <XStack
+        marginBottom="$space.9"
+        space="$space.2.5"
+        alignItems="center"
+        justifyContent="center"
+      >
+        {renderPagerIndex}
+      </XStack>
       <Button
-        style={styles.btn}
         title={numOfPagerView.current === currentPage ? 'finish' : 'next'}
+        marginHorizontal="$space.6"
         onPress={handleMoveToNextScreen}
       />
     </SafeAreaView>
