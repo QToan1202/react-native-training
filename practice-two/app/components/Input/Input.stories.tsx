@@ -38,18 +38,14 @@ const Template: ComponentStory<typeof Input> = (arg: Omit<InputProps, 'control'>
 export const Default = Template.bind({})
 Default.args = {
   name: 'email',
-  inputStyle: {
-    placeholder: 'Enter your email',
-    placeholderTextColor: getTokens().color.white.val,
-  },
+  placeholder: 'Enter your email',
+  placeholderTextColor: getTokens().color.white.val,
 }
 
 export const InputWithLabel = Template.bind({})
 InputWithLabel.args = {
   label: 'First name',
   name: 'firstName',
-  inputStyle: {
-    placeholder: 'Enter your name',
-    placeholderTextColor: getTokens().color.black.val,
-  },
+  placeholder: 'Enter your name',
+  placeholderTextColor: getTokens().color.black.val,
 }

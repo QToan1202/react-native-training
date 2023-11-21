@@ -20,7 +20,7 @@ export const StyledInput = styled(Input, {
   backgroundColor: '$color.transparent',
 
   variants: {
-    label: {
+    hasLabel: {
       true: {
         paddingVertical: 5,
         borderBottomWidth: StyleSheet.hairlineWidth,
@@ -29,7 +29,6 @@ export const StyledInput = styled(Input, {
         fontSize: '$2',
         color: '$color.black',
 
-        focusable: true,
         focusStyle: {
           borderBottomColor: '$color.primary',
         },
@@ -48,7 +47,7 @@ export const StyledInput = styled(Input, {
   } as const,
 
   defaultVariants: {
-    label: false,
+    hasLabel: false,
   },
 })
 
