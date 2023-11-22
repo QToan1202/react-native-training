@@ -55,12 +55,12 @@ const PaymentCard = ({
       <>
         <StyledImageBackground {...rest} source={cardBg}>
           <YStack justifyContent="space-between" height="100%">
-            <Stack>
+            <YStack>
               <StyledTitle content="holder name" />
               <Paragraph content={name} numberOfLines={1} />
-            </Stack>
+            </YStack>
 
-            <Stack>
+            <YStack>
               <StyledTitle content="card number" />
               <Paragraph
                 fontSize="$2"
@@ -68,18 +68,18 @@ const PaymentCard = ({
                 numberOfLines={1}
                 content={cardNumber.replace(/(\d{4})/g, '$1 ')}
               />
-            </Stack>
+            </YStack>
 
-            <Stack>
+            <YStack>
               <StyledTitle content="exp. date" />
               <Paragraph content={expires} />
-            </Stack>
+            </YStack>
           </YStack>
 
-          <Stack>
+          <YStack>
             <StyledTitle content="cvc" textTransform="uppercase" />
             <Paragraph content={cvc} textAlign="right" />
-          </Stack>
+          </YStack>
         </StyledImageBackground>
         {isSelected && <StyledImage source={require('@assets/check.png')} />}
       </>
