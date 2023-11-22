@@ -27,7 +27,6 @@ const AddCard = ({ navigation }: AddCardScreenProps) => {
           paddingHorizontal="$space.6"
           justifyContent="center"
           alignItems="center"
-          backgroundColor="$color.red"
           width={Dimensions.get('window').width}
           height={Dimensions.get('window').width / 2}
         >
