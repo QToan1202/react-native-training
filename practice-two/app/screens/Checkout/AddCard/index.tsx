@@ -1,109 +1,111 @@
 import { useCallback } from 'react'
-import { KeyboardAvoidingView, Platform, View } from 'react-native'
+import { Dimensions, KeyboardAvoidingView, Platform } from 'react-native'
 import { useForm } from 'react-hook-form'
 import { NativeStackScreenProps } from '@react-navigation/native-stack'
-import { RootStackParamList } from '@navigation/Stack'
+import { XStack, YStack } from 'tamagui'
 
-import { ErrorMessage, Input, PaymentCard, TabBar } from '@components'
+import { RootStackParamList } from '@navigation/Stack'
+import { Input, PaymentCard, TabBar } from '@components'
 import { IForm } from '@types'
-import { containerStyles } from '@styles'
 
 import styles from './styles'
 
-export interface AddCardScreenProps extends NativeStackScreenProps<RootStackParamList, 'AddCard'> {}
-
+export type AddCardScreenProps = NativeStackScreenProps<RootStackParamList, 'AddCard'>
 const AddCard = ({ navigation }: AddCardScreenProps) => {
-  const {
-    control,
-    watch,
-    formState: { errors },
-  } = useForm<IForm>()
+  const { control, watch, handleSubmit } = useForm<IForm>()
   const observeFields = watch()
   const handleSaveCardInfo = useCallback(() => {
     // TODO: Save card information to context
     navigation.navigate('Payment')
-  }, [navigation])
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [])
 
   return (
     <>
-      <View style={styles.container}>
-        <View style={styles.cardContainer}>
+      <YStack flex={1} backgroundColor="$color.bg_layer">
+        <XStack
+          paddingHorizontal="$space.6"
+          justifyContent="center"
+          alignItems="center"
+          backgroundColor="$color.red"
+          width={Dimensions.get('window').width}
+          height={Dimensions.get('window').width / 2}
+        >
           <PaymentCard
-            style={styles.cardSize}
-            contentContainerStyle={styles.cardContent}
-            cardNumber={observeFields.number || ''}
-            cvc={observeFields.cvc || ''}
-            expires={observeFields.expiresDate || ''}
             name={observeFields.name || ''}
+            cardNumber={observeFields.number || ''}
+            expires={observeFields.expiresDate || ''}
+            cvc={observeFields.cvc || ''}
+            containerStyle={{
+              alignSelf: 'center',
+              marginBottom: 30,
+            }}
+            style={{
+              maxWidth: undefined,
+              maxHeight: undefined,
+              aspectRatio: 3 / 1.8,
+            }}
           />
-        </View>
+        </XStack>
 
         <KeyboardAvoidingView
           behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
           style={styles.form}
         >
-          <View>
+          <Input
+            name="number"
+            label="Card Number"
+            control={control}
+            keyboardType="numeric"
+            isShowError
+            rules={{
+              required: 'Card number is require',
+              maxLength: {
+                value: 16,
+                message: "Card number can't be exceed 16 number",
+              },
+              validate: (value) => (value[0] !== '4' || value[0] !== '5') && 'Card number invalid',
+            }}
+          />
+          <Input
+            name="name"
+            control={control}
+            label="Name"
+            rules={{
+              required: 'Name is require',
+            }}
+          />
+          <XStack alignItems="center" space="$space.6">
             <Input
-              name="number"
+              label="Expires Dates"
+              name="expiresDate"
+              isShowError
+              control={control}
+              rules={{
+                required: 'Expires Date is require',
+              }}
+              containerStyle={{ flex: 3 }}
+            />
+            <Input
+              label="CVC"
+              name="cvc"
+              control={control}
+              isShowError
               keyboardType="numeric"
-              control={control}
-              label="Card Number"
+              secureTextEntry
               rules={{
-                required: 'Card number is require',
+                required: 'CVC is require',
                 maxLength: {
-                  value: 16,
-                  message: "Card number can't be exceed 16 number",
+                  value: 3,
+                  message: 'CVC too long',
                 },
-                validate: (value) =>
-                  (value[0] !== '4' || value[0] !== '5') && 'Card number invalid',
               }}
+              containerStyle={{ flex: 2 }}
             />
-            <ErrorMessage style={styles.error} error={errors.number} />
-          </View>
-          <View>
-            <Input
-              name="name"
-              control={control}
-              label="Name"
-              rules={{
-                required: 'Name is require',
-              }}
-            />
-            <ErrorMessage style={styles.error} error={errors.name} />
-          </View>
-          <View style={[containerStyles.inline, styles.spacing]}>
-            <View style={styles.expiresDate}>
-              <Input
-                name="expiresDate"
-                control={control}
-                label="Expires Dates"
-                rules={{
-                  required: 'Expires Date is require',
-                }}
-              />
-              <ErrorMessage style={styles.error} error={errors.expiresDate} />
-            </View>
-            <View style={styles.cvc}>
-              <Input
-                name="cvc"
-                control={control}
-                keyboardType="numeric"
-                secureTextEntry
-                label="CVC"
-                rules={{
-                  required: 'CVC is require',
-                  maxLength: {
-                    value: 3,
-                    message: 'CVC too long',
-                  },
-                }}
-              />
-              <ErrorMessage style={styles.error} error={errors.cvc} />
-            </View>
-          </View>
+          </XStack>
         </KeyboardAvoidingView>
-      </View>
-      <TabBar title="Add Credit Card" onPress={handleSaveCardInfo} />
+      </YStack>
+      <TabBar title="Add Credit Card" onPress={handleSubmit(handleSaveCardInfo)} />
     </>
   )
 }
