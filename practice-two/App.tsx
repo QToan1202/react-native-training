@@ -10,6 +10,7 @@ import {
 } from '@expo-google-fonts/montserrat'
 import { StatusBar, StatusBarStyle } from 'expo-status-bar'
 import { TamaguiProvider } from 'tamagui'
+import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
 
 import { NavigationContainer } from '@react-navigation/native'
 import { BottomNav, StackNavigation } from '@navigation'
@@ -21,6 +22,7 @@ import config from './tamagui.config'
 
 SplashScreen.preventAutoHideAsync()
 const FAKE_IS_LOGIN = true
+const queryClient = new QueryClient()
 
 const App = () => {
   const theme = useRef<StatusBarStyle>('auto')
@@ -58,14 +60,16 @@ const App = () => {
   if (!fontsLoaded) return null
 
   return (
-    <TamaguiProvider config={config}>
-      <SafeAreaProvider style={styles.container} onLayout={onLayoutRootView}>
-        <StatusBar style={theme.current} />
-        <NavigationContainer>
-          {!FAKE_IS_LOGIN ? <StackNavigation.PublicStackNavigator /> : <BottomNav />}
-        </NavigationContainer>
-      </SafeAreaProvider>
-    </TamaguiProvider>
+    <QueryClientProvider client={queryClient}>
+      <TamaguiProvider config={config}>
+        <SafeAreaProvider style={styles.container} onLayout={onLayoutRootView}>
+          <StatusBar style={theme.current} />
+          <NavigationContainer>
+            {!FAKE_IS_LOGIN ? <StackNavigation.PublicStackNavigator /> : <BottomNav />}
+          </NavigationContainer>
+        </SafeAreaProvider>
+      </TamaguiProvider>
+    </QueryClientProvider>
   )
 }
 
