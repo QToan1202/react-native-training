@@ -1,4 +1,4 @@
-export interface IRegisterForm {
+export interface IUser {
   firstName: string
   lastName: string
   email: string
@@ -7,9 +7,9 @@ export interface IRegisterForm {
   confirmPassword: string
 }
 
-export type TLoginForm = Pick<IRegisterForm, 'email' | 'phone' | 'password'>
+export type TLoginForm = Pick<IUser, 'email' | 'phone' | 'password'>
 
-export interface IAddressForm {
+export interface IAddress {
   name: string
   phone: string
   streetAddress: string
@@ -18,11 +18,11 @@ export interface IAddressForm {
   zipCode: number
 }
 
-export interface ICardForm {
+export interface ICard {
   number: string
   name: string
   expiresDate: string
   cvc: string
 }
 
-export interface IUserForms extends IRegisterForm, TLoginForm, IAddressForm, ICardForm {}
+export interface IUserForms extends IUser, TLoginForm, IAddress, ICard {}
