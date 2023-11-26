@@ -20,7 +20,7 @@ export type SignUpScreenProps = NativeStackScreenProps<RootStackParamList, 'Sign
 
 const SignUp = ({ navigation }: SignUpScreenProps) => {
   const loginFn = useAuthStore((state) => state.login)
-  const { mutate, isSuccess, data: user } = useRegister(process.env.EXPO_PUBLIC_API_URL || '/users')
+  const { mutate, isSuccess, data: user } = useRegister(process.env.EXPO_PUBLIC_USER_ENDPOINT)
   const { control, handleSubmit, watch } = useForm<IForm>()
   const observePassword: string = watch('password')
   const onSubmit: SubmitHandler<IForm> = useCallback((data: IUser) => {
