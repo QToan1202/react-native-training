@@ -1,5 +1,6 @@
-import { useCallback, useMemo } from 'react'
-import { Alert, KeyboardAvoidingView, Platform } from 'react-native'
+/* eslint-disable react-hooks/exhaustive-deps */
+import { useCallback, useEffect, useMemo } from 'react'
+import { KeyboardAvoidingView, Platform } from 'react-native'
 import { SubmitHandler, useForm } from 'react-hook-form'
 import { SafeAreaView } from 'react-native-safe-area-context'
 import { NativeStackScreenProps } from '@react-navigation/native-stack'
@@ -7,20 +8,24 @@ import { XStack, YStack } from 'tamagui'
 
 import { RootStackParamList } from '@navigation/Stack'
 import { Button, Heading, Input, Paragraph } from '@components'
-import { IForm } from '@types'
+import { IForm, IUser } from '@types'
 import { SIGN_UP_INPUTS } from '@constants'
+import { useRegister } from '@hooks'
+import { useAuthStore } from '@stores'
+import { asyncStoreService } from '@services'
 
 import styles from './styles'
 
 export type SignUpScreenProps = NativeStackScreenProps<RootStackParamList, 'SignUp'>
 
 const SignUp = ({ navigation }: SignUpScreenProps) => {
+  const loginFn = useAuthStore((state) => state.login)
+  const { mutate, isSuccess, data: user } = useRegister(process.env.EXPO_PUBLIC_API_URL || '/users')
   const { control, handleSubmit, watch } = useForm<IForm>()
   const observePassword: string = watch('password')
-  const onSubmit: SubmitHandler<IForm> = (data) => {
-    Alert.alert(JSON.stringify(data))
-  }
-  // eslint-disable-next-line react-hooks/exhaustive-deps
+  const onSubmit: SubmitHandler<IForm> = useCallback((data: IUser) => {
+    mutate(data)
+  }, [])
   const handleToLoginScreen = useCallback(() => navigation.navigate('Login'), [])
   const SignUpInputs = useMemo(
     () =>
@@ -29,6 +34,17 @@ const SignUp = ({ navigation }: SignUpScreenProps) => {
       )),
     [control, observePassword]
   )
+
+  // Save data when register successful
+  const handleSaveUser = useCallback(async () => {
+    if (!isSuccess) return
+
+    await asyncStoreService.save('user', user, () => loginFn(user))
+  }, [isSuccess, loginFn, user])
+
+  useEffect(() => {
+    handleSaveUser()
+  }, [handleSaveUser])
 
   return (
     <SafeAreaView style={styles.container}>
