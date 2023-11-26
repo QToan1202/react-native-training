@@ -16,6 +16,7 @@
       "@navigation/*": ["app/navigation/*"],
       "@services/*": ["app/services/*"],
       "@animations/*": ["app/animations/*"],
+      "@stores/*": ["app/stores/*"],
       "test-utils": ["app/utils/test-utils"]
     }
   }
