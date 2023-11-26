@@ -1,8 +1,13 @@
 import AsyncStorage from '@react-native-async-storage/async-storage'
+import { Callback } from '@react-native-async-storage/async-storage/lib/typescript/types'
 
 import { TAsyncStoreReturnType } from '@types'
 
-const save = async (key: string, value: string | object, onComplete?: () => void) => {
+const save = async <T>(
+  key: string,
+  value: T extends object ? T : string,
+  onComplete?: Callback
+) => {
   try {
     const saveValue: string = JSON.stringify(value)
 
