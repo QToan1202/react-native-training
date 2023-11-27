@@ -18,7 +18,7 @@ import styles from './styles'
 export interface LoginScreenProps extends NativeStackScreenProps<RootStackParamList, 'Login'> {}
 
 const Login = ({ navigation }: LoginScreenProps) => {
-  const { mutate, data: user, isSuccess } = useLogin(process.env.EXPO_PUBLIC_API_URL)
+  const { mutate, data: user, isSuccess } = useLogin(process.env.USER_ENDPOINT)
   const loginFn = useAuthStore((state) => state.login)
   const { control, handleSubmit } = useForm<IForm>()
   const onSubmit: SubmitHandler<IForm> = useCallback(({ email, password }: IForm) => {

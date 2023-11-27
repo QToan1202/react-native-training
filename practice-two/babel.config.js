@@ -1,5 +1,3 @@
-process.env.TAMAGUI_TARGET = 'native'
-
 module.exports = function (api) {
   api.cache(true)
   return {
@@ -8,7 +6,7 @@ module.exports = function (api) {
       [
         'transform-inline-environment-variables',
         {
-          include: ['TAMAGUI_TARGET'],
+          include: Object.keys(process.env),
         },
       ],
       [
