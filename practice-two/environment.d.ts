@@ -4,5 +4,6 @@ namespace NodeJS {
     TAMAGUI_TARGET: string
     BASE_URL: string
     USER_ENDPOINT: string
+    PRODUCT_ENDPOINT: string
   }
 }
