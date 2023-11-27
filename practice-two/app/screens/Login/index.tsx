@@ -15,7 +15,7 @@ import { useAuthStore } from '@stores'
 
 import styles from './styles'
 
-export interface LoginScreenProps extends NativeStackScreenProps<RootStackParamList, 'Login'> {}
+export type LoginScreenProps = NativeStackScreenProps<RootStackParamList, 'Login'>
 
 const Login = ({ navigation }: LoginScreenProps) => {
   const { mutate, data: user, isSuccess } = useLogin(process.env.USER_ENDPOINT)
