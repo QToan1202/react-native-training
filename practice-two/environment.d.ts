@@ -6,5 +6,6 @@ namespace NodeJS {
     USER_ENDPOINT: string
     PRODUCT_ENDPOINT: string
     STORE_ENDPOINT: string
+    WISHLIST_ENDPOINT: string
   }
 }
