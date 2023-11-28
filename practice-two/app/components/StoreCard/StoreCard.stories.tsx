@@ -12,7 +12,7 @@ const Template: ComponentStory<typeof StoreCard> = (args) => <StoreCard {...args
 
 export const Default = Template.bind({})
 Default.args = {
-  image: require('@assets/store/tradly.png'),
+  bgImage: require('@assets/store/tradly.png'),
   source: require('@assets/avatar.png'),
   name: 'tradly store',
   btnTitle: 'follow',

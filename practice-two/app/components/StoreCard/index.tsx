@@ -1,7 +1,7 @@
 import { memo } from 'react'
 import isEqual from 'react-fast-compare'
-import { Image, ImageBackgroundProps, ViewProps } from 'react-native'
-import { Stack, YStack } from 'tamagui'
+import { Image, ImageBackgroundProps } from 'react-native'
+import { SizeTokens, Stack, StackProps, YStack } from 'tamagui'
 
 import Avatar, { AvatarProps } from '@components/Avatar'
 import Button from '@components/Button'
@@ -9,15 +9,16 @@ import { containerStyles } from '@styles'
 
 import styles from './styles'
 
-export type StoreCardProps = {
-  image: ImageBackgroundProps['source']
-  btnTitle: string
-  onPressBtn: () => void
-} & ViewProps &
-  Pick<AvatarProps, 'source' | 'name' | 'size'>
+export type StoreCardProps = StackProps &
+  Pick<AvatarProps, 'source' | 'name'> & {
+    bgImage: ImageBackgroundProps['source']
+    btnTitle: string
+    size?: SizeTokens
+    onPressBtn?: () => void
+  }
 
 const StoreCard = ({
-  image,
+  bgImage,
   source,
   name,
   size = 'xl',
@@ -31,10 +32,11 @@ const StoreCard = ({
       paddingTop="$space.9"
       paddingBottom="$space.4"
       paddingHorizontal="$space.5"
+      w={160}
       style={containerStyles.card}
       {...rest}
     >
-      <Image source={image} style={styles.img} />
+      <Image source={bgImage} style={styles.img} />
       <YStack justifyContent="center" alignItems="center">
         <Avatar source={source} name={name} size={size} block />
         <Button
