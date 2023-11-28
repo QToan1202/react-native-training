@@ -5,5 +5,6 @@ namespace NodeJS {
     BASE_URL: string
     USER_ENDPOINT: string
     PRODUCT_ENDPOINT: string
+    STORE_ENDPOINT: string
   }
 }
