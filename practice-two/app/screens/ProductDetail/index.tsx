@@ -1,19 +1,40 @@
 import React, { useCallback, useMemo } from 'react'
 import { ScrollView, Spinner, XStack, YStack } from 'tamagui'
 import { NativeStackScreenProps } from '@react-navigation/native-stack'
+import { useShallow } from 'zustand/react/shallow'
 
 import { Avatar, Button, Heading, IconButton, Paragraph, TabBar } from '@components'
 import { CATEGORY } from '@constants'
-import { useFindProduct } from '@hooks'
+import { useFindProduct, useGetWishlist } from '@hooks'
+import { useAuthStore } from '@stores'
 import { RootStackParamList } from '@navigation/Stack'
+import { IWishlistBase } from '@types'
 
 import StyledImageBackground from './styles'
 
 export type ProductDetailProps = NativeStackScreenProps<RootStackParamList, 'ProductDetail'>
 
 const ProductDetail = ({ navigation, route }: ProductDetailProps) => {
+  const user = useAuthStore((state) => state.user)
   const { id } = route.params
-  const { data: product, isSuccess } = useFindProduct(process.env.PRODUCT_ENDPOINT, id)
+  const { data: product, isSuccess: isFindProductSuccess } = useFindProduct(
+    process.env.PRODUCT_ENDPOINT,
+    id
+  )
+  const { data: wishlist, isSuccess: isGetWishlistSuccess } = useGetWishlist(
+    process.env.WISHLIST_ENDPOINT,
+    user?.id
+  )
+  const checkProductInWishlist = useCallback(() => {
+    if (!isFindProductSuccess) return false
+    if (!isGetWishlistSuccess) return false
+
+    return wishlist.some((item: IWishlistBase) => item.productId === product.id)
+  }, [isFindProductSuccess, isGetWishlistSuccess, product.id, wishlist])
+
+  const likeIcon = checkProductInWishlist()
+    ? require('@assets/heart.png')
+    : require('@assets/love.png')
   // eslint-disable-next-line react-hooks/exhaustive-deps
   const handleBackPress = useCallback(() => navigation.goBack(), [])
   const handlePress = useCallback(() => undefined, [])
@@ -33,7 +54,7 @@ const ProductDetail = ({ navigation, route }: ProductDetailProps) => {
     []
   )
 
-  return isSuccess ? (
+  return isFindProductSuccess ? (
     <>
       <ScrollView
         backgroundColor="$color.bg_layer"
@@ -45,7 +66,7 @@ const ProductDetail = ({ navigation, route }: ProductDetailProps) => {
             <IconButton icon={require('@assets/back.png')} onPress={handleBackPress} />
             <XStack alignItems="center" space="$space.1.5">
               <IconButton icon={require('@assets/share.png')} onPress={handlePress} />
-              <IconButton icon={require('@assets/heart.png')} onPress={handlePress} />
+              <IconButton icon={likeIcon} onPress={handlePress} />
               <IconButton icon={require('@assets/more.png')} onPress={handlePress} />
             </XStack>
           </StyledImageBackground>
