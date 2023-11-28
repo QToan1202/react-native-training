@@ -1,16 +1,19 @@
 import React, { useCallback, useMemo } from 'react'
-import { ScrollView, XStack, YStack } from 'tamagui'
+import { ScrollView, Spinner, XStack, YStack } from 'tamagui'
 import { NativeStackScreenProps } from '@react-navigation/native-stack'
 
 import { Avatar, Button, Heading, IconButton, Paragraph, TabBar } from '@components'
 import { CATEGORY } from '@constants'
+import { useFindProduct } from '@hooks'
 import { RootStackParamList } from '@navigation/Stack'
 
 import StyledImageBackground from './styles'
 
 export type ProductDetailProps = NativeStackScreenProps<RootStackParamList, 'ProductDetail'>
 
-const ProductDetail = ({ navigation }: ProductDetailProps) => {
+const ProductDetail = ({ navigation, route }: ProductDetailProps) => {
+  const { id } = route.params
+  const { data: product, isSuccess } = useFindProduct(process.env.PRODUCT_ENDPOINT, id)
   // eslint-disable-next-line react-hooks/exhaustive-deps
   const handleBackPress = useCallback(() => navigation.goBack(), [])
   const handlePress = useCallback(() => undefined, [])
@@ -30,7 +33,7 @@ const ProductDetail = ({ navigation }: ProductDetailProps) => {
     []
   )
 
-  return (
+  return isSuccess ? (
     <>
       <ScrollView
         backgroundColor="$color.bg_layer"
@@ -53,7 +56,12 @@ const ProductDetail = ({ navigation }: ProductDetailProps) => {
             paddingTop="$space.3.5"
             paddingBottom="$space.5"
           >
-            <Heading content="Coca Cola" fontSize="$3" color="$color.gray_50" />
+            <Heading
+              content={product.name}
+              fontSize="$3"
+              color="$color.gray_50"
+              textTransform="capitalize"
+            />
             <Heading content="$25" fontSize="$3" color="$color.primary" />
           </YStack>
         </YStack>
@@ -64,7 +72,11 @@ const ProductDetail = ({ navigation }: ProductDetailProps) => {
           paddingHorizontal="$space.3"
           backgroundColor="$color.white"
         >
-          <Avatar size="md" source={require('@assets/avatar.png')} name="tradly store" />
+          <Avatar
+            size="md"
+            source={{ uri: product.store.avatar }}
+            name={`${product.store.name} store`}
+          />
           <Button
             shrink
             title="follow"
@@ -81,12 +93,7 @@ const ProductDetail = ({ navigation }: ProductDetailProps) => {
           space="$space.3.5"
           backgroundColor="$color.white"
         >
-          <Paragraph
-            content="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lobortis cras placerat diam ipsum ut. Nisi vel adipiscing massa bibendum diam. Suspendisse mattis dui maecenas duis mattis. Mattis aliquam at arcu, semper nunc, venenatis et pellentesque eu. Id tristique maecenas tristique habitasse eu elementum sed. Aliquam eget lacus, arcu, adipiscing eget feugiat in dolor sagittis.
-Non commodo, a justo massa porttitor sed placerat in. Orci tristique etiam tempus sed. Mi varius morbi egestas dictum tempor nisl. In "
-            color="$color.gray_50"
-            lineHeight="$4"
-          />
+          <Paragraph content={product.description} color="$color.gray_50" lineHeight="$4" />
         </YStack>
         <YStack
           paddingBottom="$space.3"
@@ -110,25 +117,25 @@ Non commodo, a justo massa porttitor sed placerat in. Orci tristique etiam tempu
             </YStack>
             <YStack maxWidth={200} space="$space.3.5">
               <Paragraph
-                content="organic"
+                content={product.condition}
                 color="$color.gray_50"
                 lineHeight="$4"
                 textTransform="capitalize"
               />
               <Paragraph
-                content="fixed"
+                content={product.priceType}
                 color="$color.gray_50"
                 lineHeight="$4"
                 textTransform="capitalize"
               />
               <Paragraph
-                content="beverages"
+                content={product.category.name}
                 color="$color.gray_50"
                 lineHeight="$4"
                 textTransform="capitalize"
               />
               <Paragraph
-                content="kualalumpur, malaysia"
+                content={product.location}
                 color="$color.gray_50"
                 lineHeight="$4"
                 textTransform="capitalize"
@@ -163,7 +170,7 @@ Non commodo, a justo massa porttitor sed placerat in. Orci tristique etiam tempu
             </YStack>
             <YStack maxWidth={200} space="$space.3.5">
               <Paragraph
-                content="Home Delivery Available, Cash On Delivery"
+                content={product.delivery}
                 color="$color.gray_50"
                 lineHeight="$4"
                 textTransform="capitalize"
@@ -174,6 +181,8 @@ Non commodo, a justo massa porttitor sed placerat in. Orci tristique etiam tempu
       </ScrollView>
       <TabBar title="Add To Cart" onPress={handleNavigateToCart} />
     </>
+  ) : (
+    <Spinner size="large" color="$color.primary" />
   )
 }
 
