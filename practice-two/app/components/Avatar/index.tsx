@@ -19,6 +19,7 @@ const Avatar = ({ source, name, size = 'sm', ...rest }: AvatarProps) => {
     () => ({
       width: imageSize.current,
       height: imageSize.current,
+      borderRadius: 50,
     }),
     []
   )
