@@ -1,4 +1,4 @@
-import { memo } from 'react'
+import { memo, useMemo } from 'react'
 import isEqual from 'react-fast-compare'
 import { Image, ImageProps } from 'react-native'
 import { XStack, YStack, YStackProps } from 'tamagui'
@@ -10,16 +10,18 @@ import { containerStyles } from '@styles'
 import styles from './styles'
 
 export type ProductCardProps = YStackProps & {
+  id?: string
   img: ImageProps['source']
   title: string
   avatar: ImageProps['source']
   storeName: string
   price: number
   discountPrice?: number
-  onPress: () => void
+  onPressCard?: (params: string) => void
 }
 
 const ProductCard = ({
+  id,
   img,
   title,
   avatar,
@@ -27,11 +29,17 @@ const ProductCard = ({
   price,
   discountPrice,
   onPress,
+  onPressCard,
   ...rest
 }: ProductCardProps) => {
+  const handlePress = useMemo(
+    () => (id && onPressCard ? () => onPressCard(id) : null),
+    [id, onPressCard]
+  )
+
   return (
     <YStack
-      onPress={onPress}
+      onPress={handlePress || onPress}
       style={containerStyles.card}
       alignSelf="flex-start"
       pressStyle={{ opacity: 0.8 }}
@@ -50,9 +58,9 @@ const ProductCard = ({
             numberOfLines={1}
           />
           <XStack alignItems="center" justifyContent="space-between" columnGap={4}>
-            <Avatar source={avatar} name={storeName} size="sm" space="$space.2" />
+            <Avatar source={avatar} name={storeName} size="sm" space="$space.0" />
             <XStack alignItems="center" columnGap={4}>
-              {discountPrice && (
+              {discountPrice !== 0 && (
                 <Paragraph
                   content={`$${price.toFixed(0)}`}
                   fontSize={10}
