@@ -1,10 +1,10 @@
 import { UseQueryResult, useQuery } from '@tanstack/react-query'
 
 import { find, get } from '@services'
-import { IProductExpand } from '@types'
+import { IProduct } from '@types'
 
-export const useGetProducts = (path: string): UseQueryResult<IProductExpand[], Error> => {
-  return useQuery<IProductExpand[], Error, IProductExpand[], string[]>({
+export const useGetProducts = (path: string): UseQueryResult<IProduct[], Error> => {
+  return useQuery<IProduct[], Error, IProduct[], string[]>({
     queryKey: ['products'],
     queryFn: () =>
       get(path, {
@@ -15,8 +15,8 @@ export const useGetProducts = (path: string): UseQueryResult<IProductExpand[], E
   })
 }
 
-export const useFindProduct = (path: string, id: string): UseQueryResult<IProductExpand, Error> => {
-  return useQuery<IProductExpand, Error, IProductExpand, string[]>({
+export const useFindProduct = (path: string, id: string): UseQueryResult<IProduct, Error> => {
+  return useQuery<IProduct, Error, IProduct, string[]>({
     queryKey: ['products', id],
     queryFn: () =>
       find(`${path}/${id}`, {

@@ -16,7 +16,7 @@ export interface IProductBase {
   img: string
 }
 
-export interface IProductExpand extends IProductBase {
+export interface IProduct extends IProductBase {
   store: IStore
   category: ICategory
 }

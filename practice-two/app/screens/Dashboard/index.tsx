@@ -9,7 +9,7 @@ import { DASHBOARD } from '@constants'
 import { ICategoryItem, ISliderItem } from '@constants/screens/dashboard'
 import { renderItem } from '@utils'
 import { useGetProducts, useGetStores } from '@hooks'
-import { IProductExpand, IStore } from '@types'
+import { IProduct, IStore } from '@types'
 
 import styles from './styles'
 
@@ -29,7 +29,7 @@ const Dashboard = ({ navigation }: HomeScreenProps) => {
     navigation.navigate('ProductDetail', { id })
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
-  const renderProductItem: ListRenderItem<IProductExpand> = useCallback(
+  const renderProductItem: ListRenderItem<IProduct> = useCallback(
     ({ item: { id, img, price, discountPrice, name, store } }) => (
       <ProductCard
         id={String(id)}
@@ -44,7 +44,7 @@ const Dashboard = ({ navigation }: HomeScreenProps) => {
     ),
     [handleMoveToProduct]
   )
-  const renderProducts = <T extends IProductExpand[]>(title: string, data: T) => (
+  const renderProducts = <T extends IProduct[]>(title: string, data: T) => (
     <>
       <XStack
         alignItems="center"
@@ -64,7 +64,7 @@ const Dashboard = ({ navigation }: HomeScreenProps) => {
         />
       </XStack>
       <FlatList
-        keyExtractor={({ id }: IProductExpand): string => String(id)}
+        keyExtractor={({ id }: IProduct): string => String(id)}
         data={data}
         renderItem={renderProductItem}
         horizontal
