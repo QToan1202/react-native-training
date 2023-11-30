@@ -8,7 +8,7 @@ import { IProductItem } from '@constants/screens/dashboard'
 
 import styles from './styles'
 
-export interface BrowseScreenProps extends NativeStackScreenProps<RootStackParamList, 'Browse'> {}
+export type BrowseScreenProps = NativeStackScreenProps<RootStackParamList, 'Browse'>
 
 const Browse = () => {
   return (
