@@ -1,11 +1,11 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import React, { useCallback, useMemo } from 'react'
 import { ScrollView, Spinner, XStack, YStack } from 'tamagui'
 import { NativeStackScreenProps } from '@react-navigation/native-stack'
-import { useShallow } from 'zustand/react/shallow'
 
 import { Avatar, Button, Heading, IconButton, Paragraph, TabBar } from '@components'
 import { CATEGORY } from '@constants'
-import { useFindProduct, useGetWishlist } from '@hooks'
+import { useAddToWishlist, useDeleteFromWishlist, useFindProduct, useGetWishlist } from '@hooks'
 import { useAuthStore } from '@stores'
 import { RootStackParamList } from '@navigation/Stack'
 import { IWishlistBase } from '@types'
@@ -23,22 +23,43 @@ const ProductDetail = ({ navigation, route }: ProductDetailProps) => {
   )
   const { data: wishlist, isSuccess: isGetWishlistSuccess } = useGetWishlist(
     process.env.WISHLIST_ENDPOINT,
-    user?.id
+    String(user?.id)
   )
-  const checkProductInWishlist = useCallback(() => {
+  const { mutate: addToWishList } = useAddToWishlist(
+    process.env.WISHLIST_ENDPOINT,
+    String(user?.id)
+  )
+  const { mutate: deleteFromWishlist } = useDeleteFromWishlist(
+    process.env.WISHLIST_ENDPOINT,
+    String(user?.id)
+  )
+
+  const checkProductInWishlist = useMemo(() => {
     if (!isFindProductSuccess) return false
     if (!isGetWishlistSuccess) return false
 
     return wishlist.some((item: IWishlistBase) => item.productId === product.id)
-  }, [isFindProductSuccess, isGetWishlistSuccess, product.id, wishlist])
+  }, [isFindProductSuccess, isGetWishlistSuccess, wishlist])
 
-  const likeIcon = checkProductInWishlist()
-    ? require('@assets/heart.png')
-    : require('@assets/love.png')
-  // eslint-disable-next-line react-hooks/exhaustive-deps
+  const likeIcon = checkProductInWishlist
+    ? require('@assets/love.png')
+    : require('@assets/heart.png')
+
+  const handleLikeProduct = useCallback(() => {
+    if (!user) return
+    if (checkProductInWishlist) {
+      deleteFromWishlist({ id: 1 })
+      return
+    }
+
+    addToWishList({
+      productId: Number(id),
+      userId: Number(user.id),
+    })
+  }, [id, user?.id, checkProductInWishlist])
+
   const handleBackPress = useCallback(() => navigation.goBack(), [])
   const handlePress = useCallback(() => undefined, [])
-  // eslint-disable-next-line react-hooks/exhaustive-deps
   const handleNavigateToCart = useCallback(() => navigation.navigate('Cart'), [])
   const Categories: React.JSX.Element[] = useMemo(
     () =>
@@ -66,7 +87,7 @@ const ProductDetail = ({ navigation, route }: ProductDetailProps) => {
             <IconButton icon={require('@assets/back.png')} onPress={handleBackPress} />
             <XStack alignItems="center" space="$space.1.5">
               <IconButton icon={require('@assets/share.png')} onPress={handlePress} />
-              <IconButton icon={likeIcon} onPress={handlePress} />
+              <IconButton icon={likeIcon} onPress={handleLikeProduct} />
               <IconButton icon={require('@assets/more.png')} onPress={handlePress} />
             </XStack>
           </StyledImageBackground>
