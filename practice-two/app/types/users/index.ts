@@ -1,5 +1,5 @@
 export interface IUser {
-  id: string
+  id: number
   firstName: string
   lastName: string
   email: string
@@ -10,13 +10,18 @@ export interface IUser {
 
 export type TLoginForm = Pick<IUser, 'email' | 'phone' | 'password'>
 
-export interface IAddress {
+export interface IAddressBase {
   name: string
   phone: string
   streetAddress: string
   city: string
   state: string
   zipCode: number
+}
+
+export interface IAddress extends IAddressBase {
+  userId: number
+  id: number
 }
 
 export interface ICard {
@@ -26,4 +31,4 @@ export interface ICard {
   cvc: string
 }
 
-export interface IUserForms extends IUser, TLoginForm, IAddress, ICard {}
+export interface IUserForms extends IUser, TLoginForm, IAddressBase, ICard {}

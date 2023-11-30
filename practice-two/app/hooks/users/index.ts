@@ -1,7 +1,7 @@
 import { UseMutationResult, useMutation } from '@tanstack/react-query'
 
-import { login, register } from '@services'
-import { IUser } from '@types'
+import { add, login, register } from '@services'
+import { IAddress, IUser } from '@types'
 
 export const useLogin = (
   path: string
@@ -15,5 +15,13 @@ export const useLogin = (
 export const useRegister = (path: string): UseMutationResult<IUser, Error, IUser, unknown> => {
   return useMutation<IUser, Error, IUser, unknown>({
     mutationFn: (data: IUser): Promise<IUser> => register(path, data),
+  })
+}
+
+export const useAddAddress = (
+  path: string
+): UseMutationResult<IAddress, Error, Omit<IAddress, 'id'>, unknown> => {
+  return useMutation<IAddress, Error, Omit<IAddress, 'id'>, unknown>({
+    mutationFn: (data: Omit<IAddress, 'id'>): Promise<IAddress> => add<IAddress>(path, data),
   })
 }
