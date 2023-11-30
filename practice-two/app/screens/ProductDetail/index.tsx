@@ -1,12 +1,13 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import React, { useCallback, useMemo } from 'react'
+import { ToastAndroid } from 'react-native'
 import { ScrollView, Spinner, XStack, YStack } from 'tamagui'
 import { NativeStackScreenProps } from '@react-navigation/native-stack'
 
 import { Avatar, Button, Heading, IconButton, Paragraph, TabBar } from '@components'
 import { CATEGORY } from '@constants'
 import { useAddToWishlist, useDeleteFromWishlist, useFindProduct, useGetWishlist } from '@hooks'
-import { useAuthStore } from '@stores'
+import { useAuthStore, useCartStore } from '@stores'
 import { RootStackParamList } from '@navigation/Stack'
 import { IWishlistBase } from '@types'
 
@@ -16,6 +17,7 @@ export type ProductDetailProps = NativeStackScreenProps<RootStackParamList, 'Pro
 
 const ProductDetail = ({ navigation, route }: ProductDetailProps) => {
   const user = useAuthStore((state) => state.user)
+  const addToCart = useCartStore((state) => state.add)
   const { id } = route.params
   const { data: product, isSuccess: isFindProductSuccess } = useFindProduct(
     process.env.PRODUCT_ENDPOINT,
@@ -68,7 +70,13 @@ const ProductDetail = ({ navigation, route }: ProductDetailProps) => {
 
   const handleBackPress = useCallback(() => navigation.goBack(), [])
   const handlePress = useCallback(() => undefined, [])
-  const handleNavigateToCart = useCallback(() => navigation.navigate('Cart'), [])
+  const handleNavigateToCart = useCallback(() => {
+    if (!product) return
+
+    addToCart(product)
+    ToastAndroid.show('A new product have added to cart!', ToastAndroid.SHORT)
+    // navigation.navigate('Cart')
+  }, [])
   const Categories: React.JSX.Element[] = useMemo(
     () =>
       CATEGORY.map((item: string) => (
