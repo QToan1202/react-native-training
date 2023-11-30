@@ -47,8 +47,16 @@ const ProductDetail = ({ navigation, route }: ProductDetailProps) => {
 
   const handleLikeProduct = useCallback(() => {
     if (!user) return
+    if (!isGetWishlistSuccess) return
+
     if (checkProductInWishlist) {
-      deleteFromWishlist({ id: 1 })
+      const wishlistItem: IWishlistBase | undefined = wishlist.find(
+        (item) => item.productId === +id
+      )
+
+      if (!wishlistItem) return
+
+      deleteFromWishlist({ id: wishlistItem.id })
       return
     }
 
