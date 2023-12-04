@@ -8,14 +8,17 @@ import { RootStackParamList } from '@navigation/Stack'
 import { Address, PaymentCard, PaymentCardPlaceholder, Price, Radio, TabBar } from '@components'
 import { CHECKOUT, PAYMENT_METHODS } from '@constants'
 import { ICardBase } from '@types'
+import { useOrderStore } from '@stores'
 
 import styles from './styles'
 
 export type PaymentScreenProps = NativeStackScreenProps<RootStackParamList, 'Payment'>
 
 const Payment = ({ navigation }: PaymentScreenProps) => {
+  const address = useOrderStore((state) => state.address)
   const [selectedCard, setSelectedCard] = useState<string>('')
-  const handlePress = useCallback(() => undefined, [])
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  const handleChangeAddress = useCallback(() => navigation.navigate('AddCard'), [])
   const numberOfCards = useRef<number>(CHECKOUT.CARDS.length)
   const [currentIndex, setCurrentIndex] = useState<number>(0)
   const renderPagerIndex: React.JSX.Element[] = useMemo(() => {
@@ -77,9 +80,9 @@ const Payment = ({ navigation }: PaymentScreenProps) => {
           </YStack>
           <Radio radioList={PAYMENT_METHODS} backgroundColor="$color.white" />
           <Address
-            name="Deliver to Tradly Team, 75119"
-            streetAddress="Kualalumpur, Malaysia"
-            onPress={handlePress}
+            name={address?.name || 'Deliver to Tradly Team, 75119'}
+            streetAddress={address?.streetAddress || 'Kualalumpur, Malaysia'}
+            onPress={handleChangeAddress}
           />
           <Price total={25} data={CHECKOUT.PRICE_DETAILS} />
         </YStack>
