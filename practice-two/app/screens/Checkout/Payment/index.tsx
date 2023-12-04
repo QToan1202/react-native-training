@@ -7,7 +7,7 @@ import { ScrollView, XStack, YStack } from 'tamagui'
 import { RootStackParamList } from '@navigation/Stack'
 import { Address, PaymentCard, PaymentCardPlaceholder, Price, Radio, TabBar } from '@components'
 import { CHECKOUT, PAYMENT_METHODS } from '@constants'
-import { ICardInformation } from '@types'
+import { ICardBase } from '@types'
 
 import styles from './styles'
 
@@ -31,10 +31,7 @@ const Payment = ({ navigation }: PaymentScreenProps) => {
   const handleViewPagerSelected = useCallback((e: PagerViewOnPageSelectedEvent) => {
     setCurrentIndex(e.nativeEvent.position)
   }, [])
-  const handleCardSelected = useCallback(
-    (data: ICardInformation) => setSelectedCard(data.cardNumber),
-    []
-  )
+  const handleCardSelected = useCallback((data: ICardBase) => setSelectedCard(data.number), [])
   const handleAddCard = useCallback(() => navigation.navigate('AddCard'), [navigation])
   const ViewPager2 = useMemo(
     () => (
@@ -48,8 +45,8 @@ const Payment = ({ navigation }: PaymentScreenProps) => {
             {'id' in item ? (
               <PaymentCard
                 {...item}
-                isSelected={item.cardNumber === selectedCard}
-                containerStyle={{ alignSelf: 'center' }}
+                isSelected={item.number === selectedCard}
+                alignSelf="center"
                 onCardSelected={handleCardSelected}
               />
             ) : (

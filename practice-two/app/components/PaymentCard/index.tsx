@@ -4,7 +4,7 @@ import { Stack, StackProps, YStack } from 'tamagui'
 
 import Paragraph from '@components/Paragraph'
 import { checkCardType } from '@utils'
-import { ICardInformation } from '@types'
+import { ICardBase } from '@types'
 
 import {
   StyledImage,
@@ -13,25 +13,25 @@ import {
   StyledTitle,
 } from './styles'
 
-export type PaymentCardProps = ICardInformation &
-  StyledImageBackgroundProps & {
+export type PaymentCardProps = StackProps &
+  ICardBase & {
     isSelected?: boolean
-    containerStyle?: StackProps
-    onCardSelected?: (data: ICardInformation) => void
+    cardStyle?: StyledImageBackgroundProps['style']
+    onCardSelected?: (data: ICardBase) => void
   }
 
 const PaymentCard = ({
   name,
-  cardNumber,
+  number,
   cvc,
-  expires,
+  expired,
   isSelected = false,
-  containerStyle,
   onCardSelected,
+  cardStyle,
   ...rest
 }: PaymentCardProps) => {
   const cardBg = useMemo(() => {
-    switch (checkCardType(cardNumber)) {
+    switch (checkCardType(number)) {
       case 'mastercard':
         return require('@assets/payment/mastercard.png')
       case 'visa':
@@ -39,10 +39,10 @@ const PaymentCard = ({
       default:
         return require('@assets/payment/normal.png')
     }
-  }, [cardNumber])
+  }, [number])
   const handleSelectCard = useCallback(
-    () => onCardSelected && onCardSelected({ name, cardNumber, cvc, expires }),
-    [cardNumber, cvc, expires, name, onCardSelected]
+    () => onCardSelected && onCardSelected({ name, number, cvc, expired }),
+    [number, cvc, expired, name, onCardSelected]
   )
 
   return (
@@ -50,10 +50,10 @@ const PaymentCard = ({
       alignSelf="flex-start"
       pressStyle={{ opacity: 0.8 }}
       onPress={handleSelectCard}
-      {...containerStyle}
+      {...rest}
     >
       <>
-        <StyledImageBackground {...rest} source={cardBg}>
+        <StyledImageBackground source={cardBg} style={cardStyle}>
           <YStack justifyContent="space-between" height="100%">
             <YStack>
               <StyledTitle content="holder name" />
@@ -66,19 +66,19 @@ const PaymentCard = ({
                 fontSize="$2"
                 width={167}
                 numberOfLines={1}
-                content={cardNumber.replace(/(\d{4})/g, '$1 ')}
+                content={number.replace(/(\d{4})/g, '$1 ')}
               />
             </YStack>
 
             <YStack>
               <StyledTitle content="exp. date" />
-              <Paragraph content={expires} />
+              <Paragraph content={expired} />
             </YStack>
           </YStack>
 
           <YStack>
             <StyledTitle content="cvc" textTransform="uppercase" />
-            <Paragraph content={cvc} textAlign="right" />
+            <Paragraph content={String(cvc)} textAlign="right" />
           </YStack>
         </StyledImageBackground>
         {isSelected && <StyledImage source={require('@assets/check.png')} />}
