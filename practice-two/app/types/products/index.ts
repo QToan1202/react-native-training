@@ -16,6 +16,10 @@ export interface IProductBase {
   img: string
 }
 
+export interface ICart extends IProductBase {
+  quantity: number
+}
+
 export interface IProduct extends IProductBase {
   store: IStore
   category: ICategory
