@@ -70,12 +70,11 @@ const ProductDetail = ({ navigation, route }: ProductDetailProps) => {
 
   const handleBackPress = useCallback(() => navigation.goBack(), [])
   const handlePress = useCallback(() => undefined, [])
-  const handleNavigateToCart = useCallback(() => {
+  const handleAddToCart = useCallback(() => {
     if (!product) return
 
     addToCart(product)
     ToastAndroid.show('A new product have added to cart!', ToastAndroid.SHORT)
-    // navigation.navigate('Cart')
   }, [])
   const Categories: React.JSX.Element[] = useMemo(
     () =>
@@ -169,7 +168,7 @@ const ProductDetail = ({ navigation, route }: ProductDetailProps) => {
             lineHeight="$4"
             textTransform="capitalize"
           />
-          <XStack alignItems="center" space="$space.6">
+          <XStack alignItems="center" space="$space.10">
             <YStack maxWidth={120} space="$space.3.5" opacity={0.7}>
               {Categories}
             </YStack>
@@ -237,7 +236,7 @@ const ProductDetail = ({ navigation, route }: ProductDetailProps) => {
           </XStack>
         </YStack>
       </ScrollView>
-      <TabBar title="Add To Cart" onPress={handleNavigateToCart} />
+      <TabBar title="Add To Cart" onPress={handleAddToCart} />
     </>
   ) : (
     <Spinner size="large" color="$color.primary" />
