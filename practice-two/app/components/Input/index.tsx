@@ -1,7 +1,7 @@
 import { forwardRef, memo } from 'react'
 import isEqual from 'react-fast-compare'
 import { Control, UseControllerProps, useController } from 'react-hook-form'
-import { Stack, StackProps, YStack } from 'tamagui'
+import { Stack, StackProps } from 'tamagui'
 import { TextInput } from 'react-native'
 
 import ErrorMessage from '@components/ErrorMessage'
@@ -31,7 +31,7 @@ const Input = forwardRef<TextInput, InputProps>(
     })
 
     return (
-      <Stack {...containerStyle}>
+      <Stack w="100%" pos="relative" {...containerStyle}>
         {label && <Label>{label}</Label>}
         <StyledInput
           ref={ref}
@@ -40,7 +40,7 @@ const Input = forwardRef<TextInput, InputProps>(
           onChangeText={field.onChange}
           {...rest}
         />
-        <YStack height={25}>{isShowError && <ErrorMessage error={errors[name]} />}</YStack>
+        {isShowError && <ErrorMessage pos="absolute" bottom={-20} error={errors[name]} />}
       </Stack>
     )
   }
