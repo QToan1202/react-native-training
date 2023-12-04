@@ -1,7 +1,8 @@
 import { UseMutationResult, useMutation } from '@tanstack/react-query'
 
 import { add, login, register } from '@services'
-import { IAddress, IUser } from '@types'
+import { IAddress, ICard, IUser } from '@types'
+import { useOrderStore } from '@stores'
 
 export const useLogin = (
   path: string
@@ -23,5 +24,17 @@ export const useAddAddress = (
 ): UseMutationResult<IAddress, Error, Omit<IAddress, 'id'>, unknown> => {
   return useMutation<IAddress, Error, Omit<IAddress, 'id'>, unknown>({
     mutationFn: (data: Omit<IAddress, 'id'>): Promise<IAddress> => add<IAddress>(path, data),
+export const useAddCard = (
+  path: string
+): UseMutationResult<ICard, Error, Omit<ICard, 'id'>, unknown> => {
+  const addCard = useOrderStore((state) => state.addCard)
+
+  return useMutation<ICard, Error, Omit<ICard, 'id'>, unknown>({
+    mutationFn: (data: Omit<ICard, 'id'>): Promise<ICard> => add<ICard>(path, data),
+    onSuccess: (data: ICard) => {
+      // eslint-disable-next-line @typescript-eslint/no-unused-vars
+      const { id, userId, ...card } = data
+      addCard(card)
+    },
   })
 }

@@ -8,5 +8,6 @@ namespace NodeJS {
     STORE_ENDPOINT: string
     WISHLIST_ENDPOINT: string
     ADDRESS_ENDPOINT: string
+    CARD_ENDPOINT: string
   }
 }

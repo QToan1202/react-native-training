@@ -50,10 +50,3 @@ export interface IDetailInfo {
   label: string
   value: string
 }
-
-export interface ICardInformation {
-  name: string
-  cardNumber: string
-  cvc: string
-  expires: string
-}

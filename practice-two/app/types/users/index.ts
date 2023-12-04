@@ -24,11 +24,16 @@ export interface IAddress extends IAddressBase {
   id: number
 }
 
-export interface ICard {
+export interface ICardBase {
   number: string
   name: string
-  expiresDate: string
+  expired: string
   cvc: string
 }
 
-export interface IUserForms extends IUser, TLoginForm, IAddressBase, ICard {}
+export interface ICard extends ICardBase {
+  userId: number
+  id: number
+}
+
+export interface IUserForms extends IUser, TLoginForm, IAddressBase, ICardBase {}

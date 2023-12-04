@@ -8,7 +8,7 @@ const styles = StyleSheet.create({
     backgroundColor: COLORS.BG_LAYER,
   },
   form: {
-    flex: 1,
+    flex: 2,
     backgroundColor: COLORS.WHITE,
     paddingTop: 24,
     paddingHorizontal: 34,
