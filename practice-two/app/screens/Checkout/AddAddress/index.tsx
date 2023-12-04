@@ -3,6 +3,7 @@ import { KeyboardAvoidingView } from 'react-native'
 import { useForm } from 'react-hook-form'
 import { NativeStackScreenProps } from '@react-navigation/native-stack'
 import { ScrollView } from 'tamagui'
+import { useShallow } from 'zustand/react/shallow'
 
 import { RootStackParamList } from '@navigation/Stack'
 import { Button, Input, TabBar } from '@components'
@@ -18,18 +19,22 @@ export type AddAddressScreenProps = NativeStackScreenProps<RootStackParamList, '
 
 const AddAddress = ({ navigation }: AddAddressScreenProps) => {
   const { mutate, isSuccess } = useAddAddress(process.env.ADDRESS_ENDPOINT)
-  const user = useAuthStore((state) => state.user)
+  const [isHydrated, user] = useAuthStore(useShallow((state) => [state.isHydrated, state.user]))
   const { control, handleSubmit } = useForm<IForm>()
   const handlePress = useCallback(() => undefined, [])
-  const handleSaveAddress = useCallback((addressInformation: IAddressBase) => {
-    if (!user) return
-    // TODO: Save address to context
-    mutate({
-      ...addressInformation,
-      userId: user.id,
-    })
+  const handleSaveAddress = useCallback(
+    (addressInformation: IAddressBase) => {
+      if (!isHydrated) return
+      if (!user) return
+      // TODO: Save address to context
+      mutate({
+        ...addressInformation,
+        userId: user.id,
+      })
+    },
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [])
+    [isHydrated, user]
+  )
   const renderFormFields = useMemo(
     () =>
       ADDRESS_FORM_FIELDS.map(({ id, ...fieldData }: TAddressFormFields) => (
@@ -41,7 +46,7 @@ const AddAddress = ({ navigation }: AddAddressScreenProps) => {
 
   useEffect(() => {
     if (isSuccess) {
-      navigation.navigate('Cart')
+      navigation.goBack()
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [isSuccess])
