@@ -39,7 +39,7 @@ const CartItem = ({ image, name, price, discountPrice, quantity, ...rest }: Cart
               color="$color.primary"
               numberOfLines={1}
             />
-            {discountPrice && (
+            {discountPrice !== 0 && (
               <>
                 <StyledText
                   content={`$${price.toFixed(0)}`}
