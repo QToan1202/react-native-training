@@ -1,6 +1,6 @@
-import { GetProps, Paragraph, styled } from 'tamagui'
+import { GetProps, Text, styled } from 'tamagui'
 
-const StyledParagraph = styled(Paragraph, {
+const StyledParagraph = styled(Text, {
   fontWeight: '$true',
   color: '$color.white',
 })

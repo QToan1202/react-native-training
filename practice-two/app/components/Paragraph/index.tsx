@@ -9,7 +9,7 @@ export type ParagraphProps = StyledParagraphProps & {
 
 const Paragraph = StyledParagraph.styleable<ParagraphProps>(({ content, ...rest }, ref) => {
   return (
-    <StyledParagraph ref={ref} lineHeight="$true" {...rest}>
+    <StyledParagraph ref={ref} {...rest}>
       {content}
     </StyledParagraph>
   )
