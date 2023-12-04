@@ -22,7 +22,7 @@ export const useRegister = (path: string): UseMutationResult<IUser, Error, IUser
 export const useAddAddress = (
   path: string
 ): UseMutationResult<IAddress, Error, Omit<IAddress, 'id'>, unknown> => {
-  const addAddress = useOrderStore((state) => state.addAddress)
+  const addAddress = useOrderStore((state) => state.setAddress)
 
   return useMutation<IAddress, Error, Omit<IAddress, 'id'>, unknown>({
     mutationFn: (data: Omit<IAddress, 'id'>): Promise<IAddress> => add<IAddress>(path, data),
@@ -37,7 +37,7 @@ export const useAddAddress = (
 export const useAddCard = (
   path: string
 ): UseMutationResult<ICard, Error, Omit<ICard, 'id'>, unknown> => {
-  const addCard = useOrderStore((state) => state.addCard)
+  const addCard = useOrderStore((state) => state.setCard)
 
   return useMutation<ICard, Error, Omit<ICard, 'id'>, unknown>({
     mutationFn: (data: Omit<ICard, 'id'>): Promise<ICard> => add<ICard>(path, data),
