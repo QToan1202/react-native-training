@@ -10,6 +10,7 @@ interface CartState {
   cart: ICart[]
   add: (product: IProductBase) => void
   remove: (productId: IProductBase['id']) => void
+  clear: () => void
 }
 
 export const useCartStore = create<CartState>()(
@@ -44,6 +45,7 @@ export const useCartStore = create<CartState>()(
         set((state) => ({
           cart: state.cart.filter(({ id }: IProductBase) => id !== productId),
         })),
+      clear: () => set(() => ({ cart: [] })),
     }),
     {
       name: 'cart.storage',
