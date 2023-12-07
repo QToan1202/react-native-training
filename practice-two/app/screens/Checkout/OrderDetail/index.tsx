@@ -35,6 +35,7 @@ const OrderDetail = ({ navigation }: OrderDetailScreenProps) => {
 
   useEffect(() => {
     if (!user) return
+    if (!persistCart.current.length) return
 
     mutate({
       productId: persistCart.current.map((item: ICart) => item.id),
@@ -42,7 +43,7 @@ const OrderDetail = ({ navigation }: OrderDetailScreenProps) => {
       userId: user.id,
     })
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [user])
+  }, [])
 
   return isSuccess ? (
     <ScrollView showsVerticalScrollIndicator={false} backgroundColor="$color.bg_layer">
