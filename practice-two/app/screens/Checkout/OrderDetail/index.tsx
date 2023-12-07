@@ -1,32 +1,56 @@
-import { useCallback } from 'react'
+import { useCallback, useEffect, useMemo, useRef } from 'react'
 import { Dimensions, Image } from 'react-native'
 import { NativeStackScreenProps } from '@react-navigation/native-stack'
-import { ScrollView, Separator, XStack, YStack } from 'tamagui'
+import { ScrollView, Separator, Spinner, XStack, YStack } from 'tamagui'
 
 import { Button, CartItem, Heading, Paragraph, TrackerItem } from '@components'
 import { RootStackParamList } from '@navigation/Stack'
+import { useAuthStore, useCartStore } from '@stores'
+import { ICart } from '@types'
+import { useOrderProduct } from '@hooks'
 
 export type OrderDetailScreenProps = NativeStackScreenProps<RootStackParamList, 'OrderDetail'>
 
 const OrderDetail = ({ navigation }: OrderDetailScreenProps) => {
+  const cart = useCartStore((state) => state.cart)
+  const user = useAuthStore((state) => state.user)
+  const persistCart = useRef<ICart[]>(cart)
+  const { mutate, isSuccess } = useOrderProduct(process.env.ORDER_ENDPOINT)
   // eslint-disable-next-line react-hooks/exhaustive-deps
   const handleNavigateToHome = useCallback(() => navigation.navigate('Home'), [])
+  const renderOrderItem = useMemo(
+    () =>
+      persistCart.current.map(({ id, img, name, price, discountPrice, quantity }: ICart) => (
+        <CartItem
+          key={id}
+          image={{ uri: img }}
+          name={name}
+          price={price}
+          discountPrice={discountPrice}
+          quantity={quantity}
+        />
+      )),
+    []
+  )
 
-  return (
+  useEffect(() => {
+    if (!user) return
+
+    mutate({
+      productId: persistCart.current.map((item: ICart) => item.id),
+      quantity: persistCart.current.map((item: ICart) => item.quantity),
+      userId: user.id,
+    })
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [user])
+
+  return isSuccess ? (
     <ScrollView showsVerticalScrollIndicator={false} backgroundColor="$color.bg_layer">
       <YStack alignItems="center" paddingVertical="$space.6">
         <Image source={require('@assets/order/done.png')} />
         <Heading content="Thanks for Order" color="$color.gray_50" />
       </YStack>
-      <YStack>
-        <CartItem
-          image={require('@assets/cart/item.png')}
-          name="coca cola"
-          price={50}
-          discountPrice={25}
-          quantity={1}
-        />
-      </YStack>
+      <YStack>{renderOrderItem}</YStack>
       <YStack
         marginTop="$space.3.5"
         marginBottom="$space.5"
@@ -139,6 +163,8 @@ const OrderDetail = ({ navigation }: OrderDetailScreenProps) => {
         onPress={handleNavigateToHome}
       />
     </ScrollView>
+  ) : (
+    <Spinner size="large" color="$color.primary" />
   )
 }
 
