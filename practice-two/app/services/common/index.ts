@@ -1,7 +1,7 @@
 import axios, { AxiosInstance, AxiosRequestConfig, AxiosResponse } from 'axios'
 
 const request: AxiosInstance = axios.create({
-  baseURL: process.env.EXPO_PUBLIC_BASE_URL,
+  baseURL: process.env.BASE_URL,
 })
 
 export const get = async <T>(path: string, options: AxiosRequestConfig = {}): Promise<T[]> => {
