@@ -3,19 +3,21 @@ import { View } from 'react-native'
 import PagerView, { PagerViewOnPageSelectedEvent } from 'react-native-pager-view'
 import { NativeStackScreenProps } from '@react-navigation/native-stack'
 import { ScrollView, XStack, YStack } from 'tamagui'
+import { useShallow } from 'zustand/react/shallow'
 
 import { RootStackParamList } from '@navigation/Stack'
 import { Address, PaymentCard, PaymentCardPlaceholder, Price, Radio, TabBar } from '@components'
 import { CHECKOUT, PAYMENT_METHODS } from '@constants'
 import { ICardBase } from '@types'
-import { useOrderStore } from '@stores'
+import { useCartStore, useOrderStore } from '@stores'
 
 import styles from './styles'
 
 export type PaymentScreenProps = NativeStackScreenProps<RootStackParamList, 'Payment'>
 
 const Payment = ({ navigation }: PaymentScreenProps) => {
-  const address = useOrderStore((state) => state.address)
+  const cart = useCartStore((state) => state.cart)
+  const [address, setCard] = useOrderStore(useShallow((state) => [state.address, state.setCard]))
   const [selectedCard, setSelectedCard] = useState<string>('')
   // eslint-disable-next-line react-hooks/exhaustive-deps
   const handleChangeAddress = useCallback(() => navigation.navigate('AddCard'), [])
@@ -34,7 +36,11 @@ const Payment = ({ navigation }: PaymentScreenProps) => {
   const handleViewPagerSelected = useCallback((e: PagerViewOnPageSelectedEvent) => {
     setCurrentIndex(e.nativeEvent.position)
   }, [])
-  const handleCardSelected = useCallback((data: ICardBase) => setSelectedCard(data.number), [])
+  const handleCardSelected = useCallback((card: ICardBase) => {
+    setSelectedCard(card.number)
+    setCard(card)
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [])
   const handleAddCard = useCallback(() => navigation.navigate('AddCard'), [navigation])
   const ViewPager2 = useMemo(
     () => (
@@ -84,7 +90,7 @@ const Payment = ({ navigation }: PaymentScreenProps) => {
             streetAddress={address?.streetAddress || 'Kualalumpur, Malaysia'}
             onPress={handleChangeAddress}
           />
-          <Price total={25} data={CHECKOUT.PRICE_DETAILS} />
+          <Price data={cart} deliveryFee={1.5} />
         </YStack>
       </ScrollView>
       <TabBar title="Checkout" onPress={handleCheckout} />

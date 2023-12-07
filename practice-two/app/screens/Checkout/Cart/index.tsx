@@ -5,7 +5,6 @@ import { useShallow } from 'zustand/react/shallow'
 
 import { RootStackParamList } from '@navigation/Stack'
 import { Address, Button, CartItem, Heading, Paragraph, Price, TabBar } from '@components'
-import { CHECKOUT } from '@constants'
 import { useCartStore, useOrderStore } from '@stores'
 import { ICart } from '@types'
 
@@ -78,7 +77,7 @@ const Cart = ({ navigation }: CartScreenProps) => {
             onPress={handleChangeAddress}
           />
         </YStack>
-        <Price data={CHECKOUT.PRICE_DETAILS} total={25} />
+        <Price data={cart} deliveryFee={1.5} />
       </ScrollView>
       <TabBar title="Continue to Payment" onPress={handleNavigateAddCard} />
     </>
