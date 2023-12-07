@@ -11,6 +11,7 @@ import {
 import { TamaguiProvider } from 'tamagui'
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
 import { useShallow } from 'zustand/react/shallow'
+import * as Notifications from 'expo-notifications'
 
 import { NavigationContainer } from '@react-navigation/native'
 import { BottomNav, StackNavigation } from '@navigation'
@@ -22,6 +23,14 @@ import config from './tamagui.config'
 
 SplashScreen.preventAutoHideAsync()
 const queryClient = new QueryClient()
+
+Notifications.setNotificationHandler({
+  handleNotification: async () => ({
+    shouldShowAlert: true,
+    shouldPlaySound: false,
+    shouldSetBadge: true,
+  }),
+})
 
 const App = () => {
   const [isHydrated, user] = useAuthStore(useShallow((state) => [state.isHydrated, state.user]))

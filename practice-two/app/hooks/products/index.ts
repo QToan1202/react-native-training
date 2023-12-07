@@ -1,4 +1,5 @@
 import { UseMutationResult, UseQueryResult, useMutation, useQuery } from '@tanstack/react-query'
+import * as Notifications from 'expo-notifications'
 
 import { add, find, get } from '@services'
 import { IOrder, IProduct } from '@types'
@@ -36,6 +37,15 @@ export const useOrderProduct = (
   return useMutation<IOrder, Error, Omit<IOrder, 'id' | 'orderStateId'>, unknown>({
     mutationFn: (data: Omit<IOrder, 'id' | 'orderStateId'>): Promise<IOrder> =>
       add<IOrder>(path, { ...data, orderStateId: 1 }),
-    onSuccess: () => clearCart(),
+    onSuccess: (data: IOrder) => {
+      clearCart()
+      Notifications.scheduleNotificationAsync({
+        content: {
+          title: 'Order successfully',
+          body: `Order #${data.id} is being processed by store`,
+        },
+        trigger: null,
+      })
+    },
   })
 }
