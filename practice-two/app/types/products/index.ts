@@ -1,3 +1,4 @@
+import { IUser } from '../users'
 import { ICategory } from '../categories'
 import { IStore } from '../stores'
 
@@ -23,4 +24,17 @@ export interface ICart extends IProductBase {
 export interface IProduct extends IProductBase {
   store: IStore
   category: ICategory
+}
+
+export interface IOrderStatus {
+  id: number
+  status: string
+}
+
+export interface IOrder {
+  id: number
+  productId: Array<ICart['id']>
+  quantity: Array<ICart['quantity']>
+  orderStateId: IOrderStatus['id']
+  userId: IUser['id']
 }

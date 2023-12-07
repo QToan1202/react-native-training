@@ -9,5 +9,6 @@ namespace NodeJS {
     WISHLIST_ENDPOINT: string
     ADDRESS_ENDPOINT: string
     CARD_ENDPOINT: string
+    ORDER_ENDPOINT: string
   }
 }

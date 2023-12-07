@@ -1,7 +1,8 @@
-import { UseQueryResult, useQuery } from '@tanstack/react-query'
+import { UseMutationResult, UseQueryResult, useMutation, useQuery } from '@tanstack/react-query'
 
-import { find, get } from '@services'
-import { IProduct } from '@types'
+import { add, find, get } from '@services'
+import { IOrder, IProduct } from '@types'
+import { useCartStore } from '@stores'
 
 export const useGetProducts = (path: string): UseQueryResult<IProduct[], Error> => {
   return useQuery<IProduct[], Error, IProduct[], string[]>({
@@ -24,5 +25,17 @@ export const useFindProduct = (path: string, id: string): UseQueryResult<IProduc
           _expand: ['store', 'category'],
         },
       }),
+  })
+}
+
+export const useOrderProduct = (
+  path: string
+): UseMutationResult<IOrder, Error, Omit<IOrder, 'id' | 'orderStateId'>, unknown> => {
+  const clearCart = useCartStore((state) => state.clear)
+
+  return useMutation<IOrder, Error, Omit<IOrder, 'id' | 'orderStateId'>, unknown>({
+    mutationFn: (data: Omit<IOrder, 'id' | 'orderStateId'>): Promise<IOrder> =>
+      add<IOrder>(path, { ...data, orderStateId: 1 }),
+    onSuccess: () => clearCart(),
   })
 }
