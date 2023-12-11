@@ -6,6 +6,7 @@ import {
   useQuery,
 } from '@tanstack/react-query'
 import * as Notifications from 'expo-notifications'
+import * as ExpoLinking from 'expo-linking'
 
 import { add, find, get } from '@services'
 import { ICart, IOrder, IProduct } from '@types'
@@ -81,7 +82,7 @@ export const useOrderProduct = (
           title: 'Order successfully',
           body: `Order #${data.id} is being processed by store`,
           data: {
-            redirect: `tradly://orders/${data.id}`,
+            redirect: `${ExpoLinking.createURL('/')}home/orders/${data.id}`,
           },
         },
         trigger: null,

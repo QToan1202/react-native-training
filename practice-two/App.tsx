@@ -55,6 +55,7 @@ const App = () => {
     config: {
       screens: {
         HomeTab: {
+          path: 'home',
           screens: {
             OrderDetail: 'orders/:id',
           },
