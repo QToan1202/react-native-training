@@ -31,7 +31,7 @@ export type RootStackParamList = {
   AddAddress: undefined
   AddCard: undefined
   Payment: undefined
-  OrderDetail: undefined
+  OrderDetail: { id: string } // ID of the order
 }
 
 const Stack = createNativeStackNavigator<RootStackParamList>()

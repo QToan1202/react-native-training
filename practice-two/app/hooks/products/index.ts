@@ -1,8 +1,14 @@
-import { UseMutationResult, UseQueryResult, useMutation, useQuery } from '@tanstack/react-query'
+import {
+  UseMutationResult,
+  UseQueryResult,
+  useMutation,
+  useQueries,
+  useQuery,
+} from '@tanstack/react-query'
 import * as Notifications from 'expo-notifications'
 
 import { add, find, get } from '@services'
-import { IOrder, IProduct } from '@types'
+import { ICart, IOrder, IProduct } from '@types'
 import { useCartStore } from '@stores'
 
 export const useGetProducts = (path: string): UseQueryResult<IProduct[], Error> => {
@@ -29,6 +35,37 @@ export const useFindProduct = (path: string, id: string): UseQueryResult<IProduc
   })
 }
 
+export const useFindMultiProduct = (
+  path: string,
+  productId: number[],
+  quantity: number[]
+): Partial<ICart>[] => {
+  const queryFindFn = (id: string) =>
+    find<IProduct>(`${path}/${id}`, {
+      params: {
+        _expand: ['store', 'category'],
+      },
+    })
+
+  const productQueries = useQueries<IProduct[], Array<UseQueryResult<IProduct, Error>>>({
+    queries: productId.map((id) => ({
+      queryKey: ['orders', id],
+      queryFn: () => queryFindFn(String(id)),
+    })),
+  })
+
+  const cartItems: Partial<ICart>[] = productQueries.map(
+    ({ data, isSuccess }: UseQueryResult<IProduct, Error>, index: number) => {
+      if (!isSuccess) return {}
+      const { id, img, name, price, discountPrice }: IProduct = data
+
+      return { id, img, name, price, discountPrice, quantity: quantity[index] }
+    }
+  )
+
+  return cartItems
+}
+
 export const useOrderProduct = (
   path: string
 ): UseMutationResult<IOrder, Error, Omit<IOrder, 'id' | 'orderStateId'>, unknown> => {
@@ -43,9 +80,19 @@ export const useOrderProduct = (
         content: {
           title: 'Order successfully',
           body: `Order #${data.id} is being processed by store`,
+          data: {
+            redirect: `tradly://orders/${data.id}`,
+          },
         },
         trigger: null,
       })
     },
+  })
+}
+
+export const useGetOderDetail = (path: string, id: string): UseQueryResult<IOrder, Error> => {
+  return useQuery<IOrder, Error>({
+    queryKey: ['orders', id],
+    queryFn: () => find<IOrder>(`${path}/${id}`),
   })
 }

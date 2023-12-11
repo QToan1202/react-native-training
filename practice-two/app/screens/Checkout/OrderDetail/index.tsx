@@ -1,49 +1,46 @@
-import { useCallback, useEffect, useMemo, useRef } from 'react'
+import { useCallback, useMemo } from 'react'
 import { Dimensions, Image } from 'react-native'
 import { NativeStackScreenProps } from '@react-navigation/native-stack'
 import { ScrollView, Separator, Spinner, XStack, YStack } from 'tamagui'
 
 import { Button, CartItem, Heading, Paragraph, TrackerItem } from '@components'
 import { RootStackParamList } from '@navigation/Stack'
-import { useAuthStore, useCartStore } from '@stores'
 import { ICart } from '@types'
-import { useOrderProduct } from '@hooks'
+import { useFindMultiProduct, useGetOderDetail } from '@hooks'
 
 export type OrderDetailScreenProps = NativeStackScreenProps<RootStackParamList, 'OrderDetail'>
 
-const OrderDetail = ({ navigation }: OrderDetailScreenProps) => {
-  const cart = useCartStore((state) => state.cart)
-  const user = useAuthStore((state) => state.user)
-  const persistCart = useRef<ICart[]>(cart)
-  const { mutate, isSuccess } = useOrderProduct(process.env.ORDER_ENDPOINT)
+const OrderDetail = ({ navigation, route }: OrderDetailScreenProps) => {
+  const { id } = route.params
+  const { data, isSuccess } = useGetOderDetail(process.env.ORDER_ENDPOINT, id)
+  const products: Partial<ICart>[] = useFindMultiProduct(
+    process.env.PRODUCT_ENDPOINT,
+    data?.productId || [],
+    data?.quantity || []
+  )
+
   // eslint-disable-next-line react-hooks/exhaustive-deps
   const handleNavigateToHome = useCallback(() => navigation.navigate('Home'), [])
-  const renderOrderItem = useMemo(
-    () =>
-      persistCart.current.map(({ id, img, name, price, discountPrice, quantity }: ICart) => (
+  const renderOrderItem = useMemo(() => {
+    if (!isSuccess) return null
+
+    return products.map((item: Partial<ICart>) => {
+      const { id: itemId, img, name, price, discountPrice, quantity } = item
+
+      if (!itemId || !img || !name || !price || !discountPrice || !quantity) return null
+
+      return (
         <CartItem
-          key={id}
+          key={itemId}
           image={{ uri: img }}
           name={name}
           price={price}
           discountPrice={discountPrice}
           quantity={quantity}
         />
-      )),
-    []
-  )
-
-  useEffect(() => {
-    if (!user) return
-    if (!persistCart.current.length) return
-
-    mutate({
-      productId: persistCart.current.map((item: ICart) => item.id),
-      quantity: persistCart.current.map((item: ICart) => item.quantity),
-      userId: user.id,
+      )
     })
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [])
+  }, [isSuccess, products])
 
   return isSuccess ? (
     <ScrollView showsVerticalScrollIndicator={false} backgroundColor="$color.bg_layer">
