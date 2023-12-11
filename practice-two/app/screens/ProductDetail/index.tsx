@@ -66,7 +66,7 @@ const ProductDetail = ({ navigation, route }: ProductDetailProps) => {
       productId: Number(id),
       userId: Number(user.id),
     })
-  }, [id, user?.id, checkProductInWishlist])
+  }, [user, isGetWishlistSuccess, checkProductInWishlist, id])
 
   const handleBackPress = useCallback(() => navigation.goBack(), [])
   const handlePress = useCallback(() => undefined, [])
@@ -75,7 +75,7 @@ const ProductDetail = ({ navigation, route }: ProductDetailProps) => {
 
     addToCart(product)
     ToastAndroid.show('A new product have added to cart!', ToastAndroid.SHORT)
-  }, [])
+  }, [product])
   const Categories: React.JSX.Element[] = useMemo(
     () =>
       CATEGORY.map((item: string) => (
