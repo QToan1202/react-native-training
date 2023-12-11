@@ -1,4 +1,4 @@
-import { useCallback, useMemo, useRef, useState } from 'react'
+import { useCallback, useEffect, useMemo, useRef, useState } from 'react'
 import { View } from 'react-native'
 import PagerView, { PagerViewOnPageSelectedEvent } from 'react-native-pager-view'
 import { NativeStackScreenProps } from '@react-navigation/native-stack'
@@ -8,8 +8,9 @@ import { useShallow } from 'zustand/react/shallow'
 import { RootStackParamList } from '@navigation/Stack'
 import { Address, PaymentCard, PaymentCardPlaceholder, Price, Radio, TabBar } from '@components'
 import { CHECKOUT, PAYMENT_METHODS } from '@constants'
-import { ICardBase } from '@types'
-import { useCartStore, useOrderStore } from '@stores'
+import { ICardBase, ICart } from '@types'
+import { useAuthStore, useCartStore, useOrderStore } from '@stores'
+import { useOrderProduct } from '@hooks'
 
 import styles from './styles'
 
@@ -17,6 +18,8 @@ export type PaymentScreenProps = NativeStackScreenProps<RootStackParamList, 'Pay
 
 const Payment = ({ navigation }: PaymentScreenProps) => {
   const cart = useCartStore((state) => state.cart)
+  const user = useAuthStore((state) => state.user)
+  const { mutate, data, isSuccess } = useOrderProduct(process.env.ORDER_ENDPOINT)
   const [address, setCard] = useOrderStore(useShallow((state) => [state.address, state.setCard]))
   const [selectedCard, setSelectedCard] = useState<string>('')
   // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -67,7 +70,23 @@ const Payment = ({ navigation }: PaymentScreenProps) => {
     ),
     [handleAddCard, handleCardSelected, handleViewPagerSelected, selectedCard]
   )
-  const handleCheckout = useCallback(() => navigation.navigate('OrderDetail'), [navigation])
+  const handleCheckout = useCallback(() => {
+    if (!user) return
+    if (!cart.length) return
+
+    mutate({
+      productId: cart.map((item: ICart) => item.id),
+      quantity: cart.map((item: ICart) => item.quantity),
+      userId: user.id,
+    })
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [cart, user])
+
+  useEffect(() => {
+    if (!isSuccess) return
+    navigation.navigate('OrderDetail', { id: String(data.id) })
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [isSuccess])
 
   return (
     <>
