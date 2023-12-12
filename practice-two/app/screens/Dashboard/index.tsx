@@ -1,7 +1,8 @@
-import { useCallback } from 'react'
+import { useCallback, useEffect } from 'react'
 import { FlatList, ListRenderItem, View } from 'react-native'
 import { NativeStackScreenProps } from '@react-navigation/native-stack'
-import { ScrollView, Spinner, XStack, YStack } from 'tamagui'
+import { ScrollView, XStack, YStack } from 'tamagui'
+import { useShallow } from 'zustand/react/shallow'
 
 import { RootStackParamList } from '@navigation/Stack'
 import { Button, Heading, MenuCard, ProductCard, SliderItem, StoreCard } from '@components'
@@ -10,16 +11,26 @@ import { ICategoryItem, ISliderItem } from '@constants/screens/dashboard'
 import { renderItem } from '@utils'
 import { useGetProducts, useGetStores } from '@hooks'
 import { IProduct, IStore } from '@types'
+import { useCacheStore } from '@stores'
 
 import styles from './styles'
 
 export type HomeScreenProps = NativeStackScreenProps<RootStackParamList, 'Home'>
 
 const Dashboard = ({ navigation }: HomeScreenProps) => {
-  const { data: products, isSuccess: isGetProductSuccess } = useGetProducts(
-    process.env.PRODUCT_ENDPOINT
+  const [cacheProducts, setProducts, cacheStores, setStores] = useCacheStore(
+    useShallow((state) => [state.products, state.setProducts, state.stores, state.setStores])
   )
-  const { data: stores, isSuccess: isGetStoreSuccess } = useGetStores(process.env.STORE_ENDPOINT)
+  const { data: products } = useGetProducts(process.env.PRODUCT_ENDPOINT)
+  const { data: stores } = useGetStores(process.env.STORE_ENDPOINT)
+  useEffect(() => {
+    if (!products) return
+    if (!stores) return
+
+    setProducts(products)
+    setStores(stores)
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [products, stores])
   const handleSeeAllProducts = useCallback(() => undefined, []) // TODO: Replacing with navigate to another screen
   const handleMoveToCategoryScreen = useCallback(({ id, name }: ICategoryItem) => {
     navigation.navigate('CategoryDetail', { id, name })
@@ -44,35 +55,50 @@ const Dashboard = ({ navigation }: HomeScreenProps) => {
     ),
     [handleMoveToProduct]
   )
-  const renderProducts = <T extends IProduct[]>(title: string, data: T) => (
-    <>
-      <XStack
-        alignItems="center"
-        justifyContent="space-between"
-        space="$space.1.5"
-        marginVertical="$space.3.5"
-        paddingHorizontal="$space.4.5"
-      >
-        <Heading content={title} color="$color.gray_50" fontSize="$3" />
-        <Button
-          shrink
-          title="see all"
-          paddingHorizontal="$space.5"
-          paddingVertical="$space.1.5"
-          fontSize={12}
-          onPress={handleSeeAllProducts}
+  const renderProducts = <T extends IProduct[]>(title: string, data: T) => {
+    if (!data.length)
+      return (
+        <YStack padding="$space.4">
+          <Heading
+            content="Product empty!!!"
+            color="$color.gray_50"
+            fontWeight="$3"
+            fontSize="$1"
+            textAlign="center"
+          />
+        </YStack>
+      )
+
+    return (
+      <>
+        <XStack
+          alignItems="center"
+          justifyContent="space-between"
+          space="$space.1.5"
+          marginVertical="$space.3.5"
+          paddingHorizontal="$space.4.5"
+        >
+          <Heading content={title} color="$color.gray_50" fontSize="$3" />
+          <Button
+            shrink
+            title="see all"
+            paddingHorizontal="$space.5"
+            paddingVertical="$space.1.5"
+            fontSize={12}
+            onPress={handleSeeAllProducts}
+          />
+        </XStack>
+        <FlatList
+          keyExtractor={({ id }: IProduct): string => String(id)}
+          data={data}
+          renderItem={renderProductItem}
+          horizontal
+          contentContainerStyle={styles.itemSpacing}
+          showsHorizontalScrollIndicator={false}
         />
-      </XStack>
-      <FlatList
-        keyExtractor={({ id }: IProduct): string => String(id)}
-        data={data}
-        renderItem={renderProductItem}
-        horizontal
-        contentContainerStyle={styles.itemSpacing}
-        showsHorizontalScrollIndicator={false}
-      />
-    </>
-  )
+      </>
+    )
+  }
   const renderStoreItem: ListRenderItem<IStore> = ({ item: { avatar, name } }) => (
     <StoreCard
       bgImage={require('@assets/store/tradly.png')}
@@ -101,14 +127,10 @@ const Dashboard = ({ navigation }: HomeScreenProps) => {
         scrollEnabled={false}
       />
       <YStack marginVertical="$space.3">
-        {isGetProductSuccess ? (
-          <>
-            {renderProducts('New Product', products)}
-            {renderProducts('Popular Product', products)}
-          </>
-        ) : (
-          <Spinner size="large" color="$color.primary" />
-        )}
+        <>
+          {renderProducts('New Product', products || cacheProducts)}
+          {renderProducts('Popular Product', products || cacheProducts)}
+        </>
       </YStack>
       <YStack>
         <View style={styles.bgStore} />
@@ -130,18 +152,14 @@ const Dashboard = ({ navigation }: HomeScreenProps) => {
             onPress={handleSeeAllProducts}
           />
         </XStack>
-        {isGetStoreSuccess ? (
-          <FlatList
-            keyExtractor={({ id }: IStore): string => id}
-            data={stores}
-            renderItem={renderStoreItem}
-            horizontal
-            showsHorizontalScrollIndicator={false}
-            contentContainerStyle={styles.itemSpacing}
-          />
-        ) : (
-          <Spinner size="large" color="$color.primary" />
-        )}
+        <FlatList
+          keyExtractor={({ id }: IStore): string => id}
+          data={stores || cacheStores}
+          renderItem={renderStoreItem}
+          horizontal
+          showsHorizontalScrollIndicator={false}
+          contentContainerStyle={styles.itemSpacing}
+        />
       </YStack>
     </ScrollView>
   )

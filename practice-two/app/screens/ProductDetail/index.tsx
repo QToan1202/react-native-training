@@ -1,28 +1,43 @@
 /* eslint-disable react-hooks/exhaustive-deps */
-import React, { useCallback, useMemo } from 'react'
+import React, { useCallback, useMemo, useEffect } from 'react'
 import { ToastAndroid } from 'react-native'
 import { ScrollView, Spinner, XStack, YStack } from 'tamagui'
 import { NativeStackScreenProps } from '@react-navigation/native-stack'
+import { useShallow } from 'zustand/react/shallow'
 
 import { Avatar, Button, Heading, IconButton, Paragraph, TabBar } from '@components'
 import { CATEGORY } from '@constants'
 import { useAddToWishlist, useDeleteFromWishlist, useFindProduct, useGetWishlist } from '@hooks'
-import { useAuthStore, useCartStore } from '@stores'
+import { useAuthStore, useCacheStore, useCartStore } from '@stores'
 import { RootStackParamList } from '@navigation/Stack'
-import { IWishlistBase } from '@types'
+import { IProduct, IWishlistBase } from '@types'
 
 import StyledImageBackground from './styles'
 
 export type ProductDetailProps = NativeStackScreenProps<RootStackParamList, 'ProductDetail'>
 
 const ProductDetail = ({ navigation, route }: ProductDetailProps) => {
+  const [cacheProducts, setWishlist] = useCacheStore(
+    useShallow((state) => [state.products, state.setWishlist])
+  )
   const user = useAuthStore((state) => state.user)
   const addToCart = useCartStore((state) => state.add)
   const { id } = route.params
-  const { data: product, isSuccess: isFindProductSuccess } = useFindProduct(
+  const findProduct: IProduct | undefined = cacheProducts.find((item) => item.id === +id)
+  const { data: fetchProductData, isSuccess: isFindProductSuccess } = useFindProduct(
     process.env.PRODUCT_ENDPOINT,
     id
   )
+  const product = useMemo(() => {
+    if (!isFindProductSuccess) {
+      if (!findProduct) return undefined // When fetching API and cache data DON'T HAVE the required product
+
+      return findProduct // When fetching API and cache data HAVE the required product
+    }
+
+    // Fetch API success
+    return fetchProductData
+  }, [isFindProductSuccess])
   const { data: wishlist, isSuccess: isGetWishlistSuccess } = useGetWishlist(
     process.env.WISHLIST_ENDPOINT,
     String(user?.id)
@@ -35,12 +50,17 @@ const ProductDetail = ({ navigation, route }: ProductDetailProps) => {
     process.env.WISHLIST_ENDPOINT,
     String(user?.id)
   )
+  useEffect(() => {
+    if (!wishlist) return
+
+    setWishlist(wishlist)
+  }, [wishlist])
 
   const checkProductInWishlist = useMemo(() => {
     if (!isFindProductSuccess) return false
     if (!isGetWishlistSuccess) return false
 
-    return wishlist.some((item: IWishlistBase) => item.productId === product.id)
+    return wishlist.some((item: IWishlistBase) => item.productId === +id)
   }, [isFindProductSuccess, isGetWishlistSuccess, wishlist])
 
   const likeIcon = checkProductInWishlist
@@ -90,7 +110,7 @@ const ProductDetail = ({ navigation, route }: ProductDetailProps) => {
     []
   )
 
-  return isFindProductSuccess ? (
+  return product ? (
     <>
       <ScrollView
         backgroundColor="$color.bg_layer"
