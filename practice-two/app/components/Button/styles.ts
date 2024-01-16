@@ -28,6 +28,7 @@ const CustomButtonFrame = styled(Stack, {
   paddingVertical: '$space.3',
   borderRadius: '$radius.12',
   borderWidth: '$space.1',
+  borderColor: '$color.transparent',
   display: 'flex',
   flexDirection: 'row',
   justifyContent: 'center',
@@ -70,6 +71,12 @@ const CustomButtonFrame = styled(Stack, {
         alignSelf: 'flex-start',
         paddingVertical: '$space.2',
         paddingHorizontal: 6,
+      },
+    },
+
+    isDisable: {
+      true: {
+        opacity: 0.5,
       },
     },
   } as const,
