@@ -36,6 +36,7 @@ const customTokens = createTokens({
     divider: '#0000001a',
     input_border: '#dbdbde',
     blue: '#4ea0ff',
+    img_overlay: '#00000066',
   },
   avatar: {
     sm: 20,

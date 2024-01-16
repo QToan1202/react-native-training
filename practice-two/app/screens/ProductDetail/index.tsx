@@ -1,8 +1,9 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import React, { useCallback, useMemo, useEffect } from 'react'
 import { ToastAndroid } from 'react-native'
-import { ScrollView, Spinner, XStack, YStack } from 'tamagui'
+import { ScrollView, Spinner, XStack, YStack, getTokenValue } from 'tamagui'
 import { NativeStackScreenProps } from '@react-navigation/native-stack'
+import { useSafeAreaInsets } from 'react-native-safe-area-context'
 import { useShallow } from 'zustand/react/shallow'
 
 import { Avatar, Button, Heading, IconButton, Paragraph, TabBar } from '@components'
@@ -109,6 +110,7 @@ const ProductDetail = ({ navigation, route }: ProductDetailProps) => {
       )),
     []
   )
+  const { top: topInset } = useSafeAreaInsets()
 
   return product ? (
     <>
@@ -119,11 +121,19 @@ const ProductDetail = ({ navigation, route }: ProductDetailProps) => {
       >
         <YStack>
           <StyledImageBackground source={require('@assets/cart/item.png')}>
-            <IconButton icon={require('@assets/back.png')} onPress={handleBackPress} />
-            <XStack alignItems="center" space="$space.1.5">
-              <IconButton icon={require('@assets/share.png')} onPress={handlePress} />
-              <IconButton icon={likeIcon} onPress={handleLikeProduct} />
-              <IconButton icon={require('@assets/more.png')} onPress={handlePress} />
+            <XStack
+              flex={1}
+              justifyContent="space-between"
+              paddingTop={topInset + getTokenValue('$space.1')}
+              paddingHorizontal="$space.3"
+              backgroundColor="$color.img_overlay"
+            >
+              <IconButton icon={require('@assets/back.png')} onPress={handleBackPress} />
+              <XStack alignItems="center" space="$space.1.5">
+                <IconButton icon={require('@assets/share.png')} onPress={handlePress} />
+                <IconButton icon={likeIcon} onPress={handleLikeProduct} />
+                <IconButton icon={require('@assets/more.png')} onPress={handlePress} />
+              </XStack>
             </XStack>
           </StyledImageBackground>
           <YStack
