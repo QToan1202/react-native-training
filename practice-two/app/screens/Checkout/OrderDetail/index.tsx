@@ -19,8 +19,11 @@ const OrderDetail = ({ navigation, route }: OrderDetailScreenProps) => {
     data?.quantity || []
   )
 
-  // eslint-disable-next-line react-hooks/exhaustive-deps
-  const handleNavigateToHome = useCallback(() => navigation.navigate('Home'), [])
+  const handleNavigateToHome = useCallback(
+    () => navigation.navigate('Tabs', { screen: 'HomeTab' }),
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    []
+  )
   const renderOrderItem = useMemo(() => {
     if (!isSuccess) return null
 

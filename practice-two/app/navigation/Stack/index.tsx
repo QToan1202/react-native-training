@@ -1,12 +1,11 @@
 import { NativeStackHeaderProps, createNativeStackNavigator } from '@react-navigation/native-stack'
+import { NavigatorScreenParams } from '@react-navigation/native'
 
 import {
   AddAddress,
   AddCard,
-  Browse,
   Cart,
   CategoryDetail,
-  Dashboard,
   Login,
   Onboarding,
   OrderDetail,
@@ -15,25 +14,50 @@ import {
   SignUp,
   Wishlist,
 } from '@screens'
-import { BrowseBar, CategoryBar, CheckoutBar, HomeBar } from '@components'
+import { BackBar, CategoryBar } from '@components'
 import { COLORS } from '@constants'
+import BottomNav, { TabParamsList } from '@navigation/Tab'
 
-export type RootStackParamList = {
-  Tabs: undefined
-  Home: undefined
-  Browse: { search: string } | undefined // Search keyword
+type PublicStackParamsList = {
   Onboarding: undefined
   Login: undefined
   SignUp: undefined
+}
+
+type HomeStackParamsList = {
+  Home: undefined
   CategoryDetail: { id: string; name: string } // ID of the corresponding category
   ProductDetail: { id: string } // ID of the product
-  Wishlist: { id: string } // ID of the current login user
   Cart: undefined
   AddAddress: undefined
   AddCard: undefined
   Payment: undefined
   OrderDetail: { id: string } // ID of the order
+  Wishlist: undefined
 }
+
+type BrowseStackParamsList = {
+  Browse: { search: string } | undefined
+  ProductDetail: { id: string }
+  Cart: undefined
+  AddAddress: undefined
+  AddCard: undefined
+  Payment: undefined
+  OrderDetail: { id: string } // ID of the order
+  Wishlist: undefined
+}
+
+export type RootStackParamList = {
+  Tabs: NavigatorScreenParams<TabParamsList>
+  HomeStack: NavigatorScreenParams<HomeStackParamsList>
+  BrowseStack: NavigatorScreenParams<BrowseStackParamsList>
+  StoreStack: undefined
+  OrderHistoryStack: undefined
+  ProfileStack: undefined
+} & PublicStackParamsList &
+  HomeStackParamsList &
+  BrowseStackParamsList &
+  TabParamsList
 
 const Stack = createNativeStackNavigator<RootStackParamList>()
 const CustomHeader = (Element: React.JSX.ElementType, props: NativeStackHeaderProps) => (
@@ -41,7 +65,10 @@ const CustomHeader = (Element: React.JSX.ElementType, props: NativeStackHeaderPr
 )
 
 const PublicStackNavigator = () => (
-  <Stack.Navigator initialRouteName="Onboarding" screenOptions={{ headerShown: false }}>
+  <Stack.Navigator
+    initialRouteName="Onboarding"
+    screenOptions={{ headerShown: false, statusBarColor: COLORS.PRIMARY }}
+  >
     <Stack.Screen name="Onboarding" component={Onboarding} />
     <Stack.Screen name="Login" component={Login} />
     <Stack.Screen
@@ -58,18 +85,13 @@ const PublicStackNavigator = () => (
   </Stack.Navigator>
 )
 
-const PrivateStackNavigator = () => (
-  <Stack.Navigator screenOptions={{ headerShown: false }}>
-    <Stack.Screen name="ProductDetail" component={ProductDetail} options={{ headerShown: false }} />
-  </Stack.Navigator>
-)
-
-const CheckOutStack = (
+const TabBarStack = (
   <Stack.Group
     screenOptions={{
-      header: (props: NativeStackHeaderProps) => CustomHeader(CheckoutBar, props),
+      header: (props: NativeStackHeaderProps) => CustomHeader(BackBar, props),
     }}
   >
+    <Stack.Screen name="Wishlist" component={Wishlist} options={{ headerTitle: 'wishlist' }} />
     <Stack.Screen name="Cart" component={Cart} options={{ headerTitle: 'my cart' }} />
     <Stack.Screen
       name="AddAddress"
@@ -88,14 +110,6 @@ const CheckOutStack = (
 
 const HomeStack = () => (
   <Stack.Navigator>
-    <Stack.Screen
-      name="Home"
-      component={Dashboard}
-      options={{
-        headerTitle: 'Groceries',
-        header: (props: NativeStackHeaderProps) => CustomHeader(HomeBar, props),
-      }}
-    />
     <Stack.Screen name="ProductDetail" component={ProductDetail} options={{ headerShown: false }} />
     <Stack.Screen
       name="CategoryDetail"
@@ -104,30 +118,23 @@ const HomeStack = () => (
         header: (props: NativeStackHeaderProps) => CustomHeader(CategoryBar, props),
       }}
     />
-    <Stack.Screen
-      name="Wishlist"
-      component={Wishlist}
-      options={{
-        headerTitle: 'wishlist',
-        header: (props: NativeStackHeaderProps) => CustomHeader(CheckoutBar, props),
-      }}
-    />
-    {CheckOutStack}
+    {TabBarStack}
   </Stack.Navigator>
 )
 
 const BrowseStack = () => (
   <Stack.Navigator>
-    <Stack.Screen
-      name="Browse"
-      component={Browse}
-      options={{
-        header: (props: NativeStackHeaderProps) => CustomHeader(BrowseBar, props),
-      }}
-    />
-    <Stack.Screen name="Wishlist" component={Wishlist} options={{ headerTitle: 'wishlist' }} />
-    {CheckOutStack}
+    <Stack.Screen name="ProductDetail" component={ProductDetail} options={{ headerShown: false }} />
+    {TabBarStack}
   </Stack.Navigator>
 )
 
-export default { PrivateStackNavigator, PublicStackNavigator, HomeStack, BrowseStack }
+const PrivateStackNavigator = () => (
+  <Stack.Navigator screenOptions={{ headerShown: false, statusBarColor: COLORS.PRIMARY }}>
+    <Stack.Screen name="Tabs" component={BottomNav} />
+    <Stack.Screen name="HomeStack" component={HomeStack} />
+    <Stack.Screen name="BrowseStack" component={BrowseStack} />
+  </Stack.Navigator>
+)
+
+export default { PrivateStackNavigator, PublicStackNavigator }

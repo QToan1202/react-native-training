@@ -1,21 +1,27 @@
 import { useCallback, useMemo } from 'react'
 import { Spinner, YStack } from 'tamagui'
 import { FlatList, ListRenderItem } from 'react-native'
+import { CompositeScreenProps } from '@react-navigation/native'
+import { BottomTabScreenProps } from '@react-navigation/bottom-tabs'
 import { NativeStackScreenProps } from '@react-navigation/native-stack'
-import { RootStackParamList } from '@navigation/Stack'
 
+import { RootStackParamList } from '@navigation/Stack'
+import { TabParamsList } from '@navigation/Tab'
 import { ProductCard, Heading, Paragraph } from '@components'
 import { useGetProducts } from '@hooks'
 import { IProduct } from '@types'
 import { productListStyles } from '@styles'
 
-export type BrowseScreenProps = NativeStackScreenProps<RootStackParamList, 'Browse'>
+export type BrowseScreenProps = CompositeScreenProps<
+  BottomTabScreenProps<TabParamsList, 'BrowseTab'>,
+  NativeStackScreenProps<RootStackParamList>
+>
 
 const Browse = ({ navigation }: BrowseScreenProps) => {
   const { data: products, isSuccess, isLoading } = useGetProducts(process.env.PRODUCT_ENDPOINT)
 
   const handleMoveToProduct = useCallback((id: string) => {
-    navigation.navigate('ProductDetail', { id })
+    navigation.navigate('BrowseStack', { screen: 'ProductDetail', params: { id } })
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
   const renderProductItem: ListRenderItem<IProduct> = useCallback(

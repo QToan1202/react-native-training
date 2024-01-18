@@ -8,10 +8,16 @@ import IconButton from '@components/IconButton'
 import { BAR } from '@constants'
 
 const HomeBar = ({ options, route, navigation }: NativeStackHeaderProps) => {
-  // eslint-disable-next-line react-hooks/exhaustive-deps
-  const handleNavigateToCart = useCallback(() => navigation.navigate('Cart'), [])
-  // eslint-disable-next-line react-hooks/exhaustive-deps
-  const handleNavigateToWishlist = useCallback(() => navigation.navigate('Wishlist'), [])
+  const handleNavigateToCart = useCallback(
+    () => navigation.navigate('HomeStack', { screen: 'Cart' }),
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    []
+  )
+  const handleNavigateToWishlist = useCallback(
+    () => navigation.navigate('HomeStack', { screen: 'Wishlist' }),
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    []
+  )
   const IconList = useMemo(
     () =>
       BAR.HOME.map(({ label, ...rest }: IIconList) => (

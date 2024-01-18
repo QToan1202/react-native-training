@@ -1,10 +1,13 @@
 import { useCallback, useEffect } from 'react'
 import { FlatList, ListRenderItem, View } from 'react-native'
-import { NativeStackScreenProps } from '@react-navigation/native-stack'
 import { ScrollView, XStack, YStack } from 'tamagui'
 import { useShallow } from 'zustand/react/shallow'
+import { BottomTabScreenProps } from '@react-navigation/bottom-tabs'
+import { CompositeScreenProps } from '@react-navigation/native'
+import { NativeStackScreenProps } from '@react-navigation/native-stack'
 
 import { RootStackParamList } from '@navigation/Stack'
+import { TabParamsList } from '@navigation/Tab'
 import { Button, Heading, MenuCard, ProductCard, SliderItem, StoreCard } from '@components'
 import { DASHBOARD } from '@constants'
 import { ICategoryItem, ISliderItem } from '@constants/screens/dashboard'
@@ -15,7 +18,10 @@ import { useCacheStore } from '@stores'
 
 import styles from './styles'
 
-export type HomeScreenProps = NativeStackScreenProps<RootStackParamList, 'Home'>
+export type HomeScreenProps = CompositeScreenProps<
+  BottomTabScreenProps<TabParamsList, 'HomeTab'>,
+  NativeStackScreenProps<RootStackParamList>
+>
 
 const Dashboard = ({ navigation }: HomeScreenProps) => {
   const [cacheProducts, setProducts, cacheStores, setStores] = useCacheStore(
@@ -33,11 +39,11 @@ const Dashboard = ({ navigation }: HomeScreenProps) => {
   }, [products, stores])
   const handleSeeAllProducts = useCallback(() => undefined, []) // TODO: Replacing with navigate to another screen
   const handleMoveToCategoryScreen = useCallback(({ id, name }: ICategoryItem) => {
-    navigation.navigate('CategoryDetail', { id, name })
+    navigation.navigate('HomeStack', { screen: 'CategoryDetail', params: { id, name } })
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
   const handleMoveToProduct = useCallback((id: string) => {
-    navigation.navigate('ProductDetail', { id })
+    navigation.navigate('HomeStack', { screen: 'ProductDetail', params: { id } })
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
   const renderProductItem: ListRenderItem<IProduct> = useCallback(

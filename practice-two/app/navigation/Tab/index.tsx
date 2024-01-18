@@ -1,11 +1,11 @@
 import { View } from 'react-native'
 import { NavigationProp } from '@react-navigation/native'
-import { createBottomTabNavigator } from '@react-navigation/bottom-tabs'
+import { BottomTabHeaderProps, createBottomTabNavigator } from '@react-navigation/bottom-tabs'
 
-import { TabIcon } from '@components'
+import { BrowseBar, HomeBar, TabIcon } from '@components'
 import { COLORS } from '@constants'
-import Stack from '@navigation/Stack'
 
+import { Browse, Dashboard } from '@screens'
 import styles from './styles'
 
 export type TabParamsList = {
@@ -17,6 +17,9 @@ export type TabParamsList = {
 }
 
 const Tab = createBottomTabNavigator<TabParamsList>()
+const CustomHeader = (Element: React.JSX.ElementType, props: BottomTabHeaderProps) => (
+  <Element {...props} />
+)
 
 const Fragment = () => <View />
 
@@ -45,7 +48,7 @@ const BottomNav = () => {
   return (
     <Tab.Navigator
       screenOptions={({ route, navigation }) => ({
-        headerShown: false,
+        headerShown: true,
         tabBarIcon: ({ color }) => renderTabIcon(route.name, navigation, color),
         tabBarActiveTintColor: COLORS.PRIMARY,
         tabBarInactiveTintColor: COLORS.GRAY_50,
@@ -55,15 +58,19 @@ const BottomNav = () => {
     >
       <Tab.Screen
         name="HomeTab"
-        component={Stack.HomeStack}
+        component={Dashboard}
         options={{
+          headerTitle: 'groceries',
+          header: (props: BottomTabHeaderProps) => CustomHeader(HomeBar, props),
           tabBarLabel: 'Home',
         }}
       />
       <Tab.Screen
         name="BrowseTab"
-        component={Stack.BrowseStack}
+        component={Browse}
         options={{
+          headerTitle: 'browse',
+          header: (props: BottomTabHeaderProps) => CustomHeader(BrowseBar, props),
           tabBarLabel: 'Browse',
         }}
       />

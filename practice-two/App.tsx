@@ -16,7 +16,7 @@ import * as Notifications from 'expo-notifications'
 import * as ExpoLinking from 'expo-linking'
 
 import { LinkingOptions, NavigationContainer } from '@react-navigation/native'
-import { BottomNav, StackNavigation } from '@navigation'
+import { StackNavigation } from '@navigation'
 import { useAuthStore } from '@stores'
 
 import styles from './App.styles'
@@ -98,7 +98,11 @@ const App = () => {
       <TamaguiProvider config={config}>
         <SafeAreaProvider style={styles.container} onLayout={onLayoutRootView}>
           <NavigationContainer linking={linking}>
-            {!user ? <StackNavigation.PublicStackNavigator /> : <BottomNav />}
+            {!user ? (
+              <StackNavigation.PublicStackNavigator />
+            ) : (
+              <StackNavigation.PrivateStackNavigator />
+            )}
           </NavigationContainer>
         </SafeAreaProvider>
       </TamaguiProvider>
