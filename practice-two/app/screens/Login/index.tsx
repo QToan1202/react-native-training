@@ -18,7 +18,7 @@ import styles from './styles'
 export type LoginScreenProps = NativeStackScreenProps<RootStackParamList, 'Login'>
 
 const Login = ({ navigation }: LoginScreenProps) => {
-  const { mutate, data: user, isSuccess } = useLogin(process.env.USER_ENDPOINT)
+  const { mutate, data: user, isSuccess, status } = useLogin(process.env.USER_ENDPOINT)
   const loginFn = useAuthStore((state) => state.login)
   const { control, handleSubmit } = useForm<IForm>()
   const onSubmit: SubmitHandler<IForm> = useCallback(({ email, password }: IForm) => {
@@ -75,6 +75,7 @@ const Login = ({ navigation }: LoginScreenProps) => {
         marginBottom="$space.6"
         title="login"
         variant="secondary"
+        isDisable={status === 'pending'}
         onPress={handleSubmit(onSubmit)}
       />
       <YStack alignItems="center" space="$space.8">
