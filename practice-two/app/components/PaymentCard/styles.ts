@@ -1,7 +1,8 @@
 import { GetProps, styled } from 'tamagui'
-import { Image, ImageBackground } from 'react-native'
+import { Image, ImageBackground, StyleSheet } from 'react-native'
 
 import Paragraph from '@components/Paragraph'
+import { COLORS } from '@constants'
 
 export const StyledImageBackground = styled(ImageBackground, {
   name: 'ImageBackground',
@@ -39,3 +40,15 @@ export const StyledImage = styled(Image, {
 })
 
 export type StyledImageProps = GetProps<typeof StyledImage>
+
+export const styles = StyleSheet.create({
+  border: {
+    paddingVertical: 36,
+    paddingHorizontal: 38,
+    alignItems: 'center',
+    borderWidth: 2, // '$space.1'
+    borderRadius: 10, // '$radius.5'
+    borderColor: COLORS.GRAY_300, // '$color.gray_300'
+    borderStyle: 'dashed',
+  },
+})
