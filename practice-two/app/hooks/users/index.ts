@@ -1,4 +1,5 @@
 import { UseMutationResult, useMutation } from '@tanstack/react-query'
+import { ToastAndroid } from 'react-native'
 
 import { add, login, register } from '@services'
 import { IAddress, ICard, IUser } from '@types'
@@ -10,6 +11,9 @@ export const useLogin = (
   return useMutation<IUser, Error, Pick<IUser, 'email' | 'password'>, unknown>({
     mutationFn: ({ email, password }: Pick<IUser, 'email' | 'password'>): Promise<IUser> =>
       login(path, email, password),
+    onError: (error) => {
+      if (error instanceof Error) ToastAndroid.show(error.message, ToastAndroid.LONG)
+    },
   })
 }
 
