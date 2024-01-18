@@ -1,4 +1,4 @@
-import checkCardType from '../index'
+import { checkCardType } from '../index'
 
 const masterCard: string = '5512'
 const visaCard: string = '4321'

@@ -3,7 +3,7 @@ import isEqual from 'react-fast-compare'
 import { Stack, StackProps, YStack } from 'tamagui'
 
 import Paragraph from '@components/Paragraph'
-import { checkCardType } from '@utils'
+import { checkCardType, formatCardNumber } from '@utils'
 import { ICardBase } from '@types'
 
 import {
@@ -66,7 +66,7 @@ const PaymentCard = ({
                 fontSize="$2"
                 width={167}
                 numberOfLines={1}
-                content={number.replace(/(\d{4})/g, '$1 ')}
+                content={formatCardNumber(number)}
               />
             </YStack>
 
