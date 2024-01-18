@@ -7,9 +7,25 @@
       "phone": "+1 9998887776",
       "password": "123456",
       "id": 1
+    },
+    {
+      "firstName": "vegetable",
+      "lastName": "co.op",
+      "email": "info@vegetable.co",
+      "phone": "+1 9998887776",
+      "password": "123456",
+      "id": 2
+    },
+    {
+      "firstName": "Toan",
+      "lastName": "Nguyen",
+      "email": "info@tradly.co2",
+      "password": "123456",
+      "confirmPassword": "123456",
+      "id": 3
     }
   ],
-  "address": [
+  "addresses": [
     {
       "name": "Tradly team",
       "phone": "+621234567890",
@@ -21,14 +37,22 @@
       "id": 1
     }
   ],
-  "card": [
+  "cards": [
     {
       "number": "5627215898548869",
-      "name": "tradly",
+      "name": "Tradly Team",
       "expired": "12/08",
-      "cvc": 111,
+      "cvc": "111",
       "userId": 1,
       "id": 1
+    },
+    {
+      "number": "4627215898548869",
+      "name": "Tradly Team",
+      "expired": "12/2023",
+      "cvc": "123",
+      "userId": 1,
+      "id": 2
     }
   ],
   "categories": [
@@ -67,11 +91,13 @@
   ],
   "stores": [
     {
-      "name": "tradly store",
+      "name": "tradly",
+      "avatar": "https://media.istockphoto.com/id/1457889029/vi/anh/nh%C3%B3m-th%E1%BB%B1c-ph%E1%BA%A9m-c%C3%B3-h%C3%A0m-l%C6%B0%E1%BB%A3ng-ch%E1%BA%A5t-x%C6%A1-cao-%C4%91%C6%B0%E1%BB%A3c-s%E1%BA%AFp-x%E1%BA%BFp-c%E1%BA%A1nh-nhau.jpg?s=612x612&w=is&k=20&c=i1GyrsBSVJRDFf4oG-dKybh1_3mOkMgbHSkdYEndeoQ=",
       "id": 1
     },
     {
-      "name": "groceries store",
+      "name": "groceries",
+      "avatar": "https://media.istockphoto.com/id/1457889029/vi/anh/nh%C3%B3m-th%E1%BB%B1c-ph%E1%BA%A9m-c%C3%B3-h%C3%A0m-l%C6%B0%E1%BB%A3ng-ch%E1%BA%A5t-x%C6%A1-cao-%C4%91%C6%B0%E1%BB%A3c-s%E1%BA%AFp-x%E1%BA%BFp-c%E1%BA%A1nh-nhau.jpg?s=612x612&w=is&k=20&c=i1GyrsBSVJRDFf4oG-dKybh1_3mOkMgbHSkdYEndeoQ=",
       "id": 2
     }
   ],
@@ -96,6 +122,7 @@
   "products": [
     {
       "name": "coca cola",
+      "img": "https://media.istockphoto.com/id/1457889029/vi/anh/nh%C3%B3m-th%E1%BB%B1c-ph%E1%BA%A9m-c%C3%B3-h%C3%A0m-l%C6%B0%E1%BB%A3ng-ch%E1%BA%A5t-x%C6%A1-cao-%C4%91%C6%B0%E1%BB%A3c-s%E1%BA%AFp-x%E1%BA%BFp-c%E1%BA%A1nh-nhau.jpg?s=612x612&w=is&k=20&c=i1GyrsBSVJRDFf4oG-dKybh1_3mOkMgbHSkdYEndeoQ=",
       "price": 25,
       "discountPrice": 0,
       "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lobortis cras placerat diam ipsum ut. Nisi vel adipiscing massa bibendum diam. Suspendisse mattis dui maecenas duis mattis. Mattis aliquam at arcu, semper nunc, venenatis et pellentesque eu. Id tristique maecenas tristique habitasse eu elementum sed. Aliquam eget lacus, arcu, adipiscing eget feugiat in dolor sagittis.Non commodo, a justo massa porttitor sed placerat in. Orci tristique etiam tempus sed. Mi varius morbi egestas dictum tempor nisl. In ",
@@ -108,11 +135,10 @@
       "id": 1
     }
   ],
-  "orders": [
+  "orders": [],
+  "wishlists": [
     {
       "productId": 1,
-      "quantity": 3,
-      "orderStateId": 1,
       "userId": 1,
       "id": 1
     }
