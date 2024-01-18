@@ -1,5 +1,5 @@
 /* eslint-disable react-hooks/exhaustive-deps */
-import { useCallback, useEffect, useMemo } from 'react'
+import { useCallback, useMemo } from 'react'
 import { KeyboardAvoidingView, Platform } from 'react-native'
 import { SubmitHandler, useForm } from 'react-hook-form'
 import { SafeAreaView } from 'react-native-safe-area-context'
@@ -11,16 +11,13 @@ import { Button, Heading, Input, Paragraph } from '@components'
 import { IForm, IUser } from '@types'
 import { SIGN_UP_INPUTS } from '@constants'
 import { useRegister } from '@hooks'
-import { useAuthStore } from '@stores'
-import { asyncStoreService } from '@services'
 
 import styles from './styles'
 
 export type SignUpScreenProps = NativeStackScreenProps<RootStackParamList, 'SignUp'>
 
 const SignUp = ({ navigation }: SignUpScreenProps) => {
-  const loginFn = useAuthStore((state) => state.login)
-  const { mutate, isSuccess, data: user } = useRegister(process.env.USER_ENDPOINT)
+  const { mutate, status } = useRegister(process.env.USER_ENDPOINT)
   const { control, handleSubmit, watch } = useForm<IForm>()
   const observePassword: string = watch('password')
   const onSubmit: SubmitHandler<IForm> = useCallback((data: IUser) => {
@@ -28,23 +25,15 @@ const SignUp = ({ navigation }: SignUpScreenProps) => {
   }, [])
   const handleToLoginScreen = useCallback(() => navigation.navigate('Login'), [])
   const SignUpInputs = useMemo(
-    () =>
-      SIGN_UP_INPUTS(observePassword).map(({ name, ...props }) => (
-        <Input key={name} {...props} control={control} name={name} />
-      )),
+    () => (
+      <YStack space>
+        {SIGN_UP_INPUTS(observePassword).map(({ name, ...props }) => (
+          <Input key={name} {...props} control={control} name={name} />
+        ))}
+      </YStack>
+    ),
     [control, observePassword]
   )
-
-  // Save data when register successful
-  const handleSaveUser = useCallback(async () => {
-    if (!isSuccess) return
-
-    await asyncStoreService.save('user', user, () => loginFn(user))
-  }, [isSuccess, loginFn, user])
-
-  useEffect(() => {
-    handleSaveUser()
-  }, [handleSaveUser])
 
   return (
     <SafeAreaView style={styles.container}>
@@ -61,6 +50,7 @@ const SignUp = ({ navigation }: SignUpScreenProps) => {
         marginVertical="$space.7"
         letterSpacing="$4"
         fontSize="$2"
+        isDisable={status === 'pending'}
         onPress={handleSubmit(onSubmit)}
       />
       <XStack justifyContent="center" alignItems="baseline" space="$space.1">

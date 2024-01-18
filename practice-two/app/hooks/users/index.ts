@@ -1,9 +1,9 @@
 import { UseMutationResult, useMutation } from '@tanstack/react-query'
 import { ToastAndroid } from 'react-native'
 
-import { add, login, register } from '@services'
+import { add, asyncStoreService, login, register } from '@services'
 import { IAddress, ICard, IUser } from '@types'
-import { useOrderStore } from '@stores'
+import { useAuthStore, useOrderStore } from '@stores'
 
 export const useLogin = (
   path: string
@@ -18,8 +18,17 @@ export const useLogin = (
 }
 
 export const useRegister = (path: string): UseMutationResult<IUser, Error, IUser, unknown> => {
+  const loginFn = useAuthStore((state) => state.login)
+
   return useMutation<IUser, Error, IUser, unknown>({
     mutationFn: (data: IUser): Promise<IUser> => register(path, data),
+    onError: (error: Error) => {
+      ToastAndroid.show(error.message, ToastAndroid.LONG)
+    },
+    onSuccess: async (data: IUser) => {
+      ToastAndroid.show('Register success!!!', ToastAndroid.LONG)
+      await asyncStoreService.save('user', data, () => loginFn(data))
+    },
   })
 }
 
