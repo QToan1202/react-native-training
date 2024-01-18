@@ -1,20 +1,7 @@
+import { lazy } from 'react'
 import { NativeStackHeaderProps, createNativeStackNavigator } from '@react-navigation/native-stack'
 import { NavigatorScreenParams } from '@react-navigation/native'
 
-import {
-  AddAddress,
-  AddCard,
-  Cart,
-  CategoryDetail,
-  Login,
-  Onboarding,
-  OrderDetail,
-  Payment,
-  ProductDetail,
-  SignUp,
-  Wishlist,
-} from '@screens'
-import { BackBar, CategoryBar } from '@components'
 import { COLORS } from '@constants'
 import BottomNav, { TabParamsList } from '@navigation/Tab'
 
@@ -58,6 +45,31 @@ export type RootStackParamList = {
   HomeStackParamsList &
   BrowseStackParamsList &
   TabParamsList
+
+// Screens
+const AddAddress = lazy(() => import('@screens').then((module) => ({ default: module.AddAddress })))
+const AddCard = lazy(() => import('@screens').then((module) => ({ default: module.AddCard })))
+const Cart = lazy(() => import('@screens').then((module) => ({ default: module.Cart })))
+const CategoryDetail = lazy(() =>
+  import('@screens').then((module) => ({ default: module.CategoryDetail }))
+)
+const Login = lazy(() => import('@screens').then((module) => ({ default: module.Login })))
+const Onboarding = lazy(() => import('@screens').then((module) => ({ default: module.Onboarding })))
+const OrderDetail = lazy(() =>
+  import('@screens').then((module) => ({ default: module.OrderDetail }))
+)
+const Payment = lazy(() => import('@screens').then((module) => ({ default: module.Payment })))
+const ProductDetail = lazy(() =>
+  import('@screens').then((module) => ({ default: module.ProductDetail }))
+)
+const SignUp = lazy(() => import('@screens').then((module) => ({ default: module.SignUp })))
+const Wishlist = lazy(() => import('@screens').then((module) => ({ default: module.Wishlist })))
+
+// Components
+const BackBar = lazy(() => import('@components').then((module) => ({ default: module.BackBar })))
+const CategoryBar = lazy(() =>
+  import('@components').then((module) => ({ default: module.CategoryBar }))
+)
 
 const Stack = createNativeStackNavigator<RootStackParamList>()
 const CustomHeader = (Element: React.JSX.ElementType, props: NativeStackHeaderProps) => (
