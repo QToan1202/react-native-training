@@ -3,7 +3,7 @@ import { NativeStackHeaderProps } from '@react-navigation/native-stack'
 
 import Bar from '@components/Bar'
 
-const CheckoutBar = ({ options, route, navigation }: NativeStackHeaderProps) => {
+const BackBar = ({ options, route, navigation }: NativeStackHeaderProps) => {
   // eslint-disable-next-line react-hooks/exhaustive-deps
   const handleGoBack = useCallback(() => navigation.goBack(), [])
 
@@ -18,4 +18,4 @@ const CheckoutBar = ({ options, route, navigation }: NativeStackHeaderProps) => 
   )
 }
 
-export default CheckoutBar
+export default BackBar
