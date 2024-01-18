@@ -1,7 +1,13 @@
-import { UseMutationResult, useMutation } from '@tanstack/react-query'
+import {
+  UseMutationResult,
+  UseQueryResult,
+  useMutation,
+  useQuery,
+  useQueryClient,
+} from '@tanstack/react-query'
 import { ToastAndroid } from 'react-native'
 
-import { add, asyncStoreService, login, register } from '@services'
+import { add, asyncStoreService, get, login, register } from '@services'
 import { IAddress, ICard, IUser } from '@types'
 import { useAuthStore, useOrderStore } from '@stores'
 
@@ -50,14 +56,29 @@ export const useAddAddress = (
 export const useAddCard = (
   path: string
 ): UseMutationResult<ICard, Error, Omit<ICard, 'id'>, unknown> => {
+  const queryClient = useQueryClient()
   const addCard = useOrderStore((state) => state.setCard)
 
   return useMutation<ICard, Error, Omit<ICard, 'id'>, unknown>({
     mutationFn: (data: Omit<ICard, 'id'>): Promise<ICard> => add<ICard>(path, data),
     onSuccess: (data: ICard) => {
       // eslint-disable-next-line @typescript-eslint/no-unused-vars
-      const { id, userId, ...card } = data
+      const { userId, ...card } = data
+      ToastAndroid.show(`New payment card ${card.name} have add success!!`, ToastAndroid.SHORT)
       addCard(card)
+      queryClient.setQueryData(['cards', String(userId)], (oldData: ICard[]) =>
+        oldData ? [...oldData, data] : oldData
+      )
     },
+    onError: (error: Error) => {
+      ToastAndroid.show(error.message, ToastAndroid.LONG)
+    },
+  })
+}
+
+export const useGetCard = (path: string, userId: string): UseQueryResult<ICard[], Error> => {
+  return useQuery<ICard[], Error, ICard[], string[]>({
+    queryKey: ['cards', userId],
+    queryFn: () => get(path),
   })
 }
