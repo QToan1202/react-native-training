@@ -11,7 +11,7 @@ const styles = StyleSheet.create({
   },
   input: {
     marginVertical: 35,
-    rowGap: 10,
+    rowGap: 20,
   },
 })
 
