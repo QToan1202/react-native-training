@@ -1,9 +1,8 @@
-import { IFlatListBase } from '@types'
+import { ImageBackgroundProps } from 'react-native'
 
+import { IFlatListBase } from '@types'
 import { SliderItemProps } from '@components/SliderItem'
-import { MenuCardProps } from '@components/MenuCard'
 import { ProductCardProps } from '@components/ProductCard'
-import { StoreCardProps } from '@components/StoreCard'
 
 export interface ISliderItem extends IFlatListBase, Omit<SliderItemProps, 'id' | 'onPress'> {}
 
@@ -22,10 +21,9 @@ const SLIDER_DATA: ISliderItem[] = [
   },
 ]
 
-export interface ICategoryItem
-  extends IFlatListBase,
-    Omit<MenuCardProps, 'name' | 'id' | 'onPress'> {
+export type ICategoryItem = IFlatListBase & {
   name: string
+  source: ImageBackgroundProps['source']
 }
 
 const CATEGORY_DATA: ICategoryItem[] = [
@@ -71,7 +69,7 @@ const CATEGORY_DATA: ICategoryItem[] = [
   },
 ]
 
-export interface IProductItem extends IFlatListBase, Omit<ProductCardProps, 'id' | 'onPress'> {}
+export type IProductItem = IFlatListBase & Omit<ProductCardProps, 'onPress'>
 
 const PRODUCT_DATA: IProductItem[] = [
   {
@@ -101,39 +99,4 @@ const PRODUCT_DATA: IProductItem[] = [
   },
 ]
 
-export interface IStoreItem extends IFlatListBase, Omit<StoreCardProps, 'id' | 'onPressBtn'> {
-  name: string
-}
-
-const STORE_DATA: IStoreItem[] = [
-  {
-    id: '1',
-    image: require('@assets/store/tradly.png'),
-    source: require('@assets/avatar.png'),
-    name: 'tradly store',
-    btnTitle: 'follow',
-  },
-  {
-    id: '2',
-    image: require('@assets/store/tradly.png'),
-    source: require('@assets/avatar.png'),
-    name: 'tradly store',
-    btnTitle: 'follow',
-  },
-  {
-    id: '3',
-    image: require('@assets/store/tradly.png'),
-    source: require('@assets/avatar.png'),
-    name: 'tradly store',
-    btnTitle: 'follow',
-  },
-  {
-    id: '4',
-    image: require('@assets/store/tradly.png'),
-    source: require('@assets/avatar.png'),
-    name: 'tradly store',
-    btnTitle: 'follow',
-  },
-]
-
-export default { SLIDER_DATA, CATEGORY_DATA, PRODUCT_DATA, STORE_DATA }
+export default { SLIDER_DATA, CATEGORY_DATA, PRODUCT_DATA }
