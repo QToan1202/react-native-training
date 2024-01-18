@@ -11,7 +11,7 @@ const CheckoutBar = ({ options, route, navigation }: NativeStackHeaderProps) => 
     <Bar
       title={options.headerTitle?.toString() || route.name}
       align="center"
-      paddingBottom={10}
+      paddingBottom="$space.6"
       showBackBtn
       onPressBack={handleGoBack}
     />

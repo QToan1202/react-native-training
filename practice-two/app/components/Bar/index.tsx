@@ -56,9 +56,11 @@ const Bar = ({
           )}
         </XStack>
       )}
-      <XStack space={4} alignItems="center" justifyContent="space-between">
-        {children}
-      </XStack>
+      {children && (
+        <XStack space={4} alignItems="center" justifyContent="space-between">
+          {children}
+        </XStack>
+      )}
     </YStack>
   )
 }
