@@ -1,4 +1,4 @@
-import { forwardRef, memo } from 'react'
+import { forwardRef, memo, useCallback, useState } from 'react'
 import isEqual from 'react-fast-compare'
 import { Control, UseControllerProps, useController } from 'react-hook-form'
 import { Stack, StackProps } from 'tamagui'
@@ -29,18 +29,23 @@ const Input = forwardRef<TextInput, InputProps>(
       name,
       rules,
     })
+    const [isInputFocus, setIsInputFocus] = useState<boolean>(false)
+    const handleFocusInput = useCallback(() => setIsInputFocus(true), [])
+    const handleBlurInput = useCallback(() => setIsInputFocus(false), [])
 
     return (
       <Stack w="100%" pos="relative" {...containerStyle}>
-        {label && <Label>{label}</Label>}
+        {label && <Label forceStyle={isInputFocus ? 'focus' : 'press'}>{label}</Label>}
         <StyledInput
           ref={ref}
           hasLabel={!!label}
           value={String(field.value)}
           onChangeText={field.onChange}
+          onFocus={handleFocusInput}
+          onBlur={handleBlurInput}
           {...rest}
         />
-        {isShowError && <ErrorMessage pos="absolute" bottom={-20} error={errors[name]} />}
+        {isShowError && <ErrorMessage pos="absolute" bottom={-20} left={10} error={errors[name]} />}
       </Stack>
     )
   }

@@ -43,6 +43,8 @@ const ProductCard = ({
       style={containerStyles.card}
       alignSelf="flex-start"
       pressStyle={{ opacity: 0.8 }}
+      maxWidth={160}
+      maxHeight={200}
       {...rest}
     >
       <>

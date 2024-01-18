@@ -8,9 +8,9 @@ const styles = StyleSheet.create({
     backgroundColor: COLORS.BG_LAYER,
   },
   form: {
-    flex: 2,
+    flex: 1,
     backgroundColor: COLORS.WHITE,
-    paddingTop: 24,
+    paddingVertical: 24,
     paddingHorizontal: 34,
   },
   cardContainer: {
