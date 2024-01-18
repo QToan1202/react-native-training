@@ -1,25 +1,84 @@
+import { useCallback, useMemo } from 'react'
+import { Spinner, YStack } from 'tamagui'
+import { FlatList, ListRenderItem } from 'react-native'
 import { NativeStackScreenProps } from '@react-navigation/native-stack'
 import { RootStackParamList } from '@navigation/Stack'
 
-import { DASHBOARD } from '@constants'
-import { renderItem } from '@utils'
-import { WrapList, ProductCard } from '@components'
-import { IProductItem } from '@constants/screens/dashboard'
-
-import styles from './styles'
+import { ProductCard, Heading, Paragraph } from '@components'
+import { useGetProducts } from '@hooks'
+import { IProduct } from '@types'
+import { productListStyles } from '@styles'
 
 export type BrowseScreenProps = NativeStackScreenProps<RootStackParamList, 'Browse'>
 
-const Browse = () => {
+const Browse = ({ navigation }: BrowseScreenProps) => {
+  const { data: products, isSuccess, isLoading } = useGetProducts(process.env.PRODUCT_ENDPOINT)
+
+  const handleMoveToProduct = useCallback((id: string) => {
+    navigation.navigate('ProductDetail', { id })
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [])
+  const renderProductItem: ListRenderItem<IProduct> = useCallback(
+    ({ item }) => {
+      if (!isSuccess) return null
+      const { id, img, price, discountPrice, name, store } = item
+
+      return (
+        <ProductCard
+          id={String(id)}
+          img={{ uri: img }}
+          price={price}
+          discountPrice={discountPrice}
+          title={name}
+          avatar={{ uri: store.avatar }}
+          storeName={store.name}
+          onPressCard={handleMoveToProduct}
+        />
+      )
+    },
+    [isSuccess, handleMoveToProduct]
+  )
+  const Item = useMemo(() => {
+    if (isLoading) return <Spinner size="large" color="$color.primary" />
+    if (!isSuccess) return null
+    if (!products.length)
+      return (
+        <YStack paddingVertical="$space.4" paddingHorizontal="$space.10">
+          <Heading
+            content="List empty!!!!"
+            color="$color.dark_50"
+            fontWeight="$3"
+            fontSize="$3"
+            textAlign="center"
+          />
+          <Paragraph
+            content="Don't have any products"
+            color="$color.gray_50"
+            fontSize="$2"
+            fontWeight="$2"
+            textAlign="center"
+          />
+        </YStack>
+      )
+
+    return (
+      <FlatList
+        keyExtractor={({ id }: IProduct): string => String(id)}
+        data={products}
+        renderItem={renderProductItem}
+        numColumns={2}
+        showsHorizontalScrollIndicator={false}
+        style={productListStyles.container}
+        contentContainerStyle={productListStyles.item}
+        columnWrapperStyle={productListStyles.column}
+      />
+    )
+  }, [isLoading, isSuccess, products, renderProductItem])
+
   return (
-    <WrapList
-      keyExtractor={({ id }: IProductItem): string => id}
-      style={styles.container}
-      data={DASHBOARD.PRODUCT_DATA}
-      renderItem={renderItem(ProductCard)}
-      numColumns={2}
-      showsHorizontalScrollIndicator={false}
-    />
+    <YStack flex={1} backgroundColor="$color.bg_layer">
+      {Item}
+    </YStack>
   )
 }
 
