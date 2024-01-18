@@ -1,5 +1,5 @@
-import { useCallback, useEffect, useMemo } from 'react'
-import { KeyboardAvoidingView } from 'react-native'
+import { useCallback, useMemo } from 'react'
+import { KeyboardAvoidingView, ToastAndroid } from 'react-native'
 import { useForm } from 'react-hook-form'
 import { NativeStackScreenProps } from '@react-navigation/native-stack'
 import { ScrollView } from 'tamagui'
@@ -18,7 +18,7 @@ import styles from './styles'
 export type AddAddressScreenProps = NativeStackScreenProps<RootStackParamList, 'AddAddress'>
 
 const AddAddress = ({ navigation }: AddAddressScreenProps) => {
-  const { mutate, isSuccess } = useAddAddress(process.env.ADDRESS_ENDPOINT)
+  const { mutate, status } = useAddAddress(process.env.ADDRESS_ENDPOINT)
   const [isHydrated, user] = useAuthStore(useShallow((state) => [state.isHydrated, state.user]))
   const { control, handleSubmit } = useForm<IForm>()
   const handlePress = useCallback(() => undefined, [])
@@ -27,10 +27,18 @@ const AddAddress = ({ navigation }: AddAddressScreenProps) => {
       if (!isHydrated) return
       if (!user) return
       // TODO: Save address to context
-      mutate({
-        ...addressInformation,
-        userId: user.id,
-      })
+      mutate(
+        {
+          ...addressInformation,
+          userId: user.id,
+        },
+        {
+          onSuccess: () => {
+            navigation.goBack()
+            ToastAndroid.show('Add address success!!!', ToastAndroid.SHORT)
+          },
+        }
+      )
     },
     // eslint-disable-next-line react-hooks/exhaustive-deps
     [isHydrated, user]
@@ -44,16 +52,9 @@ const AddAddress = ({ navigation }: AddAddressScreenProps) => {
     []
   )
 
-  useEffect(() => {
-    if (isSuccess) {
-      navigation.goBack()
-    }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [isSuccess])
-
   return (
     <>
-      <ScrollView flex={1} backgroundColor="$color.bg_layer">
+      <ScrollView contentContainerStyle={{ flex: 1 }} backgroundColor="$color.bg_layer">
         <Button
           title="Use current location"
           variant="quaternary"
@@ -64,7 +65,11 @@ const AddAddress = ({ navigation }: AddAddressScreenProps) => {
         />
         <KeyboardAvoidingView style={styles.form}>{renderFormFields}</KeyboardAvoidingView>
       </ScrollView>
-      <TabBar title="Save" onPress={handleSubmit(handleSaveAddress)} />
+      <TabBar
+        title="Save"
+        isDisable={status === 'pending'}
+        onPress={handleSubmit(handleSaveAddress)}
+      />
     </>
   )
 }

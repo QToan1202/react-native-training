@@ -8,10 +8,11 @@ import styles from './styles'
 
 export interface TabBar extends BarProps {
   title: string
-  onPress: () => void
+  isDisable?: boolean
+  onPress?: () => void
 }
 
-const TabBar = ({ title, onPress, ...rest }: TabBar) => {
+const TabBar = ({ title, isDisable, onPress, ...rest }: TabBar) => {
   const insets = useSafeAreaInsets()
 
   return (
@@ -25,7 +26,7 @@ const TabBar = ({ title, onPress, ...rest }: TabBar) => {
       title=""
       {...rest}
     >
-      <Button flex={1} title={title} onPress={onPress} />
+      <Button flex={1} title={title} isDisable={isDisable} onPress={onPress} />
     </Bar>
   )
 }
