@@ -124,6 +124,7 @@ const Dashboard = ({ navigation }: HomeScreenProps) => {
         renderItem={renderItem(MenuCard, handleMoveToCategoryScreen)}
         numColumns={4}
         columnWrapperStyle={styles.menuItem}
+        contentContainerStyle={styles.categories}
         scrollEnabled={false}
       />
       <YStack marginVertical="$space.3">
