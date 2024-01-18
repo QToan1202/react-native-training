@@ -13,6 +13,7 @@ import {
   Payment,
   ProductDetail,
   SignUp,
+  Wishlist,
 } from '@screens'
 import { BrowseBar, CategoryBar, CheckoutBar, HomeBar } from '@components'
 import { COLORS } from '@constants'
@@ -103,6 +104,14 @@ const HomeStack = () => (
         header: (props: NativeStackHeaderProps) => CustomHeader(CategoryBar, props),
       }}
     />
+    <Stack.Screen
+      name="Wishlist"
+      component={Wishlist}
+      options={{
+        headerTitle: 'wishlist',
+        header: (props: NativeStackHeaderProps) => CustomHeader(CheckoutBar, props),
+      }}
+    />
     {CheckOutStack}
   </Stack.Navigator>
 )
@@ -116,6 +125,7 @@ const BrowseStack = () => (
         header: (props: NativeStackHeaderProps) => CustomHeader(BrowseBar, props),
       }}
     />
+    <Stack.Screen name="Wishlist" component={Wishlist} options={{ headerTitle: 'wishlist' }} />
     {CheckOutStack}
   </Stack.Navigator>
 )
