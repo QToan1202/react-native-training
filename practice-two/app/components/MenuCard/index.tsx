@@ -1,4 +1,4 @@
-import { memo } from 'react'
+import { memo, useCallback } from 'react'
 import isEqual from 'react-fast-compare'
 import { Stack } from 'tamagui'
 
@@ -7,27 +7,31 @@ import { imageStyles } from '@styles'
 
 import StyledImageBackground, { StyledImageBackgroundProps } from './styles'
 
-export type MenuCardProps = StyledImageBackgroundProps & {
+export type MenuCardProps = {
   source: StyledImageBackgroundProps['source']
   name: string
-  onPress: () => void
+  onPress?: (categoryName: string) => void
 }
 
-const MenuCard = ({ source, name, onPress, ...rest }: MenuCardProps) => {
+const MenuCard = ({ source, name, onPress }: MenuCardProps) => {
+  const handlePress = useCallback(() => {
+    if (!onPress) return undefined
+
+    return onPress(name)
+  }, [name, onPress])
   return (
     <Stack
       flex={1}
       justifyContent="center"
       alignItems="stretch"
       pressStyle={{ opacity: 0.8 }}
-      onPress={onPress}
+      onPress={handlePress}
     >
       <StyledImageBackground
         source={source}
         justifyContent="center"
         alignItems="center"
         style={imageStyles.menu}
-        {...rest}
       >
         <Paragraph content={name} fontWeight="$3" fontSize={11} textTransform="capitalize" />
       </StyledImageBackground>

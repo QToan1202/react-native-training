@@ -38,8 +38,8 @@ const Dashboard = ({ navigation }: HomeScreenProps) => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [products, stores])
   const handleSeeAllProducts = useCallback(() => undefined, []) // TODO: Replacing with navigate to another screen
-  const handleMoveToCategoryScreen = useCallback(({ id, name }: ICategoryItem) => {
-    navigation.navigate('HomeStack', { screen: 'CategoryDetail', params: { id, name } })
+  const handleMoveToCategoryScreen = useCallback((name: string) => {
+    navigation.navigate('HomeStack', { screen: 'CategoryDetail', params: { name } })
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
   const handleMoveToProduct = useCallback((id: string) => {
@@ -105,6 +105,9 @@ const Dashboard = ({ navigation }: HomeScreenProps) => {
       </>
     )
   }
+  const renderCategoryItem: ListRenderItem<ICategoryItem> = ({ item }) => (
+    <MenuCard {...item} onPress={handleMoveToCategoryScreen} />
+  )
   const renderStoreItem: ListRenderItem<IStore> = ({ item: { avatar, name } }) => (
     <StoreCard
       bgImage={require('@assets/store/tradly.png')}
@@ -127,7 +130,7 @@ const Dashboard = ({ navigation }: HomeScreenProps) => {
       <FlatList
         keyExtractor={({ id }: ICategoryItem): string => id}
         data={DASHBOARD.CATEGORY_DATA}
-        renderItem={renderItem(MenuCard, handleMoveToCategoryScreen)}
+        renderItem={renderCategoryItem}
         numColumns={4}
         columnWrapperStyle={styles.menuItem}
         contentContainerStyle={styles.categories}

@@ -26,7 +26,7 @@ type PublicStackParamsList = {
 
 type HomeStackParamsList = {
   Home: undefined
-  CategoryDetail: { id: string; name: string } // ID of the corresponding category
+  CategoryDetail: { name: string }
   ProductDetail: { id: string } // ID of the product
   Cart: undefined
   AddAddress: undefined
