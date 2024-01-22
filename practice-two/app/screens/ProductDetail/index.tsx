@@ -12,6 +12,7 @@ import { useAddToWishlist, useDeleteFromWishlist, useFindProduct, useGetWishlist
 import { useAuthStore, useCacheStore, useCartStore } from '@stores'
 import { RootStackParamList } from '@navigation/Stack'
 import { IProduct, IWishlistBase } from '@types'
+import { calculateDiscount } from '@utils'
 
 import StyledImageBackground from './styles'
 
@@ -149,7 +150,34 @@ const ProductDetail = ({ navigation, route }: ProductDetailProps) => {
               color="$color.gray_50"
               textTransform="capitalize"
             />
-            <Heading content="$25" fontSize="$3" color="$color.primary" />
+            <XStack space>
+              <Heading
+                content={`$${
+                  product.discountPrice
+                    ? product.discountPrice.toFixed(2)
+                    : product.price.toFixed(2)
+                }`}
+                fontSize="$3"
+                color="$color.primary"
+              />
+              {product.discountPrice !== 0 && (
+                <XStack space="$space.1.5">
+                  <Heading
+                    content={`$${product.price.toFixed(2)}`}
+                    fontSize="$true"
+                    fontWeight="$2"
+                    color="$color.gray_50"
+                    textDecorationLine="line-through"
+                  />
+                  <Heading
+                    content={calculateDiscount(product.price, product.discountPrice)}
+                    fontSize="$true"
+                    fontWeight="$2"
+                    color="$color.gray_50"
+                  />
+                </XStack>
+              )}
+            </XStack>
           </YStack>
         </YStack>
         <XStack
