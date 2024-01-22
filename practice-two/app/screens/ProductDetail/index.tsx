@@ -121,7 +121,7 @@ const ProductDetail = ({ navigation, route }: ProductDetailProps) => {
         showsVerticalScrollIndicator={false}
       >
         <YStack>
-          <StyledImageBackground source={require('@assets/cart/item.png')}>
+          <StyledImageBackground source={{ uri: product.img }}>
             <XStack
               flex={1}
               justifyContent="space-between"
