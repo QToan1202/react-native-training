@@ -30,7 +30,7 @@ const OrderDetail = ({ navigation, route }: OrderDetailScreenProps) => {
     return products.map((item: Partial<ICart>) => {
       const { id: itemId, img, name, price, discountPrice, quantity } = item
 
-      if (!itemId || !img || !name || !price || !discountPrice || !quantity) return null
+      if (!itemId || !img || !name || !price || !quantity) return null
 
       return (
         <CartItem
