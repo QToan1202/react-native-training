@@ -1,22 +1,13 @@
+import { lazy } from 'react'
 import { NativeStackHeaderProps, createNativeStackNavigator } from '@react-navigation/native-stack'
 import { NavigatorScreenParams } from '@react-navigation/native'
 
-import {
-  AddAddress,
-  AddCard,
-  Cart,
-  CategoryDetail,
-  Login,
-  Onboarding,
-  OrderDetail,
-  Payment,
-  ProductDetail,
-  SignUp,
-  Wishlist,
-} from '@screens'
-import { BackBar, CategoryBar } from '@components'
 import { COLORS } from '@constants'
 import BottomNav, { TabParamsList } from '@navigation/Tab'
+
+// Components
+const BackBar = lazy(() => import('../../components/Bar/Instance/Back'))
+const CategoryBar = lazy(() => import('../../components/Bar/Instance/Category'))
 
 type PublicStackParamsList = {
   Onboarding: undefined
@@ -69,11 +60,11 @@ const PublicStackNavigator = () => (
     initialRouteName="Onboarding"
     screenOptions={{ headerShown: false, statusBarColor: COLORS.PRIMARY }}
   >
-    <Stack.Screen name="Onboarding" component={Onboarding} />
-    <Stack.Screen name="Login" component={Login} />
+    <Stack.Screen name="Onboarding" getComponent={() => require('@screens/Onboarding').default} />
+    <Stack.Screen name="Login" getComponent={() => require('@screens/Login').default} />
     <Stack.Screen
       name="SignUp"
-      component={SignUp}
+      getComponent={() => require('@screens/SignUp').default}
       options={{
         headerShown: true,
         headerTitle: '',
@@ -91,18 +82,34 @@ const TabBarStack = (
       header: (props: NativeStackHeaderProps) => CustomHeader(BackBar, props),
     }}
   >
-    <Stack.Screen name="Wishlist" component={Wishlist} options={{ headerTitle: 'wishlist' }} />
-    <Stack.Screen name="Cart" component={Cart} options={{ headerTitle: 'my cart' }} />
+    <Stack.Screen
+      name="Wishlist"
+      getComponent={() => require('@screens/Wishlist').default}
+      options={{ headerTitle: 'wishlist' }}
+    />
+    <Stack.Screen
+      name="Cart"
+      getComponent={() => require('@screens/Checkout/Cart').default}
+      options={{ headerTitle: 'my cart' }}
+    />
     <Stack.Screen
       name="AddAddress"
-      component={AddAddress}
+      getComponent={() => require('@screens/Checkout/AddAddress').default}
       options={{ headerTitle: 'add a new address' }}
     />
-    <Stack.Screen name="AddCard" component={AddCard} options={{ headerTitle: 'add card' }} />
-    <Stack.Screen name="Payment" component={Payment} options={{ headerTitle: 'payment option' }} />
+    <Stack.Screen
+      name="AddCard"
+      getComponent={() => require('@screens/Checkout/AddCard').default}
+      options={{ headerTitle: 'add card' }}
+    />
+    <Stack.Screen
+      name="Payment"
+      getComponent={() => require('@screens/Checkout/Payment').default}
+      options={{ headerTitle: 'payment option' }}
+    />
     <Stack.Screen
       name="OrderDetail"
-      component={OrderDetail}
+      getComponent={() => require('@screens/Checkout/OrderDetail').default}
       options={{ headerTitle: 'order details' }}
     />
   </Stack.Group>
@@ -110,10 +117,14 @@ const TabBarStack = (
 
 const HomeStack = () => (
   <Stack.Navigator>
-    <Stack.Screen name="ProductDetail" component={ProductDetail} options={{ headerShown: false }} />
+    <Stack.Screen
+      name="ProductDetail"
+      getComponent={() => require('@screens/ProductDetail').default}
+      options={{ headerShown: false }}
+    />
     <Stack.Screen
       name="CategoryDetail"
-      component={CategoryDetail}
+      getComponent={() => require('@screens/CategoryDetail').default}
       options={{
         header: (props: NativeStackHeaderProps) => CustomHeader(CategoryBar, props),
       }}
@@ -124,7 +135,11 @@ const HomeStack = () => (
 
 const BrowseStack = () => (
   <Stack.Navigator>
-    <Stack.Screen name="ProductDetail" component={ProductDetail} options={{ headerShown: false }} />
+    <Stack.Screen
+      name="ProductDetail"
+      getComponent={() => require('@screens/ProductDetail').default}
+      options={{ headerShown: false }}
+    />
     {TabBarStack}
   </Stack.Navigator>
 )

@@ -1,12 +1,15 @@
+import { lazy } from 'react'
 import { View } from 'react-native'
 import { NavigationProp } from '@react-navigation/native'
 import { BottomTabHeaderProps, createBottomTabNavigator } from '@react-navigation/bottom-tabs'
 
-import { BrowseBar, HomeBar, TabIcon } from '@components'
+import { TabIcon } from '@components'
 import { COLORS } from '@constants'
 
-import { Browse, Dashboard } from '@screens'
 import styles from './styles'
+
+const BrowseBar = lazy(() => import('../../components/Bar/Instance/Browse'))
+const HomeBar = lazy(() => import('../../components/Bar/Instance/Home'))
 
 export type TabParamsList = {
   HomeTab: undefined
@@ -58,7 +61,7 @@ const BottomNav = () => {
     >
       <Tab.Screen
         name="HomeTab"
-        component={Dashboard}
+        getComponent={() => require('@screens/Dashboard').default}
         options={{
           headerTitle: 'groceries',
           header: (props: BottomTabHeaderProps) => CustomHeader(HomeBar, props),
@@ -67,7 +70,7 @@ const BottomNav = () => {
       />
       <Tab.Screen
         name="BrowseTab"
-        component={Browse}
+        getComponent={() => require('@screens/Browse').default}
         options={{
           headerTitle: 'browse',
           header: (props: BottomTabHeaderProps) => CustomHeader(BrowseBar, props),
