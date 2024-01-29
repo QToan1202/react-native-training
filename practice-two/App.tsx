@@ -39,7 +39,7 @@ const App = () => {
     useShallow((state) => [state.isHydrated, state.isAuthenticated])
   )
 
-  const [fontsLoaded] = useFonts({
+  const [isFontsLoaded] = useFonts({
     Montserrat_400Regular,
     Montserrat_500Medium,
     Montserrat_600SemiBold,
@@ -47,10 +47,10 @@ const App = () => {
   })
 
   const onLayoutRootView = useCallback(async () => {
-    if (fontsLoaded && isHydrated) {
+    if (isFontsLoaded && isHydrated) {
       await SplashScreen.hideAsync()
     }
-  }, [fontsLoaded, isHydrated])
+  }, [isFontsLoaded, isHydrated])
 
   const linking: LinkingOptions<ReactNavigation.RootParamList> = {
     prefixes: [ExpoLinking.createURL('/')],
@@ -92,8 +92,6 @@ const App = () => {
       }
     },
   }
-
-  if (!fontsLoaded) return null
 
   return (
     <QueryClientProvider client={queryClient}>
