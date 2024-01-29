@@ -1,12 +1,12 @@
 import { useCallback } from 'react'
-import { Dimensions, KeyboardAvoidingView, Platform } from 'react-native'
+import { Dimensions, KeyboardAvoidingView, Modal, Platform } from 'react-native'
 import { useForm } from 'react-hook-form'
 import { NativeStackScreenProps } from '@react-navigation/native-stack'
 import { ScrollView, XStack, YStack } from 'tamagui'
 import { useShallow } from 'zustand/react/shallow'
 
 import { RootStackParamList } from '@navigation/Stack'
-import { Input, PaymentCard, TabBar } from '@components'
+import { Bar, Input, PaymentCard, TabBar } from '@components'
 import { ICardBase, IForm } from '@types'
 import { useAddCard } from '@hooks'
 import { useAuthStore } from '@stores'
@@ -40,35 +40,40 @@ const AddCard = ({ navigation }: AddCardScreenProps) => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
     [isHydrated, user]
   )
+  const handleGoBack = useCallback(() => navigation.goBack(), [navigation])
 
   return (
     <>
+      <Bar
+        title="add card"
+        align="center"
+        paddingBottom="$space.6"
+        showBackBtn
+        onPressBack={handleGoBack}
+      />
+      <XStack
+        justifyContent="center"
+        backgroundColor="$color.bg_layer"
+        width={Dimensions.get('window').width}
+        height={Dimensions.get('window').width / 2}
+      >
+        <PaymentCard
+          name={observeFields.name || ''}
+          number={observeFields.number || ''}
+          expired={observeFields.expired || ''}
+          cvc={observeFields.cvc || ''}
+          alignSelf="center"
+          marginBottom={30}
+          pressStyle={{ opacity: 1 }}
+          top="$space.-4"
+          cardStyle={{
+            maxWidth: undefined,
+            maxHeight: undefined,
+            aspectRatio: 3 / 1.8,
+          }}
+        />
+      </XStack>
       <ScrollView backgroundColor="$color.white">
-        <XStack
-          paddingHorizontal="$space.6"
-          marginTop="$space.5"
-          justifyContent="center"
-          backgroundColor="$color.bg_layer"
-          alignItems="center"
-          width={Dimensions.get('window').width}
-          height={Dimensions.get('window').width / 2}
-        >
-          <PaymentCard
-            name={observeFields.name || ''}
-            number={observeFields.number || ''}
-            expired={observeFields.expired || ''}
-            cvc={observeFields.cvc || ''}
-            alignSelf="center"
-            marginBottom={30}
-            pressStyle={{ opacity: 1 }}
-            cardStyle={{
-              maxWidth: undefined,
-              maxHeight: undefined,
-              aspectRatio: 3 / 1.8,
-            }}
-          />
-        </XStack>
-
         <KeyboardAvoidingView
           behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
           style={styles.form}
