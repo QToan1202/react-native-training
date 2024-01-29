@@ -35,7 +35,9 @@ Notifications.setNotificationHandler({
 })
 
 const App = () => {
-  const [isHydrated, user] = useAuthStore(useShallow((state) => [state.isHydrated, state.user]))
+  const [isHydrated, isAuthenticated] = useAuthStore(
+    useShallow((state) => [state.isHydrated, state.isAuthenticated])
+  )
 
   const [fontsLoaded] = useFonts({
     Montserrat_400Regular,
@@ -99,7 +101,7 @@ const App = () => {
         <SafeAreaProvider style={styles.container} onLayout={onLayoutRootView}>
           <Suspense fallback={<Spinner size="large" color="$color.primary" />}>
             <NavigationContainer linking={linking}>
-              {!user ? (
+              {!isAuthenticated ? (
                 <StackNavigation.PublicStackNavigator />
               ) : (
                 <StackNavigation.PrivateStackNavigator />
