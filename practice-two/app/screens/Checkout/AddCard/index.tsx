@@ -1,5 +1,5 @@
 import { useCallback } from 'react'
-import { Dimensions, KeyboardAvoidingView, Modal, Platform } from 'react-native'
+import { Dimensions, KeyboardAvoidingView, Platform } from 'react-native'
 import { useForm } from 'react-hook-form'
 import { NativeStackScreenProps } from '@react-navigation/native-stack'
 import { ScrollView, XStack, YStack } from 'tamagui'
