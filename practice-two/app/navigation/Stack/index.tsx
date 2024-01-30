@@ -100,7 +100,7 @@ const TabBarStack = (
     <Stack.Screen
       name="AddCard"
       getComponent={() => require('@screens/Checkout/AddCard').default}
-      options={{ headerTitle: 'add card' }}
+      options={{ headerShown: false }}
     />
     <Stack.Screen
       name="Payment"
