@@ -61,60 +61,67 @@ const Dashboard = ({ navigation }: HomeScreenProps) => {
     ),
     [handleMoveToProduct]
   )
-  const renderProducts = <T extends IProduct[]>(title: string, data: T) => {
-    if (!data.length)
-      return (
-        <YStack padding="$space.4">
-          <Heading
-            content="Product empty!!!"
-            color="$color.gray_50"
-            fontWeight="$3"
-            fontSize="$1"
-            textAlign="center"
-          />
-        </YStack>
-      )
+  const renderProducts = useCallback(
+    <T extends IProduct[]>(title: string, data: T) => {
+      if (!data.length)
+        return (
+          <YStack padding="$space.4">
+            <Heading
+              content="Product empty!!!"
+              color="$color.gray_50"
+              fontWeight="$3"
+              fontSize="$1"
+              textAlign="center"
+            />
+          </YStack>
+        )
 
-    return (
-      <>
-        <XStack
-          alignItems="center"
-          justifyContent="space-between"
-          space="$space.1.5"
-          marginVertical="$space.3.5"
-          paddingHorizontal="$space.4.5"
-        >
-          <Heading content={title} color="$color.gray_50" fontSize="$3" />
-          <Button
-            shrink
-            title="see all"
-            paddingHorizontal="$space.5"
-            paddingVertical="$space.1.5"
-            fontSize={12}
-            onPress={handleSeeAllProducts}
+      return (
+        <>
+          <XStack
+            alignItems="center"
+            justifyContent="space-between"
+            space="$space.1.5"
+            marginVertical="$space.3.5"
+            paddingHorizontal="$space.4.5"
+          >
+            <Heading content={title} color="$color.gray_50" fontSize="$3" />
+            <Button
+              shrink
+              title="see all"
+              paddingHorizontal="$space.5"
+              paddingVertical="$space.1.5"
+              fontSize={12}
+              onPress={handleSeeAllProducts}
+            />
+          </XStack>
+          <FlatList
+            keyExtractor={({ id }: IProduct): string => String(id)}
+            data={data}
+            renderItem={renderProductItem}
+            horizontal
+            contentContainerStyle={styles.itemSpacing}
+            showsHorizontalScrollIndicator={false}
           />
-        </XStack>
-        <FlatList
-          keyExtractor={({ id }: IProduct): string => String(id)}
-          data={data}
-          renderItem={renderProductItem}
-          horizontal
-          contentContainerStyle={styles.itemSpacing}
-          showsHorizontalScrollIndicator={false}
-        />
-      </>
-    )
-  }
-  const renderCategoryItem: ListRenderItem<ICategoryItem> = ({ item }) => (
-    <MenuCard {...item} onPress={handleMoveToCategoryScreen} />
+        </>
+      )
+    },
+    [handleSeeAllProducts, renderProductItem]
   )
-  const renderStoreItem: ListRenderItem<IStore> = ({ item: { avatar, name } }) => (
-    <StoreCard
-      bgImage={require('@assets/store/tradly.png')}
-      source={{ uri: avatar }}
-      name={`${name} store`}
-      btnTitle="follow"
-    />
+  const renderCategoryItem: ListRenderItem<ICategoryItem> = useCallback(
+    ({ item }) => <MenuCard {...item} onPress={handleMoveToCategoryScreen} />,
+    [handleMoveToCategoryScreen]
+  )
+  const renderStoreItem: ListRenderItem<IStore> = useCallback(
+    ({ item: { avatar, name } }) => (
+      <StoreCard
+        bgImage={require('@assets/store/tradly.png')}
+        source={{ uri: avatar }}
+        name={`${name} store`}
+        btnTitle="follow"
+      />
+    ),
+    []
   )
 
   return (

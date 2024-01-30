@@ -1,4 +1,4 @@
-import { useCallback } from 'react'
+import { memo, useCallback } from 'react'
 import { NativeStackHeaderProps } from '@react-navigation/native-stack'
 
 import Button, { ButtonProps } from '@components/Button'
@@ -50,4 +50,4 @@ const CategoryBar = ({ options, route, navigation }: NativeStackHeaderProps) => 
   )
 }
 
-export default CategoryBar
+export default memo(CategoryBar)

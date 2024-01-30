@@ -1,3 +1,5 @@
+import { memo } from 'react'
+import isEqual from 'react-fast-compare'
 import { FieldError } from 'react-hook-form'
 import { SizableText, SizableTextProps } from 'tamagui'
 
@@ -21,4 +23,4 @@ const ErrorMessage = ({ error, ...rest }: ErrorMessageProps) => (
   </SizableText>
 )
 
-export default ErrorMessage
+export default memo(ErrorMessage, isEqual)

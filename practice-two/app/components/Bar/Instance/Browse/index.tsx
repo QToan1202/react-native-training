@@ -1,4 +1,5 @@
-import { useCallback, useMemo } from 'react'
+import { memo, useCallback, useMemo } from 'react'
+import isEqual from 'react-fast-compare'
 import { XStack, YStack } from 'tamagui'
 import { NativeStackHeaderProps } from '@react-navigation/native-stack'
 
@@ -81,4 +82,4 @@ const BrowseBar = ({ navigation, options, route }: NativeStackHeaderProps) => {
   )
 }
 
-export default BrowseBar
+export default memo(BrowseBar, isEqual)

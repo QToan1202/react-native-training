@@ -5,7 +5,6 @@ import { RootStackParamList } from '@navigation/Stack'
 import { DASHBOARD } from '@constants'
 import { renderItem } from '@utils'
 import { WrapList, ProductCard } from '@components'
-import { IProductItem } from '@constants/screens/dashboard'
 
 import styles from './styles'
 
@@ -22,7 +21,7 @@ const CategoryDetail = ({ route, navigation }: CategoryDetailScreenProps) => {
 
   return (
     <WrapList
-      keyExtractor={({ id }: IProductItem): string => id}
+      keyExtractor={({ id }): string => id}
       style={styles.container}
       data={DASHBOARD.PRODUCT_DATA}
       renderItem={renderItem(ProductCard)}

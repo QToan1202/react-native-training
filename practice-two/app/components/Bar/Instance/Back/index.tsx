@@ -1,4 +1,4 @@
-import { useCallback } from 'react'
+import { memo, useCallback } from 'react'
 import { NativeStackHeaderProps } from '@react-navigation/native-stack'
 
 import Bar from '@components/Bar'
@@ -18,4 +18,4 @@ const BackBar = ({ options, route, navigation }: NativeStackHeaderProps) => {
   )
 }
 
-export default BackBar
+export default memo(BackBar)

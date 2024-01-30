@@ -1,4 +1,5 @@
-import { useMemo } from 'react'
+import { memo, useMemo } from 'react'
+import isEqual from 'react-fast-compare'
 import { FlatList, FlatListProps } from 'react-native'
 
 import { IFlatListBase } from '@types'
@@ -32,4 +33,4 @@ const WrapList = <T extends IFlatListBase>({
   return <FlatList {...listStyles} {...rest} numColumns={numColumns} />
 }
 
-export default WrapList
+export default memo(WrapList, isEqual)

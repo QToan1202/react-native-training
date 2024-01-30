@@ -25,7 +25,10 @@ const ProductDetail = ({ navigation, route }: ProductDetailProps) => {
   const user = useAuthStore((state) => state.user)
   const addToCart = useCartStore((state) => state.add)
   const { id } = route.params
-  const findProduct: IProduct | undefined = cacheProducts.find((item) => item.id === +id)
+  const findProduct: IProduct | undefined = useMemo(
+    () => cacheProducts.find((item) => item.id === +id),
+    []
+  )
   const { data: fetchProductData, isSuccess: isFindProductSuccess } = useFindProduct(
     process.env.PRODUCT_ENDPOINT,
     id

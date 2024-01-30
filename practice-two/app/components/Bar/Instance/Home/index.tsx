@@ -1,4 +1,4 @@
-import { useCallback, useMemo } from 'react'
+import { memo, useCallback, useMemo } from 'react'
 import { NativeStackHeaderProps } from '@react-navigation/native-stack'
 
 import Search from '@components/Search'
@@ -41,4 +41,4 @@ const HomeBar = ({ options, route, navigation }: NativeStackHeaderProps) => {
   )
 }
 
-export default HomeBar
+export default memo(HomeBar)

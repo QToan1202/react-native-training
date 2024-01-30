@@ -1,3 +1,5 @@
+import { memo } from 'react'
+import isEqual from 'react-fast-compare'
 import { useSafeAreaInsets } from 'react-native-safe-area-context'
 import { getTokenValue } from 'tamagui'
 
@@ -31,4 +33,4 @@ const TabBar = ({ title, isDisable, onPress, ...rest }: TabBar) => {
   )
 }
 
-export default TabBar
+export default memo(TabBar, isEqual)
