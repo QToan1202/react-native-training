@@ -12,8 +12,8 @@ interface AuthState {
 
 interface AuthActions {
   setIsHydrated: (isHydratedState: boolean) => void
-  login: (user: IUser) => void
-  logout: () => void
+  setUser: (user: IUser) => void
+  clearAuth: () => void
 }
 
 const initState: AuthState = {
@@ -27,8 +27,8 @@ export const useAuthStore = create<AuthState & AuthActions>()(
     (set) => ({
       ...initState,
       setIsHydrated: (isHydratedState: boolean) => set({ isHydrated: isHydratedState }),
-      login: (user: IUser) => set(() => ({ isAuthenticated: true, user })),
-      logout: () =>
+      setUser: (user: IUser) => set(() => ({ isAuthenticated: true, user })),
+      clearAuth: () =>
         set(() => ({ isAuthenticated: initState.isAuthenticated, user: initState.user })),
     }),
     {

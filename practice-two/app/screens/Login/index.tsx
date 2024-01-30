@@ -19,7 +19,7 @@ export type LoginScreenProps = NativeStackScreenProps<RootStackParamList, 'Login
 
 const Login = ({ navigation }: LoginScreenProps) => {
   const { mutate, data: user, isSuccess, status } = useLogin(process.env.USER_ENDPOINT)
-  const loginFn = useAuthStore((state) => state.login)
+  const setUser = useAuthStore((state) => state.setUser)
   const { control, handleSubmit } = useForm<IForm>()
   const onSubmit: SubmitHandler<IForm> = useCallback(({ email, password }: IForm) => {
     mutate({
@@ -31,8 +31,8 @@ const Login = ({ navigation }: LoginScreenProps) => {
   const handleSaveUser = useCallback(async () => {
     if (!isSuccess) return
 
-    await asyncStoreService.save('user', user, () => loginFn(user))
-  }, [isSuccess, loginFn, user])
+    await asyncStoreService.save('user', user, () => setUser(user))
+  }, [isSuccess, setUser, user])
 
   useEffect(() => {
     handleSaveUser()

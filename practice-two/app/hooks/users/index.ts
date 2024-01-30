@@ -24,7 +24,7 @@ export const useLogin = (
 }
 
 export const useRegister = (path: string): UseMutationResult<IUser, Error, IUser, unknown> => {
-  const loginFn = useAuthStore((state) => state.login)
+  const setUser = useAuthStore((state) => state.setUser)
 
   return useMutation<IUser, Error, IUser, unknown>({
     mutationFn: (data: IUser): Promise<IUser> => register(path, data),
@@ -33,7 +33,7 @@ export const useRegister = (path: string): UseMutationResult<IUser, Error, IUser
     },
     onSuccess: async (data: IUser) => {
       ToastAndroid.show('Register success!!!', ToastAndroid.LONG)
-      await asyncStoreService.save('user', data, () => loginFn(data))
+      await asyncStoreService.save('user', data, () => setUser(data))
     },
   })
 }
