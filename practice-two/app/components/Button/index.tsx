@@ -1,4 +1,4 @@
-import { memo, useMemo } from 'react'
+import { memo, useCallback } from 'react'
 import { Image, ImageSourcePropType } from 'react-native'
 import isEqual from 'react-fast-compare'
 
@@ -13,7 +13,7 @@ export type ButtonProps = {
 } & StyledButtonProps
 
 const Button = ({ title, leftIcon, rightIcon, isDisable, onPress, ...rest }: ButtonProps) => {
-  const onPressWithDisableState = useMemo(
+  const onPressWithDisableState = useCallback(
     () => (isDisable ? undefined : onPress),
     [isDisable, onPress]
   )
