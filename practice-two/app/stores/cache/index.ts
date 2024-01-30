@@ -6,34 +6,38 @@ import { IProduct, IStore, IWishlistBase } from '@types'
 
 interface CacheState {
   isHydrated: boolean
-  setIsHydrated: (isHydratedState: boolean) => void
   products: IProduct[]
-  setProducts: (products: IProduct[]) => void
   wishlist: IWishlistBase[]
-  setWishlist: (items: IWishlistBase[]) => void
   stores: IStore[]
+}
+
+interface CacheActions {
+  setIsHydrated: (isHydratedState: boolean) => void
+  setProducts: (products: IProduct[]) => void
+  setWishlist: (items: IWishlistBase[]) => void
   setStores: (items: IStore[]) => void
 }
 
-export const useCacheStore = create<CacheState>()(
+const initState: CacheState = {
+  isHydrated: false,
+  products: [],
+  wishlist: [],
+  stores: [],
+}
+
+export const useCacheStore = create<CacheState & CacheActions>()(
   persist(
     (set) => ({
-      isHydrated: false,
+      ...initState,
       setIsHydrated: (isHydratedState: boolean) => set({ isHydrated: isHydratedState }),
-
-      products: [],
       setProducts: (products: IProduct[]) => set(() => ({ products: products.slice(0, 5) })),
-
-      wishlist: [],
       setWishlist: (items: IWishlistBase[]) => set(() => ({ wishlist: items.slice(0, 5) })),
-
-      stores: [],
       setStores: (items: IStore[]) => set(() => ({ stores: items.slice(0, 5) })),
     }),
     {
       name: 'cache.storage',
       storage: createJSONStorage(() => AsyncStorage),
-      onRehydrateStorage: () => (state: CacheState | undefined) => {
+      onRehydrateStorage: () => (state: (CacheState & CacheActions) | undefined) => {
         state?.setIsHydrated(true)
       },
     }

@@ -6,28 +6,35 @@ import { IUser } from '@types'
 
 interface AuthState {
   isHydrated: boolean
-  setIsHydrated: (isHydratedState: boolean) => void
   isAuthenticated: boolean
   user: IUser | undefined
+}
+
+interface AuthActions {
+  setIsHydrated: (isHydratedState: boolean) => void
   login: (user: IUser) => void
   logout: () => void
 }
 
-export const useAuthStore = create<AuthState>()(
+const initState: AuthState = {
+  isHydrated: false,
+  isAuthenticated: false,
+  user: undefined,
+}
+
+export const useAuthStore = create<AuthState & AuthActions>()(
   persist(
     (set) => ({
-      isHydrated: false,
+      ...initState,
       setIsHydrated: (isHydratedState: boolean) => set({ isHydrated: isHydratedState }),
-
-      isAuthenticated: false,
-      user: undefined,
       login: (user: IUser) => set(() => ({ isAuthenticated: true, user })),
-      logout: () => set(() => ({ isAuthenticated: false, user: undefined })),
+      logout: () =>
+        set(() => ({ isAuthenticated: initState.isAuthenticated, user: initState.user })),
     }),
     {
       name: 'user.storage',
       storage: createJSONStorage(() => AsyncStorage),
-      onRehydrateStorage: () => (state: AuthState | undefined) => {
+      onRehydrateStorage: () => (state: (AuthState & AuthActions) | undefined) => {
         state?.setIsHydrated(true)
       },
     }

@@ -6,20 +6,26 @@ import { ICart, IProductBase } from '@types'
 
 interface CartState {
   isHydrated: boolean
-  setIsHydrated: (isHydratedState: boolean) => void
   cart: ICart[]
+}
+
+interface CartActions {
+  setIsHydrated: (isHydratedState: boolean) => void
   add: (product: IProductBase) => void
   remove: (productId: IProductBase['id']) => void
   clear: () => void
 }
 
-export const useCartStore = create<CartState>()(
+const initState: CartState = {
+  isHydrated: false,
+  cart: [],
+}
+
+export const useCartStore = create<CartState & CartActions>()(
   persist(
     (set) => ({
-      isHydrated: false,
+      ...initState,
       setIsHydrated: (isHydratedState: boolean) => set({ isHydrated: isHydratedState }),
-
-      cart: [],
       add: (product: IProductBase) =>
         set((state) => {
           // Check the upcoming product is existed in cart or not
@@ -45,12 +51,12 @@ export const useCartStore = create<CartState>()(
         set((state) => ({
           cart: state.cart.filter(({ id }: IProductBase) => id !== productId),
         })),
-      clear: () => set(() => ({ cart: [] })),
+      clear: () => set(initState),
     }),
     {
       name: 'cart.storage',
       storage: createJSONStorage(() => AsyncStorage),
-      onRehydrateStorage: () => (state: CartState | undefined) => {
+      onRehydrateStorage: () => (state: (CartState & CartActions) | undefined) => {
         state?.setIsHydrated(true)
       },
     }

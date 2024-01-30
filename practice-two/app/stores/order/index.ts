@@ -6,24 +6,30 @@ import { IAddressBase, ICardBase } from '@types'
 
 interface OrderState {
   isHydrated: boolean
-  setIsHydrated: (isHydratedState: boolean) => void
   address: IAddressBase | null
   card: ICardBase | null
   paymentMethod: string
+}
+
+interface OrderActions {
+  setIsHydrated: (isHydratedState: boolean) => void
   setAddress: (address: IAddressBase) => void
   setCard: (card: ICardBase) => void
   setPaymentMethod: (paymentMethod: string) => void
 }
 
-export const useOrderStore = create<OrderState>()(
+const initState: OrderState = {
+  isHydrated: false,
+  address: null,
+  card: null,
+  paymentMethod: '',
+}
+
+export const useOrderStore = create<OrderState & OrderActions>()(
   persist(
     (set) => ({
-      isHydrated: false,
+      ...initState,
       setIsHydrated: (isHydratedState: boolean) => set({ isHydrated: isHydratedState }),
-
-      address: null,
-      card: null,
-      paymentMethod: '',
       setAddress: (address: IAddressBase) =>
         set((state) => ({ address: { ...state.address, ...address } })),
       setCard: (card: ICardBase) => set((state) => ({ card: { ...state.card, ...card } })),
@@ -32,7 +38,7 @@ export const useOrderStore = create<OrderState>()(
     {
       name: 'order.storage',
       storage: createJSONStorage(() => AsyncStorage),
-      onRehydrateStorage: () => (state: OrderState | undefined) => {
+      onRehydrateStorage: () => (state: (OrderState & OrderActions) | undefined) => {
         state?.setIsHydrated(true)
       },
     }
