@@ -13,6 +13,11 @@ import { useAuthStore, useCacheStore, useCartStore } from '@stores'
 import { RootStackParamList } from '@navigation/Stack'
 import { IProduct, IWishlistBase } from '@types'
 import { calculateDiscount } from '@utils'
+import ShareIcon from '@assets/share.svg'
+import BackIcon from '@assets/back.svg'
+import LikeIcon from '@assets/like.svg'
+import LoveIcon from '@assets/love.svg'
+import MoreIcon from '@assets/more.svg'
 
 import StyledImageBackground from './styles'
 
@@ -67,10 +72,6 @@ const ProductDetail = ({ navigation, route }: ProductDetailProps) => {
 
     return wishlist.some((item: IWishlistBase) => item.productId === +id)
   }, [isFindProductSuccess, isGetWishlistSuccess, wishlist])
-
-  const likeIcon = checkProductInWishlist
-    ? require('@assets/love.png')
-    : require('@assets/heart.png')
 
   const handleLikeProduct = useCallback(() => {
     if (!user) return
@@ -132,11 +133,23 @@ const ProductDetail = ({ navigation, route }: ProductDetailProps) => {
               paddingHorizontal="$space.3"
               backgroundColor="$color.img_overlay"
             >
-              <IconButton icon={require('@assets/back.png')} onPress={handleBackPress} />
+              <IconButton onPress={handleBackPress}>
+                <BackIcon />
+              </IconButton>
               <XStack alignItems="center" space="$space.1.5">
-                <IconButton icon={require('@assets/share.png')} onPress={handlePress} />
-                <IconButton icon={likeIcon} onPress={handleLikeProduct} />
-                <IconButton icon={require('@assets/more.png')} onPress={handlePress} />
+                <IconButton onPress={handlePress}>
+                  <ShareIcon />
+                </IconButton>
+                <IconButton onPress={handleLikeProduct}>
+                  {!checkProductInWishlist ? (
+                    <LikeIcon fill={getTokenValue('$color.white')} />
+                  ) : (
+                    <LoveIcon fill={getTokenValue('$color.white')} />
+                  )}
+                </IconButton>
+                <IconButton onPress={handlePress}>
+                  <MoreIcon />
+                </IconButton>
               </XStack>
             </XStack>
           </StyledImageBackground>

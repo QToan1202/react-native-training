@@ -1,11 +1,12 @@
 import { memo, useCallback, useMemo } from 'react'
 import { NativeStackHeaderProps } from '@react-navigation/native-stack'
+import { getTokenValue } from 'tamagui'
 
 import Search from '@components/Search'
 import Bar from '@components/Bar'
-import { IIconList } from '@types'
 import IconButton from '@components/IconButton'
-import { BAR } from '@constants'
+import LoveIcon from '@assets/love.svg'
+import CartIcon from '@assets/cart.svg'
 
 const HomeBar = ({ options, route, navigation }: NativeStackHeaderProps) => {
   const handleNavigateToCart = useCallback(
@@ -19,14 +20,16 @@ const HomeBar = ({ options, route, navigation }: NativeStackHeaderProps) => {
     []
   )
   const IconList = useMemo(
-    () =>
-      BAR.HOME.map(({ label, ...rest }: IIconList) => (
-        <IconButton
-          key={label}
-          onPress={label === 'cart' ? handleNavigateToCart : handleNavigateToWishlist}
-          {...rest}
-        />
-      )),
+    () => (
+      <>
+        <IconButton noBackground onPress={handleNavigateToWishlist}>
+          <LoveIcon fill={getTokenValue('$color.white')} />
+        </IconButton>
+        <IconButton noBackground onPress={handleNavigateToCart}>
+          <CartIcon fill={getTokenValue('$color.white')} />
+        </IconButton>
+      </>
+    ),
     [handleNavigateToCart, handleNavigateToWishlist]
   )
 

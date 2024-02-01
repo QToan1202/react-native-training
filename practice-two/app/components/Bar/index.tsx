@@ -5,6 +5,7 @@ import { XStack, XStackProps, YStack, YStackProps } from 'tamagui'
 
 import Heading from '@components/Heading'
 import IconButton from '@components/IconButton'
+import BackIcon from '@assets/back.svg'
 
 import styles from './styles'
 
@@ -41,12 +42,9 @@ const Bar = ({
       {checkProps && (
         <XStack space={4} alignItems="center" justifyContent={align}>
           {showBackBtn && (
-            <IconButton
-              style={styles.backBtn}
-              icon={require('@assets/back.png')}
-              onPress={onPressBack}
-              noBackground
-            />
+            <IconButton style={styles.backBtn} onPress={onPressBack} noBackground>
+              <BackIcon />
+            </IconButton>
           )}
           {title && <Heading content={title} textTransform="capitalize" />}
           {IconList && (

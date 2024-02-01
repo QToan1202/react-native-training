@@ -1,10 +1,11 @@
 import { useCallback, useRef } from 'react'
 import { useForm } from 'react-hook-form'
-import { Image, TextInput } from 'react-native'
+import { TextInput } from 'react-native'
 import { Stack, XStack, getTokenValue } from 'tamagui'
 
 import Input from '@components/Input'
 import { IForm } from '@types'
+import SearchIcon from '@assets/search.svg'
 
 import { StyledInputProps } from '@components/Input/styles'
 import styles from './styles'
@@ -38,7 +39,7 @@ const Search = ({ placeholder, ...rest }: SearchProps) => {
         onPress={handlePress}
       >
         <Stack width="$icon.width" height="$icon.height">
-          <Image source={require('@assets/search.png')} resizeMode="cover" />
+          <SearchIcon fill={getTokenValue('$color.primary')} />
         </Stack>
         <Input
           containerStyle={{ flex: 1 }}

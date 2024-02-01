@@ -1,15 +1,14 @@
 import { memo, useCallback, useMemo } from 'react'
 import isEqual from 'react-fast-compare'
-import { XStack, YStack } from 'tamagui'
+import { XStack, YStack, getTokenValue } from 'tamagui'
 import { NativeStackHeaderProps } from '@react-navigation/native-stack'
 
-import { BAR } from '@constants'
 import Button, { ButtonProps } from '@components/Button'
 import Search from '@components/Search'
 import IconButton from '@components/IconButton'
-
+import LoveIcon from '@assets/love.svg'
+import CartIcon from '@assets/cart.svg'
 import Bar from '@components/Bar'
-import { IIconList } from '@types'
 
 import styles from './styles'
 
@@ -41,14 +40,16 @@ const BrowseBar = ({ navigation, options, route }: NativeStackHeaderProps) => {
     []
   )
   const IconList = useMemo(
-    () =>
-      BAR.HOME.map(({ label, ...rest }: IIconList) => (
-        <IconButton
-          key={label}
-          onPress={label === 'cart' ? handleNavigateToCart : handleNavigateToWishlist}
-          {...rest}
-        />
-      )),
+    () => (
+      <>
+        <IconButton noBackground onPress={handleNavigateToWishlist}>
+          <LoveIcon fill={getTokenValue('$color.white')} />
+        </IconButton>
+        <IconButton noBackground onPress={handleNavigateToCart}>
+          <CartIcon fill={getTokenValue('$color.white')} />
+        </IconButton>
+      </>
+    ),
     [handleNavigateToCart, handleNavigateToWishlist]
   )
 
