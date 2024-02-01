@@ -22,6 +22,7 @@
   "plugins": ["@typescript-eslint", "react", "react-hooks", "jsx-a11y", "import"],
   "rules": {
     "global-require": "off",
+    "@typescript-eslint/no-var-requires": "off",
     "react/jsx-props-no-spreading": "off",
     "import/no-extraneous-dependencies": "off",
     "import/no-cycle": ["error", { "maxDepth": 1 }],
