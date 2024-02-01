@@ -1,5 +1,5 @@
-import { Suspense, useCallback } from 'react'
-import { Linking } from 'react-native'
+import { Suspense, useCallback, useEffect, useState } from 'react'
+import { ActivityIndicator, Linking } from 'react-native'
 import { SafeAreaProvider } from 'react-native-safe-area-context'
 import * as SplashScreen from 'expo-splash-screen'
 import {
@@ -15,9 +15,9 @@ import { useShallow } from 'zustand/react/shallow'
 import * as Notifications from 'expo-notifications'
 import * as ExpoLinking from 'expo-linking'
 
-import { LinkingOptions, NavigationContainer } from '@react-navigation/native'
+import { LinkingOptions, NavigationContainer, NavigationState } from '@react-navigation/native'
 import { StackNavigation } from '@navigation'
-import { useAuthStore } from '@stores'
+import { useAuthStore, useNavigationStore } from '@stores'
 
 import styles from './App.styles'
 import StorybookUI from './.storybook'
@@ -38,6 +38,17 @@ const App = () => {
   const [isHydrated, isAuthenticated] = useAuthStore(
     useShallow((state) => [state.isHydrated, state.isAuthenticated])
   )
+  const [isHydratedState, navigationState, setNavigationState, isReady, setIsReady] =
+    useNavigationStore(
+      useShallow((state) => [
+        state.isHydrated,
+        state.navigationState,
+        state.setNavigationState,
+        state.isReady,
+        state.setIsReady,
+      ])
+    )
+  const [initState, setInitState] = useState()
 
   const [isFontsLoaded] = useFonts({
     Montserrat_400Regular,
@@ -93,12 +104,44 @@ const App = () => {
     },
   }
 
+  const restoreState = useCallback(async () => {
+    try {
+      const url: string | null = await Linking.getInitialURL()
+      if (url !== null) return
+      // Restore state if no deep link
+      const state = navigationState ? JSON.parse(navigationState) : undefined
+
+      if (state !== undefined) setInitState(state)
+    } finally {
+      setIsReady(true)
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [])
+
+  useEffect(() => {
+    if (!isReady) restoreState()
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [isReady])
+
+  const handleStateChange = useCallback(
+    (state: NavigationState | undefined) => {
+      setNavigationState(state)
+    },
+    [setNavigationState]
+  )
+
+  if (!isFontsLoaded || !isHydratedState || !isReady) return <ActivityIndicator />
+
   return (
     <QueryClientProvider client={queryClient}>
       <TamaguiProvider config={config}>
         <SafeAreaProvider style={styles.container} onLayout={onLayoutRootView}>
           <Suspense fallback={<Spinner size="large" color="$color.primary" />}>
-            <NavigationContainer linking={linking}>
+            <NavigationContainer
+              linking={linking}
+              initialState={initState}
+              onStateChange={handleStateChange}
+            >
               {!isAuthenticated ? (
                 <StackNavigation.PublicStackNavigator />
               ) : (
