@@ -38,17 +38,11 @@ const App = () => {
   const [isHydrated, isAuthenticated] = useAuthStore(
     useShallow((state) => [state.isHydrated, state.isAuthenticated])
   )
-  const [isHydratedState, navigationState, setNavigationState, isReady, setIsReady] =
-    useNavigationStore(
-      useShallow((state) => [
-        state.isHydrated,
-        state.navigationState,
-        state.setNavigationState,
-        state.isReady,
-        state.setIsReady,
-      ])
-    )
+  const [isHydratedState, navigationState, setNavigationState] = useNavigationStore(
+    useShallow((state) => [state.isHydrated, state.navigationState, state.setNavigationState])
+  )
   const [initState, setInitState] = useState()
+  const [isReady, setIsReady] = useState<boolean>(false)
 
   const [isFontsLoaded] = useFonts({
     Montserrat_400Regular,
@@ -116,12 +110,13 @@ const App = () => {
       setIsReady(true)
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [])
+  }, [navigationState])
 
   useEffect(() => {
+    if (!isHydratedState) return
     if (!isReady) restoreState()
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [isReady])
+  }, [isHydratedState, isReady])
 
   const handleStateChange = useCallback(
     (state: NavigationState | undefined) => {
