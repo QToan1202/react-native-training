@@ -1,0 +1,136 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Testing Tracker item component Render Tracker item success 1`] = `
+<View
+  style={
+    [
+      {
+        "rowGap": 6,
+      },
+      undefined,
+    ]
+  }
+>
+  <View
+    style={
+      [
+        {
+          "alignItems": "center",
+          "columnGap": 4,
+          "flexDirection": "row",
+        },
+        {
+          "justifyContent": "space-between",
+        },
+      ]
+    }
+  >
+    <Text
+      style={
+        [
+          {
+            "color": "#fff",
+            "fontFamily": "Montserrat_400Regular",
+          },
+          {
+            "fontSize": 14,
+          },
+          [
+            {
+              "color": "#606a7b",
+              "fontFamily": "Montserrat_500Medium",
+              "fontSize": 10,
+              "lineHeight": 18,
+            },
+            {
+              "color": "#212121",
+              "fontSize": 14,
+              "textTransform": "capitalize",
+            },
+          ],
+        ]
+      }
+    >
+      order placed
+    </Text>
+    <Text
+      style={
+        [
+          {
+            "color": "#fff",
+            "fontFamily": "Montserrat_400Regular",
+          },
+          {
+            "fontSize": 14,
+          },
+          {
+            "color": "#606a7b",
+            "fontFamily": "Montserrat_500Medium",
+            "fontSize": 10,
+            "lineHeight": 18,
+          },
+        ]
+      }
+    >
+      28/08/2023
+    </Text>
+  </View>
+  <View
+    style={
+      [
+        {
+          "alignItems": "center",
+          "columnGap": 4,
+          "flexDirection": "row",
+        },
+        {
+          "justifyContent": "space-between",
+        },
+      ]
+    }
+  >
+    <Text
+      style={
+        [
+          {
+            "color": "#fff",
+            "fontFamily": "Montserrat_400Regular",
+          },
+          {
+            "fontSize": 14,
+          },
+          {
+            "color": "#606a7b",
+            "fontFamily": "Montserrat_500Medium",
+            "fontSize": 10,
+            "lineHeight": 18,
+          },
+        ]
+      }
+    >
+      Order#123455 from Fashion Point
+    </Text>
+    <Text
+      style={
+        [
+          {
+            "color": "#fff",
+            "fontFamily": "Montserrat_400Regular",
+          },
+          {
+            "fontSize": 14,
+          },
+          {
+            "color": "#606a7b",
+            "fontFamily": "Montserrat_500Medium",
+            "fontSize": 10,
+            "lineHeight": 18,
+          },
+        ]
+      }
+    >
+      11:30 AM
+    </Text>
+  </View>
+</View>
+`;
