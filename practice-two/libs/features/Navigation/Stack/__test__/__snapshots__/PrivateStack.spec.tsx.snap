@@ -1,0 +1,1157 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Testing private stack navigation Render stack successfully 1`] = `
+<View
+  style={
+    [
+      {
+        "flex": 1,
+      },
+      undefined,
+    ]
+  }
+>
+  <RNSScreenStack
+    style={
+      {
+        "flex": 1,
+      }
+    }
+  >
+    <RNSScreen
+      collapsable={false}
+      gestureResponseDistance={
+        {
+          "bottom": -1,
+          "end": -1,
+          "start": -1,
+          "top": -1,
+        }
+      }
+      nativeBackButtonDismissalEnabled={false}
+      onAppear={[Function]}
+      onDisappear={[Function]}
+      onDismissed={[Function]}
+      onHeaderBackButtonClicked={[Function]}
+      onNativeDismissCancelled={[Function]}
+      onTransitionProgress={[Function]}
+      onWillDisappear={[Function]}
+      replaceAnimation="push"
+      sheetAllowedDetents="large"
+      sheetCornerRadius={-1}
+      sheetExpandsWhenScrolledToEdge={true}
+      sheetGrabberVisible={false}
+      sheetLargestUndimmedDetent="all"
+      stackPresentation="push"
+      style={
+        {
+          "bottom": 0,
+          "left": 0,
+          "position": "absolute",
+          "right": 0,
+          "top": 0,
+        }
+      }
+      swipeDirection="horizontal"
+    >
+      <RNSScreenStackHeaderConfig
+        backButtonInCustomView={false}
+        backTitleVisible={true}
+        backgroundColor="rgb(255, 255, 255)"
+        color="rgb(0, 122, 255)"
+        direction="ltr"
+        disableBackButtonMenu={false}
+        hidden={true}
+        hideBackButton={false}
+        largeTitleHideShadow={false}
+        title="ProductDetail"
+        titleColor="rgb(28, 28, 30)"
+        topInsetEnabled={false}
+        translucent={false}
+      />
+      <View
+        accessibilityElementsHidden={false}
+        importantForAccessibility="auto"
+        style={
+          {
+            "flex": 1,
+            "flexDirection": "column-reverse",
+          }
+        }
+      >
+        <View
+          style={
+            [
+              {
+                "flex": 1,
+              },
+              {
+                "backgroundColor": "rgb(242, 242, 242)",
+              },
+              undefined,
+            ]
+          }
+        >
+          <RCTScrollView
+            contentContainerStyle={
+              {
+                "backgroundColor": "#f6f9ff",
+                "rowGap": 6,
+              }
+            }
+            showsVerticalScrollIndicator={false}
+          >
+            <View>
+              <View>
+                <View
+                  accessibilityIgnoresInvertColors={true}
+                  style={
+                    [
+                      {
+                        "alignItems": "center",
+                        "columnGap": 4,
+                        "flexDirection": "row",
+                      },
+                      {
+                        "justifyContent": "space-between",
+                      },
+                      {
+                        "paddingBottom": 180,
+                        "paddingHorizontal": 12,
+                        "paddingTop": 16,
+                      },
+                    ]
+                  }
+                >
+                  <Image
+                    source={
+                      {
+                        "testUri": "../../../assets/cart/item.png",
+                      }
+                    }
+                    style={
+                      [
+                        {
+                          "bottom": 0,
+                          "left": 0,
+                          "position": "absolute",
+                          "right": 0,
+                          "top": 0,
+                        },
+                        {
+                          "height": undefined,
+                          "width": undefined,
+                        },
+                        undefined,
+                      ]
+                    }
+                  />
+                  <View
+                    accessibilityState={
+                      {
+                        "busy": undefined,
+                        "checked": undefined,
+                        "disabled": undefined,
+                        "expanded": undefined,
+                        "selected": undefined,
+                      }
+                    }
+                    accessibilityValue={
+                      {
+                        "max": undefined,
+                        "min": undefined,
+                        "now": undefined,
+                        "text": undefined,
+                      }
+                    }
+                    accessible={true}
+                    collapsable={false}
+                    focusable={true}
+                    onClick={[Function]}
+                    onResponderGrant={[Function]}
+                    onResponderMove={[Function]}
+                    onResponderRelease={[Function]}
+                    onResponderTerminate={[Function]}
+                    onResponderTerminationRequest={[Function]}
+                    onStartShouldSetResponder={[Function]}
+                    style={
+                      {
+                        "alignSelf": "flex-start",
+                        "backgroundColor": "rgba(255, 255, 255, 0.5)",
+                        "borderRadius": 50,
+                        "opacity": 1,
+                        "padding": 7,
+                      }
+                    }
+                  >
+                    <Image
+                      source={
+                        {
+                          "testUri": "../../../assets/back.png",
+                        }
+                      }
+                      style={
+                        {
+                          "height": 24,
+                          "width": 24,
+                        }
+                      }
+                    />
+                  </View>
+                  <View
+                    style={
+                      [
+                        {
+                          "alignItems": "center",
+                          "columnGap": 4,
+                          "flexDirection": "row",
+                        },
+                      ]
+                    }
+                  >
+                    <View
+                      accessibilityState={
+                        {
+                          "busy": undefined,
+                          "checked": undefined,
+                          "disabled": undefined,
+                          "expanded": undefined,
+                          "selected": undefined,
+                        }
+                      }
+                      accessibilityValue={
+                        {
+                          "max": undefined,
+                          "min": undefined,
+                          "now": undefined,
+                          "text": undefined,
+                        }
+                      }
+                      accessible={true}
+                      collapsable={false}
+                      focusable={true}
+                      onClick={[Function]}
+                      onResponderGrant={[Function]}
+                      onResponderMove={[Function]}
+                      onResponderRelease={[Function]}
+                      onResponderTerminate={[Function]}
+                      onResponderTerminationRequest={[Function]}
+                      onStartShouldSetResponder={[Function]}
+                      style={
+                        {
+                          "alignSelf": "flex-start",
+                          "backgroundColor": "rgba(255, 255, 255, 0.5)",
+                          "borderRadius": 50,
+                          "opacity": 1,
+                          "padding": 7,
+                        }
+                      }
+                    >
+                      <Image
+                        source={
+                          {
+                            "testUri": "../../../assets/share.png",
+                          }
+                        }
+                        style={
+                          {
+                            "height": 24,
+                            "width": 24,
+                          }
+                        }
+                      />
+                    </View>
+                    <View
+                      accessibilityState={
+                        {
+                          "busy": undefined,
+                          "checked": undefined,
+                          "disabled": undefined,
+                          "expanded": undefined,
+                          "selected": undefined,
+                        }
+                      }
+                      accessibilityValue={
+                        {
+                          "max": undefined,
+                          "min": undefined,
+                          "now": undefined,
+                          "text": undefined,
+                        }
+                      }
+                      accessible={true}
+                      collapsable={false}
+                      focusable={true}
+                      onClick={[Function]}
+                      onResponderGrant={[Function]}
+                      onResponderMove={[Function]}
+                      onResponderRelease={[Function]}
+                      onResponderTerminate={[Function]}
+                      onResponderTerminationRequest={[Function]}
+                      onStartShouldSetResponder={[Function]}
+                      style={
+                        {
+                          "alignSelf": "flex-start",
+                          "backgroundColor": "rgba(255, 255, 255, 0.5)",
+                          "borderRadius": 50,
+                          "opacity": 1,
+                          "padding": 7,
+                        }
+                      }
+                    >
+                      <Image
+                        source={
+                          {
+                            "testUri": "../../../assets/heart.png",
+                          }
+                        }
+                        style={
+                          {
+                            "height": 24,
+                            "width": 24,
+                          }
+                        }
+                      />
+                    </View>
+                    <View
+                      accessibilityState={
+                        {
+                          "busy": undefined,
+                          "checked": undefined,
+                          "disabled": undefined,
+                          "expanded": undefined,
+                          "selected": undefined,
+                        }
+                      }
+                      accessibilityValue={
+                        {
+                          "max": undefined,
+                          "min": undefined,
+                          "now": undefined,
+                          "text": undefined,
+                        }
+                      }
+                      accessible={true}
+                      collapsable={false}
+                      focusable={true}
+                      onClick={[Function]}
+                      onResponderGrant={[Function]}
+                      onResponderMove={[Function]}
+                      onResponderRelease={[Function]}
+                      onResponderTerminate={[Function]}
+                      onResponderTerminationRequest={[Function]}
+                      onStartShouldSetResponder={[Function]}
+                      style={
+                        {
+                          "alignSelf": "flex-start",
+                          "backgroundColor": "rgba(255, 255, 255, 0.5)",
+                          "borderRadius": 50,
+                          "opacity": 1,
+                          "padding": 7,
+                        }
+                      }
+                    >
+                      <Image
+                        source={
+                          {
+                            "testUri": "../../../assets/more.png",
+                          }
+                        }
+                        style={
+                          {
+                            "height": 24,
+                            "width": 24,
+                          }
+                        }
+                      />
+                    </View>
+                  </View>
+                </View>
+                <View
+                  style={
+                    {
+                      "backgroundColor": "#fff",
+                      "paddingBottom": 25,
+                      "paddingHorizontal": 16,
+                      "paddingTop": 16,
+                      "rowGap": 10,
+                    }
+                  }
+                >
+                  <Text
+                    style={
+                      [
+                        {
+                          "color": "#fff",
+                          "fontFamily": "Montserrat_700Bold",
+                          "fontSize": 24,
+                        },
+                        false,
+                        {
+                          "color": "#4f4f4f",
+                          "fontSize": 18,
+                        },
+                      ]
+                    }
+                  >
+                    Coca Cola
+                  </Text>
+                  <Text
+                    style={
+                      [
+                        {
+                          "color": "#fff",
+                          "fontFamily": "Montserrat_700Bold",
+                          "fontSize": 24,
+                        },
+                        false,
+                        [
+                          {
+                            "color": "#4f4f4f",
+                            "fontSize": 18,
+                          },
+                          {
+                            "color": "#33907C",
+                          },
+                        ],
+                      ]
+                    }
+                  >
+                    $25
+                  </Text>
+                </View>
+              </View>
+              <View
+                style={
+                  [
+                    {
+                      "alignItems": "center",
+                      "columnGap": 4,
+                      "flexDirection": "row",
+                    },
+                    {
+                      "justifyContent": "space-between",
+                    },
+                    {
+                      "backgroundColor": "#fff",
+                      "paddingHorizontal": 12,
+                      "paddingVertical": 20,
+                    },
+                  ]
+                }
+              >
+                <View
+                  style={
+                    [
+                      {
+                        "alignItems": "center",
+                        "columnGap": 4,
+                        "flexDirection": "row",
+                      },
+                      {
+                        "columnGap": 10,
+                      },
+                      undefined,
+                    ]
+                  }
+                >
+                  <Image
+                    accessibilityLabel="tradly store-avatar"
+                    source={
+                      {
+                        "testUri": "../../../assets/avatar.png",
+                      }
+                    }
+                    style={
+                      [
+                        {
+                          "borderRadius": 50,
+                        },
+                        {
+                          "height": 32,
+                          "width": 32,
+                        },
+                      ]
+                    }
+                  />
+                  <Text
+                    numberOfLines={1}
+                    style={
+                      [
+                        {
+                          "color": "#fff",
+                          "fontFamily": "Montserrat_400Regular",
+                        },
+                        {
+                          "fontSize": 14,
+                        },
+                        {
+                          "color": "#4f4f4f",
+                          "fontFamily": "Montserrat_500Medium",
+                          "textTransform": "capitalize",
+                        },
+                      ]
+                    }
+                  >
+                    tradly store
+                  </Text>
+                </View>
+                <View
+                  accessibilityState={
+                    {
+                      "busy": undefined,
+                      "checked": undefined,
+                      "disabled": undefined,
+                      "expanded": undefined,
+                      "selected": undefined,
+                    }
+                  }
+                  accessibilityValue={
+                    {
+                      "max": undefined,
+                      "min": undefined,
+                      "now": undefined,
+                      "text": undefined,
+                    }
+                  }
+                  accessible={true}
+                  collapsable={false}
+                  focusable={true}
+                  onClick={[Function]}
+                  onResponderGrant={[Function]}
+                  onResponderMove={[Function]}
+                  onResponderRelease={[Function]}
+                  onResponderTerminate={[Function]}
+                  onResponderTerminationRequest={[Function]}
+                  onStartShouldSetResponder={[Function]}
+                  style={
+                    {
+                      "alignSelf": "flex-start",
+                      "backgroundColor": "#33907C",
+                      "borderColor": "#33907C",
+                      "borderRadius": 50,
+                      "borderWidth": 2,
+                      "opacity": 1,
+                      "paddingHorizontal": 23,
+                      "paddingVertical": 4,
+                    }
+                  }
+                >
+                  <View
+                    style={
+                      {
+                        "alignItems": "center",
+                        "columnGap": 6,
+                        "display": "flex",
+                        "flexDirection": "row",
+                        "justifyContent": "center",
+                      }
+                    }
+                  >
+                    <Text
+                      style={
+                        [
+                          {
+                            "color": "#fff",
+                            "fontFamily": "Montserrat_400Regular",
+                          },
+                          {
+                            "fontSize": 16,
+                          },
+                          [
+                            {
+                              "color": "#fff",
+                            },
+                            {
+                              "fontFamily": "Montserrat_500Medium",
+                              "textAlign": "center",
+                              "textTransform": "capitalize",
+                            },
+                            {
+                              "fontSize": 12,
+                            },
+                          ],
+                        ]
+                      }
+                    >
+                      follow
+                    </Text>
+                  </View>
+                </View>
+              </View>
+              <View
+                style={
+                  {
+                    "backgroundColor": "#fff",
+                    "borderRadius": 8,
+                    "paddingBottom": 13,
+                    "paddingHorizontal": 30,
+                    "rowGap": 15,
+                  }
+                }
+              >
+                <Text
+                  style={
+                    [
+                      {
+                        "color": "#fff",
+                        "fontFamily": "Montserrat_400Regular",
+                      },
+                      {
+                        "fontSize": 14,
+                      },
+                      {
+                        "color": "#4f4f4f",
+                        "lineHeight": 20,
+                      },
+                    ]
+                  }
+                >
+                  Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lobortis cras placerat diam ipsum ut. Nisi vel adipiscing massa bibendum diam. Suspendisse mattis dui maecenas duis mattis. Mattis aliquam at arcu, semper nunc, venenatis et pellentesque eu. Id tristique maecenas tristique habitasse eu elementum sed. Aliquam eget lacus, arcu, adipiscing eget feugiat in dolor sagittis.
+Non commodo, a justo massa porttitor sed placerat in. Orci tristique etiam tempus sed. Mi varius morbi egestas dictum tempor nisl. In 
+                </Text>
+              </View>
+              <View
+                style={
+                  {
+                    "backgroundColor": "#fff",
+                    "borderRadius": 8,
+                    "paddingBottom": 13,
+                    "paddingHorizontal": 30,
+                    "rowGap": 15,
+                  }
+                }
+              >
+                <Text
+                  style={
+                    [
+                      {
+                        "color": "#fff",
+                        "fontFamily": "Montserrat_700Bold",
+                        "fontSize": 24,
+                      },
+                      false,
+                      [
+                        {
+                          "color": "#4f4f4f",
+                          "lineHeight": 20,
+                        },
+                        {
+                          "color": "#000",
+                          "fontFamily": "Montserrat_600SemiBold",
+                          "fontSize": 18,
+                          "paddingVertical": 14,
+                          "textTransform": "capitalize",
+                        },
+                      ],
+                    ]
+                  }
+                >
+                  Details
+                </Text>
+                <View
+                  style={
+                    [
+                      {
+                        "alignItems": "center",
+                        "columnGap": 4,
+                        "flexDirection": "row",
+                      },
+                      {
+                        "alignItems": "flex-start",
+                        "columnGap": 32,
+                      },
+                    ]
+                  }
+                >
+                  <View
+                    style={
+                      [
+                        {
+                          "minWidth": 120,
+                          "opacity": 0.7,
+                        },
+                        {
+                          "rowGap": 15,
+                        },
+                      ]
+                    }
+                  >
+                    <Text
+                      style={
+                        [
+                          {
+                            "color": "#fff",
+                            "fontFamily": "Montserrat_400Regular",
+                          },
+                          {
+                            "fontSize": 14,
+                          },
+                          [
+                            {
+                              "color": "#4f4f4f",
+                              "lineHeight": 20,
+                            },
+                            {
+                              "textTransform": "capitalize",
+                            },
+                          ],
+                        ]
+                      }
+                    >
+                      condition
+                    </Text>
+                    <Text
+                      style={
+                        [
+                          {
+                            "color": "#fff",
+                            "fontFamily": "Montserrat_400Regular",
+                          },
+                          {
+                            "fontSize": 14,
+                          },
+                          [
+                            {
+                              "color": "#4f4f4f",
+                              "lineHeight": 20,
+                            },
+                            {
+                              "textTransform": "capitalize",
+                            },
+                          ],
+                        ]
+                      }
+                    >
+                      price type
+                    </Text>
+                    <Text
+                      style={
+                        [
+                          {
+                            "color": "#fff",
+                            "fontFamily": "Montserrat_400Regular",
+                          },
+                          {
+                            "fontSize": 14,
+                          },
+                          [
+                            {
+                              "color": "#4f4f4f",
+                              "lineHeight": 20,
+                            },
+                            {
+                              "textTransform": "capitalize",
+                            },
+                          ],
+                        ]
+                      }
+                    >
+                      category
+                    </Text>
+                    <Text
+                      style={
+                        [
+                          {
+                            "color": "#fff",
+                            "fontFamily": "Montserrat_400Regular",
+                          },
+                          {
+                            "fontSize": 14,
+                          },
+                          [
+                            {
+                              "color": "#4f4f4f",
+                              "lineHeight": 20,
+                            },
+                            {
+                              "textTransform": "capitalize",
+                            },
+                          ],
+                        ]
+                      }
+                    >
+                      location
+                    </Text>
+                  </View>
+                  <View
+                    style={
+                      [
+                        {
+                          "maxWidth": 200,
+                        },
+                        {
+                          "rowGap": 15,
+                        },
+                      ]
+                    }
+                  >
+                    <Text
+                      style={
+                        [
+                          {
+                            "color": "#fff",
+                            "fontFamily": "Montserrat_400Regular",
+                          },
+                          {
+                            "fontSize": 14,
+                          },
+                          [
+                            {
+                              "color": "#4f4f4f",
+                              "lineHeight": 20,
+                            },
+                            {
+                              "textTransform": "capitalize",
+                            },
+                          ],
+                        ]
+                      }
+                    >
+                      organic
+                    </Text>
+                    <Text
+                      style={
+                        [
+                          {
+                            "color": "#fff",
+                            "fontFamily": "Montserrat_400Regular",
+                          },
+                          {
+                            "fontSize": 14,
+                          },
+                          [
+                            {
+                              "color": "#4f4f4f",
+                              "lineHeight": 20,
+                            },
+                            {
+                              "textTransform": "capitalize",
+                            },
+                          ],
+                        ]
+                      }
+                    >
+                      fixed
+                    </Text>
+                    <Text
+                      style={
+                        [
+                          {
+                            "color": "#fff",
+                            "fontFamily": "Montserrat_400Regular",
+                          },
+                          {
+                            "fontSize": 14,
+                          },
+                          [
+                            {
+                              "color": "#4f4f4f",
+                              "lineHeight": 20,
+                            },
+                            {
+                              "textTransform": "capitalize",
+                            },
+                          ],
+                        ]
+                      }
+                    >
+                      beverages
+                    </Text>
+                    <Text
+                      style={
+                        [
+                          {
+                            "color": "#fff",
+                            "fontFamily": "Montserrat_400Regular",
+                          },
+                          {
+                            "fontSize": 14,
+                          },
+                          [
+                            {
+                              "color": "#4f4f4f",
+                              "lineHeight": 20,
+                            },
+                            {
+                              "textTransform": "capitalize",
+                            },
+                          ],
+                        ]
+                      }
+                    >
+                      kualalumpur, malaysia
+                    </Text>
+                  </View>
+                </View>
+              </View>
+              <View
+                style={
+                  {
+                    "backgroundColor": "#fff",
+                    "borderRadius": 8,
+                    "paddingBottom": 13,
+                    "paddingHorizontal": 30,
+                    "rowGap": 15,
+                  }
+                }
+              >
+                <Text
+                  style={
+                    [
+                      {
+                        "color": "#fff",
+                        "fontFamily": "Montserrat_700Bold",
+                        "fontSize": 24,
+                      },
+                      false,
+                      [
+                        {
+                          "color": "#4f4f4f",
+                          "lineHeight": 20,
+                        },
+                        {
+                          "color": "#000",
+                          "fontFamily": "Montserrat_600SemiBold",
+                          "fontSize": 18,
+                          "paddingVertical": 14,
+                          "textTransform": "capitalize",
+                        },
+                      ],
+                    ]
+                  }
+                >
+                  Additional Details
+                </Text>
+                <View
+                  style={
+                    [
+                      {
+                        "alignItems": "center",
+                        "columnGap": 4,
+                        "flexDirection": "row",
+                      },
+                      {
+                        "alignItems": "flex-start",
+                        "columnGap": 32,
+                      },
+                    ]
+                  }
+                >
+                  <View
+                    style={
+                      [
+                        {
+                          "minWidth": 120,
+                          "opacity": 0.7,
+                        },
+                        {
+                          "rowGap": 15,
+                        },
+                      ]
+                    }
+                  >
+                    <Text
+                      style={
+                        [
+                          {
+                            "color": "#fff",
+                            "fontFamily": "Montserrat_400Regular",
+                          },
+                          {
+                            "fontSize": 14,
+                          },
+                          [
+                            {
+                              "color": "#4f4f4f",
+                              "lineHeight": 20,
+                            },
+                            {
+                              "textTransform": "capitalize",
+                            },
+                          ],
+                        ]
+                      }
+                    >
+                      delivery details
+                    </Text>
+                  </View>
+                  <View
+                    style={
+                      [
+                        {
+                          "maxWidth": 200,
+                        },
+                        {
+                          "rowGap": 15,
+                        },
+                      ]
+                    }
+                  >
+                    <Text
+                      style={
+                        [
+                          {
+                            "color": "#fff",
+                            "fontFamily": "Montserrat_400Regular",
+                          },
+                          {
+                            "fontSize": 14,
+                          },
+                          [
+                            {
+                              "color": "#4f4f4f",
+                              "lineHeight": 20,
+                            },
+                            {
+                              "textTransform": "capitalize",
+                            },
+                          ],
+                        ]
+                      }
+                    >
+                      Home Delivery Available, Cash On Delivery
+                    </Text>
+                  </View>
+                </View>
+              </View>
+            </View>
+          </RCTScrollView>
+          <View
+            style={
+              [
+                {
+                  "paddingHorizontal": 16,
+                  "paddingVertical": 22,
+                },
+                {
+                  "backgroundColor": "#33907C",
+                  "rowGap": 24,
+                },
+                {
+                  "paddingTop": 0,
+                },
+                [
+                  {
+                    "backgroundColor": "#fff",
+                    "paddingHorizontal": 32,
+                  },
+                  {
+                    "shadowColor": "#000",
+                    "shadowOffset": {
+                      "height": 12,
+                      "width": 0,
+                    },
+                    "shadowOpacity": 0.6,
+                    "shadowRadius": 16,
+                  },
+                  {
+                    "paddingBottom": 12,
+                    "paddingTop": 12,
+                  },
+                  undefined,
+                ],
+              ]
+            }
+          >
+            <View
+              style={
+                [
+                  {
+                    "alignItems": "center",
+                    "columnGap": 4,
+                    "flexDirection": "row",
+                  },
+                  {
+                    "justifyContent": "space-between",
+                  },
+                ]
+              }
+            >
+              <View
+                accessibilityState={
+                  {
+                    "busy": undefined,
+                    "checked": undefined,
+                    "disabled": undefined,
+                    "expanded": undefined,
+                    "selected": undefined,
+                  }
+                }
+                accessibilityValue={
+                  {
+                    "max": undefined,
+                    "min": undefined,
+                    "now": undefined,
+                    "text": undefined,
+                  }
+                }
+                accessible={true}
+                collapsable={false}
+                focusable={true}
+                onClick={[Function]}
+                onResponderGrant={[Function]}
+                onResponderMove={[Function]}
+                onResponderRelease={[Function]}
+                onResponderTerminate={[Function]}
+                onResponderTerminationRequest={[Function]}
+                onStartShouldSetResponder={[Function]}
+                style={
+                  {
+                    "backgroundColor": "#33907C",
+                    "borderColor": "#33907C",
+                    "borderRadius": 50,
+                    "borderWidth": 2,
+                    "flex": 1,
+                    "opacity": 1,
+                    "paddingVertical": 13,
+                  }
+                }
+              >
+                <View
+                  style={
+                    {
+                      "alignItems": "center",
+                      "columnGap": 6,
+                      "display": "flex",
+                      "flexDirection": "row",
+                      "justifyContent": "center",
+                    }
+                  }
+                >
+                  <Text
+                    style={
+                      [
+                        {
+                          "color": "#fff",
+                          "fontFamily": "Montserrat_400Regular",
+                        },
+                        {
+                          "fontSize": 16,
+                        },
+                        [
+                          {
+                            "color": "#fff",
+                          },
+                          {
+                            "fontFamily": "Montserrat_500Medium",
+                            "textAlign": "center",
+                            "textTransform": "capitalize",
+                          },
+                          undefined,
+                        ],
+                      ]
+                    }
+                  >
+                    Add To Cart
+                  </Text>
+                </View>
+              </View>
+            </View>
+          </View>
+        </View>
+      </View>
+    </RNSScreen>
+  </RNSScreenStack>
+</View>
+`;
