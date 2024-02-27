@@ -8,8 +8,8 @@ import { COLORS } from '@constants'
 
 import styles from './styles'
 
-const BrowseBar = lazy(() => import('../../components/Bar/Instance/Browse'))
-const HomeBar = lazy(() => import('../../components/Bar/Instance/Home'))
+const BrowseBar = lazy(() => import('../../../shared/components/Bar/Instance/Browse'))
+const HomeBar = lazy(() => import('../../../shared/components/Bar/Instance/Home'))
 
 export type TabParamsList = {
   HomeTab: undefined
