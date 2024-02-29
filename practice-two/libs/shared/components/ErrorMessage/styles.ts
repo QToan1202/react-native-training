@@ -3,14 +3,14 @@ import { StyleSheet } from 'react-native'
 import { COLORS } from '@practice-two/shared'
 
 const styles = StyleSheet.create({
-  shadow: {
-    shadowColor: COLORS.BLACK,
-    shadowOffset: {
-      width: 0,
-      height: 12,
-    },
-    shadowOpacity: 0.6,
-    shadowRadius: 16,
+  errorWrapper: {
+    height: 20,
+  },
+  error: {
+    paddingLeft: 20,
+    color: COLORS.RED,
+    fontSize: 13,
+    lineHeight: 20,
   },
 })
 

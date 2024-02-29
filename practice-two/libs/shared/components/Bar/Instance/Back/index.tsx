@@ -1,7 +1,7 @@
 import { memo, useCallback } from 'react'
 import { NativeStackHeaderProps } from '@react-navigation/native-stack'
 
-import Bar from '@components/Bar'
+import { Bar } from '@practice-two/shared'
 
 const BackBar = ({ options, route, navigation }: NativeStackHeaderProps) => {
   // eslint-disable-next-line react-hooks/exhaustive-deps

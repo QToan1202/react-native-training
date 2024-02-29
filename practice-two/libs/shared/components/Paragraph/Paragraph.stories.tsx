@@ -17,7 +17,7 @@ Default.args = {
 export const TextWithSize = Template.bind({})
 TextWithSize.args = {
   content: 'My bigger text',
-  size: '$2',
+  fontSize: '$2',
 }
 
 export const TextWithCustomStyle = Template.bind({})

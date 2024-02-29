@@ -3,13 +3,11 @@ import isEqual from 'react-fast-compare'
 import { XStack, YStack, getTokenValue } from 'tamagui'
 import { NativeStackHeaderProps } from '@react-navigation/native-stack'
 
-import Button, { ButtonProps } from '@components/Button'
-import Search from '@components/Search'
-import IconButton from '@components/IconButton'
+import { Button, Search, IconButton, Bar } from '@practice-two/shared'
 import LoveIcon from '@assets/love.svg'
 import CartIcon from '@assets/cart.svg'
-import Bar from '@components/Bar'
 
+import { ButtonProps } from 'libs/shared/components/Button'
 import styles from './styles'
 
 const BrowseBar = ({ navigation, options, route }: NativeStackHeaderProps) => {

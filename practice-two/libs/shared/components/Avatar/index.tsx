@@ -3,7 +3,7 @@ import isEqual from 'react-fast-compare'
 import { getTokens, Circle, SizeTokens } from 'tamagui'
 import { ImageStyle, StyleProp } from 'react-native'
 
-import Paragraph from '@components/Paragraph'
+import { Paragraph } from '@practice-two/shared'
 
 import StyledStack, { StyledImage, StyledImageProps, StyledStackProps } from './styles'
 

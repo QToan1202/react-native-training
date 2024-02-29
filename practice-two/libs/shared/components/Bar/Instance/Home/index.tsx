@@ -2,9 +2,7 @@ import { memo, useCallback, useMemo } from 'react'
 import { NativeStackHeaderProps } from '@react-navigation/native-stack'
 import { getTokenValue } from 'tamagui'
 
-import Search from '@components/Search'
-import Bar from '@components/Bar'
-import IconButton from '@components/IconButton'
+import { Search, Bar, IconButton } from '@practice-two/shared'
 import LoveIcon from '@assets/love.svg'
 import CartIcon from '@assets/cart.svg'
 

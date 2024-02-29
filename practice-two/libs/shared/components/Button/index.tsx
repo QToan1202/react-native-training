@@ -2,7 +2,7 @@ import { memo, useMemo } from 'react'
 import { Image, ImageSourcePropType } from 'react-native'
 import isEqual from 'react-fast-compare'
 
-import { imageStyles } from '@styles'
+import { imageStyles } from '@practice-two/shared'
 
 import ButtonStyled, { ButtonProps as StyledButtonProps } from './styles'
 

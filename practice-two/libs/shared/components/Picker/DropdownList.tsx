@@ -2,8 +2,7 @@ import { useCallback } from 'react'
 import { Stack, StackProps } from 'tamagui'
 import { FlatList, ListRenderItem } from 'react-native'
 
-import { IDropDownItem } from '@types'
-import Button from '@components/Button'
+import { Button, IDropDownItem } from '@practice-two/shared'
 
 export type DropDownListProps<T> = StackProps & {
   listData: T[]
