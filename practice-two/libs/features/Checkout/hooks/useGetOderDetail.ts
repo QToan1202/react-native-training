@@ -1,7 +1,6 @@
 import { UseQueryResult, useQuery } from '@tanstack/react-query'
 
-import { find } from '@services'
-import { IOrder } from '@types'
+import { find, IOrder } from '@practice-two/shared'
 
 const useGetOderDetail = (path: string, id: string): UseQueryResult<IOrder, Error> => {
   return useQuery<IOrder, Error>({

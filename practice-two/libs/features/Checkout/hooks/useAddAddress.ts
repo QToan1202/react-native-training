@@ -1,8 +1,6 @@
 import { UseMutationResult, useMutation } from '@tanstack/react-query'
 
-import { add } from '@services'
-import { IAddress } from '@types'
-import { useOrderStore } from '@stores'
+import { add, IAddress, useOrderStore } from '@practice-two/shared'
 
 const useAddAddress = (
   path: string
