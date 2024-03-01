@@ -1,7 +1,7 @@
 import { StyleSheet } from 'react-native'
 import { GetProps, RadioGroup, styled } from 'tamagui'
 
-import { COLORS } from '@constants'
+import { COLORS } from '@practice-two/shared'
 
 const styles = StyleSheet.create({
   normal: {

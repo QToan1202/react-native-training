@@ -1,7 +1,7 @@
 import { GetProps, styled } from 'tamagui'
 import { Image } from 'react-native'
 
-import Paragraph from '@components/Paragraph'
+import { Paragraph } from '@practice-two/shared'
 
 export const StyledText = styled(Paragraph, {
   content: '',

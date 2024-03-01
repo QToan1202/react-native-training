@@ -8,8 +8,7 @@ import {
   ViewStyle,
 } from 'react-native'
 
-import Paragraph from '@components/Paragraph'
-import Button from '@components/Button'
+import { Paragraph, Button } from '@practice-two/shared'
 import styles from './styles'
 
 export interface SliderItemProps extends ImageBackgroundProps {

@@ -1,8 +1,7 @@
 import { GetProps, styled } from 'tamagui'
 import { Image, ImageBackground, StyleSheet } from 'react-native'
 
-import Paragraph from '@components/Paragraph'
-import { COLORS } from '@constants'
+import { Paragraph, COLORS } from '@practice-two/shared'
 
 export const StyledImageBackground = styled(ImageBackground, {
   name: 'ImageBackground',

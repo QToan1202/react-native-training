@@ -3,7 +3,7 @@ import isEqual from 'react-fast-compare'
 import { Image } from 'react-native'
 import { View, YStackProps } from 'tamagui'
 
-import Paragraph from '@components/Paragraph'
+import { Paragraph } from '@practice-two/shared'
 import { styles } from './styles'
 
 export type PlaceHolderProps = YStackProps & {

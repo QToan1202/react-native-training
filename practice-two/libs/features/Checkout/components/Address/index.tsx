@@ -2,8 +2,7 @@ import { memo } from 'react'
 import isEqual from 'react-fast-compare'
 import { XStack, XStackProps, YStack, getTokens } from 'tamagui'
 
-import Button from '@components/Button'
-import Paragraph from '@components/Paragraph'
+import { Button, Paragraph } from '@practice-two/shared'
 
 export type AddressProps = {
   name: string

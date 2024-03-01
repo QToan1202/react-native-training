@@ -2,7 +2,7 @@ import { memo, useCallback, useMemo, useState } from 'react'
 import isEqual from 'react-fast-compare'
 import { Label, RadioGroup, RadioGroupProps, Separator, XStack, YStack } from 'tamagui'
 
-import { IRadioItem } from '@types'
+import { IRadioItem } from '@practice-two/shared'
 
 import styles, { StyledIndicator, StyledItem } from './styles'
 

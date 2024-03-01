@@ -1,6 +1,6 @@
 import { ComponentMeta, ComponentStory } from '@storybook/react-native'
 
-import { PAYMENT_METHODS } from '@constants'
+import { PAYMENT_METHODS } from '@practice-two/shared'
 
 import { Radio } from '../index'
 

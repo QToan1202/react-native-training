@@ -1,6 +1,6 @@
 import { StyleSheet } from 'react-native'
 
-import { COLORS, FONT_FAMILY } from '@constants'
+import { COLORS, FONT_FAMILY } from '@practice-two/shared'
 
 const styles = StyleSheet.create({
   text: {

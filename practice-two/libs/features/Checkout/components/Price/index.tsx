@@ -3,9 +3,7 @@ import isEqual from 'react-fast-compare'
 import { Dimensions } from 'react-native'
 import { Separator, XStack, YStack, YStackProps } from 'tamagui'
 
-import Heading from '@components/Heading'
-import Paragraph from '@components/Paragraph'
-import { ICart } from '@types'
+import { Heading, Paragraph, ICart } from '@practice-two/shared'
 
 import styles from './styles'
 
