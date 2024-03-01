@@ -13,15 +13,15 @@ import { Spinner, TamaguiProvider } from 'tamagui'
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
 import { useShallow } from 'zustand/react/shallow'
 import * as Notifications from 'expo-notifications'
-import * as ExpoLinking from 'expo-linking'
+import { registerRootComponent } from 'expo'
 
-import { LinkingOptions, NavigationContainer, NavigationState } from '@react-navigation/native'
-import { StackNavigation } from '@navigation'
-import { useAuthStore, useNavigationStore } from '@stores'
+import { NavigationContainer, NavigationState } from '@react-navigation/native'
+import { StackNavigation, useAuthStore, useNavigationStore } from '@practice-two/shared'
+import { notificationLinking } from '@practice-two/features'
 
-import styles from './App.styles'
-import StorybookUI from './.storybook'
-import config from './tamagui.config'
+import styles from './styles'
+import StorybookUI from '../../.storybook'
+import config from '../../tamagui.config'
 
 SplashScreen.preventAutoHideAsync()
 const queryClient = new QueryClient()
@@ -56,47 +56,6 @@ const App = () => {
       await SplashScreen.hideAsync()
     }
   }, [isFontsLoaded, isHydrated])
-
-  const linking: LinkingOptions<ReactNavigation.RootParamList> = {
-    prefixes: [ExpoLinking.createURL('/')],
-    config: {
-      screens: {
-        HomeStack: {
-          path: 'home',
-          screens: {
-            OrderDetail: 'orders/:id',
-          },
-        },
-      },
-    },
-    async getInitialURL() {
-      const url = await Linking.getInitialURL()
-
-      if (url !== null) return url
-      const response: Notifications.NotificationResponse | null =
-        await Notifications.getLastNotificationResponseAsync()
-
-      return response?.notification.request.content.data.redirect
-    },
-
-    subscribe(listener) {
-      const onReceiveURL = ({ url }: { url: string }) => listener(url)
-      const eventListenerSubscription = Linking.addEventListener('url', onReceiveURL)
-
-      const subscription = Notifications.addNotificationResponseReceivedListener(
-        (response: Notifications.NotificationResponse) => {
-          const url = response.notification.request.content.data.redirect
-
-          listener(url)
-        }
-      )
-
-      return () => {
-        eventListenerSubscription.remove()
-        subscription.remove()
-      }
-    },
-  }
 
   const restoreState = useCallback(async () => {
     try {
@@ -133,7 +92,7 @@ const App = () => {
         <SafeAreaProvider style={styles.container} onLayout={onLayoutRootView}>
           <Suspense fallback={<Spinner size="large" color="$color.primary" />}>
             <NavigationContainer
-              linking={linking}
+              linking={notificationLinking}
               initialState={initState}
               onStateChange={handleStateChange}
             >
@@ -152,4 +111,4 @@ const App = () => {
 
 const ENABLE_SB = false
 
-export default ENABLE_SB ? StorybookUI : App
+export default ENABLE_SB ? registerRootComponent(StorybookUI) : registerRootComponent(App)
