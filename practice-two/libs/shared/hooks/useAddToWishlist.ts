@@ -1,7 +1,7 @@
 import { UseMutationResult, useMutation, useQueryClient } from '@tanstack/react-query'
 
-import { add } from '@services'
-import { IWishlistBase } from '@types'
+import { add } from '../services'
+import { IWishlistBase } from '../types'
 
 const useAddToWishlist = (
   path: string,

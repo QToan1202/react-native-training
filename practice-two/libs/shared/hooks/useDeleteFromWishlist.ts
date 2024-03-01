@@ -1,8 +1,8 @@
 import { AxiosResponse } from 'axios'
 import { UseMutationResult, useMutation, useQueryClient } from '@tanstack/react-query'
 
-import { remove } from '@services'
-import { IWishlistBase } from '@types'
+import { remove } from '../services'
+import { IWishlistBase } from '../types'
 
 const useDeleteFromWishlist = (
   path: string,

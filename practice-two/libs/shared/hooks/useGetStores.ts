@@ -1,7 +1,7 @@
 import { UseQueryResult, useQuery } from '@tanstack/react-query'
 
-import { get } from '@services'
-import { IStore } from '@types'
+import { get } from '../services'
+import { IStore } from '../types'
 
 const useGetStores = (path: string): UseQueryResult<IStore[], Error> => {
   return useQuery<IStore[], Error, IStore[], string[]>({
