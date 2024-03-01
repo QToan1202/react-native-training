@@ -3,13 +3,13 @@ import { View } from 'react-native'
 import { NavigationProp } from '@react-navigation/native'
 import { BottomTabHeaderProps, createBottomTabNavigator } from '@react-navigation/bottom-tabs'
 
-import { TabIcon } from '@components'
-import { COLORS } from '@constants'
+import { TabIcon } from '../../components'
+import { COLORS } from '../../constants'
 
 import styles from './styles'
 
-const BrowseBar = lazy(() => import('../../../shared/components/Bar/Instance/Browse'))
-const HomeBar = lazy(() => import('../../../shared/components/Bar/Instance/Home'))
+const BrowseBar = lazy(() => import('../../components/Bar/Instance/Browse'))
+const HomeBar = lazy(() => import('../../components/Bar/Instance/Home'))
 
 export type TabParamsList = {
   HomeTab: undefined
@@ -61,7 +61,7 @@ const BottomNav = () => {
     >
       <Tab.Screen
         name="HomeTab"
-        getComponent={() => require('@screens/Dashboard').default}
+        getComponent={() => require('../../../features/Dashboard/screens').default}
         options={{
           headerTitle: 'groceries',
           header: (props: BottomTabHeaderProps) => CustomHeader(HomeBar, props),
@@ -70,7 +70,7 @@ const BottomNav = () => {
       />
       <Tab.Screen
         name="BrowseTab"
-        getComponent={() => require('@screens/Browse').default}
+        getComponent={() => require('../../../features/Browse/screens').default}
         options={{
           headerTitle: 'browse',
           header: (props: BottomTabHeaderProps) => CustomHeader(BrowseBar, props),
