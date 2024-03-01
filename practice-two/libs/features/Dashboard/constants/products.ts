@@ -2,7 +2,6 @@ import { ImageBackgroundProps } from 'react-native'
 
 import { IFlatListBase } from '@practice-two/shared'
 import { SliderItemProps } from 'libs/features/Dashboard/components/SliderItem'
-import { ProductCardProps } from 'libs/shared/components/ProductCard'
 
 export interface ISliderItem extends IFlatListBase, Omit<SliderItemProps, 'id' | 'onPress'> {}
 
@@ -69,34 +68,4 @@ const CATEGORY_DATA: ICategoryItem[] = [
   },
 ]
 
-export type IProductItem = IFlatListBase & Omit<ProductCardProps, 'onPress'>
-
-const PRODUCT_DATA: IProductItem[] = [
-  {
-    id: '1',
-    img: require('@assets/product/coca.png'),
-    title: 'coca cola',
-    avatar: require('@assets/avatar.png'),
-    storeName: 'tradly',
-    price: 222.6,
-  },
-  {
-    id: '2',
-    img: require('@assets/product/coca.png'),
-    title: 'coca cola',
-    avatar: require('@assets/avatar.png'),
-    storeName: 'tradly',
-    price: 222.6,
-  },
-  {
-    id: '3',
-    img: require('@assets/product/coca.png'),
-    title: 'coca cola',
-    avatar: require('@assets/avatar.png'),
-    storeName: 'tradly',
-    price: 222.6,
-    discountPrice: 12,
-  },
-]
-
-export default { SLIDER_DATA, CATEGORY_DATA, PRODUCT_DATA }
+export default { SLIDER_DATA, CATEGORY_DATA }

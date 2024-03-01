@@ -1,8 +1,9 @@
 import { useFocusEffect } from '@react-navigation/native'
 import { NativeStackScreenProps } from '@react-navigation/native-stack'
 
-import { DASHBOARD, renderItem, WrapList, ProductCard } from '@practice-two/shared'
+import { renderItem, WrapList, ProductCard } from '@practice-two/shared'
 import { RootStackParamList } from 'libs/shared/navigation/Stack'
+import { PRODUCT_DATA } from '../constants'
 
 import styles from './styles'
 
@@ -20,7 +21,7 @@ const CategoryDetail = ({ route, navigation }: CategoryDetailScreenProps) => {
     <WrapList
       keyExtractor={({ id }): string => id}
       style={styles.container}
-      data={DASHBOARD.PRODUCT_DATA}
+      data={PRODUCT_DATA}
       renderItem={renderItem(ProductCard)}
       numColumns={2}
       showsHorizontalScrollIndicator={false}
