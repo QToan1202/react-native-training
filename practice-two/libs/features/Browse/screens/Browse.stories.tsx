@@ -1,6 +1,6 @@
 import { ComponentMeta, ComponentStory } from '@storybook/react-native'
 
-import { Browse } from '../index'
+import { Browse } from '../../index'
 
 export default {
   title: 'screens/Browse',

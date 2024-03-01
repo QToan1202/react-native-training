@@ -6,15 +6,22 @@ import { BottomTabScreenProps } from '@react-navigation/bottom-tabs'
 import { CompositeScreenProps } from '@react-navigation/native'
 import { NativeStackScreenProps } from '@react-navigation/native-stack'
 
-import { RootStackParamList } from '@navigation/Stack'
-import { TabParamsList } from '@navigation/Tab'
-import { Button, Heading, MenuCard, ProductCard, SliderItem, StoreCard } from '@components'
-import { DASHBOARD } from '@constants'
-import { ICategoryItem, ISliderItem } from '@constants/screens/dashboard'
-import { renderItem } from '@utils'
-import { useGetProducts, useGetStores } from '@hooks'
-import { IProduct, IStore } from '@types'
-import { useCacheStore } from '@stores'
+import {
+  Button,
+  Heading,
+  ProductCard,
+  StoreCard,
+  renderItem,
+  IProduct,
+  IStore,
+  useGetProducts,
+  useGetStores,
+  useCacheStore,
+} from '@practice-two/shared'
+import { TabParamsList } from 'libs/shared/navigation/Tab'
+import { RootStackParamList } from 'libs/shared/navigation/Stack'
+import { DASHBOARD, ICategoryItem, ISliderItem } from '../constants'
+import { MenuCard, SliderItem } from '../components'
 
 import styles from './styles'
 

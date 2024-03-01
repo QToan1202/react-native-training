@@ -5,11 +5,10 @@ import { NativeStackScreenProps } from '@react-navigation/native-stack'
 import { ScrollView, XStack, YStack } from 'tamagui'
 import { useShallow } from 'zustand/react/shallow'
 
-import { RootStackParamList } from '@navigation/Stack'
-import { Bar, Input, PaymentCard, TabBar } from '@components'
-import { ICardBase, IForm } from '@types'
-import { useAddCard } from '@hooks'
-import { useAuthStore } from '@stores'
+import { Bar, Input, TabBar, ICardBase, IForm, useAuthStore } from '@practice-two/shared'
+import { RootStackParamList } from 'libs/shared/navigation/Stack'
+import { useAddCard } from '../../hooks'
+import { PaymentCard } from '../../components'
 
 import styles from './styles'
 

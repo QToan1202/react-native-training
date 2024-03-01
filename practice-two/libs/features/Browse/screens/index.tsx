@@ -5,12 +5,16 @@ import { CompositeScreenProps } from '@react-navigation/native'
 import { BottomTabScreenProps } from '@react-navigation/bottom-tabs'
 import { NativeStackScreenProps } from '@react-navigation/native-stack'
 
-import { RootStackParamList } from '@navigation/Stack'
-import { TabParamsList } from '@navigation/Tab'
-import { ProductCard, Heading, Paragraph } from '@components'
-import { useGetProducts } from '@hooks'
-import { IProduct } from '@types'
-import { productListStyles } from '@styles'
+import {
+  ProductCard,
+  Heading,
+  Paragraph,
+  IProduct,
+  productListStyles,
+  useGetProducts,
+} from '@practice-two/shared'
+import { TabParamsList } from 'libs/shared/navigation/Tab'
+import { RootStackParamList } from 'libs/shared/navigation/Stack'
 
 export type BrowseScreenProps = CompositeScreenProps<
   BottomTabScreenProps<TabParamsList, 'BrowseTab'>,

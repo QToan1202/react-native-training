@@ -1,6 +1,6 @@
 import { ComponentMeta, ComponentStory } from '@storybook/react-native'
 
-import { SignUp } from '../index'
+import SignUp from './index'
 
 export default {
   title: 'screens/SignUp',

@@ -2,13 +2,19 @@ import { useCallback, useMemo } from 'react'
 import { Spinner, YStack } from 'tamagui'
 import { FlatList, ListRenderItem } from 'react-native'
 import { NativeStackScreenProps } from '@react-navigation/native-stack'
-import { RootStackParamList } from '@navigation/Stack'
 
-import { ProductCard, Heading, Paragraph } from '@components'
-import { useGetProducts, useGetWishlist } from '@hooks'
-import { IProduct, IWishlistBase } from '@types'
-import { productListStyles } from '@styles'
-import { useAuthStore } from '@stores'
+import {
+  ProductCard,
+  Heading,
+  Paragraph,
+  useGetProducts,
+  useGetWishlist,
+  IProduct,
+  IWishlistBase,
+  productListStyles,
+  useAuthStore,
+} from '@practice-two/shared'
+import { RootStackParamList } from 'libs/shared/navigation/Stack'
 
 export type WishlistScreenProps = NativeStackScreenProps<RootStackParamList, 'Wishlist'>
 

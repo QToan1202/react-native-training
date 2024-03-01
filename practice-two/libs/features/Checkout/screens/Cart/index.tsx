@@ -3,10 +3,17 @@ import { NativeStackScreenProps } from '@react-navigation/native-stack'
 import { ScrollView, YStack, Spinner } from 'tamagui'
 import { useShallow } from 'zustand/react/shallow'
 
-import { RootStackParamList } from '@navigation/Stack'
-import { Address, Button, CartItem, Heading, Paragraph, Price, TabBar } from '@components'
-import { useCartStore, useOrderStore } from '@stores'
-import { ICart } from '@types'
+import {
+  Button,
+  Heading,
+  Paragraph,
+  TabBar,
+  ICart,
+  useCartStore,
+  useOrderStore,
+} from '@practice-two/shared'
+import { RootStackParamList } from 'libs/shared/navigation/Stack'
+import { Address, CartItem, Price } from '../../components'
 
 export type CartScreenProps = NativeStackScreenProps<RootStackParamList, 'Cart'>
 

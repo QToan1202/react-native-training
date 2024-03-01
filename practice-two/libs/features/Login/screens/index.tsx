@@ -5,13 +5,19 @@ import { SubmitHandler, useForm } from 'react-hook-form'
 import { SafeAreaView } from 'react-native-safe-area-context'
 
 import { NativeStackScreenProps } from '@react-navigation/native-stack'
-import { RootStackParamList } from '@navigation/Stack'
-import { Button, Heading, Input, Paragraph } from '@components'
-import { IForm } from '@types'
-import { COLORS, ERROR_MESSAGES } from '@constants'
-import { useLogin } from '@hooks'
-import { asyncStoreService } from '@services'
-import { useAuthStore } from '@stores'
+import {
+  Button,
+  Heading,
+  Input,
+  Paragraph,
+  IForm,
+  COLORS,
+  ERROR_MESSAGES,
+  asyncStoreService,
+  useAuthStore,
+} from '@practice-two/shared'
+import { RootStackParamList } from 'libs/shared/navigation/Stack'
+import { useLogin } from '../hooks'
 
 import styles from './styles'
 

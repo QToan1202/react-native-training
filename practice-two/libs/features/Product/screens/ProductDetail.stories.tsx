@@ -1,6 +1,6 @@
 import { ComponentMeta, ComponentStory } from '@storybook/react-native'
 
-import { ProductDetail } from '../index'
+import ProductDetail from './index'
 
 export default {
   title: 'screens/Product Detail',

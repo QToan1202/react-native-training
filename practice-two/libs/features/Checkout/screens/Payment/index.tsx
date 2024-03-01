@@ -5,12 +5,19 @@ import { NativeStackScreenProps } from '@react-navigation/native-stack'
 import { ScrollView, XStack, YStack } from 'tamagui'
 import { useShallow } from 'zustand/react/shallow'
 
-import { RootStackParamList } from '@navigation/Stack'
-import { Address, PaymentCard, PaymentCardPlaceholder, Price, Radio, TabBar } from '@components'
-import { PAYMENT_METHODS } from '@constants'
-import { ICardBase, ICart, IOrder } from '@types'
-import { useAuthStore, useCartStore, useOrderStore } from '@stores'
-import { useGetCard, useOrderProduct } from '@hooks'
+import {
+  TabBar,
+  ICardBase,
+  ICart,
+  IOrder,
+  useAuthStore,
+  useCartStore,
+  useOrderStore,
+} from '@practice-two/shared'
+import { RootStackParamList } from 'libs/shared/navigation/Stack'
+import { Address, PaymentCard, PaymentCardPlaceholder, Price, Radio } from '../../components'
+import { PAYMENT_METHODS } from '../../constants'
+import { useGetCard, useOrderProduct } from '../../hooks'
 
 import styles from './styles'
 

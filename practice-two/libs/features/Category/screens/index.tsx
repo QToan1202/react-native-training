@@ -1,15 +1,12 @@
 import { useFocusEffect } from '@react-navigation/native'
 import { NativeStackScreenProps } from '@react-navigation/native-stack'
-import { RootStackParamList } from '@navigation/Stack'
 
-import { DASHBOARD } from '@constants'
-import { renderItem } from '@utils'
-import { WrapList, ProductCard } from '@components'
+import { DASHBOARD, renderItem, WrapList, ProductCard } from '@practice-two/shared'
+import { RootStackParamList } from 'libs/shared/navigation/Stack'
 
 import styles from './styles'
 
-export interface CategoryDetailScreenProps
-  extends NativeStackScreenProps<RootStackParamList, 'CategoryDetail'> {}
+export type CategoryDetailScreenProps = NativeStackScreenProps<RootStackParamList, 'CategoryDetail'>
 
 const CategoryDetail = ({ route, navigation }: CategoryDetailScreenProps) => {
   // TODO: Change data

@@ -3,10 +3,10 @@ import { Dimensions, Image } from 'react-native'
 import { NativeStackScreenProps } from '@react-navigation/native-stack'
 import { ScrollView, Separator, Spinner, XStack, YStack } from 'tamagui'
 
-import { Button, CartItem, Heading, Paragraph, TrackerItem } from '@components'
-import { RootStackParamList } from '@navigation/Stack'
-import { ICart } from '@types'
-import { useFindMultiProduct, useGetOderDetail } from '@hooks'
+import { Button, Heading, Paragraph, ICart } from '@practice-two/shared'
+import { RootStackParamList } from 'libs/shared/navigation/Stack'
+import { CartItem, TrackerItem } from '../../components'
+import { useFindMultiProduct, useGetOderDetail } from '../../hooks'
 
 export type OrderDetailScreenProps = NativeStackScreenProps<RootStackParamList, 'OrderDetail'>
 

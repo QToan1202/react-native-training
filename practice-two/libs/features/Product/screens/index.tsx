@@ -6,18 +6,32 @@ import { NativeStackScreenProps } from '@react-navigation/native-stack'
 import { useSafeAreaInsets } from 'react-native-safe-area-context'
 import { useShallow } from 'zustand/react/shallow'
 
-import { Avatar, Button, Heading, IconButton, Paragraph, TabBar } from '@components'
-import { CATEGORY } from '@constants'
-import { useAddToWishlist, useDeleteFromWishlist, useFindProduct, useGetWishlist } from '@hooks'
-import { useAuthStore, useCacheStore, useCartStore } from '@stores'
-import { RootStackParamList } from '@navigation/Stack'
-import { IProduct, IWishlistBase } from '@types'
-import { calculateDiscount } from '@utils'
+import {
+  Avatar,
+  Button,
+  Heading,
+  IconButton,
+  Paragraph,
+  TabBar,
+  useAuthStore,
+  useCacheStore,
+  useCartStore,
+  IProduct,
+  IWishlistBase,
+  calculateDiscount,
+  useAddToWishlist,
+  useDeleteFromWishlist,
+  useGetWishlist,
+} from '@practice-two/shared'
 import ShareIcon from '@assets/share.svg'
 import BackIcon from '@assets/back.svg'
 import LikeIcon from '@assets/like.svg'
 import LoveIcon from '@assets/love.svg'
 import MoreIcon from '@assets/more.svg'
+import { RootStackParamList } from 'libs/shared/navigation/Stack'
+
+import { useFindProduct } from '../hooks'
+import { CATEGORY } from '../constants'
 
 import StyledImageBackground from './styles'
 

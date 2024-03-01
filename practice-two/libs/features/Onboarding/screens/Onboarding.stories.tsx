@@ -1,6 +1,6 @@
 import { ComponentMeta, ComponentStory } from '@storybook/react-native'
 
-import { Onboarding } from '../index'
+import Onboarding from './index'
 
 export default {
   title: 'screens/Onboarding',
