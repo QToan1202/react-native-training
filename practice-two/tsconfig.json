@@ -4,20 +4,7 @@
     "noImplicitAny": false,
     "baseUrl": ".",
     "paths": {
-      "@*": ["app/*"],
-      "@components/*": ["app/components/*"],
-      "@screens/*": ["app/screens/*"],
       "@assets/*": ["assets/*"],
-      "@constants/*": ["app/constants/*"],
-      "@utils/*": ["app/utils/*"],
-      "@types/*": ["app/types/*"],
-      "@styles/*": ["app/styles/*"],
-      "@hooks/*": ["app/hooks/*"],
-      "@navigation/*": ["app/navigation/*"],
-      "@services/*": ["app/services/*"],
-      "@animations/*": ["app/animations/*"],
-      "@stores/*": ["app/stores/*"],
-      "test-utils": ["app/utils/test-utils"],
       "@practice-two/features": ["libs/features/index.ts"],
       "@practice-two/shared": ["libs/shared/index.ts"]
     }
