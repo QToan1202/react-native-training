@@ -3,9 +3,9 @@ import isEqual from 'react-fast-compare'
 import { Image, ImageBackgroundProps } from 'react-native'
 import { SizeTokens, Stack, StackProps, YStack } from 'tamagui'
 
-import Avatar, { AvatarProps } from '@components/Avatar'
-import Button from '@components/Button'
-import { containerStyles } from '@styles'
+import { containerStyles } from '@practice-two/shared'
+import Avatar, { AvatarProps } from '../Avatar'
+import Button from '../Button'
 
 import styles from './styles'
 
