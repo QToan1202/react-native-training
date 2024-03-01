@@ -1,5 +1,4 @@
-import { IUser } from '@types'
-import { add, get } from '@services'
+import { IUser, add, get } from '@practice-two/shared'
 
 export const register = async (path: string, user: IUser): Promise<IUser> => {
   const { email } = user
