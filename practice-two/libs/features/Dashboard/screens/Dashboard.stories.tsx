@@ -1,6 +1,6 @@
 import { ComponentMeta, ComponentStory } from '@storybook/react-native'
 
-import { Dashboard } from '../index'
+import Dashboard from './index'
 
 export default {
   title: 'screens/Dashboard',

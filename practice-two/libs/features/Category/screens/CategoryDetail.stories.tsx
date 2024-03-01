@@ -2,10 +2,10 @@ import { RouteProp } from '@react-navigation/native'
 import { NativeStackNavigationProp } from '@react-navigation/native-stack'
 import { ComponentMeta, ComponentStory } from '@storybook/react-native'
 
-import { NavigationDecorator } from '@utils/StoryNavigator'
-import { RootStackParamList } from '@navigation/Stack'
+import { NavigationDecorator } from '@practice-two/shared'
+import { RootStackParamList } from 'libs/shared/navigation/Stack'
 
-import { CategoryDetail } from '../index'
+import CategoryDetail from './index'
 
 export default {
   title: 'screens/Category Detail',

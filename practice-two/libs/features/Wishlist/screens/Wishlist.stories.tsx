@@ -1,6 +1,6 @@
 import { ComponentMeta, ComponentStory } from '@storybook/react-native'
 
-import { Wishlist } from '../index'
+import Wishlist from './index'
 
 export default {
   title: 'screens/Wishlist',
