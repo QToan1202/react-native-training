@@ -38,7 +38,7 @@ export const useFeatureFlags = create<FeatureState & FeatureActions>()(
       setIsHydrated: (isHydratedState: boolean) => set({ isHydrated: isHydratedState }),
       isFeatureActive: (featName: string) => {
         const item: FeatureConfig | undefined = initState.features.find(
-          (feature) => feature.name === featName
+          (feature) => !featName.localeCompare(feature.name, 'en', { sensitivity: 'base' })
         )
 
         if (!item) return false
