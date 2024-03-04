@@ -4,7 +4,8 @@ import { Control, UseControllerProps, useController } from 'react-hook-form'
 import { Stack, StackProps } from 'tamagui'
 import { TextInput } from 'react-native'
 
-import { ErrorMessage, IForm } from '@practice-two/shared'
+import ErrorMessage from '../ErrorMessage'
+import { IForm } from '../../types'
 
 import { Label, StyledInput, StyledInputProps } from './styles'
 

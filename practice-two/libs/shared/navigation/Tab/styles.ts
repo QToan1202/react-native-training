@@ -1,6 +1,6 @@
 import { StyleSheet } from 'react-native'
 
-import { FONT_FAMILY } from '@practice-two/shared'
+import { FONT_FAMILY } from '../../constants'
 
 const styles = StyleSheet.create({
   tab: {

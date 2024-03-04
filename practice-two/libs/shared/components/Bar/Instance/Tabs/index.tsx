@@ -3,9 +3,9 @@ import isEqual from 'react-fast-compare'
 import { useSafeAreaInsets } from 'react-native-safe-area-context'
 import { getTokenValue } from 'tamagui'
 
-import { Bar, Button } from '@practice-two/shared'
+import Button from '../../../Button'
+import Bar, { BarProps } from '../../index'
 
-import { BarProps } from 'libs/shared/components/Bar'
 import styles from './styles'
 
 export interface TabBar extends BarProps {

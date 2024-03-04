@@ -6,7 +6,8 @@
     "paths": {
       "@assets/*": ["assets/*"],
       "@practice-two/features": ["libs/features/index.ts"],
-      "@practice-two/shared": ["libs/shared/index.ts"]
+      "@practice-two/shared": ["libs/shared/index.ts"],
+      "test-utils": ["app/utils/test-utils"]
     }
   }
 }

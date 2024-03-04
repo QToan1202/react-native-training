@@ -6,7 +6,7 @@ import ProfileIcon from '@assets/tab/profile.svg'
 import SearchIcon from '@assets/tab/search.svg'
 import StoreIcon from '@assets/tab/store.svg'
 
-import { imageStyles } from '@practice-two/shared'
+import { imageStyles } from '../../styles'
 
 export interface IconProps extends SvgProps {
   color: string

@@ -1,8 +1,9 @@
 import { memo, useCallback } from 'react'
 import { NativeStackHeaderProps } from '@react-navigation/native-stack'
 
-import { Bar, Button, containerStyles } from '@practice-two/shared'
-import { ButtonProps } from 'libs/shared/components/Button'
+import Button, { ButtonProps } from '../../../Button'
+import { containerStyles } from '../../../../styles'
+import Bar from '../../index'
 
 const CategoryBar = ({ options, route, navigation }: NativeStackHeaderProps) => {
   const handlePress = () => {

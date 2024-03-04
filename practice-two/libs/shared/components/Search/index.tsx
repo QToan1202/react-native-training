@@ -3,9 +3,10 @@ import { useForm } from 'react-hook-form'
 import { TextInput } from 'react-native'
 import { Stack, XStack, getTokenValue } from 'tamagui'
 
-import { Input, IForm } from '@practice-two/shared'
 import SearchIcon from '@assets/search.svg'
 
+import Input from '../Input'
+import { IForm } from '../../types'
 import styles from './styles'
 import { StyledInputProps } from '../Input/styles'
 

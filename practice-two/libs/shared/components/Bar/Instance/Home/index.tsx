@@ -2,9 +2,12 @@ import { memo, useCallback, useMemo } from 'react'
 import { NativeStackHeaderProps } from '@react-navigation/native-stack'
 import { getTokenValue } from 'tamagui'
 
-import { Search, Bar, IconButton } from '@practice-two/shared'
 import LoveIcon from '@assets/love.svg'
 import CartIcon from '@assets/cart.svg'
+
+import Search from '../../../Search'
+import IconButton from '../../../IconButton'
+import Bar from '../../index'
 
 const HomeBar = ({ options, route, navigation }: NativeStackHeaderProps) => {
   const handleNavigateToCart = useCallback(

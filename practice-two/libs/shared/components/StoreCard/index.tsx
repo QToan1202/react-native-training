@@ -3,7 +3,7 @@ import isEqual from 'react-fast-compare'
 import { Image, ImageBackgroundProps } from 'react-native'
 import { SizeTokens, Stack, StackProps, YStack } from 'tamagui'
 
-import { containerStyles } from '@practice-two/shared'
+import { containerStyles } from '../../styles'
 import Avatar, { AvatarProps } from '../Avatar'
 import Button from '../Button'
 

@@ -44,3 +44,8 @@ export interface IDetailInfo {
   label: string
   value: string
 }
+
+export interface FeatureConfig {
+  name: string
+  active: boolean
+}

@@ -3,7 +3,9 @@ import isEqual from 'react-fast-compare'
 import { Animated, ImageStyle, LayoutAnimation, StyleProp } from 'react-native'
 import { XStack, XStackProps, YStack } from 'tamagui'
 
-import { Heading, IDropDownItem, toggleAnim } from '@practice-two/shared'
+import Heading from '../Heading'
+import { IDropDownItem } from '../../types'
+import { toggleAnim } from '../../animations'
 
 import DropdownList from './DropdownList'
 

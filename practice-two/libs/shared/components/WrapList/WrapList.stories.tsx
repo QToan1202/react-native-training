@@ -1,6 +1,6 @@
 import { ComponentMeta, ComponentStory } from '@storybook/react-native'
 
-import { DASHBOARD, renderItem } from '@practice-two/shared'
+import { renderItem } from '@practice-two/shared'
 
 import { WrapList, ProductCard } from '../index'
 
@@ -11,9 +11,28 @@ export default {
 
 const Template: ComponentStory<typeof WrapList> = (args) => <WrapList {...args} />
 
+const PRODUCT_DATA = [
+  {
+    id: '1',
+    img: require('@assets/product/coca.png'),
+    title: 'coca cola',
+    avatar: require('@assets/avatar.png'),
+    storeName: 'tradly',
+    price: 222.6,
+  },
+  {
+    id: '2',
+    img: require('@assets/product/coca.png'),
+    title: 'coca cola',
+    avatar: require('@assets/avatar.png'),
+    storeName: 'tradly',
+    price: 222.6,
+  },
+]
+
 export const Default = Template.bind({})
 Default.args = {
-  data: DASHBOARD.PRODUCT_DATA,
+  data: PRODUCT_DATA,
   keyExtractor: ({ id }) => id,
   renderItem: renderItem(ProductCard),
   numColumns: 2,

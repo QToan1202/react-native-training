@@ -3,7 +3,7 @@ import isEqual from 'react-fast-compare'
 import { FieldError } from 'react-hook-form'
 import { SizableText, SizableTextProps } from 'tamagui'
 
-import { Heading } from '@practice-two/shared'
+import Heading from '../Heading'
 
 export type ErrorMessageProps = {
   error: FieldError | undefined

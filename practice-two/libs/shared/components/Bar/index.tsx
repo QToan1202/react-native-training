@@ -3,8 +3,10 @@ import isEqual from 'react-fast-compare'
 import { useSafeAreaInsets } from 'react-native-safe-area-context'
 import { XStack, XStackProps, YStack, YStackProps } from 'tamagui'
 
-import { Heading, IconButton } from '@practice-two/shared'
 import BackIcon from '@assets/back.svg'
+
+import Heading from '../Heading'
+import IconButton from '../IconButton'
 
 import styles from './styles'
 
