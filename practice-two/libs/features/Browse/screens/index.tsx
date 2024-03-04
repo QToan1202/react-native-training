@@ -12,6 +12,7 @@ import {
   IProduct,
   productListStyles,
   useGetProducts,
+  Feature,
 } from '@practice-two/shared'
 import { TabParamsList } from 'libs/shared/navigation/Tab'
 import { RootStackParamList } from 'libs/shared/navigation/Stack'
@@ -86,9 +87,11 @@ const Browse = ({ navigation }: BrowseScreenProps) => {
   }, [isLoading, isSuccess, products, renderProductItem])
 
   return (
-    <YStack flex={1} backgroundColor="$color.bg_layer">
-      {Item}
-    </YStack>
+    <Feature feat="browse">
+      <YStack flex={1} backgroundColor="$color.bg_layer">
+        {Item}
+      </YStack>
+    </Feature>
   )
 }
 

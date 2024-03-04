@@ -11,6 +11,7 @@ import {
   ICart,
   useCartStore,
   useOrderStore,
+  Feature,
 } from '@practice-two/shared'
 import { RootStackParamList } from 'libs/shared/navigation/Stack'
 import { Address, CartItem, Price } from '../../components'
@@ -70,7 +71,7 @@ const Cart = ({ navigation }: CartScreenProps) => {
   }, [cart, isHydratedCart])
 
   return (
-    <>
+    <Feature feat="checkout">
       <ScrollView flex={1} backgroundColor="$color.bg_layer">
         {renderAddress || (
           <Button title="+ add new address" variant="quaternary" onPress={handleChangeAddress} />
@@ -87,7 +88,7 @@ const Cart = ({ navigation }: CartScreenProps) => {
         <Price data={cart} deliveryFee={1.5} />
       </ScrollView>
       <TabBar title="Continue to Payment" onPress={handleNavigateAddCard} />
-    </>
+    </Feature>
   )
 }
 

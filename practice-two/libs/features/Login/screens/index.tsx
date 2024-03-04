@@ -15,6 +15,7 @@ import {
   ERROR_MESSAGES,
   asyncStoreService,
   useAuthStore,
+  Feature,
 } from '@practice-two/shared'
 import { RootStackParamList } from 'libs/shared/navigation/Stack'
 import { useLogin } from '../hooks'
@@ -45,62 +46,65 @@ const Login = ({ navigation }: LoginScreenProps) => {
   }, [handleSaveUser])
 
   const handleToSignUpScreen = useCallback(() => navigation.navigate('SignUp'), [navigation])
+
   return (
-    <SafeAreaView style={styles.container}>
-      <YStack space="$space.9" alignItems="center">
-        <Heading content="Welcome to tradly" fontWeight="$2" letterSpacing="$2" />
-        <Paragraph content="Login to your account" fontSize="$2" letterSpacing="$4" />
-      </YStack>
-      <KeyboardAvoidingView
-        behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
-        style={styles.input}
-      >
-        <Input
-          name="email"
-          isShowError
-          control={control}
-          placeholder="Email/Mobile Number"
-          placeholderTextColor={COLORS.WHITE}
-          rules={{
-            required: ERROR_MESSAGES.ACCOUNT.REQUIRED,
-          }}
-        />
-        <Input
-          name="password"
-          isShowError
-          secureTextEntry
-          control={control}
-          placeholder="Password"
-          placeholderTextColor={COLORS.WHITE}
-          rules={{
-            required: ERROR_MESSAGES.PASSWORD.REQUIRED,
-          }}
-        />
-      </KeyboardAvoidingView>
-      <Button
-        marginBottom="$space.6"
-        title="login"
-        variant="secondary"
-        isDisable={status === 'pending'}
-        onPress={handleSubmit(onSubmit)}
-      />
-      <YStack alignItems="center" space="$space.8">
-        <Paragraph content="Forgot your password?" fontSize="$3" lineHeight="$4" />
-        <XStack alignItems="center" columnGap="$space.1.5">
-          <Paragraph content="Don't have an account?" fontSize="$3" lineHeight="$4" />
-          <Button
-            variant="tertiary"
-            borderColor="$color.transparent"
-            fontWeight="$3"
-            fontSize="$3"
-            lineHeight="$4"
-            textTransform="none"
-            title="Sign up"
-            onPress={handleToSignUpScreen}
+    <Feature feat="login">
+      <SafeAreaView style={styles.container}>
+        <YStack space="$space.9" alignItems="center">
+          <Heading content="Welcome to tradly" fontWeight="$2" letterSpacing="$2" />
+          <Paragraph content="Login to your account" fontSize="$2" letterSpacing="$4" />
+        </YStack>
+        <KeyboardAvoidingView
+          behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
+          style={styles.input}
+        >
+          <Input
+            name="email"
+            isShowError
+            control={control}
+            placeholder="Email/Mobile Number"
+            placeholderTextColor={COLORS.WHITE}
+            rules={{
+              required: ERROR_MESSAGES.ACCOUNT.REQUIRED,
+            }}
           />
-        </XStack>
-      </YStack>
-    </SafeAreaView>
+          <Input
+            name="password"
+            isShowError
+            secureTextEntry
+            control={control}
+            placeholder="Password"
+            placeholderTextColor={COLORS.WHITE}
+            rules={{
+              required: ERROR_MESSAGES.PASSWORD.REQUIRED,
+            }}
+          />
+        </KeyboardAvoidingView>
+        <Button
+          marginBottom="$space.6"
+          title="login"
+          variant="secondary"
+          isDisable={status === 'pending'}
+          onPress={handleSubmit(onSubmit)}
+        />
+        <YStack alignItems="center" space="$space.8">
+          <Paragraph content="Forgot your password?" fontSize="$3" lineHeight="$4" />
+          <XStack alignItems="center" columnGap="$space.1.5">
+            <Paragraph content="Don't have an account?" fontSize="$3" lineHeight="$4" />
+            <Button
+              variant="tertiary"
+              borderColor="$color.transparent"
+              fontWeight="$3"
+              fontSize="$3"
+              lineHeight="$4"
+              textTransform="none"
+              title="Sign up"
+              onPress={handleToSignUpScreen}
+            />
+          </XStack>
+        </YStack>
+      </SafeAreaView>
+    </Feature>
   )
 }
 

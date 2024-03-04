@@ -17,6 +17,7 @@ import {
   useGetProducts,
   useGetStores,
   useCacheStore,
+  Feature,
 } from '@practice-two/shared'
 import { TabParamsList } from 'libs/shared/navigation/Tab'
 import { RootStackParamList } from 'libs/shared/navigation/Stack'
@@ -132,60 +133,62 @@ const Dashboard = ({ navigation }: HomeScreenProps) => {
   )
 
   return (
-    <ScrollView flex={1} backgroundColor="$color.white">
-      <FlatList
-        keyExtractor={({ id }: ISliderItem): string => id}
-        data={DASHBOARD.SLIDER_DATA}
-        renderItem={renderItem(SliderItem)}
-        horizontal
-        showsHorizontalScrollIndicator={false}
-        contentContainerStyle={styles.sliderItem}
-      />
-      <FlatList
-        keyExtractor={({ id }: ICategoryItem): string => id}
-        data={DASHBOARD.CATEGORY_DATA}
-        renderItem={renderCategoryItem}
-        numColumns={4}
-        columnWrapperStyle={styles.menuItem}
-        contentContainerStyle={styles.categories}
-        scrollEnabled={false}
-      />
-      <YStack marginVertical="$space.3">
-        <>
-          {renderProducts('New Product', products || cacheProducts)}
-          {renderProducts('Popular Product', products || cacheProducts)}
-        </>
-      </YStack>
-      <YStack>
-        <View style={styles.bgStore} />
-        <XStack
-          alignItems="center"
-          justifyContent="space-between"
-          space="$space.1.5"
-          marginVertical="$space.3.5"
-          paddingHorizontal="$space.4.5"
-        >
-          <Heading content="Store to follow" color="$color.white" fontSize="$3" />
-          <Button
-            shrink
-            paddingHorizontal="$space.5"
-            paddingVertical="$space.1.5"
-            fontSize={12}
-            title="view all"
-            variant="secondary"
-            onPress={handleSeeAllProducts}
-          />
-        </XStack>
+    <Feature feat="dashboard">
+      <ScrollView flex={1} backgroundColor="$color.white">
         <FlatList
-          keyExtractor={({ id }: IStore): string => id}
-          data={stores || cacheStores}
-          renderItem={renderStoreItem}
+          keyExtractor={({ id }: ISliderItem): string => id}
+          data={DASHBOARD.SLIDER_DATA}
+          renderItem={renderItem(SliderItem)}
           horizontal
           showsHorizontalScrollIndicator={false}
-          contentContainerStyle={styles.itemSpacing}
+          contentContainerStyle={styles.sliderItem}
         />
-      </YStack>
-    </ScrollView>
+        <FlatList
+          keyExtractor={({ id }: ICategoryItem): string => id}
+          data={DASHBOARD.CATEGORY_DATA}
+          renderItem={renderCategoryItem}
+          numColumns={4}
+          columnWrapperStyle={styles.menuItem}
+          contentContainerStyle={styles.categories}
+          scrollEnabled={false}
+        />
+        <YStack marginVertical="$space.3">
+          <>
+            {renderProducts('New Product', products || cacheProducts)}
+            {renderProducts('Popular Product', products || cacheProducts)}
+          </>
+        </YStack>
+        <YStack>
+          <View style={styles.bgStore} />
+          <XStack
+            alignItems="center"
+            justifyContent="space-between"
+            space="$space.1.5"
+            marginVertical="$space.3.5"
+            paddingHorizontal="$space.4.5"
+          >
+            <Heading content="Store to follow" color="$color.white" fontSize="$3" />
+            <Button
+              shrink
+              paddingHorizontal="$space.5"
+              paddingVertical="$space.1.5"
+              fontSize={12}
+              title="view all"
+              variant="secondary"
+              onPress={handleSeeAllProducts}
+            />
+          </XStack>
+          <FlatList
+            keyExtractor={({ id }: IStore): string => id}
+            data={stores || cacheStores}
+            renderItem={renderStoreItem}
+            horizontal
+            showsHorizontalScrollIndicator={false}
+            contentContainerStyle={styles.itemSpacing}
+          />
+        </YStack>
+      </ScrollView>
+    </Feature>
   )
 }
 

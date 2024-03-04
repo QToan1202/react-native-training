@@ -13,6 +13,7 @@ import {
   useAuthStore,
   useCartStore,
   useOrderStore,
+  Feature,
 } from '@practice-two/shared'
 import { RootStackParamList } from 'libs/shared/navigation/Stack'
 import { Address, PaymentCard, PaymentCardPlaceholder, Price, Radio } from '../../components'
@@ -115,7 +116,7 @@ const Payment = ({ navigation }: PaymentScreenProps) => {
   }, [cart, user])
 
   return (
-    <>
+    <Feature feat="checkout">
       <ScrollView showsVerticalScrollIndicator={false}>
         <YStack space="$space.3.5" backgroundColor="$color.bg_layer">
           <YStack justifyContent="center" backgroundColor="$color.white">
@@ -139,7 +140,7 @@ const Payment = ({ navigation }: PaymentScreenProps) => {
         </YStack>
       </ScrollView>
       <TabBar title="Checkout" onPress={handleCheckout} />
-    </>
+    </Feature>
   )
 }
 

@@ -5,7 +5,7 @@ import { NativeStackScreenProps } from '@react-navigation/native-stack'
 import { ScrollView, XStack, YStack } from 'tamagui'
 import { useShallow } from 'zustand/react/shallow'
 
-import { Bar, Input, TabBar, ICardBase, IForm, useAuthStore } from '@practice-two/shared'
+import { Bar, Input, TabBar, ICardBase, IForm, useAuthStore, Feature } from '@practice-two/shared'
 import { RootStackParamList } from 'libs/shared/navigation/Stack'
 import { useAddCard } from '../../hooks'
 import { PaymentCard } from '../../components'
@@ -42,7 +42,7 @@ const AddCard = ({ navigation }: AddCardScreenProps) => {
   const handleGoBack = useCallback(() => navigation.goBack(), [navigation])
 
   return (
-    <>
+    <Feature feat="checkout">
       <Bar
         title="add card"
         align="center"
@@ -137,7 +137,7 @@ const AddCard = ({ navigation }: AddCardScreenProps) => {
         isDisable={!!Object.keys(formState.errors).length}
         onPress={handleSubmit(handleSaveCardInfo)}
       />
-    </>
+    </Feature>
   )
 }
 

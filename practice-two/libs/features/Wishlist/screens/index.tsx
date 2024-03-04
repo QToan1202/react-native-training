@@ -13,6 +13,7 @@ import {
   IWishlistBase,
   productListStyles,
   useAuthStore,
+  Feature,
 } from '@practice-two/shared'
 import { RootStackParamList } from 'libs/shared/navigation/Stack'
 
@@ -100,9 +101,11 @@ const Wishlist = ({ navigation }: WishlistScreenProps) => {
   }, [isLoading, isSuccessGetWishlist, wishlists, productsInWishlist, renderProductItem])
 
   return (
-    <YStack flex={1} backgroundColor="$color.bg_layer">
-      {Item}
-    </YStack>
+    <Feature feat="wishlist">
+      <YStack flex={1} backgroundColor="$color.bg_layer">
+        {Item}
+      </YStack>
+    </Feature>
   )
 }
 

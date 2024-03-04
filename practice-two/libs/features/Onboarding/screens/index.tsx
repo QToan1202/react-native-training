@@ -5,7 +5,13 @@ import PagerView, { PagerViewOnPageSelectedEvent } from 'react-native-pager-view
 import { NativeStackScreenProps } from '@react-navigation/native-stack'
 import { XStack } from 'tamagui'
 
-import { Button, Paragraph, containerStyles, IOnboardingScreenView } from '@practice-two/shared'
+import {
+  Button,
+  Paragraph,
+  containerStyles,
+  IOnboardingScreenView,
+  Feature,
+} from '@practice-two/shared'
 import { RootStackParamList } from 'libs/shared/navigation/Stack'
 import { ONBOARDING_VIEW_DATA } from '../constants'
 
@@ -63,30 +69,32 @@ const Onboarding = ({ navigation }: OnboardingProps) => {
   }, [currentPage])
 
   return (
-    <SafeAreaView style={[containerStyles.expand, styles.container]}>
-      <View style={styles.bgContainer} />
-      <PagerView
-        initialPage={currentPage}
-        onPageSelected={handlePageSelected}
-        ref={pagerView}
-        style={containerStyles.expand}
-      >
-        {renderViewPagerChildren}
-      </PagerView>
-      <XStack
-        marginBottom="$space.9"
-        space="$space.2.5"
-        alignItems="center"
-        justifyContent="center"
-      >
-        {renderPagerIndex}
-      </XStack>
-      <Button
-        title={numOfPagerView.current === currentPage ? 'finish' : 'next'}
-        marginHorizontal="$space.6"
-        onPress={handleMoveToNextScreen}
-      />
-    </SafeAreaView>
+    <Feature feat="onboarding">
+      <SafeAreaView style={[containerStyles.expand, styles.container]}>
+        <View style={styles.bgContainer} />
+        <PagerView
+          initialPage={currentPage}
+          onPageSelected={handlePageSelected}
+          ref={pagerView}
+          style={containerStyles.expand}
+        >
+          {renderViewPagerChildren}
+        </PagerView>
+        <XStack
+          marginBottom="$space.9"
+          space="$space.2.5"
+          alignItems="center"
+          justifyContent="center"
+        >
+          {renderPagerIndex}
+        </XStack>
+        <Button
+          title={numOfPagerView.current === currentPage ? 'finish' : 'next'}
+          marginHorizontal="$space.6"
+          onPress={handleMoveToNextScreen}
+        />
+      </SafeAreaView>
+    </Feature>
   )
 }
 

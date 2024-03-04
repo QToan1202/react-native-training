@@ -22,6 +22,7 @@ import {
   useAddToWishlist,
   useDeleteFromWishlist,
   useGetWishlist,
+  Feature,
 } from '@practice-two/shared'
 import ShareIcon from '@assets/share.svg'
 import BackIcon from '@assets/back.svg'
@@ -131,203 +132,207 @@ const ProductDetail = ({ navigation, route }: ProductDetailProps) => {
   )
   const { top: topInset } = useSafeAreaInsets()
 
-  return product ? (
-    <>
-      <ScrollView
-        backgroundColor="$color.bg_layer"
-        space="$space.2"
-        showsVerticalScrollIndicator={false}
-      >
-        <YStack>
-          <StyledImageBackground source={{ uri: product.img }}>
-            <XStack
-              flex={1}
-              justifyContent="space-between"
-              paddingTop={topInset + getTokenValue('$space.1')}
-              paddingHorizontal="$space.3"
-              backgroundColor="$color.img_overlay"
-            >
-              <IconButton onPress={handleBackPress}>
-                <BackIcon />
-              </IconButton>
-              <XStack alignItems="center" space="$space.1.5">
-                <IconButton onPress={handlePress}>
-                  <ShareIcon />
-                </IconButton>
-                <IconButton onPress={handleLikeProduct}>
-                  {!checkProductInWishlist ? (
-                    <LikeIcon fill={getTokenValue('$color.white')} />
-                  ) : (
-                    <LoveIcon fill={getTokenValue('$color.white')} />
-                  )}
-                </IconButton>
-                <IconButton onPress={handlePress}>
-                  <MoreIcon />
-                </IconButton>
-              </XStack>
-            </XStack>
-          </StyledImageBackground>
-          <YStack
-            space="$space.2.5"
-            backgroundColor="$color.white"
-            paddingHorizontal="$space.3.5"
-            paddingTop="$space.3.5"
-            paddingBottom="$space.5"
+  return (
+    <Feature feat="product">
+      {product ? (
+        <>
+          <ScrollView
+            backgroundColor="$color.bg_layer"
+            space="$space.2"
+            showsVerticalScrollIndicator={false}
           >
-            <Heading
-              content={product.name}
-              fontSize="$3"
-              color="$color.gray_50"
-              textTransform="capitalize"
-            />
-            <XStack space>
-              <Heading
-                content={`$${
-                  product.discountPrice
-                    ? product.discountPrice.toFixed(2)
-                    : product.price.toFixed(2)
-                }`}
-                fontSize="$3"
-                color="$color.primary"
-              />
-              {product.discountPrice !== 0 && (
-                <XStack space="$space.1.5">
-                  <Heading
-                    content={`$${product.price.toFixed(2)}`}
-                    fontSize="$true"
-                    fontWeight="$2"
-                    color="$color.gray_50"
-                    textDecorationLine="line-through"
-                  />
-                  <Heading
-                    content={calculateDiscount(product.price, product.discountPrice)}
-                    fontSize="$true"
-                    fontWeight="$2"
-                    color="$color.gray_50"
-                  />
+            <YStack>
+              <StyledImageBackground source={{ uri: product.img }}>
+                <XStack
+                  flex={1}
+                  justifyContent="space-between"
+                  paddingTop={topInset + getTokenValue('$space.1')}
+                  paddingHorizontal="$space.3"
+                  backgroundColor="$color.img_overlay"
+                >
+                  <IconButton onPress={handleBackPress}>
+                    <BackIcon />
+                  </IconButton>
+                  <XStack alignItems="center" space="$space.1.5">
+                    <IconButton onPress={handlePress}>
+                      <ShareIcon />
+                    </IconButton>
+                    <IconButton onPress={handleLikeProduct}>
+                      {!checkProductInWishlist ? (
+                        <LikeIcon fill={getTokenValue('$color.white')} />
+                      ) : (
+                        <LoveIcon fill={getTokenValue('$color.white')} />
+                      )}
+                    </IconButton>
+                    <IconButton onPress={handlePress}>
+                      <MoreIcon />
+                    </IconButton>
+                  </XStack>
                 </XStack>
-              )}
+              </StyledImageBackground>
+              <YStack
+                space="$space.2.5"
+                backgroundColor="$color.white"
+                paddingHorizontal="$space.3.5"
+                paddingTop="$space.3.5"
+                paddingBottom="$space.5"
+              >
+                <Heading
+                  content={product.name}
+                  fontSize="$3"
+                  color="$color.gray_50"
+                  textTransform="capitalize"
+                />
+                <XStack space>
+                  <Heading
+                    content={`$${
+                      product.discountPrice
+                        ? product.discountPrice.toFixed(2)
+                        : product.price.toFixed(2)
+                    }`}
+                    fontSize="$3"
+                    color="$color.primary"
+                  />
+                  {product.discountPrice !== 0 && (
+                    <XStack space="$space.1.5">
+                      <Heading
+                        content={`$${product.price.toFixed(2)}`}
+                        fontSize="$true"
+                        fontWeight="$2"
+                        color="$color.gray_50"
+                        textDecorationLine="line-through"
+                      />
+                      <Heading
+                        content={calculateDiscount(product.price, product.discountPrice)}
+                        fontSize="$true"
+                        fontWeight="$2"
+                        color="$color.gray_50"
+                      />
+                    </XStack>
+                  )}
+                </XStack>
+              </YStack>
+            </YStack>
+            <XStack
+              alignItems="center"
+              justifyContent="space-between"
+              paddingVertical="$space.4.5"
+              paddingHorizontal="$space.3"
+              backgroundColor="$color.white"
+            >
+              <Avatar
+                size="md"
+                source={{ uri: product.store.avatar }}
+                name={`${product.store.name} store`}
+              />
+              <Button
+                shrink
+                title="follow"
+                paddingVertical="$space.1.5"
+                paddingHorizontal="$space.5"
+                fontSize={12}
+                onPress={handlePress}
+              />
             </XStack>
-          </YStack>
-        </YStack>
-        <XStack
-          alignItems="center"
-          justifyContent="space-between"
-          paddingVertical="$space.4.5"
-          paddingHorizontal="$space.3"
-          backgroundColor="$color.white"
-        >
-          <Avatar
-            size="md"
-            source={{ uri: product.store.avatar }}
-            name={`${product.store.name} store`}
-          />
-          <Button
-            shrink
-            title="follow"
-            paddingVertical="$space.1.5"
-            paddingHorizontal="$space.5"
-            fontSize={12}
-            onPress={handlePress}
-          />
-        </XStack>
-        <YStack
-          paddingBottom="$space.3"
-          paddingHorizontal="$space.6"
-          borderRadius="$radius.4"
-          space="$space.3.5"
-          backgroundColor="$color.white"
-        >
-          <Paragraph content={product.description} color="$color.gray_50" lineHeight="$4" />
-        </YStack>
-        <YStack
-          paddingBottom="$space.3"
-          paddingHorizontal="$space.6"
-          borderRadius="$radius.4"
-          space="$space.3.5"
-          backgroundColor="$color.white"
-        >
-          <Heading
-            content="Details"
-            paddingVertical="$space.3"
-            color="$color.black"
-            fontSize="$3"
-            fontWeight="$3"
-            lineHeight="$4"
-            textTransform="capitalize"
-          />
-          <XStack alignItems="center" space="$space.10">
-            <YStack maxWidth={120} space="$space.3.5" opacity={0.7}>
-              {Categories}
+            <YStack
+              paddingBottom="$space.3"
+              paddingHorizontal="$space.6"
+              borderRadius="$radius.4"
+              space="$space.3.5"
+              backgroundColor="$color.white"
+            >
+              <Paragraph content={product.description} color="$color.gray_50" lineHeight="$4" />
             </YStack>
-            <YStack maxWidth={200} space="$space.3.5">
-              <Paragraph
-                content={product.condition}
-                color="$color.gray_50"
+            <YStack
+              paddingBottom="$space.3"
+              paddingHorizontal="$space.6"
+              borderRadius="$radius.4"
+              space="$space.3.5"
+              backgroundColor="$color.white"
+            >
+              <Heading
+                content="Details"
+                paddingVertical="$space.3"
+                color="$color.black"
+                fontSize="$3"
+                fontWeight="$3"
                 lineHeight="$4"
                 textTransform="capitalize"
               />
-              <Paragraph
-                content={product.priceType}
-                color="$color.gray_50"
-                lineHeight="$4"
-                textTransform="capitalize"
-              />
-              <Paragraph
-                content={product.category.name}
-                color="$color.gray_50"
-                lineHeight="$4"
-                textTransform="capitalize"
-              />
-              <Paragraph
-                content={product.location}
-                color="$color.gray_50"
-                lineHeight="$4"
-                textTransform="capitalize"
-              />
+              <XStack alignItems="center" space="$space.10">
+                <YStack maxWidth={120} space="$space.3.5" opacity={0.7}>
+                  {Categories}
+                </YStack>
+                <YStack maxWidth={200} space="$space.3.5">
+                  <Paragraph
+                    content={product.condition}
+                    color="$color.gray_50"
+                    lineHeight="$4"
+                    textTransform="capitalize"
+                  />
+                  <Paragraph
+                    content={product.priceType}
+                    color="$color.gray_50"
+                    lineHeight="$4"
+                    textTransform="capitalize"
+                  />
+                  <Paragraph
+                    content={product.category.name}
+                    color="$color.gray_50"
+                    lineHeight="$4"
+                    textTransform="capitalize"
+                  />
+                  <Paragraph
+                    content={product.location}
+                    color="$color.gray_50"
+                    lineHeight="$4"
+                    textTransform="capitalize"
+                  />
+                </YStack>
+              </XStack>
             </YStack>
-          </XStack>
-        </YStack>
-        <YStack
-          paddingBottom="$space.3"
-          paddingHorizontal="$space.6"
-          borderRadius="$radius.4"
-          space="$space.3.5"
-          backgroundColor="$color.white"
-        >
-          <Heading
-            content="Additional Details"
-            paddingVertical="$space.3"
-            color="$color.black"
-            fontSize="$3"
-            fontWeight="$3"
-            lineHeight="$4"
-            textTransform="capitalize"
-          />
-          <XStack alignItems="center" space="$space.6">
-            <YStack maxWidth={120} space="$space.3.5" opacity={0.7}>
-              <Paragraph
-                content="delivery details"
-                color="$color.gray_50"
+            <YStack
+              paddingBottom="$space.3"
+              paddingHorizontal="$space.6"
+              borderRadius="$radius.4"
+              space="$space.3.5"
+              backgroundColor="$color.white"
+            >
+              <Heading
+                content="Additional Details"
+                paddingVertical="$space.3"
+                color="$color.black"
+                fontSize="$3"
+                fontWeight="$3"
                 lineHeight="$4"
                 textTransform="capitalize"
               />
+              <XStack alignItems="center" space="$space.6">
+                <YStack maxWidth={120} space="$space.3.5" opacity={0.7}>
+                  <Paragraph
+                    content="delivery details"
+                    color="$color.gray_50"
+                    lineHeight="$4"
+                    textTransform="capitalize"
+                  />
+                </YStack>
+                <YStack maxWidth={200} space="$space.3.5">
+                  <Paragraph
+                    content={product.delivery}
+                    color="$color.gray_50"
+                    lineHeight="$4"
+                    textTransform="capitalize"
+                  />
+                </YStack>
+              </XStack>
             </YStack>
-            <YStack maxWidth={200} space="$space.3.5">
-              <Paragraph
-                content={product.delivery}
-                color="$color.gray_50"
-                lineHeight="$4"
-                textTransform="capitalize"
-              />
-            </YStack>
-          </XStack>
-        </YStack>
-      </ScrollView>
-      <TabBar title="Add To Cart" onPress={handleAddToCart} />
-    </>
-  ) : (
-    <Spinner size="large" color="$color.primary" />
+          </ScrollView>
+          <TabBar title="Add To Cart" onPress={handleAddToCart} />
+        </>
+      ) : (
+        <Spinner size="large" color="$color.primary" />
+      )}
+    </Feature>
   )
 }
 

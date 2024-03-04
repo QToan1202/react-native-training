@@ -5,7 +5,15 @@ import { NativeStackScreenProps } from '@react-navigation/native-stack'
 import { ScrollView } from 'tamagui'
 import { useShallow } from 'zustand/react/shallow'
 
-import { Button, Input, TabBar, IAddressBase, IForm, useAuthStore } from '@practice-two/shared'
+import {
+  Button,
+  Input,
+  TabBar,
+  IAddressBase,
+  IForm,
+  useAuthStore,
+  Feature,
+} from '@practice-two/shared'
 import { RootStackParamList } from 'libs/shared/navigation/Stack'
 import { useAddAddress } from '../../hooks'
 import { ADDRESS_FORM_FIELDS, TAddressFormFields } from '../../constants'
@@ -50,7 +58,7 @@ const AddAddress = ({ navigation }: AddAddressScreenProps) => {
   )
 
   return (
-    <>
+    <Feature feat="checkout">
       <ScrollView contentContainerStyle={{ flex: 1 }} backgroundColor="$color.bg_layer">
         <Button
           title="Use current location"
@@ -67,7 +75,7 @@ const AddAddress = ({ navigation }: AddAddressScreenProps) => {
         isDisable={status === 'pending'}
         onPress={handleSubmit(handleSaveAddress)}
       />
-    </>
+    </Feature>
   )
 }
 
