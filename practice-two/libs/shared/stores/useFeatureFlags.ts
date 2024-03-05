@@ -17,17 +17,17 @@ interface FeatureActions {
 const initState: FeatureState = {
   isHydrated: false,
   features: [
-    { name: 'Onboarding', active: false },
-    { name: 'Login', active: false },
-    { name: 'SignUp', active: false },
-    { name: 'Dashboard', active: false },
-    { name: 'Category', active: false },
-    { name: 'Product', active: false },
-    { name: 'Browse', active: false },
-    { name: 'Wishlist', active: false },
-    { name: 'Checkout', active: false },
-    { name: 'Notification', active: false },
-    { name: 'Navigation', active: false },
+    { name: 'Onboarding', active: process.env.ONBOARDING_FEAT_ACTIVE_STATE },
+    { name: 'Login', active: process.env.LOGIN_FEAT_ACTIVE_STATE },
+    { name: 'SignUp', active: process.env.SIGNUP_FEAT_ACTIVE_STATE },
+    { name: 'Dashboard', active: process.env.DASHBOARD_FEAT_ACTIVE_STATE },
+    { name: 'Category', active: process.env.CATEGORY_FEAT_ACTIVE_STATE },
+    { name: 'Product', active: process.env.PRODUCT_FEAT_ACTIVE_STATE },
+    { name: 'Browse', active: process.env.BROWSE_FEAT_ACTIVE_STATE },
+    { name: 'Wishlist', active: process.env.WISHLIST_FEAT_ACTIVE_STATE },
+    { name: 'Checkout', active: process.env.CHECKOUT_FEAT_ACTIVE_STATE },
+    { name: 'Notification', active: process.env.NOTIFICATION_FEAT_ACTIVE_STATE },
+    { name: 'Navigation', active: process.env.NAVIGATION_FEAT_ACTIVE_STATE },
   ],
 }
 
