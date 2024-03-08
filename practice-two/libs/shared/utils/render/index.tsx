@@ -1,6 +1,6 @@
 import { ListRenderItemInfo } from 'react-native'
 
-import { IFlatListBase } from '@practice-two/shared'
+import { IFlatListBase } from '../../types'
 
 const renderItem =
   <T extends IFlatListBase>(Element: React.JSX.ElementType, action?: (data: T) => void) =>

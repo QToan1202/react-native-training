@@ -1,7 +1,7 @@
 import { ImageBackgroundProps } from 'react-native'
 
-import { IFlatListBase } from '@practice-two/shared'
-import { SliderItemProps } from 'libs/features/Dashboard/components/SliderItem'
+import { IFlatListBase } from '@practice-two/shared/types'
+import { SliderItemProps } from '../components/SliderItem'
 
 export interface ISliderItem extends IFlatListBase, Omit<SliderItemProps, 'id' | 'onPress'> {}
 

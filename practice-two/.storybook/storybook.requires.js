@@ -55,8 +55,10 @@ try {
 
 const getStories = () => {
   return {
-    "./libs/features/Browse/screens/Browse.stories.tsx": require("../libs/features/Browse/screens/Browse.stories.tsx"),
-    "./libs/features/Category/screens/CategoryDetail.stories.tsx": require("../libs/features/Category/screens/CategoryDetail.stories.tsx"),
+    "./libs/features/Authentication/screens/Login/Login.stories.tsx": require("../libs/features/Authentication/screens/Login/Login.stories.tsx"),
+    "./libs/features/Authentication/screens/SignUp/SignUp.stories.tsx": require("../libs/features/Authentication/screens/SignUp/SignUp.stories.tsx"),
+    "./libs/features/Browse/screens/Browse/Browse.stories.tsx": require("../libs/features/Browse/screens/Browse/Browse.stories.tsx"),
+    "./libs/features/Browse/screens/Category/CategoryDetail.stories.tsx": require("../libs/features/Browse/screens/Category/CategoryDetail.stories.tsx"),
     "./libs/features/Checkout/components/Address/Address.stories.tsx": require("../libs/features/Checkout/components/Address/Address.stories.tsx"),
     "./libs/features/Checkout/components/CartItem/CartItem.stories.tsx": require("../libs/features/Checkout/components/CartItem/CartItem.stories.tsx"),
     "./libs/features/Checkout/components/PaymentCard/PaymentCard.stories.tsx": require("../libs/features/Checkout/components/PaymentCard/PaymentCard.stories.tsx"),
@@ -69,13 +71,8 @@ const getStories = () => {
     "./libs/features/Checkout/screens/Cart/Cart.stories.tsx": require("../libs/features/Checkout/screens/Cart/Cart.stories.tsx"),
     "./libs/features/Checkout/screens/OrderDetail/OrderDetail.stories.tsx": require("../libs/features/Checkout/screens/OrderDetail/OrderDetail.stories.tsx"),
     "./libs/features/Checkout/screens/Payment/Payment.stories.tsx": require("../libs/features/Checkout/screens/Payment/Payment.stories.tsx"),
-    "./libs/features/Dashboard/components/MenuCard/MenuCard.stories.tsx": require("../libs/features/Dashboard/components/MenuCard/MenuCard.stories.tsx"),
-    "./libs/features/Dashboard/components/SliderItem/SliderItem.stories.tsx": require("../libs/features/Dashboard/components/SliderItem/SliderItem.stories.tsx"),
-    "./libs/features/Dashboard/screens/Dashboard.stories.tsx": require("../libs/features/Dashboard/screens/Dashboard.stories.tsx"),
-    "./libs/features/Login/screens/Login.stories.tsx": require("../libs/features/Login/screens/Login.stories.tsx"),
     "./libs/features/Onboarding/screens/Onboarding.stories.tsx": require("../libs/features/Onboarding/screens/Onboarding.stories.tsx"),
     "./libs/features/Product/screens/ProductDetail.stories.tsx": require("../libs/features/Product/screens/ProductDetail.stories.tsx"),
-    "./libs/features/SignUp/screens/SignUp.stories.tsx": require("../libs/features/SignUp/screens/SignUp.stories.tsx"),
     "./libs/features/Wishlist/screens/Wishlist.stories.tsx": require("../libs/features/Wishlist/screens/Wishlist.stories.tsx"),
     "./libs/shared/components/Avatar/Avatar.stories.tsx": require("../libs/shared/components/Avatar/Avatar.stories.tsx"),
     "./libs/shared/components/Bar/Bar.stories.tsx": require("../libs/shared/components/Bar/Bar.stories.tsx"),
@@ -89,9 +86,6 @@ const getStories = () => {
     "./libs/shared/components/Search/Search.stories.tsx": require("../libs/shared/components/Search/Search.stories.tsx"),
     "./libs/shared/components/StoreCard/StoreCard.stories.tsx": require("../libs/shared/components/StoreCard/StoreCard.stories.tsx"),
     "./libs/shared/components/WrapList/WrapList.stories.tsx": require("../libs/shared/components/WrapList/WrapList.stories.tsx"),
-    "./libs/shared/navigation/Stack/PrivateStack.stories.tsx": require("../libs/shared/navigation/Stack/PrivateStack.stories.tsx"),
-    "./libs/shared/navigation/Stack/PublicStack.stories.tsx": require("../libs/shared/navigation/Stack/PublicStack.stories.tsx"),
-    "./libs/shared/navigation/Tab/Tab.stories.tsx": require("../libs/shared/navigation/Tab/Tab.stories.tsx"),
   };
 };
 

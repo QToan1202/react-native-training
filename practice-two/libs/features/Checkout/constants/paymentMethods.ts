@@ -1,4 +1,4 @@
-import { IRadioItem } from '@practice-two/shared'
+import { IRadioItem } from '@practice-two/shared/types'
 
 const PAYMENT_METHODS: IRadioItem[] = [
   {

@@ -2,7 +2,7 @@ import { memo, useMemo } from 'react'
 import isEqual from 'react-fast-compare'
 import { FlatList, FlatListProps } from 'react-native'
 
-import { IFlatListBase } from '@practice-two/shared'
+import { IFlatListBase } from '../../types'
 
 import styles from './styles'
 

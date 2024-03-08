@@ -1,4 +1,4 @@
-import { IFlatListBase } from '@practice-two/shared'
+import { IFlatListBase } from '@practice-two/shared/types'
 import { ProductCardProps } from 'libs/shared/components/ProductCard'
 
 export type IProductItem = IFlatListBase & Omit<ProductCardProps, 'onPress'>

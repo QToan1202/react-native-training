@@ -2,7 +2,8 @@ import { memo, useCallback } from 'react'
 import isEqual from 'react-fast-compare'
 import { Stack } from 'tamagui'
 
-import { Paragraph, imageStyles } from '@practice-two/shared'
+import { Paragraph } from '@practice-two/shared/components'
+import { imageStyles } from '@practice-two/shared/styles'
 
 import StyledImageBackground, { StyledImageBackgroundProps } from './styles'
 

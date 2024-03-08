@@ -1,6 +1,7 @@
 import { UseQueryResult, useQueries } from '@tanstack/react-query'
 
-import { find, ICart, IProduct } from '@practice-two/shared'
+import { find } from '@practice-two/shared/services'
+import { ICart, IProduct } from '@practice-two/shared/types'
 
 const useFindMultiProduct = (
   path: string,

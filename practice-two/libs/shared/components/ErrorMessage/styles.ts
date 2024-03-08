@@ -1,6 +1,6 @@
 import { StyleSheet } from 'react-native'
 
-import { COLORS } from '@practice-two/shared'
+import { COLORS } from '../../constants'
 
 const styles = StyleSheet.create({
   errorWrapper: {

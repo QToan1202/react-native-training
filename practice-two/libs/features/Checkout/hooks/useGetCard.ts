@@ -1,6 +1,7 @@
 import { UseQueryResult, useQuery } from '@tanstack/react-query'
 
-import { get, ICard } from '@practice-two/shared'
+import { get } from '@practice-two/shared/services'
+import { ICard } from '@practice-two/shared/types'
 
 const useGetCard = (path: string, userId: string): UseQueryResult<ICard[], Error> => {
   return useQuery<ICard[], Error, ICard[], string[]>({

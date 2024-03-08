@@ -2,8 +2,8 @@ import { RouteProp } from '@react-navigation/native'
 import { NativeStackNavigationProp } from '@react-navigation/native-stack'
 import { ComponentMeta, ComponentStory } from '@storybook/react-native'
 
-import { NavigationDecorator } from '@practice-two/shared'
-import { RootStackParamList } from 'libs/shared/navigation/Stack'
+import { NavigationDecorator } from '@practice-two/shared/utils'
+import { RootStackParamList } from '@practice-two/shared/types'
 
 import CategoryDetail from './index'
 

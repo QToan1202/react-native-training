@@ -3,7 +3,7 @@ import { SubmitHandler, useForm } from 'react-hook-form'
 import { ComponentMeta, ComponentStory } from '@storybook/react-native'
 import { getTokens } from 'tamagui'
 
-import { IForm } from '@practice-two/shared'
+import { IForm } from '../../types'
 
 import { Button, Input } from '../index'
 import { InputProps } from './index'

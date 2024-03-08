@@ -3,8 +3,10 @@ import { Dimensions, Image } from 'react-native'
 import { NativeStackScreenProps } from '@react-navigation/native-stack'
 import { ScrollView, Separator, Spinner, XStack, YStack } from 'tamagui'
 
-import { Button, Heading, Paragraph, ICart, Feature } from '@practice-two/shared'
-import { RootStackParamList } from 'libs/shared/navigation/Stack'
+import { Button, Heading, Paragraph } from '@practice-two/shared/components'
+import { Feature } from '@practice-two/shared/hocs'
+import { ICart, RootStackParamList } from '@practice-two/shared/types'
+
 import { CartItem, TrackerItem } from '../../components'
 import { useFindMultiProduct, useGetOderDetail } from '../../hooks'
 

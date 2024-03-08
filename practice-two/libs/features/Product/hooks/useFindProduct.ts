@@ -1,6 +1,7 @@
 import { UseQueryResult, useQuery } from '@tanstack/react-query'
 
-import { find, IProduct } from '@practice-two/shared'
+import { find } from '@practice-two/shared/services'
+import { IProduct } from '@practice-two/shared/types'
 
 const useFindProduct = (path: string, id: string): UseQueryResult<IProduct, Error> => {
   return useQuery<IProduct, Error, IProduct, string[]>({

@@ -2,7 +2,7 @@ import AsyncStorage from '@react-native-async-storage/async-storage'
 import { create } from 'zustand'
 import { createJSONStorage, persist } from 'zustand/middleware'
 
-import { ICart, IProductBase } from '@practice-two/shared'
+import { ICart, IProductBase } from '../types'
 
 interface CartState {
   isHydrated: boolean

@@ -1,7 +1,7 @@
 import AsyncStorage from '@react-native-async-storage/async-storage'
 import { Callback } from '@react-native-async-storage/async-storage/lib/typescript/types'
 
-import { TAsyncStoreReturnType } from '@types'
+import { TAsyncStoreReturnType } from '../../types'
 
 const save = async <T>(
   key: string,

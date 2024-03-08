@@ -16,10 +16,11 @@ import * as Notifications from 'expo-notifications'
 import { registerRootComponent } from 'expo'
 
 import { NavigationContainer, NavigationState } from '@react-navigation/native'
-import { StackNavigation, useAuthStore, useNavigationStore } from '@practice-two/shared'
+import { useAuthStore, useNavigationStore } from '@practice-two/shared/stores'
 import { notificationLinking } from '@practice-two/features'
 
 import styles from './styles'
+import { StackNavigation } from './navigation'
 import StorybookUI from '../../.storybook'
 import config from '../../tamagui.config'
 

@@ -3,21 +3,14 @@ import { View } from 'react-native'
 import { NavigationProp } from '@react-navigation/native'
 import { BottomTabHeaderProps, createBottomTabNavigator } from '@react-navigation/bottom-tabs'
 
-import { TabIcon } from '../../components'
-import { COLORS } from '../../constants'
+import { TabParamsList } from '@practice-two/shared/types'
+import { TabIcon } from '@practice-two/shared/components'
+import { COLORS } from '@practice-two/shared/constants'
 
 import styles from './styles'
 
 const BrowseBar = lazy(() => import('../../components/Bar/Instance/Browse'))
 const HomeBar = lazy(() => import('../../components/Bar/Instance/Home'))
-
-export type TabParamsList = {
-  HomeTab: undefined
-  BrowseTab: undefined
-  ProductTab: undefined
-  OrderHistoryTab: undefined
-  ProfileTab: undefined
-}
 
 const Tab = createBottomTabNavigator<TabParamsList>()
 const CustomHeader = (Element: React.JSX.ElementType, props: BottomTabHeaderProps) => (

@@ -1,8 +1,11 @@
 import { UseMutationResult, useMutation } from '@tanstack/react-query'
 import { ToastAndroid } from 'react-native'
 
-import { asyncStoreService, IUser, useAuthStore } from '@practice-two/shared'
-import { register } from '../../SignUp/services'
+import { asyncStoreService } from '@practice-two/shared/services'
+import { IUser } from '@practice-two/shared/types'
+import { useAuthStore } from '@practice-two/shared/stores'
+
+import { register } from '../services'
 
 export const useRegister = (path: string): UseMutationResult<IUser, Error, IUser, unknown> => {
   const setUser = useAuthStore((state) => state.setUser)

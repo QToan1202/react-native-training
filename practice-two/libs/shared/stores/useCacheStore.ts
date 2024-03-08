@@ -2,7 +2,7 @@ import AsyncStorage from '@react-native-async-storage/async-storage'
 import { create } from 'zustand'
 import { createJSONStorage, persist } from 'zustand/middleware'
 
-import { IProduct, IStore, IWishlistBase } from '@practice-two/shared'
+import { IProduct, IStore, IWishlistBase } from '../types'
 
 interface CacheState {
   isHydrated: boolean

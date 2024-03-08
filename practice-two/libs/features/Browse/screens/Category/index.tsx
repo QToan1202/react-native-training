@@ -1,9 +1,12 @@
 import { useFocusEffect } from '@react-navigation/native'
 import { NativeStackScreenProps } from '@react-navigation/native-stack'
 
-import { renderItem, WrapList, ProductCard, Feature } from '@practice-two/shared'
-import { RootStackParamList } from 'libs/shared/navigation/Stack'
-import { PRODUCT_DATA } from '../constants'
+import { WrapList, ProductCard } from '@practice-two/shared/components'
+import { Feature } from '@practice-two/shared/hocs'
+import { renderItem } from '@practice-two/shared/utils'
+import { RootStackParamList } from '@practice-two/shared/types'
+
+import { PRODUCT_DATA } from '../../constants'
 
 import styles from './styles'
 

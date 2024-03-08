@@ -2,7 +2,10 @@ import { memo } from 'react'
 import isEqual from 'react-fast-compare'
 import { View, ViewProps } from 'react-native'
 
-import { Paragraph, TTrackerStatus, containerStyles } from '@practice-two/shared'
+import { Paragraph } from '@practice-two/shared/components'
+import { TTrackerStatus } from '@practice-two/shared/types'
+import { containerStyles } from '@practice-two/shared/styles'
+
 import styles from './styles'
 
 export interface TrackerItemProps extends ViewProps {

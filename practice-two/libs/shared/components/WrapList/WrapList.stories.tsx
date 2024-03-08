@@ -1,6 +1,6 @@
 import { ComponentMeta, ComponentStory } from '@storybook/react-native'
 
-import { renderItem } from '@practice-two/shared'
+import { renderItem } from '../../utils'
 
 import { WrapList, ProductCard } from '../index'
 

@@ -3,19 +3,12 @@ import { Spinner, YStack } from 'tamagui'
 import { FlatList, ListRenderItem } from 'react-native'
 import { NativeStackScreenProps } from '@react-navigation/native-stack'
 
-import {
-  ProductCard,
-  Heading,
-  Paragraph,
-  useGetProducts,
-  useGetWishlist,
-  IProduct,
-  IWishlistBase,
-  productListStyles,
-  useAuthStore,
-  Feature,
-} from '@practice-two/shared'
-import { RootStackParamList } from 'libs/shared/navigation/Stack'
+import { ProductCard, Heading, Paragraph } from '@practice-two/shared/components'
+import { useGetProducts, useGetWishlist } from '@practice-two/shared/hooks'
+import { productListStyles } from '@practice-two/shared/styles'
+import { useAuthStore } from '@practice-two/shared/stores'
+import { Feature } from '@practice-two/shared/hocs'
+import { IProduct, IWishlistBase, RootStackParamList } from '@practice-two/shared/types'
 
 export type WishlistScreenProps = NativeStackScreenProps<RootStackParamList, 'Wishlist'>
 

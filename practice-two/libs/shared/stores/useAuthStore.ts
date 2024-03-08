@@ -2,7 +2,7 @@ import AsyncStorage from '@react-native-async-storage/async-storage'
 import { create } from 'zustand'
 import { createJSONStorage, persist } from 'zustand/middleware'
 
-import { IUser } from '@practice-two/shared'
+import { IUser } from '../types'
 
 interface AuthState {
   isHydrated: boolean

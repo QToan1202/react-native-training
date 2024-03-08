@@ -6,10 +6,12 @@ import { SafeAreaView } from 'react-native-safe-area-context'
 import { NativeStackScreenProps } from '@react-navigation/native-stack'
 import { XStack, YStack } from 'tamagui'
 
-import { Button, Heading, Input, Paragraph, IForm, IUser, Feature } from '@practice-two/shared'
-import { RootStackParamList } from 'libs/shared/navigation/Stack'
-import { useRegister } from '../hooks'
-import { SIGN_UP_INPUTS } from '../constants'
+import { Button, Heading, Input, Paragraph } from '@practice-two/shared/components'
+import { IForm, IUser, RootStackParamList } from '@practice-two/shared/types'
+import { Feature } from '@practice-two/shared/hocs'
+
+import { useRegister } from '../../hooks'
+import { SIGN_UP_INPUTS } from '../../constants'
 
 import styles from './styles'
 

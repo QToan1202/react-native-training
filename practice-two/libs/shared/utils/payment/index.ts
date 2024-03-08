@@ -1,4 +1,4 @@
-import { TCard } from '@types'
+import { TCard } from '../../types'
 
 export const checkCardType = (cardNumber: string): TCard => {
   const firstDigit: number = Number(cardNumber[0])

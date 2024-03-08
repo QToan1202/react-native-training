@@ -13,23 +13,17 @@ import {
   IconButton,
   Paragraph,
   TabBar,
-  useAuthStore,
-  useCacheStore,
-  useCartStore,
-  IProduct,
-  IWishlistBase,
-  calculateDiscount,
-  useAddToWishlist,
-  useDeleteFromWishlist,
-  useGetWishlist,
-  Feature,
-} from '@practice-two/shared'
+} from '@practice-two/shared/components'
+import { useAuthStore, useCacheStore, useCartStore } from '@practice-two/shared/stores'
+import { useAddToWishlist, useDeleteFromWishlist, useGetWishlist } from '@practice-two/shared/hooks'
+import { calculateDiscount } from '@practice-two/shared/utils'
+import { Feature } from '@practice-two/shared/hocs'
+import { IProduct, IWishlistBase, RootStackParamList } from '@practice-two/shared/types'
 import ShareIcon from '@assets/share.svg'
 import BackIcon from '@assets/back.svg'
 import LikeIcon from '@assets/like.svg'
 import LoveIcon from '@assets/love.svg'
 import MoreIcon from '@assets/more.svg'
-import { RootStackParamList } from 'libs/shared/navigation/Stack'
 
 import { useFindProduct } from '../hooks'
 import { CATEGORY } from '../constants'

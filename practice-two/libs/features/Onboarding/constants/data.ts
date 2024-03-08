@@ -1,4 +1,4 @@
-import { IOnboardingScreenView } from '@practice-two/shared'
+import { IOnboardingScreenView } from '@practice-two/shared/types'
 
 const ONBOARDING_VIEW_DATA: IOnboardingScreenView[] = [
   {

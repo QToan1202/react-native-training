@@ -5,14 +5,10 @@ import PagerView, { PagerViewOnPageSelectedEvent } from 'react-native-pager-view
 import { NativeStackScreenProps } from '@react-navigation/native-stack'
 import { XStack } from 'tamagui'
 
-import {
-  Button,
-  Paragraph,
-  containerStyles,
-  IOnboardingScreenView,
-  Feature,
-} from '@practice-two/shared'
-import { RootStackParamList } from 'libs/shared/navigation/Stack'
+import { Button, Paragraph } from '@practice-two/shared/components'
+import { containerStyles } from '@practice-two/shared/styles'
+import { Feature } from '@practice-two/shared/hocs'
+import { IOnboardingScreenView, RootStackParamList } from '@practice-two/shared/types'
 import { ONBOARDING_VIEW_DATA } from '../constants'
 
 import styles from './styles'

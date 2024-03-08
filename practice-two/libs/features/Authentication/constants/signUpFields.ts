@@ -1,6 +1,5 @@
+import { COLORS, ERROR_MESSAGES } from '@practice-two/shared/constants'
 import { InputProps } from 'libs/shared/components/Input'
-
-import { COLORS, ERROR_MESSAGES } from '@practice-two/shared'
 
 const INPUTS = (observePassword: string): Omit<InputProps, 'control'>[] => [
   {

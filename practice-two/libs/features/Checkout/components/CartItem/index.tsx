@@ -3,7 +3,8 @@ import isEqual from 'react-fast-compare'
 import { ImageSourcePropType } from 'react-native'
 import { XStack, XStackProps, YStack } from 'tamagui'
 
-import { Paragraph, calculateDiscount } from '@practice-two/shared'
+import { Paragraph } from '@practice-two/shared/components'
+import { calculateDiscount } from '@practice-two/shared/utils'
 
 import { StyledImage, StyledText } from './styles'
 

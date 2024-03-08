@@ -2,7 +2,7 @@ import AsyncStorage from '@react-native-async-storage/async-storage'
 import { create } from 'zustand'
 import { createJSONStorage, persist } from 'zustand/middleware'
 
-import { IAddressBase, ICardBase } from '@practice-two/shared'
+import { IAddressBase, ICardBase } from '../types'
 
 interface OrderState {
   isHydrated: boolean

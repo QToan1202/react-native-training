@@ -1,7 +1,7 @@
 import { UseMutationResult, useMutation } from '@tanstack/react-query'
 import { ToastAndroid } from 'react-native'
 
-import { IUser } from '@practice-two/shared'
+import { IUser } from '@practice-two/shared/types'
 import { login } from '../services'
 
 const useLogin = (

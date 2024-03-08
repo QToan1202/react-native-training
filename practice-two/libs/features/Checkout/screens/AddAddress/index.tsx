@@ -5,16 +5,11 @@ import { NativeStackScreenProps } from '@react-navigation/native-stack'
 import { ScrollView } from 'tamagui'
 import { useShallow } from 'zustand/react/shallow'
 
-import {
-  Button,
-  Input,
-  TabBar,
-  IAddressBase,
-  IForm,
-  useAuthStore,
-  Feature,
-} from '@practice-two/shared'
-import { RootStackParamList } from 'libs/shared/navigation/Stack'
+import { Button, Input, TabBar } from '@practice-two/shared/components'
+import { useAuthStore } from '@practice-two/shared/stores'
+import { Feature } from '@practice-two/shared/hocs'
+import { IAddressBase, IForm, RootStackParamList } from '@practice-two/shared/types'
+
 import { useAddAddress } from '../../hooks'
 import { ADDRESS_FORM_FIELDS, TAddressFormFields } from '../../constants'
 

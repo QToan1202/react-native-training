@@ -1,54 +1,13 @@
 import { lazy } from 'react'
 import { NativeStackHeaderProps, createNativeStackNavigator } from '@react-navigation/native-stack'
-import { NavigatorScreenParams } from '@react-navigation/native'
 
-import { COLORS } from '../../constants'
-import BottomNav, { TabParamsList } from '../Tab'
+import { COLORS } from '@practice-two/shared/constants'
+import { RootStackParamList } from '@practice-two/shared/types'
+import BottomNav from '../Tab'
 
 // Components
 const BackBar = lazy(() => import('../../components/Bar/Instance/Back'))
 const CategoryBar = lazy(() => import('../../components/Bar/Instance/Category'))
-
-type PublicStackParamsList = {
-  Onboarding: undefined
-  Login: undefined
-  SignUp: undefined
-}
-
-type HomeStackParamsList = {
-  Home: undefined
-  CategoryDetail: { name: string }
-  ProductDetail: { id: string } // ID of the product
-  Cart: undefined
-  AddAddress: undefined
-  AddCard: undefined
-  Payment: undefined
-  OrderDetail: { id: string } // ID of the order
-  Wishlist: undefined
-}
-
-type BrowseStackParamsList = {
-  Browse: { search: string } | undefined
-  ProductDetail: { id: string }
-  Cart: undefined
-  AddAddress: undefined
-  AddCard: undefined
-  Payment: undefined
-  OrderDetail: { id: string } // ID of the order
-  Wishlist: undefined
-}
-
-export type RootStackParamList = {
-  Tabs: NavigatorScreenParams<TabParamsList>
-  HomeStack: NavigatorScreenParams<HomeStackParamsList>
-  BrowseStack: NavigatorScreenParams<BrowseStackParamsList>
-  StoreStack: undefined
-  OrderHistoryStack: undefined
-  ProfileStack: undefined
-} & PublicStackParamsList &
-  HomeStackParamsList &
-  BrowseStackParamsList &
-  TabParamsList
 
 const Stack = createNativeStackNavigator<RootStackParamList>()
 const CustomHeader = (Element: React.JSX.ElementType, props: NativeStackHeaderProps) => (

@@ -2,7 +2,9 @@ import { UseMutationResult, useMutation } from '@tanstack/react-query'
 import * as Notifications from 'expo-notifications'
 import * as ExpoLinking from 'expo-linking'
 
-import { add, IOrder, useCartStore } from '@practice-two/shared'
+import { add } from '@practice-two/shared/services'
+import { IOrder } from '@practice-two/shared/types'
+import { useCartStore } from '@practice-two/shared/stores'
 
 const useOrderProduct = (
   path: string

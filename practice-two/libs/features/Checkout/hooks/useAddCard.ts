@@ -1,7 +1,9 @@
 import { UseMutationResult, useMutation, useQueryClient } from '@tanstack/react-query'
 import { ToastAndroid } from 'react-native'
 
-import { add, ICard, useOrderStore } from '@practice-two/shared'
+import { add } from '@practice-two/shared/services'
+import { ICard } from '@practice-two/shared/types'
+import { useOrderStore } from '@practice-two/shared/stores'
 
 const useAddCard = (path: string): UseMutationResult<ICard, Error, Omit<ICard, 'id'>, unknown> => {
   const queryClient = useQueryClient()
