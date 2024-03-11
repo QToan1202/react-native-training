@@ -1,13 +1,25 @@
 import { lazy } from 'react'
 import { NativeStackHeaderProps, createNativeStackNavigator } from '@react-navigation/native-stack'
 
+import { Onboarding } from '@practice-two/features/onboarding'
+import { Login, SignUp } from '@practice-two/features/auth'
+import { Cart, AddAddress, AddCard, Payment, OrderDetail } from '@practice-two/features/checkout'
+import { Wishlist } from '@practice-two/features/wishlist'
+import { Product } from '@practice-two/features/product'
+import { CategoryDetail } from '@practice-two/features/browse'
+import { Feature } from '@practice-two/shared/hocs'
+
 import { COLORS } from '@practice-two/shared/constants'
 import { RootStackParamList } from '@practice-two/shared/types'
 import BottomNav from '../Tab'
 
 // Components
-const BackBar = lazy(() => import('../../components/Bar/Instance/Back'))
-const CategoryBar = lazy(() => import('../../components/Bar/Instance/Category'))
+const BackBar = lazy(() =>
+  import('@practice-two/shared/components').then((module) => ({ default: module.BackBar }))
+)
+const CategoryBar = lazy(() =>
+  import('@practice-two/shared/components').then((module) => ({ default: module.CategoryBar }))
+)
 
 const Stack = createNativeStackNavigator<RootStackParamList>()
 const CustomHeader = (Element: React.JSX.ElementType, props: NativeStackHeaderProps) => (
@@ -19,25 +31,23 @@ const PublicStackNavigator = () => (
     initialRouteName="Onboarding"
     screenOptions={{ headerShown: false, statusBarColor: COLORS.PRIMARY }}
   >
-    <Stack.Screen
-      name="Onboarding"
-      getComponent={() => require('../../../features/Onboarding/screens').default}
-    />
-    <Stack.Screen
-      name="Login"
-      getComponent={() => require('../../../features/Login/screens').default}
-    />
-    <Stack.Screen
-      name="SignUp"
-      getComponent={() => require('../../../features/SignUp/screens').default}
-      options={{
-        headerShown: true,
-        headerTitle: '',
-        headerStyle: { backgroundColor: COLORS.PRIMARY },
-        headerShadowVisible: false,
-        headerTintColor: COLORS.WHITE,
-      }}
-    />
+    <Feature feat="onboarding">
+      <Stack.Screen name="Onboarding" getComponent={() => Onboarding} />
+    </Feature>
+    <Feature feat="authentication">
+      <Stack.Screen name="Login" getComponent={() => Login} />
+      <Stack.Screen
+        name="SignUp"
+        getComponent={() => SignUp}
+        options={{
+          headerShown: true,
+          headerTitle: '',
+          headerStyle: { backgroundColor: COLORS.PRIMARY },
+          headerShadowVisible: false,
+          headerTintColor: COLORS.WHITE,
+        }}
+      />
+    </Feature>
   </Stack.Navigator>
 )
 
@@ -49,32 +59,24 @@ const TabBarStack = (
   >
     <Stack.Screen
       name="Wishlist"
-      getComponent={() => require('../../../features/Wishlist/screens').default}
+      getComponent={() => Wishlist}
       options={{ headerTitle: 'wishlist' }}
     />
-    <Stack.Screen
-      name="Cart"
-      getComponent={() => require('../../../features/Checkout/screens/Cart').default}
-      options={{ headerTitle: 'my cart' }}
-    />
+    <Stack.Screen name="Cart" getComponent={() => Cart} options={{ headerTitle: 'my cart' }} />
     <Stack.Screen
       name="AddAddress"
-      getComponent={() => require('../../../features/Checkout/screens/AddAddress').default}
+      getComponent={() => AddAddress}
       options={{ headerTitle: 'add a new address' }}
     />
-    <Stack.Screen
-      name="AddCard"
-      getComponent={() => require('../../../features/Checkout/screens/AddCard').default}
-      options={{ headerShown: false }}
-    />
+    <Stack.Screen name="AddCard" getComponent={() => AddCard} options={{ headerShown: false }} />
     <Stack.Screen
       name="Payment"
-      getComponent={() => require('../../../features/Checkout/screens/Payment').default}
+      getComponent={() => Payment}
       options={{ headerTitle: 'payment option' }}
     />
     <Stack.Screen
       name="OrderDetail"
-      getComponent={() => require('../../../features/Checkout/screens/OrderDetail').default}
+      getComponent={() => OrderDetail}
       options={{ headerTitle: 'order details' }}
     />
   </Stack.Group>
@@ -84,12 +86,12 @@ const HomeStack = () => (
   <Stack.Navigator>
     <Stack.Screen
       name="ProductDetail"
-      getComponent={() => require('../../../features/Product/screens').default}
+      getComponent={() => Product}
       options={{ headerShown: false }}
     />
     <Stack.Screen
       name="CategoryDetail"
-      getComponent={() => require('../../../features/Category/screens').default}
+      getComponent={() => CategoryDetail}
       options={{
         header: (props: NativeStackHeaderProps) => CustomHeader(CategoryBar, props),
       }}
@@ -102,7 +104,7 @@ const BrowseStack = () => (
   <Stack.Navigator>
     <Stack.Screen
       name="ProductDetail"
-      getComponent={() => require('../../../features/Product/screens').default}
+      getComponent={() => Product}
       options={{ headerShown: false }}
     />
     {TabBarStack}

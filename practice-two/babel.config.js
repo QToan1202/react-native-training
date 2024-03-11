@@ -25,11 +25,17 @@ module.exports = function (api) {
       [
         'module-resolver',
         {
-          root: ['./app'],
+          root: ['./libs', './apps'],
           extensions: ['.ios.js', '.android.js', '.js', '.ts', '.tsx', '.json'],
           alias: {
             '@assets': './assets',
-            '@practice-two/features/*': './libs/features/index.ts',
+            '@practice-two/features/auth': './libs/features/Authentication/index.ts',
+            '@practice-two/features/browse': './libs/features/Browse/index.ts',
+            '@practice-two/features/checkout': './libs/features/Checkout/index.ts',
+            '@practice-two/features/notification': './libs/features/Notification/index.ts',
+            '@practice-two/features/onboarding': './libs/features/Onboarding/index.ts',
+            '@practice-two/features/product': './libs/features/Product/index.ts',
+            '@practice-two/features/wishlist': './libs/features/Wishlist/index.ts',
             '@practice-two/shared/animations': './libs/shared/animations/index.ts',
             '@practice-two/shared/components': './libs/shared/components/index.ts',
             '@practice-two/shared/constants': './libs/shared/constants/index.ts',

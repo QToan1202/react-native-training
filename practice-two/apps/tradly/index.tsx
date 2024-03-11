@@ -15,9 +15,9 @@ import { useShallow } from 'zustand/react/shallow'
 import * as Notifications from 'expo-notifications'
 import { registerRootComponent } from 'expo'
 
+import notificationLinking from '@practice-two/features/notification'
 import { NavigationContainer, NavigationState } from '@react-navigation/native'
 import { useAuthStore, useNavigationStore } from '@practice-two/shared/stores'
-import { notificationLinking } from '@practice-two/features'
 
 import styles from './styles'
 import { StackNavigation } from './navigation'

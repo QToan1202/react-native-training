@@ -1,6 +1,6 @@
 import { Dimensions, StyleSheet } from 'react-native'
 
-import { COLORS } from '@practice-two/shared'
+import { COLORS } from '@practice-two/shared/constants'
 
 const styles = StyleSheet.create({
   sliderItem: {
