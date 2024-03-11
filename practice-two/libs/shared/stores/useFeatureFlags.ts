@@ -1,21 +1,16 @@
-import AsyncStorage from '@react-native-async-storage/async-storage'
 import { create } from 'zustand'
-import { createJSONStorage, persist } from 'zustand/middleware'
 
 import { FeatureConfig } from '../types'
 
 interface FeatureState {
-  isHydrated: boolean
   features: FeatureConfig[]
 }
 
 interface FeatureActions {
-  setIsHydrated: (isHydratedState: boolean) => void
   isFeatureActive: (featName: string) => boolean
 }
 
 const initState: FeatureState = {
-  isHydrated: false,
   features: [
     { name: 'Onboarding', active: process.env.ONBOARDING_FEAT_ACTIVE_STATE },
     { name: 'Login', active: process.env.LOGIN_FEAT_ACTIVE_STATE },
@@ -31,29 +26,17 @@ const initState: FeatureState = {
   ],
 }
 
-export const useFeatureFlags = create<FeatureState & FeatureActions>()(
-  persist(
-    (set) => ({
-      ...initState,
-      setIsHydrated: (isHydratedState: boolean) => set({ isHydrated: isHydratedState }),
-      isFeatureActive: (featName: string) => {
-        const item: FeatureConfig | undefined = initState.features.find(
-          (feature) => !featName.localeCompare(feature.name, 'en', { sensitivity: 'base' })
-        )
+export const useFeatureFlags = create<FeatureState & FeatureActions>()(() => ({
+  ...initState,
+  isFeatureActive: (featName: string) => {
+    const item: FeatureConfig | undefined = initState.features.find(
+      (feature) => !featName.localeCompare(feature.name, 'en', { sensitivity: 'base' })
+    )
 
-        if (!item) return false
+    if (!item) return false
 
-        return item.active
-      },
-    }),
-    {
-      name: 'feat.storage',
-      storage: createJSONStorage(() => AsyncStorage),
-      onRehydrateStorage: () => (state: (FeatureState & FeatureActions) | undefined) => {
-        state?.setIsHydrated(true)
-      },
-    }
-  )
-)
+    return item.active
+  },
+}))
 
 export default useFeatureFlags
