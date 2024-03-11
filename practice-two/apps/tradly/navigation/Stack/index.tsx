@@ -26,15 +26,17 @@ const CustomHeader = (Element: React.JSX.ElementType, props: NativeStackHeaderPr
   <Element {...props} />
 )
 
-const PublicStackNavigator = () => (
-  <Stack.Navigator
-    initialRouteName="Onboarding"
-    screenOptions={{ headerShown: false, statusBarColor: COLORS.PRIMARY }}
-  >
-    <Feature feat="onboarding">
+const OnboardingStack = () => (
+  <Feature feat="onboarding">
+    <Stack.Navigator>
       <Stack.Screen name="Onboarding" getComponent={() => Onboarding} />
-    </Feature>
-    <Feature feat="authentication">
+    </Stack.Navigator>
+  </Feature>
+)
+
+const AuthStack = () => (
+  <Feature feat="authentication">
+    <Stack.Navigator>
       <Stack.Screen name="Login" getComponent={() => Login} />
       <Stack.Screen
         name="SignUp"
@@ -47,39 +49,44 @@ const PublicStackNavigator = () => (
           headerTintColor: COLORS.WHITE,
         }}
       />
-    </Feature>
+    </Stack.Navigator>
+  </Feature>
+)
+
+const PublicStackNavigator = () => (
+  <Stack.Navigator screenOptions={{ headerShown: false, statusBarColor: COLORS.PRIMARY }}>
+    <Stack.Screen name="OnboardingStack" component={OnboardingStack} />
+    <Stack.Screen name="AuthStack" component={AuthStack} />
   </Stack.Navigator>
 )
 
-const TabBarStack = (
-  <Stack.Group
-    screenOptions={{
-      header: (props: NativeStackHeaderProps) => CustomHeader(BackBar, props),
-    }}
-  >
-    <Stack.Screen
-      name="Wishlist"
-      getComponent={() => Wishlist}
-      options={{ headerTitle: 'wishlist' }}
-    />
-    <Stack.Screen name="Cart" getComponent={() => Cart} options={{ headerTitle: 'my cart' }} />
-    <Stack.Screen
-      name="AddAddress"
-      getComponent={() => AddAddress}
-      options={{ headerTitle: 'add a new address' }}
-    />
-    <Stack.Screen name="AddCard" getComponent={() => AddCard} options={{ headerShown: false }} />
-    <Stack.Screen
-      name="Payment"
-      getComponent={() => Payment}
-      options={{ headerTitle: 'payment option' }}
-    />
-    <Stack.Screen
-      name="OrderDetail"
-      getComponent={() => OrderDetail}
-      options={{ headerTitle: 'order details' }}
-    />
-  </Stack.Group>
+const CheckoutStack = () => (
+  <Feature feat="checkout">
+    <Stack.Navigator>
+      <Stack.Screen
+        name="Wishlist"
+        getComponent={() => Wishlist}
+        options={{ headerTitle: 'wishlist' }}
+      />
+      <Stack.Screen name="Cart" getComponent={() => Cart} options={{ headerTitle: 'my cart' }} />
+      <Stack.Screen
+        name="AddAddress"
+        getComponent={() => AddAddress}
+        options={{ headerTitle: 'add a new address' }}
+      />
+      <Stack.Screen name="AddCard" getComponent={() => AddCard} options={{ headerShown: false }} />
+      <Stack.Screen
+        name="Payment"
+        getComponent={() => Payment}
+        options={{ headerTitle: 'payment option' }}
+      />
+      <Stack.Screen
+        name="OrderDetail"
+        getComponent={() => OrderDetail}
+        options={{ headerTitle: 'order details' }}
+      />
+    </Stack.Navigator>
+  </Feature>
 )
 
 const HomeStack = () => (
@@ -96,7 +103,13 @@ const HomeStack = () => (
         header: (props: NativeStackHeaderProps) => CustomHeader(CategoryBar, props),
       }}
     />
-    {TabBarStack}
+    <Stack.Screen
+      name="CheckoutStack"
+      component={CheckoutStack}
+      options={{
+        header: (props: NativeStackHeaderProps) => CustomHeader(BackBar, props),
+      }}
+    />
   </Stack.Navigator>
 )
 
@@ -107,7 +120,13 @@ const BrowseStack = () => (
       getComponent={() => Product}
       options={{ headerShown: false }}
     />
-    {TabBarStack}
+    <Stack.Screen
+      name="CheckoutStack"
+      component={CheckoutStack}
+      options={{
+        header: (props: NativeStackHeaderProps) => CustomHeader(BackBar, props),
+      }}
+    />
   </Stack.Navigator>
 )
 
