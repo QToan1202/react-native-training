@@ -7,7 +7,6 @@ import { CompositeScreenProps } from '@react-navigation/native'
 import { NativeStackScreenProps } from '@react-navigation/native-stack'
 
 import { Button, Heading, ProductCard, StoreCard } from '@practice-two/shared/components'
-import { Feature } from '@practice-two/shared/hocs'
 import { renderItem } from '@practice-two/shared/utils'
 import { useCacheStore } from '@practice-two/shared/stores'
 import { useGetProducts, useGetStores } from '@practice-two/shared/hooks'
@@ -125,7 +124,6 @@ const Dashboard = ({ navigation }: HomeScreenProps) => {
   )
 
   return (
-    <Feature feat="dashboard">
       <ScrollView flex={1} backgroundColor="$color.white">
         <FlatList
           keyExtractor={({ id }: ISliderItem): string => id}
@@ -180,7 +178,6 @@ const Dashboard = ({ navigation }: HomeScreenProps) => {
           />
         </YStack>
       </ScrollView>
-    </Feature>
   )
 }
 
