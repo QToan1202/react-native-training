@@ -91,12 +91,12 @@ const CheckoutStack = () => (
 
 const ProductStack = () => (
   <Feature feat="product">
-  <Stack.Navigator>
-    <Stack.Screen
-      name="ProductDetail"
-      getComponent={() => Product}
-      options={{ headerShown: false }}
-    />
+    <Stack.Navigator>
+      <Stack.Screen
+        name="ProductDetail"
+        getComponent={() => Product}
+        options={{ headerShown: false }}
+      />
     </Stack.Navigator>
   </Feature>
 )
@@ -122,20 +122,22 @@ const HomeStack = () => (
 )
 
 const BrowseStack = () => (
-  <Stack.Navigator>
-    <Stack.Screen
-      name="ProductDetail"
-      getComponent={() => Product}
-      options={{ headerShown: false }}
-    />
-    <Stack.Screen
-      name="CheckoutStack"
-      component={CheckoutStack}
-      options={{
-        header: (props: NativeStackHeaderProps) => CustomHeader(BackBar, props),
-      }}
-    />
-  </Stack.Navigator>
+  <Feature feat="browse">
+    <Stack.Navigator>
+      <Stack.Screen
+        name="ProductDetail"
+        getComponent={() => Product}
+        options={{ headerShown: false }}
+      />
+      <Stack.Screen
+        name="CheckoutStack"
+        component={CheckoutStack}
+        options={{
+          header: (props: NativeStackHeaderProps) => CustomHeader(BackBar, props),
+        }}
+      />
+    </Stack.Navigator>
+  </Feature>
 )
 
 const PrivateStackNavigator = () => (
