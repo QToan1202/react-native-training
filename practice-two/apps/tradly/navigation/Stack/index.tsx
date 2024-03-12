@@ -89,13 +89,21 @@ const CheckoutStack = () => (
   </Feature>
 )
 
-const HomeStack = () => (
+const ProductStack = () => (
+  <Feature feat="product">
   <Stack.Navigator>
     <Stack.Screen
       name="ProductDetail"
       getComponent={() => Product}
       options={{ headerShown: false }}
     />
+    </Stack.Navigator>
+  </Feature>
+)
+
+const HomeStack = () => (
+  <Stack.Navigator>
+    <Stack.Screen name="ProductStack" component={ProductStack} options={{ headerShown: false }} />
     <Stack.Screen
       name="CategoryDetail"
       getComponent={() => CategoryDetail}
