@@ -42,7 +42,10 @@ const Dashboard = ({ navigation }: HomeScreenProps) => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
   const handleMoveToProduct = useCallback((id: string) => {
-    navigation.navigate('HomeStack', { screen: 'ProductDetail', params: { id } })
+    navigation.navigate('HomeStack', {
+      screen: 'ProductStack',
+      params: { screen: 'ProductDetail', params: { id } },
+    })
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
   const renderProductItem: ListRenderItem<IProduct> = useCallback(
@@ -124,60 +127,60 @@ const Dashboard = ({ navigation }: HomeScreenProps) => {
   )
 
   return (
-      <ScrollView flex={1} backgroundColor="$color.white">
+    <ScrollView flex={1} backgroundColor="$color.white">
+      <FlatList
+        keyExtractor={({ id }: ISliderItem): string => id}
+        data={DASHBOARD.SLIDER_DATA}
+        renderItem={renderItem(SliderItem)}
+        horizontal
+        showsHorizontalScrollIndicator={false}
+        contentContainerStyle={styles.sliderItem}
+      />
+      <FlatList
+        keyExtractor={({ id }: ICategoryItem): string => id}
+        data={DASHBOARD.CATEGORY_DATA}
+        renderItem={renderCategoryItem}
+        numColumns={4}
+        columnWrapperStyle={styles.menuItem}
+        contentContainerStyle={styles.categories}
+        scrollEnabled={false}
+      />
+      <YStack marginVertical="$space.3">
+        <>
+          {renderProducts('New Product', products || cacheProducts)}
+          {renderProducts('Popular Product', products || cacheProducts)}
+        </>
+      </YStack>
+      <YStack>
+        <View style={styles.bgStore} />
+        <XStack
+          alignItems="center"
+          justifyContent="space-between"
+          space="$space.1.5"
+          marginVertical="$space.3.5"
+          paddingHorizontal="$space.4.5"
+        >
+          <Heading content="Store to follow" color="$color.white" fontSize="$3" />
+          <Button
+            shrink
+            paddingHorizontal="$space.5"
+            paddingVertical="$space.1.5"
+            fontSize={12}
+            title="view all"
+            variant="secondary"
+            onPress={handleSeeAllProducts}
+          />
+        </XStack>
         <FlatList
-          keyExtractor={({ id }: ISliderItem): string => id}
-          data={DASHBOARD.SLIDER_DATA}
-          renderItem={renderItem(SliderItem)}
+          keyExtractor={({ id }: IStore): string => id}
+          data={stores || cacheStores}
+          renderItem={renderStoreItem}
           horizontal
           showsHorizontalScrollIndicator={false}
-          contentContainerStyle={styles.sliderItem}
+          contentContainerStyle={styles.itemSpacing}
         />
-        <FlatList
-          keyExtractor={({ id }: ICategoryItem): string => id}
-          data={DASHBOARD.CATEGORY_DATA}
-          renderItem={renderCategoryItem}
-          numColumns={4}
-          columnWrapperStyle={styles.menuItem}
-          contentContainerStyle={styles.categories}
-          scrollEnabled={false}
-        />
-        <YStack marginVertical="$space.3">
-          <>
-            {renderProducts('New Product', products || cacheProducts)}
-            {renderProducts('Popular Product', products || cacheProducts)}
-          </>
-        </YStack>
-        <YStack>
-          <View style={styles.bgStore} />
-          <XStack
-            alignItems="center"
-            justifyContent="space-between"
-            space="$space.1.5"
-            marginVertical="$space.3.5"
-            paddingHorizontal="$space.4.5"
-          >
-            <Heading content="Store to follow" color="$color.white" fontSize="$3" />
-            <Button
-              shrink
-              paddingHorizontal="$space.5"
-              paddingVertical="$space.1.5"
-              fontSize={12}
-              title="view all"
-              variant="secondary"
-              onPress={handleSeeAllProducts}
-            />
-          </XStack>
-          <FlatList
-            keyExtractor={({ id }: IStore): string => id}
-            data={stores || cacheStores}
-            renderItem={renderStoreItem}
-            horizontal
-            showsHorizontalScrollIndicator={false}
-            contentContainerStyle={styles.itemSpacing}
-          />
-        </YStack>
-      </ScrollView>
+      </YStack>
+    </ScrollView>
   )
 }
 

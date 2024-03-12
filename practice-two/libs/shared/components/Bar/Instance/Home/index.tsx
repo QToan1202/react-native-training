@@ -11,12 +11,13 @@ import Bar from '../../index'
 
 const HomeBar = ({ options, route, navigation }: NativeStackHeaderProps) => {
   const handleNavigateToCart = useCallback(
-    () => navigation.navigate('HomeStack', { screen: 'Cart' }),
+    () => navigation.navigate('HomeStack', { screen: 'CheckoutStack', params: { screen: 'Cart' } }),
     // eslint-disable-next-line react-hooks/exhaustive-deps
     []
   )
   const handleNavigateToWishlist = useCallback(
-    () => navigation.navigate('HomeStack', { screen: 'Wishlist' }),
+    () =>
+      navigation.navigate('HomeStack', { screen: 'CheckoutStack', params: { screen: 'Wishlist' } }),
     // eslint-disable-next-line react-hooks/exhaustive-deps
     []
   )

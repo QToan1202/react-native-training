@@ -20,7 +20,8 @@ const Onboarding = ({ navigation }: OnboardingProps) => {
   const numOfPagerView = useRef<number>(ONBOARDING_VIEW_DATA.length - 1)
   const [currentPage, setCurrentPage] = useState<number>(0)
   const handleMoveToNextScreen = useCallback(() => {
-    if (currentPage === numOfPagerView.current) navigation.navigate('Login')
+    if (currentPage === numOfPagerView.current)
+      navigation.navigate('AuthStack', { screen: 'Login' })
     setCurrentPage((prevState) =>
       prevState !== numOfPagerView.current ? prevState + 1 : prevState
     )
