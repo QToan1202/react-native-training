@@ -28,7 +28,7 @@ const CustomHeader = (Element: React.JSX.ElementType, props: NativeStackHeaderPr
 
 const OnboardingStack = () => (
   <Feature feat="onboarding">
-    <Stack.Navigator>
+    <Stack.Navigator screenOptions={{ headerShown: false, statusBarColor: COLORS.PRIMARY }}>
       <Stack.Screen name="Onboarding" getComponent={() => Onboarding} />
     </Stack.Navigator>
   </Feature>
@@ -36,7 +36,7 @@ const OnboardingStack = () => (
 
 const AuthStack = () => (
   <Feature feat="authentication">
-    <Stack.Navigator>
+    <Stack.Navigator screenOptions={{ headerShown: false, statusBarColor: COLORS.PRIMARY }}>
       <Stack.Screen name="Login" getComponent={() => Login} />
       <Stack.Screen
         name="SignUp"
