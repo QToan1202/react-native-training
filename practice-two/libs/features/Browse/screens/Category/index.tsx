@@ -21,7 +21,7 @@ const CategoryDetail = ({ route, navigation }: CategoryDetailScreenProps) => {
   })
 
   return (
-    <Feature feat="category">
+    <Feature feat="browse">
       <WrapList
         keyExtractor={({ id }): string => id}
         style={styles.container}

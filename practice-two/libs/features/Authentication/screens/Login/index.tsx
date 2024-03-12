@@ -42,7 +42,7 @@ const Login = ({ navigation }: LoginScreenProps) => {
   const handleToSignUpScreen = useCallback(() => navigation.navigate('SignUp'), [navigation])
 
   return (
-    <Feature feat="login">
+    <Feature feat="authentication">
       <SafeAreaView style={styles.container}>
         <YStack space="$space.9" alignItems="center">
           <Heading content="Welcome to tradly" fontWeight="$2" letterSpacing="$2" />

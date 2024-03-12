@@ -37,7 +37,7 @@ const SignUp = ({ navigation }: SignUpScreenProps) => {
   )
 
   return (
-    <Feature feat="signup">
+    <Feature feat="authentication">
       <SafeAreaView style={styles.container}>
         <YStack marginBottom="$space.5" space="$space.9" alignItems="center">
           <Heading content="Welcome to tradly" fontWeight="$2" letterSpacing="$2" />
