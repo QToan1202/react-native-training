@@ -19,18 +19,23 @@ type CheckoutStack = {
   OrderDetail: { id: string } // ID of the order
 }
 
+type ProductStack = {
+  ProductDetail: { id: string } // ID of the product
+}
+
 type HomeStackParamsList = {
   Home: undefined
+  ProductStack: NavigatorScreenParams<ProductStack>
   CategoryDetail: { name: string }
-  ProductDetail: { id: string } // ID of the product
   Wishlist: undefined
-} & CheckoutStack
+} & CheckoutStack &
+  ProductStack
 
 type BrowseStackParamsList = {
   Browse: { search: string } | undefined
-  ProductDetail: { id: string }
   Wishlist: undefined
-} & CheckoutStack
+} & CheckoutStack &
+  ProductStack
 
 export type TabParamsList = {
   HomeTab: undefined
@@ -47,6 +52,7 @@ export type RootStackParamList = {
   OnboardingStack: NavigatorScreenParams<OnboardingStack>
   AuthStack: NavigatorScreenParams<AuthStack>
   CheckoutStack: NavigatorScreenParams<CheckoutStack>
+  ProductStack: NavigatorScreenParams<ProductStack>
   StoreStack: undefined
   OrderHistoryStack: undefined
   ProfileStack: undefined
