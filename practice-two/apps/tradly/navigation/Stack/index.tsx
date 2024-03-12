@@ -62,7 +62,7 @@ const PublicStackNavigator = () => (
 
 const CheckoutStack = () => (
   <Feature feat="checkout">
-    <Stack.Navigator>
+    <Stack.Navigator screenOptions={{ headerShown: false }}>
       <Stack.Screen
         name="Wishlist"
         getComponent={() => Wishlist}
