@@ -14,10 +14,10 @@ import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
 import { useShallow } from 'zustand/react/shallow'
 import * as Notifications from 'expo-notifications'
 import { registerRootComponent } from 'expo'
+import { NavigationContainer, NavigationState } from '@react-navigation/native'
 
 import notificationLinking from '@practice-two/features/notification'
-import { NavigationContainer, NavigationState } from '@react-navigation/native'
-import { useAuthStore, useNavigationStore } from '@practice-two/shared/stores'
+import { useAuthStore, useFeatureFlags, useNavigationStore } from '@practice-two/shared/stores'
 
 import styles from './styles'
 import { StackNavigation } from './navigation'
@@ -42,9 +42,14 @@ const App = () => {
   const [isHydratedState, navigationState, setNavigationState] = useNavigationStore(
     useShallow((state) => [state.isHydrated, state.navigationState, state.setNavigationState])
   )
+  const setFeatures = useFeatureFlags((state) => state.setFeatures)
+  useEffect(() => {
+    setFeatures(process.env.FEATURES)
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [])
+
   const [initState, setInitState] = useState()
   const [isReady, setIsReady] = useState<boolean>(false)
-
   const [isFontsLoaded] = useFonts({
     Montserrat_400Regular,
     Montserrat_500Medium,
