@@ -1,4 +1,5 @@
-import { lazy } from 'react'
+import { Suspense, lazy } from 'react'
+import { Spinner } from 'tamagui'
 import { NativeStackHeaderProps, createNativeStackNavigator } from '@react-navigation/native-stack'
 
 import { Onboarding } from '@practice-two/features/onboarding'
@@ -8,9 +9,9 @@ import { Wishlist } from '@practice-two/features/wishlist'
 import { Product } from '@practice-two/features/product'
 import { CategoryDetail } from '@practice-two/features/browse'
 import { Feature } from '@practice-two/shared/hocs'
-
 import { COLORS } from '@practice-two/shared/constants'
 import { RootStackParamList } from '@practice-two/shared/types'
+
 import BottomNav from '../Tab'
 
 // Components
@@ -23,7 +24,9 @@ const CategoryBar = lazy(() =>
 
 const Stack = createNativeStackNavigator<RootStackParamList>()
 const CustomHeader = (Element: React.JSX.ElementType, props: NativeStackHeaderProps) => (
+  <Suspense fallback={<Spinner size="large" color="$color.primary" />}>
   <Element {...props} />
+  </Suspense>
 )
 
 const OnboardingStack = () => (

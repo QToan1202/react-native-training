@@ -1,6 +1,7 @@
-import { lazy } from 'react'
+import { Suspense, lazy } from 'react'
 import { View } from 'react-native'
 import { NavigationProp } from '@react-navigation/native'
+import { Spinner } from 'tamagui'
 import { BottomTabHeaderProps, createBottomTabNavigator } from '@react-navigation/bottom-tabs'
 
 import { Browse } from '@practice-two/features/browse'
@@ -19,7 +20,9 @@ const HomeBar = lazy(() =>
 
 const Tab = createBottomTabNavigator<TabParamsList>()
 const CustomHeader = (Element: React.JSX.ElementType, props: BottomTabHeaderProps) => (
+  <Suspense fallback={<Spinner size="large" color="$color.primary" />}>
   <Element {...props} />
+  </Suspense>
 )
 
 const Fragment = () => <View />
