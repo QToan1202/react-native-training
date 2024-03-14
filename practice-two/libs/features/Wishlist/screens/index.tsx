@@ -32,7 +32,10 @@ const Wishlist = ({ navigation }: WishlistScreenProps) => {
   }, [isSuccessGetProducts, isSuccessGetWishlist, products, wishlists])
 
   const handleMoveToProduct = useCallback((id: string) => {
-    navigation.navigate('ProductDetail', { id })
+    navigation.navigate('HomeStack', {
+      screen: 'ProductStack',
+      params: { screen: 'ProductDetail', params: { id } },
+    })
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
   const renderProductItem: ListRenderItem<IProduct> = useCallback(
