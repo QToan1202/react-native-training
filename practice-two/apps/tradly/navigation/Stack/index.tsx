@@ -62,13 +62,9 @@ const PublicStackNavigator = () => (
 
 const CheckoutStack = () => (
   <Feature feat="checkout">
-    <Stack.Navigator screenOptions={{ headerShown: false }}>
-      <Stack.Screen
-        name="Wishlist"
-        getComponent={() => Wishlist}
-        options={{ headerTitle: 'wishlist' }}
-      />
-      <Stack.Screen name="Cart" getComponent={() => Cart} options={{ headerTitle: 'my cart' }} />
+    <Stack.Navigator
+      screenOptions={{ header: (props: NativeStackHeaderProps) => CustomHeader(BackBar, props) }}
+    >
       <Stack.Screen
         name="AddAddress"
         getComponent={() => AddAddress}
@@ -115,7 +111,7 @@ const HomeStack = () => (
       name="CheckoutStack"
       component={CheckoutStack}
       options={{
-        header: (props: NativeStackHeaderProps) => CustomHeader(BackBar, props),
+        headerShown: false,
       }}
     />
   </Stack.Navigator>
@@ -133,7 +129,7 @@ const BrowseStack = () => (
         name="CheckoutStack"
         component={CheckoutStack}
         options={{
-          header: (props: NativeStackHeaderProps) => CustomHeader(BackBar, props),
+          headerShown: false,
         }}
       />
     </Stack.Navigator>
