@@ -23,19 +23,27 @@ type ProductStack = {
   ProductDetail: { id: string } // ID of the product
 }
 
+type WishlistStack = {
+  Wishlist: undefined
+}
+
+type BrowseStack = {
+  Browse: { search: string } | undefined
+  CategoryDetail: { name: string }
+}
+
 type HomeStackParamsList = {
   Home: undefined
   ProductStack: NavigatorScreenParams<ProductStack>
-  CategoryDetail: { name: string }
-  Wishlist: undefined
 } & CheckoutStack &
-  ProductStack
+  ProductStack &
+  WishlistStack &
+  BrowseStack
 
 type BrowseStackParamsList = {
-  Browse: { search: string } | undefined
-  Wishlist: undefined
-} & CheckoutStack &
-  ProductStack
+  HeaderStack: NavigatorScreenParams<WishlistStack & CheckoutStack>
+  ProductStack: NavigatorScreenParams<ProductStack>
+} & BrowseStack
 
 export type TabParamsList = {
   HomeTab: undefined
@@ -53,6 +61,7 @@ export type RootStackParamList = {
   AuthStack: NavigatorScreenParams<AuthStack>
   CheckoutStack: NavigatorScreenParams<CheckoutStack>
   ProductStack: NavigatorScreenParams<ProductStack>
+  WishlistStack: NavigatorScreenParams<WishlistStack>
   StoreStack: undefined
   OrderHistoryStack: undefined
   ProfileStack: undefined

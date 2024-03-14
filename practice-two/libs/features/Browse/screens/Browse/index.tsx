@@ -20,7 +20,10 @@ const Browse = ({ navigation }: BrowseScreenProps) => {
   const { data: products, isSuccess, isLoading } = useGetProducts(process.env.PRODUCT_ENDPOINT)
 
   const handleMoveToProduct = useCallback((id: string) => {
-    navigation.navigate('BrowseStack', { screen: 'ProductDetail', params: { id } })
+    navigation.navigate('BrowseStack', {
+      screen: 'ProductStack',
+      params: { screen: 'ProductDetail', params: { id } },
+    })
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
   const renderProductItem: ListRenderItem<IProduct> = useCallback(

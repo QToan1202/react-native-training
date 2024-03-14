@@ -38,7 +38,7 @@ const Dashboard = ({ navigation }: HomeScreenProps) => {
   }, [products, stores])
   const handleSeeAllProducts = useCallback(() => undefined, []) // TODO: Replacing with navigate to another screen
   const handleMoveToCategoryScreen = useCallback((name: string) => {
-    navigation.navigate('HomeStack', { screen: 'CategoryDetail', params: { name } })
+    navigation.navigate('BrowseStack', { screen: 'CategoryDetail', params: { name } })
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
   const handleMoveToProduct = useCallback((id: string) => {
