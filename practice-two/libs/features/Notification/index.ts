@@ -2,6 +2,7 @@ import { LinkingOptions } from '@react-navigation/native'
 import * as Notifications from 'expo-notifications'
 import * as ExpoLinking from 'expo-linking'
 import { Linking } from 'react-native'
+import { useFeatureFlags } from '@practice-two/shared/stores'
 
 const linking: LinkingOptions<ReactNavigation.RootParamList> = {
   prefixes: [ExpoLinking.createURL('/')],
@@ -44,4 +45,4 @@ const linking: LinkingOptions<ReactNavigation.RootParamList> = {
   },
 }
 
-export default linking
+export default useFeatureFlags.getState().isFeatureActive('notification') ? linking : undefined
