@@ -4,7 +4,6 @@ import { NavigationProp } from '@react-navigation/native'
 import { Spinner } from 'tamagui'
 import { BottomTabHeaderProps, createBottomTabNavigator } from '@react-navigation/bottom-tabs'
 
-import { Browse } from '@practice-two/features/browse'
 import { TabParamsList } from '@practice-two/shared/types'
 import { TabIcon } from '@practice-two/shared/components'
 import { COLORS } from '@practice-two/shared/constants'
@@ -21,7 +20,7 @@ const HomeBar = lazy(() =>
 const Tab = createBottomTabNavigator<TabParamsList>()
 const CustomHeader = (Element: React.JSX.ElementType, props: BottomTabHeaderProps) => (
   <Suspense fallback={<Spinner size="large" color="$color.primary" />}>
-  <Element {...props} />
+    <Element {...props} />
   </Suspense>
 )
 
@@ -70,7 +69,7 @@ const BottomNav = () => {
         }}
       />
       <Tab.Screen
-        getComponent={() => Browse}
+        getComponent={() => require('@practice-two/features/browse').Browse}
         name="BrowseTab"
         options={{
           headerTitle: 'browse',
