@@ -1,8 +1,7 @@
-import { ReactNode, useCallback } from 'react'
-import { Alert } from 'react-native'
-import { useNavigation } from '@react-navigation/native'
+import { ReactNode } from 'react'
 
 import { useFeatureFlags } from '../stores'
+import { ErrorScreen } from '../screens'
 
 interface FeatureProps {
   feat: string
@@ -11,20 +10,14 @@ interface FeatureProps {
 
 const Feature = ({ feat, children }: FeatureProps) => {
   const isFeatureActive = useFeatureFlags((state) => state.isFeatureActive)
-  const navigation = useNavigation()
-  const handleNavigateBack = useCallback(() => {
-    navigation.goBack()
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [])
 
   if (isFeatureActive(feat)) return children
 
-  // If feature unavailable show an alert with single option
+  // If feature unavailable show an error screen
   // that bring user back to the previous screen
-  Alert.alert('Feature on working progress', 'This feature is coming soon!!!', [
-    { text: 'OK', onPress: handleNavigateBack },
-  ])
-  return null
+  return (
+    <ErrorScreen title="Feature on working progress" messages="This feature is coming soon!!!" />
+  )
 }
 
 export default Feature
