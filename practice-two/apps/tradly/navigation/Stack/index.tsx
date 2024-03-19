@@ -1,63 +1,19 @@
-import { Suspense, lazy } from 'react'
-import { Spinner } from 'tamagui'
-import { NativeStackHeaderProps, createNativeStackNavigator } from '@react-navigation/native-stack'
+import { createNativeStackNavigator } from '@react-navigation/native-stack'
 
-import { Feature } from '@practice-two/shared/hocs'
 import { COLORS } from '@practice-two/shared/constants'
 import { RootStackParamList } from '@practice-two/shared/types'
 
+// Features Navigator
+import { OnboardingStack } from '@practice-two/features/onboarding'
+import { AuthStack } from '@practice-two/features/auth'
+import { WishlistStack } from '@practice-two/features/wishlist'
+import { CheckoutStack } from '@practice-two/features/checkout'
+import { ProductStack } from '@practice-two/features/product'
+import { BrowseStack } from '@practice-two/features/browse'
+
 import BottomNav from '../Tab'
 
-// Components
-const BackBar = lazy(() =>
-  import('@practice-two/shared/components').then((module) => ({ default: module.BackBar }))
-)
-const CategoryBar = lazy(() =>
-  import('@practice-two/shared/components').then((module) => ({ default: module.CategoryBar }))
-)
-const BrowseBar = lazy(() =>
-  import('@practice-two/shared/components').then((module) => ({ default: module.BrowseBar }))
-)
-
 const Stack = createNativeStackNavigator<RootStackParamList>()
-const CustomHeader = (Element: React.JSX.ElementType, props: NativeStackHeaderProps) => (
-  <Suspense fallback={<Spinner size="large" color="$color.primary" />}>
-    <Element {...props} />
-  </Suspense>
-)
-
-const OnboardingStack = () => (
-  <Feature feat="onboarding">
-    <Stack.Navigator screenOptions={{ headerShown: false, statusBarColor: COLORS.PRIMARY }}>
-      <Stack.Screen
-        name="Onboarding"
-        getComponent={() => require('@practice-two/features/onboarding').Onboarding}
-      />
-    </Stack.Navigator>
-  </Feature>
-)
-
-const AuthStack = () => (
-  <Feature feat="authentication">
-    <Stack.Navigator screenOptions={{ headerShown: false, statusBarColor: COLORS.PRIMARY }}>
-      <Stack.Screen
-        name="Login"
-        getComponent={() => require('@practice-two/features/auth').Login}
-      />
-      <Stack.Screen
-        name="SignUp"
-        getComponent={() => require('@practice-two/features/auth').SignUp}
-        options={{
-          headerShown: true,
-          headerTitle: '',
-          headerStyle: { backgroundColor: COLORS.PRIMARY },
-          headerShadowVisible: false,
-          headerTintColor: COLORS.WHITE,
-        }}
-      />
-    </Stack.Navigator>
-  </Feature>
-)
 
 const PublicStackNavigator = () => (
   <Stack.Navigator screenOptions={{ headerShown: false, statusBarColor: COLORS.PRIMARY }}>
@@ -66,106 +22,11 @@ const PublicStackNavigator = () => (
   </Stack.Navigator>
 )
 
-const WishlistStack = () => (
-  <Feature feat="wishlist">
-    <Stack.Navigator
-      screenOptions={{ header: (props: NativeStackHeaderProps) => CustomHeader(BackBar, props) }}
-    >
-      <Stack.Screen
-        name="Wishlist"
-        getComponent={() => require('@practice-two/features/wishlist').Wishlist}
-        options={{ headerTitle: 'wishlist' }}
-      />
-    </Stack.Navigator>
-  </Feature>
-)
-
-const CheckoutStack = () => (
-  <Feature feat="checkout">
-    <Stack.Navigator
-      screenOptions={{ header: (props: NativeStackHeaderProps) => CustomHeader(BackBar, props) }}
-    >
-      <Stack.Screen
-        name="Cart"
-        getComponent={() => require('@practice-two/features/checkout').Cart}
-        options={{ headerTitle: 'my cart' }}
-      />
-      <Stack.Screen
-        name="AddAddress"
-        getComponent={() => require('@practice-two/features/checkout').AddAddress}
-        options={{ headerTitle: 'add a new address' }}
-      />
-      <Stack.Screen
-        name="AddCard"
-        getComponent={() => require('@practice-two/features/checkout').AddCard}
-        options={{ headerShown: false }}
-      />
-      <Stack.Screen
-        name="Payment"
-        getComponent={() => require('@practice-two/features/checkout').Payment}
-        options={{ headerTitle: 'payment option' }}
-      />
-      <Stack.Screen
-        name="OrderDetail"
-        getComponent={() => require('@practice-two/features/checkout').OrderDetail}
-        options={{ headerTitle: 'order details' }}
-      />
-    </Stack.Navigator>
-  </Feature>
-)
-
 const HeaderStack = () => (
   <Stack.Navigator screenOptions={{ headerShown: false }}>
     <Stack.Screen name="WishlistStack" component={WishlistStack} />
     <Stack.Screen name="CheckoutStack" component={CheckoutStack} />
   </Stack.Navigator>
-)
-
-const ProductStack = () => (
-  <Feature feat="product">
-    <Stack.Navigator>
-      <Stack.Screen
-        name="ProductDetail"
-        getComponent={() => require('@practice-two/features/product').Product}
-        options={{ headerShown: false }}
-      />
-    </Stack.Navigator>
-  </Feature>
-)
-
-const BrowseStack = () => (
-  <Feature feat="browse">
-    <Stack.Navigator>
-      <Stack.Screen
-        name="CategoryDetail"
-        getComponent={() => require('@practice-two/features/browse').CategoryDetail}
-        options={{
-          header: (props: NativeStackHeaderProps) => CustomHeader(CategoryBar, props),
-        }}
-      />
-      <Stack.Screen
-        name="Browse"
-        getComponent={() => require('@practice-two/features/browse').Browse}
-        options={{
-          header: (props: NativeStackHeaderProps) => CustomHeader(BrowseBar, props),
-        }}
-      />
-      <Stack.Screen
-        name="ProductStack"
-        component={ProductStack}
-        options={{
-          headerShown: false,
-        }}
-      />
-      <Stack.Screen
-        name="HeaderStack"
-        component={HeaderStack}
-        options={{
-          headerShown: false,
-        }}
-      />
-    </Stack.Navigator>
-  </Feature>
 )
 
 const HomeStack = () => (
