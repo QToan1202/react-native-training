@@ -20,7 +20,7 @@ const Browse = ({ navigation }: BrowseScreenProps) => {
   const { data: products, isSuccess, isLoading } = useGetProducts(process.env.PRODUCT_ENDPOINT)
 
   const handleMoveToProduct = useCallback((id: string) => {
-    navigation.navigate('BrowseStack', {
+    navigation.navigate('HomeStack', {
       screen: 'ProductStack',
       params: { screen: 'ProductDetail', params: { id } },
     })
