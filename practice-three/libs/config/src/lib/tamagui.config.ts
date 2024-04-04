@@ -1,6 +1,6 @@
-import { shorthands } from '@tamagui/shorthands';
-import { themes, tokens } from '@tamagui/themes';
-import { createFont, createTamagui, createTokens } from 'tamagui';
+import { shorthands } from '@tamagui/shorthands'
+import { themes, tokens } from '@tamagui/themes'
+import { createFont, createTamagui, createTokens } from 'tamagui'
 
 const customTokens = createTokens({
   ...tokens,
@@ -24,7 +24,7 @@ const customTokens = createTokens({
     red_100: '#e90000',
     red_200: '#ff0000',
   },
-});
+})
 
 const fonts = createFont({
   family: 'Arial, sans-serif',
@@ -37,7 +37,7 @@ const fonts = createFont({
     5: 24,
     6: 36,
   },
-});
+})
 
 const config = createTamagui({
   defaultTheme: 'light',
@@ -48,12 +48,13 @@ const config = createTamagui({
   tokens: customTokens,
   themes,
   shorthands,
-});
+})
 
-export type AppConfig = typeof config;
+export type AppConfig = typeof config
 
 declare module 'tamagui' {
+  // eslint-disable-next-line @typescript-eslint/no-empty-interface
   interface TamaguiCustomConfig extends AppConfig {}
 }
 
-export default config;
+export default config
