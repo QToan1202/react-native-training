@@ -1,3 +1,2 @@
-export * from './components/Heading'
-export * from './components/Text'
-export * from './components/Button'
+export * from './components'
+export * from './config'
