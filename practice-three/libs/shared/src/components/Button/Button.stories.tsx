@@ -1,5 +1,8 @@
 import type { Meta, StoryObj } from '@storybook/react'
-import Button from './Button'
+import { action } from '@storybook/addon-actions'
+import { ShoppingCart } from '@tamagui/lucide-icons'
+
+import Button from './HOCBtn'
 
 const meta: Meta<typeof Button> = {
   component: Button,
@@ -12,13 +15,33 @@ type Story = StoryObj<typeof Button>
 
 export const Default: Story = {
   args: {
-    children: <Button.Text fontSize="$2">add to cart</Button.Text>,
+    title: 'click me',
+    startIcon: <ShoppingCart />,
+    onPress: action('press'),
   },
 }
 
-export const DisableBtn: Story = {
+export const DisableButton: Story = {
   args: {
-    children: <Button.Text fontSize="$2">add to cart</Button.Text>,
+    title: 'add to cart',
+    variant: 'outlined',
     isDisable: true,
+    onPress: action('wont-fire'),
+  },
+}
+
+export const LoadingButton: Story = {
+  args: {
+    title: 'add to cart',
+    loading: true,
+  },
+}
+
+export const LoadingButtonWithIcon: Story = {
+  args: {
+    title: 'add to cart',
+    loading: true,
+    startIcon: <ShoppingCart size={32} />,
+    onPress: action('wont-fire'),
   },
 }

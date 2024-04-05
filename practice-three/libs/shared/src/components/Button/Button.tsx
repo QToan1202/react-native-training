@@ -1,6 +1,7 @@
 import {
   ButtonIcon,
   GetProps,
+  TextContextStyles,
   View,
   createStyledContext,
   styled,
@@ -9,7 +10,15 @@ import {
 
 import { Text } from '../Text'
 
-const ButtonContext = createStyledContext({
+type ButtonVariant = 'primary' | 'outlined' | 'text'
+
+const ButtonContext = createStyledContext<
+  Partial<
+    TextContextStyles & {
+      variant?: ButtonVariant
+    }
+  >
+>({
   color: undefined,
   ellipse: undefined,
   fontFamily: undefined,
@@ -18,20 +27,22 @@ const ButtonContext = createStyledContext({
   fontWeight: undefined,
   letterSpacing: undefined,
   maxFontSizeMultiplier: undefined,
-  size: undefined,
   textAlign: undefined,
-  lineHeight: undefined,
+  variant: undefined,
 })
 
-const CustomButtonFrame = styled(View, {
+const ButtonFrame = styled(View, {
   name: 'Button',
   tag: 'button',
   context: ButtonContext,
+  justifyContent: 'center',
+  alignItems: 'center',
+  flexDirection: 'row',
   paddingVertical: 15,
   paddingHorizontal: 35,
   borderRadius: '$6',
-  borderWidth: '$1',
-  borderColor: '$transparent',
+  borderWidth: 2,
+  gap: 6,
 
   variants: {
     variant: {
@@ -39,6 +50,18 @@ const CustomButtonFrame = styled(View, {
         borderColor: '$primary',
         backgroundColor: '$primary',
         color: '$white',
+      },
+
+      outlined: {
+        borderColor: '$primary',
+        backgroundColor: '$transparent',
+        color: '$primary',
+      },
+
+      text: {
+        borderColor: '$transparent',
+        backgroundColor: '$transparent',
+        color: '$primary',
       },
     },
 
@@ -63,35 +86,27 @@ const CustomButtonFrame = styled(View, {
 })
 
 const ButtonText = styled(Text, {
-  name: 'Button',
+  name: 'ButtonText',
   context: ButtonContext,
   userSelect: 'none',
+  textTransform: 'capitalize',
+  textAlign: 'center',
 
   variants: {
-    default: {
-      true: {
-        textTransform: 'capitalize',
-        textAlign: 'center',
-      },
-    },
     size: {
       '...fontSize': (name, { font }) => ({
         fontSize: font?.size[name],
       }),
     },
   } as const,
-
-  defaultVariants: {
-    default: true,
-  },
 })
 
-const ButtonStyled = withStaticProperties(CustomButtonFrame, {
+const ButtonStyled = withStaticProperties(ButtonFrame, {
   Text: ButtonText,
   Icon: ButtonIcon,
   Props: ButtonContext.Provider,
 })
 
-export type ButtonProps = GetProps<typeof ButtonText> & GetProps<typeof CustomButtonFrame>
+export type ButtonProps = GetProps<typeof ButtonText> & GetProps<typeof ButtonFrame>
 
 export default ButtonStyled
