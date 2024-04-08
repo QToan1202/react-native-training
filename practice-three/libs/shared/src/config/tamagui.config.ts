@@ -27,7 +27,7 @@ const customTokens = createTokens({
 })
 
 const fonts = createFont({
-  family: 'Arial, sans-serif',
+  family: 'Libre Baskerville, Arial, sans-serif',
   size: {
     1: 12,
     2: 14,
@@ -36,6 +36,12 @@ const fonts = createFont({
     4: 20,
     5: 24,
     6: 36,
+  },
+  face: {
+    400: { normal: 'SF-Pro-Display-Regular', italic: 'SF-Pro-Display-RegularItalic' },
+    500: { normal: 'SF-Pro-Display-Medium', italic: 'SF-Pro-Display-MediumItalic' },
+    600: { normal: 'SF-Pro-Display-Semibold', italic: 'SF-Pro-Display-SemiboldItalic' },
+    700: { normal: 'SF-Pro-Display-Bold', italic: 'SF-Pro-Display-BoldItalic' },
   },
 })
 
