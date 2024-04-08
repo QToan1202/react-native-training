@@ -5,12 +5,12 @@ import { TFormValues } from '../../types'
 
 export type InputProps = StyledInputProps & {
   label: Path<TFormValues>
-  register: UseFormRegister<TFormValues>
+  register?: UseFormRegister<TFormValues>
   options?: RegisterOptions<TFormValues>
 }
 
 const Input = ({ label, options, register, ...rest }: InputProps) => {
-  return <StyledInput {...rest} {...register(label, options)} />
+  return <StyledInput {...rest} {...register?.(label, options)} />
 }
 
 export default Input

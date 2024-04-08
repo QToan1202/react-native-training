@@ -5,18 +5,18 @@ import { Spinner, Stack } from 'tamagui'
 
 type TIconState =
   | {
-      startIcon: ReactNode
-      endIcon: never
+      startIcon?: ReactNode
+      endIcon?: never
     }
   | {
-      startIcon: never
-      endIcon: ReactNode
+      startIcon?: never
+      endIcon?: ReactNode
     }
 
 export type ButtonProps = StyledButtonProps &
   TIconState & {
     title: string
-    loading: boolean
+    loading?: boolean
   }
 
 const Loading = (
