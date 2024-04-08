@@ -2,40 +2,36 @@
   "migIndex": 1,
   "data": [
     {
-      "path": "src/assets/fonts/SFPRODISPLAYBLACKITALIC.ttf",
-      "sha1": "9e036ddd269e67610a8de134434a75b9440e48ed"
+      "path": "src/assets/fonts/SF-Pro-Display-Bold.ttf",
+      "sha1": "bd932a3fc03d2aee2574cbb9a36be2f3bcf2bfdc"
     },
     {
-      "path": "src/assets/fonts/SFPRODISPLAYBOLD.ttf",
-      "sha1": "948913fd1620e7f7594bdde6b20788c0f8d4914f"
+      "path": "src/assets/fonts/SF-Pro-Display-BoldItalic.ttf",
+      "sha1": "18d83c18b5cca710fb05990b48afb846da5bec4f"
     },
     {
-      "path": "src/assets/fonts/SFPRODISPLAYHEAVYITALIC.ttf",
-      "sha1": "e2414fe85e4759777e208e5292ffcfeed98eb136"
+      "path": "src/assets/fonts/SF-Pro-Display-Medium.ttf",
+      "sha1": "628708b4eea79212c90630e58f0ce44ee528eeeb"
     },
     {
-      "path": "src/assets/fonts/SFPRODISPLAYLIGHTITALIC.ttf",
-      "sha1": "9efd83c9a8554695c624cc122f71fcce1f64ef3a"
+      "path": "src/assets/fonts/SF-Pro-Display-MediumItalic.ttf",
+      "sha1": "a9daa8ab9dfe1b22f6804af4b27ff7fddbff339b"
     },
     {
-      "path": "src/assets/fonts/SFPRODISPLAYMEDIUM.ttf",
-      "sha1": "6fe1b3817fdeffea15577d0ab7ed7f48ebdae46f"
+      "path": "src/assets/fonts/SF-Pro-Display-Regular.ttf",
+      "sha1": "bbf3e22bd67b3392b9da405a78f30e2e4e167460"
     },
     {
-      "path": "src/assets/fonts/SFPRODISPLAYREGULAR.ttf",
-      "sha1": "b6ba3136179738aebe9b4bc6695fe42241f5cb9b"
+      "path": "src/assets/fonts/SF-Pro-Display-RegularItalic.ttf",
+      "sha1": "8cb0f7a23457f505f37911b5ccd2ab945db8d01a"
     },
     {
-      "path": "src/assets/fonts/SFPRODISPLAYSEMIBOLDITALIC.ttf",
-      "sha1": "e625d160a2276d9635282a555f6664e3971b7246"
+      "path": "src/assets/fonts/SF-Pro-Display-Semibold.ttf",
+      "sha1": "4eeabb0c1c52fc066c6c8acf04c41e946931ea80"
     },
     {
-      "path": "src/assets/fonts/SFPRODISPLAYTHINITALIC.ttf",
-      "sha1": "20b205e8bb1e302b50ac53001beb7bb1ea6f81b1"
-    },
-    {
-      "path": "src/assets/fonts/SFPRODISPLAYULTRALIGHTITALIC.ttf",
-      "sha1": "0ba7bf3b975716ae472896229923c8929475880b"
+      "path": "src/assets/fonts/SF-Pro-Display-SemiboldItalic.ttf",
+      "sha1": "fb924943f4508c10290c753ec083fd067113853f"
     }
   ]
 }

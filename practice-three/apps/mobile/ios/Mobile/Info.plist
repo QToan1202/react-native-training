@@ -49,15 +49,14 @@
 	<false/>
 	<key>UIAppFonts</key>
 	<array>
-		<string>SFPRODISPLAYBLACKITALIC.ttf</string>
-		<string>SFPRODISPLAYBOLD.ttf</string>
-		<string>SFPRODISPLAYHEAVYITALIC.ttf</string>
-		<string>SFPRODISPLAYLIGHTITALIC.ttf</string>
-		<string>SFPRODISPLAYMEDIUM.ttf</string>
-		<string>SFPRODISPLAYREGULAR.ttf</string>
-		<string>SFPRODISPLAYSEMIBOLDITALIC.ttf</string>
-		<string>SFPRODISPLAYTHINITALIC.ttf</string>
-		<string>SFPRODISPLAYULTRALIGHTITALIC.ttf</string>
+		<string>SF-Pro-Display-Bold.ttf</string>
+		<string>SF-Pro-Display-BoldItalic.ttf</string>
+		<string>SF-Pro-Display-Medium.ttf</string>
+		<string>SF-Pro-Display-MediumItalic.ttf</string>
+		<string>SF-Pro-Display-Regular.ttf</string>
+		<string>SF-Pro-Display-RegularItalic.ttf</string>
+		<string>SF-Pro-Display-Semibold.ttf</string>
+		<string>SF-Pro-Display-SemiboldItalic.ttf</string>
 	</array>
 </dict>
 </plist>
