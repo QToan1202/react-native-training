@@ -4,11 +4,6 @@ import { nxViteTsPaths } from '@nx/vite/plugins/nx-tsconfig-paths.plugin'
 import { mergeConfig } from 'vite'
 import { tamaguiPlugin } from '@tamagui/vite-plugin'
 
-const tamaguiConfig = {
-  components: ['tamagui'],
-  config: '../../config/src/lib/tamagui.config.ts',
-}
-
 const config: StorybookConfig = {
   stories: ['../src/components/**/*.stories.@(js|jsx|ts|tsx|mdx)'],
   addons: ['@storybook/addon-essentials'],
@@ -19,7 +14,13 @@ const config: StorybookConfig = {
 
   viteFinal: async (config) =>
     mergeConfig(config, {
-      plugins: [tamaguiPlugin(tamaguiConfig), nxViteTsPaths()],
+      plugins: [
+        nxViteTsPaths(),
+        tamaguiPlugin({
+          components: ['tamagui'],
+          config: '../src/tamagui.config.ts',
+        }),
+      ],
     }),
 }
 
