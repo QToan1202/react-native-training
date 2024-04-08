@@ -1,10 +1,16 @@
-import { GetProps, Input as TInput, getTokenValue, styled } from 'tamagui'
+import { GetProps, Input as TInput, styled } from 'tamagui'
 
 const StyledInput = styled(TInput, {
-  borderRadius: 5,
+  unstyled: true,
+  name: 'Input',
+  tag: 'input',
+  paddingVertical: 11,
+  paddingHorizontal: 15,
   borderWidth: 1,
+  borderRadius: 5,
   borderColor: '#e1e2e7',
-  placeholderTextColor: getTokenValue('$color.gray_100'),
+  backgroundColor: '$transparent',
+  placeholderTextColor: '$gray_100',
 })
 
 export type StyledInputProps = GetProps<typeof StyledInput>
