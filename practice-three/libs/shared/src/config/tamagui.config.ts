@@ -13,6 +13,7 @@ const customTokens = createTokens({
     transparent: '00ffffff',
     primary: '#002482',
     indigo: '#223263',
+    blue: '#0081de',
     green_50: '#0eb000',
     green_100: '#0a8200',
     gray_50: '#f0f0f0',
