@@ -1,6 +1,6 @@
 import { shorthands } from '@tamagui/shorthands'
 import { themes, tokens } from '@tamagui/themes'
-import { createFont, createTamagui, createTokens } from 'tamagui'
+import { createFont, createMedia, createTamagui, createTokens } from 'tamagui'
 
 const customTokens = createTokens({
   ...tokens,
@@ -25,6 +25,10 @@ const customTokens = createTokens({
     red_100: '#e90000',
     red_200: '#ff0000',
   },
+  zIndex: {
+    ...tokens.zIndex,
+    selectContent: 10000,
+  },
 })
 
 const fonts = createFont({
@@ -46,6 +50,14 @@ const fonts = createFont({
   },
 })
 
+const mediaQueries = createMedia({
+  xs: { minWidth: 414 + 1 },
+  sm: { minWidth: 768 + 1 },
+  md: { minWidth: 992 + 1 },
+  lg: { minWidth: 1200 + 1 },
+  xl: { minWidth: 1400 + 1 },
+})
+
 const config = createTamagui({
   defaultTheme: 'light',
   fonts: {
@@ -55,6 +67,7 @@ const config = createTamagui({
   tokens: customTokens,
   themes,
   shorthands,
+  media: mediaQueries,
 })
 
 export type AppConfig = typeof config
