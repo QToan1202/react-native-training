@@ -1,4 +1,4 @@
-// import 'tamagui/core/reset.css'
+import '@tamagui/core/reset.css'
 
 import { StrictMode } from 'react'
 import * as ReactDOM from 'react-dom/client'

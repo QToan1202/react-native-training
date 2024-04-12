@@ -83,6 +83,7 @@
     "@react-native-async-storage/async-storage": "^1.23.1",
     "@react-navigation/native": "^6.1.17",
     "@tamagui/config": "1.94.0",
+    "@tamagui/core": "1.94.0",
     "@tamagui/lucide-icons": "1.94.0",
     "@tamagui/shorthands": "^1.94.0",
     "@tamagui/themes": "^1.94.0",
