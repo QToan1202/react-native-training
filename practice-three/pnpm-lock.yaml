@@ -11,6 +11,9 @@ dependencies:
   '@react-navigation/native':
     specifier: ^6.1.17
     version: 6.1.17(react-native@0.73.2)(react@18.2.0)
+  '@tamagui/animations-css':
+    specifier: 1.94.0
+    version: 1.94.0
   '@tamagui/config':
     specifier: 1.94.0
     version: 1.94.0(react-dom@18.2.0)(react-native-reanimated@3.8.1)(react-native@0.73.2)(react@18.2.0)
