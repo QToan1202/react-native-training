@@ -8,11 +8,19 @@ export type RadioProps = RadioGroupProps & {
   children: ReactNode
 }
 
-const Radio = ({ children, ...rest }: RadioProps) => {
-  const [value, onChangeValue] = useRadio(useShallow((state) => [state.value, state.onChangeValue]))
+const Radio = ({ children, onValueChange, ...rest }: RadioProps) => {
+  const [value, setValue] = useRadio(useShallow((state) => [state.value, state.onChangeValue]))
+  const handleValueChange = (value: string) => {
+    // Run the onChange fn that pass through props
+    onValueChange && onValueChange(value)
+
+    // Run the setter fn from the useRadio hook
+    // so that the RadioItem component can detected change value
+    setValue(value)
+  }
 
   return (
-    <RadioGroup value={value} onValueChange={onChangeValue} {...rest}>
+    <RadioGroup value={value} onValueChange={handleValueChange} {...rest}>
       {children}
     </RadioGroup>
   )

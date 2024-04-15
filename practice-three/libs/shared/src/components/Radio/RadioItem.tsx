@@ -21,23 +21,26 @@ const StyledItem = styled(RadioGroup.Item, {
   },
 })
 
-const RadioItem = ({ label, ...restProps }: RadioItemProps) => {
-  const radioId = useId()
-  const selectValue = useRadio((state) => state.value)
+const RadioItem = StyledItem.styleable<RadioItemProps>(
+  ({ label, children, ...restProps }: RadioItemProps, ref) => {
+    const radioId = useId()
+    const selectValue = useRadio((state) => state.value)
 
-  return (
-    <XStack>
-      <StyledItem
-        id={radioId}
-        forceStyle={selectValue === restProps.value ? 'focus' : undefined}
-        {...restProps}
-      >
-        <RadioGroup.Indicator scale={2} backgroundColor="$primary" />
-      </StyledItem>
+    return (
+      <XStack>
+        <StyledItem
+          id={radioId}
+          forceStyle={selectValue === restProps.value ? 'focus' : undefined}
+          ref={ref}
+          {...restProps}
+        >
+          {children ? children : <RadioGroup.Indicator scale={2} backgroundColor="$primary" />}
+        </StyledItem>
 
-      {label && <Label htmlFor={radioId}>{label}</Label>}
-    </XStack>
-  )
-}
+        {label && <Label htmlFor={radioId}>{label}</Label>}
+      </XStack>
+    )
+  }
+)
 
 export default RadioItem
