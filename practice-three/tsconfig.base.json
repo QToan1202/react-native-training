@@ -15,6 +15,7 @@
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
     "paths": {
+      "authentication": ["libs/authentication/src/index.ts"],
       "components": ["libs/shared/src/components/index.ts"],
       "config": ["libs/shared/src/config/index.ts"]
     }
