@@ -2,13 +2,13 @@ import { ReactNode } from 'react'
 import ButtonStyled, { ButtonProps } from './Button'
 
 export type IconButtonProps = ButtonProps & {
-  icon: ReactNode
+  children: ReactNode
   scaleIconSize?: number
 }
 
-const IconButton = ({ icon, scaleIconSize, ...rest }: IconButtonProps) => (
+const IconButton = ({ children, scaleIconSize, ...rest }: IconButtonProps) => (
   <ButtonStyled variant="outlined" borderRadius={0} boc="transparent" p={6} {...rest}>
-    <ButtonStyled.Icon scaleIcon={scaleIconSize}>{icon}</ButtonStyled.Icon>
+    <ButtonStyled.Icon scaleIcon={scaleIconSize}>{children}</ButtonStyled.Icon>
   </ButtonStyled>
 )
 
