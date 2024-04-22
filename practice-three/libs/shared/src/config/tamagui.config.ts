@@ -25,6 +25,7 @@ const customTokens = createTokens({
     red_50: '#fb7181',
     red_100: '#e90000',
     red_200: '#ff0000',
+    border: '#e1e2e7',
   },
   zIndex: {
     ...tokens.zIndex,

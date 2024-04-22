@@ -1,22 +1,22 @@
 import type { Meta, StoryObj } from '@storybook/react'
 import { action } from '@storybook/addon-actions'
 
-import Form from './Form'
+import FormFrame from './Form'
 import { Input } from '../Input'
 
-const meta: Meta<typeof Form> = {
-  component: Form,
+const meta: Meta<typeof FormFrame> = {
+  component: FormFrame,
   title: 'components/Form',
 }
 
 export default meta
 
-type Story = StoryObj<typeof Form>
+type Story = StoryObj<typeof FormFrame>
 const FormWithInputs = (
-  <Form onSubmit={action('submit')}>
+  <FormFrame onSubmit={action('submit')}>
     <Input label="email" />
     <Input label="phone" />
-  </Form>
+  </FormFrame>
 )
 
 export const Default: Story = {

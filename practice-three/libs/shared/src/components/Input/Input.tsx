@@ -5,7 +5,7 @@ import { TFormValues } from '../../types'
 
 export type InputProps = StyledInputProps & {
   label: Path<TFormValues>
-  control: Control<TFormValues>
+  control?: Control<TFormValues>
   options?: UseControllerProps['rules']
 }
 

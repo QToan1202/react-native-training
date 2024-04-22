@@ -1,21 +1,18 @@
 import React, { ReactNode } from 'react'
 import { DefaultValues, FieldValues, SubmitHandler, UseFormProps, useForm } from 'react-hook-form'
-import { Form as TForm, FormProps as TFormProps } from 'tamagui'
+import { Form as TForm, FormProps as TFormProps, withStaticProperties } from 'tamagui'
 
-import { Button } from '../Button'
 import { TFormValues } from '../../types'
 
 export type FormProps<T extends FieldValues> = Omit<TFormProps, 'onSubmit'> & {
   children: ReactNode
   defaultValues?: DefaultValues<TFormValues>
-  submitTitle?: string
   formProps?: UseFormProps<T>
   onSubmit: SubmitHandler<T>
 }
 
-const Form = <T extends FieldValues>({
+const FormFrame = <T extends FieldValues>({
   children,
-  submitTitle = 'submit',
   formProps = {},
   onSubmit,
   ...rest
@@ -38,12 +35,12 @@ const Form = <T extends FieldValues>({
               : child
           )
         : children}
-
-      <TForm.Trigger asChild="web">
-        <Button title={submitTitle} />
-      </TForm.Trigger>
     </TForm>
   )
 }
+
+const Form = withStaticProperties(FormFrame, {
+  Trigger: TForm.Trigger,
+})
 
 export default Form
