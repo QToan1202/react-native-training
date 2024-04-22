@@ -1,6 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/react'
+import { UseControllerProps, useForm } from 'react-hook-form'
+
 import Input, { InputProps } from './Input'
-import { RegisterOptions, useForm } from 'react-hook-form'
 import { TFormValues } from '../../types'
 
 const meta: Meta<typeof Input> = {
@@ -14,14 +15,14 @@ type Story = StoryObj<typeof Input>
 const UncontrolledInput = ({
   options = {},
   ...restProps
-}: Omit<InputProps, 'label' | 'register'>) => {
-  const { register } = useForm<TFormValues>()
+}: Omit<InputProps, 'label' | 'control'>) => {
+  const { control } = useForm<TFormValues>()
 
   return (
     <Input
       label="email"
-      register={register}
-      options={{ ...{ required: true }, options } as RegisterOptions<TFormValues>}
+      control={control}
+      options={{ ...{ required: true }, options } as UseControllerProps['rules']}
       {...restProps}
     />
   )
