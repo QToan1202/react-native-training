@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "description": "",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "server": "json-server --watch server/db.json"
   },
   "keywords": [],
   "author": "",
@@ -88,7 +88,10 @@
     "@tamagui/lucide-icons": "^1.94.4",
     "@tamagui/shorthands": "^1.94.4",
     "@tamagui/themes": "^1.94.4",
+    "@tamagui/toast": "^1.94.4",
     "@tanstack/react-query": "^5.28.9",
+    "axios": "^1.6.8",
+    "burnt": "^0.12.2",
     "json-server": "1.0.0-alpha.23",
     "react": "18.2.0",
     "react-dom": "18.2.0",
