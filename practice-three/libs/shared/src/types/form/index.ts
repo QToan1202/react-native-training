@@ -5,7 +5,9 @@ export type TLoginForm = {
 }
 
 export type TRegisterForm = {
+  name: string
   email: string
+  account: string
   phone: string
   password: string
   confirmPassword: string
