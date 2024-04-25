@@ -6,17 +6,22 @@ import { useToastController } from '@tamagui/toast'
 
 const useLogin = (
   path: string
-): UseMutationResult<TUser, Error, Pick<TUser, 'email' | 'password'>, unknown> => {
+): UseMutationResult<TUser, Error, Pick<TUser, 'account' | 'password'>, unknown> => {
   const toast = useToastController()
 
-  return useMutation<TUser, Error, Pick<TUser, 'email' | 'password'>, unknown>({
-    mutationFn: ({ email, password }: Pick<TUser, 'email' | 'password'>): Promise<TUser> =>
-      login(path, email, password),
+  return useMutation<TUser, Error, Pick<TUser, 'account' | 'password'>, unknown>({
+    mutationFn: ({ account, password }: Pick<TUser, 'account' | 'password'>): Promise<TUser> =>
+      login(path, account, password),
     onError: (error) => {
       if (error instanceof Error)
         toast.show('Login fail!!!', {
-          message: 'Recheck your entered credential',
+          message: error.message,
         })
+    },
+    onSuccess: () => {
+      toast.show('Login success!!!', {
+        message: 'Welcome back ',
+      })
     },
   })
 }
