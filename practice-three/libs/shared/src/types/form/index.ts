@@ -1,6 +1,5 @@
 export type TLoginForm = {
-  email: string
-  phone: string
+  account: string
   password: string
 }
 
