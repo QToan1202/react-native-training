@@ -1,12 +1,10 @@
-import { H2, Separator, XStack, YStack } from 'tamagui'
+import { H2, Separator, Square, XStack, YStack } from 'tamagui'
 import { SubmitHandler } from 'react-hook-form'
 
 import { Button, Checkbox, Form, Input, Text } from '@shared/components'
 import { TRegisterForm } from '@shared/types'
 
-import Facebook from '../../assets/images/facebook.svg'
-import Apple from '../../assets/images/apple.svg'
-import Google from '../../assets/images/google.svg'
+import { Apple, Facebook, Google, Logo } from '../../assets/images'
 
 const Login = () => {
   const handleOnSubmit: SubmitHandler<TRegisterForm> = (data) => {
@@ -15,7 +13,11 @@ const Login = () => {
 
   return (
     <YStack gap={5} paddingHorizontal={36}>
-      <YStack alignItems="center" gap={10}>
+      <Square alignItems="center">
+        <Logo />
+      </Square>
+
+      <YStack marginTop="$6" alignItems="center" gap={10}>
         <H2 color="$primary">Welcome back to E&#45;com&#33;</H2>
         <Text color="$gray_100">Sign in to continue</Text>
       </YStack>
@@ -54,9 +56,9 @@ const Login = () => {
         <Text fontSize={15}>Login using</Text>
 
         <XStack gap="$6">
-          <img alt="ap" src={Apple} />
-          <img alt="fb" src={Facebook} />
-          <img alt="gg" src={Google} />
+          <Apple />
+          <Facebook />
+          <Google />
         </XStack>
 
         <YStack marginTop="$7">
