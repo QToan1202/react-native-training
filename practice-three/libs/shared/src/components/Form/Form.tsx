@@ -1,12 +1,9 @@
 import React, { ReactNode } from 'react'
-import { DefaultValues, FieldValues, SubmitHandler, UseFormProps, useForm } from 'react-hook-form'
+import { FieldValues, SubmitHandler, UseFormProps, useForm } from 'react-hook-form'
 import { Form as TForm, FormProps as TFormProps, withStaticProperties } from 'tamagui'
-
-import { TFormValues } from '../../types'
 
 export type FormProps<T extends FieldValues> = Omit<TFormProps, 'onSubmit'> & {
   children: ReactNode
-  defaultValues?: DefaultValues<TFormValues>
   formProps?: UseFormProps<T>
   onSubmit: SubmitHandler<T>
 }
