@@ -12,11 +12,9 @@ export const register = async (path: string, user: TUser): Promise<TUser> => {
 }
 
 export const login = async (path: string, email: string, password: string): Promise<TUser> => {
-  const users: TUser[] = await get(path, { params: { email } })
+  const users: TUser[] = await get(path, { params: { email, password } })
 
   if (!users.length) throw Error('Login fail, check email or password')
-  if (users.some((user: TUser) => user.password !== password))
-    throw Error('Login fail, check email or password')
 
   return users[0]
 }
