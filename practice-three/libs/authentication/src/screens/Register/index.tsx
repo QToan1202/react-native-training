@@ -5,10 +5,12 @@ import { Button, Form, Input, Text } from '@shared/components'
 import { TRegisterForm } from '@shared/types'
 
 import { Apple, Facebook, Google, Lock, Logo, Mail, User } from '../../assets/images'
+import useRegister from '../../hooks/useRegister'
 
 const Register = () => {
+  const { mutate: mutateRegister } = useRegister('/users')
   const handleOnSubmit: SubmitHandler<TRegisterForm> = (data) => {
-    console.log(data)
+    mutateRegister(data)
   }
 
   return (
