@@ -17,13 +17,14 @@ const Toast = ({ ...rest }: ToastProps) => {
       duration={currentToast.duration || DEFAULT_TOAST_DURATION}
       enterStyle={{ opacity: 0, scale: 0.5, y: -25 }}
       exitStyle={{ opacity: 0, scale: 0.5, y: -25 }}
+      y={10}
       animation="quick"
       viewportName={currentToast.viewportName}
       backgroundColor="$white"
       {...rest}
     >
       <YStack gap="$2">
-        <TToast.Title>
+        <TToast.Title textAlign="center">
           <Heading color="$primary" fontWeight="700" fontSize="$4">
             {currentToast.title}
           </Heading>

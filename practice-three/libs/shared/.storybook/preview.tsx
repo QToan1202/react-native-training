@@ -11,7 +11,7 @@ const preview: Preview = {
       <TamaguiProvider config={tamaguiConfig}>
         <ToastProvider>
           <Story />
-          <ToastViewport />
+          <ToastViewport unstyled />
         </ToastProvider>
       </TamaguiProvider>
     ),

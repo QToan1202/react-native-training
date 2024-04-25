@@ -39,7 +39,7 @@ const Controller = () => {
 
 export const Default: Story = {
   render: () => (
-    <YStack gap="$2" alignItems="center">
+    <YStack marginTop="$10" gap="$2" alignItems="center">
       <Controller />
       <Toast />
     </YStack>
