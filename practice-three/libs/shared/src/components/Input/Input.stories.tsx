@@ -3,6 +3,7 @@ import { UseControllerProps, useForm } from 'react-hook-form'
 
 import Input, { InputProps } from './Input'
 import { TFormValues } from '../../types'
+import { Lock } from '../../assets/images'
 
 const meta: Meta<typeof Input> = {
   component: Input,
@@ -21,6 +22,8 @@ const UncontrolledInput = ({
   return (
     <Input
       label="email"
+      startIcon={<Lock />}
+      endIcon={<Lock />}
       control={control}
       options={{ ...{ required: true }, options } as UseControllerProps['rules']}
       {...restProps}
