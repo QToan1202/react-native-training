@@ -2,13 +2,16 @@ import { H2, Separator, Square, XStack, YStack } from 'tamagui'
 import { SubmitHandler } from 'react-hook-form'
 
 import { Button, Checkbox, Form, Input, Text } from '@shared/components'
-import { TRegisterForm } from '@shared/types'
+import { TLoginForm } from '@shared/types'
 
 import { Apple, Facebook, Google, Logo } from '../../assets/images'
+import useLogin from '../../hooks/useLogin'
+import { REGEX } from '../../constants'
 
 const Login = () => {
-  const handleOnSubmit: SubmitHandler<TRegisterForm> = (data) => {
-    console.log(data)
+  const { mutate: mutateLogin } = useLogin('/users')
+  const handleOnSubmit: SubmitHandler<TLoginForm> = (data) => {
+    mutateLogin(data)
   }
 
   return (
@@ -22,9 +25,41 @@ const Login = () => {
         <Text color="$gray_100">Sign in to continue</Text>
       </YStack>
 
-      <Form onSubmit={handleOnSubmit} gap={10}>
-        <Input label="email" placeholder="Your Email / Phone Number" />
-        <Input label="password" placeholder="Password" secureTextEntry />
+      <Form onSubmit={handleOnSubmit} gap={10} marginTop="$12">
+        <Input
+          label="account"
+          placeholder="Your Email / Phone Number"
+          options={{
+            required: true,
+            /*
+             * Expect to meet one of the validate criteria
+             * Either `email` or `phone`
+             */
+            validate: (accountValue: string) => {
+              switch (true) {
+                // Email
+                case REGEX.EMAIL.test(accountValue):
+                  return true
+
+                // Phone
+                case REGEX.PHONE.test(accountValue):
+                  return true
+
+                default:
+                  return 'Credential not allowed'
+              }
+            },
+          }}
+        />
+
+        <Input
+          label="password"
+          placeholder="Password"
+          secureTextEntry
+          options={{
+            required: true,
+          }}
+        />
 
         <YStack>
           <Text color="$primary" fontWeight="bold" fontSize="$1" textAlign="right">
