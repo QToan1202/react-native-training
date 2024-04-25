@@ -4,7 +4,7 @@ import { SubmitHandler } from 'react-hook-form'
 import { Button, Checkbox, Form, Input, Text } from '@shared/components'
 import { TLoginForm } from '@shared/types'
 
-import { Apple, Facebook, Google, Logo } from '../../assets/images'
+import { Apple, Facebook, Google, Lock, Logo, User } from '../../assets/images'
 import useLogin from '../../hooks/useLogin'
 import { REGEX } from '../../constants'
 
@@ -27,6 +27,7 @@ const Login = () => {
 
       <Form onSubmit={handleOnSubmit} gap={10} marginTop="$12">
         <Input
+          startIcon={<User />}
           label="account"
           placeholder="Your Email / Phone Number"
           options={{
@@ -53,6 +54,7 @@ const Login = () => {
         />
 
         <Input
+          startIcon={<Lock />}
           label="password"
           placeholder="Password"
           secureTextEntry
