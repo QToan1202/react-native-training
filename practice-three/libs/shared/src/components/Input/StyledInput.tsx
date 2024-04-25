@@ -5,6 +5,7 @@ const StyledInput = styled(TInput, {
   name: 'Input',
   tag: 'input',
   paddingVertical: 11,
+  paddingHorizontal: 15,
   borderRadius: 5,
   width: '100%',
   focusStyle: {

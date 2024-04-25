@@ -4,7 +4,7 @@ import { SubmitHandler } from 'react-hook-form'
 import { Button, Form, Input, Text } from '@shared/components'
 import { TRegisterForm } from '@shared/types'
 
-import { Apple, Facebook, Google, Logo } from '../../assets/images'
+import { Apple, Facebook, Google, Lock, Logo, Mail, User } from '../../assets/images'
 
 const Register = () => {
   const handleOnSubmit: SubmitHandler<TRegisterForm> = (data) => {
@@ -23,10 +23,15 @@ const Register = () => {
       </YStack>
 
       <Form onSubmit={handleOnSubmit} gap={10}>
-        <Input label="name" placeholder="Name" />
-        <Input label="account" placeholder="Your Email / Phone Number" />
-        <Input label="password" placeholder="Password" />
-        <Input label="confirmPassword" placeholder="Confirm Password" secureTextEntry />
+        <Input startIcon={<User />} label="name" placeholder="Name" />
+        <Input startIcon={<Mail />} label="account" placeholder="Your Email / Phone Number" />
+        <Input startIcon={<Lock />} label="password" placeholder="Password" secureTextEntry />
+        <Input
+          startIcon={<Lock />}
+          label="confirmPassword"
+          placeholder="Confirm Password"
+          secureTextEntry
+        />
 
         <Form.Trigger asChild="web">
           <Button title="login" borderRadius={5} />

@@ -31,12 +31,12 @@ const Input = ({
   })
   const inputRef = useRef<TInput>(null)
   const startIcon = startIconProp && (
-    <Square scale={iconScaling} marginRight={20} marginLeft={14}>
+    <Square scale={iconScaling} marginLeft={20} marginRight={-4}>
       {startIconProp}
     </Square>
   )
   const endIcon = endIconProp && (
-    <Square scale={iconScaling} marginRight={14} marginLeft={20}>
+    <Square scale={iconScaling} marginLeft={-4} marginRight={20}>
       {endIconProp}
     </Square>
   )
