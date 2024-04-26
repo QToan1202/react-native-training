@@ -1,7 +1,8 @@
 import { UseControllerProps } from 'react-hook-form'
 
-import REGEX from './regex'
 import { TFormValues } from '@shared/types'
+
+import REGEX from './regex'
 
 type TValidationRules = {
   [key in Uppercase<keyof TFormValues>]: UseControllerProps['rules']
@@ -35,7 +36,10 @@ const VALIDATION_RULES: TValidationRules = {
   },
   CONFIRMPASSWORD: {},
   EMAIL: {},
-  NAME: {},
+  NAME: {
+    required: true,
+    maxLength: 40,
+  },
   PHONE: {},
 }
 

@@ -6,6 +6,7 @@ import { TRegisterForm } from '@shared/types'
 
 import { Apple, Facebook, Google, Lock, Logo, Mail, User } from '../../assets/images'
 import useRegister from '../../hooks/useRegister'
+import { VALIDATION_RULES } from '../../constants'
 
 const Register = () => {
   const { mutate: mutateRegister } = useRegister('/users')
@@ -25,14 +26,31 @@ const Register = () => {
       </YStack>
 
       <Form onSubmit={handleOnSubmit} gap={10}>
-        <Input startIcon={<User />} label="name" placeholder="Name" />
-        <Input startIcon={<Mail />} label="account" placeholder="Your Email / Phone Number" />
-        <Input startIcon={<Lock />} label="password" placeholder="Password" secureTextEntry />
         <Input
+          startIcon={<User />}
+          label="name"
+          placeholder="Name"
+          options={VALIDATION_RULES.NAME}
+        />
+        <Input
+          startIcon={<Mail />}
+          label="account"
+          placeholder="Your Email / Phone Number"
+          options={VALIDATION_RULES.ACCOUNT}
+        />
+        <Input
+          secureTextEntry
+          startIcon={<Lock />}
+          label="password"
+          placeholder="Password"
+          options={VALIDATION_RULES.PASSWORD}
+        />
+        <Input
+          secureTextEntry
           startIcon={<Lock />}
           label="confirmPassword"
           placeholder="Confirm Password"
-          secureTextEntry
+          options={VALIDATION_RULES.CONFIRMPASSWORD}
         />
 
         <Form.Trigger asChild="web">
