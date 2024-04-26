@@ -43,7 +43,7 @@ const Input = ({
 
   return (
     <XStack
-      borderRadius={12}
+      borderRadius={5}
       borderWidth={1}
       borderColor="$border"
       onPress={() => {
