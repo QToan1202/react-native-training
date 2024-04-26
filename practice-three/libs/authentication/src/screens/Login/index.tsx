@@ -6,7 +6,7 @@ import { TLoginForm } from '@shared/types'
 
 import { Apple, Facebook, Google, Lock, Logo, User } from '../../assets/images'
 import useLogin from '../../hooks/useLogin'
-import { REGEX } from '../../constants'
+import { VALIDATION_RULES } from '../../constants'
 
 const Login = () => {
   const { mutate: mutateLogin } = useLogin('/users')
@@ -30,27 +30,7 @@ const Login = () => {
           startIcon={<User />}
           label="account"
           placeholder="Your Email / Phone Number"
-          options={{
-            required: true,
-            /*
-             * Expect to meet one of the validate criteria
-             * Either `email` or `phone`
-             */
-            validate: (accountValue: string) => {
-              switch (true) {
-                // Email
-                case REGEX.EMAIL.test(accountValue):
-                  return true
-
-                // Phone
-                case REGEX.PHONE.test(accountValue):
-                  return true
-
-                default:
-                  return 'Credential not allowed'
-              }
-            },
-          }}
+          options={VALIDATION_RULES.ACCOUNT}
         />
 
         <Input
@@ -58,9 +38,7 @@ const Login = () => {
           label="password"
           placeholder="Password"
           secureTextEntry
-          options={{
-            required: true,
-          }}
+          options={VALIDATION_RULES.PASSWORD}
         />
 
         <YStack>
