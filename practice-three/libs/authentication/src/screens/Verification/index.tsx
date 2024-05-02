@@ -1,10 +1,13 @@
 import { SubmitHandler } from 'react-hook-form'
 import { H2, YStack } from 'tamagui'
+import { NativeStackScreenProps } from '@react-navigation/native-stack'
 
 import { Button, Form, Input, Text } from '@shared/components'
-import { TFormValues } from '@shared/types'
+import { AuthenticationStack, TFormValues } from '@shared/types'
 
-const Verification = () => {
+type VerificationScreenProps = Partial<NativeStackScreenProps<AuthenticationStack, 'Verification'>>
+
+const Verification = ({ navigation }: VerificationScreenProps) => {
   const handleOnSubmit: SubmitHandler<Pick<TFormValues, 'account'>> = (data) => {
     console.log(data)
   }

@@ -1,17 +1,31 @@
 import { H2, Separator, Square, XStack, YStack } from 'tamagui'
 import { SubmitHandler } from 'react-hook-form'
+import { NativeStackScreenProps } from '@react-navigation/native-stack'
+import { Platform } from 'react-native'
+import { useNavigate } from 'react-router-dom'
 
 import { Button, Form, Input, Text } from '@shared/components'
-import { TRegisterForm } from '@shared/types'
+import { AuthenticationStack, TRegisterForm } from '@shared/types'
 
 import { Apple, Facebook, Google, Lock, Logo, Mail, User } from '../../assets/images'
 import useRegister from '../../hooks/useRegister'
 import { VALIDATION_RULES } from '../../constants'
 
-const Register = () => {
+type RegisterScreenProps = Partial<NativeStackScreenProps<AuthenticationStack, 'Register'>>
+
+const Register = ({ navigation }: RegisterScreenProps) => {
   const { mutate: mutateRegister } = useRegister('/users')
+  const navigate = useNavigate()
   const handleOnSubmit: SubmitHandler<TRegisterForm> = (data) => {
     mutateRegister(data)
+  }
+  const handleMoveToLogin = () => {
+    if (Platform.OS === 'web') {
+      navigate('/register')
+      return
+    }
+
+    navigation?.navigate('Register')
   }
 
   return (
@@ -94,6 +108,7 @@ const Register = () => {
               }}
               $platform-web={{ fontWeight: 'bold' }}
               $platform-native={{ fontWeight: '700' }}
+              onPress={handleMoveToLogin}
             >
               Log In
             </Text>

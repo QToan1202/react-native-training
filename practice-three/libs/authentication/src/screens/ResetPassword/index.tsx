@@ -1,12 +1,15 @@
 import { SubmitHandler } from 'react-hook-form'
 import { H2, Square, YStack } from 'tamagui'
+import { NativeStackScreenProps } from '@react-navigation/native-stack'
 
 import { Button, Form, Input, Text } from '@shared/components'
-import { TRegisterForm } from '@shared/types'
+import { AuthenticationStack, TRegisterForm } from '@shared/types'
 
 import { Lock, Logo } from '../../assets/images'
 
-const ResetPassword = () => {
+type RegisterScreenProps = Partial<NativeStackScreenProps<AuthenticationStack, 'ResetPassword'>>
+
+const ResetPassword = ({ navigation }: RegisterScreenProps) => {
   const handleOnSubmit: SubmitHandler<Pick<TRegisterForm, 'password' | 'confirmPassword'>> = (
     data
   ) => {
