@@ -1,7 +1,6 @@
-import { H2, Separator, Square, XStack, YStack } from 'tamagui'
+import { H2, Separator, Square, XStack, YStack, isWeb } from 'tamagui'
 import { SubmitHandler } from 'react-hook-form'
 import { NativeStackScreenProps } from '@react-navigation/native-stack'
-import { Platform } from 'react-native'
 import { useNavigate } from 'react-router-dom'
 
 import { Button, Checkbox, Form, Input, Text } from '@shared/components'
@@ -19,14 +18,8 @@ const Login = ({ navigation }: LoginScreenProps) => {
   const handleOnSubmit: SubmitHandler<TLoginForm> = (data) => {
     mutateLogin(data)
   }
-  const handleMoveToRegister = () => {
-    if (Platform.OS === 'web') {
-      navigate('/register')
-      return
-    }
-
-    navigation?.navigate('Register')
-  }
+  const handleMoveToRegister = () =>
+    isWeb ? navigate('/register') : navigation?.navigate('Register')
 
   return (
     <YStack gap={5} paddingHorizontal={36}>
