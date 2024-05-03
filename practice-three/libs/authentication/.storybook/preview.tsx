@@ -2,6 +2,7 @@ import React from 'react'
 import { Preview } from '@storybook/react'
 import { TamaguiProvider } from 'tamagui'
 import { ToastProvider, ToastViewport } from '@tamagui/toast'
+import { withRouter, reactRouterParameters } from 'storybook-addon-remix-react-router'
 
 import { Toast } from '@shared/components'
 import tamaguiConfig from '../src/tamagui.config'
@@ -11,6 +12,7 @@ const queryClient = new QueryClient()
 
 const preview: Preview = {
   decorators: [
+    withRouter,
     (Story) => (
       <TamaguiProvider config={tamaguiConfig}>
         <QueryClientProvider client={queryClient}>
@@ -23,6 +25,17 @@ const preview: Preview = {
       </TamaguiProvider>
     ),
   ],
+  parameters: {
+    reactRouter: reactRouterParameters({
+      routing: [
+        { path: '/register', useStoryElement: true },
+        { path: '/login', useStoryElement: true },
+        { path: '/verification', useStoryElement: true },
+        { path: '/forgot-password', useStoryElement: true },
+        { path: '/reset-password', useStoryElement: true },
+      ],
+    }),
+  },
 }
 
 export default preview

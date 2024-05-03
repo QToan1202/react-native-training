@@ -8,7 +8,7 @@ import svgr from 'vite-plugin-svgr'
 
 const config: StorybookConfig = {
   stories: ['../src/screens/**/*.stories.@(js|jsx|ts|tsx|mdx)'],
-  addons: ['@storybook/addon-essentials'],
+  addons: ['@storybook/addon-essentials', 'storybook-addon-remix-react-router'],
   framework: {
     name: '@storybook/react-vite',
     options: {},

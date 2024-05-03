@@ -1,10 +1,18 @@
 import type { Meta, StoryObj } from '@storybook/react'
+import { reactRouterParameters } from 'storybook-addon-remix-react-router'
 
 import Register from './index'
 
 const meta: Meta<typeof Register> = {
   component: Register,
   title: 'screens/Register',
+  parameters: {
+    reactRouter: reactRouterParameters({
+      location: {
+        path: '/register',
+      },
+    }),
+  },
 }
 
 export default meta
