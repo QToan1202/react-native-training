@@ -7,7 +7,10 @@ import { tamaguiPlugin } from '@tamagui/vite-plugin'
 import svgr from 'vite-plugin-svgr'
 
 const config: StorybookConfig = {
-  stories: ['../src/components/**/*.stories.@(js|jsx|ts|tsx|mdx)'],
+  stories: [
+    '../src/components/**/*.stories.@(js|jsx|ts|tsx|mdx)',
+    '../src/screens/**/*.stories.@(js|jsx|ts|tsx|mdx)',
+  ],
   addons: ['@storybook/addon-essentials'],
   framework: {
     name: '@storybook/react-vite',
