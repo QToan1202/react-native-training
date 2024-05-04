@@ -18,10 +18,11 @@
       "@features/authentication": ["libs/authentication/src/index.ts"],
       "@shared/components": ["libs/shared/src/components/index.ts"],
       "@shared/config": ["libs/shared/src/config/index.ts"],
+      "@shared/screens": ["libs/shared/src/screens/index.ts"],
       "@shared/services": ["libs/shared/src/services/index.ts"],
       "@shared/stores": ["libs/shared/src/stores/index.ts"],
       "@shared/types": ["libs/shared/src/types/index.ts"],
-      "@shared/screens": ["libs/shared/src/screens/index.ts"]
+      "shell": ["libs/shell/src/index.ts"]
     }
   },
   "exclude": ["node_modules", "tmp"]
