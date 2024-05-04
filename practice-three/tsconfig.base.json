@@ -20,7 +20,8 @@
       "@shared/config": ["libs/shared/src/config/index.ts"],
       "@shared/services": ["libs/shared/src/services/index.ts"],
       "@shared/stores": ["libs/shared/src/stores/index.ts"],
-      "@shared/types": ["libs/shared/src/types/index.ts"]
+      "@shared/types": ["libs/shared/src/types/index.ts"],
+      "@shared/screens": ["libs/shared/src/screens/index.ts"]
     }
   },
   "exclude": ["node_modules", "tmp"]
