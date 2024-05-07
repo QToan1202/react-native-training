@@ -1,6 +1,6 @@
 import { TFeatureConfig } from '@shared/types'
 
-const preDefinedFeatures: Array<Omit<TFeatureConfig, 'active'>> = [
+const PRE_DEFINED_FEATURES: Array<Omit<TFeatureConfig, 'active'>> = [
   {
     name: 'authentication',
     description:
@@ -8,18 +8,19 @@ const preDefinedFeatures: Array<Omit<TFeatureConfig, 'active'>> = [
   },
 ]
 
-const features = (featureList: string | ReadonlyArray<string>): Array<TFeatureConfig> => {
+const features = (featureList: string | ReadonlyArray<string>): Array<string> => {
   const convertFeatureList =
     typeof featureList === 'object'
       ? featureList
       : featureList.split(',').map((item: string) => item.trim())
 
-  return preDefinedFeatures.map((config) => ({
-    ...config,
-    active: convertFeatureList.some(
-      (feat) => !feat.localeCompare(config.name, undefined, { sensitivity: 'base' })
-    ),
-  }))
+  const featCategories = convertFeatureList.filter((feat) =>
+    PRE_DEFINED_FEATURES.some(
+      (config) => !config.name.localeCompare(feat, undefined, { sensitivity: 'base' })
+    )
+  )
+
+  return featCategories
 }
 
 export default features
