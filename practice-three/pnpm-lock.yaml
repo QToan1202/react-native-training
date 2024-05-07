@@ -44,6 +44,9 @@ dependencies:
   burnt:
     specifier: ^0.12.2
     version: 0.12.2(expo@50.0.17)(react-dom@18.2.0)(react-native@0.73.2)(react@18.2.0)
+  dotenv:
+    specifier: ^16.4.5
+    version: 16.4.5
   json-server:
     specifier: 1.0.0-alpha.23
     version: 1.0.0-alpha.23
@@ -12391,7 +12394,6 @@ packages:
   /dotenv@16.4.5:
     resolution: {integrity: sha512-ZmdL2rui+eB2YwhsWzjInR8LldtZHGDoQ1ugH85ppHKwpUHL7j7rN0Ti9NCnGiQbhaZ11FpR+7ao1dNsmduNUg==}
     engines: {node: '>=12'}
-    dev: false
 
   /duplexer@0.1.2:
     resolution: {integrity: sha512-jtD6YG370ZCIi/9GTaJKQxWTZD045+4R4hTk/x1UyoqadyJ9x9CgSi1RlVDQF8U2sxLLSnFkCaMihqljHIWgMg==}
@@ -16026,7 +16028,7 @@ packages:
     engines: {node: '>=14.0.0'}
     dependencies:
       app-root-dir: 1.0.2
-      dotenv: 16.3.2
+      dotenv: 16.4.5
       dotenv-expand: 10.0.0
     dev: true
 

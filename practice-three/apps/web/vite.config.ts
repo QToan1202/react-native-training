@@ -1,4 +1,5 @@
 /// <reference types='vitest' />
+import 'dotenv/config'
 import { defineConfig } from 'vite'
 import react from '@vitejs/plugin-react'
 import { nxViteTsPaths } from '@nx/vite/plugins/nx-tsconfig-paths.plugin'
@@ -7,12 +8,15 @@ import { tamaguiPlugin } from '@tamagui/vite-plugin'
 
 const tamaguiConfig = {
   components: ['tamagui'],
-  config: '../../libs/config/src/lib/tamagui.config.ts',
+  config: './src/config/tamagui.config.ts',
 }
 
 export default defineConfig({
   root: __dirname,
   cacheDir: '../../node_modules/.vite/apps/web',
+  define: {
+    'process.env': process.env,
+  },
 
   server: {
     port: 4200,
