@@ -1,6 +1,8 @@
+import { ReactNode } from 'react'
+
 export type THOCsProps = {
   category: string[]
-  navigatorData: unknown[]
+  navigatorData: (() => ReactNode)[]
 }
 
 export type TFeatureConfig = {
