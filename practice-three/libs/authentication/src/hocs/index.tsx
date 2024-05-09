@@ -4,7 +4,7 @@ import { isWeb } from 'tamagui'
 import { THOCsProps } from '@shared/types'
 import { featureShell } from 'shell'
 
-import { MobileAuthenticationStack, webAuthenticationStack } from '../navigation'
+import { AuthenticationRoute } from '../navigation'
 
 const FEATURE_NAME = 'authentication'
 
@@ -18,13 +18,7 @@ export const withAuth = <T extends THOCsProps>(Wrapper: ComponentType<T>) => {
     //TODO: Check if feature don't exist in feature init shell
     if (!featureAuth) return null
 
-    //TODO: Check if feature is active or not
-    if (!featureAuth.active) return null
-
-    const mergeNavigator = [
-      ...navigatorData,
-      isWeb ? webAuthenticationStack : MobileAuthenticationStack,
-    ]
+    const mergeNavigator = [...navigatorData, AuthenticationRoute]
 
     return <Wrapper ref={componentRef} {...(rest as T)} navigatorData={mergeNavigator} />
   })
