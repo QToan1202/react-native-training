@@ -2,19 +2,28 @@ import '@tamagui/core/reset.css'
 
 import { StrictMode } from 'react'
 import * as ReactDOM from 'react-dom/client'
-import { BrowserRouter } from 'react-router-dom'
 import { TamaguiProvider } from 'tamagui'
+import { ToastProvider, ToastViewport } from '@tamagui/toast'
+import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
+
+import { Toast } from '@shared/components'
 
 import App from './app/app'
 import { tamaguiConfig } from './config'
 
+const queryClient = new QueryClient()
+
 const root = ReactDOM.createRoot(document.getElementById('root') as HTMLElement)
 root.render(
   <StrictMode>
-    <BrowserRouter>
+    <QueryClientProvider client={queryClient}>
       <TamaguiProvider config={tamaguiConfig}>
-        <App />
+        <ToastProvider>
+          <ToastViewport flexDirection="column" bottom={50} left={0} right={0} />
+          <Toast />
+          <App />
+        </ToastProvider>
       </TamaguiProvider>
-    </BrowserRouter>
+    </QueryClientProvider>
   </StrictMode>
 )
