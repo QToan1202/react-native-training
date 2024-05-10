@@ -1,5 +1,5 @@
 import { H2, Separator, Square, XStack, YStack, isWeb } from 'tamagui'
-import { SubmitHandler } from 'react-hook-form'
+import { SubmitHandler, useForm } from 'react-hook-form'
 import { NativeStackScreenProps } from '@react-navigation/native-stack'
 import { useNavigate } from 'react-router-dom'
 
@@ -15,6 +15,7 @@ type RegisterScreenProps = Partial<NativeStackScreenProps<AuthenticationStack, '
 const Register = ({ navigation }: RegisterScreenProps) => {
   const { mutate: mutateRegister } = useRegister('/users')
   const navigate = useNavigate()
+  const { control, handleSubmit } = useForm<TRegisterForm>()
   const handleOnSubmit: SubmitHandler<TRegisterForm> = (data) => {
     mutateRegister(data)
   }
@@ -31,7 +32,7 @@ const Register = ({ navigation }: RegisterScreenProps) => {
         <Text color="$gray_100">Let&#39;s make your account</Text>
       </YStack>
 
-      <Form onSubmit={handleOnSubmit} gap={10}>
+      <Form formControlProp={control} onSubmit={handleSubmit(handleOnSubmit)} gap={10}>
         <Input
           startIcon={<User />}
           label="name"

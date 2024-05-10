@@ -1,4 +1,4 @@
-import { SubmitHandler } from 'react-hook-form'
+import { SubmitHandler, useForm } from 'react-hook-form'
 import { H2, Square, YStack } from 'tamagui'
 import { NativeStackScreenProps } from '@react-navigation/native-stack'
 
@@ -12,6 +12,7 @@ type ForgotPasswordScreenProps = Partial<
 >
 
 const ForgotPassword = ({ navigation }: ForgotPasswordScreenProps) => {
+  const { control, handleSubmit } = useForm<Pick<TFormValues, 'account'>>()
   const handleOnSubmit: SubmitHandler<Pick<TFormValues, 'account'>> = (data) => {
     console.log(data)
   }
@@ -31,7 +32,7 @@ const ForgotPassword = ({ navigation }: ForgotPasswordScreenProps) => {
         </Text>
       </YStack>
 
-      <Form onSubmit={handleOnSubmit} gap={42}>
+      <Form formControlProp={control} onSubmit={handleSubmit(handleOnSubmit)} gap={42}>
         <Input startIcon={<User />} label="account" placeholder="Your Email / Phone Number" />
 
         <Form.Trigger asChild="web">

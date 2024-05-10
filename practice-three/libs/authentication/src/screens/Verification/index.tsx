@@ -1,4 +1,4 @@
-import { SubmitHandler } from 'react-hook-form'
+import { SubmitHandler, useForm } from 'react-hook-form'
 import { H2, YStack } from 'tamagui'
 import { NativeStackScreenProps } from '@react-navigation/native-stack'
 
@@ -8,6 +8,7 @@ import { AuthenticationStack, TFormValues } from '@shared/types'
 type VerificationScreenProps = Partial<NativeStackScreenProps<AuthenticationStack, 'Verification'>>
 
 const Verification = ({ navigation }: VerificationScreenProps) => {
+  const { control, handleSubmit } = useForm<Pick<TFormValues, 'account'>>()
   const handleOnSubmit: SubmitHandler<Pick<TFormValues, 'account'>> = (data) => {
     console.log(data)
   }
@@ -23,7 +24,7 @@ const Verification = ({ navigation }: VerificationScreenProps) => {
         </Text>
       </YStack>
 
-      <Form onSubmit={handleOnSubmit} gap={42}>
+      <Form formControlProp={control} onSubmit={handleSubmit(handleOnSubmit)} gap={42}>
         <Input label="account" placeholder="Enter OTP here" />
 
         <Form.Trigger asChild="web">

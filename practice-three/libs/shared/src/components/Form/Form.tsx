@@ -1,30 +1,25 @@
 import React, { ReactNode } from 'react'
-import { FieldValues, SubmitHandler, UseFormProps, useForm } from 'react-hook-form'
+import { Control, FieldValues } from 'react-hook-form'
 import { Form as TForm, FormProps as TFormProps, withStaticProperties } from 'tamagui'
 
-export type FormProps<T extends FieldValues> = Omit<TFormProps, 'onSubmit'> & {
+export type FormProps<T extends FieldValues> = TFormProps & {
   children: ReactNode
-  formProps?: UseFormProps<T>
-  onSubmit: SubmitHandler<T>
+  formControlProp: Control<T>
 }
 
 const FormFrame = <T extends FieldValues>({
   children,
-  formProps = {},
-  onSubmit,
+  formControlProp: control,
   ...rest
 }: FormProps<T>) => {
-  const { handleSubmit, register, control } = useForm<T>(formProps)
-
   return (
-    <TForm onSubmit={handleSubmit(onSubmit)} {...rest}>
+    <TForm {...rest}>
       {Array.isArray(children)
         ? children.map((child) =>
             child.props.label
               ? React.createElement(child.type, {
                   ...{
                     ...child.props,
-                    register,
                     control,
                     key: child.props.label,
                   },

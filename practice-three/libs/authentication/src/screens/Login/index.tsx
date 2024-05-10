@@ -1,5 +1,5 @@
 import { H2, Separator, Square, XStack, YStack, isWeb } from 'tamagui'
-import { SubmitHandler } from 'react-hook-form'
+import { SubmitHandler, useForm } from 'react-hook-form'
 import { NativeStackScreenProps } from '@react-navigation/native-stack'
 import { useNavigate } from 'react-router-dom'
 
@@ -14,6 +14,7 @@ type LoginScreenProps = Partial<NativeStackScreenProps<AuthenticationStack, 'Log
 
 const Login = ({ navigation }: LoginScreenProps) => {
   const { mutate: mutateLogin } = useLogin('/users')
+  const { control, handleSubmit } = useForm<TLoginForm>()
   const navigate = useNavigate()
   const handleOnSubmit: SubmitHandler<TLoginForm> = (data) => {
     mutateLogin(data)
@@ -32,7 +33,12 @@ const Login = ({ navigation }: LoginScreenProps) => {
         <Text color="$gray_100">Sign in to continue</Text>
       </YStack>
 
-      <Form onSubmit={handleOnSubmit} gap={10} marginTop="$12">
+      <Form
+        formControlProp={control}
+        onSubmit={handleSubmit(handleOnSubmit)}
+        gap={10}
+        marginTop="$12"
+      >
         <Input
           startIcon={<User />}
           label="account"
