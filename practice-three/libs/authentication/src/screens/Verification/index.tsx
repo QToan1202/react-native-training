@@ -8,7 +8,11 @@ import { AuthenticationStack, TFormValues } from '@shared/types'
 type VerificationScreenProps = Partial<NativeStackScreenProps<AuthenticationStack, 'Verification'>>
 
 const Verification = ({ navigation }: VerificationScreenProps) => {
-  const { control, handleSubmit } = useForm<Pick<TFormValues, 'account'>>()
+  const {
+    control,
+    handleSubmit,
+    formState: { isSubmitting, isDirty, isValid },
+  } = useForm<Pick<TFormValues, 'account'>>()
   const handleOnSubmit: SubmitHandler<Pick<TFormValues, 'account'>> = (data) => {
     console.log(data)
   }
@@ -28,7 +32,12 @@ const Verification = ({ navigation }: VerificationScreenProps) => {
         <Input label="account" placeholder="Enter OTP here" />
 
         <Form.Trigger asChild="web">
-          <Button title="confirm" borderRadius={5} />
+          <Button
+            title="confirm"
+            borderRadius={5}
+            isDisable={!isDirty || !isValid}
+            loading={isSubmitting}
+          />
         </Form.Trigger>
       </Form>
     </YStack>

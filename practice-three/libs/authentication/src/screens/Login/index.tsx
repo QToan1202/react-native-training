@@ -14,7 +14,11 @@ type LoginScreenProps = Partial<NativeStackScreenProps<AuthenticationStack, 'Log
 
 const Login = ({ navigation }: LoginScreenProps) => {
   const { mutate: mutateLogin } = useLogin('/users')
-  const { control, handleSubmit } = useForm<TLoginForm>()
+  const {
+    control,
+    handleSubmit,
+    formState: { isSubmitting, isDirty, isValid },
+  } = useForm<TLoginForm>()
   const navigate = useNavigate()
   const handleOnSubmit: SubmitHandler<TLoginForm> = (data) => {
     mutateLogin(data)
@@ -61,7 +65,12 @@ const Login = ({ navigation }: LoginScreenProps) => {
           <Checkbox label="Remember Me" />
         </YStack>
         <Form.Trigger asChild="web">
-          <Button title="login" borderRadius={5} />
+          <Button
+            title="login"
+            borderRadius={5}
+            isDisable={!isDirty || !isValid}
+            loading={isSubmitting}
+          />
         </Form.Trigger>
       </Form>
 

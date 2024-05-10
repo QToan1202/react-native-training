@@ -10,7 +10,11 @@ import { Lock, Logo } from '../../assets/images'
 type RegisterScreenProps = Partial<NativeStackScreenProps<AuthenticationStack, 'ResetPassword'>>
 
 const ResetPassword = ({ navigation }: RegisterScreenProps) => {
-  const { control, handleSubmit } = useForm<Pick<TRegisterForm, 'password' | 'confirmPassword'>>()
+  const {
+    control,
+    handleSubmit,
+    formState: { isSubmitting, isDirty, isValid },
+  } = useForm<Pick<TRegisterForm, 'password' | 'confirmPassword'>>()
   const handleOnSubmit: SubmitHandler<Pick<TRegisterForm, 'password' | 'confirmPassword'>> = (
     data
   ) => {
@@ -37,7 +41,12 @@ const ResetPassword = ({ navigation }: RegisterScreenProps) => {
         <Input startIcon={<Lock />} label="confirmPassword" placeholder="Confirm Password" />
 
         <Form.Trigger asChild="web">
-          <Button title="send verification" borderRadius={5} />
+          <Button
+            title="send verification"
+            borderRadius={5}
+            isDisable={!isDirty || !isValid}
+            loading={isSubmitting}
+          />
         </Form.Trigger>
       </Form>
     </YStack>

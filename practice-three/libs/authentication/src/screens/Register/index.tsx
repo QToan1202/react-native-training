@@ -15,7 +15,11 @@ type RegisterScreenProps = Partial<NativeStackScreenProps<AuthenticationStack, '
 const Register = ({ navigation }: RegisterScreenProps) => {
   const { mutate: mutateRegister } = useRegister('/users')
   const navigate = useNavigate()
-  const { control, handleSubmit } = useForm<TRegisterForm>()
+  const {
+    control,
+    handleSubmit,
+    formState: { isSubmitting, isDirty, isValid },
+  } = useForm<TRegisterForm>()
   const handleOnSubmit: SubmitHandler<TRegisterForm> = (data) => {
     mutateRegister(data)
   }
@@ -61,7 +65,12 @@ const Register = ({ navigation }: RegisterScreenProps) => {
         />
 
         <Form.Trigger asChild="web">
-          <Button title="login" borderRadius={5} />
+          <Button
+            title="login"
+            borderRadius={5}
+            isDisable={!isDirty || !isValid}
+            loading={isSubmitting}
+          />
         </Form.Trigger>
       </Form>
 

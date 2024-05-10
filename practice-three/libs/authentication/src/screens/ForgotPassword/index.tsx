@@ -12,7 +12,11 @@ type ForgotPasswordScreenProps = Partial<
 >
 
 const ForgotPassword = ({ navigation }: ForgotPasswordScreenProps) => {
-  const { control, handleSubmit } = useForm<Pick<TFormValues, 'account'>>()
+  const {
+    control,
+    handleSubmit,
+    formState: { isSubmitting, isDirty, isValid },
+  } = useForm<Pick<TFormValues, 'account'>>()
   const handleOnSubmit: SubmitHandler<Pick<TFormValues, 'account'>> = (data) => {
     console.log(data)
   }
@@ -36,7 +40,12 @@ const ForgotPassword = ({ navigation }: ForgotPasswordScreenProps) => {
         <Input startIcon={<User />} label="account" placeholder="Your Email / Phone Number" />
 
         <Form.Trigger asChild="web">
-          <Button title="send verification" borderRadius={5} />
+          <Button
+            title="send verification"
+            borderRadius={5}
+            isDisable={!isDirty || !isValid}
+            loading={isSubmitting}
+          />
         </Form.Trigger>
       </Form>
     </YStack>
