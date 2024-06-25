@@ -15,9 +15,6 @@ const tamaguiConfig = {
 export default defineConfig({
   root: __dirname,
   cacheDir: '../../node_modules/.vite/apps/web',
-  define: {
-    'process.env': process.env,
-  },
 
   server: {
     port: 4200,

@@ -6,7 +6,7 @@ import { THOCsProps } from '@shared/types'
 
 const INIT_NAVIGATOR_DATA: THOCsProps['navigatorData'] = []
 
-const initFeatures = featureShell(process.env.FEATURES as string)
+const initFeatures = featureShell(import.meta.env.VITE_FEATURES)
 const BaseApp = ({
   children,
   ...rest
