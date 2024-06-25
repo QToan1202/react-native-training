@@ -1,9 +1,10 @@
 import { ReactNode, useRef } from 'react'
 import { Control, Path, UseControllerProps, useController } from 'react-hook-form'
-import { Square, XStack, Input as TInput } from 'tamagui'
+import { Square, Input as TInput } from 'tamagui'
 
 import StyledInput, { StyledInputProps } from './StyledInput'
 import { TFormValues } from '../../types'
+import InputWrapper from './StyledWrapper'
 
 export type InputProps = StyledInputProps & {
   label: Path<TFormValues>
@@ -12,6 +13,7 @@ export type InputProps = StyledInputProps & {
   iconScaling?: number
   startIcon?: ReactNode
   endIcon?: ReactNode
+  isError?: boolean
 }
 
 const Input = ({
@@ -19,6 +21,7 @@ const Input = ({
   options,
   control,
   iconScaling = 1,
+  isError = false,
   startIcon: startIconProp,
   endIcon: endIconProp,
   ...rest
@@ -42,10 +45,8 @@ const Input = ({
   )
 
   return (
-    <XStack
-      borderRadius={5}
-      borderWidth={1}
-      borderColor="$border"
+    <InputWrapper
+      variant={isError ? 'error' : 'normal'}
       onPress={() => {
         inputRef.current?.focus()
       }}
@@ -59,7 +60,7 @@ const Input = ({
         {...rest}
       />
       {endIcon}
-    </XStack>
+    </InputWrapper>
   )
 }
 
