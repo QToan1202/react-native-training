@@ -2,6 +2,7 @@ import { H2, Separator, Square, XStack, YStack, isWeb } from 'tamagui'
 import { SubmitHandler, useForm } from 'react-hook-form'
 import { NativeStackScreenProps } from '@react-navigation/native-stack'
 import { useNavigate } from 'react-router-dom'
+import { AxiosError } from 'axios'
 
 import { Button, Checkbox, Form, Input, Text } from '@shared/components'
 import { AuthenticationStack, TLoginForm } from '@shared/types'
@@ -17,11 +18,22 @@ const Login = ({ navigation }: LoginScreenProps) => {
   const {
     control,
     handleSubmit,
-    formState: { isSubmitting, isDirty, isValid },
+    reset,
+    resetField,
+    formState: { isSubmitting, isDirty, isValid, errors },
   } = useForm<TLoginForm>()
   const navigate = useNavigate()
   const handleOnSubmit: SubmitHandler<TLoginForm> = (data) => {
-    mutateLogin(data)
+    mutateLogin(data, {
+      onError: (error) => {
+        if (error instanceof AxiosError && error.code === 'ERR_NETWORK') {
+          return
+        }
+
+        resetField('password')
+      },
+      onSuccess: () => reset(),
+    })
   }
   const handleMoveToRegister = () =>
     isWeb ? navigate('/register') : navigation?.navigate('Register')

@@ -1,4 +1,4 @@
-import { H2, Separator, Square, XStack, YStack, isWeb } from 'tamagui'
+import { H2, Separator, Square, Stack, XStack, YStack, isWeb } from 'tamagui'
 import { SubmitHandler, useForm } from 'react-hook-form'
 import { NativeStackScreenProps } from '@react-navigation/native-stack'
 import { useNavigate } from 'react-router-dom'
@@ -18,12 +18,15 @@ const Register = ({ navigation }: RegisterScreenProps) => {
   const {
     control,
     watch,
+    reset,
     handleSubmit,
     formState: { isSubmitting, isDirty, errors },
   } = useForm<TRegisterForm>()
   const watchPassword = watch('password', '')
   const handleOnSubmit: SubmitHandler<TRegisterForm> = (data) => {
-    mutateRegister(data)
+    mutateRegister(data, {
+      onSuccess: () => reset(),
+    })
   }
   const handleMoveToLogin = () => (isWeb ? navigate('/login') : navigation?.navigate('Login'))
 
@@ -123,6 +126,7 @@ const Register = ({ navigation }: RegisterScreenProps) => {
             Already have an account&#63;{' '}
             <Text
               color="$primary"
+              tag="span"
               hoverStyle={{
                 cursor: 'pointer',
                 textDecorationStyle: 'solid',
