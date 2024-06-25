@@ -34,7 +34,9 @@ const VALIDATION_RULES: TValidationRules = {
     required: true,
     minLength: 6,
   },
-  CONFIRMPASSWORD: {},
+  CONFIRMPASSWORD: {
+    required: true,
+  },
   EMAIL: {},
   NAME: {
     required: true,
