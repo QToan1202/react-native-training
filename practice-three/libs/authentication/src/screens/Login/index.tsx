@@ -103,6 +103,7 @@ const Login = ({ navigation }: LoginScreenProps) => {
             Don&#39;t have an account&#63;{' '}
             <Text
               color="$primary"
+              tag="span"
               hoverStyle={{
                 cursor: 'pointer',
                 textDecorationStyle: 'solid',
