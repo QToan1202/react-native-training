@@ -17,9 +17,11 @@ const Register = ({ navigation }: RegisterScreenProps) => {
   const navigate = useNavigate()
   const {
     control,
+    watch,
     handleSubmit,
-    formState: { isSubmitting, isDirty, isValid },
+    formState: { isSubmitting, isDirty, errors },
   } = useForm<TRegisterForm>()
+  const watchPassword = watch('password', '')
   const handleOnSubmit: SubmitHandler<TRegisterForm> = (data) => {
     mutateRegister(data)
   }
@@ -36,17 +38,27 @@ const Register = ({ navigation }: RegisterScreenProps) => {
         <Text color="$gray_100">Let&#39;s make your account</Text>
       </YStack>
 
+      <Stack marginVertical={17}>
+        {Object.keys(errors).length && (
+          <Text color="$red_50" textAlign="center">
+            {errors.confirmPassword?.message || 'You need to fill all information'}
+          </Text>
+        )}
+      </Stack>
+
       <Form formControlProp={control} onSubmit={handleSubmit(handleOnSubmit)} gap={10}>
         <Input
           startIcon={<User />}
           label="name"
           placeholder="Name"
+          isError={!!errors.name}
           options={VALIDATION_RULES.NAME}
         />
         <Input
           startIcon={<Mail />}
           label="account"
           placeholder="Your Email / Phone Number"
+          isError={!!errors.account}
           options={VALIDATION_RULES.ACCOUNT}
         />
         <Input
@@ -54,6 +66,7 @@ const Register = ({ navigation }: RegisterScreenProps) => {
           startIcon={<Lock />}
           label="password"
           placeholder="Password"
+          isError={!!errors.password}
           options={VALIDATION_RULES.PASSWORD}
         />
         <Input
@@ -61,14 +74,21 @@ const Register = ({ navigation }: RegisterScreenProps) => {
           startIcon={<Lock />}
           label="confirmPassword"
           placeholder="Confirm Password"
-          options={VALIDATION_RULES.CONFIRMPASSWORD}
+          isError={!!errors.confirmPassword}
+          options={{
+            ...VALIDATION_RULES.PASSWORD,
+            ...{
+              validate: (value: string) =>
+                watchPassword === value || 'Your type in password do not match',
+            },
+          }}
         />
 
         <Form.Trigger asChild="web">
           <Button
             title="login"
             borderRadius={5}
-            isDisable={!isDirty || !isValid}
+            isDisable={!isDirty || !!Object.keys(errors).length}
             loading={isSubmitting}
           />
         </Form.Trigger>

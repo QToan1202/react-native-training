@@ -47,6 +47,7 @@ const Login = ({ navigation }: LoginScreenProps) => {
           startIcon={<User />}
           label="account"
           placeholder="Your Email / Phone Number"
+          isError={!!errors.account}
           options={VALIDATION_RULES.ACCOUNT}
         />
 
@@ -55,6 +56,7 @@ const Login = ({ navigation }: LoginScreenProps) => {
           label="password"
           placeholder="Password"
           secureTextEntry
+          isError={!!errors.password}
           options={VALIDATION_RULES.PASSWORD}
         />
 
