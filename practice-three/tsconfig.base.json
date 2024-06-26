@@ -16,6 +16,7 @@
     "baseUrl": ".",
     "paths": {
       "@features/authentication": ["libs/authentication/src/index.ts"],
+      "@features/product": ["libs/product/src/index.ts"],
       "@shared/components": ["libs/shared/src/components/index.ts"],
       "@shared/config": ["libs/shared/src/config/index.ts"],
       "@shared/screens": ["libs/shared/src/screens/index.ts"],
