@@ -19,7 +19,7 @@ const config: StorybookConfig = {
       plugins: [
         nxViteTsPaths(),
         svgr({
-          include: '**/*.svg',
+          include: '**/*.svg?react',
         }),
         tamaguiPlugin({
           components: ['tamagui'],
