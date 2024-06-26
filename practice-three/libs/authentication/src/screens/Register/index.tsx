@@ -51,14 +51,14 @@ const Register = ({ navigation }: RegisterScreenProps) => {
 
       <Form formControlProp={control} onSubmit={handleSubmit(handleOnSubmit)} gap={10}>
         <Input
-          startIcon={<User />}
+          startIcon={(color) => <User stroke={color} />}
           label="name"
           placeholder="Name"
           isError={!!errors.name}
           options={VALIDATION_RULES.NAME}
         />
         <Input
-          startIcon={<Mail />}
+          startIcon={(color) => <Mail stroke={color} />}
           label="account"
           placeholder="Your Email / Phone Number"
           isError={!!errors.account}
@@ -66,7 +66,7 @@ const Register = ({ navigation }: RegisterScreenProps) => {
         />
         <Input
           secureTextEntry
-          startIcon={<Lock />}
+          startIcon={(color) => <Lock stroke={color} />}
           label="password"
           placeholder="Password"
           isError={!!errors.password}
@@ -74,7 +74,7 @@ const Register = ({ navigation }: RegisterScreenProps) => {
         />
         <Input
           secureTextEntry
-          startIcon={<Lock />}
+          startIcon={(color) => <Lock stroke={color} />}
           label="confirmPassword"
           placeholder="Confirm Password"
           isError={!!errors.confirmPassword}

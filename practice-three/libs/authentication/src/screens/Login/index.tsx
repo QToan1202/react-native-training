@@ -56,7 +56,7 @@ const Login = ({ navigation }: LoginScreenProps) => {
         marginTop="$12"
       >
         <Input
-          startIcon={<User />}
+          startIcon={(color) => <User stroke={color} />}
           label="account"
           placeholder="Your Email / Phone Number"
           isError={!!errors.account}
@@ -64,7 +64,7 @@ const Login = ({ navigation }: LoginScreenProps) => {
         />
 
         <Input
-          startIcon={<Lock />}
+          startIcon={(color) => <Lock stroke={color} />}
           label="password"
           placeholder="Password"
           secureTextEntry

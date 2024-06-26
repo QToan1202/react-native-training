@@ -1,6 +1,7 @@
-import { ReactNode, useRef } from 'react'
+import { ReactNode, useCallback, useMemo, useRef } from 'react'
 import { Control, Path, UseControllerProps, useController } from 'react-hook-form'
-import { Square, Input as TInput } from 'tamagui'
+import { Square, SquareProps, Input as TInput } from 'tamagui'
+import { getTokenValue } from '@tamagui/core'
 
 import StyledInput, { StyledInputProps } from './StyledInput'
 import { TFormValues } from '../../types'
@@ -11,8 +12,8 @@ export type InputProps = StyledInputProps & {
   control?: Control<TFormValues>
   options?: UseControllerProps['rules']
   iconScaling?: number
-  startIcon?: ReactNode
-  endIcon?: ReactNode
+  startIcon?: ReactNode | ((color: string) => ReactNode)
+  endIcon?: ReactNode | ((color: string) => ReactNode)
   isError?: boolean
 }
 
@@ -33,17 +34,35 @@ const Input = ({
     rules: options,
   })
   const inputRef = useRef<TInput>(null)
-  const startIcon = startIconProp && (
-    <Square scale={iconScaling} marginLeft={20} marginRight={-4}>
-      {startIconProp}
-    </Square>
-  )
-  const endIcon = endIconProp && (
-    <Square scale={iconScaling} marginLeft={-4} marginRight={20}>
-      {endIconProp}
-    </Square>
+  const createIconComponent = useCallback(
+    (iconProp: ReactNode | ((color: string) => ReactNode), iconContainerStyle: SquareProps) => {
+      if (!iconProp) return null
+
+      if (typeof iconProp === 'function') {
+        return (
+          <Square {...iconContainerStyle} scale={iconScaling}>
+            {isError ? iconProp(getTokenValue('$color.red_50')) : iconProp('none')}
+          </Square>
+        )
+      }
+
+      return (
+        <Square {...iconContainerStyle} scale={iconScaling}>
+          {iconProp}
+        </Square>
+      )
+    },
+    [iconScaling, isError]
   )
 
+  const startIcon = useMemo(
+    () => createIconComponent(startIconProp, { marginLeft: 20, marginRight: -4 }),
+    [createIconComponent, startIconProp]
+  )
+  const endIcon = useMemo(
+    () => createIconComponent(endIconProp, { marginLeft: -4, marginRight: 20 }),
+    [createIconComponent, endIconProp]
+  )
   return (
     <InputWrapper
       variant={isError ? 'error' : 'normal'}
