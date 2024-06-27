@@ -23,6 +23,7 @@
       "@shared/services": ["libs/shared/src/services/index.ts"],
       "@shared/stores": ["libs/shared/src/stores/index.ts"],
       "@shared/types": ["libs/shared/src/types/index.ts"],
+      "@shared/utils": ["libs/shared/src/utils/index.ts"],
       "shell": ["libs/shell/src/index.ts"]
     }
   },
