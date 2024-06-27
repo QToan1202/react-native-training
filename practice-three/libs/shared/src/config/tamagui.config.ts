@@ -31,6 +31,14 @@ const customTokens = createTokens({
     ...tokens.zIndex,
     selectContent: 10000,
   },
+  card: {
+    width: 410,
+    height: 420,
+  },
+  cardMobile: {
+    width: 185,
+    height: 320,
+  },
 })
 
 const fonts = createFont({
