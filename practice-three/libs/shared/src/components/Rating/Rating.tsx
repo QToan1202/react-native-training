@@ -24,7 +24,7 @@ const Rating = ({ numberOfStarts = 0 }: RatingProps) => {
 
   return (
     <Radio value={rating} onValueChange={handleChange} flexDirection="row" gap="$1">
-      {[...Array(numberOfStarts + 1).keys()].slice(1).map((value: number) => (
+      {[...Array(Math.floor(numberOfStarts) + 1).keys()].slice(1).map((value: number) => (
         <Item key={key + value} value={value.toString()}>
           {Number(rating) < value ? (
             <Star color="$yellow10Light" />
