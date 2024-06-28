@@ -5,22 +5,24 @@ import { getTokenValue } from '@tamagui/core'
 
 import StyledInput, { StyledInputProps } from './StyledInput'
 import { TFormValues } from '../../types'
-import InputWrapper from './StyledWrapper'
+import InputWrapper, { StyledWrapperProps } from './StyledWrapper'
 
 export type InputProps = StyledInputProps & {
   label: Path<TFormValues>
   control?: Control<TFormValues>
   options?: UseControllerProps['rules']
   iconScaling?: number
+  isError?: boolean
+  containerStyle?: StyledWrapperProps
   startIcon?: ReactNode | ((color: string) => ReactNode)
   endIcon?: ReactNode | ((color: string) => ReactNode)
-  isError?: boolean
 }
 
 const Input = ({
   label,
   options,
   control,
+  containerStyle,
   iconScaling = 1,
   isError = false,
   startIcon: startIconProp,
@@ -66,6 +68,7 @@ const Input = ({
   return (
     <InputWrapper
       variant={isError ? 'error' : 'normal'}
+      {...containerStyle}
       onPress={() => {
         inputRef.current?.focus()
       }}
