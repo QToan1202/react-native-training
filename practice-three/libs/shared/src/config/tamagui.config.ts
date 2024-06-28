@@ -21,6 +21,7 @@ const customTokens = createTokens({
     gray_100: '#848484',
     gray_200: '#646464',
     gray_300: '#565656',
+    gray_400: '#7c7c7c',
     yellow: '#f2c94c',
     red_50: '#fb7181',
     red_100: '#e90000',
@@ -38,6 +39,10 @@ const customTokens = createTokens({
   cardMobile: {
     width: 185,
     height: 320,
+  },
+  commentImage: {
+    width: 140,
+    height: 140,
   },
 })
 
