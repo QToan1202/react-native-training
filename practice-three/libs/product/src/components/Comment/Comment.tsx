@@ -1,10 +1,10 @@
 import { ImageURISource } from 'react-native'
-import { Image, XStack, YStack, YStackProps, getTokenValue } from 'tamagui'
+import { Image, Separator, XStack, YStack, YStackProps, getTokenValue } from 'tamagui'
 
-import { Rating, Text } from '@shared/components'
+import { Rating, ReadMore, Text } from '@shared/components'
+import { TReview } from '@shared/types'
 
 import { placeholderImagePath } from '../../assets/images'
-import { TReview } from '@shared/types'
 
 export type CommentProps = YStackProps &
   TReview & {
@@ -14,17 +14,18 @@ export type CommentProps = YStackProps &
 const Comment = ({ rating, content, reviewer, date, images, ...rest }: CommentProps) => {
   return (
     <YStack maxWidth={900} {...rest}>
-      <XStack alignItems="center">
-        <Rating numberOfStarts={rating} />
+      <XStack alignItems="center" gap={12}>
+        <Rating defaultValue={rating} numberOfStarts={5} isDisabled />
         <Text fontSize="$3">{rating}</Text>
       </XStack>
-      <Text whiteSpace="normal">{content}</Text>
+      <ReadMore fontSize="$3">{content}</ReadMore>
       <XStack gap={20}>
         {images.map((img) => (
           <Image
             resizeMode="contain"
             alignSelf="center"
             borderRadius={10}
+            key={img}
             source={{
               width: getTokenValue('$commentImage.width'),
               height: getTokenValue('$commentImage.height'),
@@ -38,8 +39,9 @@ const Comment = ({ rating, content, reviewer, date, images, ...rest }: CommentPr
           />
         ))}
       </XStack>
-      <XStack gap={5}>
+      <XStack>
         <Text fontSize="$3">{reviewer}</Text>
+        <Separator alignSelf="stretch" vertical marginHorizontal={8} />
         <Text fontSize="$3">{date.toDateString()}</Text>
       </XStack>
     </YStack>
