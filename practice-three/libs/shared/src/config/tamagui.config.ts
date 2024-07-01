@@ -11,10 +11,11 @@ const customTokens = createTokens({
     white: '#f5f5f5',
     black: '#272727',
     pure_black: '#000',
-    transparent: '00ffffff',
+    transparent: 'transparent',
     primary: '#002482',
     indigo: '#223263',
-    blue: '#0081de',
+    blue_50: '#0081de',
+    blue_100: '#00398f',
     green_50: '#0eb000',
     green_100: '#0a8200',
     gray_50: '#f0f0f0',
@@ -43,6 +44,14 @@ const customTokens = createTokens({
   commentImage: {
     width: 140,
     height: 140,
+  },
+  category: {
+    width: 590,
+    height: 330,
+  },
+  categoryMobile: {
+    width: 62,
+    height: 62,
   },
 })
 

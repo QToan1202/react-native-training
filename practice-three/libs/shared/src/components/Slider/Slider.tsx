@@ -12,7 +12,7 @@ const Thumb = styled(Slider.Thumb, {
 const SimpleSlider = (props: SliderProps) => (
   <Slider min={0} max={100} step={1} {...props}>
     <Slider.Track backgroundColor="$gray_50">
-      <Slider.TrackActive backgroundColor="$blue" />
+      <Slider.TrackActive backgroundColor="$blue_50" />
     </Slider.Track>
     <Thumb index={0} />
     <Thumb index={1} />
