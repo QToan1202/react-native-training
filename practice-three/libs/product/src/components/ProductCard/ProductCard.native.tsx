@@ -63,17 +63,11 @@ const ProductCard = ({
         }}
       />
       <Card.Header paddingHorizontal={6} paddingVertical={9}>
-        <Heading
-          whiteSpace="nowrap"
-          overflow="hidden"
-          textOverflow="ellipsis"
-          color="$black"
-          fontWeight="bold"
-        >
+        <Heading ellipse color="$black" fontWeight="bold">
           {name}
         </Heading>
         <XStack gap={30}>
-          <Text color="$black" textTransform="capitalize" fontSize="$1">
+          <Text ellipse color="$black" textTransform="capitalize" fontSize="$1">
             {brandName}
           </Text>
         </XStack>
