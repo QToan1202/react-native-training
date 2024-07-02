@@ -1,7 +1,9 @@
-import { Text } from '@shared/components'
-import { Card, CardProps, H5, Image, YStack, getTokenValue } from 'tamagui'
-import { placeholderImagePath } from '../../assets/images'
 import { ImageURISource } from 'react-native'
+import { Card, CardProps, H5, Image, YStack, getTokenValue } from 'tamagui'
+
+import { Text } from '@shared/components'
+
+import { placeholderImagePath } from '../../assets/images'
 
 export type DealCardProps = CardProps & {
   image: ImageURISource['uri']

@@ -1,8 +1,9 @@
 import { ImageURISource } from 'react-native'
 import { Card, CardProps, H2, Image, XStack, YStack, getTokenValue } from 'tamagui'
 
-import { Arrow, placeholderImagePath } from '../../assets/images'
 import { Text } from '@shared/components'
+
+import { Arrow, placeholderImagePath } from '../../assets/images'
 
 export type CategoryItemProps = CardProps & {
   title: string
