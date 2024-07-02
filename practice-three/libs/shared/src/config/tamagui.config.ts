@@ -57,6 +57,10 @@ const customTokens = createTokens({
     width: 490,
     height: 570,
   },
+  wishlistImg: {
+    width: 87,
+    height: 77,
+  },
 })
 
 const fonts = createFont({

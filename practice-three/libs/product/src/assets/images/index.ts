@@ -7,3 +7,5 @@ export { default as Search } from './search.svg?react'
 export { default as SearchMobile } from './search-mobile.svg?react'
 
 export { default as Arrow } from './arrow.svg?react'
+
+export { default as Heart } from './heart.svg?react'
