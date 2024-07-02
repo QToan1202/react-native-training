@@ -53,6 +53,10 @@ const customTokens = createTokens({
     width: 62,
     height: 62,
   },
+  deal: {
+    width: 490,
+    height: 570,
+  },
 })
 
 const fonts = createFont({
