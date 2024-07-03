@@ -1,7 +1,7 @@
 import { H2, Separator, Square, XStack, YStack, isWeb } from 'tamagui'
 import { SubmitHandler, useForm } from 'react-hook-form'
 import { NativeStackScreenProps } from '@react-navigation/native-stack'
-import { useNavigate } from 'react-router-dom'
+import { redirect } from 'react-router-dom'
 import { AxiosError } from 'axios'
 
 import { Button, Checkbox, Form, Input, Text } from '@shared/components'
@@ -22,7 +22,6 @@ const Login = ({ navigation }: LoginScreenProps) => {
     resetField,
     formState: { isSubmitting, isDirty, isValid, errors },
   } = useForm<TLoginForm>()
-  const navigate = useNavigate()
   const handleOnSubmit: SubmitHandler<TLoginForm> = (data) => {
     mutateLogin(data, {
       onError: (error) => {
@@ -36,10 +35,16 @@ const Login = ({ navigation }: LoginScreenProps) => {
     })
   }
   const handleMoveToRegister = () =>
-    isWeb ? navigate('/register') : navigation?.navigate('Register')
+    isWeb ? redirect('/register') : navigation?.navigate('Register')
 
   return (
-    <YStack gap={5} paddingHorizontal={36}>
+    <YStack
+      gap={5}
+      paddingHorizontal={36}
+      justifyContent="center"
+      backgroundColor="$white"
+      fullscreen
+    >
       <Square alignItems="center">
         <Logo />
       </Square>
@@ -92,7 +97,7 @@ const Login = ({ navigation }: LoginScreenProps) => {
         <Text
           position="absolute"
           top={-8}
-          backgroundColor="$pure_white"
+          backgroundColor="$white"
           paddingHorizontal={20}
           textTransform="uppercase"
           color="$gray_100"
