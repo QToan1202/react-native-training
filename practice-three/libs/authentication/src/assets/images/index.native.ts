@@ -1,0 +1,9 @@
+/// <reference types="../../../declarations.d.ts" />
+
+export { default as Apple } from './apple.svg'
+export { default as Facebook } from './facebook.svg'
+export { default as Google } from './google.svg'
+export { default as Logo } from './logo.svg'
+export { default as Lock } from './lock.svg'
+export { default as User } from './user.svg'
+export { default as Mail } from './mail.svg'
