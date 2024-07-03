@@ -12,7 +12,7 @@ export type WishlistItemProps = XStackProps &
     image: ImageURISource['uri']
   }
 
-export const WishlistItem = ({ image, name, brandName, price, ...rest }: WishlistItemProps) => (
+const WishlistItem = ({ image, name, brandName, price, ...rest }: WishlistItemProps) => (
   <XStack alignItems="center" {...rest}>
     <Image
       resizeMode="contain"
@@ -30,7 +30,7 @@ export const WishlistItem = ({ image, name, brandName, price, ...rest }: Wishlis
       }}
     />
     <YStack gap={8} marginLeft={18}>
-      <Heading ellipse color="$blue_100" fontWeight="700" textTransform="capitalize">
+      <Heading ellipse color="$blue_200" fontWeight="700" textTransform="capitalize">
         {name}
       </Heading>
       <Text ellipse color="$gray_100" fontSize={10} fontWeight="700" textTransform="capitalize">
