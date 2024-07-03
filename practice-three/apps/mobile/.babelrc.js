@@ -1,5 +1,3 @@
-process.env.TAMAGUI_TARGET = 'native'
-
 module.exports = function (api) {
   api.cache(true)
 
