@@ -4,7 +4,7 @@ import { Search as SearchIcon } from '../../assets/images'
 
 export type SearchProps = InputProps
 
-const Search = ({ ...rest }: SearchProps) => (
+const Search = ({ containerStyle, ...rest }: SearchProps) => (
   <Input
     endIcon={<SearchIcon />}
     padding={14}
@@ -13,6 +13,7 @@ const Search = ({ ...rest }: SearchProps) => (
     containerStyle={{
       borderRadius: 8,
       backgroundColor: '$gray_50',
+      ...containerStyle,
     }}
     {...rest}
     label="search"
