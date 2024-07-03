@@ -10,7 +10,7 @@ export type CategoryItemProps = CardProps & {
   image: ImageURISource['uri']
 }
 
-export const CategoryItem = ({ title, image, ...rest }: CategoryItemProps) => {
+const CategoryItem = ({ title, image, ...rest }: CategoryItemProps) => {
   return (
     <Card
       maxWidth={getTokenValue('$category.width')}

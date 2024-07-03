@@ -12,7 +12,7 @@ export type DealCardProps = CardProps & {
   description?: string
 }
 
-export const DealCard = ({ image, brandImage, title, description, ...rest }: DealCardProps) => {
+const DealCard = ({ image, brandImage, title, description, ...rest }: DealCardProps) => {
   return (
     <Card
       width={getTokenValue('$deal.width')}
