@@ -43,6 +43,9 @@ const ButtonFrame = styled(View, {
   borderRadius: '$6',
   borderWidth: 2,
   gap: 6,
+  pressStyle: {
+    opacity: 0.5,
+  },
 
   variants: {
     variant: {
