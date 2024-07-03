@@ -1,4 +1,6 @@
-import { Slider, SliderProps, styled } from 'tamagui'
+import { Slider, SliderProps as TSliderProps, styled } from 'tamagui'
+
+export type SliderProps = TSliderProps
 
 const Thumb = styled(Slider.Thumb, {
   circular: true,
