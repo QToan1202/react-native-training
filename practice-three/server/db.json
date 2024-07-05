@@ -57,16 +57,194 @@
   ],
   "products": [
     {
-      "name": "coca cola",
-      "img": "https://media.istockphoto.com/id/1457889029/vi/anh/nh%C3%B3m-th%E1%BB%B1c-ph%E1%BA%A9m-c%C3%B3-h%C3%A0m-l%C6%B0%E1%BB%A3ng-ch%E1%BA%A5t-x%C6%A1-cao-%C4%91%C6%B0%E1%BB%A3c-s%E1%BA%AFp-x%E1%BA%BFp-c%E1%BA%A1nh-nhau.jpg?s=612x612&w=is&k=20&c=i1GyrsBSVJRDFf4oG-dKybh1_3mOkMgbHSkdYEndeoQ=",
-      "price": 25,
-      "discountPrice": 0,
-      "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lobortis cras placerat diam ipsum ut. Nisi vel adipiscing massa bibendum diam. Suspendisse mattis dui maecenas duis mattis. Mattis aliquam at arcu, semper nunc, venenatis et pellentesque eu. Id tristique maecenas tristique habitasse eu elementum sed. Aliquam eget lacus, arcu, adipiscing eget feugiat in dolor sagittis.Non commodo, a justo massa porttitor sed placerat in. Orci tristique etiam tempus sed. Mi varius morbi egestas dictum tempor nisl. In ",
-      "condition": "organic",
-      "priceType": "fixed",
-      "location": "Kualalumpur, Malaysia",
-      "delivery": "home delivery available, cash on delivery",
-      "id": 1
+      "id": "p001",
+      "name": "Casual T-Shirt",
+      "image": "https://example.com/images/tshirt.jpg",
+      "price": 19.99,
+      "discountPercent": 10,
+      "brandName": "FashionCo",
+      "rating": 4.5,
+      "description": "A comfortable and stylish casual T-shirt perfect for everyday wear.",
+      "sellerName": "BestSeller",
+      "sizes": ["S", "M", "L", "XL"],
+      "reviews": [
+        {
+          "rating": 5,
+          "content": "Great quality and fit!",
+          "reviewer": "Alice Johnson",
+          "date": "2023-06-15T12:34:56Z"
+        },
+        {
+          "rating": 4,
+          "content": "Comfortable but the color fades slightly after washing.",
+          "reviewer": "Bob Smith",
+          "date": "2023-07-05T09:23:45Z"
+        }
+      ],
+      "specifications": {
+        "type": "Top",
+        "color": "Blue",
+        "sleeveLength": "Short",
+        "patternType": "Solid",
+        "length": "Regular",
+        "closure": "None",
+        "liningFabric": "None",
+        "numOfPockets": 0,
+        "hemline": "Straight",
+        "occasion": "Casual"
+      }
+    },
+    {
+      "id": "p002",
+      "name": "Elegant Evening Dress",
+      "image": "https://example.com/images/eveningdress.jpg",
+      "price": 89.99,
+      "discountPercent": 20,
+      "brandName": "Glamour",
+      "rating": 4.8,
+      "description": "An elegant evening dress perfect for formal occasions.",
+      "sellerName": "LuxuryStore",
+      "sizes": ["S", "M", "L"],
+      "reviews": [
+        {
+          "rating": 5,
+          "content": "Absolutely stunning! Received many compliments.",
+          "reviewer": "Catherine Lee",
+          "date": "2023-05-20T15:40:30Z"
+        },
+        {
+          "rating": 4.5,
+          "content": "Beautiful dress, but a bit tight around the waist.",
+          "reviewer": "David Brown",
+          "date": "2023-06-10T10:15:20Z"
+        }
+      ],
+      "specifications": {
+        "type": "Dress",
+        "color": "Red",
+        "sleeveLength": "Long",
+        "patternType": "Solid",
+        "length": "Floor-Length",
+        "closure": "Zipper",
+        "liningFabric": "Satin",
+        "numOfPockets": 0,
+        "hemline": "Flared",
+        "occasion": "Formal"
+      }
+    },
+    {
+      "id": "p003",
+      "name": "Running Shoes",
+      "image": "https://example.com/images/runningshoes.jpg",
+      "price": 59.99,
+      "discountPercent": 15,
+      "brandName": "Sportify",
+      "rating": 4.7,
+      "description": "High-performance running shoes with excellent grip and comfort.",
+      "sellerName": "ActiveGear",
+      "sizes": ["8", "9", "10", "11"],
+      "reviews": [
+        {
+          "rating": 4.5,
+          "content": "Very comfortable and lightweight.",
+          "reviewer": "John Runner",
+          "date": "2023-04-12T11:20:30Z"
+        },
+        {
+          "rating": 5,
+          "content": "Great shoes for long-distance running.",
+          "reviewer": "Jane Sprinter",
+          "date": "2023-05-01T08:10:00Z"
+        }
+      ],
+      "specifications": {
+        "type": "Shoes",
+        "color": "Black",
+        "sleeveLength": "N/A",
+        "patternType": "Solid",
+        "length": "Ankle",
+        "closure": "Laces",
+        "liningFabric": "Mesh",
+        "numOfPockets": 0,
+        "hemline": "N/A",
+        "occasion": "Sports"
+      }
+    },
+    {
+      "id": "p004",
+      "name": "Leather Jacket",
+      "image": "https://example.com/images/leatherjacket.jpg",
+      "price": 149.99,
+      "discountPercent": 25,
+      "brandName": "MotoStyle",
+      "rating": 4.6,
+      "description": "A stylish leather jacket with a classic design, perfect for any season.",
+      "sellerName": "CoolWear",
+      "sizes": ["M", "L", "XL", "XXL"],
+      "reviews": [
+        {
+          "rating": 4,
+          "content": "Good quality, but a bit heavy.",
+          "reviewer": "Samuel Biker",
+          "date": "2023-03-22T17:30:45Z"
+        },
+        {
+          "rating": 4.7,
+          "content": "Love the design and fit.",
+          "reviewer": "Emma Rider",
+          "date": "2023-06-18T14:20:15Z"
+        }
+      ],
+      "specifications": {
+        "type": "Jacket",
+        "color": "Brown",
+        "sleeveLength": "Long",
+        "patternType": "Solid",
+        "length": "Waist",
+        "closure": "Zipper",
+        "liningFabric": "Polyester",
+        "numOfPockets": 4,
+        "hemline": "Straight",
+        "occasion": "Casual"
+      }
+    },
+    {
+      "id": "p005",
+      "name": "Smartwatch",
+      "image": "https://example.com/images/smartwatch.jpg",
+      "price": 199.99,
+      "discountPercent": 5,
+      "brandName": "TechTime",
+      "rating": 4.3,
+      "description": "A feature-packed smartwatch with health tracking and notifications.",
+      "sellerName": "GadgetHub",
+      "sizes": ["One Size"],
+      "reviews": [
+        {
+          "rating": 4,
+          "content": "Useful features, but battery life could be better.",
+          "reviewer": "Gadget Guru",
+          "date": "2023-05-10T09:45:30Z"
+        },
+        {
+          "rating": 4.5,
+          "content": "Great value for the price.",
+          "reviewer": "Tech Savvy",
+          "date": "2023-07-02T11:20:00Z"
+        }
+      ],
+      "specifications": {
+        "type": "Watch",
+        "color": "Silver",
+        "sleeveLength": "N/A",
+        "patternType": "Solid",
+        "length": "N/A",
+        "closure": "Buckle",
+        "liningFabric": "N/A",
+        "numOfPockets": 0,
+        "hemline": "N/A",
+        "occasion": "Everyday"
+      }
     }
   ],
   "orders": [],
