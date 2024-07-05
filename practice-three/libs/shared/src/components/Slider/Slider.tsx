@@ -8,11 +8,15 @@ const Thumb = styled(Slider.Thumb, {
   size: '$1',
   backgroundColor: '$white',
   borderColor: '$gray_100',
-  borderWidth: 1,
+  borderWidth: 0,
+  focusStyle: {
+    outlineWidth: 0,
+    backgroundColor: '$white',
+  },
 })
 
 const SimpleSlider = (props: SliderProps) => (
-  <Slider min={0} max={100} step={1} {...props}>
+  <Slider min={0} max={100} step={1} marginVertical={14} {...props}>
     <Slider.Track backgroundColor="$gray_50">
       <Slider.TrackActive backgroundColor="$blue_50" />
     </Slider.Track>
