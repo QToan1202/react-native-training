@@ -15,3 +15,7 @@ export const CLOTH_CATEGORIES = [
 export const TYPES = ['male', 'female', 'unisex', 'teen', 'baby']
 
 export const FILTER_LABELS = ['brand', 'color', 'discount range']
+
+export const STALE_TIMES = {
+  PRODUCT_INFO: 24 * 60 * 60 * 1000, // 1 day
+}
