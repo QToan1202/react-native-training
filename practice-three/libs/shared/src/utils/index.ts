@@ -1,1 +1,1 @@
-export { default as calculateDiscountPrice } from './product'
+export * from './product'
