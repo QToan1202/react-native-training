@@ -1,19 +1,13 @@
 import { ReactNode } from 'react'
-import {
-  AccordionMultipleProps,
-  AccordionSingleProps,
-  Accordion as TAccordion,
-  Theme,
-} from 'tamagui'
+import { GetProps, Accordion as TAccordion, styled } from 'tamagui'
 
-export type AccordionProps = (AccordionSingleProps | AccordionMultipleProps) & {
+const Accordion = styled(TAccordion, {
+  theme: 'light',
+  overflow: 'hidden',
+})
+
+export type AccordionProps = GetProps<typeof Accordion> & {
   children: ReactNode
 }
-
-const Accordion = ({ children, ...rest }: AccordionProps) => (
-  <Theme name="light">
-    <TAccordion {...rest}>{children}</TAccordion>
-  </Theme>
-)
 
 export default Accordion
