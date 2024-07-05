@@ -30,6 +30,7 @@ const ProductCard = ({
       maxWidth={getTokenValue('$card.width')}
       maxHeight={getTokenValue('$card.height')}
       borderRadius={10}
+      overflow="hidden"
       backgroundColor="$white"
       hoverStyle={{
         cursor: 'pointer',
