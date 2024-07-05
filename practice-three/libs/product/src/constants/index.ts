@@ -13,3 +13,5 @@ export const CLOTH_CATEGORIES = [
 ]
 
 export const TYPES = ['male', 'female', 'unisex', 'teen', 'baby']
+
+export const FILTER_LABELS = ['brand', 'color', 'discount range']
