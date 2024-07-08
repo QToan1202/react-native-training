@@ -1,31 +1,39 @@
 import { ReactNode } from 'react'
 import { GetProps, styled, VisuallyHidden, YStack } from 'tamagui'
-import { LinearGradient } from 'tamagui/linear-gradient'
+
+import styles from './styles.module.css'
 
 const SkeletonFrame = styled(YStack, {
   name: 'Skeleton',
   backgroundColor: '$backgroundHover',
   overflow: 'hidden',
   position: 'relative',
-  borderRadius: 4,
-})
 
-const SkeletonShine = styled(LinearGradient, {
-  position: 'absolute',
-  top: 0,
-  bottom: 0,
-  width: '25%',
-  colors: ['$background', '$color'],
+  className: styles['skeleton'],
+  variants: {
+    variants: {
+      circular: {
+        aspectRatio: 1 / 1,
+        width: 50,
+        borderRadius: 50,
+      },
+      rectangular: {},
+      rounded: {
+        width: '100%',
+        borderRadius: 5,
+      },
+    } as const,
+  },
+  defaultVariants: { variants: 'rounded' },
 })
 
 export type SkeletonProps = GetProps<typeof SkeletonFrame> & {
-  children: ReactNode
+  children?: ReactNode
 }
 
 const Skeleton = ({ children, ...rest }: SkeletonProps) => {
   return (
     <SkeletonFrame {...rest}>
-      <SkeletonShine />
       <VisuallyHidden preserveDimensions>{children}</VisuallyHidden>
     </SkeletonFrame>
   )

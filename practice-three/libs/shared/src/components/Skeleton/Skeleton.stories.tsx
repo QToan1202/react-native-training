@@ -17,3 +17,10 @@ export const Default: Story = {
     children: <Text>123</Text>,
   },
 }
+
+export const SkeletonWithVariants: Story = {
+  args: {
+    variants: 'circular',
+    children: <Text>123</Text>,
+  },
+}
