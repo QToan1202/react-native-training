@@ -1,4 +1,4 @@
-import React from 'react'
+import { Fragment } from 'react'
 import { H2, Separator, XStack, YStack, YStackProps } from 'tamagui'
 
 import { Accordion, AccordionItem, Checkbox, Slider, Text } from '@shared/components'
@@ -17,13 +17,13 @@ const Filter = ({ min, max, brandNames, colors, discountPercent, ...rest }: Filt
   const renderFilterOps = (label: string) => {
     switch (label) {
       case 'brand':
-        return brandNames.map((item: string) => <Checkbox label={item} />)
+        return brandNames.map((item: string) => <Checkbox key={item} label={item} />)
 
       case 'color':
-        return colors.map((item: string) => <Checkbox label={item} />)
+        return colors.map((item: string) => <Checkbox key={item} label={item} />)
 
       case 'discount range':
-        return discountPercent.map((item: number) => <Checkbox label={String(item)} />)
+        return discountPercent.map((item: number) => <Checkbox key={item} label={String(item)} />)
 
       default:
         return null
@@ -66,7 +66,7 @@ const Filter = ({ min, max, brandNames, colors, discountPercent, ...rest }: Filt
       </XStack>
       <Accordion type="multiple">
         {FILTER_LABELS.map((label: string) => (
-          <React.Fragment key={label}>
+          <Fragment key={label}>
             <Separator marginVertical={20} />
             <AccordionItem
               label={
@@ -86,7 +86,7 @@ const Filter = ({ min, max, brandNames, colors, discountPercent, ...rest }: Filt
             >
               {renderFilterOps(label)}
             </AccordionItem>
-          </React.Fragment>
+          </Fragment>
         ))}
       </Accordion>
     </YStack>
