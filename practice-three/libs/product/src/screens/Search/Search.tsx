@@ -1,12 +1,13 @@
-import { XStack } from 'tamagui'
+import { useMemo } from 'react'
+import { H2, XStack, YStack } from 'tamagui'
 import { NativeStackScreenProps } from '@react-navigation/native-stack'
 
 import { ProductStack, TProduct } from '@shared/types'
 
-import { Filter, ProductCard } from '../../components'
+import { Filter, ProductCard, ProductCardSkeleton } from '../../components'
 import { useGetProducts } from '../../hooks'
-import React, { useMemo } from 'react'
 import { getBrands, getColors, getDiscounts, getMinMaxPrices } from '@shared/utils'
+import { Text } from '@shared/components'
 
 export type SearchProps = Partial<NativeStackScreenProps<ProductStack, 'Search'>>
 
@@ -18,8 +19,17 @@ const Search = (props: SearchProps) => {
   const colors = getColors(products)
   const discounts = getDiscounts(products)
   const renderProduct = useMemo(() => {
-    if (isLoading) return
+    if (isLoading) return [...Array(4).keys()].map((item) => <ProductCardSkeleton key={item} />)
     if (!isSuccess) return
+    if (!data.length)
+      return (
+        <YStack alignItems="center" gap={12} fullscreen>
+          <H2 color="$black" fontSize="$5" fontWeight="bold" textAlign="center">
+            No Products Found
+          </H2>
+          <Text>We couldn't find any products that match your search.</Text>
+        </YStack>
+      )
 
     return data.map(
       ({ description, sellerName, sizes, reviews, specifications, id, ...rest }: TProduct) => (
@@ -38,7 +48,7 @@ const Search = (props: SearchProps) => {
         discountPercent={discounts}
         width={460}
       />
-      <XStack flex={1} flexWrap="wrap" gap={12}>
+      <XStack flex={1} flexWrap="wrap" alignSelf="flex-start" gap={12}>
         {renderProduct}
       </XStack>
     </XStack>
