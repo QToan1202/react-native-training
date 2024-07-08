@@ -31,7 +31,22 @@ const Filter = ({ min, max, brandNames, colors, discountPercent, ...rest }: Filt
   }
 
   return (
-    <YStack {...rest}>
+    <YStack
+      elevation={5}
+      padding={22}
+      borderRadius={10}
+      $platform-ios={{
+        shadowColor: '$pure_black',
+        shadowOffset: {
+          width: 0,
+          height: 2,
+        },
+        shadowOpacity: 0.25,
+        shadowRadius: 3.84,
+      }}
+      alignSelf="flex-start"
+      {...rest}
+    >
       <XStack justifyContent="space-between" alignItems="center">
         <H2 color="$black" fontSize="$6">
           Filters
@@ -49,7 +64,7 @@ const Filter = ({ min, max, brandNames, colors, discountPercent, ...rest }: Filt
         </Text>
       </XStack>
       <Text>Price</Text>
-      <Slider min={0} max={max} step={1} defaultValue={[0, min]} minStepsBetweenThumbs={10} />
+      <Slider min={0} max={max} step={1} defaultValue={[0, 10]} minStepsBetweenThumbs={10} />
       <XStack justifyContent="space-between">
         <YStack>
           <Text fontSize="$3" color="$gray_200">
