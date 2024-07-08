@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "description": "",
   "scripts": {
-    "server": "json-server --watch server/db.json"
+    "server": "json-server --watch server/db.json --delay 4000"
   },
   "keywords": [],
   "author": "",
