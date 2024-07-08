@@ -13,6 +13,7 @@ const Checkbox = ({ label, ...rest }: CheckboxProps) => (
       borderWidth={2}
       borderColor="$gray_100"
       pressStyle={{ backgroundColor: '$gray_100' }}
+      focusStyle={{ borderColor: '$gray_100' }}
       $platform-web={{ borderRadius: 0 }}
       $platform-native={{ borderRadius: 5 }}
       {...rest}
