@@ -32,6 +32,10 @@ const ProductCard = ({
       borderRadius={10}
       overflow="hidden"
       backgroundColor="$white"
+      animation="slow"
+      enterStyle={{
+        opacity: 0,
+      }}
       hoverStyle={{
         cursor: 'pointer',
         // @ts-expect-error: Resolve css type not working
