@@ -1,7 +1,10 @@
 import { Fragment } from 'react'
+import { useSearchParams } from 'react-router-dom'
+import { useForm } from 'react-hook-form'
 import { H2, Separator, XStack, YStack, YStackProps } from 'tamagui'
 
-import { Accordion, AccordionItem, Checkbox, Slider, Text } from '@shared/components'
+import { Accordion, AccordionItem, ControllerCheckbox, Slider, Text } from '@shared/components'
+import { convertToLowerStr, parseURLSearchParams, resolveValues } from '@shared/utils'
 
 import { FILTER_LABELS } from '../../constants'
 
@@ -13,17 +16,75 @@ export type FilterProps = YStackProps & {
   discountPercent: number[]
 }
 
+const DEFAULT_SEARCH_PARAMS = {}
+
 const Filter = ({ min, max, brandNames, colors, discountPercent, ...rest }: FilterProps) => {
+  const [, setSearchParams] = useSearchParams(DEFAULT_SEARCH_PARAMS)
+  const { control, getValues, reset } = useForm<Record<string, Record<string, boolean>>>() // Example type {foo: {bar: false}}
+  const handleFilterBrandName = () => {
+    setSearchParams((prev) => ({
+      ...parseURLSearchParams(prev),
+      ...{ brandName: resolveValues(getValues('brandName'), brandNames, true) },
+    }))
+  }
+  const handleFilterColor = () => {
+    setSearchParams((prev) => ({
+      ...parseURLSearchParams(prev),
+      ...{ color: resolveValues(getValues('color'), colors, true) },
+    }))
+  }
+  const handleFilterDiscount = () => {
+    setSearchParams((prev) => ({
+      ...parseURLSearchParams(prev),
+      ...{
+        discountPercent: resolveValues(
+          getValues('discountPercent'),
+          discountPercent.map((item) => `${item}%`),
+          true
+        ).map((item: string) => item.replace('%', '')),
+      },
+    }))
+  }
+  const handleClearAllFilterOpts = () => {
+    setSearchParams(DEFAULT_SEARCH_PARAMS)
+    reset()
+  }
   const renderFilterOps = (label: string) => {
     switch (label) {
       case 'brand':
-        return brandNames.map((item: string) => <Checkbox key={item} label={item} />)
+        return brandNames.map((item: string) => (
+          <ControllerCheckbox
+            key={item}
+            name={`brandName[${convertToLowerStr(item)}]`}
+            control={control}
+            label={item}
+            onChecked={handleFilterBrandName}
+          />
+        ))
 
       case 'color':
-        return colors.map((item: string) => <Checkbox key={item} label={item} />)
+        return colors.map((item: string) => (
+          <ControllerCheckbox
+            key={item}
+            name={`color[${convertToLowerStr(item)}]`}
+            control={control}
+            label={item}
+            onChecked={handleFilterColor}
+          />
+        ))
 
       case 'discount range':
-        return discountPercent.map((item: number) => <Checkbox key={item} label={String(item)} />)
+        return discountPercent
+          .map(String)
+          .map((item: string) => (
+            <ControllerCheckbox
+              key={item}
+              name={`discountPercent[${convertToLowerStr(item)}%]`}
+              control={control}
+              label={item}
+              onChecked={handleFilterDiscount}
+            />
+          ))
 
       default:
         return null
@@ -54,6 +115,7 @@ const Filter = ({ min, max, brandNames, colors, discountPercent, ...rest }: Filt
         <Text
           color="$blue_200"
           fontSize="$3"
+          onPress={handleClearAllFilterOpts}
           hoverStyle={{
             cursor: 'pointer',
             textDecorationStyle: 'solid',
