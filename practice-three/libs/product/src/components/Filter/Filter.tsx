@@ -4,21 +4,29 @@ import { useForm } from 'react-hook-form'
 import { H2, Separator, XStack, YStack, YStackProps } from 'tamagui'
 
 import { Accordion, AccordionItem, ControllerCheckbox, Slider, Text } from '@shared/components'
-import { convertToLowerStr, parseURLSearchParams, resolveValues } from '@shared/utils'
+import {
+  convertToLowerStr,
+  getBrands,
+  getColors,
+  getDiscounts,
+  getMinMaxPrices,
+  parseURLSearchParams,
+  resolveValues,
+} from '@shared/utils'
 
 import { FILTER_LABELS } from '../../constants'
+import { useGetProducts } from '../../hooks'
 
-export type FilterProps = YStackProps & {
-  min: number
-  max: number
-  brandNames: string[]
-  colors: string[]
-  discountPercent: number[]
-}
+export type FilterProps = YStackProps
 
 const DEFAULT_SEARCH_PARAMS = {}
 
-const Filter = ({ min, max, brandNames, colors, discountPercent, ...rest }: FilterProps) => {
+const Filter = ({ ...rest }: FilterProps) => {
+  const { data: products } = useGetProducts(`/products`)
+  const [min, max] = getMinMaxPrices(products || [])
+  const brandNames = getBrands(products || [])
+  const colors = getColors(products || [])
+  const discountPercent = getDiscounts(products || [])
   const [, setSearchParams] = useSearchParams(DEFAULT_SEARCH_PARAMS)
   const { control, getValues, reset } = useForm<Record<string, Record<string, boolean>>>() // Example type {foo: {bar: false}}
   const handleFilterBrandName = () => {

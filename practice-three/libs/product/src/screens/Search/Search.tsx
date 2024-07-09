@@ -1,10 +1,10 @@
 import { useMemo } from 'react'
 import { H2, XStack, YStack } from 'tamagui'
 import { NativeStackScreenProps } from '@react-navigation/native-stack'
+import { useLocation } from 'react-router-dom'
 
 import { ProductStack, TProduct } from '@shared/types'
 import { Text } from '@shared/components'
-import { getBrands, getColors, getDiscounts, getMinMaxPrices } from '@shared/utils'
 
 import { Filter, ProductCard, ProductCardSkeleton } from '../../components'
 import { useGetProducts } from '../../hooks'
@@ -12,14 +12,10 @@ import { useGetProducts } from '../../hooks'
 export type SearchProps = Partial<NativeStackScreenProps<ProductStack, 'Search'>>
 
 const Search = (props: SearchProps) => {
-  const { data, isLoading, isSuccess } = useGetProducts('/products')
-  const products = useMemo(() => (isSuccess ? data : []), [isSuccess, data])
-  const [minPrice, maxPrice] = getMinMaxPrices(products)
-  const brands = getBrands(products)
-  const colors = getColors(products)
-  const discounts = getDiscounts(products)
+  const { search } = useLocation()
+  const { data, isPending, isSuccess } = useGetProducts(`/products${search}`)
   const renderProduct = useMemo(() => {
-    if (isLoading) return [...Array(4).keys()].map((item) => <ProductCardSkeleton key={item} />)
+    if (isPending) return [...Array(4).keys()].map((item) => <ProductCardSkeleton key={item} />)
     if (!isSuccess) return
     if (!data.length)
       return (
@@ -36,18 +32,11 @@ const Search = (props: SearchProps) => {
         <ProductCard key={id} {...rest} />
       )
     )
-  }, [data, isLoading, isSuccess])
+  }, [data, isPending, isSuccess])
 
   return (
     <XStack padding={50} gap={43}>
-      <Filter
-        min={minPrice}
-        max={maxPrice}
-        brandNames={brands}
-        colors={colors}
-        discountPercent={discounts}
-        width={460}
-      />
+      <Filter width={460} />
       <XStack flex={1} flexWrap="wrap" alignSelf="flex-start" gap={12}>
         {renderProduct}
       </XStack>
