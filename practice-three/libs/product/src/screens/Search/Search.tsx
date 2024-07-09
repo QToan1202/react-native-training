@@ -3,11 +3,11 @@ import { H2, XStack, YStack } from 'tamagui'
 import { NativeStackScreenProps } from '@react-navigation/native-stack'
 
 import { ProductStack, TProduct } from '@shared/types'
+import { Text } from '@shared/components'
+import { getBrands, getColors, getDiscounts, getMinMaxPrices } from '@shared/utils'
 
 import { Filter, ProductCard, ProductCardSkeleton } from '../../components'
 import { useGetProducts } from '../../hooks'
-import { getBrands, getColors, getDiscounts, getMinMaxPrices } from '@shared/utils'
-import { Text } from '@shared/components'
 
 export type SearchProps = Partial<NativeStackScreenProps<ProductStack, 'Search'>>
 
