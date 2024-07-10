@@ -1,10 +1,11 @@
 import { Fragment } from 'react'
-import { useSearchParams } from 'react-router-dom'
+import { useLocation, useSearchParams } from 'react-router-dom'
 import { useForm } from 'react-hook-form'
 import { H2, Separator, XStack, YStack, YStackProps } from 'tamagui'
 
 import { Accordion, AccordionItem, ControllerCheckbox, Slider, Text } from '@shared/components'
 import {
+  convertQueryStr,
   convertToLowerStr,
   getBrands,
   getColors,
@@ -25,12 +26,17 @@ const DEFAULT_SEARCH_PARAMS = {}
 
 const Filter = ({ isDisabled = false, ...rest }: FilterProps) => {
   const { data: products } = useGetProducts(`/products`)
+  const { search } = useLocation()
+  const parseSearchParams = convertQueryStr(search)
   const [min, max] = getMinMaxPrices(products || [])
   const brandNames = getBrands(products || [])
   const colors = getColors(products || [])
   const discountPercent = getDiscounts(products || [])
   const [, setSearchParams] = useSearchParams(DEFAULT_SEARCH_PARAMS)
-  const { control, getValues, reset } = useForm<Record<string, Record<string, boolean>>>() // Example type {foo: {bar: false}}
+  const { control, getValues, reset } = useForm<Record<string, Record<string, boolean>>>({
+    disabled: isDisabled,
+    defaultValues: { ...parseSearchParams },
+  })
   const handleFilterBrandName = () => {
     setSearchParams((prev) => ({
       ...parseURLSearchParams(prev),
@@ -40,7 +46,9 @@ const Filter = ({ isDisabled = false, ...rest }: FilterProps) => {
   const handleFilterColor = () => {
     setSearchParams((prev) => ({
       ...parseURLSearchParams(prev),
-      ...{ color: resolveValues(getValues('color'), colors, true) },
+      ...{
+        'specifications.color': resolveValues(getValues('color'), colors, true),
+      },
     }))
   }
   const handleFilterDiscount = () => {

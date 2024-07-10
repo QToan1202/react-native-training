@@ -10,6 +10,10 @@ const meta: Meta<typeof Search> = {
     reactRouter: reactRouterParameters({
       location: {
         path: '/search',
+        searchParams: [
+          ['specifications.color', 'Blue'],
+          ['brandName', 'FashionCo'],
+        ],
       },
     }),
   },
