@@ -1,7 +1,7 @@
 import { useMemo } from 'react'
 import { H2, XStack, YStack } from 'tamagui'
 import { NativeStackScreenProps } from '@react-navigation/native-stack'
-import { useLocation } from 'react-router-dom'
+import { redirect, useLocation } from 'react-router-dom'
 
 import { ProductStack, TProduct } from '@shared/types'
 import { Text } from '@shared/components'
@@ -16,6 +16,9 @@ const Search = (props: SearchProps) => {
   const { data, isPending, isSuccess } = useGetProducts(
     `/products${search.startsWith('?') ? search : `?${search}`}`
   )
+  const handlePressProductCard = (id: string) => {
+    redirect(`/product/${id}`)
+  }
   const renderProduct = useMemo(() => {
     if (isPending) return [...Array(4).keys()].map((item) => <ProductCardSkeleton key={item} />)
     if (!isSuccess) return
@@ -31,7 +34,7 @@ const Search = (props: SearchProps) => {
 
     return data.map(
       ({ description, sellerName, sizes, reviews, specifications, id, ...rest }: TProduct) => (
-        <ProductCard key={id} {...rest} />
+        <ProductCard key={id} id={id} {...rest} onPressCard={handlePressProductCard} />
       )
     )
   }, [data, isPending, isSuccess])

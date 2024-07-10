@@ -1,5 +1,6 @@
 import { Card, CardProps, H2, Image, XStack, getTokenValue } from 'tamagui'
 import { StarFull } from '@tamagui/lucide-icons'
+import { GestureResponderEvent } from 'react-native'
 
 import { Text } from '@shared/components'
 import { TProduct } from '@shared/types'
@@ -7,24 +8,29 @@ import { calculateDiscountPrice } from '@shared/utils'
 
 import { placeholderImagePath } from '../../assets/images'
 
-type TOmitProductProps =
-  | 'id'
-  | 'description'
-  | 'sellerName'
-  | 'sizes'
-  | 'reviews'
-  | 'specifications'
-export type ProductCardProps = CardProps & Omit<TProduct, TOmitProductProps>
+type TOmitProductProps = 'description' | 'sellerName' | 'sizes' | 'reviews' | 'specifications'
+export type ProductCardProps = CardProps &
+  Omit<TProduct, TOmitProductProps> & {
+    onPressCard: (id: string) => void
+  }
 
 const ProductCard = ({
+  id,
   name,
   brandName,
   image,
   rating,
   price,
   discountPercent,
+  onPress,
+  onPressCard,
   ...rest
 }: ProductCardProps) => {
+  const handlePressCardAction = (event: GestureResponderEvent) => {
+    onPress?.(event)
+    onPressCard?.(id)
+  }
+
   return (
     <Card
       maxWidth={getTokenValue('$card.width')}
@@ -41,6 +47,7 @@ const ProductCard = ({
         // @ts-expect-error: Resolve css type not working
         filter: 'brightness(90%)',
       }}
+      onPress={handlePressCardAction}
       {...rest}
     >
       <Image
