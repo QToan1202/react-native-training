@@ -13,7 +13,9 @@ export type SearchProps = Partial<NativeStackScreenProps<ProductStack, 'Search'>
 
 const Search = (props: SearchProps) => {
   const { search } = useLocation()
-  const { data, isPending, isSuccess } = useGetProducts(`/products${search}`)
+  const { data, isPending, isSuccess } = useGetProducts(
+    `/products${search.startsWith('?') ? search : `?${search}`}`
+  )
   const renderProduct = useMemo(() => {
     if (isPending) return [...Array(4).keys()].map((item) => <ProductCardSkeleton key={item} />)
     if (!isSuccess) return
