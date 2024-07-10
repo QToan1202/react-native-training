@@ -17,11 +17,13 @@ import {
 import { FILTER_LABELS } from '../../constants'
 import { useGetProducts } from '../../hooks'
 
-export type FilterProps = YStackProps
+export type FilterProps = YStackProps & {
+  isDisabled?: boolean
+}
 
 const DEFAULT_SEARCH_PARAMS = {}
 
-const Filter = ({ ...rest }: FilterProps) => {
+const Filter = ({ isDisabled = false, ...rest }: FilterProps) => {
   const { data: products } = useGetProducts(`/products`)
   const [min, max] = getMinMaxPrices(products || [])
   const brandNames = getBrands(products || [])
@@ -114,6 +116,11 @@ const Filter = ({ ...rest }: FilterProps) => {
         shadowRadius: 3.84,
       }}
       alignSelf="flex-start"
+      disabled={isDisabled}
+      disabledStyle={{
+        backgroundColor: '$gray_50',
+        pointerEvents: 'none',
+      }}
       {...rest}
     >
       <XStack justifyContent="space-between" alignItems="center">
@@ -161,7 +168,7 @@ const Filter = ({ ...rest }: FilterProps) => {
               }
               padding={5}
               borderWidth={0}
-              backgroundColor="$pure_white"
+              backgroundColor="$transparent"
               focusStyle={{
                 backgroundColor: '$transparent',
               }}

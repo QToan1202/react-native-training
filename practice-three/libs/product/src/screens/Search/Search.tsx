@@ -36,7 +36,7 @@ const Search = (props: SearchProps) => {
 
   return (
     <XStack padding={50} gap={43}>
-      <Filter width={460} />
+      <Filter width={460} isDisabled={isPending} />
       <XStack flex={1} flexWrap="wrap" alignSelf="flex-start" gap={12}>
         {renderProduct}
       </XStack>

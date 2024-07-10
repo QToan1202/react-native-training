@@ -29,7 +29,11 @@ const AccordionItem = ({ label: heading, children, ...rest }: AccordionItemProps
         </Accordion.Trigger>
       </Accordion.Header>
       <Accordion.HeightAnimator animation="fast">
-        <Accordion.Content animation="fast" exitStyle={{ opacity: 0 }}>
+        <Accordion.Content
+          animation="fast"
+          exitStyle={{ opacity: 0 }}
+          backgroundColor="$transparent"
+        >
           {children}
         </Accordion.Content>
       </Accordion.HeightAnimator>
