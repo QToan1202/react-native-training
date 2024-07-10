@@ -21,7 +21,10 @@ const preview: Preview = {
   ],
   parameters: {
     reactRouter: reactRouterParameters({
-      routing: [{ path: '/search', useStoryElement: true }],
+      routing: [
+        { path: '/search', useStoryElement: true },
+        { path: '/product/:id', useStoryElement: true },
+      ],
     }),
   },
 }
