@@ -55,5 +55,35 @@ export const parseURLSearchParams = (
     result[key].push(value)
   }
 
-  return final
+  return result
+}
+
+/**
+ * Converts a query string into a nested object where each key is mapped to another object.
+ * The nested object contains the query parameters' values as keys and `true` as their values.
+ *
+ * @param {string} query - The query string to convert. Example: "?foo=1&bar=2&foo=3&foo.bar=4"
+ *
+ * @returns {Record<string, Record<string, boolean>>} - An object where each query parameter key maps to another object which maps the parameter values to `true`.
+ *
+ * @example
+ *  ```ts
+ *  const queryString = "?foo=1&bar=2&foo=3&foo.bar=4";
+ *  const result = convertQueryStr(queryString);
+ *  console.log(result); // Output: { foo: {'1': true, '3': true}, bar: {'2': true, '4': true} }
+ *  ```
+ */
+export const convertQueryStr = (query: string) => {
+  const transform = query.replace('?', '').split('&')
+  const result: Record<string, Record<string, boolean>> = {}
+
+  transform.forEach((item) => {
+    const [key, value] = item.split('=')
+    const convertKey = key.includes('.') ? (key.split('.').pop() as string) : key
+    if (!result[convertKey]) result[convertKey] = {}
+
+    result[convertKey][convertToLowerStr(value)] = true
+  })
+
+  return result
 }
