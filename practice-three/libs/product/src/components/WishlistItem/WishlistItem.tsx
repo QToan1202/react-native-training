@@ -4,7 +4,7 @@ import { ImageURISource } from 'react-native'
 import { TProduct } from '@shared/types'
 import { Text } from '@shared/components'
 
-import { Heart, placeholderImagePath } from '../../assets/images'
+import { HeartFill, placeholderImagePath } from '../../assets/images'
 
 type TWishlistItem = 'name' | 'brandName' | 'price'
 export type WishlistItemProps = XStackProps &
@@ -41,7 +41,7 @@ const WishlistItem = ({ image, name, brandName, price, ...rest }: WishlistItemPr
       <Text color="$pure_black" fontSize="$4" fontWeight="700">
         &#36;{price.toFixed(2)} USD
       </Text>
-      <Heart />
+      <HeartFill />
     </YStack>
   </XStack>
 )

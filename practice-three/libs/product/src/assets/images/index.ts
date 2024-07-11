@@ -8,6 +8,7 @@ export { default as SearchMobile } from './search-mobile.svg?react'
 
 export { default as Arrow } from './arrow.svg?react'
 
+export { default as HeartFill } from './heart-fill.svg?react'
 export { default as Heart } from './heart.svg?react'
 
 export { default as Bell } from './bell.svg?react'
