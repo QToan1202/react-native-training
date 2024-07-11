@@ -87,3 +87,8 @@ export const convertQueryStr = (query: string) => {
 
   return result
 }
+
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+export type TResolveLoaderReturn<T extends (...args: any) => any> = Awaited<
+  ReturnType<ReturnType<T>>
+>

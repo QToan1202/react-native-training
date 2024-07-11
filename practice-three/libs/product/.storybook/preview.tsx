@@ -2,15 +2,14 @@ import React from 'react'
 import { Preview } from '@storybook/react'
 import { TamaguiProvider } from 'tamagui'
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
-import { reactRouterParameters, withRouter } from 'storybook-addon-remix-react-router'
+import { reactRouterParameters } from 'storybook-addon-remix-react-router'
 
 import tamaguiConfig from '../src/tamagui.config'
 
-const queryClient = new QueryClient()
+export const queryClient = new QueryClient()
 
 const preview: Preview = {
   decorators: [
-    withRouter,
     (Story) => (
       <TamaguiProvider config={tamaguiConfig}>
         <QueryClientProvider client={queryClient}>
@@ -21,10 +20,7 @@ const preview: Preview = {
   ],
   parameters: {
     reactRouter: reactRouterParameters({
-      routing: [
-        { path: '/search', useStoryElement: true },
-        { path: '/product/:id', useStoryElement: true },
-      ],
+      routing: [{ path: '/product/:id', useStoryElement: true }],
     }),
   },
 }

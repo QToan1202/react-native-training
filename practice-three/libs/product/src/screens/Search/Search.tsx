@@ -1,21 +1,31 @@
 import { useMemo } from 'react'
 import { H2, XStack, YStack } from 'tamagui'
 import { NativeStackScreenProps } from '@react-navigation/native-stack'
-import { redirect, useLocation } from 'react-router-dom'
+import { LoaderFunctionArgs, redirect, useLoaderData } from 'react-router-dom'
+import type { QueryClient } from '@tanstack/react-query'
 
 import { ProductStack, TProduct } from '@shared/types'
 import { Text } from '@shared/components'
+import { TResolveLoaderReturn } from '@shared/utils'
 
 import { Filter, ProductCard, ProductCardSkeleton } from '../../components'
-import { useGetProducts } from '../../hooks'
+import { useGetProducts, getProductsQuery } from '../../hooks'
 
 export type SearchProps = Partial<NativeStackScreenProps<ProductStack, 'Search'>>
 
+export const loader =
+  (queryClient: QueryClient) =>
+  async ({ request }: LoaderFunctionArgs) => {
+    const searchQuery = new URL(request.url).search
+    const path = `/products${searchQuery}`
+    await queryClient.ensureQueryData(getProductsQuery(path))
+
+    return { path }
+  }
+
 const Search = (props: SearchProps) => {
-  const { search } = useLocation()
-  const { data, isPending, isSuccess } = useGetProducts(
-    `/products${search.startsWith('?') ? search : `?${search}`}`
-  )
+  const { path } = useLoaderData() as TResolveLoaderReturn<typeof loader>
+  const { data, isPending, isSuccess } = useGetProducts(path)
   const handlePressProductCard = (id: string) => {
     redirect(`/product/${id}`)
   }
@@ -41,7 +51,7 @@ const Search = (props: SearchProps) => {
 
   return (
     <XStack padding={50} gap={43}>
-      <Filter width={460} isDisabled={isPending} />
+      <Filter backgroundColor="$pure_white" width={460} isDisabled={isPending} />
       <XStack flex={1} flexWrap="wrap" alignSelf="flex-start" gap={12}>
         {renderProduct}
       </XStack>

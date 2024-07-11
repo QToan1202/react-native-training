@@ -1,19 +1,29 @@
 import type { Meta, StoryObj } from '@storybook/react'
-import { reactRouterParameters } from 'storybook-addon-remix-react-router'
+import { reactRouterParameters, withRouter } from 'storybook-addon-remix-react-router'
 
-import Search from './Search'
+import Search, { loader as searchLoader } from './Search'
+import { queryClient } from '../../../.storybook/preview'
 
 const meta: Meta<typeof Search> = {
   component: Search,
   title: 'screens/Search',
+  decorators: [withRouter],
   parameters: {
     reactRouter: reactRouterParameters({
+      routing: [
+        {
+          path: '/search',
+          useStoryElement: true,
+          loader: searchLoader(queryClient),
+          hydrateFallbackElement: <div style={{ backgroundColor: 'red' }}>'hello'</div>,
+        },
+      ],
       location: {
         path: '/search',
-        searchParams: [
-          ['specifications.color', 'Blue'],
-          ['brandName', 'FashionCo'],
-        ],
+        // searchParams: [
+        //   ['specifications.color', 'Blue'],
+        //   ['brandName', 'FashionCo'],
+        // ],
       },
     }),
   },
