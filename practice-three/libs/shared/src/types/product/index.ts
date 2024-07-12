@@ -30,5 +30,5 @@ export type TReview = {
   rating: number
   content: string
   reviewer: string
-  date: Date
+  date: Date | string
 }

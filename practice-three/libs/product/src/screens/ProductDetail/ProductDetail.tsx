@@ -1,3 +1,4 @@
+import { useMemo } from 'react'
 import { QueryClient, useSuspenseQuery } from '@tanstack/react-query'
 import { LoaderFunctionArgs, useLoaderData } from 'react-router-dom'
 import { H2, Image, XStack, YStack } from 'tamagui'
@@ -7,7 +8,6 @@ import { Button, IconButton, Radio, RadioItem, Rating, Text } from '@shared/comp
 
 import { findProductQuery } from '../../hooks'
 import { Heart, placeholderImagePath } from '../../assets/images'
-import { useMemo } from 'react'
 
 export const loader =
   (queryClient: QueryClient) =>
@@ -42,7 +42,7 @@ const ProductDetail = () => {
           }}
         />
       )),
-    []
+    [product.image]
   )
   const handleAddToCart = () => {
     throw new Error('Function not implement')

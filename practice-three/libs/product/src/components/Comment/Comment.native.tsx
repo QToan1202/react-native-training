@@ -1,5 +1,6 @@
 import { ImageURISource } from 'react-native'
 import { Image, XStack, YStack, YStackProps, getTokenValue } from 'tamagui'
+import dayjs from 'dayjs'
 
 import { Rating, ReadMore, Text } from '@shared/components'
 import { TReview } from '@shared/types'
@@ -18,7 +19,7 @@ const Comment = ({ rating, content, reviewer, date, images, ...rest }: CommentPr
         <Rating defaultValue={rating} numberOfStarts={5} isDisabled />
         <Text>{rating}</Text>
         <Text>{reviewer}</Text>
-        <Text>{date.toDateString()}</Text>
+        <Text>{dayjs(date).format('DD MMMM')}</Text>
       </XStack>
       <ReadMore>{content}</ReadMore>
 

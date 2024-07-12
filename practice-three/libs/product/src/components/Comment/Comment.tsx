@@ -1,5 +1,6 @@
 import { ImageURISource } from 'react-native'
 import { Image, Separator, XStack, YStack, YStackProps, getTokenValue } from 'tamagui'
+import dayjs from 'dayjs'
 
 import { Rating, ReadMore, Text } from '@shared/components'
 import { TReview } from '@shared/types'
@@ -42,7 +43,7 @@ const Comment = ({ rating, content, reviewer, date, images, ...rest }: CommentPr
       <XStack>
         <Text fontSize="$3">{reviewer}</Text>
         <Separator alignSelf="stretch" vertical marginHorizontal={8} />
-        <Text fontSize="$3">{date.toDateString()}</Text>
+        <Text fontSize="$3">{dayjs(date).format('DD MMMM')}</Text>
       </XStack>
     </YStack>
   )
