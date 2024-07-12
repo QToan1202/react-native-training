@@ -8,7 +8,7 @@ export type ReadMoreProps = TextProps & {
   maxLength?: number
 }
 
-export const ReadMore = ({ maxLength = 40, children, ...rest }: ReadMoreProps) => {
+export const ReadMore = ({ maxLength = 50, children, ...rest }: ReadMoreProps) => {
   const [isExpand, setIsExpand] = useState<boolean>(false)
   const toggleReadMore = () => setIsExpand((prevState) => !prevState)
   const convertString = useMemo(() => {
@@ -22,15 +22,17 @@ export const ReadMore = ({ maxLength = 40, children, ...rest }: ReadMoreProps) =
   return (
     <Text {...rest}>
       {isExpand ? children : convertString}
-      {!isExpand ? (
-        <ReadMoreText onPress={toggleReadMore} {...rest}>
-          Read more
-        </ReadMoreText>
-      ) : (
-        <ReadMoreText onPress={toggleReadMore} {...rest}>
-          See less
-        </ReadMoreText>
-      )}
+      {String(children).split(' ').length > maxLength ? (
+        !isExpand ? (
+          <ReadMoreText onPress={toggleReadMore} {...rest}>
+            Read more
+          </ReadMoreText>
+        ) : (
+          <ReadMoreText onPress={toggleReadMore} {...rest}>
+            See less
+          </ReadMoreText>
+        )
+      ) : null}
     </Text>
   )
 }
