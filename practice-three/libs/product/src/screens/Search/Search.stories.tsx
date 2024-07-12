@@ -15,7 +15,6 @@ const meta: Meta<typeof Search> = {
           path: '/search',
           useStoryElement: true,
           loader: searchLoader(queryClient),
-          hydrateFallbackElement: <div style={{ backgroundColor: 'red' }}>'hello'</div>,
         },
       ],
       location: {
