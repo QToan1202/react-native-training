@@ -1,17 +1,19 @@
 import { ImageURISource } from 'react-native'
-import { getTokenValue, View, XStack } from 'tamagui'
+import { View, XStack } from 'tamagui'
 
-import { Image } from '../Image'
+import { Image, ImageProps } from '../Image'
 import styles from './ImageGallery.module.css'
 import { Text } from '../Text'
 import { useMemo, useState } from 'react'
 
-export type ImageGalleryProps = {
+export type ImageGalleryProps = Omit<ImageProps, 'source'> & {
   images: Array<ImageURISource['uri']>
+  width: number
+  height: number
   numberOfImg?: number
 }
 
-const ImageGallery = ({ images, numberOfImg = 3 }: ImageGalleryProps) => {
+const ImageGallery = ({ images, width, height, numberOfImg = 3, ...rest }: ImageGalleryProps) => {
   const [isExpand, setIsExpand] = useState<boolean>(false)
   const handleToggleImages = () => setIsExpand((prev) => !prev)
   const renderOverlayOnLastImage = useMemo(
@@ -35,16 +37,13 @@ const ImageGallery = ({ images, numberOfImg = 3 }: ImageGalleryProps) => {
           &#43;{images.length - numberOfImg}
         </Text>
         <Image
+          {...rest}
           opacity={0.5}
-          source={{
-            width: getTokenValue('$card.width'),
-            height: 300,
-            uri: images[numberOfImg - 1],
-          }}
+          source={{ ...{ width, height }, ...{ uri: images[numberOfImg - 1] } }}
         />
       </View>
     ),
-    [images, numberOfImg]
+    [height, images, numberOfImg, rest, width]
   )
   const renderGallery = useMemo(
     () =>
@@ -58,14 +57,16 @@ const ImageGallery = ({ images, numberOfImg = 3 }: ImageGalleryProps) => {
           borderRadius={10}
           cursor="pointer"
           key={image}
+          {...rest}
           source={{
-            width: getTokenValue('$card.width'),
-            height: 300,
-            uri: image,
+            ...{ width, height },
+            ...{
+              uri: image,
+            },
           }}
         />
       )),
-    [isExpand, images, numberOfImg]
+    [isExpand, images, numberOfImg, rest, width, height]
   )
 
   return (

@@ -13,6 +13,8 @@ type Story = StoryObj<typeof ImageGallery>
 
 export const Default: Story = {
   args: {
+    width: 400,
+    height: 300,
     images: [
       'https://img.freepik.com/free-photo/painting-mountain-lake-with-mountain-background_188544-9126.jpg',
       'https://fps.cdnpk.net/images/home/subhome-ai.webp?w=649&h=649',
