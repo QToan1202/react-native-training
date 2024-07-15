@@ -1,3 +1,5 @@
+import { TUser } from '../user'
+
 export type TProduct = {
   id: string
   name: string
@@ -32,3 +34,16 @@ export type TReview = {
   reviewer: string
   date: Date | string
 }
+
+export type TWishlistBase = {
+  productId: TProduct['id']
+  userId: TUser['id']
+  id: string
+}
+
+export type TWishlistExpand = TWishlistBase & {
+  product: TProduct
+  user: TUser
+}
+
+export type TWishlist = TWishlistBase | TWishlistExpand
