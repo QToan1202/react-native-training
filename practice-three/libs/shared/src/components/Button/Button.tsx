@@ -52,19 +52,16 @@ const ButtonFrame = styled(View, {
       primary: {
         borderColor: '$primary',
         backgroundColor: '$primary',
-        color: '$white',
       },
 
       outlined: {
         borderColor: '$primary',
         backgroundColor: '$transparent',
-        color: '$primary',
       },
 
       text: {
         borderColor: '$transparent',
         backgroundColor: '$transparent',
-        color: '$primary',
       },
     },
 
@@ -100,6 +97,19 @@ const ButtonText = styled(Text, {
       '...fontSize': (name, { font }) => ({
         fontSize: font?.size[name],
       }),
+    },
+    variant: {
+      primary: {
+        color: '$white',
+      },
+
+      outlined: {
+        color: '$primary',
+      },
+
+      text: {
+        color: '$primary',
+      },
     },
   } as const,
 })
