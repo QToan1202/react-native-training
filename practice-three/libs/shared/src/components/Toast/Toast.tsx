@@ -15,10 +15,10 @@ const Toast = ({ ...rest }: ToastProps) => {
     <TToast
       key={currentToast.id}
       duration={currentToast.duration || DEFAULT_TOAST_DURATION}
+      y={10}
+      animation="fast"
       enterStyle={{ opacity: 0, scale: 0.5, y: -25 }}
       exitStyle={{ opacity: 0, scale: 1, y: -20 }}
-      y={10}
-      animation="quick"
       viewportName={currentToast.viewportName}
       backgroundColor="$white"
       {...rest}
