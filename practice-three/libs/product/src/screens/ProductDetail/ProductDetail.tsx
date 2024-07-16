@@ -1,4 +1,4 @@
-import { useMemo } from 'react'
+import { useCallback, useMemo } from 'react'
 import { QueryClient, useSuspenseQuery } from '@tanstack/react-query'
 import { LoaderFunctionArgs, redirect, useLoaderData } from 'react-router-dom'
 import { H2, H4, Image, ScrollView, Separator, Stack, styled, XStack, YStack } from 'tamagui'
@@ -13,7 +13,7 @@ import {
   Text as BaseText,
   Toast,
 } from '@shared/components'
-import { TProduct, TReview, TUser, TWishlistBase } from '@shared/types'
+import { TProduct, TProductSpecification, TReview, TUser, TWishlistBase } from '@shared/types'
 import { useAuthStore } from '@shared/stores'
 
 import {
@@ -26,6 +26,7 @@ import {
 import { Heart, HeartFill, placeholderImagePath } from '../../assets/images'
 import { Comment, createTab, ProductCard, Tabs } from '../../components'
 import { useToastController } from '@tamagui/toast'
+import { PRODUCT_SPECIFICATIONS_LABELS } from '../../constants'
 
 // Called by router so don't useHook here
 export const loader =
@@ -128,46 +129,34 @@ const ProductDetail = () => {
       </YStack>
     </YStack>
   )
+  const renderSpecificationItem = useCallback(
+    (labels: Record<string, string>) => {
+      const target = Object.keys(labels) as (keyof TProductSpecification)[]
+      const middleIndex = Math.ceil(target.length / 2)
+      const firstHalf = target.slice(0, middleIndex)
+      const secondHalf = target.slice(middleIndex)
+      const renderCol = (arr: (keyof TProductSpecification)[]) =>
+        arr.map((item: keyof TProductSpecification) => (
+          <YStack gap={10} key={item}>
+            <Text color="$gray_100">{labels[item]}</Text>
+            <Text>{product.specifications[item]}</Text>
+            <Separator alignSelf="stretch" />
+          </YStack>
+        ))
+
+      return [renderCol(firstHalf), renderCol(secondHalf)]
+    },
+    [product.specifications]
+  )
+  const [firstCol, secondCol] = renderSpecificationItem(PRODUCT_SPECIFICATIONS_LABELS)
   const SpecificationContent = (
     <YStack gap={12}>
       <H4 color="$black" fontSize="$4" fontWeight="bold">
         Specifications
       </H4>
       <XStack gap={12}>
-        <YStack gap={10}>
-          <Text color="$gray_100">Sleeve Length</Text>
-          <Text>{product.specifications.sleeveLength}</Text>
-          <Separator alignSelf="stretch" />
-          <Text color="$gray_100">Print or Pattern Type</Text>
-          <Text>{product.specifications.patternType}</Text>
-          <Separator alignSelf="stretch" />
-          <Text color="$gray_100">Length</Text>
-          <Text>{product.specifications.length}</Text>
-          <Separator alignSelf="stretch" />
-          <Text color="$gray_100">Lining Fabric</Text>
-          <Text>{product.specifications.liningFabric}</Text>
-          <Separator alignSelf="stretch" />
-          <Text color="$gray_100">Hemline</Text>
-          <Text>{product.specifications.hemline}</Text>
-          <Separator alignSelf="stretch" />
-        </YStack>
-        <YStack gap={10}>
-          <Text color="$gray_100">Type</Text>
-          <Text>{product.specifications.type}</Text>
-          <Separator alignSelf="stretch" />
-          <Text color="$gray_100">Color</Text>
-          <Text>{product.specifications.color}</Text>
-          <Separator alignSelf="stretch" />
-          <Text color="$gray_100">Closure</Text>
-          <Text>{product.specifications.closure}</Text>
-          <Separator alignSelf="stretch" />
-          <Text color="$gray_100">Number of Pockets</Text>
-          <Text>{product.specifications.numOfPockets}</Text>
-          <Separator alignSelf="stretch" />
-          <Text color="$gray_100">Occasion</Text>
-          <Text>{product.specifications.occasion}</Text>
-          <Separator alignSelf="stretch" />
-        </YStack>
+        {firstCol}
+        {secondCol}
       </XStack>
     </YStack>
   )

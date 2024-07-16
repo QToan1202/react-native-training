@@ -1,3 +1,5 @@
+import { TProductSpecification } from '@shared/types'
+
 export const CLOTH_CATEGORIES = [
   'shirt',
   'work attire',
@@ -19,4 +21,19 @@ export const FILTER_LABELS = ['brand', 'color', 'discount range']
 export const STALE_TIMES = {
   PRODUCT_INFO: 24 * 60 * 60 * 1000, // 1 day
   USER_WISHLIST: 30 * 60 * 1000, // 30 min
+}
+
+type TLabels = Record<keyof TProductSpecification, string>
+
+export const PRODUCT_SPECIFICATIONS_LABELS: TLabels = {
+  sleeveLength: 'Sleeve Length',
+  patternType: 'Print or Pattern Type',
+  length: 'Length',
+  liningFabric: 'Lining Fabric',
+  hemline: 'Hemline',
+  type: 'Type',
+  color: 'Color',
+  closure: 'Closure',
+  numOfPockets: 'Number of Pockets',
+  occasion: 'Occasion',
 }
