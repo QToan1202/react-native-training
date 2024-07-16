@@ -4,16 +4,22 @@ import { useMutation, UseMutationResult, useQueryClient } from '@tanstack/react-
 import { remove } from '@shared/services'
 import { TWishlistBase } from '@shared/types'
 
+type TPickProps = 'id'
+type TMutationFn = Partial<Pick<TWishlistBase, TPickProps>>
+
 const useDeleteFromWishlist = (
   path: string,
   userId: string
-): UseMutationResult<AxiosResponse['status'], Error, Pick<TWishlistBase, 'id'>, unknown> => {
+): UseMutationResult<AxiosResponse['status'], Error, TMutationFn, unknown> => {
   const queryClient = useQueryClient()
 
-  return useMutation<AxiosResponse['status'], Error, Pick<TWishlistBase, 'id'>, unknown>({
-    mutationFn: ({ id }: Pick<TWishlistBase, 'id'>): Promise<AxiosResponse['status']> =>
-      remove(path, id),
-    onSuccess: (deleteStatus: number, { id }: Pick<TWishlistBase, 'id'>) => {
+  return useMutation<AxiosResponse['status'], Error, TMutationFn, unknown>({
+    mutationFn: ({ id }: TMutationFn): Promise<AxiosResponse['status']> => {
+      if (id) return remove(path, id)
+
+      return remove(path, '')
+    },
+    onSuccess: (deleteStatus: number, { id }: TMutationFn) => {
       queryClient.setQueryData(['wishlist', userId], (oldData: TWishlistBase[]) =>
         deleteStatus === 200 ? oldData.filter((value: TWishlistBase) => value.id !== id) : oldData
       )

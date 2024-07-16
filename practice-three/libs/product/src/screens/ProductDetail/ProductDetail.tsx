@@ -5,20 +5,31 @@ import { H2, H4, Image, ScrollView, Separator, Stack, styled, XStack, YStack } f
 
 import { calculateDiscountPrice, TResolveLoaderReturn } from '@shared/utils'
 import { Button, IconButton, Radio, RadioItem, Rating, Text as BaseText } from '@shared/components'
-import { TProduct, TReview } from '@shared/types'
+import { TProduct, TReview, TUser, TWishlistBase } from '@shared/types'
+import { useAuthStore } from '@shared/stores'
 
-import { findProductQuery, getProductsQuery } from '../../hooks'
-import { Heart, placeholderImagePath } from '../../assets/images'
+import {
+  findProductQuery,
+  getProductsQuery,
+  getWishlistQuery,
+  useAddToWishlist,
+  useDeleteFromWishlist,
+} from '../../hooks'
+import { Heart, HeartFill, placeholderImagePath } from '../../assets/images'
 import { Comment, createTab, ProductCard, Tabs } from '../../components'
+import { useToastController } from '@tamagui/toast'
 
+// Called by router so don't useHook here
 export const loader =
   (queryClient: QueryClient) =>
   async ({ params }: LoaderFunctionArgs) => {
     const { id } = params
+    const user: TUser | undefined = useAuthStore.getState().user
     await queryClient.ensureQueryData(findProductQuery('/products', id || ''))
     queryClient.ensureQueryData(getProductsQuery('/products'))
+    queryClient.ensureQueryData(getWishlistQuery('/wishlists', user?.id || ''))
 
-    return { id }
+    return { id, userId: user?.id }
   }
 
 const Text = styled(BaseText, {
@@ -26,10 +37,14 @@ const Text = styled(BaseText, {
 })
 
 const ProductDetail = () => {
-  const { id } = useLoaderData() as TResolveLoaderReturn<typeof loader>
-  const { data: product } = useSuspenseQuery(findProductQuery('/products', id || ''))
+  const { id: productId, userId } = useLoaderData() as TResolveLoaderReturn<typeof loader>
+  const { data: product } = useSuspenseQuery(findProductQuery('/products', productId || ''))
   const { data: similarProducts } = useSuspenseQuery(getProductsQuery('/products'))
-
+  const { data: wishlists } = useSuspenseQuery(getWishlistQuery('/wishlists', userId || ''))
+  const [isProductInWishlist, wishlistItem] = useMemo(() => {
+    const item = wishlists.find((item: TWishlistBase) => item.productId === productId)
+    return [!!item, item]
+  }, [productId, wishlists])
   const renderImages = useMemo(
     () =>
       [...Array(4).keys()].map((item) => (
@@ -52,11 +67,35 @@ const ProductDetail = () => {
       )),
     [product.image]
   )
+  const toast = useToastController()
+  const { mutate: addToWishlist } = useAddToWishlist('/wishlists', userId || '')
+  const { mutate: deleteFromWishlist } = useDeleteFromWishlist('/wishlists', userId || '')
   const handleAddToCart = () => {
     throw new Error('Function not implement')
   }
-  const handleAddToWishlist = () => {
-    throw new Error('Function not implement')
+  const handlePressLikeBtn = () => {
+    if (!isProductInWishlist)
+      return addToWishlist(
+        { productId },
+        {
+          onSuccess: () => {
+            toast.show(`Product have add to wishlist`, {
+              message: `You have successfully added ${product.name} to wishlist!`,
+            })
+          },
+        }
+      )
+
+    return deleteFromWishlist(
+      { id: wishlistItem?.id },
+      {
+        onSuccess: () => {
+          toast.show(`Product have remove from wishlist`, {
+            message: `You have successfully removed ${product.name} from wishlist!`,
+          })
+        },
+      }
+    )
   }
   const ProductDetailContent = (
     <YStack gap={26}>
@@ -280,8 +319,8 @@ const ProductDetail = () => {
           </Text>
           <XStack>
             <Button title="add to cart" onPress={handleAddToCart} />
-            <IconButton onPress={handleAddToWishlist}>
-              <Heart />
+            <IconButton onPress={handlePressLikeBtn}>
+              {isProductInWishlist ? <HeartFill /> : <Heart />}
             </IconButton>
           </XStack>
         </YStack>
