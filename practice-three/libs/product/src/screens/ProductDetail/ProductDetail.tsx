@@ -133,8 +133,7 @@ const ProductDetail = () => {
     (labels: Record<string, string>) => {
       const target = Object.keys(labels) as (keyof TProductSpecification)[]
       const middleIndex = Math.ceil(target.length / 2)
-      const firstHalf = target.slice(0, middleIndex)
-      const secondHalf = target.slice(middleIndex)
+      const [firstHalf, secondHalf] = [target.slice(0, middleIndex), target.slice(middleIndex)]
       const renderCol = (arr: (keyof TProductSpecification)[]) =>
         arr.map((item: keyof TProductSpecification) => (
           <YStack gap={10} key={item}>
