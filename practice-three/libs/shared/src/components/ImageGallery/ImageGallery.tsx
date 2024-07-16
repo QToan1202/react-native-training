@@ -70,13 +70,7 @@ const ImageGallery = ({ images, width, height, numberOfImg = 3, ...rest }: Image
   )
 
   return (
-    <XStack
-      gap={12}
-      flexWrap="nowrap"
-      $platform-web={{ overflowX: 'scroll' }}
-      className={styles['scroll']}
-      onPress={handleToggleImages}
-    >
+    <XStack gap={12} flexWrap="nowrap" className={styles['scroll']} onPress={handleToggleImages}>
       {renderGallery}
       {isExpand ? null : images.length > numberOfImg && renderOverlayOnLastImage}
     </XStack>

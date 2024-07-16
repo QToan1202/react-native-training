@@ -1,3 +1,11 @@
+.scroll {
+  overflow: hidden;
+}
+
+.scroll:hover {
+  overflow-x: auto;
+}
+
 .scroll::-webkit-scrollbar {
   height: 10px;
 }
