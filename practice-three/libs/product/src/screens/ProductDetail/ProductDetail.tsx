@@ -4,7 +4,15 @@ import { LoaderFunctionArgs, redirect, useLoaderData } from 'react-router-dom'
 import { H2, H4, Image, ScrollView, Separator, Stack, styled, XStack, YStack } from 'tamagui'
 
 import { calculateDiscountPrice, TResolveLoaderReturn } from '@shared/utils'
-import { Button, IconButton, Radio, RadioItem, Rating, Text as BaseText } from '@shared/components'
+import {
+  Button,
+  IconButton,
+  Radio,
+  RadioItem,
+  Rating,
+  Text as BaseText,
+  Toast,
+} from '@shared/components'
 import { TProduct, TReview, TUser, TWishlistBase } from '@shared/types'
 import { useAuthStore } from '@shared/stores'
 
@@ -342,6 +350,7 @@ const ProductDetail = () => {
           <XStack gap={40}>{renderSimilarProducts}</XStack>
         </ScrollView>
       </YStack>
+      <Toast />
     </YStack>
   )
 }
