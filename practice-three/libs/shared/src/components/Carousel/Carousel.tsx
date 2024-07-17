@@ -50,18 +50,28 @@ const Carousel = <T,>({
   width = '100%',
   height = 300,
   ...rest
-}: CarouselProps<T>) => {
-  const [[page, going], setPage] = useState([0, 0])
-  const paginate = useCallback((going: number) => {
-    setPage(([previousPage, _]) => [previousPage + going, going])
-  }, [])
-  const getImgPath = (item: unknown) => {
-    if (typeof item === 'string') return item
-    if (item instanceof Object && 'src' in item) return item?.src as string
+  const renderDots = useMemo(
+    () =>
+      data.map((value: string) => {
+        const dotIndex = data.findIndex((_value) => value === _value)
+        const handlePressIconButton = () => paginate(dotIndex - imageIndex)
 
-    // TODO: Refactor with placeholder image path
-    return ''
-  }
+        return (
+          <IconButton key={value} onPress={handlePressIconButton}>
+            <Dot
+              width={10}
+              height={10}
+              {...(imageIndex === dotIndex && {
+                fill: getTokenValue('$color.primary'),
+                width: 14,
+                height: 14,
+              })}
+            />
+          </IconButton>
+        )
+      }),
+    [data, imageIndex, paginate]
+  )
 
   useEffect(() => {
     const timing = autoplay
@@ -113,6 +123,7 @@ const Carousel = <T,>({
         <ChevronRight color="$pure_black" size="$2" />
       </IconButton>
     </XStack>
+      <XStack gap={4}>{renderDots}</XStack>
   )
 }
 
