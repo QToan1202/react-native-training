@@ -1,17 +1,24 @@
-import { useCallback, useEffect, useState } from 'react'
-import { AnimatePresence, GetProps, Image, XStack, YStack, styled } from 'tamagui'
-import { ChevronLeft, ChevronRight } from '@tamagui/lucide-icons'
+import { useCallback, useEffect, useMemo, useState } from 'react'
+import { GestureResponderEvent } from 'react-native'
+import { AnimatePresence, getTokenValue, styled, XStack, YStack, YStackProps } from 'tamagui'
 
+import { Image } from '../Image'
+import { Dot } from '../../assets/images'
 import { IconButton } from '../Button'
 
-const AUTOPLAY_TIMING = 2 // seconds
+export type CarouselProps = YStackProps & {
+  data: string[]
+  autoplay?: boolean
+}
+
+const AUTOPLAY_TIMING = 2 * 1000 // seconds
 const CAROUSEL_SLIDE_DIRECTION = {
   RIGHT: 1,
   LEFT: -1,
   STAY: 0,
 }
 
-const GalleryItem = styled(YStack, {
+const GalleryImage = styled(YStack, {
   zIndex: 1,
   x: 0,
   opacity: 1,
@@ -21,12 +28,12 @@ const GalleryItem = styled(YStack, {
     going: {
       ':number': (going) => ({
         enterStyle: {
-          x: going > CAROUSEL_SLIDE_DIRECTION.STAY ? 1000 : -1000,
+          x: going > CAROUSEL_SLIDE_DIRECTION.STAY ? '100%' : '-100%',
           opacity: 0,
         },
         exitStyle: {
           zIndex: 0,
-          x: going < CAROUSEL_SLIDE_DIRECTION.STAY ? 1000 : -1000,
+          x: going < CAROUSEL_SLIDE_DIRECTION.STAY ? '100%' : '-100%',
           opacity: 0,
         },
       }),
@@ -39,17 +46,22 @@ const wrap = (min: number, max: number, v: number) => {
   return ((((v - min) % rangeSize) + rangeSize) % rangeSize) + min
 }
 
-export type CarouselProps<T> = GetProps<typeof GalleryItem> & {
-  data: T[]
-  autoplay?: boolean
-}
-
-const Carousel = <T,>({
+const Carousel = ({
   data,
   autoplay = false,
   width = '100%',
   height = 300,
   ...rest
+}: CarouselProps) => {
+  const [[page, going], setPage] = useState<[number, number]>([0, 0])
+  const paginate = useCallback(
+    (going: number) => {
+      setPage([page + going, going])
+    },
+    [page]
+  )
+  const [coordinate, setCoordinate] = useState<number>(0)
+  const imageIndex = useMemo(() => wrap(0, data.length, page), [data.length, page])
   const renderDots = useMemo(
     () =>
       data.map((value: string) => {
@@ -77,53 +89,52 @@ const Carousel = <T,>({
     const timing = autoplay
       ? setInterval(() => {
           paginate(CAROUSEL_SLIDE_DIRECTION.RIGHT)
-        }, AUTOPLAY_TIMING * 1000)
+        }, AUTOPLAY_TIMING)
       : undefined
 
     return () => {
       clearInterval(timing)
     }
   }, [autoplay, paginate])
+  const handleStartTouch = (event: GestureResponderEvent) => {
+    const { pageX } = event.nativeEvent.changedTouches[0]
+
+    setCoordinate(pageX)
+  }
+  const handleFinishTouch = (event: GestureResponderEvent) => {
+    const { pageX } = event.nativeEvent.changedTouches[0]
+
+    paginate(
+      coordinate - pageX > 0 ? CAROUSEL_SLIDE_DIRECTION.RIGHT : CAROUSEL_SLIDE_DIRECTION.LEFT
+    )
+  }
 
   return (
-    <XStack
-      backgroundColor="$gray_50"
-      position="relative"
-      height={height}
-      width={width}
-      overflow="hidden"
-      alignItems="center"
-    >
-      <AnimatePresence initial={false} custom={{ going }}>
-        <GalleryItem key={page} animation="slow" going={going} {...rest}>
-          <Image
-            flex={1}
-            source={{
-              uri: getImgPath(data[wrap(0, data.length, page)]),
-            }}
-          />
-        </GalleryItem>
-      </AnimatePresence>
-      <IconButton
-        aria-label="Carousel left"
-        position="absolute"
-        left="$4"
-        zi={100}
-        onPress={() => paginate(CAROUSEL_SLIDE_DIRECTION.LEFT)}
-      >
-        <ChevronLeft color="$pure_black" size="$2" />
-      </IconButton>
-      <IconButton
-        aria-label="Carousel right"
-        position="absolute"
-        right="$4"
-        zi={100}
-        onPress={() => paginate(CAROUSEL_SLIDE_DIRECTION.RIGHT)}
-      >
-        <ChevronRight color="$pure_black" size="$2" />
-      </IconButton>
-    </XStack>
+    <YStack gap={20} justifyContent="center" alignItems="center" overflow="hidden" {...rest}>
+      <XStack height={height} width={width} backgroundColor="$gray_50">
+        <XStack fullscreen>
+          <AnimatePresence initial={false} custom={{ going }}>
+            <GalleryImage
+              key={page}
+              animation="slow"
+              going={going}
+              onTouchStart={handleStartTouch}
+              onTouchEnd={handleFinishTouch}
+            >
+              <Image
+                flex={1}
+                resizeMode="contain"
+                alignSelf="stretch"
+                source={{
+                  uri: data[imageIndex],
+                }}
+              />
+            </GalleryImage>
+          </AnimatePresence>
+        </XStack>
+      </XStack>
       <XStack gap={4}>{renderDots}</XStack>
+    </YStack>
   )
 }
 
