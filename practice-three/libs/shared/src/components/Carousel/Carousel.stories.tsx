@@ -15,9 +15,8 @@ export const Default: Story = {
   args: {
     autoplay: false,
     data: [
-      'https://picsum.photos/500/300',
-      'https://picsum.photos/501/300',
-      'https://picsum.photos/502/300',
+      'https://images.dog.ceo/breeds/gaddi-indian/Gaddi.jpg',
+      'https://images.dog.ceo/breeds/akita/An_Akita_Inu_resting.jpg',
       'https://images.dog.ceo/breeds/husky/n02110185_14479.jpg',
       'https://images.dog.ceo/breeds/setter-english/n02100735_4040.jpg',
     ],
