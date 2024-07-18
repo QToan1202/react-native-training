@@ -105,7 +105,11 @@ const Carousel = ({
     const { pageX } = event.nativeEvent.changedTouches[0]
 
     paginate(
-      coordinate - pageX > 0 ? CAROUSEL_SLIDE_DIRECTION.RIGHT : CAROUSEL_SLIDE_DIRECTION.LEFT
+      coordinate - pageX > 0
+        ? CAROUSEL_SLIDE_DIRECTION.RIGHT
+        : coordinate - pageX < 0
+        ? CAROUSEL_SLIDE_DIRECTION.LEFT
+        : CAROUSEL_SLIDE_DIRECTION.STAY
     )
   }
 
