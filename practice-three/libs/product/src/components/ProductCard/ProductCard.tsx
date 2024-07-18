@@ -85,7 +85,7 @@ const ProductCard = ({
           <Text fontSize="$5" fontWeight="bold">
             Rs.{discountPercent ? calculateDiscountPrice(price, discountPercent) : price}
           </Text>
-          {discountPercent && (
+          {!!discountPercent && (
             <>
               <Text textDecorationLine="line-through" fontSize="$3">
                 Rs.{price}

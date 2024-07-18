@@ -74,13 +74,13 @@ const ProductCard = ({
       </Card.Header>
       <Card.Footer marginHorizontal={6} marginBottom={4}>
         <XStack gap={15} alignItems="center">
-          {discountPercent && (
+          {!!discountPercent && (
             <Text textDecorationLine="line-through" fontSize="$1">
               Rs.{price}
             </Text>
           )}
           <Text>Rs.{discountPercent ? calculateDiscountPrice(price, discountPercent) : price}</Text>
-          {discountPercent && (
+          {!!discountPercent && (
             <Text color="$green_50" fontSize="$1">
               ({discountPercent}% off)
             </Text>
