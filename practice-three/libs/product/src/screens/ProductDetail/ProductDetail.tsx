@@ -274,7 +274,7 @@ const ProductDetail = () => {
                 ? calculateDiscountPrice(product.price, product.discountPercent)
                 : product.price}
             </Text>
-            {product.discountPercent && (
+            {!!product.discountPercent && (
               <>
                 <Text textDecorationLine="line-through" fontSize="$3">
                   Rs.{product.price}
