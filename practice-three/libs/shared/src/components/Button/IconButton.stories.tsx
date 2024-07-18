@@ -15,7 +15,7 @@ type Story = StoryObj<typeof IconButton>
 
 export const Default: Story = {
   args: {
-    children: <ShoppingCart />,
+    children: <ShoppingCart color="$pure_black" />,
     scaleIconSize: 1,
     onPress: action('press'),
   },
