@@ -12,3 +12,5 @@ export { default as HeartFill } from './heart-fill.svg?react'
 export { default as Heart } from './heart.svg?react'
 
 export { default as Bell } from './bell.svg?react'
+
+export { default as Share } from './share.svg?react'
