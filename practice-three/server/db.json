@@ -248,6 +248,32 @@
     }
   ],
   "orders": [],
+  "offers": [
+    {
+      "name": "Summer Sale",
+      "code": "SPECIAL25",
+      "discount": 25,
+      "id": "akOH"
+    },
+    {
+      "name": "Holiday Discount",
+      "code": "SAVE10",
+      "discount": 10,
+      "id": "ymnk"
+    },
+    {
+      "name": "Mid-Year Sale",
+      "code": "HALFOFF",
+      "discount": 50,
+      "id": "qmgG"
+    },
+    {
+      "name": "Welcome Offer",
+      "code": "WELCOME5",
+      "discount": 5,
+      "id": "ioxc"
+    }
+  ],
   "wishlists": [
     {
       "productId": 1,
