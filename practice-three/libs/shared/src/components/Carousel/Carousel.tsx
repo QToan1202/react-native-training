@@ -1,6 +1,6 @@
 import { useCallback, useEffect, useMemo, useState } from 'react'
 import { GestureResponderEvent } from 'react-native'
-import { AnimatePresence, getTokenValue, styled, XStack, YStack, YStackProps } from 'tamagui'
+import { AnimatePresence, getTokenValue, isWeb, styled, XStack, YStack, YStackProps } from 'tamagui'
 
 import { Image } from '../Image'
 import { Dot } from '../../assets/images'
@@ -71,12 +71,14 @@ const Carousel = ({
         return (
           <IconButton key={value} onPress={handlePressIconButton}>
             <Dot
-              width={10}
-              height={10}
+              {...(isWeb && {
+                width: 10,
+                height: 10,
+              })}
               {...(imageIndex === dotIndex && {
                 fill: getTokenValue('$color.primary'),
-                width: 14,
-                height: 14,
+                width: isWeb ? 14 : 7,
+                height: isWeb ? 14 : 7,
               })}
             />
           </IconButton>
