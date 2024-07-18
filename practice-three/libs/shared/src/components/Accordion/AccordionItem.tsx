@@ -22,7 +22,7 @@ const AccordionItem = ({ label: heading, children, ...rest }: AccordionItemProps
             <XStack flexDirection="row" justifyContent="space-between">
               {typeof heading === 'object' ? heading : <Heading>{heading}</Heading>}
               <Square animation="quick" rotate={open ? '180deg' : '0deg'}>
-                <ChevronDown size="$1" />
+                <ChevronDown color="$black" size="$1" />
               </Square>
             </XStack>
           )}
