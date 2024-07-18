@@ -37,3 +37,11 @@ export const PRODUCT_SPECIFICATIONS_LABELS: TLabels = {
   numOfPockets: 'Number of Pockets',
   occasion: 'Occasion',
 }
+
+export const PRODUCT_LABELS = [
+  'product details',
+  'specification',
+  'ratings & reviews',
+  'how this was made',
+  'manufacturing information',
+]
