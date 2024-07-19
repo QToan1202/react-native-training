@@ -1,7 +1,8 @@
 import { useQuery } from '@tanstack/react-query'
-import { Separator, XStack, YStack } from 'tamagui'
-import { Fragment, useMemo } from 'react'
+import { ScrollView, Separator, XStack, YStack } from 'tamagui'
+import { Fragment, useCallback, useMemo } from 'react'
 import { useForm } from 'react-hook-form'
+import { NativeStackScreenProps } from '@react-navigation/native-stack'
 
 import {
   Accordion,
@@ -17,17 +18,24 @@ import {
 } from '@shared/components'
 import { calculateDiscountPrice } from '@shared/utils'
 import { getOffersQuery } from '@shared/queries'
-import { TOffer, TReview } from '@shared/types'
+import { ProductStack, TOffer, TProduct, TReview } from '@shared/types'
 
-import { findProductQuery } from '../../hooks'
+import { findProductQuery, getProductsQuery } from '../../hooks'
 import { Share } from '../../assets/images'
 import { PRODUCT_LABELS, PRODUCT_SPECIFICATIONS_LABELS } from '../../constants'
 import { renderSpecificationItem } from '../../utils'
-import { Comment } from '../../components'
+import { Comment, ProductCard } from '../../components'
 
-const ProductDetail = () => {
+export type ProductDetailScreenProps = Partial<
+  NativeStackScreenProps<ProductStack, 'ProductDetail'>
+>
+
+const ProductDetail = ({ navigation }: ProductDetailScreenProps) => {
   const { data: product, isPending, error } = useQuery(findProductQuery('/products', 'p002'))
-  const { data: offers, isSuccess } = useQuery(getOffersQuery('/offers'))
+  const { data: similarProducts, isSuccess: isGetProductsSuccess } = useQuery(
+    getProductsQuery('/products')
+  )
+  const { data: offers, isSuccess: isGetOfferSuccess } = useQuery(getOffersQuery('/offers'))
   const { control } = useForm<{
     pinCode: string
   }>({
@@ -36,7 +44,7 @@ const ProductDetail = () => {
     },
   })
   const renderOffers = useMemo(() => {
-    if (!isSuccess) return
+    if (!isGetOfferSuccess) return
 
     return offers.map(({ id, name, discount }: TOffer) => (
       <XStack key={id} gap={10}>
@@ -48,7 +56,43 @@ const ProductDetail = () => {
         </Text>
       </XStack>
     ))
-  }, [isSuccess, offers])
+  }, [isGetOfferSuccess, offers])
+  const handlePressProductCard = useCallback(
+    (id: string) => navigation?.navigate('ProductDetail', { id }),
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    []
+  )
+  const renderSimilarProducts = useMemo(() => {
+    if (!isGetProductsSuccess) return
+    if (!similarProducts.length)
+      return (
+        <YStack alignItems="center" gap={12} fullscreen>
+          <Heading color="$black" fontSize="$5" fontWeight="bold" textAlign="center">
+            No Products Found
+          </Heading>
+          <Text>We couldn't find any products that match your search.</Text>
+        </YStack>
+      )
+
+    return similarProducts.map(
+      ({ description, sellerName, sizes, reviews, specifications, id, ...rest }: TProduct) => (
+        <ProductCard key={id} id={id} {...rest} onPressCard={handlePressProductCard} />
+      )
+    )
+  }, [handlePressProductCard, isGetProductsSuccess, similarProducts])
+  const renderProducts = useCallback(
+    (title: string) => (
+      <YStack gap={15}>
+        <Text fontSize="$3" fontWeight="500" textTransform="capitalize">
+          {title}
+        </Text>
+        <ScrollView horizontal>
+          <XStack gap={6}>{renderSimilarProducts}</XStack>
+        </ScrollView>
+      </YStack>
+    ),
+    [renderSimilarProducts]
+  )
 
   if (isPending) return <Text>Loading...</Text>
   if (error) return <Text>An error has occurred: {error.message}</Text>
@@ -257,6 +301,8 @@ const ProductDetail = () => {
           </Fragment>
         ))}
       </Accordion>
+      {renderProducts('similar products')}
+      {renderProducts('customer also like')}
     </YStack>
   )
 }

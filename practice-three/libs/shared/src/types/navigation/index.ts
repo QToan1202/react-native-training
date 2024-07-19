@@ -10,7 +10,7 @@ export type AuthenticationStack = {
 
 export type ProductStack = {
   Search: undefined
-  ProductDetail: undefined
+  ProductDetail: { id: string }
 }
 
 export type RootStackParamList = {
