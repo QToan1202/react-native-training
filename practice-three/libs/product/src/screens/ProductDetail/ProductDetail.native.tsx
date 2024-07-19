@@ -1,8 +1,10 @@
 import { useQuery } from '@tanstack/react-query'
-import { Accordion, Separator, XStack, YStack } from 'tamagui'
+import { Separator, XStack, YStack } from 'tamagui'
 import { Fragment, useMemo } from 'react'
+import { useForm } from 'react-hook-form'
 
 import {
+  Accordion,
   AccordionItem,
   Button,
   Carousel,
@@ -10,16 +12,18 @@ import {
   Input,
   Radio,
   RadioItem,
+  Rating,
   Text,
 } from '@shared/components'
 import { calculateDiscountPrice } from '@shared/utils'
 import { getOffersQuery } from '@shared/queries'
-import { TOffer } from '@shared/types'
+import { TOffer, TReview } from '@shared/types'
 
 import { findProductQuery } from '../../hooks'
 import { Share } from '../../assets/images'
-import { useForm } from 'react-hook-form'
-import { PRODUCT_LABELS } from '../../constants'
+import { PRODUCT_LABELS, PRODUCT_SPECIFICATIONS_LABELS } from '../../constants'
+import { renderSpecificationItem } from '../../utils'
+import { Comment } from '../../components'
 
 const ProductDetail = () => {
   const { data: product, isPending, error } = useQuery(findProductQuery('/products', 'p002'))
@@ -49,6 +53,76 @@ const ProductDetail = () => {
   if (isPending) return <Text>Loading...</Text>
   if (error) return <Text>An error has occurred: {error.message}</Text>
 
+  const [firstCol, secondCol] = renderSpecificationItem(PRODUCT_SPECIFICATIONS_LABELS, product)
+  const renderProductContent = (label: string) => {
+    switch (label) {
+      case 'product details':
+        return <Text>{product.description}</Text>
+
+      case 'specification':
+        return (
+          <XStack gap={55}>
+            <YStack>{firstCol}</YStack>
+            <YStack>{secondCol}</YStack>
+          </XStack>
+        )
+
+      case 'ratings & reviews':
+        return (
+          <YStack gap={15}>
+            <XStack alignItems="baseline" gap={16}>
+              <Text fontSize={28}>{product.rating}</Text>
+              <Rating defaultValue={product.rating} numberOfStarts={5} color="$black" isDisabled />
+            </XStack>
+            <Text color="$gray_100">
+              {product.reviews.length}{' '}
+              {product.reviews.length > 2 ? 'Verified Buyers' : 'Verified Buyer'}
+            </Text>
+            {product.reviews.map(({ date, ...itemProps }: TReview) => (
+              <Comment
+                key={date.toString()}
+                date={date}
+                {...itemProps}
+                images={[
+                  'https://picsum.photos/500/300',
+                  'https://picsum.photos/501/300',
+                  'https://picsum.photos/502/300',
+                  'https://images.dog.ceo/breeds/husky/n02110185_14479.jpg',
+                  'https://images.dog.ceo/breeds/setter-english/n02100735_4040.jpg',
+                ]}
+              />
+            ))}
+          </YStack>
+        )
+
+      case 'how this was made':
+        return (
+          <Text>
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cursus tristique in tellus
+            diam, metus sit. Quis venenatis, neque arcu accumsan sollicitudin aliquet nunc. Lorem
+            ipsum dolor sit amet, consectetur adipiscing elit. Cursus tristique in tellus diam,
+            metus sit. Quis venenatis, neque arcu accumsan sollicitudin aliquet nunc. Lorem ipsum
+            dolor sit amet, consectetur adipiscing elit. Cursus tristique in tellus diam, metus sit.
+            Quis venenatis, neque arcu
+          </Text>
+        )
+
+      case 'manufacturing information':
+        return (
+          <Text>
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cursus tristique in tellus
+            diam, metus sit. Quis venenatis, neque arcu accumsan sollicitudin aliquet nunc. Lorem
+            ipsum dolor sit amet, consectetur adipiscing elit. Cursus tristique in tellus diam,
+            metus sit. Quis venenatis, neque arcu accumsan sollicitudin aliquet nunc. Lorem ipsum
+            dolor sit amet, consectetur adipiscing elit. Cursus tristique in tellus diam, metus sit.
+            Quis venenatis, neque arcu
+          </Text>
+        )
+
+      default:
+        return null
+    }
+  }
   return (
     <YStack gap={15}>
       <Carousel
@@ -161,7 +235,7 @@ const ProductDetail = () => {
       <Accordion type="multiple">
         {PRODUCT_LABELS.map((label: string) => (
           <Fragment key={label}>
-            <Separator marginVertical={20} />
+            <Separator borderColor="$separate" marginVertical={20} />
             <AccordionItem
               label={
                 <Text ellipse fontSize="$3" fontWeight="500" textTransform="capitalize">
@@ -178,7 +252,7 @@ const ProductDetail = () => {
                 backgroundColor: '$transparent',
               }}
             >
-              <Text>{product.description}</Text>
+              {renderProductContent(label)}
             </AccordionItem>
           </Fragment>
         ))}
