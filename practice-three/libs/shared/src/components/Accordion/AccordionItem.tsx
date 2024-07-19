@@ -33,6 +33,8 @@ const AccordionItem = ({ label: heading, children, ...rest }: AccordionItemProps
           animation="fast"
           exitStyle={{ opacity: 0 }}
           backgroundColor="$transparent"
+          paddingVertical={15}
+          paddingHorizontal={5}
         >
           {children}
         </Accordion.Content>
