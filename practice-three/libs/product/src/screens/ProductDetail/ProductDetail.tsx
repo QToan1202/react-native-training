@@ -27,6 +27,7 @@ import { Heart, HeartFill, placeholderImagePath } from '../../assets/images'
 import { Comment, createTab, ProductCard, Tabs } from '../../components'
 import { useToastController } from '@tamagui/toast'
 import { PRODUCT_SPECIFICATIONS_LABELS } from '../../constants'
+import { renderSpecificationItem } from '../../utils'
 
 // Called by router so don't useHook here
 export const loader =
@@ -129,25 +130,7 @@ const ProductDetail = () => {
       </YStack>
     </YStack>
   )
-  const renderSpecificationItem = useCallback(
-    (labels: Record<string, string>) => {
-      const target = Object.keys(labels) as (keyof TProductSpecification)[]
-      const middleIndex = Math.ceil(target.length / 2)
-      const [firstHalf, secondHalf] = [target.slice(0, middleIndex), target.slice(middleIndex)]
-      const renderCol = (arr: (keyof TProductSpecification)[]) =>
-        arr.map((item: keyof TProductSpecification) => (
-          <YStack gap={10} key={item}>
-            <Text color="$gray_100">{labels[item]}</Text>
-            <Text>{product.specifications[item]}</Text>
-            <Separator alignSelf="stretch" />
-          </YStack>
-        ))
-
-      return [renderCol(firstHalf), renderCol(secondHalf)]
-    },
-    [product.specifications]
-  )
-  const [firstCol, secondCol] = renderSpecificationItem(PRODUCT_SPECIFICATIONS_LABELS)
+  const [firstCol, secondCol] = renderSpecificationItem(PRODUCT_SPECIFICATIONS_LABELS, product)
   const SpecificationContent = (
     <YStack gap={12}>
       <H4 color="$black" fontSize="$4" fontWeight="bold">
