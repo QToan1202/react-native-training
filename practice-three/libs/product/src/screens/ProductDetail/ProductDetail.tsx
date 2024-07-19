@@ -137,8 +137,8 @@ const ProductDetail = () => {
         Specifications
       </H4>
       <XStack gap={12}>
-        {firstCol}
-        {secondCol}
+        <YStack>{firstCol}</YStack>
+        <YStack>{secondCol}</YStack>
       </XStack>
     </YStack>
   )
@@ -151,7 +151,9 @@ const ProductDetail = () => {
         <Text fontSize={48}>{product.rating}</Text>
         <Rating defaultValue={product.rating} numberOfStarts={5} color="$black" isDisabled />
       </XStack>
-      <Text>{product.reviews.length > 2 ? 'Verified Buyers' : 'Verified Buyer'} </Text>
+      <Text>
+        {product.reviews.length} {product.reviews.length > 2 ? 'Verified Buyers' : 'Verified Buyer'}
+      </Text>
       {product.reviews.map(({ date, ...itemProps }: TReview) => (
         <Comment key={date.toString()} date={date} {...itemProps} images={[placeholderImagePath]} />
       ))}
