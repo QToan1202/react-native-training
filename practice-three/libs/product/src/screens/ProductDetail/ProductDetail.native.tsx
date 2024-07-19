@@ -30,8 +30,9 @@ export type ProductDetailScreenProps = Partial<
   NativeStackScreenProps<ProductStack, 'ProductDetail'>
 >
 
-const ProductDetail = ({ navigation }: ProductDetailScreenProps) => {
-  const { data: product, isPending, error } = useQuery(findProductQuery('/products', 'p002'))
+const ProductDetail = ({ navigation, route }: ProductDetailScreenProps) => {
+  const id = route?.params.id || ''
+  const { data: product, isPending, error } = useQuery(findProductQuery('/products', id))
   const { data: similarProducts, isSuccess: isGetProductsSuccess } = useQuery(
     getProductsQuery('/products')
   )
