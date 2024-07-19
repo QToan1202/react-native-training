@@ -1,7 +1,8 @@
-import { useCallback, useMemo } from 'react'
+import { useMemo } from 'react'
 import { QueryClient, useSuspenseQuery } from '@tanstack/react-query'
 import { LoaderFunctionArgs, redirect, useLoaderData } from 'react-router-dom'
-import { H2, H4, Image, ScrollView, Separator, Stack, styled, XStack, YStack } from 'tamagui'
+import { H2, H4, Image, ScrollView, Stack, styled, XStack, YStack } from 'tamagui'
+import { useToastController } from '@tamagui/toast'
 
 import { calculateDiscountPrice, TResolveLoaderReturn } from '@shared/utils'
 import {
@@ -13,7 +14,7 @@ import {
   Text as BaseText,
   Toast,
 } from '@shared/components'
-import { TProduct, TProductSpecification, TReview, TUser, TWishlistBase } from '@shared/types'
+import { TProduct, TReview, TUser, TWishlistBase } from '@shared/types'
 import { useAuthStore } from '@shared/stores'
 
 import {
@@ -25,7 +26,6 @@ import {
 } from '../../hooks'
 import { Heart, HeartFill, placeholderImagePath } from '../../assets/images'
 import { Comment, createTab, ProductCard, Tabs } from '../../components'
-import { useToastController } from '@tamagui/toast'
 import { PRODUCT_SPECIFICATIONS_LABELS } from '../../constants'
 import { renderSpecificationItem } from '../../utils'
 
