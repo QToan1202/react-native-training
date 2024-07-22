@@ -45,3 +45,17 @@ export const PRODUCT_LABELS = [
   'how this was made',
   'manufacturing information',
 ]
+
+export type TSortOption = {
+  label: string
+  path: Record<string, string>
+}
+export const SORT_OPTIONS: TSortOption[] = [
+  {
+    label: 'Popularity',
+    path: {},
+  },
+  { label: 'Price - Low to High', path: { _sort: 'price', _order: 'asc' } },
+  { label: 'Price - High to Low', path: { _sort: 'price', _order: 'desc' } },
+  { label: 'Newest', path: {} },
+]
