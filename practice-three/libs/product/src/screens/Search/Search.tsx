@@ -1,15 +1,17 @@
-import { useMemo } from 'react'
-import { H2, XStack, YStack } from 'tamagui'
+import { useId, useMemo, useState } from 'react'
+import { AnimatePresence, H2, XStack, YStack } from 'tamagui'
 import { NativeStackScreenProps } from '@react-navigation/native-stack'
 import { LoaderFunctionArgs, redirect, useLoaderData } from 'react-router-dom'
 import type { QueryClient } from '@tanstack/react-query'
 
 import { ProductStack, TProduct } from '@shared/types'
-import { Text } from '@shared/components'
+import { Button, Text } from '@shared/components'
 import { TResolveLoaderReturn } from '@shared/utils'
 
 import { Filter, ProductCard, ProductCardSkeleton } from '../../components'
 import { useGetProducts, getProductsQuery } from '../../hooks'
+import { DownArrow, Filter as FilterIcon } from '../../assets/images'
+import { SortModal } from '../../components/SortModal'
 
 export type SearchProps = Partial<NativeStackScreenProps<ProductStack, 'Search'>>
 
@@ -48,13 +50,59 @@ const Search = (props: SearchProps) => {
       )
     )
   }, [data, isPending, isSuccess])
+  const [isShowFilterPanel, setShowFilterPanel] = useState<boolean>(false)
+  const [isShowSortModal, setShowSortModal] = useState<boolean>(false)
+  const filterPanel = useId()
+  const sortModal = useId()
+  const handleToggleFilterPanel = () => setShowFilterPanel((filterShown) => !filterShown)
+  const handleToggleSortModal = () => setShowSortModal((modalShown) => !modalShown)
 
   return (
-    <XStack padding={50} gap={43}>
-      <Filter backgroundColor="$pure_white" width={460} isDisabled={isPending} />
-      <XStack flex={1} flexWrap="wrap" alignSelf="flex-start" gap={12}>
-        {renderProduct}
-      </XStack>
+    <XStack gap={43}>
+      <AnimatePresence>
+        {isShowFilterPanel && (
+          <Filter
+            key={filterPanel}
+            animation="slow"
+            enterStyle={{ opacity: 0, x: '-100%' }}
+            exitStyle={{ opacity: 0, x: '-100%' }}
+            backgroundColor="$pure_white"
+            width={460}
+            isDisabled={isPending}
+          />
+        )}
+      </AnimatePresence>
+      <YStack flex={1} justifyContent="center">
+        <XStack alignSelf="flex-end">
+          <Button
+            title="Filter"
+            variant="text"
+            color="$black"
+            onPress={handleToggleFilterPanel}
+            endIcon={<FilterIcon />}
+          />
+          <Button
+            title="Sort By "
+            variant="text"
+            color="$black"
+            onPress={handleToggleSortModal}
+            endIcon={<DownArrow />}
+          />
+          <AnimatePresence initial={false}>
+            {isShowSortModal && (
+              <SortModal
+                key={sortModal}
+                animation="slow"
+                enterStyle={{ opacity: 0, y: '-100%' }}
+                exitStyle={{ opacity: 0, y: '-100%' }}
+              />
+            )}
+          </AnimatePresence>
+        </XStack>
+        <XStack flexWrap="wrap" justifyContent="flex-start" gap={12}>
+          {renderProduct}
+        </XStack>
+      </YStack>
     </XStack>
   )
 }
