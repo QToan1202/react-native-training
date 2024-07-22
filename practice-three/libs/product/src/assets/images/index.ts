@@ -14,3 +14,7 @@ export { default as Heart } from './heart.svg?react'
 export { default as Bell } from './bell.svg?react'
 
 export { default as Share } from './share.svg?react'
+
+export { default as Filter } from './filter.svg?react'
+
+export { default as DownArrow } from './down-arrow.svg?react'
