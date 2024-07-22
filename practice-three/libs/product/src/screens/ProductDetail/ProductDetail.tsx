@@ -1,4 +1,4 @@
-import { useMemo } from 'react'
+import { Fragment, useMemo } from 'react'
 import { QueryClient, useSuspenseQuery } from '@tanstack/react-query'
 import { LoaderFunctionArgs, redirect, useLoaderData } from 'react-router-dom'
 import { H2, H4, Image, ScrollView, Stack, styled, XStack, YStack } from 'tamagui'
@@ -14,8 +14,9 @@ import {
   Text as BaseText,
   Toast,
 } from '@shared/components'
-import { TProduct, TReview, TUser, TWishlistBase } from '@shared/types'
+import { TOffer, TProduct, TReview, TUser, TWishlistBase } from '@shared/types'
 import { useAuthStore } from '@shared/stores'
+import { getOffersQuery } from '@shared/queries'
 
 import {
   findProductQuery,
@@ -38,6 +39,7 @@ export const loader =
     await queryClient.ensureQueryData(findProductQuery('/products', id || ''))
     queryClient.ensureQueryData(getProductsQuery('/products'))
     queryClient.ensureQueryData(getWishlistQuery('/wishlists', user?.id || ''))
+    queryClient.ensureQueryData(getOffersQuery('/offers'))
 
     return { id, userId: user?.id }
   }
@@ -51,6 +53,7 @@ const ProductDetail = () => {
   const { data: product } = useSuspenseQuery(findProductQuery('/products', productId || ''))
   const { data: similarProducts } = useSuspenseQuery(getProductsQuery('/products'))
   const { data: wishlists } = useSuspenseQuery(getWishlistQuery('/wishlists', userId || ''))
+  const { data: offers } = useSuspenseQuery(getOffersQuery('/offers'))
   const [isProductInWishlist, wishlistItem] = useMemo(() => {
     const item = wishlists.find((item: TWishlistBase) => item.productId === productId)
     return [!!item, item]
@@ -107,59 +110,74 @@ const ProductDetail = () => {
       }
     )
   }
-  const ProductDetailContent = (
-    <YStack gap={26}>
-      <YStack gap={12}>
-        <H4 color="$black" fontSize="$4" fontWeight="bold">
-          Product Details
-        </H4>
-        <Text>{product.description}</Text>
+  const ProductDetailContent = useMemo(
+    () => (
+      <YStack gap={26}>
+        <YStack gap={12}>
+          <H4 color="$black" fontSize="$4" fontWeight="bold">
+            Product Details
+          </H4>
+          <Text>{product.description}</Text>
+        </YStack>
+        <YStack gap={12}>
+          <H4 color="$black" fontSize="$4" fontWeight="bold">
+            Size &#38; Fit
+          </H4>
+          <Text>The model (height 5&#39;8&#34;) is wearing a size S</Text>
+        </YStack>
+        <YStack gap={12}>
+          <H4 color="$black" fontSize="$4" fontWeight="bold">
+            Material &#38; Care
+          </H4>
+          <Text>100% cotton</Text>
+          <Text>Machine Wash</Text>
+        </YStack>
       </YStack>
-      <YStack gap={12}>
-        <H4 color="$black" fontSize="$4" fontWeight="bold">
-          Size &#38; Fit
-        </H4>
-        <Text>The model (height 5&#39;8&#34;) is wearing a size S</Text>
-      </YStack>
-      <YStack gap={12}>
-        <H4 color="$black" fontSize="$4" fontWeight="bold">
-          Material &#38; Care
-        </H4>
-        <Text>100% cotton</Text>
-        <Text>Machine Wash</Text>
-      </YStack>
-    </YStack>
+    ),
+    [product.description]
   )
   const [firstCol, secondCol] = renderSpecificationItem(PRODUCT_SPECIFICATIONS_LABELS, product)
-  const SpecificationContent = (
-    <YStack gap={12}>
-      <H4 color="$black" fontSize="$4" fontWeight="bold">
-        Specifications
-      </H4>
-      <XStack gap={12}>
-        <YStack>{firstCol}</YStack>
-        <YStack>{secondCol}</YStack>
-      </XStack>
-    </YStack>
+  const SpecificationContent = useMemo(
+    () => (
+      <YStack gap={12}>
+        <H4 color="$black" fontSize="$4" fontWeight="bold">
+          Specifications
+        </H4>
+        <XStack gap={12}>
+          <YStack>{firstCol}</YStack>
+          <YStack>{secondCol}</YStack>
+        </XStack>
+      </YStack>
+    ),
+    [firstCol, secondCol]
   )
-  const RatingAndReviewContent = (
-    <YStack gap={45}>
-      <H4 color="$black" fontSize="$4" fontWeight="bold">
-        Rating
-      </H4>
-      <XStack alignItems="center">
-        <Text fontSize={48}>{product.rating}</Text>
-        <Rating defaultValue={product.rating} numberOfStarts={5} color="$black" isDisabled />
-      </XStack>
-      <Text>
-        {product.reviews.length} {product.reviews.length > 2 ? 'Verified Buyers' : 'Verified Buyer'}
-      </Text>
-      {product.reviews.map(({ date, ...itemProps }: TReview) => (
-        <Comment key={date.toString()} date={date} {...itemProps} images={[placeholderImagePath]} />
-      ))}
-    </YStack>
+  const RatingAndReviewContent = useMemo(
+    () => (
+      <YStack gap={45}>
+        <H4 color="$black" fontSize="$4" fontWeight="bold">
+          Rating
+        </H4>
+        <XStack alignItems="center">
+          <Text fontSize={48}>{product.rating}</Text>
+          <Rating defaultValue={product.rating} numberOfStarts={5} color="$black" isDisabled />
+        </XStack>
+        <Text>
+          {product.reviews.length}&nbsp;
+          {product.reviews.length >= 2 ? 'Verified Buyers' : 'Verified Buyer'}
+        </Text>
+        {product.reviews.map(({ date, ...itemProps }: TReview) => (
+          <Comment
+            key={date.toString()}
+            date={date}
+            {...itemProps}
+            images={[placeholderImagePath]}
+          />
+        ))}
+      </YStack>
+    ),
+    [product.rating, product.reviews]
   )
-  const renderTabs = () => {
+  const renderTabs = useMemo(() => {
     const [ProductHeader, ProductContent] = createTab(
       'product',
       'Product Details',
@@ -195,7 +213,7 @@ const ProductDetail = () => {
         )}
       />
     )
-  }
+  }, [ProductDetailContent, RatingAndReviewContent, SpecificationContent])
   const handlePressProductCard = (id: string) => {
     redirect(`/product/${id}`)
   }
@@ -216,12 +234,29 @@ const ProductDetail = () => {
       )
     )
   }, [similarProducts])
+  const renderOffers = useMemo(
+    () =>
+      offers.map(({ id, name, discount }: TOffer) => (
+        <Fragment key={id}>
+          <Text>
+            <Text tag="span" fontWeight="bold">
+              {name} offer
+            </Text>
+            &nbsp;get {discount}&#37; off &nbsp;
+            <Text tag="span" color="$primary" hoverStyle={{ textDecorationLine: 'underline' }}>
+              T&#38;C
+            </Text>
+          </Text>
+        </Fragment>
+      )),
+    [offers]
+  )
 
   return (
     <YStack>
       <XStack paddingVertical={25} paddingHorizontal={50} gap={43}>
         <YStack gap={15}>{renderImages}</YStack>
-        <Stack flex={1} alignSelf="stretch">
+        <Stack flex={2} alignSelf="stretch">
           <Image
             resizeMode="cover"
             alignSelf="auto"
@@ -298,6 +333,7 @@ const ProductDetail = () => {
           <Text fontSize="$5" fontWeight="bold" textTransform="capitalize">
             best offers
           </Text>
+          {renderOffers}
           <XStack>
             <Button title="add to cart" onPress={handleAddToCart} />
             <IconButton onPress={handlePressLikeBtn}>
@@ -306,12 +342,12 @@ const ProductDetail = () => {
           </XStack>
         </YStack>
       </XStack>
-      {renderTabs()}
+      {renderTabs}
       <YStack gap={26}>
         <Text fontSize="$6" fontWeight="bold">
           Similar Products
         </Text>
-        <ScrollView horizontal scrollbarWidth="thin">
+        <ScrollView horizontal>
           <XStack gap={40}>{renderSimilarProducts}</XStack>
         </ScrollView>
       </YStack>
@@ -319,7 +355,7 @@ const ProductDetail = () => {
         <Text fontSize="$6" fontWeight="bold">
           Customer Also Like
         </Text>
-        <ScrollView horizontal scrollbarWidth="thin">
+        <ScrollView horizontal>
           <XStack gap={40}>{renderSimilarProducts}</XStack>
         </ScrollView>
       </YStack>
