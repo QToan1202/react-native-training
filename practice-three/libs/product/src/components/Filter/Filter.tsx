@@ -99,7 +99,7 @@ const Filter = ({ isDisabled = false, ...rest }: FilterProps) => {
               key={item}
               name={`discountPercent[${convertToLowerStr(item)}%]`}
               control={control}
-              label={item}
+              label={`${item}% and above`}
               onChecked={handleFilterDiscount}
             />
           ))
