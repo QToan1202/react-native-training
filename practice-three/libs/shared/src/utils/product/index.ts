@@ -12,17 +12,17 @@ export const getMinMaxPrices = (data: TProduct[]): [number, number] => {
 export const getBrands = (data: TProduct[]): string[] => {
   const arrOfBrands: string[] = data.map((item: TProduct) => item?.brandName || '')
 
-  return arrOfBrands
+  return arrOfBrands.sort()
 }
 
 export const getColors = (data: TProduct[]): string[] => {
   const arrOfColors: string[] = data.map((item: TProduct) => item?.specifications?.color || '')
 
-  return arrOfColors
+  return arrOfColors.sort()
 }
 
 export const getDiscounts = (data: TProduct[]): number[] => {
   const arrOfDiscounts: number[] = data.map((item: TProduct) => item?.discountPercent || 0)
 
-  return arrOfDiscounts
+  return arrOfDiscounts.filter((item: number) => item).sort((a, b) => a - b)
 }
