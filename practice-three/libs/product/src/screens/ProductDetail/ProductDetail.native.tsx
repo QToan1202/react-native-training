@@ -121,7 +121,7 @@ const ProductDetail = ({ navigation, route }: ProductDetailScreenProps) => {
             </XStack>
             <Text color="$gray_100">
               {product.reviews.length}{' '}
-              {product.reviews.length > 2 ? 'Verified Buyers' : 'Verified Buyer'}
+              {product.reviews.length >= 2 ? 'Verified Buyers' : 'Verified Buyer'}
             </Text>
             {product.reviews.map(({ date, ...itemProps }: TReview) => (
               <Comment
