@@ -3,6 +3,7 @@ import { getTokenValue, ScrollView, Separator, XStack, YStack } from 'tamagui'
 import { Fragment, useCallback, useMemo } from 'react'
 import { useForm } from 'react-hook-form'
 import { NativeStackScreenProps } from '@react-navigation/native-stack'
+import { useToastController } from '@tamagui/toast'
 
 import {
   Accordion,
@@ -15,12 +16,20 @@ import {
   RadioItem,
   Rating,
   Text,
+  Toast,
 } from '@shared/components'
 import { calculateDiscountPrice } from '@shared/utils'
 import { getOffersQuery } from '@shared/queries'
-import { ProductStack, TOffer, TProduct, TReview } from '@shared/types'
+import { ProductStack, TOffer, TProduct, TReview, TWishlistBase } from '@shared/types'
+import { useAuthStore } from '@shared/stores'
 
-import { findProductQuery, getProductsQuery } from '../../hooks'
+import {
+  findProductQuery,
+  getProductsQuery,
+  getWishlistQuery,
+  useAddToWishlist,
+  useDeleteFromWishlist,
+} from '../../hooks'
 import { Bag, Heart, Share, Star } from '../../assets/images'
 import { PRODUCT_LABELS, PRODUCT_SPECIFICATIONS_LABELS } from '../../constants'
 import { renderSpecificationItem } from '../../utils'
@@ -31,12 +40,25 @@ export type ProductDetailScreenProps = Partial<
 >
 
 const ProductDetail = ({ navigation, route }: ProductDetailScreenProps) => {
-  const id = route?.params.id || ''
-  const { data: product, isPending, error } = useQuery(findProductQuery('/products', id))
+  const productId = route?.params.id || ''
+  const user = useAuthStore((state) => state.user)
+  const { data: product, isPending, error } = useQuery(findProductQuery('/products', productId))
   const { data: similarProducts, isSuccess: isGetProductsSuccess } = useQuery(
     getProductsQuery('/products')
   )
   const { data: offers, isSuccess: isGetOfferSuccess } = useQuery(getOffersQuery('/offers'))
+  const { data: wishlists, isSuccess: isGetWishlistSuccess } = useQuery(
+    getWishlistQuery('/wishlists', user?.id || '')
+  )
+  const [isProductInWishlist, wishlistItem] = useMemo(() => {
+    if (!isGetWishlistSuccess) return []
+
+    const item = wishlists.find((item: TWishlistBase) => item.productId === productId)
+    return [!!item, item]
+  }, [isGetWishlistSuccess, productId, wishlists])
+  const { mutate: addToWishlist } = useAddToWishlist('/wishlists', user?.id || '')
+  const { mutate: deleteFromWishlist } = useDeleteFromWishlist('/wishlists', user?.id || '')
+  const toast = useToastController()
   const { control } = useForm<{
     pinCode: string
   }>({
@@ -98,6 +120,33 @@ const ProductDetail = ({ navigation, route }: ProductDetailScreenProps) => {
   if (isPending) return <Text>Loading...</Text>
   if (error) return <Text>An error has occurred: {error.message}</Text>
 
+  const handlePressWishlistBtn = () => {
+    if (!isProductInWishlist)
+      return addToWishlist(
+        { productId },
+        {
+          onSuccess: () => {
+            toast.show(`Product have add to wishlist`, {
+              message: `You have successfully added ${product.name} to wishlist!`,
+            })
+          },
+        }
+      )
+
+    return deleteFromWishlist(
+      { id: wishlistItem?.id },
+      {
+        onSuccess: () => {
+          toast.show(`Product have remove from wishlist`, {
+            message: `You have successfully removed ${product.name} from wishlist!`,
+          })
+        },
+      }
+    )
+  }
+  const handleAddButtonToCart = () => {
+    throw new Error('Function not implement')
+  }
   const [firstCol, secondCol] = renderSpecificationItem(PRODUCT_SPECIFICATIONS_LABELS, product)
   const renderProductContent = (label: string) => {
     switch (label) {
@@ -322,6 +371,7 @@ const ProductDetail = ({ navigation, route }: ProductDetailScreenProps) => {
           variant="outlined"
           title="wishlist"
           endIcon={<Heart width={15} height={17} />}
+          onPress={handlePressWishlistBtn}
         />
         <Button
           gap={22}
@@ -329,8 +379,10 @@ const ProductDetail = ({ navigation, route }: ProductDetailScreenProps) => {
           paddingHorizontal={36}
           title="add to bag"
           endIcon={<Bag />}
+          onPress={handleAddButtonToCart}
         />
       </XStack>
+      <Toast />
     </YStack>
   )
 }
