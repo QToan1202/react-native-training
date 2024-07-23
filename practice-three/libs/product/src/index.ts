@@ -1,1 +1,1 @@
-export * from './lib/product'
+export * from './hocs'
