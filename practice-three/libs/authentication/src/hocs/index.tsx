@@ -1,4 +1,5 @@
 import { ComponentType, forwardRef } from 'react'
+import { isWeb } from 'tamagui'
 
 import { THOCsProps } from '@shared/types'
 
@@ -12,12 +13,16 @@ export const withAuth = <T extends THOCsProps>(Wrapper: ComponentType<T>) => {
     const isFeatureActive = category.find(
       (feat) => !feat.localeCompare(FEATURE_NAME, undefined, { sensitivity: 'base' })
     )
+    const convertAuthRoute = isWeb
+      ? AuthenticationRoute
+      : [AuthenticationRoute as unknown as JSX.Element]
 
     return (
       <Wrapper
         ref={componentRef}
         {...(rest as T)}
-        navigatorData={isFeatureActive ? [...navigatorData, AuthenticationRoute] : navigatorData}
+        category={category}
+        navigatorData={isFeatureActive ? [...navigatorData, ...convertAuthRoute] : navigatorData}
       />
     )
   })
