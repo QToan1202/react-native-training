@@ -20,3 +20,5 @@ export { default as Filter } from './filter.svg?react'
 export { default as DownArrow } from './down-arrow.svg?react'
 
 export { default as Star } from './star.svg?react'
+
+export { default as Bag } from './bag.svg?react'

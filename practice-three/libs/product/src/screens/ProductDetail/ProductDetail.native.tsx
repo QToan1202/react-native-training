@@ -1,5 +1,5 @@
 import { useQuery } from '@tanstack/react-query'
-import { ScrollView, Separator, XStack, YStack } from 'tamagui'
+import { getTokenValue, ScrollView, Separator, XStack, YStack } from 'tamagui'
 import { Fragment, useCallback, useMemo } from 'react'
 import { useForm } from 'react-hook-form'
 import { NativeStackScreenProps } from '@react-navigation/native-stack'
@@ -21,7 +21,7 @@ import { getOffersQuery } from '@shared/queries'
 import { ProductStack, TOffer, TProduct, TReview } from '@shared/types'
 
 import { findProductQuery, getProductsQuery } from '../../hooks'
-import { Share, Star } from '../../assets/images'
+import { Bag, Heart, Share, Star } from '../../assets/images'
 import { PRODUCT_LABELS, PRODUCT_SPECIFICATIONS_LABELS } from '../../constants'
 import { renderSpecificationItem } from '../../utils'
 import { Comment, ProductCard } from '../../components'
@@ -304,6 +304,33 @@ const ProductDetail = ({ navigation, route }: ProductDetailScreenProps) => {
       </Accordion>
       {renderProducts('similar products')}
       {renderProducts('customer also like')}
+      <XStack
+        position="absolute"
+        bottom={0}
+        left={0}
+        right={0}
+        height={getTokenValue('$bottomTabBar.height')}
+        justifyContent="center"
+        alignItems="center"
+        backgroundColor="$pure_white"
+        gap={12}
+      >
+        <Button
+          gap={22}
+          paddingVertical={10}
+          paddingHorizontal={48}
+          variant="outlined"
+          title="wishlist"
+          endIcon={<Heart width={15} height={17} />}
+        />
+        <Button
+          gap={22}
+          paddingVertical={10}
+          paddingHorizontal={36}
+          title="add to bag"
+          endIcon={<Bag />}
+        />
+      </XStack>
     </YStack>
   )
 }

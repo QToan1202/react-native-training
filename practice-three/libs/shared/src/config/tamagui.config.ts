@@ -63,6 +63,9 @@ const customTokens = createTokens({
     width: 87,
     height: 77,
   },
+  bottomTabBar: {
+    height: 65,
+  },
 })
 
 const fonts = createFont({
