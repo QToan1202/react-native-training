@@ -1,3 +1,4 @@
+import { useContext } from 'react'
 import {
   ButtonIcon,
   GetProps,
@@ -85,19 +86,13 @@ const ButtonFrame = styled(View, {
   },
 })
 
-const ButtonText = styled(Text, {
+const BaseButtonText = styled(Text, {
   name: 'ButtonText',
-  context: ButtonContext,
   userSelect: 'none',
   textTransform: 'capitalize',
   textAlign: 'center',
 
   variants: {
-    size: {
-      '...fontSize': (name, { font }) => ({
-        fontSize: font?.size[name],
-      }),
-    },
     variant: {
       primary: {
         color: '$white',
@@ -114,12 +109,31 @@ const ButtonText = styled(Text, {
   } as const,
 })
 
+/**
+ *
+ * Since original Text component have it own Provider
+ * then the context that drive from Button cannot override the Text Provider
+ * so we need to manually adjust priority of styling
+ * then the styles can merge correctly
+ */
+const ButtonText = ({ children, ...originProps }: GetProps<typeof BaseButtonText>) => {
+  // Spread first to get variant to make sure
+  // variant don't override any of custom text styles
+  const { variant, ...contextProps } = useContext(ButtonContext)
+
+  return (
+    <BaseButtonText {...originProps} variant={variant} {...contextProps}>
+      {children}
+    </BaseButtonText>
+  )
+}
+
 const ButtonStyled = withStaticProperties(ButtonFrame, {
+  Props: ButtonContext.Provider,
   Text: ButtonText,
   Icon: ButtonIcon,
-  Props: ButtonContext.Provider,
 })
 
-export type ButtonProps = GetProps<typeof ButtonText> & GetProps<typeof ButtonFrame>
+export type ButtonProps = GetProps<typeof BaseButtonText> & GetProps<typeof ButtonFrame>
 
 export default ButtonStyled
