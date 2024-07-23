@@ -1,30 +1,29 @@
+import { ReactNode, useId, useState } from 'react'
 import { styled } from 'tamagui'
-import { Star, StarFull } from '@tamagui/lucide-icons'
-import { GetThemeValueForKey } from '@tamagui/core'
-import { useId, useState } from 'react'
+import { getTokenValue } from '@tamagui/core'
 
 import { Radio, RadioItem } from '../Radio'
+import { Star } from '../../assets/images'
 
 const Item = styled(RadioItem, {
   borderWidth: 0,
   backgroundColor: 'transparent',
   animation: 'fast',
+  cursor: 'pointer',
 
   focusStyle: {
     borderWidth: 0,
     backgroundColor: 'transparent',
   },
   hoverStyle: {
-    scale: 1.8,
+    scale: 1.5,
     backgroundColor: 'transparent',
   },
 
   variants: {
     disabled: {
       true: {
-        hoverStyle: {
-          scale: 1,
-        },
+        pointerEvents: 'none',
       },
     },
   } as const,
@@ -32,17 +31,19 @@ const Item = styled(RadioItem, {
 })
 
 export type RatingProps = {
-  color?: GetThemeValueForKey<'color'>
   isDisabled?: boolean
   defaultValue?: number
   numberOfStarts?: number
+  icon?: ReactNode
+  emptyIcon?: ReactNode
 }
 
 const Rating = ({
   isDisabled = false,
   defaultValue = 0,
-  numberOfStarts = 0,
-  color = '$yellow10Light',
+  numberOfStarts = 5,
+  icon = <Star fill={getTokenValue('$yellow')} stroke={getTokenValue('$yellow')} />,
+  emptyIcon = <Star />,
 }: RatingProps) => {
   const key = useId()
   const [rating, setRating] = useState<number>(Math.floor(defaultValue))
@@ -52,7 +53,7 @@ const Rating = ({
     <Radio value={String(rating)} onValueChange={handleChange} flexDirection="row" gap="$1">
       {[...Array(Math.floor(numberOfStarts) + 1).keys()].slice(1).map((value: number) => (
         <Item disabled={isDisabled} key={key + value} value={value.toString()}>
-          {rating < value ? <Star color={color} /> : <StarFull color={color} />}
+          {rating < value ? emptyIcon : icon}
         </Item>
       ))}
     </Radio>

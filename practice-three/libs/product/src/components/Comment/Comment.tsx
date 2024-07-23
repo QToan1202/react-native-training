@@ -16,7 +16,7 @@ const Comment = ({ rating, content, reviewer, date, images, ...rest }: CommentPr
   return (
     <YStack maxWidth={width} gap={9} {...rest}>
       <XStack alignItems="center" gap={12}>
-        <Rating defaultValue={rating} numberOfStarts={5} isDisabled />
+        <Rating defaultValue={rating} isDisabled />
         <Text fontSize="$3">{rating}</Text>
       </XStack>
       <ReadMore fontSize="$3">{content}</ReadMore>

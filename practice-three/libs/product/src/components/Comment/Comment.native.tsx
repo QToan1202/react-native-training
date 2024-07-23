@@ -23,7 +23,7 @@ const Comment = ({ rating, content, reviewer, date, images, ...rest }: CommentPr
   return (
     <YStack maxWidth={width} {...rest}>
       <XStack alignItems="center" gap={12}>
-        <Rating defaultValue={rating} numberOfStarts={5} isDisabled />
+        <Rating defaultValue={rating} isDisabled />
         <Text>{rating}</Text>
         <Text color="$gray_100">{reviewer}</Text>
         <Text color="$gray_100">{dayjs(date).format('DD MMMM YYYY')}</Text>

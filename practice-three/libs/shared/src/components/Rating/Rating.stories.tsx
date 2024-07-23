@@ -16,3 +16,10 @@ export const Default: Story = {
     numberOfStarts: 5,
   },
 }
+
+export const DisableRating: Story = {
+  args: {
+    ...Default.args,
+    isDisabled: true,
+  },
+}

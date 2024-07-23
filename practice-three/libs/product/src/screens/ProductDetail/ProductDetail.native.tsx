@@ -21,7 +21,7 @@ import { getOffersQuery } from '@shared/queries'
 import { ProductStack, TOffer, TProduct, TReview } from '@shared/types'
 
 import { findProductQuery, getProductsQuery } from '../../hooks'
-import { Share } from '../../assets/images'
+import { Share, Star } from '../../assets/images'
 import { PRODUCT_LABELS, PRODUCT_SPECIFICATIONS_LABELS } from '../../constants'
 import { renderSpecificationItem } from '../../utils'
 import { Comment, ProductCard } from '../../components'
@@ -117,7 +117,7 @@ const ProductDetail = ({ navigation, route }: ProductDetailScreenProps) => {
           <YStack gap={15}>
             <XStack alignItems="baseline" gap={16}>
               <Text fontSize={28}>{product.rating}</Text>
-              <Rating defaultValue={product.rating} numberOfStarts={5} color="$black" isDisabled />
+              <Rating defaultValue={product.rating} icon={<Star fill="black" />} isDisabled />
             </XStack>
             <Text color="$gray_100">
               {product.reviews.length}{' '}

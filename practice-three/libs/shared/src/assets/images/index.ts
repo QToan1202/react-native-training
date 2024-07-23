@@ -6,3 +6,5 @@ export { default as User } from './user.svg?react'
 export { default as placeholderImagePath } from './placeholder.svg'
 
 export { default as Dot } from './dot.svg?react'
+
+export { default as Star } from './star.svg?react'

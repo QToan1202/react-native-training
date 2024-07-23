@@ -25,7 +25,7 @@ import {
   useAddToWishlist,
   useDeleteFromWishlist,
 } from '../../hooks'
-import { Heart, HeartFill, placeholderImagePath } from '../../assets/images'
+import { Heart, HeartFill, placeholderImagePath, Star } from '../../assets/images'
 import { Comment, createTab, ProductCard, Tabs } from '../../components'
 import { PRODUCT_SPECIFICATIONS_LABELS } from '../../constants'
 import { renderSpecificationItem } from '../../utils'
@@ -159,7 +159,7 @@ const ProductDetail = () => {
         </H4>
         <XStack alignItems="center">
           <Text fontSize={48}>{product.rating}</Text>
-          <Rating defaultValue={product.rating} numberOfStarts={5} color="$black" isDisabled />
+          <Rating defaultValue={product.rating} icon={<Star fill="black" />} />
         </XStack>
         <Text>
           {product.reviews.length}&nbsp;
@@ -281,7 +281,7 @@ const ProductDetail = () => {
             Sold By: {product.sellerName}
           </Text>
           <XStack gap={12} alignItems="center">
-            <Rating numberOfStarts={5} defaultValue={product.rating} color="$black" isDisabled />
+            <Rating defaultValue={product.rating} icon={<Star fill="black" />} isDisabled />
             <Text fontSize="$3">{product.rating}</Text>
             <Text marginLeft={10} fontSize="$3">
               {product.reviews.length} Reviews

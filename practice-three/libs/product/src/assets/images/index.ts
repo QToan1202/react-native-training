@@ -18,3 +18,5 @@ export { default as Share } from './share.svg?react'
 export { default as Filter } from './filter.svg?react'
 
 export { default as DownArrow } from './down-arrow.svg?react'
+
+export { default as Star } from './star.svg?react'
