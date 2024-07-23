@@ -41,7 +41,7 @@ const ButtonFrame = styled(View, {
   flexDirection: 'row',
   paddingVertical: 15,
   paddingHorizontal: 35,
-  borderRadius: '$6',
+  borderRadius: 10,
   borderWidth: 2,
   gap: 6,
   pressStyle: {
@@ -110,7 +110,6 @@ const BaseButtonText = styled(Text, {
 })
 
 /**
- *
  * Since original Text component have it own Provider
  * then the context that drive from Button cannot override the Text Provider
  * so we need to manually adjust priority of styling
@@ -122,7 +121,7 @@ const ButtonText = ({ children, ...originProps }: GetProps<typeof BaseButtonText
   const { variant, ...contextProps } = useContext(ButtonContext)
 
   return (
-    <BaseButtonText {...originProps} variant={variant} {...contextProps}>
+    <BaseButtonText variant={variant} {...contextProps} {...originProps}>
       {children}
     </BaseButtonText>
   )
