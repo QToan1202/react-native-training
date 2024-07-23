@@ -1,18 +1,20 @@
-import { RouterProvider, createBrowserRouter } from 'react-router-dom'
+import { RouteObject } from 'react-router-dom'
 import { QueryClient } from '@tanstack/react-query'
 
-import { SearchScreen, loader as searchLoader } from '../screens'
+import { ProductDetailScreen, SearchScreen, loader as searchLoader } from '../screens'
 
 const queryClient = new QueryClient()
 
-const productRouter = createBrowserRouter([
+const productRouter: RouteObject[] = [
   {
     path: '/search',
     element: <SearchScreen />,
     loader: searchLoader(queryClient),
   },
-])
+  {
+    path: '/product/:id',
+    element: <ProductDetailScreen />,
+  },
+]
 
-const ProductRouterProvider = () => <RouterProvider router={productRouter} />
-
-export default ProductRouterProvider
+export default productRouter
