@@ -1,7 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/react'
 import { reactRouterParameters, withRouter } from 'storybook-addon-remix-react-router'
 
-import Search, { loader as searchLoader } from './Search'
+import Search, { searchLoader } from './Search'
 import { queryClient } from '../../../.storybook/preview'
 
 const meta: Meta<typeof Search> = {

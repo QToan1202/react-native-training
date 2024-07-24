@@ -15,7 +15,7 @@ import { SortModal } from '../../components/SortModal'
 
 export type SearchProps = Partial<NativeStackScreenProps<ProductStack, 'Search'>>
 
-export const loader =
+export const searchLoader =
   (queryClient: QueryClient) =>
   async ({ request }: LoaderFunctionArgs) => {
     const searchQuery = new URL(request.url).search
@@ -26,7 +26,7 @@ export const loader =
   }
 
 const Search = (props: SearchProps) => {
-  const { path } = useLoaderData() as TResolveLoaderReturn<typeof loader>
+  const { path } = useLoaderData() as TResolveLoaderReturn<typeof searchLoader>
   const { data, isPending, isSuccess } = useGetProducts(path)
   const handlePressProductCard = (id: string) => {
     redirect(`/product/${id}`)
