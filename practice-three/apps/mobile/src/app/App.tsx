@@ -16,7 +16,11 @@ const WrapHOC = withProduct(withAuth(BaseApp))
 export const App = () => {
   return (
     <WrapHOC category={initFeatures} navigatorData={INIT_NAVIGATOR_DATA}>
-      {(props) => props.navigatorData.map((Item, index) => <Item key={index} />)}
+      {({ navigatorData }) => {
+        const navigator = navigatorData as unknown as (() => ReactNode)[]
+
+        return navigator.map((Item, index) => <Item key={index} />)
+      }}
     </WrapHOC>
   )
 }
