@@ -6,7 +6,7 @@ import { tamaguiPlugin } from '@tamagui/vite-plugin'
 import svgr from 'vite-plugin-svgr'
 
 const config: StorybookConfig = {
-  stories: ['../src/lib/**/*.stories.@(js|jsx|ts|tsx|mdx)'],
+  stories: ['../src/**/**/*.stories.@(js|jsx|ts|tsx|mdx)'],
   addons: ['@storybook/addon-essentials', 'storybook-addon-remix-react-router'],
   framework: {
     name: '@storybook/react-vite',
