@@ -11,6 +11,7 @@ export type AuthenticationStack = {
 export type ProductStack = {
   Search: undefined
   ProductDetail: { id: string }
+  Wishlist: undefined
 }
 
 export type RootStackParamList = {

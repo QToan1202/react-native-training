@@ -1,0 +1,95 @@
+import { useCallback, useMemo } from 'react'
+import { useLoaderData, useNavigate } from 'react-router-dom'
+import { H2, styled, XStack, YStack } from 'tamagui'
+import { NativeStackScreenProps } from '@react-navigation/native-stack'
+import { QueryClient, useQuery } from '@tanstack/react-query'
+
+import { ProductStack, TUser, TWishlistExpand } from '@shared/types'
+import { useAuthStore } from '@shared/stores'
+import { TResolveLoaderReturn } from '@shared/utils'
+import { Button, Text } from '@shared/components'
+
+import { getWishlistQuery } from '../../hooks'
+import { ProductCard, ProductCardSkeleton } from '../../components'
+
+type WishlistScreenProps = Partial<NativeStackScreenProps<ProductStack, 'Wishlist'>>
+
+const Heading = styled(H2, {
+  color: '$black',
+  fontSize: '$6',
+  fontWeight: 'bold',
+  textTransform: 'capitalize',
+})
+
+export const wishlistLoader = (queryClient: QueryClient) => async () => {
+  const user: TUser | undefined = useAuthStore.getState().user
+  queryClient.ensureQueryData(getWishlistQuery('/wishlists', user?.id || 'd3d1', true))
+
+  return { userId: user?.id }
+}
+
+const Wishlist = (props: WishlistScreenProps) => {
+  const { userId } = useLoaderData() as TResolveLoaderReturn<typeof wishlistLoader>
+  const navigate = useNavigate()
+  const {
+    data: wishlists,
+    isPending,
+    isSuccess,
+  } = useQuery(getWishlistQuery('/wishlists', userId || '', true))
+  const handlePressProductCard = useCallback((id: string) => {
+    navigate(`/product/${id}`)
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [])
+  const handlePressLink = useCallback(
+    () => navigate('/search'),
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    []
+  )
+  const renderProducts = useMemo(() => {
+    if (isPending) return [...Array(4).keys()].map((item) => <ProductCardSkeleton key={item} />)
+    if (!isSuccess) return
+    if (!wishlists.length)
+      return (
+        <YStack alignItems="center" gap={12}>
+          <Text fontSize="$3">
+            Your wishlist is currently empty. Start adding items to make your dreams come true!
+          </Text>
+          <Button title="Start Shopping" onPress={handlePressLink} />
+        </YStack>
+      )
+
+    return (
+      <XStack
+        flexWrap="wrap"
+        alignSelf="flex-start"
+        justifyContent="space-between"
+        columnGap={60}
+        rowGap={52}
+      >
+        {wishlists.map(
+          ({
+            product: { description, sellerName, sizes, reviews, specifications, id, ...rest },
+          }: TWishlistExpand) => (
+            <ProductCard key={id} id={id} {...rest} onPressCard={handlePressProductCard} />
+          )
+        )}
+      </XStack>
+    )
+  }, [isPending, isSuccess, wishlists, handlePressLink, handlePressProductCard])
+
+  return (
+    <YStack justifyContent="center" alignItems="center" gap={26}>
+      <XStack gap={4} alignSelf="flex-start">
+        <Heading>
+          my
+          <Heading tag="span" color="$primary">
+            &#32;wishlist
+          </Heading>
+        </Heading>
+      </XStack>
+      {renderProducts}
+    </YStack>
+  )
+}
+
+export default Wishlist

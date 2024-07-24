@@ -1,7 +1,13 @@
 import { RouteObject } from 'react-router-dom'
 import { QueryClient } from '@tanstack/react-query'
 
-import { ProductDetailScreen, SearchScreen, loader as searchLoader } from '../screens'
+import {
+  ProductDetailScreen,
+  SearchScreen,
+  WishlistScreen,
+  searchLoader,
+  wishlistLoader,
+} from '../screens'
 
 const queryClient = new QueryClient()
 
@@ -14,6 +20,11 @@ const productRouter: RouteObject[] = [
   {
     path: '/product/:id',
     element: <ProductDetailScreen />,
+  },
+  {
+    path: '/wishlist',
+    element: <WishlistScreen />,
+    loader: wishlistLoader(queryClient),
   },
 ]
 
