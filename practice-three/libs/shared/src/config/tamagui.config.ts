@@ -30,6 +30,7 @@ const customTokens = createTokens({
     red_200: '#ff0000',
     border: '#e1e2e7',
     separate: '#eaeaea',
+    pale: '#ebf0ff',
   },
   zIndex: {
     ...tokens.zIndex,
@@ -65,6 +66,10 @@ const customTokens = createTokens({
   },
   bottomTabBar: {
     height: 65,
+  },
+  cartItem: {
+    width: 72,
+    height: 72,
   },
 })
 
