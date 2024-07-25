@@ -11,6 +11,7 @@ type TWishlistItem = 'id' | 'name' | 'price'
 export type WishlistItemProps = XStackProps &
   Pick<TProduct, TWishlistItem> & {
     image: ImageURISource['uri']
+    quantity: number
     isLiked?: boolean
     onPressItem?: (id: string) => void
   }
@@ -25,6 +26,7 @@ const CartItem = ({
   name,
   price,
   isLiked = false,
+  quantity,
   onPressItem,
   onPress,
   ...rest
@@ -69,7 +71,7 @@ const CartItem = ({
             <Trash />
           </IconButton>
         </XStack>
-        <Counter />
+        <Counter defaultValue={quantity} />
       </YStack>
     </XStack>
   )
