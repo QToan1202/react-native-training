@@ -14,7 +14,12 @@ export type ProductStack = {
   Wishlist: undefined
 }
 
+export type CartStack = {
+  Cart: undefined
+}
+
 export type RootStackParamList = {
   AuthStack: NavigatorScreenParams<AuthenticationStack>
   ProductStack: NavigatorScreenParams<ProductStack>
+  CartStack: NavigatorScreenParams<CartStack>
 }
