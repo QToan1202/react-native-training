@@ -15,5 +15,6 @@ export const Default: Story = {
     image: '',
     name: 'printed shirt',
     price: 20,
+    isLiked: false,
   },
 }

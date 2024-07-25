@@ -2,7 +2,8 @@ import { Heading, XStack, XStackProps, YStack, getTokenValue } from 'tamagui'
 import { GestureResponderEvent, ImageURISource } from 'react-native'
 
 import { TProduct } from '@shared/types'
-import { Button, IconButton, Image, Text } from '@shared/components'
+import { IconButton, Image, Text } from '@shared/components'
+
 import { Heart, Trash } from '../../assets/images'
 import { Counter } from '../Counter'
 
@@ -10,10 +11,24 @@ type TWishlistItem = 'id' | 'name' | 'price'
 export type WishlistItemProps = XStackProps &
   Pick<TProduct, TWishlistItem> & {
     image: ImageURISource['uri']
-    onPressItem: (id: string) => void
+    isLiked?: boolean
+    onPressItem?: (id: string) => void
   }
 
-const CartItem = ({ id, image, name, price, onPressItem, onPress, ...rest }: WishlistItemProps) => {
+const HeartFill = () => (
+  <Heart fill={getTokenValue('$color.red_50')} stroke={getTokenValue('$color.red_50')} />
+)
+
+const CartItem = ({
+  id,
+  image,
+  name,
+  price,
+  isLiked = false,
+  onPressItem,
+  onPress,
+  ...rest
+}: WishlistItemProps) => {
   const handlePressItemAction = (event: GestureResponderEvent) => {
     onPress?.(event)
     onPressItem?.(id)
@@ -48,10 +63,8 @@ const CartItem = ({ id, image, name, price, onPressItem, onPress, ...rest }: Wis
         </YStack>
       </XStack>
       <YStack gap={8} alignSelf="flex-end" justifyContent="space-evenly">
-        <XStack justifyContent="center">
-          <IconButton>
-            <Heart />
-          </IconButton>
+        <XStack justifyContent="flex-end">
+          <IconButton>{isLiked ? <HeartFill /> : <Heart />}</IconButton>
           <IconButton>
             <Trash />
           </IconButton>
