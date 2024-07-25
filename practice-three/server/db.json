@@ -276,9 +276,17 @@
   ],
   "wishlists": [
     {
-      "productId": 1,
-      "userId": 1,
-      "id": 1
+      "productId": "p005",
+      "userId": "d3d1",
+      "id": "1"
+    }
+  ],
+  "carts": [
+    {
+      "userId": "d3d1",
+      "productId": ["p001", "p003"],
+      "quantity": [1, 1],
+      "id": "aqJT"
     }
   ]
 }
