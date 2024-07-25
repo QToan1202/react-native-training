@@ -6,3 +6,7 @@ export { default as placeholderImagePath } from './placeholder.svg'
 export { default as Heart } from './heart.svg?react'
 
 export { default as Trash } from './trash.svg?react'
+
+export { default as Minus } from './minus.svg?react'
+
+export { default as Plus } from './plus.svg?react'

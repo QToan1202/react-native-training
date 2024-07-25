@@ -4,6 +4,7 @@ import { GestureResponderEvent, ImageURISource } from 'react-native'
 import { TProduct } from '@shared/types'
 import { Button, IconButton, Image, Text } from '@shared/components'
 import { Heart, Trash } from '../../assets/images'
+import { Counter } from '../Counter'
 
 type TWishlistItem = 'id' | 'name' | 'price'
 export type WishlistItemProps = XStackProps &
@@ -55,10 +56,7 @@ const CartItem = ({ id, image, name, price, onPressItem, onPress, ...rest }: Wis
             <Trash />
           </IconButton>
         </XStack>
-        <XStack justifyContent="flex-end" alignItems="center">
-          {/* <Button title="-" variant="outlined" padding={10} />
-          <Button title="+" variant="outlined" padding={10} /> */}
-        </XStack>
+        <Counter />
       </YStack>
     </XStack>
   )
