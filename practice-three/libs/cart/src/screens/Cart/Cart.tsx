@@ -9,25 +9,47 @@ import { useAuthStore } from '@shared/stores'
 import { CartItem } from '../../components'
 import { findProductQuery, getCartQuery } from '../../hooks'
 import { BaseInput } from '@shared/components'
+import type { CartStack } from '@shared/types'
+
+import { CartItem, CartItemSkeleton } from '../../components'
+import { TUseFindProductsReturn, useFindProducts } from '../../hooks'
+import { FEES } from '../../constants'
 
 type CartScreenProps = NativeStackScreenProps<CartStack, 'Cart'>
+const calculatePrice = (data: Partial<TUseFindProductsReturn>[]) => {
+  return data.reduce((prev, curr) => {
+    if (!curr?.price) return prev
+
+    return (prev += curr.price)
+  }, 0)
+}
 
 const Cart = ({ navigation }: CartScreenProps) => {
-  const user = useAuthStore((state) => state.user)
-  const { data: carts, isSuccess } = useQuery(getCartQuery('cart', user?.id || ''))
-  const getProductsQuery = useQueries({
-    queries: isSuccess ? carts.productId.map((item) => findProductQuery('/products', item)) : [],
-  })
-  const renderCartItems = useMemo(() => {
-    return getProductsQuery.map((query: UseQueryResult<TProduct, Error>, index: number) => {
-      const { quantity } = carts as TCart
-      const { data: product, isSuccess: isGetProductSuccess } = query
+  const [isLoading, data] = useFindProducts()
+  const renderCartItems = useMemo(
+    () =>
+      data.map((product: Partial<TUseFindProductsReturn>) => {
+        const { id, name, price, image, quantity } = product
 
-      if (!isGetProductSuccess) return null
-      const { id, name, price, image } = product
-      return <CartItem id={id} name={name} price={price} image={image} quantity={quantity[index]} />
-    })
-  }, [carts, getProductsQuery])
+        if (!id || !name || !price || !image || !quantity) return null
+        const foundProduct = product as TUseFindProductsReturn
+
+        return (
+          <CartItem
+            animation="slow"
+            enterStyle={{
+              opacity: 0,
+            }}
+            exitStyle={{
+              opacity: 0,
+            }}
+            key={foundProduct.id}
+            {...foundProduct}
+          />
+        )
+      }),
+    [data]
+  )
 
   return (
     <YStack>
