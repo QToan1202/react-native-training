@@ -236,13 +236,13 @@ const ProductDetail = () => {
   }, [similarProducts])
   const renderOffers = useMemo(
     () =>
-      offers.map(({ id, name, discount }: TOffer) => (
+      offers.map(({ id, name, discountPercentage }: TOffer) => (
         <Fragment key={id}>
           <Text>
             <Text tag="span" fontWeight="bold">
               {name} offer
             </Text>
-            &nbsp;get {discount}&#37; off &nbsp;
+            &nbsp;get {discountPercentage}&#37; off &nbsp;
             <Text tag="span" color="$primary" hoverStyle={{ textDecorationLine: 'underline' }}>
               T&#38;C
             </Text>

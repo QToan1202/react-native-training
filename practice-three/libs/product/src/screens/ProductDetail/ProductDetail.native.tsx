@@ -69,10 +69,10 @@ const ProductDetail = ({ navigation, route }: ProductDetailScreenProps) => {
   const renderOffers = useMemo(() => {
     if (!isGetOfferSuccess) return
 
-    return offers.map(({ id, name, discount }: TOffer) => (
+    return offers.map(({ id, name, discountPercentage }: TOffer) => (
       <XStack key={id} gap={10}>
         <Text>
-          {name} offer get {discount}&#37; off
+          {name} offer get {discountPercentage}&#37; off
         </Text>
         <Text color="$primary" hoverStyle={{ textDecorationLine: 'underline' }}>
           T&#38;C
