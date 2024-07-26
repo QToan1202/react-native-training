@@ -7,9 +7,9 @@ import { IconButton, Image, Text } from '@shared/components'
 import { Heart, Trash } from '../../assets/images'
 import { Counter } from '../Counter'
 
-type TWishlistItem = 'id' | 'name' | 'price'
-export type WishlistItemProps = XStackProps &
-  Pick<TProduct, TWishlistItem> & {
+type TCartItem = 'id' | 'name' | 'price'
+export type CartItemProps = XStackProps &
+  Pick<TProduct, TCartItem> & {
     image: ImageURISource['uri']
     quantity: number
     isLiked?: boolean
@@ -30,7 +30,7 @@ const CartItem = ({
   onPressItem,
   onPress,
   ...rest
-}: WishlistItemProps) => {
+}: CartItemProps) => {
   const handlePressItemAction = (event: GestureResponderEvent) => {
     onPress?.(event)
     onPressItem?.(id)

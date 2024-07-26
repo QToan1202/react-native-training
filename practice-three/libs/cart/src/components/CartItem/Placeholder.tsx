@@ -1,0 +1,42 @@
+import { XStack, XStackProps, YStack, getTokenValue } from 'tamagui'
+
+import { Skeleton } from '@shared/components'
+
+type CartItemPlaceholderProps = XStackProps
+
+const CartItemPlaceholder = ({ ...rest }: CartItemPlaceholderProps) => (
+  <XStack
+    borderRadius={5}
+    borderWidth={1}
+    borderColor="$pale"
+    padding={16}
+    justifyContent="space-between"
+    animation="slow"
+    enterStyle={{
+      opacity: 0,
+    }}
+    exitStyle={{
+      opacity: 0,
+    }}
+    {...rest}
+  >
+    <XStack>
+      <Skeleton
+        width={getTokenValue('$cartItem.width')}
+        height={getTokenValue('$cartItem.height')}
+      />
+      <YStack gap={8} marginLeft={18} justifyContent="space-evenly">
+        <Skeleton width={150} height={24} />
+        <Skeleton width={150} height={20} />
+      </YStack>
+    </XStack>
+    <YStack gap={8} alignSelf="flex-end" justifyContent="space-evenly">
+      <XStack justifyContent="flex-end">
+        <Skeleton width={70} height={26} />
+      </XStack>
+      <Skeleton width={100} height={40} />
+    </YStack>
+  </XStack>
+)
+
+export default CartItemPlaceholder
