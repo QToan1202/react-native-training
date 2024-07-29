@@ -24,12 +24,13 @@ const PromoCode = ({
     <YStack gap={12} {...rest}>
       <XStack justifyContent="space-between">
         <Text
+          width={140}
           paddingVertical={10}
-          paddingHorizontal={30}
+          alignSelf="baseline"
           borderWidth={1}
           borderColor="$gray_100"
           borderStyle="dashed"
-          alignSelf="baseline"
+          textAlign="center"
         >
           {code}
         </Text>
