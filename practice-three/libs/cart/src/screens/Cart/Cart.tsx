@@ -2,10 +2,10 @@ import { Heading, styled, TextContextStyles, XStack, YStack } from 'tamagui'
 import { useMemo } from 'react'
 import { NativeStackScreenProps } from '@react-navigation/native-stack'
 
-import { BaseInput, Text as BaseText, Button, Skeleton } from '@shared/components'
+import { Text as BaseText, Button, Skeleton } from '@shared/components'
 import type { CartStack } from '@shared/types'
 
-import { CartItem, CartItemSkeleton } from '../../components'
+import { CartItem, CartItemSkeleton, Search } from '../../components'
 import { TUseFindProductsReturn, useFindProducts } from '../../hooks'
 import { FEES } from '../../constants'
 
@@ -65,7 +65,7 @@ const Cart = ({ navigation }: CartScreenProps) => {
       {isLoading
         ? [...Array(2).keys()].map((item) => <CartItemSkeleton key={item} />)
         : renderCartItems}
-      <BaseInput placeholder="Enter Coupon Code" borderWidth={1} borderColor="$pale" />
+      <Search />
       <YStack borderStyle="dashed" borderBottomWidth={1} borderBottomColor="$pale" gap={15}>
         <XStack justifyContent="space-between" alignItems="center">
           <Text>
