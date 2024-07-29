@@ -11,6 +11,11 @@ const PRE_DEFINED_FEATURES: Array<Omit<TFeatureConfig, 'active'>> = [
     description:
       'The "Product" feature flag controls the availability of product-related functionalities within the application. It allows administrators to enable or disable product listings, detail pages, and associated features, facilitating a controlled rollout of updates and ensuring a smooth user experience.',
   },
+  {
+    name: 'cart',
+    description:
+      'The Cart feature flag controls the visibility and functionality of the shopping cart within the application. When enabled, users can add items to their cart, view the cart contents, update item quantities, and proceed to checkout.',
+  },
 ]
 
 const features = (featureList: string | ReadonlyArray<string>): Array<string> => {
