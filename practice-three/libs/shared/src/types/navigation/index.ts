@@ -16,6 +16,7 @@ export type ProductStack = {
 
 export type CartStack = {
   Cart: undefined
+  PromoCode: undefined
 }
 
 export type RootStackParamList = {
