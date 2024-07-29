@@ -6,6 +6,7 @@ import { useQuery } from '@tanstack/react-query'
 import { Button, Input, Text } from '@shared/components'
 
 import { findPromoCodeQuery, useDebounce } from '../../hooks'
+import useOfferStore from '../../context'
 
 export type SearchProps = XStackProps & {
   isPromoScreen?: boolean
@@ -17,9 +18,10 @@ const Search = ({
   placeholder = 'Enter Coupon Code',
   ...props
 }: SearchProps) => {
-  const { control } = useForm<{ offer: string }>({ defaultValues: { offer: '' } })
+  const selectOffer = useOfferStore((state) => state.setOffer)
+  const { control, reset } = useForm<{ offer: string }>({ defaultValues: { offer: '' } })
   const offerValue = useWatch({ control, name: 'offer' })
-  const searchPromoCode = useDebounce(offerValue, 300)
+  const searchPromoCode = useDebounce(offerValue, 500)
   const {
     data: findOfferResult,
     isLoading: isFindingCode,
@@ -27,6 +29,10 @@ const Search = ({
     isSuccess: isFindOfferSuccess,
   } = useQuery(findPromoCodeQuery('/offers', searchPromoCode))
   const errorTextId = useId()
+  const handleApplyOffer = () => {
+    selectOffer(findOfferResult)
+    reset({ offer: '' })
+  }
 
   return (
     <XStack
@@ -66,6 +72,7 @@ const Search = ({
         borderTopRightRadius={5}
         borderBottomRightRadius={5}
         title="apply"
+        onPress={handleApplyOffer}
         isDisable={!isFindOfferSuccess || !findOfferResult?.length}
         loading={isFindingCode}
         fontWeight="700"

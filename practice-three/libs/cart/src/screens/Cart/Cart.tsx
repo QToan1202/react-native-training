@@ -4,10 +4,12 @@ import { NativeStackScreenProps } from '@react-navigation/native-stack'
 
 import { Text as BaseText, Button, Skeleton } from '@shared/components'
 import type { CartStack } from '@shared/types'
+import { calculateDiscountPrice } from '@shared/utils'
 
 import { CartItem, CartItemSkeleton, Search } from '../../components'
 import { TUseFindProductsReturn, useFindProducts } from '../../hooks'
 import { FEES } from '../../constants'
+import useOfferStore from '../../context'
 
 type CartScreenProps = NativeStackScreenProps<CartStack, 'Cart'>
 
@@ -32,6 +34,7 @@ const calculatePrice = (data: Partial<TUseFindProductsReturn>[]) => {
 
 const Cart = ({ navigation }: CartScreenProps) => {
   const [isLoading, data] = useFindProducts()
+  const offerCode = useOfferStore((state) => state.value)
   const renderCartItems = useMemo(
     () =>
       data.map((product: Partial<TUseFindProductsReturn>) => {
@@ -56,6 +59,11 @@ const Cart = ({ navigation }: CartScreenProps) => {
       }),
     [data]
   )
+  const handleSeeMoreOffers = () => navigation.navigate('PromoCode')
+  const offerDiscountValue = useMemo(() => {
+    if (!offerCode) return 0
+    return calculateDiscountPrice(calculatePrice(data), offerCode.discountPercentage)
+  }, [data, offerCode])
 
   return (
     <YStack gap={16}>
@@ -66,6 +74,13 @@ const Cart = ({ navigation }: CartScreenProps) => {
         ? [...Array(2).keys()].map((item) => <CartItemSkeleton key={item} />)
         : renderCartItems}
       <Search />
+      <Button
+        alignSelf="flex-end"
+        padding={5}
+        variant="text"
+        title="see offers"
+        onPress={handleSeeMoreOffers}
+      />
       <YStack borderStyle="dashed" borderBottomWidth={1} borderBottomColor="$pale" gap={15}>
         <XStack justifyContent="space-between" alignItems="center">
           <Text>
@@ -81,10 +96,19 @@ const Cart = ({ navigation }: CartScreenProps) => {
           <Text>Shipping</Text>
           <Text color="$primary">${FEES.SHIP}</Text>
         </XStack>
-        <XStack justifyContent="space-between" alignItems="center">
-          <Text>Promo Code ()</Text>
-          <Text color="$primary">$price</Text>
-        </XStack>
+        {offerCode && (
+          <XStack
+            animation="slow"
+            enterStyle={{
+              opacity: 0,
+            }}
+            justifyContent="space-between"
+            alignItems="center"
+          >
+            <Text>Promo Code ({offerCode.code})</Text>
+            <Text color="$primary">${offerDiscountValue}</Text>
+          </XStack>
+        )}
         <XStack justifyContent="space-between" alignItems="center">
           <Text>Import charges</Text>
           <Text color="$primary">${FEES.IMPORT}</Text>
@@ -99,7 +123,7 @@ const Cart = ({ navigation }: CartScreenProps) => {
           <Skeleton width={70} height={25} />
         ) : (
           <Text color="$green_100" {...textStyles}>
-            ${(calculatePrice(data) + FEES.SHIP + FEES.IMPORT).toFixed(2)}
+            ${(calculatePrice(data) + FEES.SHIP + FEES.IMPORT - offerDiscountValue).toFixed(2)}
           </Text>
         )}
       </XStack>
