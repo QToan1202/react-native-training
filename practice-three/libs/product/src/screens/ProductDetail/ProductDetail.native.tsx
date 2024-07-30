@@ -27,6 +27,7 @@ import {
   findProductQuery,
   getProductsQuery,
   getWishlistQuery,
+  useAddToCart,
   useAddToWishlist,
   useDeleteFromWishlist,
 } from '../../hooks'
@@ -116,7 +117,24 @@ const ProductDetail = ({ navigation, route }: ProductDetailScreenProps) => {
     ),
     [renderSimilarProducts]
   )
-
+  const { mutate: addToCart } = useAddToCart('/carts', user?.id || '')
+  const handleAddToCart = () => {
+    addToCart(
+      { id: productId || '' },
+      {
+        onSuccess: () => {
+          toast.show(`Product have add to cart`, {
+            message: `You have successfully added ${product?.name} to cart!`,
+          })
+        },
+        onError: () => {
+          toast.show(`Something went wrong`, {
+            message: `Can't not add ${product?.name} to cart. Reload and try again.`,
+          })
+        },
+      }
+    )
+  }
   if (isPending) return <Text>Loading...</Text>
   if (error) return <Text>An error has occurred: {error.message}</Text>
 
@@ -143,9 +161,6 @@ const ProductDetail = ({ navigation, route }: ProductDetailScreenProps) => {
         },
       }
     )
-  }
-  const handleAddButtonToCart = () => {
-    throw new Error('Function not implement')
   }
   const [firstCol, secondCol] = renderSpecificationItem(PRODUCT_SPECIFICATIONS_LABELS, product)
   const renderProductContent = (label: string) => {
@@ -379,7 +394,7 @@ const ProductDetail = ({ navigation, route }: ProductDetailScreenProps) => {
           paddingHorizontal={36}
           title="add to bag"
           endIcon={<Bag />}
-          onPress={handleAddButtonToCart}
+          onPress={handleAddToCart}
         />
       </XStack>
       <Toast />

@@ -22,6 +22,7 @@ import {
   findProductQuery,
   getProductsQuery,
   getWishlistQuery,
+  useAddToCart,
   useAddToWishlist,
   useDeleteFromWishlist,
 } from '../../hooks'
@@ -83,8 +84,23 @@ const ProductDetail = () => {
   const toast = useToastController()
   const { mutate: addToWishlist } = useAddToWishlist('/wishlists', userId || '')
   const { mutate: deleteFromWishlist } = useDeleteFromWishlist('/wishlists', userId || '')
+  const { mutate: addToCart, isPending: isAddingToCart } = useAddToCart('/carts', userId || 'd3d1')
   const handleAddToCart = () => {
-    throw new Error('Function not implement')
+    addToCart(
+      { id: productId || '' },
+      {
+        onSuccess: () => {
+          toast.show(`Product have add to cart`, {
+            message: `You have successfully added ${product.name} to cart!`,
+          })
+        },
+        onError: () => {
+          toast.show(`Something went wrong`, {
+            message: `Can't not add ${product.name} to cart. Reload and try again.`,
+          })
+        },
+      }
+    )
   }
   const handlePressLikeBtn = () => {
     if (!isProductInWishlist)
@@ -335,7 +351,7 @@ const ProductDetail = () => {
           </Text>
           {renderOffers}
           <XStack>
-            <Button title="add to cart" onPress={handleAddToCart} />
+            <Button title="add to cart" loading={isAddingToCart} onPress={handleAddToCart} />
             <IconButton onPress={handlePressLikeBtn}>
               {isProductInWishlist ? <HeartFill /> : <Heart />}
             </IconButton>

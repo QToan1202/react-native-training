@@ -2,7 +2,7 @@ import { useMemo, useRef } from 'react'
 import { queryOptions, useQueries, UseQueryResult, useSuspenseQuery } from '@tanstack/react-query'
 
 import { find } from '@shared/services'
-import { TProduct } from '@shared/types'
+import { TProduct, TCartItem } from '@shared/types'
 import { useAuthStore } from '@shared/stores'
 
 import { STALE_TIMES } from '../../constants'
@@ -15,29 +15,23 @@ export const findProductQuery = (path: string, id: string) =>
     staleTime: STALE_TIMES.PRODUCT_INFO,
   })
 
-export type TUseFindProductsReturn = {
-  id: string
-  name: string
-  price: number
-  image: string
-  quantity: number
-}
-export const useFindProducts = (): [boolean, Partial<TUseFindProductsReturn>[]] => {
+export const useFindProducts = (): [boolean, Partial<TCartItem>[]] => {
   const user = useAuthStore((state) => state.user)
-  const { data: carts } = useSuspenseQuery(getCartQuery('carts', user?.id || 'd3d1'))
+  // const { data: carts } = useSuspenseQuery(getCartQuery('carts', user?.id || 'd3d1'))
+  const { data: carts } = useSuspenseQuery(getCartQuery('carts', user?.id || ''))
   const getProductsQuery = useQueries({
-    queries: carts[0].productId.map((item) => findProductQuery('/products', item)),
+    queries: Object.keys(carts[0].items).map((item) => findProductQuery('/products', item)),
   })
   const isFetchingProduct = useRef<boolean>(true)
 
-  const data: Partial<TUseFindProductsReturn>[] = useMemo(
+  const data: Partial<TCartItem>[] = useMemo(
     () =>
       getProductsQuery.map(
         (
           { data: product, isSuccess: isGetProductSuccess }: UseQueryResult<TProduct, Error>,
           index: number
         ) => {
-          const [{ quantity }] = carts
+          const { items } = carts[0]
 
           if (!isGetProductSuccess) return {}
 
@@ -45,7 +39,7 @@ export const useFindProducts = (): [boolean, Partial<TUseFindProductsReturn>[]] 
 
           if (getProductsQuery.length - 1 === index) isFetchingProduct.current = false
 
-          return { id, name, price, image, quantity: quantity[index] }
+          return { id, name, price, image, quantity: items[id] }
         }
       ),
     // eslint-disable-next-line react-hooks/exhaustive-deps

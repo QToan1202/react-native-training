@@ -3,11 +3,10 @@ import { useMemo } from 'react'
 import { NativeStackScreenProps } from '@react-navigation/native-stack'
 
 import { Text as BaseText, Button, Skeleton } from '@shared/components'
-import type { CartStack } from '@shared/types'
-import { calculateDiscountPrice } from '@shared/utils'
+import type { CartStack, TCartItem } from '@shared/types'
 
 import { CartItem, CartItemSkeleton, Search } from '../../components'
-import { TUseFindProductsReturn, useFindProducts } from '../../hooks'
+import { useFindProducts } from '../../hooks'
 import { FEES } from '../../constants'
 import { useOfferStore } from '../../context'
 
@@ -24,7 +23,7 @@ const textStyles: TextContextStyles = {
   letterSpacing: 0.5,
 }
 
-const calculatePrice = (data: Partial<TUseFindProductsReturn>[]) => {
+const calculatePrice = (data: Partial<TCartItem>[]) => {
   return data.reduce((prev, curr) => {
     if (!curr?.price) return prev
 
@@ -37,11 +36,11 @@ const Cart = ({ navigation }: CartScreenProps) => {
   const offerCode = useOfferStore((state) => state.value)
   const renderCartItems = useMemo(
     () =>
-      data.map((product: Partial<TUseFindProductsReturn>) => {
+      data.map((product: Partial<TCartItem>) => {
         const { id, name, price, image, quantity } = product
 
         if (!id || !name || !price || !image || !quantity) return null
-        const foundProduct = product as TUseFindProductsReturn
+        const foundProduct = product as TCartItem
 
         return (
           <CartItem
