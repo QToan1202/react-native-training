@@ -9,7 +9,7 @@ import { calculateDiscountPrice } from '@shared/utils'
 import { CartItem, CartItemSkeleton, Search } from '../../components'
 import { TUseFindProductsReturn, useFindProducts } from '../../hooks'
 import { FEES } from '../../constants'
-import useOfferStore from '../../context'
+import { useOfferStore } from '../../context'
 
 type CartScreenProps = NativeStackScreenProps<CartStack, 'Cart'>
 
@@ -62,7 +62,8 @@ const Cart = ({ navigation }: CartScreenProps) => {
   const handleSeeMoreOffers = () => navigation.navigate('PromoCode')
   const offerDiscountValue = useMemo(() => {
     if (!offerCode) return 0
-    return calculateDiscountPrice(calculatePrice(data), offerCode.discountPercentage)
+
+    return ((calculatePrice(data) * offerCode.discountPercentage) / 100).toFixed(2)
   }, [data, offerCode])
 
   return (
@@ -106,7 +107,7 @@ const Cart = ({ navigation }: CartScreenProps) => {
             alignItems="center"
           >
             <Text>Promo Code ({offerCode.code})</Text>
-            <Text color="$primary">${offerDiscountValue}</Text>
+            <Text color="$primary">(-${offerDiscountValue})</Text>
           </XStack>
         )}
         <XStack justifyContent="space-between" alignItems="center">
@@ -123,7 +124,7 @@ const Cart = ({ navigation }: CartScreenProps) => {
           <Skeleton width={70} height={25} />
         ) : (
           <Text color="$green_100" {...textStyles}>
-            ${(calculatePrice(data) + FEES.SHIP + FEES.IMPORT - offerDiscountValue).toFixed(2)}
+            ${(calculatePrice(data) + FEES.SHIP + FEES.IMPORT - +offerDiscountValue).toFixed(2)}
           </Text>
         )}
       </XStack>
