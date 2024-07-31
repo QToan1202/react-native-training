@@ -53,7 +53,7 @@ const createTab = (value: string, title: string, content: ReactNode) => {
       <Tab value={value} {...containerStyle}>
         <TabHeadingText
           {...(value === currentValue && {
-            color: '$blue_300',
+            color: '$primary',
             textDecorationLine: 'underline',
             textDecorationStyle: 'solid',
             '$platform-web': {
