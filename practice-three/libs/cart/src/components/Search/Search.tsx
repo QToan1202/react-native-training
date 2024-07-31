@@ -6,7 +6,7 @@ import { useQuery } from '@tanstack/react-query'
 import { Button, Input, Text } from '@shared/components'
 
 import { findPromoCodeQuery, useDebounce } from '../../hooks'
-import useOfferStore from '../../context'
+import { useOfferStore } from '../../context'
 
 export type SearchProps = XStackProps & {
   isPromoScreen?: boolean
