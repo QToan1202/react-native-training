@@ -71,7 +71,7 @@ const CartItem = ({
             <Trash />
           </IconButton>
         </XStack>
-        <Counter defaultValue={quantity} />
+        <Counter productId={id} defaultValue={quantity} />
       </YStack>
     </XStack>
   )

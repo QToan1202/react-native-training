@@ -9,9 +9,11 @@ import { Button } from '../Button'
 export type AlertDialogProps = TAlertDialogProps & {
   title: string
   description: string
+  onSuccess?: () => void
+  onCancel?: () => void
 }
 
-const AlertDialog = ({ title, description, ...rest }: AlertDialogProps) => {
+const AlertDialog = ({ title, description, onSuccess, onCancel, ...rest }: AlertDialogProps) => {
   return (
     <TAlertDialog native {...rest}>
       <TAlertDialog.Portal>
@@ -42,6 +44,7 @@ const AlertDialog = ({ title, description, ...rest }: AlertDialogProps) => {
               <TAlertDialog.Cancel asChild>
                 <Button
                   title="Cancel"
+                  onPress={onCancel}
                   variant="outlined"
                   paddingHorizontal={18}
                   paddingVertical={12}
@@ -49,7 +52,12 @@ const AlertDialog = ({ title, description, ...rest }: AlertDialogProps) => {
               </TAlertDialog.Cancel>
 
               <TAlertDialog.Action asChild>
-                <Button title="Accept" paddingHorizontal={18} paddingVertical={12} />
+                <Button
+                  title="Accept"
+                  onPress={onSuccess}
+                  paddingHorizontal={18}
+                  paddingVertical={12}
+                />
               </TAlertDialog.Action>
             </XStack>
           </YStack>
