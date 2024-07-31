@@ -4,6 +4,7 @@ import { NativeStackScreenProps } from '@react-navigation/native-stack'
 
 import { Text as BaseText, Button, Skeleton } from '@shared/components'
 import type { CartStack, TCartItem } from '@shared/types'
+import { useCartStore } from '@shared/contexts'
 
 import { CartItem, CartItemSkeleton, Search } from '../../components'
 import { useFindProducts } from '../../hooks'

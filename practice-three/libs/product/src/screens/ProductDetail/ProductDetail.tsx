@@ -15,7 +15,7 @@ import {
   Toast,
 } from '@shared/components'
 import { TOffer, TProduct, TReview, TUser, TWishlistBase } from '@shared/types'
-import { useAuthStore } from '@shared/stores'
+import { useAuthStore } from '@shared/contexts'
 import { getOffersQuery } from '@shared/queries'
 
 import {

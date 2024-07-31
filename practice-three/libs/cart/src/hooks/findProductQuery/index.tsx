@@ -3,7 +3,7 @@ import { queryOptions, useQueries, UseQueryResult, useSuspenseQuery } from '@tan
 
 import { find } from '@shared/services'
 import { TProduct, TCartItem } from '@shared/types'
-import { useAuthStore } from '@shared/stores'
+import { useAuthStore, useCartStore } from '@shared/contexts'
 
 import { STALE_TIMES } from '../../constants'
 import getCartQuery from '../getCartQuery'

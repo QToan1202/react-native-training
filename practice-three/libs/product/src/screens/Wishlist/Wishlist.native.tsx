@@ -4,7 +4,7 @@ import { NativeStackScreenProps } from '@react-navigation/native-stack'
 import { useQuery } from '@tanstack/react-query'
 
 import { ProductStack, TUser, TWishlistExpand } from '@shared/types'
-import { useAuthStore } from '@shared/stores'
+import { useAuthStore } from '@shared/contexts'
 import { Button, Text } from '@shared/components'
 
 import { getWishlistQuery } from '../../hooks'

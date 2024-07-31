@@ -21,7 +21,7 @@ import {
 import { calculateDiscountPrice } from '@shared/utils'
 import { getOffersQuery } from '@shared/queries'
 import { ProductStack, TOffer, TProduct, TReview, TWishlistBase } from '@shared/types'
-import { useAuthStore } from '@shared/stores'
+import { useAuthStore } from '@shared/contexts'
 
 import {
   findProductQuery,
