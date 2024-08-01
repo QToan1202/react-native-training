@@ -1,13 +1,15 @@
-import { memo } from 'react'
+import { memo, useCallback, useContext, useMemo, useState } from 'react'
 import { Heading, XStack, XStackProps, YStack, getTokenValue } from 'tamagui'
 import { GestureResponderEvent, ImageURISource } from 'react-native'
 import isEqual from 'react-fast-compare'
+import { useStore } from 'zustand'
 
 import { TProduct } from '@shared/types'
-import { IconButton, Image, Text } from '@shared/components'
+import { AlertDialog, IconButton, Image, Text } from '@shared/components'
 
 import { Heart, Trash } from '../../assets/images'
 import { Counter } from '../Counter'
+import { CartContext } from '../../context'
 
 type TCartItem = 'id' | 'name' | 'price'
 export type CartItemProps = XStackProps &
@@ -37,17 +39,19 @@ const CartItem = ({
     onPress?.(event)
     onPressItem?.(id)
   }
-
-  return (
-    <XStack
-      borderRadius={5}
-      borderWidth={1}
-      borderColor="$pale"
-      padding={16}
-      justifyContent="space-between"
-      onPress={handlePressItemAction}
-      {...rest}
-    >
+  const [isOpen, setIsOpen] = useState<boolean>(false)
+  const store = useContext(CartContext)
+  const remove = useStore(store, (state) => state.remove)
+  const handleCancelAlert = () => {
+    setIsOpen(false)
+  }
+  const handleSuccessAlert = () => {
+    handleCancelAlert()
+    remove(id)
+  }
+  const handlePressDeleteIcon = useCallback(() => {
+    setIsOpen(true)
+  }, [])
       <XStack>
         <Image
           borderRadius={5}
@@ -69,12 +73,19 @@ const CartItem = ({
       <YStack gap={8} alignSelf="flex-end" justifyContent="space-evenly">
         <XStack justifyContent="flex-end">
           <IconButton>{isLiked ? <HeartFill /> : <Heart />}</IconButton>
-          <IconButton>
+        <IconButton onPress={handlePressDeleteIcon}>
             <Trash />
           </IconButton>
         </XStack>
         <Counter productId={id} defaultValue={quantity} />
       </YStack>
+      <AlertDialog
+        title="Remove product"
+        open={isOpen}
+        description="Are you sure you want to delete this item from your cart? This action cannot be undone."
+        onCancel={handleCancelAlert}
+        onSuccess={handleSuccessAlert}
+      />
     </XStack>
   )
 }
