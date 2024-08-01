@@ -52,6 +52,8 @@ const CartItem = ({
   const handlePressDeleteIcon = useCallback(() => {
     setIsOpen(true)
   }, [])
+  const renderContent = useMemo(
+    () => (
       <XStack>
         <Image
           borderRadius={5}
@@ -70,13 +72,34 @@ const CartItem = ({
           </Text>
         </YStack>
       </XStack>
-      <YStack gap={8} alignSelf="flex-end" justifyContent="space-evenly">
-        <XStack justifyContent="flex-end">
-          <IconButton>{isLiked ? <HeartFill /> : <Heart />}</IconButton>
+    ),
+    [image, name, price]
+  )
+  const renderIcons = useMemo(
+    () => (
+      <XStack justifyContent="flex-end">
+        <IconButton>{isLiked ? <HeartFill /> : <Heart />}</IconButton>
         <IconButton onPress={handlePressDeleteIcon}>
-            <Trash />
-          </IconButton>
-        </XStack>
+          <Trash />
+        </IconButton>
+      </XStack>
+    ),
+    [isLiked, handlePressDeleteIcon]
+  )
+
+  return (
+    <XStack
+      borderRadius={5}
+      borderWidth={1}
+      borderColor="$pale"
+      padding={16}
+      justifyContent="space-between"
+      onPress={handlePressItemAction}
+      {...rest}
+    >
+      {renderContent}
+      <YStack gap={8} alignSelf="flex-end" justifyContent="space-evenly">
+        {renderIcons}
         <Counter productId={id} defaultValue={quantity} />
       </YStack>
       <AlertDialog
