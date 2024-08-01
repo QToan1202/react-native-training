@@ -1,7 +1,7 @@
+import { createContext } from 'react'
 import { createStore, StoreApi } from 'zustand'
 
 import { TCartItem, TProduct } from '@shared/types'
-import { createContext } from 'react'
 
 export type CartState = {
   cart: TCartItem[]
@@ -61,12 +61,9 @@ const cartStore = createStore<CartState & CartAction>()((set) => ({
       return { cart: newCart }
     }),
   remove: (productId: TProduct['id']) =>
-    set((state) => {
-      console.log('this', state.cart)
-      return {
-        cart: state.cart.filter(({ id }: TCartItem) => id !== productId),
-      }
-    }),
+    set((state) => ({
+      cart: state.cart.filter(({ id }: TCartItem) => id !== productId),
+    })),
   clear: () => set(() => ({ ...initState })),
 }))
 
