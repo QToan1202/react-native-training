@@ -3,7 +3,7 @@ import { queryOptions, useQueries, UseQueryResult, useSuspenseQuery } from '@tan
 
 import { find } from '@shared/services'
 import { TProduct, TCartItem } from '@shared/types'
-import { useAuthStore, useCartStore } from '@shared/contexts'
+import { useAuthStore } from '@shared/contexts'
 
 import { STALE_TIMES } from '../../constants'
 import getCartQuery from '../getCartQuery'
@@ -15,33 +15,32 @@ export const findProductQuery = (path: string, id: string) =>
     staleTime: STALE_TIMES.PRODUCT_INFO,
   })
 
-export const useFindProducts = (): [boolean, Partial<TCartItem>[]] => {
+export const useFindProducts = (): [boolean, TCartItem[]] => {
   const user = useAuthStore((state) => state.user)
-  // const { data: carts } = useSuspenseQuery(getCartQuery('carts', user?.id || 'd3d1'))
-  const { data: carts } = useSuspenseQuery(getCartQuery('carts', user?.id || ''))
+  const isFetchingProduct = useRef<boolean>(true)
   const getProductsQuery = useQueries({
     queries: Object.keys(carts[0].items).map((item) => findProductQuery('/products', item)),
   })
-  const isFetchingProduct = useRef<boolean>(true)
-
-  const data: Partial<TCartItem>[] = useMemo(
+  const data = useMemo(
     () =>
-      getProductsQuery.map(
+      getProductsQuery
+        .map(
         (
           { data: product, isSuccess: isGetProductSuccess }: UseQueryResult<TProduct, Error>,
           index: number
         ) => {
           const { items } = carts[0]
 
-          if (!isGetProductSuccess) return {}
+            if (!isGetProductSuccess) return null
 
           const { id, name, price, image } = product
 
           if (getProductsQuery.length - 1 === index) isFetchingProduct.current = false
 
-          return { id, name, price, image, quantity: items[id] }
+            return { id, name, price, image, quantity: items[id] } as TCartItem
         }
-      ),
+        )
+        .filter((item) => item) as TCartItem[],
     // eslint-disable-next-line react-hooks/exhaustive-deps
     [getProductsQuery]
   )
