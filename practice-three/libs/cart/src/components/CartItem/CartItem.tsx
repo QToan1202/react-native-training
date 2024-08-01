@@ -6,10 +6,12 @@ import { useStore } from 'zustand'
 
 import { TProduct } from '@shared/types'
 import { AlertDialog, IconButton, Image, Text } from '@shared/components'
+import { useAuthStore } from '@shared/contexts'
 
 import { Heart, Trash } from '../../assets/images'
 import { Counter } from '../Counter'
 import { CartContext } from '../../context'
+import { useDeleteCartItem } from '../../hooks'
 
 type TCartItem = 'id' | 'name' | 'price'
 export type CartItemProps = XStackProps &
@@ -29,12 +31,13 @@ const CartItem = ({
   image,
   name,
   price,
-  isLiked = false,
   quantity,
+  isLiked = false,
   onPressItem,
   onPress,
   ...rest
 }: CartItemProps) => {
+  const user = useAuthStore((state) => state.user)
   const handlePressItemAction = (event: GestureResponderEvent) => {
     onPress?.(event)
     onPressItem?.(id)
@@ -42,12 +45,15 @@ const CartItem = ({
   const [isOpen, setIsOpen] = useState<boolean>(false)
   const store = useContext(CartContext)
   const remove = useStore(store, (state) => state.remove)
+  const { mutate: removeItemFromCart } = useDeleteCartItem('/carts', user?.id || 'd3d1')
   const handleCancelAlert = () => {
     setIsOpen(false)
   }
   const handleSuccessAlert = () => {
     handleCancelAlert()
-    remove(id)
+    removeItemFromCart(id, {
+      onSuccess: () => remove(id),
+    })
   }
   const handlePressDeleteIcon = useCallback(() => {
     setIsOpen(true)

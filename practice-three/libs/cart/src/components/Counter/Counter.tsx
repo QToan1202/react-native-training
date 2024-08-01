@@ -9,9 +9,11 @@ import {
   BaseInput,
   BaseInputProps,
 } from '@shared/components'
+import { useAuthStore } from '@shared/contexts'
 
 import { Minus, Plus } from '../../assets/images'
 import { CartContext } from '../../context'
+import { useDeleteCartItem } from '../../hooks'
 
 export type CounterProps = Omit<BaseInputProps, 'defaultValue'> & {
   productId: string
@@ -53,7 +55,7 @@ const Counter = ({
     store,
     useShallow((state) => [state.remove, state.update])
   )
-
+  const user = useAuthStore((state) => state.user)
   const [num, setNum] = useState<number>(defaultValue)
   const [isOpen, setIsOpen] = useState<boolean>(false)
   const handleMinus = () =>
@@ -77,14 +79,16 @@ const Counter = ({
     update(productId, +value)
     setNum(+value)
   }
-
+  const { mutate: removeItemFromCart } = useDeleteCartItem('/carts', user?.id || 'd3d1')
   const handleCancelAlert = () => {
     setIsOpen(false)
   }
 
   const handleSuccessAlert = () => {
     handleCancelAlert()
-    remove(productId)
+    removeItemFromCart(productId, {
+      onSuccess: () => remove(productId),
+    })
   }
 
   return (
