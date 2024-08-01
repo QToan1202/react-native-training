@@ -18,6 +18,7 @@ export const findProductQuery = (path: string, id: string) =>
 export const useFindProducts = (): [boolean, TCartItem[]] => {
   const user = useAuthStore((state) => state.user)
   const isFetchingProduct = useRef<boolean>(true)
+  const { data: carts } = useSuspenseQuery(getCartQuery('carts', user?.id || ''))
 
   if (!Object.keys(carts[0].items).length) {
     isFetchingProduct.current = false
