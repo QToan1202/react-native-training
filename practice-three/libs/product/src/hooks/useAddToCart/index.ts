@@ -11,7 +11,7 @@ import { TCart, TProduct } from '@shared/types'
 
 import { STALE_TIMES } from '../../constants'
 
-type TMutationDFn = Pick<TProduct, 'id'>
+type TMutationDFn = TProduct | null
 
 const getCartQuery = (path: string, userId: string) =>
   queryOptions<TCart[], Error, TCart[], string[]>({
@@ -29,6 +29,8 @@ const useAddToCart = (
 
   return useMutation<TCart, Error, TMutationDFn, unknown>({
     mutationFn: (data: TMutationDFn): Promise<TCart> => {
+      if (!data) throw new Error('Product data need to add not ready!')
+
       // Create the CART for user in database
       if (!cart.length) return add<TCart>(path, { userId, items: { [data.id]: 1 } })
 

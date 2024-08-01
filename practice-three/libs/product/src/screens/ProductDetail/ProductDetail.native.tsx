@@ -43,7 +43,12 @@ export type ProductDetailScreenProps = Partial<
 const ProductDetail = ({ navigation, route }: ProductDetailScreenProps) => {
   const productId = route?.params.id || ''
   const user = useAuthStore((state) => state.user)
-  const { data: product, isPending, error } = useQuery(findProductQuery('/products', productId))
+  const {
+    data: product,
+    isSuccess: isGetProductDetailSuccess,
+    isPending,
+    error,
+  } = useQuery(findProductQuery('/products', productId))
   const { data: similarProducts, isSuccess: isGetProductsSuccess } = useQuery(
     getProductsQuery('/products')
   )
@@ -119,21 +124,18 @@ const ProductDetail = ({ navigation, route }: ProductDetailScreenProps) => {
   )
   const { mutate: addToCart } = useAddToCart('/carts', user?.id || '')
   const handleAddToCart = () => {
-    addToCart(
-      { id: productId || '' },
-      {
-        onSuccess: () => {
-          toast.show(`Product have add to cart`, {
-            message: `You have successfully added ${product?.name} to cart!`,
-          })
-        },
-        onError: () => {
-          toast.show(`Something went wrong`, {
-            message: `Can't not add ${product?.name} to cart. Reload and try again.`,
-          })
-        },
-      }
-    )
+    addToCart(isGetProductDetailSuccess ? product : null, {
+      onSuccess: () => {
+        toast.show(`Product have add to cart`, {
+          message: `You have successfully added ${product?.name} to cart!`,
+        })
+      },
+      onError: () => {
+        toast.show(`Something went wrong`, {
+          message: `Can't not add ${product?.name} to cart. Reload and try again.`,
+        })
+      },
+    })
   }
   if (isPending) return <Text>Loading...</Text>
   if (error) return <Text>An error has occurred: {error.message}</Text>

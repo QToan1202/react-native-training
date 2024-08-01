@@ -86,21 +86,18 @@ const ProductDetail = () => {
   const { mutate: deleteFromWishlist } = useDeleteFromWishlist('/wishlists', userId || '')
   const { mutate: addToCart, isPending: isAddingToCart } = useAddToCart('/carts', userId || 'd3d1')
   const handleAddToCart = () => {
-    addToCart(
-      { id: productId || '' },
-      {
-        onSuccess: () => {
-          toast.show(`Product have add to cart`, {
-            message: `You have successfully added ${product.name} to cart!`,
-          })
-        },
-        onError: () => {
-          toast.show(`Something went wrong`, {
-            message: `Can't not add ${product.name} to cart. Reload and try again.`,
-          })
-        },
-      }
-    )
+    addToCart(product, {
+      onSuccess: () => {
+        toast.show(`Product have add to cart`, {
+          message: `You have successfully added ${product.name} to cart!`,
+        })
+      },
+      onError: () => {
+        toast.show(`Something went wrong`, {
+          message: `Can't not add ${product.name} to cart. Reload and try again.`,
+        })
+      },
+    })
   }
   const handlePressLikeBtn = () => {
     if (!isProductInWishlist)
