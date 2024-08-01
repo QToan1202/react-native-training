@@ -1,5 +1,6 @@
-import { useState } from 'react'
+import { useContext, useState } from 'react'
 import { styled, XStack, XStackProps } from 'tamagui'
+import { useStore } from 'zustand'
 import { useShallow } from 'zustand/react/shallow'
 
 import {
@@ -10,7 +11,7 @@ import {
 } from '@shared/components'
 
 import { Minus, Plus } from '../../assets/images'
-import { useCartStore } from '@shared/contexts'
+import { CartContext } from '../../context'
 
 export type CounterProps = Omit<BaseInputProps, 'defaultValue'> & {
   productId: string
@@ -47,9 +48,14 @@ const Counter = ({
   productId,
   ...rest
 }: CounterProps) => {
+  const store = useContext(CartContext)
+  const [remove, update] = useStore(
+    store,
+    useShallow((state) => [state.remove, state.update])
+  )
+
   const [num, setNum] = useState<number>(defaultValue)
   const [isOpen, setIsOpen] = useState<boolean>(false)
-  const [remove, update] = useCartStore(useShallow((state) => [state.remove, state.update]))
   const handleMinus = () =>
     setNum((prevNum) => {
       if (prevNum <= 1) {

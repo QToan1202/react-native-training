@@ -1,5 +1,7 @@
+import { memo } from 'react'
 import { Heading, XStack, XStackProps, YStack, getTokenValue } from 'tamagui'
 import { GestureResponderEvent, ImageURISource } from 'react-native'
+import isEqual from 'react-fast-compare'
 
 import { TProduct } from '@shared/types'
 import { IconButton, Image, Text } from '@shared/components'
@@ -77,4 +79,4 @@ const CartItem = ({
   )
 }
 
-export default CartItem
+export default memo(CartItem, isEqual)
