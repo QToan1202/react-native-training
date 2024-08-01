@@ -18,6 +18,11 @@ export const findProductQuery = (path: string, id: string) =>
 export const useFindProducts = (): [boolean, TCartItem[]] => {
   const user = useAuthStore((state) => state.user)
   const isFetchingProduct = useRef<boolean>(true)
+
+  if (!Object.keys(carts[0].items).length) {
+    isFetchingProduct.current = false
+  }
+
   const getProductsQuery = useQueries({
     queries: Object.keys(carts[0].items).map((item) => findProductQuery('/products', item)),
   })
