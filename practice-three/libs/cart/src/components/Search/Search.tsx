@@ -5,7 +5,7 @@ import { useQuery } from '@tanstack/react-query'
 
 import { Button, Input, Text } from '@shared/components'
 
-import { findPromoCodeQuery, useDebounce } from '../../hooks'
+import { findPromoCodeQuery, useDebounceValue } from '../../hooks'
 import { useOfferStore } from '../../context'
 
 export type SearchProps = XStackProps & {
@@ -21,7 +21,7 @@ const Search = ({
   const selectOffer = useOfferStore((state) => state.setOffer)
   const { control, reset } = useForm<{ offer: string }>({ defaultValues: { offer: '' } })
   const offerValue = useWatch({ control, name: 'offer' })
-  const searchPromoCode = useDebounce(offerValue, 500)
+  const searchPromoCode = useDebounceValue(offerValue, 500)
   const {
     data: findOfferResult,
     isLoading: isFindingCode,
