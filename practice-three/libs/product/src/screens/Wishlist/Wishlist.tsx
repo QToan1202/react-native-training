@@ -23,7 +23,7 @@ const Heading = styled(H2, {
 
 export const wishlistLoader = (queryClient: QueryClient) => async () => {
   const user: TUser | undefined = useAuthStore.getState().user
-  queryClient.ensureQueryData(getWishlistQuery('/wishlists', user?.id || 'd3d1', true))
+  queryClient.ensureQueryData(getWishlistQuery('/wishlists', user?.id || '', true))
 
   return { userId: user?.id }
 }

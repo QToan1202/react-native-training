@@ -31,20 +31,20 @@ export const useFindProducts = (): [boolean, TCartItem[]] => {
     () =>
       getProductsQuery
         .map(
-        (
-          { data: product, isSuccess: isGetProductSuccess }: UseQueryResult<TProduct, Error>,
-          index: number
-        ) => {
-          const { items } = carts[0]
+          (
+            { data: product, isSuccess: isGetProductSuccess }: UseQueryResult<TProduct, Error>,
+            index: number
+          ) => {
+            const { items } = carts[0]
 
             if (!isGetProductSuccess) return null
 
-          const { id, name, price, image } = product
+            const { id, name, price, image } = product
 
-          if (getProductsQuery.length - 1 === index) isFetchingProduct.current = false
+            if (getProductsQuery.length - 1 === index) isFetchingProduct.current = false
 
             return { id, name, price, image, quantity: items[id] } as TCartItem
-        }
+          }
         )
         .filter((item) => item) as TCartItem[],
     // eslint-disable-next-line react-hooks/exhaustive-deps

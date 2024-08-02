@@ -84,7 +84,7 @@ const ProductDetail = () => {
   const toast = useToastController()
   const { mutate: addToWishlist } = useAddToWishlist('/wishlists', userId || '')
   const { mutate: deleteFromWishlist } = useDeleteFromWishlist('/wishlists', userId || '')
-  const { mutate: addToCart, isPending: isAddingToCart } = useAddToCart('/carts', userId || 'd3d1')
+  const { mutate: addToCart, isPending: isAddingToCart } = useAddToCart('/carts', userId || '')
   const handleAddToCart = () => {
     addToCart(product, {
       onSuccess: () => {

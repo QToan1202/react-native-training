@@ -58,8 +58,8 @@ const Counter = ({
   const user = useAuthStore((state) => state.user)
   const [num, setNum] = useState<number>(defaultValue)
   const [isOpen, setIsOpen] = useState<boolean>(false)
-  const { mutate: updateItemQuantity } = useUpdateCartQuantity('/carts', user?.id || 'd3d1')
-  const { mutate: removeItemFromCart } = useDeleteCartItem('/carts', user?.id || 'd3d1')
+  const { mutate: updateItemQuantity } = useUpdateCartQuantity('/carts', user?.id || '')
+  const { mutate: removeItemFromCart } = useDeleteCartItem('/carts', user?.id || '')
   const debounceUpdateItemQuantity = useDebounce(updateItemQuantity, 500)
 
   const handleMinus = () =>

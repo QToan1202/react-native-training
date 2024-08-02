@@ -45,7 +45,7 @@ const CartItem = ({
   const [isOpen, setIsOpen] = useState<boolean>(false)
   const store = useContext(CartContext)
   const remove = useStore(store, (state) => state.remove)
-  const { mutate: removeItemFromCart } = useDeleteCartItem('/carts', user?.id || 'd3d1')
+  const { mutate: removeItemFromCart } = useDeleteCartItem('/carts', user?.id || '')
   const handleCancelAlert = () => {
     setIsOpen(false)
   }
