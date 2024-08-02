@@ -16,7 +16,12 @@ const config: StorybookConfig = {
   viteFinal: async (config) =>
     mergeConfig(config, {
       plugins: [
-        svgr(),
+        svgr({
+          svgrOptions: {
+            ref: true,
+            memo: true,
+          },
+        }),
         tamaguiPlugin({
           components: ['tamagui'],
           config: '../src/tamagui.config.ts',
