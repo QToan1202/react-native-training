@@ -1,5 +1,5 @@
 import { Heading, YStack } from 'tamagui'
-import { useContext, useEffect } from 'react'
+import { useEffect } from 'react'
 import { useStore } from 'zustand'
 import { NativeStackScreenProps } from '@react-navigation/native-stack'
 
@@ -14,8 +14,7 @@ type CartScreenProps = NativeStackScreenProps<CartStack, 'Cart'>
 
 const Cart = ({ navigation }: CartScreenProps) => {
   const [isLoading, data] = useFindProducts()
-  const store = useContext(CartContext)
-  const set = useStore(store, (state) => state.set)
+  const set = useStore(cartStore, (state) => state.set)
   useEffect(() => {
     !isLoading && set(data)
     // eslint-disable-next-line react-hooks/exhaustive-deps

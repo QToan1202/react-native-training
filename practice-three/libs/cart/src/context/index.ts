@@ -1,4 +1,4 @@
 export { default as useOfferStore } from './useOfferStore'
 
-export * from './useCartStore'
-export { default as cartStore } from './useCartStore'
+export * from './cartStore'
+export { default as cartStore } from './cartStore'
