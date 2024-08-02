@@ -1,5 +1,5 @@
 import { useContext, useState } from 'react'
-import { styled, XStack, XStackProps } from 'tamagui'
+import { styled, useDebounce, XStack, XStackProps } from 'tamagui'
 import { useStore } from 'zustand'
 import { useShallow } from 'zustand/react/shallow'
 
@@ -13,7 +13,7 @@ import { useAuthStore } from '@shared/contexts'
 
 import { Minus, Plus } from '../../assets/images'
 import { CartContext } from '../../context'
-import { useDeleteCartItem } from '../../hooks'
+import { useDeleteCartItem, useUpdateCartQuantity } from '../../hooks'
 
 export type CounterProps = Omit<BaseInputProps, 'defaultValue'> & {
   productId: string
@@ -58,6 +58,10 @@ const Counter = ({
   const user = useAuthStore((state) => state.user)
   const [num, setNum] = useState<number>(defaultValue)
   const [isOpen, setIsOpen] = useState<boolean>(false)
+  const { mutate: updateItemQuantity } = useUpdateCartQuantity('/carts', user?.id || 'd3d1')
+  const { mutate: removeItemFromCart } = useDeleteCartItem('/carts', user?.id || 'd3d1')
+  const debounceUpdateItemQuantity = useDebounce(updateItemQuantity, 500)
+
   const handleMinus = () =>
     setNum((prevNum) => {
       if (prevNum <= 1) {
@@ -65,21 +69,38 @@ const Counter = ({
         return prevNum
       }
 
-      update(productId, prevNum - 1)
+      debounceUpdateItemQuantity(
+        { id: productId, quantity: prevNum - 1 },
+        {
+          onSuccess: () => update(productId, prevNum - 1),
+        }
+      )
+
       return prevNum - 1
     })
   const handleAdd = () =>
     setNum((prevNum) => {
-      update(productId, prevNum + 1)
+      debounceUpdateItemQuantity(
+        { id: productId, quantity: prevNum + 1 },
+        {
+          onSuccess: () => update(productId, prevNum + 1),
+        }
+      )
+
       return prevNum + 1
     })
   const handleEnterCounter = (value: string) => {
     onChangeText?.(value)
 
-    update(productId, +value)
+    debounceUpdateItemQuantity(
+      { id: productId, quantity: +value },
+      {
+        onSuccess: () => update(productId, +value),
+      }
+    )
+
     setNum(+value)
   }
-  const { mutate: removeItemFromCart } = useDeleteCartItem('/carts', user?.id || 'd3d1')
   const handleCancelAlert = () => {
     setIsOpen(false)
   }
