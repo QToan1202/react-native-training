@@ -41,7 +41,7 @@ const ButtonFrame = styled(View, {
   flexDirection: 'row',
   paddingVertical: 15,
   paddingHorizontal: 35,
-  borderRadius: 10,
+  borderRadius: 5,
   borderWidth: 2,
   gap: 6,
   pressStyle: {
