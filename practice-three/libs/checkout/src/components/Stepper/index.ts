@@ -1,3 +1,5 @@
 export * from './Stepper'
 export { default as Stepper } from './Stepper'
-export { default as StepperItem } from './StepperItem'
+export { default as Step } from './Step'
+export { default as StepLabel } from './StepLabel'
+export { default as StepConnector } from './StepConnector'

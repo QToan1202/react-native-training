@@ -1,7 +1,8 @@
 import type { Meta, StoryObj } from '@storybook/react'
 
 import Stepper from './Stepper'
-import StepperItem from './StepperItem'
+import Step from './Step'
+import StepLabel from './StepLabel'
 
 const meta: Meta<typeof Stepper> = {
   component: Stepper,
@@ -12,15 +13,14 @@ export default meta
 
 type Story = StoryObj<typeof Stepper>
 
+const stepLabels = ['Cart', 'Address', 'Payment', 'Summary']
+
 export const Default: Story = {
   args: {
-    children: (
-      <>
-        <StepperItem label="Cart" />
-        <StepperItem label="Address" />
-        <StepperItem label="Payment" />
-        <StepperItem label="Summary" />
-      </>
-    ),
+    children: stepLabels.map((label: string) => (
+      <Step key={label}>
+        <StepLabel>{label}</StepLabel>
+      </Step>
+    )),
   },
 }
