@@ -8,12 +8,19 @@ import { Step, StepLabel, Stepper } from '../../components'
 import { STEPPER_LABELS } from '../../constant'
 import { ArrowLeft } from '../../assets/images'
 import { AddressList } from '../../components'
+import { useAddressStore } from '../../contexts'
 
 type AddressScreenProps = NativeStackScreenProps<CheckoutStack, 'Address'>
+
+const getStepIndex = (label: string) =>
+  STEPPER_LABELS.findIndex(
+    (value: string) => !value.localeCompare(label, 'en', { sensitivity: 'base' })
+  )
 
 const Address = ({ navigation }: AddressScreenProps) => {
   const handleGoBack = () => navigation.goBack()
   const handleAddAddress = () => navigation.navigate('AddAddress')
+  const selectedId = useAddressStore((state) => state.selectedId)
   const renderHeader = (
     <XStack gap={6} alignItems="center">
       <IconButton onPress={handleGoBack}>
@@ -25,7 +32,7 @@ const Address = ({ navigation }: AddressScreenProps) => {
     </XStack>
   )
   const renderStepper = (
-    <Stepper alignSelf="center" activeStep={0}>
+    <Stepper activeStep={selectedId ? getStepIndex('Address') : getStepIndex('Cart')}>
       {STEPPER_LABELS.map((label: string) => (
         <Step key={label}>
           <StepLabel>{label}</StepLabel>
