@@ -27,14 +27,39 @@
   ],
   "addresses": [
     {
-      "name": "Tradly team",
-      "phone": "+621234567890",
-      "streetAddress": "Kualalumpur Malaysia",
-      "city": "Kualalumpur",
-      "state": "Malaysia",
-      "zipcode": "75119",
-      "userId": 1,
-      "id": 1
+      "id": "a1b2",
+      "userId": "d3d1",
+      "name": "John Doe",
+      "address": "123 Main St, Springfield, IL, 62701",
+      "phone": "5551234567"
+    },
+    {
+      "id": "c3d4",
+      "userId": "d3d1",
+      "name": "Jane Smith",
+      "address": "456 Oak St, Metropolis, IL, 62960",
+      "phone": "5559876543"
+    },
+    {
+      "id": "e5f6",
+      "userId": "d3d1",
+      "name": "Alice Johnson",
+      "address": "789 Pine St, Smallville, KS, 67524",
+      "phone": "5552345678"
+    },
+    {
+      "id": "g7h8",
+      "userId": "d3d1",
+      "name": "Bob Brown",
+      "address": "101 Maple St, Gotham, NJ, 07015",
+      "phone": "5553456789"
+    },
+    {
+      "id": "i9j0",
+      "userId": "d3d1",
+      "name": "Carol White",
+      "address": "202 Birch St, Star City, CA, 95060",
+      "phone": "5554567890"
     }
   ],
   "cards": [
