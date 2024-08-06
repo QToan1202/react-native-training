@@ -1,4 +1,5 @@
 import { Heading, XStack, YStack, YStackProps } from 'tamagui'
+import { GestureResponderEvent } from 'react-native'
 
 import { Button, IconButton, Text } from '@shared/components'
 
@@ -12,6 +13,7 @@ export type AddressProps = YStackProps &
     isSelected?: boolean
     onEditAddress?: (id: string) => void
     onDeleteAddress?: (id: string) => void
+    onSelectAddress?: (id: string) => void
   }
 
 const Address = ({
@@ -22,8 +24,15 @@ const Address = ({
   isSelected = false,
   onEditAddress,
   onDeleteAddress,
+  onSelectAddress,
+  onPress,
   ...rest
 }: AddressProps) => {
+  const handlePressItem = (event: GestureResponderEvent) => {
+    onPress?.(event)
+
+    onSelectAddress?.(id)
+  }
   const handleEditAddress = () => {
     onEditAddress?.(id)
   }
@@ -38,6 +47,7 @@ const Address = ({
       borderRadius={5}
       borderWidth={1}
       borderColor="$border"
+      onPress={handlePressItem}
       {...(isSelected && { borderColor: '$primary' })}
       {...rest}
     >
