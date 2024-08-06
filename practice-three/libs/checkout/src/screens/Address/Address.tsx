@@ -1,12 +1,11 @@
 import { Heading, ScrollView, XStack, YStack } from 'tamagui'
 import { NativeStackScreenProps } from '@react-navigation/native-stack'
 
-import { Button, IconButton } from '@shared/components'
+import { Button } from '@shared/components'
 import { CheckoutStack } from '@shared/types'
 
-import { Step, StepLabel, Stepper } from '../../components'
+import { Header, Step, StepLabel, Stepper } from '../../components'
 import { STEPPER_LABELS } from '../../constants'
-import { ArrowLeft } from '../../assets/images'
 import { AddressList } from '../../components'
 import { useAddressStore } from '../../contexts'
 
@@ -21,16 +20,6 @@ const Address = ({ navigation }: AddressScreenProps) => {
   const handleGoBack = () => navigation.goBack()
   const handleAddAddress = () => navigation.navigate('AddAddress')
   const selectedId = useAddressStore((state) => state.selectedId)
-  const renderHeader = (
-    <XStack gap={6} alignItems="center">
-      <IconButton onPress={handleGoBack}>
-        <ArrowLeft />
-      </IconButton>
-      <Heading color="$pure_black" fontSize="$4" fontWeight="500">
-        Choose Delivery Address
-      </Heading>
-    </XStack>
-  )
   const renderStepper = (
     <Stepper activeStep={selectedId ? getStepIndex('Address') : getStepIndex('Cart')}>
       {STEPPER_LABELS.map((label: string) => (
@@ -44,7 +33,7 @@ const Address = ({ navigation }: AddressScreenProps) => {
   return (
     <YStack justifyContent="space-between" gap={24}>
       <YStack gap={20}>
-        {renderHeader}
+        <Header title="Choose Delivery Address" onBack={handleGoBack} />
         {renderStepper}
         <ScrollView contentContainerStyle={{ flex: 1, gap: 10 }}>
           <AddressList />
