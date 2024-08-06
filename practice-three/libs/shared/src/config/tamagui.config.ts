@@ -34,6 +34,8 @@ const customTokens = createTokens({
   zIndex: {
     ...tokens.zIndex,
     selectContent: 10000,
+    step: 3,
+    stepConnector: 1,
   },
   card: {
     width: 410,

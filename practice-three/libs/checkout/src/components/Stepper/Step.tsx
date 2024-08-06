@@ -34,8 +34,8 @@ const Step = ({ icon, children, index = -1, isLastStep, ...rest }: StepProps) =>
   )
 
   return (
-    <XStack alignItems="center" alignSelf="flex-start" flexGrow={1} flexBasis={0} {...rest}>
-      <YStack alignItems="center" zIndex={3} rowGap={8}>
+    <XStack alignItems="center" justifyContent="center" flexGrow={1} flexBasis={0} {...rest}>
+      <YStack alignItems="center" zIndex="$step" rowGap={8}>
         {activeStep >= index ? <ActiveStep /> : renderStepIcon}
         {children}
       </YStack>
