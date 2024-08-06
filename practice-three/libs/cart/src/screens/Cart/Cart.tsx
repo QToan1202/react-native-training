@@ -8,7 +8,7 @@ import type { CartStack } from '@shared/types'
 
 import { CartItemList, CartItemSkeleton, Search, Summary } from '../../components'
 import { useFindProducts } from '../../hooks'
-import { cartStore, CartContext } from '../../context'
+import { cartStore, CartContext } from '../../contexts'
 
 type CartScreenProps = NativeStackScreenProps<CartStack, 'Cart'>
 

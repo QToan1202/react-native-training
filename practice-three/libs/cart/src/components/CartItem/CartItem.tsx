@@ -10,7 +10,7 @@ import { useAuthStore } from '@shared/contexts'
 
 import { Heart, Trash } from '../../assets/images'
 import { Counter } from '../Counter'
-import { CartContext } from '../../context'
+import { CartContext } from '../../contexts'
 import { useDeleteCartItem } from '../../hooks'
 
 type TCartItem = 'id' | 'name' | 'price'

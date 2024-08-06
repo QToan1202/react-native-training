@@ -5,7 +5,7 @@ import { Button, IconButton } from '@shared/components'
 import { CheckoutStack } from '@shared/types'
 
 import { Step, StepLabel, Stepper } from '../../components'
-import { STEPPER_LABELS } from '../../constant'
+import { STEPPER_LABELS } from '../../constants'
 import { ArrowLeft } from '../../assets/images'
 import { AddressList } from '../../components'
 import { useAddressStore } from '../../contexts'

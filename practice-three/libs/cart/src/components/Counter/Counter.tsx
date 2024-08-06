@@ -12,7 +12,7 @@ import {
 import { useAuthStore } from '@shared/contexts'
 
 import { Minus, Plus } from '../../assets/images'
-import { CartContext } from '../../context'
+import { CartContext } from '../../contexts'
 import { useDeleteCartItem, useUpdateCartQuantity } from '../../hooks'
 
 export type CounterProps = Omit<BaseInputProps, 'defaultValue'> & {

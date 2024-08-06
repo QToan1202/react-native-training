@@ -3,7 +3,7 @@ import { queryOptions } from '@tanstack/react-query'
 import { get } from '@shared/services'
 
 import { TAddress } from '../../types'
-import { STALE_TIMES } from '../../constant'
+import { STALE_TIMES } from '../../constants'
 
 const getAddressesQuery = (path: string, userId: string) =>
   queryOptions<TAddress[], Error, TAddress[], string[]>({

@@ -5,7 +5,7 @@ import { useStore } from 'zustand'
 import { TCartItem } from '@shared/types'
 
 import { CartItem } from '../CartItem'
-import { CartContext } from '../../context'
+import { CartContext } from '../../contexts'
 
 const CartItemList = () => {
   const store = useContext(CartContext)

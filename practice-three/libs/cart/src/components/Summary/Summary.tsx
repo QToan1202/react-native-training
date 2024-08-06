@@ -6,7 +6,7 @@ import { Skeleton, Text as BaseText } from '@shared/components'
 import { TCartItem } from '@shared/types'
 
 import { FEES } from '../../constants'
-import { CartContext, useOfferStore } from '../../context'
+import { CartContext, useOfferStore } from '../../contexts'
 
 export type SummaryProps = {
   isLoading: boolean
