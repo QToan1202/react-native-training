@@ -24,3 +24,6 @@ export type TOrder = {
   items: Record<string, TItem>
   date: string
 }
+
+type TRemovePropAddress = 'id' | 'userId'
+export type TAddressForm = Omit<TAddress, TRemovePropAddress>

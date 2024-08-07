@@ -10,6 +10,19 @@ export const STALE_TIMES = {
   ADDRESS: 24 * 60 * 60 * 1000, // 1 day
 }
 
+export const COUNTRIES = [
+  'United States',
+  'Canada',
+  'United Kingdom',
+  'Australia',
+  'Germany',
+  'France',
+  'Japan',
+  'China',
+  'India',
+  'Brazil',
+]
+
 type TAddressFormConstant = {
   [K in keyof TAddressForm as Uppercase<TDelimiterCase<K, '_'>>]: {
     label: keyof TAddressForm
