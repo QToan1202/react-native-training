@@ -16,13 +16,13 @@ const ControllerSelect = <T extends FieldValues>({
   ...rest
 }: ControlSelectProps<T>) => {
   const {
-    field: { value, onChange },
+    field: { value, onChange, ref },
   } = useController<T>({
     control,
     name: label,
     rules: options,
   })
-  return <Select {...rest} label={label} value={value} onValueChange={onChange} />
+  return <Select {...rest} label={label} value={value} onValueChange={onChange} ref={ref} />
 }
 
 export default ControllerSelect
