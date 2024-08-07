@@ -14,8 +14,14 @@ type Story = StoryObj<typeof Address>
 export const Default: Story = {
   args: {
     id: 'address-id',
-    name: 'jane doe',
-    address: '52 Ridgewood Drive, SW. Saxton St. North Fort Myers, Henrico, VA 23228',
+    firstName: 'jane',
+    lastName: 'doe',
+    address: '52 Ridgewood Drive',
+    optionalAddress: '',
+    city: 'SW. Saxton St',
+    state: 'North Fort Myers',
+    country: 'Henrico',
+    zipCode: '23228',
     phone: '91 9087654321',
     isSelected: true,
     onPress: action('press-card'),

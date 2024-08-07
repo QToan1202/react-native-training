@@ -1,8 +1,14 @@
 export type TAddress = {
   id: string
   userId: string
-  name: string
+  firstName: string
+  lastName: string
   address: string
+  optionalAddress: string
+  city: string
+  state: string
+  zipCode: string
+  country: string
   phone: string
 }
 

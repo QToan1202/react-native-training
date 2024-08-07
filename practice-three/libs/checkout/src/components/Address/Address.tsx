@@ -6,10 +6,10 @@ import { Button, IconButton, Text } from '@shared/components'
 import { TAddress } from '../../types'
 import { Trash } from '../../assets/images'
 
-type TAddressCard = 'id' | 'name' | 'address' | 'phone'
+type TAddressCard = 'userId'
 
 export type AddressProps = YStackProps &
-  Pick<TAddress, TAddressCard> & {
+  Omit<TAddress, TAddressCard> & {
     isSelected?: boolean
     onEditAddress?: (id: string) => void
     onDeleteAddress?: (id: string) => void
@@ -18,8 +18,14 @@ export type AddressProps = YStackProps &
 
 const Address = ({
   id,
+  firstName,
+  lastName,
   address,
-  name,
+  optionalAddress,
+  city,
+  state,
+  zipCode,
+  country,
   phone,
   isSelected = false,
   onEditAddress,
@@ -52,7 +58,7 @@ const Address = ({
       {...rest}
     >
       <Heading ellipse color="$primary" fontWeight="700" textTransform="capitalize">
-        {name}
+        {`${firstName} ${lastName}`}
       </Heading>
       <Text
         color="$gray_100"
@@ -61,7 +67,8 @@ const Address = ({
         numberOfLines={2}
         ellipsizeMode="tail"
       >
-        {address}
+        {`${address}, ${city}, ${state}, ${country}, VA ${zipCode}`}
+        {optionalAddress.trim().length && `,OP ${optionalAddress}`}
       </Text>
       <Text color="$gray_100" fontSize="$1">
         +{phone}
