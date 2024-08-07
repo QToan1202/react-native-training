@@ -6,10 +6,18 @@ export type SelectItemProps = TSelectItemProps & {
 }
 
 const SelectItem = ({ name, ...rest }: SelectItemProps) => (
-  <Select.Item {...rest}>
-    <Select.ItemText>{name}</Select.ItemText>
+  <Select.Item
+    unstyled
+    backgroundColor="$pure_white"
+    borderTopColor="$border"
+    borderTopWidth={1}
+    {...rest}
+  >
+    <Select.ItemText textTransform="capitalize" color="$black">
+      {name}
+    </Select.ItemText>
     <Select.ItemIndicator marginLeft="auto">
-      <Check size={16} />
+      <Check size={16} color="black" />
     </Select.ItemIndicator>
   </Select.Item>
 )

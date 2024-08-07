@@ -1,5 +1,12 @@
 import { ReactElement } from 'react'
-import { Adapt, Select, Sheet, YStack, SelectProps as TSelectProps, getTokenValue } from 'tamagui'
+import {
+  Adapt,
+  Select as TSelect,
+  Sheet,
+  YStack,
+  SelectProps as TSelectProps,
+  getTokenValue,
+} from 'tamagui'
 import { ChevronDown, ChevronUp } from '@tamagui/lucide-icons'
 
 import { SelectItemProps } from './SelectItem'
@@ -8,20 +15,29 @@ export type SelectProps = TSelectProps & {
   label: string
   children: ReactElement<SelectItemProps> | Array<ReactElement<SelectItemProps>>
   placeholder?: string
+  isError?: boolean
 }
 
-const SelectDemo = ({
+const Select = ({
   label,
   placeholder = 'Select value',
   native,
   children,
+  isError = false,
   ...rest
 }: SelectProps) => {
   return (
-    <Select disablePreventBodyScroll native={native} {...rest}>
-      <Select.Trigger width={220} iconAfter={ChevronDown}>
-        <Select.Value placeholder={placeholder} />
-      </Select.Trigger>
+    <TSelect disablePreventBodyScroll native={native} {...rest}>
+      <TSelect.Trigger
+        backgroundColor="$transparent"
+        borderColor="$border"
+        borderRadius={5}
+        hoverStyle={{ backgroundColor: 'none', borderColor: '$primary' }}
+        iconAfter={<ChevronDown color="$black" />}
+        {...(isError && { borderColor: '$red_50' })}
+      >
+        <TSelect.Value color="$black" placeholder={placeholder} />
+      </TSelect.Trigger>
 
       <Adapt when="xs" platform="touch">
         <Sheet native={!!native} modal dismissOnSnapToBottom>
@@ -34,8 +50,8 @@ const SelectDemo = ({
         </Sheet>
       </Adapt>
 
-      <Select.Content zIndex={getTokenValue('$zIndex.selectContent') as number}>
-        <Select.ScrollUpButton
+      <TSelect.Content zIndex={getTokenValue('$zIndex.selectContent') as number}>
+        <TSelect.ScrollUpButton
           alignItems="center"
           justifyContent="center"
           position="relative"
@@ -43,18 +59,20 @@ const SelectDemo = ({
           height="$3"
         >
           <YStack zIndex="$1">
-            <ChevronUp size={20} />
+            <ChevronUp size={20} color="$black" />
           </YStack>
-        </Select.ScrollUpButton>
+        </TSelect.ScrollUpButton>
 
-        <Select.Viewport minWidth={200}>
-          <Select.Group>
-            <Select.Label>{label}</Select.Label>
+        <TSelect.Viewport>
+          <TSelect.Group>
+            <TSelect.Label color="$black" backgroundColor="$white">
+              {label.charAt(0).toUpperCase() + label.slice(1)}
+            </TSelect.Label>
             {children}
-          </Select.Group>
-        </Select.Viewport>
+          </TSelect.Group>
+        </TSelect.Viewport>
 
-        <Select.ScrollDownButton
+        <TSelect.ScrollDownButton
           alignItems="center"
           justifyContent="center"
           position="relative"
@@ -62,12 +80,12 @@ const SelectDemo = ({
           height="$3"
         >
           <YStack zIndex="$1">
-            <ChevronDown size={20} />
+            <ChevronDown size={20} color="$black" />
           </YStack>
-        </Select.ScrollDownButton>
-      </Select.Content>
-    </Select>
+        </TSelect.ScrollDownButton>
+      </TSelect.Content>
+    </TSelect>
   )
 }
 
-export default SelectDemo
+export default Select
