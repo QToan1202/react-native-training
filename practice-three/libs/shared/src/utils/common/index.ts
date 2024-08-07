@@ -92,3 +92,21 @@ export const convertQueryStr = (query: string) => {
 export type TResolveLoaderReturn<T extends (...args: any) => any> = Awaited<
   ReturnType<ReturnType<T>>
 >
+
+/**
+ * Type to convert a string from camelCase to a delimited case (e.g., snake_case).
+ *
+ * @template S - The input string type to convert.
+ * @template Delimiter - The delimiter to insert before uppercase letters.
+ *
+ * ```ts
+ * type SnakeCaseString = TDelimiterCase<'thisIsCamelCase', '_'>;  // 'this_is_camel_case'
+ * type KebabCaseString = TDelimiterCase<'thisIsCamelCase', '-'>;  // 'this-is-camel-case'
+ * ```
+ */
+export type TDelimiterCase<
+  S extends string,
+  Delimiter extends string
+> = S extends `${infer T}${infer U}`
+  ? `${T extends Lowercase<T> ? '' : Delimiter}${Lowercase<T>}${TDelimiterCase<U, Delimiter>}`
+  : S
