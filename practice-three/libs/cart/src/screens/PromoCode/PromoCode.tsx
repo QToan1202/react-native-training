@@ -19,9 +19,9 @@ const PromoCode = (props: CartScreenProps) => {
       return (
         <YStack alignItems="center" gap={12} fullscreen>
           <Heading color="$black" fontSize="$5" fontWeight="bold" textAlign="center">
-            No Products Found
+            No Offers Available Found
           </Heading>
-          <Text>We couldn't find any products that match your search.</Text>
+          <Text>We couldn't find any offers that match your search.</Text>
         </YStack>
       )
 
