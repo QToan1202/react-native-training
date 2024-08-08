@@ -165,3 +165,5 @@ export const DEFAULT_ADDRESS_VALUES: TAddressForm = {
   zipCode: '',
   phone: '',
 }
+
+export type TPaymentMethod = {
