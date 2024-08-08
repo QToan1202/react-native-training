@@ -1,3 +1,4 @@
+import { useId } from 'react'
 import {
   AlertDialog as TAlertDialog,
   AlertDialogProps as TAlertDialogProps,
@@ -9,11 +10,21 @@ import { Button } from '../Button'
 export type AlertDialogProps = TAlertDialogProps & {
   title: string
   description: string
+  isLoading?: boolean
   onSuccess?: () => void
   onCancel?: () => void
 }
 
-const AlertDialog = ({ title, description, onSuccess, onCancel, ...rest }: AlertDialogProps) => {
+const AlertDialog = ({
+  title,
+  description,
+  isLoading = false,
+  onSuccess,
+  onCancel,
+  ...rest
+}: AlertDialogProps) => {
+  const descriptionId = useId()
+
   return (
     <TAlertDialog native {...rest}>
       <TAlertDialog.Portal>
@@ -25,7 +36,7 @@ const AlertDialog = ({ title, description, onSuccess, onCancel, ...rest }: Alert
           exitStyle={{ opacity: 0 }}
         />
         <TAlertDialog.Content
-          aria-describedby="desc"
+          aria-describedby={descriptionId}
           elevate
           borderWidth={0}
           key="content"
@@ -36,7 +47,7 @@ const AlertDialog = ({ title, description, onSuccess, onCancel, ...rest }: Alert
         >
           <YStack gap={12}>
             <TAlertDialog.Title color="$black">{title}</TAlertDialog.Title>
-            <TAlertDialog.Description id="desc" color="$black">
+            <TAlertDialog.Description id={descriptionId} color="$black">
               {description}
             </TAlertDialog.Description>
 
@@ -48,6 +59,7 @@ const AlertDialog = ({ title, description, onSuccess, onCancel, ...rest }: Alert
                   variant="outlined"
                   paddingHorizontal={18}
                   paddingVertical={12}
+                  isDisable={isLoading}
                 />
               </TAlertDialog.Cancel>
 
@@ -57,6 +69,7 @@ const AlertDialog = ({ title, description, onSuccess, onCancel, ...rest }: Alert
                   onPress={onSuccess}
                   paddingHorizontal={18}
                   paddingVertical={12}
+                  loading={isLoading}
                 />
               </TAlertDialog.Action>
             </XStack>
