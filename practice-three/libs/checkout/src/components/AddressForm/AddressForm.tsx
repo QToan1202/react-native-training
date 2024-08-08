@@ -61,7 +61,9 @@ const AddressForm = ({ id }: AddressFormProps) => {
       },
       onError: () => {
         toast.show('Something went wrong!', {
-          message: "Can't not add address. Please reload and try again.",
+          message: id
+            ? "Can't not edit address. Please reload and try again."
+            : "Can't not add address. Please reload and try again.",
         })
       },
     })
@@ -70,13 +72,13 @@ const AddressForm = ({ id }: AddressFormProps) => {
     deleteAddress(
       { id: id || '' },
       {
-        onSuccess: async () => {
+        onSuccess: () => {
           reset(DEFAULT_ADDRESS_VALUES)
           toast.show('This address have been removed successfully!')
         },
         onError: () => {
           toast.show('Something went wrong!', {
-            message: "Can't not add address. Please reload and try again.",
+            message: "Can't not delete address. Please reload and try again.",
           })
         },
       }
