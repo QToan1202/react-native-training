@@ -12,13 +12,9 @@ import { STEPPER_LABELS } from '../../constants'
 import { AddressList } from '../../components'
 import { useAddressStore } from '../../contexts'
 import { useDeleteAddress } from '../../hooks'
+import { getStepIndex } from '../../utils'
 
 type AddressScreenProps = NativeStackScreenProps<CheckoutStack, 'Address'>
-
-const getStepIndex = (label: string) =>
-  STEPPER_LABELS.findIndex(
-    (value: string) => !value.localeCompare(label, 'en', { sensitivity: 'base' })
-  )
 
 const Address = ({ navigation }: AddressScreenProps) => {
   const handleGoBack = () => navigation.goBack()
@@ -61,7 +57,11 @@ const Address = ({ navigation }: AddressScreenProps) => {
 
   const selectedId = useAddressStore((state) => state.selectedId)
   const renderStepper = (
-    <Stepper activeStep={selectedId ? getStepIndex('Address') : getStepIndex('Cart')}>
+    <Stepper
+      activeStep={
+        selectedId ? getStepIndex(STEPPER_LABELS, 'Address') : getStepIndex(STEPPER_LABELS, 'Cart')
+      }
+    >
       {STEPPER_LABELS.map((label: string) => (
         <Step key={label}>
           <StepLabel>{label}</StepLabel>

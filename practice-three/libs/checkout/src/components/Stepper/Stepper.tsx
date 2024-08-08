@@ -2,7 +2,7 @@ import { XStack, YStackProps } from 'tamagui'
 import { cloneElement, createContext, ReactElement, ReactNode, useMemo, useState } from 'react'
 
 import StepConnector from './StepConnector'
-import getValidChildren from '../../utils'
+import { getValidChildren } from '../../utils'
 
 export type StepperProps = YStackProps & {
   children: ReactNode
