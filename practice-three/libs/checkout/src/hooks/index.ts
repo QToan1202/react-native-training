@@ -1,2 +1,5 @@
 export { default as getAddressesQuery } from './getAddressesQuery'
 export { default as useAddAddress } from './useAddAddress'
+export { default as findAddressQuery } from './findAddressQuery'
+export { default as useEditAddress } from './useEditAddress'
+export { default as useDeleteAddress } from './useDeleteAddress'

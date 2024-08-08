@@ -1,45 +1,63 @@
 import { AnimatePresence, Heading, XStack, YStack } from 'tamagui'
 import { SubmitHandler, useForm } from 'react-hook-form'
-import { useId } from 'react'
+import { useId, useMemo } from 'react'
 import { useToastController } from '@tamagui/toast'
+import { useQueryClient } from '@tanstack/react-query'
 
 import { Button, ControlSelect, Form, Input, SelectItem, Text, Toast } from '@shared/components'
 import { useAuthStore } from '@shared/contexts'
 
 import { TAddressForm } from '../../types'
-import { ADDRESS_FORM, COUNTRIES } from '../../constants'
-import { useAddAddress } from '../../hooks'
+import { ADDRESS_FORM, COUNTRIES, DEFAULT_ADDRESS_VALUES } from '../../constants'
+import { findAddressQuery, useAddAddress, useDeleteAddress, useEditAddress } from '../../hooks'
 
-const AddressForm = () => {
+export type AddressFormProps = { id?: string }
+
+const AddressForm = ({ id }: AddressFormProps) => {
+  const queryClient = useQueryClient()
   const {
     control,
     handleSubmit,
     reset,
-    formState: { errors },
+    formState: { errors, isDirty },
   } = useForm<TAddressForm>({
-    defaultValues: {
-      country: '',
-      firstName: '',
-      lastName: '',
-      address: '',
-      optionalAddress: '',
-      city: '',
-      state: '',
-      zipCode: '',
-      phone: '',
+    defaultValues: async () => {
+      if (!id) return DEFAULT_ADDRESS_VALUES
+
+      const { id: _, ...rest } = await queryClient.ensureQueryData(
+        findAddressQuery('/addresses', id)
+      )
+      return { ...rest }
     },
   })
   const toast = useToastController()
   const user = useAuthStore((state) => state.user)
   const { mutate: addAddress, isPending: isAddingAddress } = useAddAddress(
     '/addresses',
-    user?.id || 'd3d1'
+    user?.id || ''
+  )
+  const { mutate: editAddress, isPending: isEditingAddress } = useEditAddress(
+    '/addresses',
+    id || '',
+    user?.id || ''
+  )
+  const { mutate: deleteAddress, isPending: isDeletingAddress } = useDeleteAddress(
+    '/addresses',
+    user?.id || ''
+  )
+  const isActionFiring = useMemo(
+    () => isAddingAddress || isEditingAddress || isDeletingAddress,
+    [isAddingAddress, isEditingAddress, isDeletingAddress]
   )
   const handleSubmitAddressForm: SubmitHandler<TAddressForm> = (data) => {
-    addAddress(data, {
-      onSuccess: () => {
-        reset()
-        toast.show('New address have added successfully!')
+    const actions = id ? editAddress : addAddress
+
+    actions(data, {
+      onSuccess: async () => {
+        id ? reset(await queryClient.ensureQueryData(findAddressQuery('/addresses', id))) : reset()
+        toast.show(
+          id ? 'Address have edited successfully!' : 'New address have added successfully!'
+        )
       },
       onError: () => {
         toast.show('Something went wrong!', {
@@ -47,6 +65,22 @@ const AddressForm = () => {
         })
       },
     })
+  }
+  const handleDeleteAddress = () => {
+    deleteAddress(
+      { id: id || '' },
+      {
+        onSuccess: async () => {
+          reset(DEFAULT_ADDRESS_VALUES)
+          toast.show('This address have been removed successfully!')
+        },
+        onError: () => {
+          toast.show('Something went wrong!', {
+            message: "Can't not add address. Please reload and try again.",
+          })
+        },
+      }
+    )
   }
   const errorTextId = useId()
 
@@ -67,7 +101,7 @@ const AddressForm = () => {
                 label={inputLabel}
                 isError={!!errors[inputLabel]}
                 options={ADDRESS_FORM[covertKey].rules}
-                disabled={isAddingAddress}
+                disabled={isActionFiring}
               >
                 {COUNTRIES.map((item: string, index) => (
                   <SelectItem key={item} value={item} index={index} name={item} />
@@ -80,7 +114,7 @@ const AddressForm = () => {
                 label={inputLabel}
                 isError={!!errors[inputLabel]}
                 options={ADDRESS_FORM[covertKey].rules}
-                disabled={isAddingAddress}
+                disabled={isActionFiring}
               />
             )}
             <AnimatePresence>
@@ -118,14 +152,17 @@ const AddressForm = () => {
           fontWeight="700"
           color="$red_200"
           borderColor="$red_200"
+          loading={isDeletingAddress}
+          isDisable={!id}
+          onPress={handleDeleteAddress}
         />
         <Form.Trigger asChild>
           <Button
             flex={1}
-            title="add address"
+            title={id ? 'edit address' : 'add address'}
             fontWeight="700"
-            loading={isAddingAddress}
-            isDisable={!!Object.keys(errors).length}
+            loading={isAddingAddress || isEditingAddress}
+            isDisable={!!Object.keys(errors).length || isDeletingAddress || !isDirty}
           />
         </Form.Trigger>
       </XStack>
