@@ -1,4 +1,4 @@
-import { Heading, ScrollView, XStack, YStack } from 'tamagui'
+import { ScrollView, YStack } from 'tamagui'
 import { NativeStackScreenProps } from '@react-navigation/native-stack'
 
 import { Button } from '@shared/components'
@@ -19,6 +19,7 @@ const getStepIndex = (label: string) =>
 const Address = ({ navigation }: AddressScreenProps) => {
   const handleGoBack = () => navigation.goBack()
   const handleAddAddress = () => navigation.navigate('AddAddress')
+  const handleEditAddress = (id: string) => navigation.navigate('AddAddress', { id })
   const selectedId = useAddressStore((state) => state.selectedId)
   const renderStepper = (
     <Stepper activeStep={selectedId ? getStepIndex('Address') : getStepIndex('Cart')}>
@@ -36,7 +37,7 @@ const Address = ({ navigation }: AddressScreenProps) => {
         <Header title="Choose Delivery Address" onBack={handleGoBack} />
         {renderStepper}
         <ScrollView contentContainerStyle={{ flex: 1, gap: 10 }}>
-          <AddressList />
+          <AddressList onEditAddress={handleEditAddress} />
         </ScrollView>
       </YStack>
       <Button title="add an address" onPress={handleAddAddress} />

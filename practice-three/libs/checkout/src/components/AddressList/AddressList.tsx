@@ -5,11 +5,14 @@ import { Heading } from 'tamagui'
 import { useAuthStore } from '@shared/contexts'
 
 import { getAddressesQuery } from '../../hooks'
-import { Address, AddressSkeleton } from '../Address'
+import { Address, AddressProps, AddressSkeleton } from '../Address'
 import { TAddress } from '../../types'
 import { useAddressStore } from '../../contexts'
 
-const AddressList = () => {
+type PickProps = 'onEditAddress' | 'onDeleteAddress'
+type AddressListProps = Pick<AddressProps, PickProps>
+
+const AddressList = (addressActions: AddressListProps) => {
   const user = useAuthStore((state) => state.user)
   const [selectedId, selectAddress, setData] = useAddressStore((state) => [
     state.selectedId,
@@ -20,7 +23,7 @@ const AddressList = () => {
     data: addresses,
     isPending: isGetAddress,
     error: errorWhenGetAddress,
-  } = useQuery(getAddressesQuery('/addresses', user?.id || 'd3d1'))
+  } = useQuery(getAddressesQuery('/addresses', user?.id || ''))
 
   const handleSelectAddress = useCallback(
     (id: string) => {
@@ -48,6 +51,7 @@ const AddressList = () => {
       key={rest.id}
       isSelected={rest.id === selectedId}
       onSelectAddress={handleSelectAddress}
+      {...addressActions}
       {...rest}
     />
   ))
