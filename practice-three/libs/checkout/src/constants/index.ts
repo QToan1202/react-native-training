@@ -153,3 +153,15 @@ export const ADDRESS_FORM: TAddressFormConstant = {
     },
   },
 }
+
+export const DEFAULT_ADDRESS_VALUES: TAddressForm = {
+  country: '',
+  firstName: '',
+  lastName: '',
+  address: '',
+  optionalAddress: '',
+  city: '',
+  state: '',
+  zipCode: '',
+  phone: '',
+}
