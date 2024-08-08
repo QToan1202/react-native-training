@@ -39,10 +39,12 @@ const Address = ({
 
     onSelectAddress?.(id)
   }
-  const handleEditAddress = () => {
+  const handleEditAddress = (event: GestureResponderEvent) => {
+    event.stopPropagation()
     onEditAddress?.(id)
   }
-  const handleDeleteAddress = () => {
+  const handleDeleteAddress = (event: GestureResponderEvent) => {
+    event.stopPropagation()
     onDeleteAddress?.(id)
   }
 
