@@ -2,6 +2,7 @@ import React from 'react'
 import { Preview } from '@storybook/react'
 import { TamaguiProvider } from 'tamagui'
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
+import { ToastProvider, ToastViewport } from '@tamagui/toast'
 
 import tamaguiConfig from '../src/tamagui.config'
 
@@ -12,7 +13,10 @@ const preview: Preview = {
     (Story) => (
       <TamaguiProvider config={tamaguiConfig}>
         <QueryClientProvider client={queryClient}>
-          <Story />
+          <ToastProvider>
+            <Story />
+            <ToastViewport unstyled />
+          </ToastProvider>
         </QueryClientProvider>
       </TamaguiProvider>
     ),

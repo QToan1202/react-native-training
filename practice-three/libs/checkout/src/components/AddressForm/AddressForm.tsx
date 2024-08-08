@@ -1,16 +1,20 @@
 import { AnimatePresence, Heading, XStack, YStack } from 'tamagui'
 import { SubmitHandler, useForm } from 'react-hook-form'
 import { useId } from 'react'
+import { useToastController } from '@tamagui/toast'
 
-import { Button, ControlSelect, Form, Input, SelectItem, Text } from '@shared/components'
+import { Button, ControlSelect, Form, Input, SelectItem, Text, Toast } from '@shared/components'
+import { useAuthStore } from '@shared/contexts'
 
 import { TAddressForm } from '../../types'
 import { ADDRESS_FORM, COUNTRIES } from '../../constants'
+import { useAddAddress } from '../../hooks'
 
 const AddressForm = () => {
   const {
     control,
     handleSubmit,
+    reset,
     formState: { errors },
   } = useForm<TAddressForm>({
     defaultValues: {
@@ -25,8 +29,24 @@ const AddressForm = () => {
       phone: '',
     },
   })
+  const toast = useToastController()
+  const user = useAuthStore((state) => state.user)
+  const { mutate: addAddress, isPending: isAddingAddress } = useAddAddress(
+    '/addresses',
+    user?.id || 'd3d1'
+  )
   const handleSubmitAddressForm: SubmitHandler<TAddressForm> = (data) => {
-    console.log(data)
+    addAddress(data, {
+      onSuccess: () => {
+        reset()
+        toast.show('New address have added successfully!')
+      },
+      onError: () => {
+        toast.show('Something went wrong!', {
+          message: "Can't not add address. Please reload and try again.",
+        })
+      },
+    })
   }
   const errorTextId = useId()
 
