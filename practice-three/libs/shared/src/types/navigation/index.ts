@@ -22,6 +22,8 @@ export type CartStack = {
 export type CheckoutStack = {
   Address: undefined
   AddAddress: undefined | { id: string }
+  Payment: undefined
+  AddPayment: undefined
 }
 
 export type RootStackParamList = {
