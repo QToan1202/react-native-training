@@ -12,7 +12,6 @@ const ControllerSelect = <T extends FieldValues>({
   control,
   label,
   options,
-
   ...rest
 }: ControlSelectProps<T>) => {
   const {

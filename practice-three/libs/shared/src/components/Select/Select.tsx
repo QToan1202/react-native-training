@@ -17,11 +17,20 @@ export type SelectProps = TSelectProps & {
   children: ReactElement<SelectItemProps> | Array<ReactElement<SelectItemProps>>
   placeholder?: string
   isError?: boolean
+  disabled?: boolean
 }
 
 const Select = forwardRef<TamaguiElement, SelectProps>(
   (
-    { label, placeholder = 'Select value', native, children, isError = false, ...rest },
+    {
+      label,
+      placeholder = 'Select value',
+      native,
+      children,
+      isError = false,
+      disabled = false,
+      ...rest
+    },
     selectRef
   ) => {
     return (
@@ -33,6 +42,8 @@ const Select = forwardRef<TamaguiElement, SelectProps>(
           borderRadius={5}
           hoverStyle={{ backgroundColor: 'none', borderColor: '$primary' }}
           iconAfter={<ChevronDown color="$black" />}
+          disabled={disabled}
+          disabledStyle={{ backgroundColor: '$gray_50' }}
           {...(isError && { borderColor: '$red_50' })}
         >
           <TSelect.Value color="$black" placeholder={placeholder} />

@@ -22,6 +22,7 @@ const Input = <T extends FieldValues>({
   options,
   control,
   containerStyle,
+  disabled,
   iconScaling = 1,
   isError = false,
   startIcon: startIconProp,
@@ -65,7 +66,8 @@ const Input = <T extends FieldValues>({
   )
   return (
     <InputWrapper
-      variant={isError ? 'error' : 'normal'}
+      disabled={disabled}
+      variant={isError ? 'error' : disabled ? 'disabled' : undefined}
       {...containerStyle}
       onPress={() => {
         inputRef.current?.focus()
@@ -77,6 +79,7 @@ const Input = <T extends FieldValues>({
         value={field.value}
         onChangeText={field.onChange}
         onBlur={field.onBlur}
+        disabled={disabled}
         {...rest}
       />
       {endIcon}

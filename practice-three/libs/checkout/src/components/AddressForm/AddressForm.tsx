@@ -62,7 +62,13 @@ const AddressForm = () => {
               {ADDRESS_FORM[covertKey].title}
             </Heading>
             {inputLabel === 'country' ? (
-              <ControlSelect control={control} label={inputLabel} isError={!!errors[inputLabel]}>
+              <ControlSelect
+                control={control}
+                label={inputLabel}
+                isError={!!errors[inputLabel]}
+                options={ADDRESS_FORM[covertKey].rules}
+                disabled={isAddingAddress}
+              >
                 {COUNTRIES.map((item: string, index) => (
                   <SelectItem key={item} value={item} index={index} name={item} />
                 ))}
@@ -74,6 +80,7 @@ const AddressForm = () => {
                 label={inputLabel}
                 isError={!!errors[inputLabel]}
                 options={ADDRESS_FORM[covertKey].rules}
+                disabled={isAddingAddress}
               />
             )}
             <AnimatePresence>
@@ -113,9 +120,16 @@ const AddressForm = () => {
           borderColor="$red_200"
         />
         <Form.Trigger asChild>
-          <Button flex={1} title="add address" fontWeight="700" />
+          <Button
+            flex={1}
+            title="add address"
+            fontWeight="700"
+            loading={isAddingAddress}
+            isDisable={!!Object.keys(errors).length}
+          />
         </Form.Trigger>
       </XStack>
+      <Toast />
     </Form>
   )
 }
