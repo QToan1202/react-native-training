@@ -5,9 +5,9 @@ import { Heading } from 'tamagui'
 import { useAuthStore } from '@shared/contexts'
 
 import { getAddressesQuery } from '../../hooks'
-import { Address, AddressProps, AddressSkeleton } from '../Address'
 import { TAddress } from '../../types'
 import { useAddressStore } from '../../contexts'
+import { Address, AddressProps, AddressSkeleton } from '../Address'
 
 type PickProps = 'onEditAddress' | 'onDeleteAddress'
 type AddressListProps = Pick<AddressProps, PickProps>

@@ -34,9 +34,10 @@ export const useAddressStore = create<AddressState & AddressActions>()((set, get
     set({ id: addId })
   },
   delete: (id: TAddressId) => {
+    const isSameAsCurrentSelectedId = id === get().selectedId
     const removeId = get().id.filter((value: string) => value !== id)
 
-    set({ id: removeId })
+    isSameAsCurrentSelectedId ? set({ id: removeId, selectedId: null }) : set({ id: removeId })
   },
   selectAddress: (id: TAddressId) => {
     const isIdExist = get().id.some((value: string) => value === id)
