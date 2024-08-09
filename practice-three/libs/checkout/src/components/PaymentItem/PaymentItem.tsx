@@ -6,15 +6,17 @@ import { Text } from '@shared/components'
 export type PaymentItemProps = XStackProps & {
   icon: ReactNode
   label: string
+  isSelected?: boolean
 }
 
-const PaymentItem = ({ icon, label, ...rest }: PaymentItemProps) => (
+const PaymentItem = ({ icon, label, isSelected = false, ...rest }: PaymentItemProps) => (
   <XStack
     justifyContent="center"
     alignItems="center"
     gap={20}
     paddingVertical={18}
     paddingHorizontal={20}
+    {...(isSelected && { backgroundColor: '$pale' })}
     {...rest}
   >
     <Square>{icon}</Square>
