@@ -94,20 +94,20 @@
   ],
   "cards": [
     {
-      "number": "5627215898548869",
-      "name": "Tradly Team",
-      "expired": "12/08",
-      "cvc": "111",
-      "userId": 1,
-      "id": 1
+      "id": "1a2b3c4d",
+      "userId": "d3d1",
+      "cardNumber": "4111111111111111",
+      "expired": "12/25",
+      "securityCode": "123",
+      "cardHolder": "John Doe"
     },
     {
-      "number": "4627215898548869",
-      "name": "Tradly Team",
-      "expired": "12/2023",
-      "cvc": "123",
-      "userId": 1,
-      "id": 2
+      "id": "2e3f4g5h",
+      "userId": "d3d1",
+      "cardNumber": "5500000000000004",
+      "expired": "11/24",
+      "securityCode": "456",
+      "cardHolder": "Jane Smith"
     }
   ],
   "products": [
