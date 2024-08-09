@@ -21,3 +21,7 @@ export { default as Debit } from './debit.svg?react'
 export { default as GooglePay } from './google-pay.svg?react'
 
 export { default as Paypal } from './paypal.svg?react'
+
+export { default as Visa } from './visa.svg?react'
+
+export { default as MasterCard } from './master-card.svg?react'

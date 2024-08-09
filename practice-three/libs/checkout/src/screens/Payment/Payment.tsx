@@ -1,11 +1,11 @@
 import { Fragment } from 'react'
-import { ScrollView, Separator, YGroup, YStack } from 'tamagui'
+import { ScrollView, Separator, YStack } from 'tamagui'
 import { NativeStackScreenProps } from '@react-navigation/native-stack'
 
 import { CheckoutStack } from '@shared/types'
 import { Accordion, AccordionItem, Button } from '@shared/components'
 
-import { Header, PaymentItem, Step, StepLabel, Stepper } from '../../components'
+import { CardList, Header, PaymentItem, Step, StepLabel, Stepper } from '../../components'
 import { PAYMENT_METHODS, STEPPER_LABELS, type TPaymentMethod } from '../../constants'
 import { useAddressStore } from '../../contexts'
 import { getStepIndex } from '../../utils'
@@ -34,7 +34,7 @@ const Payment = ({ navigation }: PaymentScreenProps) => {
   )
 
   return (
-    <YStack flex={1} justifyContent="space-between" h={'90vh'}>
+    <YStack flex={1} justifyContent="space-between">
       <ScrollView contentContainerStyle={{ flex: 1 }}>
         <Header title="Choose Payment Method" onBack={handleGoBack} />
         {renderStepper}
@@ -42,17 +42,12 @@ const Payment = ({ navigation }: PaymentScreenProps) => {
           <AccordionItem
             backgroundColor="$transparent"
             borderWidth={0}
-            borderBottomWidth={1}
-            borderBottomColor="$pale"
             padding={0}
             label={<PaymentItem icon={<Debit />} label="Debit or Credit Card" />}
           >
-            <PaymentItem
-              padding={0}
-              marginLeft={50}
-              icon={<Debit />}
-              label="Debit or Credit Card"
-            />
+            <YStack flex={1} marginLeft={50} gap={8}>
+              <CardList />
+            </YStack>
           </AccordionItem>
         </Accordion>
         <YStack>

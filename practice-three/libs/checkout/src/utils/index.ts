@@ -35,3 +35,7 @@ export const checkCreditCardNumber = (cardNumber: string, errorMessages: string)
       return errorMessages
   }
 }
+
+export const isMasterCard = (cardNumber: string) =>
+  cardNumber.charAt(0) === '2' || cardNumber.charAt(0) === '5'
+export const isVisa = (cardNumber: string) => cardNumber.charAt(0) === '4'
