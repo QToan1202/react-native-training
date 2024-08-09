@@ -1,10 +1,8 @@
 import { ReactNode } from 'react'
-import { UseControllerProps } from 'react-hook-form'
-
-import { TDelimiterCase } from '@shared/utils'
 
 import { Bank, Cash, GooglePay, Paypal } from '../assets/images'
-import { TAddressForm } from '../types'
+import { TAddressForm, TCardForm } from '../types'
+import { checkCreditCardNumber, TTransformFields } from '../utils'
 
 export const STEPPER_LABELS = ['Cart', 'Address', 'Payment', 'Summary']
 
@@ -25,15 +23,8 @@ export const COUNTRIES = [
   'Brazil',
 ]
 
-type TAddressFormConstant = {
-  [K in keyof TAddressForm as Uppercase<TDelimiterCase<K, '_'>>]: {
-    label: keyof TAddressForm
-    title: string
-    rules?: UseControllerProps['rules']
-  }
-}
-
-export const ADDRESS_FORM: TAddressFormConstant = {
+type TAddressFields = TTransformFields<TAddressForm>
+export const ADDRESS_FORM: TAddressFields = {
   COUNTRY: {
     label: 'country',
     title: 'Country',
@@ -194,3 +185,79 @@ export const PAYMENT_METHODS: TPaymentMethod[] = [
     label: 'Google Pay',
   },
 ]
+
+type TCardFields = TTransformFields<TCardForm, { placeholder?: string }>
+export const CARD_FORM: TCardFields = {
+  CARD_NUMBER: {
+    label: 'cardNumber',
+    title: 'Card Number',
+    placeholder: 'Enter Card Number',
+    rules: {
+      required: {
+        value: true,
+        message: 'Card number is require. Please enter any value!',
+      },
+      pattern: {
+        value: /^\d{16}$/,
+        message: 'Card number is invalid. Please try another Card number!',
+      },
+      validate: (value) =>
+        checkCreditCardNumber(
+          value,
+          'Card number is not MasterCard or Visa. Please try another Card number!'
+        ),
+    },
+  },
+  EXPIRED: {
+    label: 'expired',
+    title: 'Expiration Date',
+    placeholder: 'Expiration Date',
+    rules: {
+      required: {
+        value: true,
+        message: 'Expiration date is require. Please enter any value!',
+      },
+      pattern: {
+        value: /^\d{4}$/,
+        message: 'Invalid expired date. Please try again!',
+      },
+    },
+  },
+  SECURITY_CODE: {
+    label: 'securityCode',
+    title: 'Security Code',
+    placeholder: 'Security Code',
+    rules: {
+      required: {
+        value: true,
+        message: 'Security code is require. Please enter any value!',
+      },
+      pattern: {
+        value: /^\d{3}$/,
+        message: 'CVC is invalid. Please try again!',
+      },
+    },
+  },
+  CARD_HOLDER: {
+    label: 'cardHolder',
+    title: 'Card Holder',
+    placeholder: 'Enter Card Holder Name',
+    rules: {
+      required: {
+        value: true,
+        message: 'Card holder field is require. Please enter any value!',
+      },
+      maxLength: {
+        value: 30,
+        message: 'Your value you just entered is too long, maybe try shorter value!',
+      },
+    },
+  },
+}
+
+export const DEFAULT_CARD_VALUES: TCardForm = {
+  cardHolder: '',
+  cardNumber: '',
+  expired: '',
+  securityCode: '',
+}

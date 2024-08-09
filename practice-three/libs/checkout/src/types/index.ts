@@ -27,3 +27,15 @@ export type TOrder = {
 
 type TRemovePropAddress = 'id' | 'userId'
 export type TAddressForm = Omit<TAddress, TRemovePropAddress>
+
+export type TCard = {
+  id: string
+  userId: string
+  cardNumber: string
+  expired: string
+  securityCode: string
+  cardHolder: string
+}
+
+type TRemoveCardProp = 'id' | 'userId'
+export type TCardForm = Omit<TCard, TRemoveCardProp>
