@@ -1,26 +1,48 @@
 import { useId } from 'react'
 import { AnimatePresence, Heading, XStack, YStack } from 'tamagui'
 import { Controller, SubmitHandler, useForm } from 'react-hook-form'
+import { useToastController } from '@tamagui/toast'
 
-import { Button, Form, Input, Text } from '@shared/components'
+import { Button, Form, Input, Text, Toast } from '@shared/components'
+import { useAuthStore } from '@shared/contexts'
 
 import { TCardForm } from '../../types'
 import { CARD_FORM, DEFAULT_CARD_VALUES } from '../../constants'
+import { useAddCard } from '../../hooks'
 
 type TAddCardFields = Record<keyof typeof CARD_FORM, JSX.Element>
 
 const CardForm = () => {
   const {
     control,
+    reset,
     handleSubmit,
     formState: { errors, isDirty },
   } = useForm<TCardForm>({
     defaultValues: DEFAULT_CARD_VALUES,
   })
   const errorTextId = useId()
+  const user = useAuthStore((state) => state.user)
+  const toast = useToastController()
+  const { mutate: addCard, isPending: isAddingCard } = useAddCard('/cards', user?.id || 'd3d1')
   const handleSubmitCardForm: SubmitHandler<TCardForm> = (data) => {
-    console.log(data)
+    addCard(data, {
+      onSuccess: () => {
+        toast.show('Payment Card Added Successfully', {
+          message:
+            'Your new payment card has been added to your account. You can now use it for transactions.',
+        })
+        reset()
+      },
+      onError: () => {
+        toast.show('Error Adding Payment Card', {
+          message:
+            'There was an issue adding your payment card. Please check the card details and try again.',
+        })
+      },
+    })
   }
+  const handleResetData = () => reset()
   const { CARD_HOLDER, CARD_NUMBER, EXPIRED, SECURITY_CODE } = Object.keys(
     CARD_FORM
   ).reduce<TAddCardFields>((acc: TAddCardFields, key: string) => {
@@ -39,6 +61,7 @@ const CardForm = () => {
             <Input
               placeholder={CARD_FORM[convertKey].placeholder}
               isError={!!errors[inputLabel]}
+              disabled={isAddingCard}
               value={value}
               onChangeText={onChange}
               onBlur={onBlur}
@@ -96,6 +119,7 @@ const CardForm = () => {
             variant="outlined"
             fontWeight="700"
             color="$red_200"
+            onPress={handleResetData}
             borderColor="$red_200"
           />
           <Form.Trigger asChild>
@@ -103,11 +127,13 @@ const CardForm = () => {
               flex={1}
               title="add card"
               fontWeight="700"
+              loading={isAddingCard}
               isDisable={!!Object.keys(errors).length || !isDirty}
             />
           </Form.Trigger>
         </XStack>
       </Form>
+      <Toast />
     </YStack>
   )
 }
