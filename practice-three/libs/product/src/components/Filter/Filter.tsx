@@ -1,9 +1,9 @@
 import { Fragment } from 'react'
 import { useLocation, useSearchParams } from 'react-router-dom'
-import { useForm } from 'react-hook-form'
+import { Controller, useForm } from 'react-hook-form'
 import { H2, Separator, XStack, YStack, YStackProps } from 'tamagui'
 
-import { Accordion, AccordionItem, ControllerCheckbox, Slider, Text } from '@shared/components'
+import { Accordion, AccordionItem, Checkbox, Slider, Text } from '@shared/components'
 import {
   convertQueryStr,
   convertToLowerStr,
@@ -71,23 +71,37 @@ const Filter = ({ isDisabled = false, ...rest }: FilterProps) => {
     switch (label) {
       case 'brand':
         return brandNames.map((item: string) => (
-          <ControllerCheckbox
+          <Controller
             key={item}
             name={`brandName[${convertToLowerStr(item)}]`}
             control={control}
-            label={item}
-            onChecked={handleFilterBrandName}
+            render={({ field: { value, name, onChange, ...restFieldProps } }) => (
+              <Checkbox
+                label={item}
+                checked={value[name]}
+                onCheckedChange={onChange}
+                onChecked={handleFilterBrandName}
+                {...restFieldProps}
+              />
+            )}
           />
         ))
 
       case 'color':
         return colors.map((item: string) => (
-          <ControllerCheckbox
+          <Controller
             key={item}
             name={`color[${convertToLowerStr(item)}]`}
             control={control}
-            label={item}
-            onChecked={handleFilterColor}
+            render={({ field: { value, name, onChange, ...restFieldProps } }) => (
+              <Checkbox
+                label={item}
+                checked={value[name]}
+                onCheckedChange={onChange}
+                onChecked={handleFilterColor}
+                {...restFieldProps}
+              />
+            )}
           />
         ))
 
@@ -95,12 +109,19 @@ const Filter = ({ isDisabled = false, ...rest }: FilterProps) => {
         return discountPercent
           .map(String)
           .map((item: string) => (
-            <ControllerCheckbox
+            <Controller
               key={item}
               name={`discountPercent[${convertToLowerStr(item)}%]`}
               control={control}
-              label={`${item}% and above`}
-              onChecked={handleFilterDiscount}
+              render={({ field: { value, name, onChange, ...restFieldProps } }) => (
+                <Checkbox
+                  label={`${item}% and above`}
+                  checked={value[name]}
+                  onCheckedChange={onChange}
+                  onChecked={handleFilterDiscount}
+                  {...restFieldProps}
+                />
+              )}
             />
           ))
 
