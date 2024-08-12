@@ -1,3 +1,5 @@
+import { FieldPath, UseControllerProps } from 'react-hook-form'
+
 export const convertToLowerStr = (str: string | number, locales: Intl.LocalesArgument = 'en-US') =>
   String(str).toLocaleLowerCase(locales)
 
@@ -110,3 +112,14 @@ export type TDelimiterCase<
 > = S extends `${infer T}${infer U}`
   ? `${T extends Lowercase<T> ? '' : Delimiter}${Lowercase<T>}${TDelimiterCase<U, Delimiter>}`
   : S
+
+export type TTransformFields<
+  T extends Record<string, string>,
+  ExtraProps = NonNullable<unknown>
+> = {
+  [K in keyof T as Uppercase<TDelimiterCase<K & string, '_'> & string>]: {
+    label: keyof T
+    title: string
+    rules?: UseControllerProps<T, FieldPath<T>>['rules']
+  } & ExtraProps
+}

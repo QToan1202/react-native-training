@@ -1,9 +1,8 @@
 import { Input, InputProps } from '@shared/components'
-import { TSearchField } from '@shared/types'
 
 import { Search as SearchIcon } from '../../assets/images'
 
-export type SearchProps = InputProps<TSearchField> & Omit<InputProps<TSearchField>, 'label'>
+export type SearchProps = InputProps
 
 const Search = ({ containerStyle, ...rest }: SearchProps) => (
   <Input
@@ -17,7 +16,6 @@ const Search = ({ containerStyle, ...rest }: SearchProps) => (
       ...containerStyle,
     }}
     {...rest}
-    label="search"
   />
 )
 

@@ -1,4 +1,4 @@
-import { SubmitHandler, useForm } from 'react-hook-form'
+import { Controller, SubmitHandler, useForm } from 'react-hook-form'
 import { H2, YStack } from 'tamagui'
 import { NativeStackScreenProps } from '@react-navigation/native-stack'
 
@@ -29,7 +29,18 @@ const Verification = ({ navigation }: VerificationScreenProps) => {
       </YStack>
 
       <Form formControlProp={control} onSubmit={handleSubmit(handleOnSubmit)} gap={42}>
-        <Input label="account" placeholder="Enter OTP here" />
+        <Controller
+          name="account"
+          control={control}
+          render={({ field: { value, onChange, onBlur } }) => (
+            <Input
+              placeholder="Enter OTP here"
+              value={value}
+              onChangeText={onChange}
+              onBlur={onBlur}
+            />
+          )}
+        />
 
         <Form.Trigger asChild="web">
           <Button

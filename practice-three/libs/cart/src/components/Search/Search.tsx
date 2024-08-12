@@ -1,6 +1,6 @@
 import { useId } from 'react'
 import { AnimatePresence, XStack, XStackProps } from 'tamagui'
-import { useForm, useWatch } from 'react-hook-form'
+import { Controller, useForm, useWatch } from 'react-hook-form'
 import { useQuery } from '@tanstack/react-query'
 
 import { Button, Input, Text } from '@shared/components'
@@ -52,19 +52,27 @@ const Search = ({
       })}
       {...props}
     >
-      <Input
-        label="offer"
+      <Controller
+        name="offer"
         control={control}
-        placeholder={placeholder}
-        containerStyle={{
-          borderWidth: 0,
-          flex: 1,
-        }}
-        {...(isPromoScreen && {
-          paddingVertical: 6,
-          paddingHorizontal: 0,
-        })}
+        render={({ field: { value, onChange, onBlur } }) => (
+          <Input
+            placeholder={placeholder}
+            containerStyle={{
+              borderWidth: 0,
+              flex: 1,
+            }}
+            {...(isPromoScreen && {
+              paddingVertical: 6,
+              paddingHorizontal: 0,
+            })}
+            value={value}
+            onChangeText={onChange}
+            onBlur={onBlur}
+          />
+        )}
       />
+
       <Button
         paddingVertical={12}
         paddingHorizontal={20}

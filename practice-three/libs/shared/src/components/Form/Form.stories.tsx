@@ -20,8 +20,8 @@ const FormWithInputs = () => {
 
   return (
     <FormFrame formControlProp={control} onSubmit={handleSubmit(action('submit'))}>
-      <Input label="email" />
-      <Input label="phone" />
+      <Input />
+      <Input />
 
       <FormFrame.Trigger asChild="web">
         <Button title="press" />

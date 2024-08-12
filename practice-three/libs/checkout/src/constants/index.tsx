@@ -1,8 +1,10 @@
 import { ReactNode } from 'react'
 
+import { TTransformFields } from '@shared/utils'
+
 import { Bank, Cash, GooglePay, Paypal } from '../assets/images'
 import { TAddressForm, TCardForm } from '../types'
-import { checkCreditCardNumber, TTransformFields } from '../utils'
+import { checkCreditCardNumber } from '../utils'
 
 export const STEPPER_LABELS = ['Cart', 'Address', 'Payment', 'Summary']
 

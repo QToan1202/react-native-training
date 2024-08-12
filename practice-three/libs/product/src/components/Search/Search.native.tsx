@@ -1,9 +1,8 @@
 import { Input, InputProps } from '@shared/components'
-import { TSearchField } from '@shared/types'
 
 import { SearchMobile } from '../../assets/images'
 
-export type SearchProps = InputProps<TSearchField>
+export type SearchProps = InputProps
 
 const Search = ({ ...rest }: SearchProps) => (
   <Input
@@ -16,7 +15,6 @@ const Search = ({ ...rest }: SearchProps) => (
       backgroundColor: '#f2f3f2',
     }}
     {...rest}
-    label="search"
   />
 )
 

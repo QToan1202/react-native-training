@@ -1,5 +1,5 @@
 import { AnimatePresence, Heading, XStack, YStack } from 'tamagui'
-import { SubmitHandler, useForm } from 'react-hook-form'
+import { Controller, SubmitHandler, useForm } from 'react-hook-form'
 import { useId, useMemo } from 'react'
 import { useToastController } from '@tamagui/toast'
 import { useQueryClient } from '@tanstack/react-query'
@@ -110,13 +110,20 @@ const AddressForm = ({ id }: AddressFormProps) => {
                 ))}
               </ControlSelect>
             ) : (
-              <Input
-                // TODO: Fix Form not passing control down to Nested Input component
+              <Controller
+                name={inputLabel}
                 control={control}
-                label={inputLabel}
-                isError={!!errors[inputLabel]}
-                options={ADDRESS_FORM[covertKey].rules}
-                disabled={isActionFiring}
+                rules={ADDRESS_FORM[covertKey].rules}
+                render={({ field: { value, onChange, onBlur } }) => (
+                  <Input
+                    // TODO: Fix Form not passing control down to Nested Input component
+                    isError={!!errors[inputLabel]}
+                    disabled={isActionFiring}
+                    value={value}
+                    onChangeText={onChange}
+                    onBlur={onBlur}
+                  />
+                )}
               />
             )}
             <AnimatePresence>

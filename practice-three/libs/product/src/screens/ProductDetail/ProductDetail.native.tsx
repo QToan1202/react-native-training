@@ -1,7 +1,7 @@
 import { useQuery } from '@tanstack/react-query'
 import { getTokenValue, ScrollView, Separator, XStack, YStack } from 'tamagui'
 import { Fragment, useCallback, useMemo } from 'react'
-import { useForm } from 'react-hook-form'
+import { Controller, useForm } from 'react-hook-form'
 import { NativeStackScreenProps } from '@react-navigation/native-stack'
 import { useToastController } from '@tamagui/toast'
 
@@ -330,17 +330,24 @@ const ProductDetail = ({ navigation, route }: ProductDetailScreenProps) => {
         <Heading color="black" fontSize="$3" fontWeight="500">
           Delivery Details
         </Heading>
-        <Input
-          label="pinCode"
-          containerStyle={{
-            borderRadius: 10,
-            maxWidth: 300,
-          }}
-          placeholder="Enter Pincode"
-          placeholderTextColor="$black"
-          paddingHorizontal={22}
+        <Controller
+          name="pinCode"
           control={control}
-          endIcon={<Button title="Check" variant="text" color="$white" />}
+          render={({ field: { value, onBlur, onChange } }) => (
+            <Input
+              value={value}
+              onChangeText={onChange}
+              onBlur={onBlur}
+              placeholder="Enter Pincode"
+              placeholderTextColor="$black"
+              paddingHorizontal={22}
+              endIcon={<Button title="Check" variant="text" color="$white" />}
+              containerStyle={{
+                borderRadius: 10,
+                maxWidth: 300,
+              }}
+            />
+          )}
         />
       </YStack>
       <Accordion type="multiple">

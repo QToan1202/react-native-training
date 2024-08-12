@@ -1,5 +1,5 @@
 import { H2, Separator, Square, XStack, YStack, isWeb } from 'tamagui'
-import { SubmitHandler, useForm } from 'react-hook-form'
+import { Controller, SubmitHandler, useForm } from 'react-hook-form'
 import { NativeStackScreenProps } from '@react-navigation/native-stack'
 import { redirect } from 'react-router-dom'
 import { AxiosError } from 'axios'
@@ -9,7 +9,7 @@ import { AuthenticationStack, TLoginForm } from '@shared/types'
 
 import { Apple, Facebook, Google, Lock, Logo, User } from '../../assets/images'
 import useLogin from '../../hooks/useLogin'
-import { VALIDATION_RULES } from '../../constants'
+import { LOGIN_FORM, LOGIN_FORM_DEFAULT_VALUES } from '../../constants'
 
 type LoginScreenProps = Partial<NativeStackScreenProps<AuthenticationStack, 'Login'>>
 
@@ -21,7 +21,9 @@ const Login = ({ navigation }: LoginScreenProps) => {
     reset,
     resetField,
     formState: { isSubmitting, isDirty, isValid, errors },
-  } = useForm<TLoginForm>()
+  } = useForm<TLoginForm>({
+    defaultValues: LOGIN_FORM_DEFAULT_VALUES,
+  })
   const handleOnSubmit: SubmitHandler<TLoginForm> = (data) => {
     mutateLogin(data, {
       onError: (error) => {
@@ -60,21 +62,36 @@ const Login = ({ navigation }: LoginScreenProps) => {
         gap={10}
         marginTop="$12"
       >
-        <Input
-          startIcon={(color) => <User stroke={color} />}
-          label="account"
-          placeholder="Your Email / Phone Number"
-          isError={!!errors.account}
-          options={VALIDATION_RULES.ACCOUNT}
+        <Controller
+          name={LOGIN_FORM.ACCOUNT.label}
+          control={control}
+          rules={LOGIN_FORM.ACCOUNT.rules}
+          render={({ field: { value, onChange, onBlur } }) => (
+            <Input
+              startIcon={(color) => <User stroke={color} />}
+              placeholder={LOGIN_FORM.ACCOUNT.placeholder}
+              isError={!!errors.account}
+              value={value}
+              onChangeText={onChange}
+              onBlur={onBlur}
+            />
+          )}
         />
 
-        <Input
-          startIcon={(color) => <Lock stroke={color} />}
-          label="password"
-          placeholder="Password"
-          secureTextEntry
-          isError={!!errors.password}
-          options={VALIDATION_RULES.PASSWORD}
+        <Controller
+          name={LOGIN_FORM.PASSWORD.label}
+          control={control}
+          rules={LOGIN_FORM.PASSWORD.rules}
+          render={({ field: { value, onChange, onBlur } }) => (
+            <Input
+              startIcon={(color) => <Lock stroke={color} />}
+              placeholder={LOGIN_FORM.PASSWORD.placeholder}
+              isError={!!errors.password}
+              value={value}
+              onChangeText={onChange}
+              onBlur={onBlur}
+            />
+          )}
         />
 
         <YStack>

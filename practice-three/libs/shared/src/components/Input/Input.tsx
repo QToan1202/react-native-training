@@ -1,15 +1,10 @@
 import { ReactNode, useCallback, useMemo, useRef } from 'react'
-import { Control, FieldValues, Path, UseControllerProps, useController } from 'react-hook-form'
-import { Square, SquareProps, Input as TInput } from 'tamagui'
-import { getTokenValue } from '@tamagui/core'
+import { Square, SquareProps, Input as TInput, getTokenValue } from 'tamagui'
 
 import StyledInput, { StyledInputProps } from './StyledInput'
 import InputWrapper, { StyledWrapperProps } from './StyledWrapper'
 
-export type InputProps<T extends FieldValues> = StyledInputProps & {
-  label: Path<T>
-  control?: Control<T>
-  options?: UseControllerProps['rules']
+export type InputProps = StyledInputProps & {
   iconScaling?: number
   isError?: boolean
   containerStyle?: StyledWrapperProps
@@ -17,10 +12,7 @@ export type InputProps<T extends FieldValues> = StyledInputProps & {
   endIcon?: ReactNode | ((color: string) => ReactNode)
 }
 
-const Input = <T extends FieldValues>({
-  label,
-  options,
-  control,
+const Input = ({
   containerStyle,
   disabled,
   iconScaling = 1,
@@ -28,12 +20,7 @@ const Input = <T extends FieldValues>({
   startIcon: startIconProp,
   endIcon: endIconProp,
   ...rest
-}: InputProps<T>) => {
-  const { field } = useController<T>({
-    control,
-    name: label,
-    rules: options,
-  })
+}: InputProps) => {
   const inputRef = useRef<TInput>(null)
   const createIconComponent = useCallback(
     (iconProp: ReactNode | ((color: string) => ReactNode), iconContainerStyle: SquareProps) => {
@@ -74,14 +61,7 @@ const Input = <T extends FieldValues>({
       }}
     >
       {startIcon}
-      <StyledInput
-        ref={inputRef}
-        value={field.value}
-        onChangeText={field.onChange}
-        onBlur={field.onBlur}
-        disabled={disabled}
-        {...rest}
-      />
+      <StyledInput ref={inputRef} disabled={disabled} {...rest} />
       {endIcon}
     </InputWrapper>
   )

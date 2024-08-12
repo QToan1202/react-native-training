@@ -1,6 +1,6 @@
 import { useId } from 'react'
 import { AnimatePresence, Heading, XStack, YStack } from 'tamagui'
-import { SubmitHandler, useForm } from 'react-hook-form'
+import { Controller, SubmitHandler, useForm } from 'react-hook-form'
 
 import { Button, Form, Input, Text } from '@shared/components'
 
@@ -31,12 +31,19 @@ const CardForm = () => {
         <Heading color="$blue_100" fontWeight="700">
           {CARD_FORM[convertKey].title}
         </Heading>
-        <Input
+        <Controller
+          name={inputLabel}
           control={control}
-          placeholder={CARD_FORM[convertKey].placeholder}
-          label={inputLabel}
-          options={CARD_FORM[convertKey].rules}
-          isError={!!errors[inputLabel]}
+          rules={CARD_FORM[convertKey].rules}
+          render={({ field: { value, onChange, onBlur } }) => (
+            <Input
+              placeholder={CARD_FORM[convertKey].placeholder}
+              isError={!!errors[inputLabel]}
+              value={value}
+              onChangeText={onChange}
+              onBlur={onBlur}
+            />
+          )}
         />
         <AnimatePresence>
           {errors[inputLabel] && (

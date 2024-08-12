@@ -1,8 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react'
-import { UseControllerProps, useForm } from 'react-hook-form'
 
-import Input, { InputProps } from './Input'
-import { TFormValues, TLoginForm } from '../../types'
+import Input from './Input'
 import { Lock } from '../../assets/images'
 
 const meta: Meta<typeof Input> = {
@@ -13,24 +11,9 @@ const meta: Meta<typeof Input> = {
 export default meta
 type Story = StoryObj<typeof Input>
 
-const UncontrolledInput = ({
-  options = {},
-  ...restProps
-}: Omit<InputProps<TLoginForm>, 'label' | 'control'>) => {
-  const { control } = useForm<TFormValues>()
-
-  return (
-    <Input
-      label="email"
-      startIcon={<Lock />}
-      endIcon={<Lock />}
-      control={control}
-      options={{ ...{ required: true }, options } as UseControllerProps['rules']}
-      {...restProps}
-    />
-  )
-}
-
 export const Default: Story = {
-  render: () => <UncontrolledInput />,
+  args: {
+    startIcon: <Lock />,
+    endIcon: <Lock />,
+  },
 }
