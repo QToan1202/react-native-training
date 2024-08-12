@@ -72,7 +72,7 @@ const Search = (props: SearchProps) => {
           />
         )}
       </AnimatePresence>
-      <YStack flex={1} justifyContent="center">
+      <YStack alignSelf="flex-start" flex={1} justifyContent="center">
         <XStack alignSelf="flex-end">
           <Button
             title="Filter"
