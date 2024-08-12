@@ -74,6 +74,7 @@ const Filter = ({ isDisabled = false, ...rest }: FilterProps) => {
           <Controller
             key={item}
             name={`brandName[${convertToLowerStr(item)}]`}
+            defaultValue={{ [convertToLowerStr(item)]: false }}
             control={control}
             render={({ field: { value, name, onChange, ...restFieldProps } }) => (
               <Checkbox
@@ -92,6 +93,7 @@ const Filter = ({ isDisabled = false, ...rest }: FilterProps) => {
           <Controller
             key={item}
             name={`color[${convertToLowerStr(item)}]`}
+            defaultValue={{ [convertToLowerStr(item)]: false }}
             control={control}
             render={({ field: { value, name, onChange, ...restFieldProps } }) => (
               <Checkbox
@@ -112,6 +114,7 @@ const Filter = ({ isDisabled = false, ...rest }: FilterProps) => {
             <Controller
               key={item}
               name={`discountPercent[${convertToLowerStr(item)}%]`}
+              defaultValue={{ [convertToLowerStr(item)]: false }}
               control={control}
               render={({ field: { value, name, onChange, ...restFieldProps } }) => (
                 <Checkbox
