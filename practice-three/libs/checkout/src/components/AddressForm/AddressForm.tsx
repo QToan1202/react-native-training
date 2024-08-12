@@ -4,7 +4,7 @@ import { useId, useMemo } from 'react'
 import { useToastController } from '@tamagui/toast'
 import { useQueryClient } from '@tanstack/react-query'
 
-import { Button, ControlSelect, Form, Input, SelectItem, Text, Toast } from '@shared/components'
+import { Button, Form, Input, Select, SelectItem, Text, Toast } from '@shared/components'
 import { useAuthStore } from '@shared/contexts'
 
 import { TAddressForm } from '../../types'
@@ -97,18 +97,27 @@ const AddressForm = ({ id }: AddressFormProps) => {
             <Heading color="$primary" fontWeight="700">
               {ADDRESS_FORM[covertKey].title}
             </Heading>
+
             {inputLabel === 'country' ? (
-              <ControlSelect
+              <Controller
+                name={inputLabel}
                 control={control}
-                label={inputLabel}
-                isError={!!errors[inputLabel]}
-                options={ADDRESS_FORM[covertKey].rules}
-                disabled={isActionFiring}
-              >
-                {COUNTRIES.map((item: string, index) => (
-                  <SelectItem key={item} value={item} index={index} name={item} />
-                ))}
-              </ControlSelect>
+                rules={ADDRESS_FORM[covertKey].rules}
+                render={({ field: { value, onChange, onBlur } }) => (
+                  <Select
+                    label={inputLabel}
+                    isError={!!errors[inputLabel]}
+                    disabled={isActionFiring}
+                    value={value}
+                    onValueChange={onChange}
+                    onOpenChange={onBlur}
+                  >
+                    {COUNTRIES.map((item: string, index) => (
+                      <SelectItem key={item} value={item} index={index} name={item} />
+                    ))}
+                  </Select>
+                )}
+              />
             ) : (
               <Controller
                 name={inputLabel}
