@@ -9,6 +9,7 @@ import { useAuthStore } from '@shared/contexts'
 import { TCardForm } from '../../types'
 import { CARD_FORM, DEFAULT_CARD_VALUES } from '../../constants'
 import { useAddCard } from '../../hooks'
+import { transformAddCardForm } from '../../utils'
 
 type TAddCardFields = Record<keyof typeof CARD_FORM, JSX.Element>
 
@@ -57,13 +58,13 @@ const CardForm = () => {
           name={inputLabel}
           control={control}
           rules={CARD_FORM[convertKey].rules}
-          render={({ field: { value, onChange, onBlur } }) => (
+          render={({ field: { value, name, onChange, onBlur } }) => (
             <Input
               placeholder={CARD_FORM[convertKey].placeholder}
               isError={!!errors[inputLabel]}
               disabled={isAddingCard}
-              value={value}
-              onChangeText={onChange}
+              value={transformAddCardForm(name, value, onChange).input}
+              onChangeText={transformAddCardForm(name, value, onChange).output}
               onBlur={onBlur}
             />
           )}

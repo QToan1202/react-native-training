@@ -1,4 +1,6 @@
 import { ReactNode } from 'react'
+import dayjs from 'dayjs'
+import customParseFormat from 'dayjs/plugin/customParseFormat'
 
 import { TTransformFields } from '@shared/utils'
 
@@ -6,11 +8,26 @@ import { Bank, Cash, GooglePay, Paypal } from '../assets/images'
 import { TAddressForm, TCardForm } from '../types'
 import { checkCreditCardNumber } from '../utils'
 
+dayjs.extend(customParseFormat)
+
 export const STEPPER_LABELS = ['Cart', 'Address', 'Payment', 'Summary']
 
 export const STALE_TIMES = {
   ADDRESS: 24 * 60 * 60 * 1000, // 1 day
   CARD: 24 * 60 * 60 * 1000, // 1 day
+}
+
+export const EXPECTED_DELIVERY_TIME = 3
+
+export const REGEX = {
+  CARD_NUMBER: {
+    INPUT: /(\d{4})(?=\d)/g,
+    OUTPUT: /\s/g,
+  },
+  EXPIRED: {
+    INPUT: /(\d{2})(\d{2})/,
+    OUTPUT: /\//g,
+  },
 }
 
 export const COUNTRIES = [
@@ -223,6 +240,12 @@ export const CARD_FORM: TCardFields = {
       pattern: {
         value: /^\d{4}$/,
         message: 'Invalid expired date. Please try again!',
+      },
+      validate: (value: string) => {
+        const expiredDate = value.replace(REGEX.EXPIRED.INPUT, '$1/$2')
+        const isStale = dayjs().isAfter(dayjs(expiredDate, 'MM/YY'))
+
+        return isStale ? 'Your card have expired. Please try another card!' : true
       },
     },
   },
