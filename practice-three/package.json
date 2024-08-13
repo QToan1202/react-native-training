@@ -112,5 +112,10 @@
     "tamagui": "^1.96.0",
     "tslib": "^2.3.0",
     "zustand": "^4.5.2"
+  },
+  "pnpm": {
+    "patchedDependencies": {
+      "@tamagui/accordion@1.96.0": "patches/@tamagui__accordion@1.96.0.patch"
+    }
   }
 }
