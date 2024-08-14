@@ -15,6 +15,8 @@ export const STEPPER_LABELS = ['Cart', 'Address', 'Payment', 'Summary']
 export const STALE_TIMES = {
   ADDRESS: 24 * 60 * 60 * 1000, // 1 day
   CARD: 24 * 60 * 60 * 1000, // 1 day
+  PRODUCT_INFO: 24 * 60 * 60 * 1000, // 1 day
+  ORDER: 30 * 60 * 1000, // 30 mins
 }
 
 export const EXPECTED_DELIVERY_TIME = 3
@@ -245,7 +247,7 @@ export const CARD_FORM: TCardFields = {
         const expiredDate = value.replace(REGEX.EXPIRED.INPUT, '$1/$2')
         const isStale = dayjs().isAfter(dayjs(expiredDate, 'MM/YY'))
 
-        return isStale ? 'Your card have expired. Please try another card!' : true
+        return !isStale || 'Your card have expired. Please try another card!'
       },
     },
   },

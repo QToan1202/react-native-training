@@ -10,6 +10,7 @@ const findAddressQuery = (path: string, id: string) =>
     queryKey: ['address', id],
     queryFn: () => find(`${path}/${id}`),
     staleTime: STALE_TIMES.ADDRESS,
+    enabled: !!id,
   })
 
 export default findAddressQuery
