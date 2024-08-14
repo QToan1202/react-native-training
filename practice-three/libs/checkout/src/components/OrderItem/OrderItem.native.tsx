@@ -1,21 +1,14 @@
-import { ImageURISource } from 'react-native'
 import { Heading, XStack, XStackProps, YStack } from 'tamagui'
 
 import { IconButton, Image, Text } from '@shared/components'
 
-import { TOrder } from '../../types'
+import { TOrderItem } from '../../types'
 import { ArrowRight } from '../../assets/images'
 
-export type OrderItemProps = XStackProps &
-  Pick<TOrder, 'id'> & {
-    image: ImageURISource['uri']
-    title: string
-    size: string
-    quantity: number
-    price: number
-  }
+type TRemoveProps = 'date' | 'address' | 'brandName' | 'totalPrice'
+export type OrderItemProps = XStackProps & Omit<TOrderItem, TRemoveProps>
 
-const OrderItem = ({ image, title, size, quantity, price, ...rest }: OrderItemProps) => {
+const OrderItem = ({ image, name, size, quantity, price, ...rest }: OrderItemProps) => {
   return (
     <XStack
       justifyContent="space-between"
@@ -37,7 +30,7 @@ const OrderItem = ({ image, title, size, quantity, price, ...rest }: OrderItemPr
         <YStack justifyContent="space-between">
           <YStack gap={5}>
             <Heading color="$black" fontWeight="700" textTransform="capitalize">
-              {title}
+              {name}
             </Heading>
             <XStack>
               <Text flex={1} textTransform="capitalize">

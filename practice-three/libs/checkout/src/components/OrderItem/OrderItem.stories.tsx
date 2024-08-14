@@ -15,10 +15,9 @@ export const Default: Story = {
     id: '124-5660-9008',
     image:
       'https://media.karousell.com/media/photos/products/2023/9/17/clothe_1694974790_7533b5a7_progressive.jpg',
-    title: 'Wine Halter Bow Skater Dress',
+    name: 'Wine Halter Bow Skater Dress',
     brandName: 'New York',
     receiver: 'jane doe',
-    size: 'M',
     quantity: 1,
     price: 299.43,
     date: '2024-11-15T23:59:59Z',

@@ -1,21 +1,13 @@
-import { ImageURISource } from 'react-native'
 import { Heading, styled, XStack, XStackProps, YStack } from 'tamagui'
 import dayjs from 'dayjs'
 
 import { Button, Image, Text as BaseText } from '@shared/components'
+import { TOrderItem } from '../../types'
 
-import { TOrder } from '../../types'
-
+type TRemoveProps = 'address' | 'totalPrice' | 'size'
 export type OrderItemProps = XStackProps &
-  Pick<TOrder, 'id'> & {
-    image: ImageURISource['uri']
-    title: string
-    size: string
-    quantity: number
-    price: number
-    date: string
+  Omit<TOrderItem, TRemoveProps> & {
     receiver: string
-    brandName: string
   }
 
 const Text = styled(BaseText, {
@@ -25,7 +17,7 @@ const Text = styled(BaseText, {
 const OrderItem = ({
   id,
   image,
-  title,
+  name,
   date,
   quantity,
   price,
@@ -54,7 +46,7 @@ const OrderItem = ({
         <YStack justifyContent="space-between">
           <YStack gap={10}>
             <Heading color="$black" fontWeight="700" fontSize="$5" textTransform="capitalize">
-              {title}
+              {name}
             </Heading>
             <Text textTransform="capitalize">{brandName}</Text>
             <Text marginBottom={5} textTransform="capitalize" fontSize="$5">

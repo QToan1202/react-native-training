@@ -15,14 +15,31 @@ export type TAddress = {
 type TItem = {
   quantity: number
   price: number
+  size: string
 }
 
 export type TOrder = {
   id: string
   userId: string
   addressId: string
-  items: Record<string, TItem>
   date: string
+  total: number
+  shippingCost: number
+  tax: number
+  items: Record<string, TItem>
+}
+
+export type TOrderItem = {
+  id: string
+  name: string
+  image: string
+  size: string
+  quantity: number
+  price: number
+  date: string
+  address: TAddress
+  brandName: string
+  totalPrice: number
 }
 
 type TRemovePropAddress = 'id' | 'userId'
