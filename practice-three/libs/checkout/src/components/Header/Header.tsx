@@ -11,7 +11,7 @@ type HeaderProps = XStackProps & {
 }
 
 const Header = ({ title, onBack, ...rest }: HeaderProps) => (
-  <XStack gap={6} alignItems="center" {...rest}>
+  <XStack gap={6} paddingVertical={12} alignItems="center" {...rest}>
     <IconButton onPress={onBack}>
       <ArrowLeft />
     </IconButton>
