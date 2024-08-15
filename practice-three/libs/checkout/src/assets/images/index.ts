@@ -25,3 +25,5 @@ export { default as Paypal } from './paypal.svg?react'
 export { default as Visa } from './visa.svg?react'
 
 export { default as MasterCard } from './master-card.svg?react'
+
+export { default as Delivery } from './delivery.svg?react'

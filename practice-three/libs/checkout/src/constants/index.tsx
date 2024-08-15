@@ -19,6 +19,11 @@ export const STALE_TIMES = {
   ORDER: 30 * 60 * 1000, // 30 mins
 }
 
+export const FEES = {
+  SHIP: 40,
+  IMPORT: 128,
+}
+
 export const EXPECTED_DELIVERY_TIME = 3
 
 export const REGEX = {
