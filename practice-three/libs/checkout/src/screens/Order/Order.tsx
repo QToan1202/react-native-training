@@ -26,12 +26,13 @@ const Order = () => {
         name,
         quantity,
         price,
+        size,
         date,
         brandName,
         address: { firstName, lastName },
       } = orderItem
       const receiver = `${firstName} ${lastName}`
-      const props = { id, image, name, quantity, price, date, brandName, receiver }
+      const props = { id, image, name, quantity, price, size, date, brandName, receiver }
 
       return <OrderItem key={id} {...props} />
     })
