@@ -51,7 +51,7 @@ export const useFindProducts = (): [boolean, TOrderItem[]] => {
           { data: product, isSuccess: isGetProductSuccess }: UseQueryResult<TProduct, Error>,
           index: number
         ) => {
-          const { items, total, date } = firstOrderItem
+          const { items, date } = firstOrderItem
 
           // Return to FALSY value to easy exclude from final arr data
           if (!isGetProductSuccess) return null
@@ -70,7 +70,6 @@ export const useFindProducts = (): [boolean, TOrderItem[]] => {
             date,
             address,
             brandName,
-            totalPrice: total,
           }
         }
       )
