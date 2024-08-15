@@ -5,20 +5,27 @@ import { IconButton, Image, Text } from '@shared/components'
 import { TOrderItem } from '../../types'
 import { ArrowRight } from '../../assets/images'
 
-type TRemoveProps = 'date' | 'address' | 'brandName' | 'totalPrice'
-export type OrderItemProps = XStackProps & Omit<TOrderItem, TRemoveProps>
+type TRemoveProps = 'address'
+export type OrderItemProps = XStackProps &
+  Omit<TOrderItem, TRemoveProps> & {
+    receiver: string
+  }
 
-const OrderItem = ({ image, name, size, quantity, price, ...rest }: OrderItemProps) => {
+const OrderItem = ({
+  id,
+  image,
+  name,
+  date,
+  size,
+  quantity,
+  price,
+  brandName,
+  receiver,
+  ...rest
+}: OrderItemProps) => {
   return (
-    <XStack
-      justifyContent="space-between"
-      padding={15}
-      borderBottomWidth={1}
-      borderTopWidth={1}
-      borderColor="$pale"
-      {...rest}
-    >
-      <XStack gap={15}>
+    <XStack justifyContent="space-between" padding={15} {...rest}>
+      <XStack flex={1} gap={15}>
         <Image
           borderRadius={5}
           source={{
@@ -27,16 +34,16 @@ const OrderItem = ({ image, name, size, quantity, price, ...rest }: OrderItemPro
             uri: image,
           }}
         />
-        <YStack justifyContent="space-between">
+        <YStack flex={1} justifyContent="space-between">
           <YStack gap={5}>
-            <Heading color="$black" fontWeight="700" textTransform="capitalize">
+            <Heading ellipse color="$black" fontWeight="700" textTransform="capitalize">
               {name}
             </Heading>
-            <XStack>
-              <Text flex={1} textTransform="capitalize">
+            <XStack justifyContent="space-between" gap={5}>
+              <Text flex={1} flexBasis={0} textTransform="capitalize">
                 Size: {size}
               </Text>
-              <Text flex={1} textTransform="capitalize">
+              <Text flex={1} flexBasis={0} textTransform="capitalize">
                 Qty: {quantity}
               </Text>
             </XStack>

@@ -39,7 +39,6 @@ export type TOrderItem = {
   date: string
   address: TAddress
   brandName: string
-  totalPrice: number
 }
 
 type TRemovePropAddress = 'id' | 'userId'

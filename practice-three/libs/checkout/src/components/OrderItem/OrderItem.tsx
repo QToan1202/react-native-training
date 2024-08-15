@@ -4,7 +4,7 @@ import dayjs from 'dayjs'
 import { Button, Image, Text as BaseText } from '@shared/components'
 import { TOrderItem } from '../../types'
 
-type TRemoveProps = 'address' | 'totalPrice' | 'size'
+type TRemoveProps = 'address'
 export type OrderItemProps = XStackProps &
   Omit<TOrderItem, TRemoveProps> & {
     receiver: string
@@ -19,6 +19,7 @@ const OrderItem = ({
   image,
   name,
   date,
+  size,
   quantity,
   price,
   brandName,
