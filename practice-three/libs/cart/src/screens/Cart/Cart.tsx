@@ -20,6 +20,8 @@ const Cart = ({ navigation }: CartScreenProps) => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [data, isLoading])
   const handleSeeMoreOffers = () => navigation.navigate('PromoCode')
+  // @ts-expect-error: Update composite navigator
+  const handleNavigateToAddress = () => navigation.navigate('Address')
 
   return (
     <CartContext.Provider value={cartStore}>
@@ -53,6 +55,7 @@ const Cart = ({ navigation }: CartScreenProps) => {
           fontSize="$3"
           fontWeight="700"
           letterSpacing={0.5}
+          onPress={handleNavigateToAddress}
         />
       </YStack>
     </CartContext.Provider>
