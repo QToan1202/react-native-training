@@ -2,7 +2,7 @@ import { useMemo, useRef } from 'react'
 import { queryOptions, useQueries, UseQueryResult, useSuspenseQuery } from '@tanstack/react-query'
 
 import { find } from '@shared/services'
-import { TProduct, TCartItem } from '@shared/types'
+import { TProduct, TCartItem, TCart } from '@shared/types'
 import { useAuthStore } from '@shared/contexts'
 
 import { STALE_TIMES } from '../../constants'
@@ -19,37 +19,39 @@ export const useFindProducts = (): [boolean, TCartItem[]] => {
   const user = useAuthStore((state) => state.user)
   const isFetchingProduct = useRef<boolean>(true)
   const { data: carts } = useSuspenseQuery(getCartQuery('carts', user?.id || ''))
-
-  if (!Object.keys(carts[0].items).length) {
+  const firstCartItem: TCart | undefined = carts.at(0)
+  const getProductsQuery = useQueries({
+    queries: firstCartItem
+      ? Object.keys(firstCartItem.items).map((item) => findProductQuery('/products', item))
+      : [],
+  })
+  if (!firstCartItem || !Object.keys(firstCartItem.items).length) {
     isFetchingProduct.current = false
   }
 
-  const getProductsQuery = useQueries({
-    queries: Object.keys(carts[0].items).map((item) => findProductQuery('/products', item)),
-  })
-  const data = useMemo(
-    () =>
-      getProductsQuery
-        .map(
-          (
-            { data: product, isSuccess: isGetProductSuccess }: UseQueryResult<TProduct, Error>,
-            index: number
-          ) => {
-            const { items } = carts[0]
+  const data = useMemo(() => {
+    if (!firstCartItem) return []
 
-            if (!isGetProductSuccess) return null
+    return getProductsQuery
+      .map(
+        (
+          { data: product, isSuccess: isGetProductSuccess }: UseQueryResult<TProduct, Error>,
+          index: number
+        ) => {
+          const { items } = firstCartItem
 
-            const { id, name, price, image } = product
+          if (!isGetProductSuccess) return null
 
-            if (getProductsQuery.length - 1 === index) isFetchingProduct.current = false
+          const { id, name, price, image } = product
+          const { color, quantity, size } = items[id]
 
-            return { id, name, price, image, quantity: items[id] } as TCartItem
-          }
-        )
-        .filter((item) => item) as TCartItem[],
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-    [getProductsQuery]
-  )
+          if (getProductsQuery.length - 1 === index) isFetchingProduct.current = false
+
+          return { id, name, price, image, quantity, color, size } as TCartItem
+        }
+      )
+      .filter((item) => item) as TCartItem[]
+  }, [firstCartItem, getProductsQuery])
 
   return [isFetchingProduct.current, data]
 }

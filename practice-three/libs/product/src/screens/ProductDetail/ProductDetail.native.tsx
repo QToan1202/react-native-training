@@ -1,6 +1,6 @@
 import { useQuery } from '@tanstack/react-query'
 import { getTokenValue, ScrollView, Separator, XStack, YStack } from 'tamagui'
-import { Fragment, useCallback, useMemo } from 'react'
+import { Fragment, useCallback, useMemo, useState } from 'react'
 import { Controller, useForm } from 'react-hook-form'
 import { NativeStackScreenProps } from '@react-navigation/native-stack'
 import { useToastController } from '@tamagui/toast'
@@ -45,9 +45,8 @@ const ProductDetail = ({ navigation, route }: ProductDetailScreenProps) => {
   const user = useAuthStore((state) => state.user)
   const {
     data: product,
-    isSuccess: isGetProductDetailSuccess,
-    isPending,
-    error,
+    isPending: isGetProductDetail,
+    error: errorWhenGetProduct,
   } = useQuery(findProductQuery('/products', productId))
   const { data: similarProducts, isSuccess: isGetProductsSuccess } = useQuery(
     getProductsQuery('/products')
@@ -123,22 +122,26 @@ const ProductDetail = ({ navigation, route }: ProductDetailScreenProps) => {
     [renderSimilarProducts]
   )
   const { mutate: addToCart } = useAddToCart('/carts', user?.id || '')
+  const [selectedSize, setSelectedSize] = useState<string | null>(null)
   const handleAddToCart = () => {
-    addToCart(isGetProductDetailSuccess ? product : null, {
-      onSuccess: () => {
-        toast.show(`Product have add to cart`, {
-          message: `You have successfully added ${product?.name} to cart!`,
-        })
-      },
-      onError: () => {
-        toast.show(`Something went wrong`, {
-          message: `Can't not add ${product?.name} to cart. Reload and try again.`,
-        })
-      },
-    })
+    addToCart(
+      { id: productId, color: null, size: selectedSize },
+      {
+        onSuccess: () => {
+          toast.show(`Product have add to cart`, {
+            message: `You have successfully added ${product?.name} to cart!`,
+          })
+        },
+        onError: () => {
+          toast.show(`Something went wrong`, {
+            message: `Can't not add ${product?.name} to cart. Reload and try again.`,
+          })
+        },
+      }
+    )
   }
-  if (isPending) return <Text>Loading...</Text>
-  if (error) return <Text>An error has occurred: {error.message}</Text>
+  if (isGetProductDetail) return <Text>Loading...</Text>
+  if (errorWhenGetProduct) return <Text>An error has occurred: {errorWhenGetProduct.message}</Text>
 
   const handlePressWishlistBtn = () => {
     if (!isProductInWishlist)
@@ -234,6 +237,8 @@ const ProductDetail = ({ navigation, route }: ProductDetailScreenProps) => {
         return null
     }
   }
+  const handleSelectSize = (value: string) => setSelectedSize(value)
+
   return (
     <YStack gap={15}>
       <Carousel
@@ -284,7 +289,7 @@ const ProductDetail = ({ navigation, route }: ProductDetailScreenProps) => {
           <Heading color="black" fontSize="$3" fontWeight="500">
             Select Size
           </Heading>
-          <Radio>
+          <Radio onValueChange={handleSelectSize}>
             <XStack gap={16}>
               {product.sizes.map((size: string) => (
                 <RadioItem

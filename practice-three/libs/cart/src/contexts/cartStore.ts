@@ -9,7 +9,7 @@ export type CartState = {
 
 export type CartAction = {
   set: (items: TCartItem[]) => void
-  add: (product: TProduct | TCartItem | null) => void
+  add: (product: TProduct | null) => void
   update: (productId: TProduct['id'], quantity: number) => void
   remove: (productId: TProduct['id']) => void
   clear: () => void
@@ -19,52 +19,35 @@ const initState: CartState = {
   cart: [],
 }
 
-const cartStore = createStore<CartState & CartAction>()((set) => ({
+const cartStore = createStore<CartState & CartAction>()((set, get) => ({
   ...initState,
   set: (items: TCartItem[]) => set(() => ({ cart: items })),
-  add: (product: TProduct | TCartItem | null) =>
-    set((state) => {
-      if (!product) return { cart: state.cart }
+  add: (product: TProduct | null) => {
+    if (!product) return set({ cart: get().cart })
+    const newCart: TCartItem[] = get().cart.map((item: TCartItem) => {
+      if (item.id === product.id) return { ...item, quantity: item.quantity + 1 }
 
-      const { id, name, price, image } = product
+      return item
+    })
 
-      // Check the upcoming product is existed in cart or not
-      const existedProduct: TCartItem | undefined = state.cart.find(
-        (item: TCartItem) => item.id === product.id
-      )
+    set({ cart: newCart })
+  },
+  update: (productId: TProduct['id'], quantity: number) => {
+    const newCart: TCartItem[] = get().cart.map((item: TCartItem) => {
+      if (item.id === productId) {
+        return { ...item, quantity }
+      }
 
-      // If NOT add to cart, and assign quantity = 1
-      if (!existedProduct)
-        return { cart: [...state.cart, { ...{ id, name, price, image }, quantity: 1 }] }
+      return item
+    })
 
-      // If YES increase quantity by 1
-      const newCart: TCartItem[] = state.cart.map((item: TCartItem) => {
-        if (item.id === product.id) {
-          return { ...item, quantity: item.quantity + 1 }
-        }
-
-        return item
-      })
-
-      return { cart: newCart }
-    }),
-  update: (productId: TProduct['id'], quantity: number) =>
-    set((state) => {
-      const newCart: TCartItem[] = state.cart.map((item: TCartItem) => {
-        if (item.id === productId) {
-          return { ...item, quantity }
-        }
-
-        return item
-      })
-
-      return { cart: newCart }
-    }),
+    set({ cart: newCart })
+  },
   remove: (productId: TProduct['id']) =>
     set((state) => ({
       cart: state.cart.filter(({ id }: TCartItem) => id !== productId),
     })),
-  clear: () => set(() => ({ ...initState })),
+  clear: () => set(initState),
 }))
 
 export const CartContext = createContext<StoreApi<CartState & CartAction>>(cartStore)

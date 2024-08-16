@@ -1,4 +1,4 @@
-import { Fragment, useMemo } from 'react'
+import { Fragment, useMemo, useState } from 'react'
 import { QueryClient, useSuspenseQuery } from '@tanstack/react-query'
 import { LoaderFunctionArgs, redirect, useLoaderData } from 'react-router-dom'
 import { H2, H4, Image, ScrollView, Stack, styled, XStack, YStack } from 'tamagui'
@@ -81,23 +81,29 @@ const ProductDetail = () => {
       )),
     [product.image]
   )
+  const [selectedSize, setSelectedSize] = useState<string | null>(null)
   const toast = useToastController()
   const { mutate: addToWishlist } = useAddToWishlist('/wishlists', userId || '')
   const { mutate: deleteFromWishlist } = useDeleteFromWishlist('/wishlists', userId || '')
   const { mutate: addToCart, isPending: isAddingToCart } = useAddToCart('/carts', userId || '')
   const handleAddToCart = () => {
-    addToCart(product, {
-      onSuccess: () => {
-        toast.show(`Product have add to cart`, {
-          message: `You have successfully added ${product.name} to cart!`,
-        })
-      },
-      onError: () => {
-        toast.show(`Something went wrong`, {
-          message: `Can't not add ${product.name} to cart. Reload and try again.`,
-        })
-      },
-    })
+    addToCart(
+      { id: product.id, size: selectedSize, color: null },
+      {
+        onSuccess: () => {
+          toast.show(`Product have add to cart`, {
+            message: `You have successfully added ${product.name} to cart!`,
+          })
+        },
+        onError: (error: Error) => {
+          toast.show(`Cannot add this product to cart`, {
+            message: error.message
+              ? error.message
+              : `Can't not add ${product.name} to cart. Reload and try again.`,
+          })
+        },
+      }
+    )
   }
   const handlePressLikeBtn = () => {
     if (!isProductInWishlist)
@@ -264,6 +270,7 @@ const ProductDetail = () => {
       )),
     [offers]
   )
+  const handleSelectSize = (value: string) => setSelectedSize(value)
 
   return (
     <YStack>
@@ -324,13 +331,14 @@ const ProductDetail = () => {
           <Text fontSize="$3" color="$blue_200" cursor="pointer" textTransform="capitalize">
             size chart &#8250;
           </Text>
-          <Radio>
+          <Radio onValueChange={handleSelectSize}>
             <XStack gap={16}>
               {product.sizes.map((size: string) => (
                 <RadioItem
                   key={size}
                   value={size}
-                  padding={18}
+                  width={55}
+                  height={55}
                   borderWidth={1}
                   borderColor="$gray_400"
                   backgroundColor="$transparent"
