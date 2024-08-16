@@ -3,15 +3,16 @@ import { Separator, XStack, YStack } from 'tamagui'
 import dayjs from 'dayjs'
 import { NativeStackScreenProps } from '@react-navigation/native-stack'
 import { useQuery } from '@tanstack/react-query'
+import { useToastController } from '@tamagui/toast'
 
-import { Button, Heading, IconButton, Skeleton, Text } from '@shared/components'
+import { Button, Heading, IconButton, Skeleton, Text, Toast } from '@shared/components'
 import { CheckoutStack } from '@shared/types'
 
 import { Header, OrderItem, OrderItemSkeleton, Step, StepLabel, Stepper } from '../../components'
 import { getStepIndex } from '../../utils'
 import { EXPECTED_DELIVERY_TIME, FEES, PAYMENT_METHODS, STEPPER_LABELS } from '../../constants'
 import { ArrowRight, Debit, Delivery } from '../../assets/images'
-import { findAddressQuery, useFindProducts } from '../../hooks'
+import { findAddressQuery, useCheckoutOrder, useFindProducts } from '../../hooks'
 import { TOrderItem } from '../../types'
 import { useCheckoutStore } from '../../contexts'
 
@@ -59,7 +60,7 @@ const Order = ({ navigation }: OrderScreenProps) => {
     state.paymentMethod,
   ])
   const { data: address, isSuccess: isFoundAddress } = useQuery(
-    findAddressQuery('/addresses', addressId || '')
+    findAddressQuery('/addresses', addressId || 'g7h8')
   )
   const renderAddressInfo = useMemo(() => {
     if (!isFoundAddress)
@@ -125,8 +126,22 @@ const Order = ({ navigation }: OrderScreenProps) => {
       </YStack>
     )
   }, [paymentMethod])
+  const toast = useToastController()
+  const { mutate: checkoutOrder, isPending: isCheckingOrderOut } = useCheckoutOrder('/orders')
   const handleCheckoutOrder = () => {
-    throw new Error('Function not implemented!')
+    checkoutOrder(null, {
+      onSuccess: () => {
+        // @ts-expect-error: Declare composite Home Stack screen
+        navigation.navigate('Home')
+        toast.show('Checkout order success', {
+          message:
+            'Your order have been checkout success. We will process your order as soon as possible!',
+        })
+      },
+      onError: (error: Error) => {
+        toast.show('There is an error in checkout process', { message: error.message })
+      },
+    })
   }
 
   return (
@@ -168,9 +183,11 @@ const Order = ({ navigation }: OrderScreenProps) => {
           paddingVertical={10}
           fontSize="$3"
           fontWeight="700"
+          loading={isCheckingOrderOut}
           onPress={handleCheckoutOrder}
         />
       </XStack>
+      <Toast />
     </YStack>
   )
 }
