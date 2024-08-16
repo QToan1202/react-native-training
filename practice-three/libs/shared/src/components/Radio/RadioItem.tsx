@@ -1,5 +1,6 @@
 import { useId } from 'react'
 import { RadioGroup, XStack, RadioGroupItemProps, Label, styled } from 'tamagui'
+
 import useRadio from './useRadio'
 
 export type RadioItemProps = RadioGroupItemProps & {
@@ -8,7 +9,7 @@ export type RadioItemProps = RadioGroupItemProps & {
 
 const StyledItem = styled(RadioGroup.Item, {
   size: '$6',
-  backgroundColor: '$white',
+  backgroundColor: '$transparent',
   borderWidth: 1,
   borderColor: '$transparent',
 
@@ -16,8 +17,8 @@ const StyledItem = styled(RadioGroup.Item, {
     backgroundColor: '$gray_50',
   },
   focusStyle: {
-    borderColor: '$gray_50',
-    backgroundColor: '$white',
+    borderColor: '$primary',
+    backgroundColor: '$pale',
   },
 })
 
