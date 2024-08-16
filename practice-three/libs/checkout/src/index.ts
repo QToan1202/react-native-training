@@ -1,1 +1,1 @@
-export * from './lib/checkout'
+export * from './hocs'

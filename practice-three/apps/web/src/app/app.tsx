@@ -5,6 +5,7 @@ import { featureShell } from 'shell'
 import { withAuth } from '@features/authentication'
 import { withProduct } from '@features/product'
 import { THOCsProps } from '@shared/types'
+import { withCheckout } from '@features/checkout'
 
 const INIT_NAVIGATOR_DATA: THOCsProps['navigatorData'] = []
 
@@ -13,7 +14,7 @@ const BaseApp = ({
   children,
   ...rest
 }: THOCsProps & { children?: (args: THOCsProps) => ReactNode }) => children?.(rest)
-const WrapHOC = withProduct(withAuth(BaseApp))
+const WrapHOC = withCheckout(withProduct(withAuth(BaseApp)))
 
 const App = () => (
   <WrapHOC category={initFeatures} navigatorData={INIT_NAVIGATOR_DATA}>
