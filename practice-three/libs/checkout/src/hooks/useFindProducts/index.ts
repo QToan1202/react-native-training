@@ -1,27 +1,13 @@
 import { useMemo, useRef } from 'react'
-import {
-  queryOptions,
-  useQueries,
-  useQuery,
-  UseQueryResult,
-  useSuspenseQuery,
-} from '@tanstack/react-query'
+import { useQueries, useQuery, UseQueryResult, useSuspenseQuery } from '@tanstack/react-query'
 
-import { find } from '@shared/services'
 import { TProduct } from '@shared/types'
 import { useAuthStore } from '@shared/contexts'
 
-import { STALE_TIMES } from '../../constants'
 import getOrdersQuery from '../getOrdersQuery'
 import { TOrder, TOrderItem } from '../../types'
 import findAddressQuery from '../findAddressQuery'
-
-export const findProductQuery = (path: string, id: string) =>
-  queryOptions<TProduct, Error, TProduct, string[]>({
-    queryKey: ['product', id],
-    queryFn: () => find(`${path}/${id}`),
-    staleTime: STALE_TIMES.PRODUCT_INFO,
-  })
+import findProductQuery from '../findProductQuery'
 
 export const useFindProducts = (): [boolean, TOrderItem[]] => {
   const user = useAuthStore((state) => state.user)
