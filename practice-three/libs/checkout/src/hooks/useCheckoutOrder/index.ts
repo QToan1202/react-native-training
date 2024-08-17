@@ -63,7 +63,7 @@ const useCheckoutOrder = (
           const { id, price, discountPercent } = product
           const productPriceAfterDiscount = price * (1 - discountPercent / 100)
 
-          total += productPriceAfterDiscount
+          total += productPriceAfterDiscount * items[id].quantity
           items[id]['price'] = productPriceAfterDiscount
         }
       )
