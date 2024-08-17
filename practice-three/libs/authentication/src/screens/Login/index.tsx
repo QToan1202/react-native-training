@@ -4,8 +4,8 @@ import { NativeStackScreenProps } from '@react-navigation/native-stack'
 import { redirect } from 'react-router-dom'
 import { AxiosError } from 'axios'
 
-import { Button, Checkbox, Form, Input, Text } from '@shared/components'
-import { AuthenticationStack, TLoginForm } from '@shared/types'
+import { Button, Checkbox, Form, Input, Text } from '@practice-three/components'
+import { AuthenticationStack, TLoginForm } from '@practice-three/types'
 
 import { Apple, Facebook, Google, Lock, Logo, User } from '../../assets/images'
 import useLogin from '../../hooks/useLogin'

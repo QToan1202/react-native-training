@@ -2,8 +2,8 @@ import { Controller, SubmitHandler, useForm } from 'react-hook-form'
 import { H2, Square, YStack } from 'tamagui'
 import { NativeStackScreenProps } from '@react-navigation/native-stack'
 
-import { Button, Form, Input, Text } from '@shared/components'
-import { AuthenticationStack, TResetPassword } from '@shared/types'
+import { Button, Form, Input, Text } from '@practice-three/components'
+import { AuthenticationStack, TResetPassword } from '@practice-three/types'
 
 import { Lock, Logo } from '../../assets/images'
 import { RESET_PASSWORD_FORM, RESET_PASSWORD_FORM_DEFAULT_VALUES } from '../../constants'

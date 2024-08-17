@@ -1,7 +1,7 @@
 import { Heading, XStack, XStackProps } from 'tamagui'
 import { GestureResponderEvent } from 'react-native'
 
-import { IconButton } from '@shared/components'
+import { IconButton } from '@practice-three/components'
 
 import { ArrowLeft } from '../../assets/images'
 

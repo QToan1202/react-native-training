@@ -1,8 +1,8 @@
 import { AxiosResponse } from 'axios'
 import { useMutation, UseMutationResult, useQueryClient } from '@tanstack/react-query'
 
-import { remove } from '@shared/services'
-import { TWishlistBase } from '@shared/types'
+import { remove } from '@practice-three/services'
+import { TWishlistBase } from '@practice-three/types'
 
 type TPickProps = 'id'
 type TMutationFn = Partial<Pick<TWishlistBase, TPickProps>>

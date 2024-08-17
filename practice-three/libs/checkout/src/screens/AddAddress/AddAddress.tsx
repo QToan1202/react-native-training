@@ -2,7 +2,7 @@ import { YStack } from 'tamagui'
 import { NativeStackScreenProps } from '@react-navigation/native-stack'
 import { KeyboardAvoidingView } from 'react-native'
 
-import { CheckoutStack } from '@shared/types'
+import { CheckoutStack } from '@practice-three/types'
 
 import { AddressForm, Header } from '../../components'
 

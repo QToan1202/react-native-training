@@ -2,7 +2,7 @@ import { ReactNode } from 'react'
 import dayjs from 'dayjs'
 import customParseFormat from 'dayjs/plugin/customParseFormat'
 
-import { TTransformFields } from '@shared/utils'
+import { TTransformFields } from '@practice-three/utils'
 
 import { Bank, Cash, GooglePay, Paypal } from '../assets/images'
 import { TAddressForm, TCardForm } from '../types'

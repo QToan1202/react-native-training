@@ -1,6 +1,6 @@
 import { XStack, XStackProps, YStack, getTokenValue } from 'tamagui'
 
-import { Skeleton } from '@shared/components'
+import { Skeleton } from '@practice-three/components'
 
 type CartItemPlaceholderProps = XStackProps
 

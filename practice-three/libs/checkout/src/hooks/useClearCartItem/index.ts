@@ -1,7 +1,7 @@
 import { useMutation, UseMutationResult, useQueryClient } from '@tanstack/react-query'
 
-import { edit } from '@shared/services'
-import { TCart } from '@shared/types'
+import { edit } from '@practice-three/services'
+import { TCart } from '@practice-three/types'
 
 type TMutationDFn = TCart
 

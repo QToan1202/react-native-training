@@ -1,7 +1,7 @@
 import { ReactNode, useContext, useMemo } from 'react'
 import { View, XStack, YStack, YStackProps } from 'tamagui'
 
-import { Text } from '@shared/components'
+import { Text } from '@practice-three/components'
 
 import { StepperContext, TInjectProps } from './Stepper'
 import { ActiveStep } from '../../assets/images'

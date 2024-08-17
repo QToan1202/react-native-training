@@ -3,7 +3,7 @@ import { useLocation, useSearchParams } from 'react-router-dom'
 import { Controller, useForm } from 'react-hook-form'
 import { H2, Separator, XStack, YStack, YStackProps } from 'tamagui'
 
-import { Accordion, AccordionItem, Checkbox, Slider, Text } from '@shared/components'
+import { Accordion, AccordionItem, Checkbox, Slider, Text } from '@practice-three/components'
 import {
   convertQueryStr,
   convertToLowerStr,
@@ -13,7 +13,7 @@ import {
   getMinMaxPrices,
   parseURLSearchParams,
   resolveValues,
-} from '@shared/utils'
+} from '@practice-three/utils'
 
 import { FILTER_LABELS } from '../../constants'
 import { useGetProducts } from '../../hooks'

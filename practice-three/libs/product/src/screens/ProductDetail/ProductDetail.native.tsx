@@ -17,11 +17,11 @@ import {
   Rating,
   Text,
   Toast,
-} from '@shared/components'
-import { calculateDiscountPrice } from '@shared/utils'
-import { getOffersQuery } from '@shared/queries'
-import { ProductStack, TOffer, TProduct, TReview, TWishlistBase } from '@shared/types'
-import { useAuthStore } from '@shared/contexts'
+} from '@practice-three/components'
+import { calculateDiscountPrice } from '@practice-three/utils'
+import { getOffersQuery } from '@practice-three/queries'
+import { ProductStack, TOffer, TProduct, TReview, TWishlistBase } from '@practice-three/types'
+import { useAuthStore } from '@practice-three/contexts'
 
 import {
   findProductQuery,

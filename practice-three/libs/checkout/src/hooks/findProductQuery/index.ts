@@ -1,7 +1,7 @@
 import { queryOptions } from '@tanstack/react-query'
 
-import { find } from '@shared/services'
-import { TProduct } from '@shared/types'
+import { find } from '@practice-three/services'
+import { TProduct } from '@practice-three/types'
 
 import { STALE_TIMES } from '../../constants'
 

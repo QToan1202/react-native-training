@@ -1,7 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/react'
 import Search from './Search'
 import { useForm } from 'react-hook-form'
-import { TSearchField } from '@shared/types'
+import { TSearchField } from '@practice-three/types'
 
 const meta: Meta<typeof Search> = {
   component: Search,

@@ -1,7 +1,7 @@
 import { queryOptions } from '@tanstack/react-query'
 
-import { get } from '@shared/services'
-import { TWishlistBase, TWishlistExpand } from '@shared/types'
+import { get } from '@practice-three/services'
+import { TWishlistBase, TWishlistExpand } from '@practice-three/types'
 
 import { STALE_TIMES } from '../../constants'
 

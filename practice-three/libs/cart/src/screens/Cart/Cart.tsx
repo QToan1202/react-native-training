@@ -3,8 +3,8 @@ import { useEffect } from 'react'
 import { useStore } from 'zustand'
 import { NativeStackScreenProps } from '@react-navigation/native-stack'
 
-import { Button } from '@shared/components'
-import type { CartStack } from '@shared/types'
+import { Button } from '@practice-three/components'
+import type { CartStack } from '@practice-three/types'
 
 import { CartItemList, CartItemSkeleton, Search, Summary } from '../../components'
 import { useFindProducts } from '../../hooks'

@@ -1,6 +1,6 @@
 import { ComponentType, forwardRef } from 'react'
 
-import { THOCsProps } from '@shared/types'
+import { THOCsProps } from '@practice-three/types'
 
 import { CartRoute } from '../navigation'
 

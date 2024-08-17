@@ -2,8 +2,8 @@ import { View, XStack, YStack } from 'tamagui'
 import { useForm } from 'react-hook-form'
 import { NativeStackScreenProps } from '@react-navigation/native-stack'
 
-import { ProductStack, TSearchField } from '@shared/types'
-import { Button, Text } from '@shared/components'
+import { ProductStack, TSearchField } from '@practice-three/types'
+import { Button, Text } from '@practice-three/components'
 
 import { Bell } from '../../assets/images'
 import { Search as SearchBar } from '../../components'

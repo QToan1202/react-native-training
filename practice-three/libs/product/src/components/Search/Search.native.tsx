@@ -1,4 +1,4 @@
-import { Input, InputProps } from '@shared/components'
+import { Input, InputProps } from '@practice-three/components'
 
 import { SearchMobile } from '../../assets/images'
 

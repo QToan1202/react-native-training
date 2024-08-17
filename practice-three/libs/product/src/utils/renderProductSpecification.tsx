@@ -1,7 +1,7 @@
 import { isWeb, Separator, YStack } from 'tamagui'
 
-import { Text } from '@shared/components'
-import { TProduct, TProductSpecification } from '@shared/types'
+import { Text } from '@practice-three/components'
+import { TProduct, TProductSpecification } from '@practice-three/types'
 
 const renderSpecificationItem = (labels: Record<string, string>, data: TProduct) => {
   const target = Object.keys(labels) as (keyof TProductSpecification)[]

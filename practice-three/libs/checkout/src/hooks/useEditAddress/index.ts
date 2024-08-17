@@ -1,6 +1,6 @@
 import { useMutation, UseMutationResult, useQueryClient } from '@tanstack/react-query'
 
-import { edit } from '@shared/services'
+import { edit } from '@practice-three/services'
 
 import { TAddress } from '../../types'
 

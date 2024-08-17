@@ -1,8 +1,8 @@
 import { useMemo } from 'react'
 import { ListItem, YGroup, GroupProps } from 'tamagui'
 
-import { Text } from '@shared/components'
-import { convertQueryStr } from '@shared/utils'
+import { Text } from '@practice-three/components'
+import { convertQueryStr } from '@practice-three/utils'
 
 import { SORT_OPTIONS, TSortOption } from '../../constants'
 import { useLocation, useSearchParams } from 'react-router-dom'

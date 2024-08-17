@@ -1,7 +1,7 @@
 import { Heading, XStack, YStack, YStackProps } from 'tamagui'
 import { GestureResponderEvent } from 'react-native'
 
-import { Button, IconButton, Text } from '@shared/components'
+import { Button, IconButton, Text } from '@practice-three/components'
 
 import { TAddress } from '../../types'
 import { Trash } from '../../assets/images'

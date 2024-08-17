@@ -1,6 +1,6 @@
 import { createNativeStackNavigator } from '@react-navigation/native-stack'
 
-import { ProductStack } from '@shared/types'
+import { ProductStack } from '@practice-three/types'
 
 import { ProductDetailScreen, SearchScreen, WishlistScreen } from '../screens'
 

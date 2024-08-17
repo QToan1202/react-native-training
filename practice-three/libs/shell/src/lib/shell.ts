@@ -1,4 +1,4 @@
-import { TFeatureConfig } from '@shared/types'
+import { TFeatureConfig } from '@practice-three/types'
 
 const PRE_DEFINED_FEATURES: Array<Omit<TFeatureConfig, 'active'>> = [
   {

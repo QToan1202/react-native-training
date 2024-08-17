@@ -2,7 +2,7 @@ import { useCallback, useEffect } from 'react'
 import { useQuery } from '@tanstack/react-query'
 import { Heading } from 'tamagui'
 
-import { useAuthStore } from '@shared/contexts'
+import { useAuthStore } from '@practice-three/contexts'
 
 import { getAddressesQuery } from '../../hooks'
 import { TAddress } from '../../types'

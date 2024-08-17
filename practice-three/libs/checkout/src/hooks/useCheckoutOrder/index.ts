@@ -8,9 +8,9 @@ import {
 } from '@tanstack/react-query'
 import dayjs from 'dayjs'
 
-import { add } from '@shared/services'
-import { useAuthStore } from '@shared/contexts'
-import { TCart, TProduct } from '@shared/types'
+import { add } from '@practice-three/services'
+import { useAuthStore } from '@practice-three/contexts'
+import { TCart, TProduct } from '@practice-three/types'
 
 import { TOrder } from '../../types'
 import { useCheckoutStore } from '../../contexts'

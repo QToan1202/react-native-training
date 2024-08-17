@@ -3,8 +3,8 @@ import { Controller, SubmitHandler, useForm } from 'react-hook-form'
 import { NativeStackScreenProps } from '@react-navigation/native-stack'
 import { redirect } from 'react-router-dom'
 
-import { Button, Form, Input, Text } from '@shared/components'
-import { AuthenticationStack, TRegisterForm } from '@shared/types'
+import { Button, Form, Input, Text } from '@practice-three/components'
+import { AuthenticationStack, TRegisterForm } from '@practice-three/types'
 
 import { Apple, Facebook, Google, Logo } from '../../assets/images'
 import useRegister from '../../hooks/useRegister'

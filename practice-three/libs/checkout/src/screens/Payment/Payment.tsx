@@ -2,8 +2,8 @@ import { Fragment } from 'react'
 import { ScrollView, Separator, YStack } from 'tamagui'
 import { NativeStackScreenProps } from '@react-navigation/native-stack'
 
-import { CheckoutStack } from '@shared/types'
-import { Accordion, AccordionItem, Button } from '@shared/components'
+import { CheckoutStack } from '@practice-three/types'
+import { Accordion, AccordionItem, Button } from '@practice-three/components'
 
 import { CardList, Header, PaymentItem, Step, StepLabel, Stepper } from '../../components'
 import { PAYMENT_METHODS, STEPPER_LABELS, type TPaymentMethod } from '../../constants'

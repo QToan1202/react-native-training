@@ -1,7 +1,7 @@
 import { ComponentType, forwardRef } from 'react'
 import { isWeb } from 'tamagui'
 
-import { THOCsProps } from '@shared/types'
+import { THOCsProps } from '@practice-three/types'
 
 import { AuthenticationRoute } from '../navigation'
 

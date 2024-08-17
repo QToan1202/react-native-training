@@ -1,6 +1,6 @@
 import { Heading, XStack, YStack, YStackProps } from 'tamagui'
 
-import { Button, IconButton, Skeleton, Text } from '@shared/components'
+import { Button, IconButton, Skeleton, Text } from '@practice-three/components'
 
 import { Trash } from '../../assets/images'
 

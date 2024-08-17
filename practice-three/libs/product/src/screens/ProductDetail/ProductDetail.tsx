@@ -4,7 +4,7 @@ import { LoaderFunctionArgs, redirect, useLoaderData } from 'react-router-dom'
 import { H2, H4, Image, ScrollView, Stack, styled, XStack, YStack } from 'tamagui'
 import { useToastController } from '@tamagui/toast'
 
-import { calculateDiscountPrice, TResolveLoaderReturn } from '@shared/utils'
+import { calculateDiscountPrice, TResolveLoaderReturn } from '@practice-three/utils'
 import {
   Button,
   IconButton,
@@ -13,10 +13,10 @@ import {
   Rating,
   Text as BaseText,
   Toast,
-} from '@shared/components'
-import { TOffer, TProduct, TReview, TUser, TWishlistBase } from '@shared/types'
-import { useAuthStore } from '@shared/contexts'
-import { getOffersQuery } from '@shared/queries'
+} from '@practice-three/components'
+import { TOffer, TProduct, TReview, TUser, TWishlistBase } from '@practice-three/types'
+import { useAuthStore } from '@practice-three/contexts'
+import { getOffersQuery } from '@practice-three/queries'
 
 import {
   findProductQuery,

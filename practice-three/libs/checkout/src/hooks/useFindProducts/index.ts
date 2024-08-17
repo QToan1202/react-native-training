@@ -1,8 +1,8 @@
 import { useMemo, useRef } from 'react'
 import { useQueries, useQuery, UseQueryResult, useSuspenseQuery } from '@tanstack/react-query'
 
-import { TProduct } from '@shared/types'
-import { useAuthStore } from '@shared/contexts'
+import { TProduct } from '@practice-three/types'
+import { useAuthStore } from '@practice-three/contexts'
 
 import getOrdersQuery from '../getOrdersQuery'
 import { TOrder, TOrderItem } from '../../types'

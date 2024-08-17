@@ -6,8 +6,8 @@ import {
   useSuspenseQuery,
 } from '@tanstack/react-query'
 
-import { add, edit, get } from '@shared/services'
-import { TCart, TCartItemProps, TProduct } from '@shared/types'
+import { add, edit, get } from '@practice-three/services'
+import { TCart, TCartItemProps, TProduct } from '@practice-three/types'
 
 import { STALE_TIMES } from '../../constants'
 

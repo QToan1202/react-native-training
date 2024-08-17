@@ -1,11 +1,11 @@
 import { ReactNode } from 'react'
 
-import { featureShell } from 'shell'
-import { THOCsProps } from '@shared/types'
-import { withAuth } from '@features/authentication'
-import { withProduct } from '@features/product'
-import { withCart } from '@features/cart'
-import { withCheckout } from '@features/checkout'
+import { featureShell } from '@practice-three/shell'
+import { THOCsProps } from '@practice-three/types'
+import { withAuth } from '@practice-three/features/authentication'
+import { withProduct } from '@practice-three/features/product'
+import { withCart } from '@practice-three/features/cart'
+import { withCheckout } from '@practice-three/features/checkout'
 
 const INIT_NAVIGATOR_DATA: THOCsProps['navigatorData'] = []
 const initFeatures = featureShell(process.env.FEATURES)

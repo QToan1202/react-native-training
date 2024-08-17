@@ -1,6 +1,6 @@
 import { useMutation, UseMutationResult, useQueryClient } from '@tanstack/react-query'
 
-import { add } from '@shared/services'
+import { add } from '@practice-three/services'
 
 import { TCard } from '../../types'
 

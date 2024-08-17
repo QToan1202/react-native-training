@@ -1,7 +1,7 @@
 import { ReactNode } from 'react'
 
-import { TLoginForm, TRegisterForm, TResetPassword } from '@shared/types'
-import { TTransformFields } from '@shared/utils'
+import { TLoginForm, TRegisterForm, TResetPassword } from '@practice-three/types'
+import { TTransformFields } from '@practice-three/utils'
 
 import REGEX from './regex'
 import { Lock, Mail, User } from '../assets/images'

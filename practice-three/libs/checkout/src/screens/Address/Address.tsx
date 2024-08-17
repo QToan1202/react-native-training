@@ -3,9 +3,9 @@ import { ScrollView, YStack } from 'tamagui'
 import { NativeStackScreenProps } from '@react-navigation/native-stack'
 import { useToastController } from '@tamagui/toast'
 
-import { AlertDialog, Button, Toast } from '@shared/components'
-import { CheckoutStack } from '@shared/types'
-import { useAuthStore } from '@shared/contexts'
+import { AlertDialog, Button, Toast } from '@practice-three/components'
+import { CheckoutStack } from '@practice-three/types'
+import { useAuthStore } from '@practice-three/contexts'
 
 import { Header, Step, StepLabel, Stepper } from '../../components'
 import { STEPPER_LABELS } from '../../constants'

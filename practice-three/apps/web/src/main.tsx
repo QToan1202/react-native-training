@@ -6,7 +6,7 @@ import { TamaguiProvider } from 'tamagui'
 import { ToastProvider, ToastViewport } from '@tamagui/toast'
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
 
-import { Toast } from '@shared/components'
+import { Toast } from '@practice-three/components'
 
 import App from './app/app'
 import { tamaguiConfig } from './config'

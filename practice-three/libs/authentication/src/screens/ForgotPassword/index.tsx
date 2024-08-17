@@ -2,8 +2,8 @@ import { Controller, SubmitHandler, useForm } from 'react-hook-form'
 import { H2, Square, YStack } from 'tamagui'
 import { NativeStackScreenProps } from '@react-navigation/native-stack'
 
-import { Button, Form, Input, Text } from '@shared/components'
-import { AuthenticationStack, TFormValues } from '@shared/types'
+import { Button, Form, Input, Text } from '@practice-three/components'
+import { AuthenticationStack, TFormValues } from '@practice-three/types'
 
 import { Logo, User } from '../../assets/images'
 

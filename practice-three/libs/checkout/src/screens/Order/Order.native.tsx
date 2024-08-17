@@ -5,8 +5,8 @@ import { NativeStackScreenProps } from '@react-navigation/native-stack'
 import { useQuery } from '@tanstack/react-query'
 import { useToastController } from '@tamagui/toast'
 
-import { Button, Heading, IconButton, Skeleton, Text, Toast } from '@shared/components'
-import { CheckoutStack } from '@shared/types'
+import { Button, Heading, IconButton, Skeleton, Text, Toast } from '@practice-three/components'
+import { CheckoutStack } from '@practice-three/types'
 
 import { Header, OrderItem, OrderItemSkeleton, Step, StepLabel, Stepper } from '../../components'
 import { getStepIndex } from '../../utils'

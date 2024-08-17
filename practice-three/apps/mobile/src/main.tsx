@@ -2,12 +2,12 @@ import { AppRegistry } from 'react-native'
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
 import { TamaguiProvider } from 'tamagui'
 import { ToastProvider, ToastViewport } from '@tamagui/toast'
+import { NavigationContainer } from '@react-navigation/native'
 
-import { Toast } from '@shared/components'
+import { Toast } from '@practice-three/components'
 
 import App from './app/App'
 import { tamaguiConfig } from './config'
-import { NavigationContainer } from '@react-navigation/native'
 
 const queryClient = new QueryClient()
 
