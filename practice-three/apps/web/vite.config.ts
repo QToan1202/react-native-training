@@ -1,13 +1,15 @@
 /// <reference types='vitest' />
+import 'dotenv/config'
 import { defineConfig } from 'vite'
 import react from '@vitejs/plugin-react'
 import { nxViteTsPaths } from '@nx/vite/plugins/nx-tsconfig-paths.plugin'
+import svgr from 'vite-plugin-svgr'
 
 import { tamaguiPlugin } from '@tamagui/vite-plugin'
 
 const tamaguiConfig = {
   components: ['tamagui'],
-  config: '../../libs/config/src/lib/tamagui.config.ts',
+  config: './src/config/tamagui.config.ts',
 }
 
 export default defineConfig({
@@ -24,7 +26,14 @@ export default defineConfig({
     host: 'localhost',
   },
 
-  plugins: [react(), tamaguiPlugin(tamaguiConfig), nxViteTsPaths()],
+  plugins: [
+    react(),
+    tamaguiPlugin(tamaguiConfig),
+    svgr({
+      include: '**/*.svg',
+    }),
+    nxViteTsPaths(),
+  ],
 
   // Uncomment this if you are using workers.
   // worker: {

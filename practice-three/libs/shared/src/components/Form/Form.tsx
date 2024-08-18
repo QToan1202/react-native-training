@@ -1,48 +1,38 @@
-import React, { ReactElement } from 'react'
-import { DefaultValues, SubmitHandler, useForm } from 'react-hook-form'
-import { Form as TForm, FormProps as TFormProps } from 'tamagui'
+import React, { ReactNode } from 'react'
+import { Control, FieldValues } from 'react-hook-form'
+import { Form as TForm, FormProps as TFormProps, withStaticProperties } from 'tamagui'
 
-import { InputProps } from '../Input'
-import { Button } from '../Button'
-import { TFormValues } from '../../types'
-
-export interface FormProps extends Omit<TFormProps, 'onSubmit'> {
-  children: ReactElement<InputProps> | Array<ReactElement<InputProps>>
-  defaultValues?: DefaultValues<TFormValues>
-  submitTitle?: string
-  onSubmit: SubmitHandler<Partial<TFormValues>>
+export type FormProps<T extends FieldValues> = TFormProps & {
+  children: ReactNode
+  formControlProp: Control<T>
 }
 
-const Form = ({
-  defaultValues,
+const FormFrame = <T extends FieldValues>({
   children,
-  submitTitle = 'submit',
-  onSubmit,
+  formControlProp: control,
   ...rest
-}: FormProps) => {
-  const { handleSubmit, register } = useForm({ defaultValues })
-
+}: FormProps<T>) => {
   return (
-    <TForm onSubmit={handleSubmit(onSubmit)} {...rest}>
+    <TForm {...rest}>
       {Array.isArray(children)
         ? children.map((child) =>
             child.props.label
               ? React.createElement(child.type, {
                   ...{
                     ...child.props,
-                    register,
+                    control,
                     key: child.props.label,
                   },
                 })
               : child
           )
         : children}
-
-      <TForm.Trigger asChild="web">
-        <Button title={submitTitle} />
-      </TForm.Trigger>
     </TForm>
   )
 }
+
+const Form = withStaticProperties(FormFrame, {
+  Trigger: TForm.Trigger,
+})
 
 export default Form

@@ -6,10 +6,11 @@ const StyledInput = styled(TInput, {
   tag: 'input',
   paddingVertical: 11,
   paddingHorizontal: 15,
-  borderWidth: 1,
   borderRadius: 5,
-  borderColor: '#e1e2e7',
-  backgroundColor: '$transparent',
+  width: '100%',
+  focusStyle: {
+    outlineWidth: 0,
+  },
   placeholderTextColor: '$gray_100',
 })
 

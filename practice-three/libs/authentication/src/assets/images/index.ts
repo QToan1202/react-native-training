@@ -1,0 +1,7 @@
+export { default as Apple } from './apple.svg?react'
+export { default as Facebook } from './facebook.svg?react'
+export { default as Google } from './google.svg?react'
+export { default as Logo } from './logo.svg?react'
+export { default as Lock } from './lock.svg?react'
+export { default as User } from './user.svg?react'
+export { default as Mail } from './mail.svg?react'
