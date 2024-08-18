@@ -116,12 +116,12 @@
       "name": "Casual T-Shirt",
       "image": "https://example.com/images/tshirt.jpg",
       "price": 19.99,
-      "discountPercent": 10,
+      "discountPercent": 0,
       "brandName": "FashionCo",
       "rating": 4.5,
       "description": "A comfortable and stylish casual T-shirt perfect for everyday wear.",
       "sellerName": "BestSeller",
-      "sizes": ["S", "M", "L", "XL"],
+      "sizes": ["SM", "S", "M", "L", "XL"],
       "reviews": [
         {
           "rating": 5,
@@ -131,7 +131,7 @@
         },
         {
           "rating": 4,
-          "content": "Comfortable but the color fades slightly after washing.",
+          "content": "I recently purchased the Blue Ridge Slim Fit Jeans from Denim Co., and they have quickly become my favorite pair. The quality of the denim is outstanding, offering both durability and comfort. The slim fit is flattering without being too tight, and the slight stretch in the fabric provides great flexibility for everyday wear. I appreciate the classic five-pocket design, which combines functionality with a timeless look. The wash and finish of the jeans are perfect for both casual and semi-formal occasions. After several washes, the color and fit have remained consistent, proving their high quality. Overall, I highly recommend the Blue Ridge Slim Fit Jeans for anyone seeking stylish, comfortable, and long-lasting denim.",
           "reviewer": "Bob Smith",
           "date": "2023-07-05T09:23:45Z"
         }
@@ -302,7 +302,6 @@
       }
     }
   ],
-  "orders": [],
   "offers": [
     {
       "code": "summer2024",
@@ -356,10 +355,43 @@
     {
       "userId": "d3d1",
       "items": {
-        "p001": 1,
-        "p003": 1
+        "p001": {
+          "quantity": 1,
+          "color": "Blue",
+          "size": "L"
+        },
+        "p003": {
+          "quantity": 1,
+          "color": "Blue",
+          "size": "L"
+        }
       },
       "id": "aqJT"
+    }
+  ],
+  "orders": [
+    {
+      "date": "2019-01-01T00:00:00.000Z",
+      "total": 111.98,
+      "shippingCost": 40,
+      "tax": 2,
+      "userId": "d3d1",
+      "addressId": "a1b2",
+      "items": {
+        "p005": {
+          "quantity": 1,
+          "price": 20,
+          "color": "Blue",
+          "size": "M"
+        },
+        "p004": {
+          "quantity": 2,
+          "price": 19.99,
+          "color": "Blue",
+          "size": "L"
+        }
+      },
+      "id": "or1d"
     }
   ]
 }
