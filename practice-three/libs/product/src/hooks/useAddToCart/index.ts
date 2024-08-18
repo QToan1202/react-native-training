@@ -6,12 +6,15 @@ import {
   useSuspenseQuery,
 } from '@tanstack/react-query'
 
-import { add, edit, get } from '@shared/services'
-import { TCart, TProduct } from '@shared/types'
+import { add, edit, get } from '@practice-three/services'
+import { TCart, TCartItemProps, TProduct } from '@practice-three/types'
 
 import { STALE_TIMES } from '../../constants'
 
-type TMutationDFn = TProduct | null
+type TMutationDFn = (Pick<TProduct, 'id'> | null) & {
+  size: string | null
+  color: string | null
+}
 
 const getCartQuery = (path: string, userId: string) =>
   queryOptions<TCart[], Error, TCart[], string[]>({
@@ -31,8 +34,24 @@ const useAddToCart = (
     mutationFn: (data: TMutationDFn): Promise<TCart> => {
       if (!data) throw new Error('Product data need to add not ready!')
 
+      if (!data.size) throw new Error('Please select size, before you add this product!')
+      if (!data.color)
+        throw new Error('Please select a color before adding the product to your cart!')
+
+      const { id: productId, color, size } = data
+
       // Create the CART for user in database
-      if (!cart.length) return add<TCart>(path, { userId, items: { [data.id]: 1 } })
+      if (!cart.length)
+        return add<TCart>(path, {
+          userId,
+          items: {
+            [productId]: {
+              quantity: 1,
+              color,
+              size,
+            },
+          },
+        })
 
       const [firstCartItem] = cart
       const { items } = firstCartItem
@@ -43,7 +62,7 @@ const useAddToCart = (
        * Check if current product need to add
        * is in Cart or not
        */
-      const existedProduct: number | undefined = items[data.id]
+      const existedProduct: TCartItemProps | undefined = items[productId]
 
       /**
        * If NOT EXIST in Cart need to push the productId,
@@ -52,7 +71,16 @@ const useAddToCart = (
       if (!existedProduct)
         return edit<TCart>(path, firstCartItem.id, {
           ...firstCartItem,
-          ...{ items: { ...items, [data.id]: 1 } },
+          ...{
+            items: {
+              ...items,
+              [productId]: {
+                quantity: 1,
+                color,
+                size,
+              },
+            },
+          },
         })
 
       /**
@@ -62,7 +90,18 @@ const useAddToCart = (
        */
       return edit<TCart>(path, firstCartItem.id, {
         ...firstCartItem,
-        ...{ items: { ...items, ...{ [data.id]: items[data.id] + 1 } } },
+        ...{
+          items: {
+            ...items,
+            ...{
+              [data.id]: {
+                quantity: items[data.id].quantity + 1,
+                color,
+                size,
+              },
+            },
+          },
+        },
       })
     },
     onSuccess: (data: TCart) => {

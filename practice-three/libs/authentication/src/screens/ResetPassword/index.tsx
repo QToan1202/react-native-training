@@ -1,11 +1,12 @@
-import { SubmitHandler, useForm } from 'react-hook-form'
+import { Controller, SubmitHandler, useForm } from 'react-hook-form'
 import { H2, Square, YStack } from 'tamagui'
 import { NativeStackScreenProps } from '@react-navigation/native-stack'
 
-import { Button, Form, Input, Text } from '@shared/components'
-import { AuthenticationStack, TRegisterForm } from '@shared/types'
+import { Button, Form, Input, Text } from '@practice-three/components'
+import { AuthenticationStack, TResetPassword } from '@practice-three/types'
 
 import { Lock, Logo } from '../../assets/images'
+import { RESET_PASSWORD_FORM, RESET_PASSWORD_FORM_DEFAULT_VALUES } from '../../constants'
 
 type RegisterScreenProps = Partial<NativeStackScreenProps<AuthenticationStack, 'ResetPassword'>>
 
@@ -14,10 +15,10 @@ const ResetPassword = ({ navigation }: RegisterScreenProps) => {
     control,
     handleSubmit,
     formState: { isSubmitting, isDirty, isValid },
-  } = useForm<Pick<TRegisterForm, 'password' | 'confirmPassword'>>()
-  const handleOnSubmit: SubmitHandler<Pick<TRegisterForm, 'password' | 'confirmPassword'>> = (
-    data
-  ) => {
+  } = useForm<TResetPassword>({
+    defaultValues: RESET_PASSWORD_FORM_DEFAULT_VALUES,
+  })
+  const handleOnSubmit: SubmitHandler<TResetPassword> = (data) => {
     console.log(data)
   }
 
@@ -37,8 +38,34 @@ const ResetPassword = ({ navigation }: RegisterScreenProps) => {
       </YStack>
 
       <Form formControlProp={control} onSubmit={handleSubmit(handleOnSubmit)} gap={10}>
-        <Input startIcon={<Lock />} label="password" placeholder="Password" />
-        <Input startIcon={<Lock />} label="confirmPassword" placeholder="Confirm Password" />
+        <Controller
+          name={RESET_PASSWORD_FORM.PASSWORD.label}
+          control={control}
+          rules={RESET_PASSWORD_FORM.PASSWORD.rules}
+          render={({ field: { value, onChange, onBlur } }) => (
+            <Input
+              startIcon={<Lock />}
+              placeholder={RESET_PASSWORD_FORM.PASSWORD.placeholder}
+              value={value}
+              onChangeText={onChange}
+              onBlur={onBlur}
+            />
+          )}
+        />
+        <Controller
+          name={RESET_PASSWORD_FORM.CONFIRM_PASSWORD.label}
+          control={control}
+          rules={RESET_PASSWORD_FORM.CONFIRM_PASSWORD.rules}
+          render={({ field: { value, onChange, onBlur } }) => (
+            <Input
+              startIcon={<Lock />}
+              placeholder={RESET_PASSWORD_FORM.CONFIRM_PASSWORD.placeholder}
+              value={value}
+              onChangeText={onChange}
+              onBlur={onBlur}
+            />
+          )}
+        />
 
         <Form.Trigger asChild="web">
           <Button

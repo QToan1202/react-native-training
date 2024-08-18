@@ -1,7 +1,7 @@
 import { ImageURISource } from 'react-native'
 import { Card, CardProps, H5, Image, YStack, getTokenValue } from 'tamagui'
 
-import { Text } from '@shared/components'
+import { Text } from '@practice-three/components'
 
 import { placeholderImagePath } from '../../assets/images'
 

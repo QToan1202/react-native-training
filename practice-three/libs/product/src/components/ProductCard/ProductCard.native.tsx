@@ -1,8 +1,8 @@
 import { Card, CardProps, Image, XStack, getTokenValue } from 'tamagui'
 
-import { Heading, Text } from '@shared/components'
-import { TProduct } from '@shared/types'
-import { calculateDiscountPrice } from '@shared/utils'
+import { Heading, Text } from '@practice-three/components'
+import { TProduct } from '@practice-three/types'
+import { calculateDiscountPrice } from '@practice-three/utils'
 
 import { placeholderImagePath } from '../../assets/images'
 

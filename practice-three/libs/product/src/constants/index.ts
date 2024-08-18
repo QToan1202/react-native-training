@@ -1,4 +1,4 @@
-import { TProductSpecification } from '@shared/types'
+import { TProductSpecification } from '@practice-three/types'
 
 export const CLOTH_CATEGORIES = [
   'shirt',

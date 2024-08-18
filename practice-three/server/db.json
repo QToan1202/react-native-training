@@ -27,32 +27,87 @@
   ],
   "addresses": [
     {
-      "name": "Tradly team",
-      "phone": "+621234567890",
-      "streetAddress": "Kualalumpur Malaysia",
-      "city": "Kualalumpur",
-      "state": "Malaysia",
-      "zipcode": "75119",
-      "userId": 1,
-      "id": 1
+      "id": "a1b2",
+      "userId": "d3d1",
+      "firstName": "John",
+      "lastName": "Doe",
+      "address": "123 Main St",
+      "optionalAddress": "",
+      "city": "Springfield",
+      "state": "Missouri",
+      "country": "New York",
+      "zipCode": "62701",
+      "phone": "5551234567"
+    },
+    {
+      "id": "c3d4",
+      "userId": "d3d1",
+      "firstName": "Jane",
+      "lastName": "Smith",
+      "address": "456 Oak St",
+      "optionalAddress": "",
+      "city": "Metropolis",
+      "state": "IL",
+      "country": "USA",
+      "zipCode": "62960",
+      "phone": "5559876543"
+    },
+    {
+      "id": "e5f6",
+      "userId": "d3d1",
+      "firstName": "Alice",
+      "lastName": "Johnson",
+      "address": "789 Pine St",
+      "optionalAddress": "",
+      "city": "Smallville",
+      "state": "KS",
+      "country": "USA",
+      "zipCode": "67524",
+      "phone": "5552345678"
+    },
+    {
+      "id": "g7h8",
+      "userId": "d3d1",
+      "firstName": "Bob",
+      "lastName": "Brown",
+      "address": "101 Maple St",
+      "optionalAddress": "",
+      "city": "Gotham",
+      "state": "NJ",
+      "country": "UK",
+      "zipCode": "07015",
+      "phone": "5553456789"
+    },
+    {
+      "id": "i9j0",
+      "userId": "d3d1",
+      "firstName": "Carol",
+      "lastName": "White",
+      "address": "202 Birch St",
+      "optionalAddress": "",
+      "city": "Star City",
+      "state": "CA",
+      "country": "UK",
+      "zipCode": "95060",
+      "phone": "5554567890"
     }
   ],
   "cards": [
     {
-      "number": "5627215898548869",
-      "name": "Tradly Team",
-      "expired": "12/08",
-      "cvc": "111",
-      "userId": 1,
-      "id": 1
+      "id": "1a2b3c4d",
+      "userId": "d3d1",
+      "cardNumber": "4111111111111111",
+      "expired": "12/25",
+      "securityCode": "123",
+      "cardHolder": "John Doe"
     },
     {
-      "number": "4627215898548869",
-      "name": "Tradly Team",
-      "expired": "12/2023",
-      "cvc": "123",
-      "userId": 1,
-      "id": 2
+      "id": "2e3f4g5h",
+      "userId": "d3d1",
+      "cardNumber": "5500000000000004",
+      "expired": "11/24",
+      "securityCode": "456",
+      "cardHolder": "Jane Smith"
     }
   ],
   "products": [
@@ -61,12 +116,12 @@
       "name": "Casual T-Shirt",
       "image": "https://example.com/images/tshirt.jpg",
       "price": 19.99,
-      "discountPercent": 10,
+      "discountPercent": 0,
       "brandName": "FashionCo",
       "rating": 4.5,
       "description": "A comfortable and stylish casual T-shirt perfect for everyday wear.",
       "sellerName": "BestSeller",
-      "sizes": ["S", "M", "L", "XL"],
+      "sizes": ["SM", "S", "M", "L", "XL"],
       "reviews": [
         {
           "rating": 5,
@@ -76,7 +131,7 @@
         },
         {
           "rating": 4,
-          "content": "Comfortable but the color fades slightly after washing.",
+          "content": "I recently purchased the Blue Ridge Slim Fit Jeans from Denim Co., and they have quickly become my favorite pair. The quality of the denim is outstanding, offering both durability and comfort. The slim fit is flattering without being too tight, and the slight stretch in the fabric provides great flexibility for everyday wear. I appreciate the classic five-pocket design, which combines functionality with a timeless look. The wash and finish of the jeans are perfect for both casual and semi-formal occasions. After several washes, the color and fit have remained consistent, proving their high quality. Overall, I highly recommend the Blue Ridge Slim Fit Jeans for anyone seeking stylish, comfortable, and long-lasting denim.",
           "reviewer": "Bob Smith",
           "date": "2023-07-05T09:23:45Z"
         }
@@ -247,7 +302,6 @@
       }
     }
   ],
-  "orders": [],
   "offers": [
     {
       "code": "summer2024",
@@ -301,10 +355,43 @@
     {
       "userId": "d3d1",
       "items": {
-        "p001": 1,
-        "p003": 1
+        "p001": {
+          "quantity": 1,
+          "color": "Blue",
+          "size": "L"
+        },
+        "p003": {
+          "quantity": 1,
+          "color": "Blue",
+          "size": "L"
+        }
       },
       "id": "aqJT"
+    }
+  ],
+  "orders": [
+    {
+      "date": "2019-01-01T00:00:00.000Z",
+      "total": 111.98,
+      "shippingCost": 40,
+      "tax": 2,
+      "userId": "d3d1",
+      "addressId": "a1b2",
+      "items": {
+        "p005": {
+          "quantity": 1,
+          "price": 20,
+          "color": "Blue",
+          "size": "M"
+        },
+        "p004": {
+          "quantity": 2,
+          "price": 19.99,
+          "color": "Blue",
+          "size": "L"
+        }
+      },
+      "id": "or1d"
     }
   ]
 }

@@ -3,9 +3,9 @@ import { Heading, Separator, YStack } from 'tamagui'
 import { NativeStackScreenProps } from '@react-navigation/native-stack'
 import { useQuery } from '@tanstack/react-query'
 
-import { CartStack, TOffer } from '@shared/types'
-import { getOffersQuery } from '@shared/queries'
-import { Text } from '@shared/components'
+import { CartStack, TOffer } from '@practice-three/types'
+import { getOffersQuery } from '@practice-three/queries'
+import { Text } from '@practice-three/components'
 
 import { PromoCodeHeader, PromoCode as PromoCodeItem, Search } from '../../components'
 
@@ -19,9 +19,9 @@ const PromoCode = (props: CartScreenProps) => {
       return (
         <YStack alignItems="center" gap={12} fullscreen>
           <Heading color="$black" fontSize="$5" fontWeight="bold" textAlign="center">
-            No Products Found
+            No Offers Available Found
           </Heading>
-          <Text>We couldn't find any products that match your search.</Text>
+          <Text>We couldn't find any offers that match your search.</Text>
         </YStack>
       )
 

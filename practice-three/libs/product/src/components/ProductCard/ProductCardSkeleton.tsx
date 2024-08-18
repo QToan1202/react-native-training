@@ -1,6 +1,6 @@
 import { Card, CardProps, getTokenValue } from 'tamagui'
 
-import { Skeleton } from '@shared/components'
+import { Skeleton } from '@practice-three/components'
 
 export type ProductCardSkeleton = CardProps
 

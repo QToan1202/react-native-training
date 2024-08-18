@@ -2,10 +2,10 @@ import { AnimatePresence } from 'tamagui'
 import { memo, useContext, useMemo } from 'react'
 import { useStore } from 'zustand'
 
-import { TCartItem } from '@shared/types'
+import { TCartItem } from '@practice-three/types'
 
 import { CartItem } from '../CartItem'
-import { CartContext } from '../../context'
+import { CartContext } from '../../contexts'
 
 const CartItemList = () => {
   const store = useContext(CartContext)

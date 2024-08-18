@@ -5,8 +5,8 @@ import {
   useSuspenseQuery,
 } from '@tanstack/react-query'
 
-import { edit } from '@shared/services'
-import { TCart, TProduct } from '@shared/types'
+import { edit } from '@practice-three/services'
+import { TCart, TProduct } from '@practice-three/types'
 
 import getCartQuery from '../getCartQuery'
 

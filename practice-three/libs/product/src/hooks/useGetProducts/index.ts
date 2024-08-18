@@ -1,8 +1,8 @@
 import { UseQueryResult, queryOptions, useQuery } from '@tanstack/react-query'
 
-import { TProduct } from '@shared/types'
-import { get } from '@shared/services'
-import { parseURLSearchParams } from '@shared/utils'
+import { TProduct } from '@practice-three/types'
+import { get } from '@practice-three/services'
+import { parseURLSearchParams } from '@practice-three/utils'
 
 import { STALE_TIMES } from '../../constants'
 

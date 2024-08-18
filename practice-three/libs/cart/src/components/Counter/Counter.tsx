@@ -8,11 +8,11 @@ import {
   IconButton as BaseIconButton,
   BaseInput,
   BaseInputProps,
-} from '@shared/components'
-import { useAuthStore } from '@shared/contexts'
+} from '@practice-three/components'
+import { useAuthStore } from '@practice-three/contexts'
 
 import { Minus, Plus } from '../../assets/images'
-import { CartContext } from '../../context'
+import { CartContext } from '../../contexts'
 import { useDeleteCartItem, useUpdateCartQuantity } from '../../hooks'
 
 export type CounterProps = Omit<BaseInputProps, 'defaultValue'> & {

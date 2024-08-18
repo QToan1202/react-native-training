@@ -4,7 +4,7 @@ import { TamaguiProvider } from 'tamagui'
 import { ToastProvider, ToastViewport } from '@tamagui/toast'
 import { withRouter, reactRouterParameters } from 'storybook-addon-remix-react-router'
 
-import { Toast } from '@shared/components'
+import { Toast } from '@practice-three/components'
 import tamaguiConfig from '../src/tamagui.config'
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
 

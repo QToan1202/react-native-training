@@ -16,6 +16,7 @@ const customTokens = createTokens({
     blue_50: '#0081de',
     blue_100: '#223263',
     blue_200: '#00398f',
+    blue_300: '#40bfff',
     green_50: '#0eb000',
     green_100: '#0a8200',
     gray_50: '#f0f0f0',
@@ -30,10 +31,13 @@ const customTokens = createTokens({
     border: '#e1e2e7',
     separate: '#eaeaea',
     pale: '#ebf0ff',
+    dust: 'rgba(144, 152, 177, 0.4)',
   },
   zIndex: {
     ...tokens.zIndex,
     selectContent: 10000,
+    step: 3,
+    stepConnector: 1,
   },
   card: {
     width: 410,

@@ -1,7 +1,7 @@
 import { useQuery } from '@tanstack/react-query'
 import { getTokenValue, ScrollView, Separator, XStack, YStack } from 'tamagui'
-import { Fragment, useCallback, useMemo } from 'react'
-import { useForm } from 'react-hook-form'
+import { Fragment, useCallback, useMemo, useState } from 'react'
+import { Controller, useForm } from 'react-hook-form'
 import { NativeStackScreenProps } from '@react-navigation/native-stack'
 import { useToastController } from '@tamagui/toast'
 
@@ -17,11 +17,11 @@ import {
   Rating,
   Text,
   Toast,
-} from '@shared/components'
-import { calculateDiscountPrice } from '@shared/utils'
-import { getOffersQuery } from '@shared/queries'
-import { ProductStack, TOffer, TProduct, TReview, TWishlistBase } from '@shared/types'
-import { useAuthStore } from '@shared/contexts'
+} from '@practice-three/components'
+import { calculateDiscountPrice } from '@practice-three/utils'
+import { getOffersQuery } from '@practice-three/queries'
+import { ProductStack, TOffer, TProduct, TReview, TWishlistBase } from '@practice-three/types'
+import { useAuthStore } from '@practice-three/contexts'
 
 import {
   findProductQuery,
@@ -45,9 +45,8 @@ const ProductDetail = ({ navigation, route }: ProductDetailScreenProps) => {
   const user = useAuthStore((state) => state.user)
   const {
     data: product,
-    isSuccess: isGetProductDetailSuccess,
-    isPending,
-    error,
+    isPending: isGetProductDetail,
+    error: errorWhenGetProduct,
   } = useQuery(findProductQuery('/products', productId))
   const { data: similarProducts, isSuccess: isGetProductsSuccess } = useQuery(
     getProductsQuery('/products')
@@ -123,22 +122,26 @@ const ProductDetail = ({ navigation, route }: ProductDetailScreenProps) => {
     [renderSimilarProducts]
   )
   const { mutate: addToCart } = useAddToCart('/carts', user?.id || '')
+  const [selectedSize, setSelectedSize] = useState<string | null>(null)
   const handleAddToCart = () => {
-    addToCart(isGetProductDetailSuccess ? product : null, {
-      onSuccess: () => {
-        toast.show(`Product have add to cart`, {
-          message: `You have successfully added ${product?.name} to cart!`,
-        })
-      },
-      onError: () => {
-        toast.show(`Something went wrong`, {
-          message: `Can't not add ${product?.name} to cart. Reload and try again.`,
-        })
-      },
-    })
+    addToCart(
+      { id: productId, color: null, size: selectedSize },
+      {
+        onSuccess: () => {
+          toast.show(`Product have add to cart`, {
+            message: `You have successfully added ${product?.name} to cart!`,
+          })
+        },
+        onError: () => {
+          toast.show(`Something went wrong`, {
+            message: `Can't not add ${product?.name} to cart. Reload and try again.`,
+          })
+        },
+      }
+    )
   }
-  if (isPending) return <Text>Loading...</Text>
-  if (error) return <Text>An error has occurred: {error.message}</Text>
+  if (isGetProductDetail) return <Text>Loading...</Text>
+  if (errorWhenGetProduct) return <Text>An error has occurred: {errorWhenGetProduct.message}</Text>
 
   const handlePressWishlistBtn = () => {
     if (!isProductInWishlist)
@@ -234,6 +237,8 @@ const ProductDetail = ({ navigation, route }: ProductDetailScreenProps) => {
         return null
     }
   }
+  const handleSelectSize = (value: string) => setSelectedSize(value)
+
   return (
     <YStack gap={15}>
       <Carousel
@@ -284,7 +289,7 @@ const ProductDetail = ({ navigation, route }: ProductDetailScreenProps) => {
           <Heading color="black" fontSize="$3" fontWeight="500">
             Select Size
           </Heading>
-          <Radio>
+          <Radio onValueChange={handleSelectSize}>
             <XStack gap={16}>
               {product.sizes.map((size: string) => (
                 <RadioItem
@@ -330,17 +335,24 @@ const ProductDetail = ({ navigation, route }: ProductDetailScreenProps) => {
         <Heading color="black" fontSize="$3" fontWeight="500">
           Delivery Details
         </Heading>
-        <Input
-          label="pinCode"
-          containerStyle={{
-            borderRadius: 10,
-            maxWidth: 300,
-          }}
-          placeholder="Enter Pincode"
-          placeholderTextColor="$black"
-          paddingHorizontal={22}
+        <Controller
+          name="pinCode"
           control={control}
-          endIcon={<Button title="Check" variant="text" color="$white" />}
+          render={({ field: { value, onBlur, onChange } }) => (
+            <Input
+              value={value}
+              onChangeText={onChange}
+              onBlur={onBlur}
+              placeholder="Enter Pincode"
+              placeholderTextColor="$black"
+              paddingHorizontal={22}
+              endIcon={<Button title="Check" variant="text" color="$white" />}
+              containerStyle={{
+                borderRadius: 10,
+                maxWidth: 300,
+              }}
+            />
+          )}
         />
       </YStack>
       <Accordion type="multiple">

@@ -1,6 +1,6 @@
 import { createNativeStackNavigator } from '@react-navigation/native-stack'
 
-import { AuthenticationStack } from '@shared/types'
+import { AuthenticationStack } from '@practice-three/types'
 import {
   ForgotPasswordScreen,
   LoginScreen,

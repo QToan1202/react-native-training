@@ -3,9 +3,9 @@ import { Heading, YStack } from 'tamagui'
 import { NativeStackScreenProps } from '@react-navigation/native-stack'
 import { useQuery } from '@tanstack/react-query'
 
-import { ProductStack, TUser, TWishlistExpand } from '@shared/types'
-import { useAuthStore } from '@shared/contexts'
-import { Button, Text } from '@shared/components'
+import { ProductStack, TUser, TWishlistExpand } from '@practice-three/types'
+import { useAuthStore } from '@practice-three/contexts'
+import { Button, Text } from '@practice-three/components'
 
 import { getWishlistQuery } from '../../hooks'
 import { WishlistItem, WishlistItemSkeleton } from '../../components'

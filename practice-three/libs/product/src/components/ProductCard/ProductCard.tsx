@@ -2,9 +2,9 @@ import { Card, CardProps, H2, Image, XStack, getTokenValue } from 'tamagui'
 import { StarFull } from '@tamagui/lucide-icons'
 import { GestureResponderEvent } from 'react-native'
 
-import { Text } from '@shared/components'
-import { TProduct } from '@shared/types'
-import { calculateDiscountPrice } from '@shared/utils'
+import { Text } from '@practice-three/components'
+import { TProduct } from '@practice-three/types'
+import { calculateDiscountPrice } from '@practice-three/utils'
 
 import { placeholderImagePath } from '../../assets/images'
 

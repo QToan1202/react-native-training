@@ -1,7 +1,7 @@
 import { GetProps, styled, Tabs } from 'tamagui'
 import { ReactNode } from 'react'
 
-import { Text } from '@shared/components'
+import { Text } from '@practice-three/components'
 
 import useTabs from './useTabs'
 

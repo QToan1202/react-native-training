@@ -19,8 +19,17 @@ export type CartStack = {
   PromoCode: undefined
 }
 
+export type CheckoutStack = {
+  Address: undefined
+  AddAddress: undefined | { id: string }
+  Payment: undefined
+  AddPayment: undefined
+  Order: undefined
+}
+
 export type RootStackParamList = {
   AuthStack: NavigatorScreenParams<AuthenticationStack>
   ProductStack: NavigatorScreenParams<ProductStack>
   CartStack: NavigatorScreenParams<CartStack>
+  CheckoutStack: NavigatorScreenParams<CheckoutStack>
 }

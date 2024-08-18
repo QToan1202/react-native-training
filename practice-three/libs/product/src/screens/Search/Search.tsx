@@ -4,9 +4,9 @@ import { NativeStackScreenProps } from '@react-navigation/native-stack'
 import { LoaderFunctionArgs, redirect, useLoaderData } from 'react-router-dom'
 import type { QueryClient } from '@tanstack/react-query'
 
-import { ProductStack, TProduct } from '@shared/types'
-import { Button, Text } from '@shared/components'
-import { TResolveLoaderReturn } from '@shared/utils'
+import { ProductStack, TProduct } from '@practice-three/types'
+import { Button, Text } from '@practice-three/components'
+import { TResolveLoaderReturn } from '@practice-three/utils'
 
 import { Filter, ProductCard, ProductCardSkeleton } from '../../components'
 import { useGetProducts, getProductsQuery } from '../../hooks'
@@ -72,7 +72,7 @@ const Search = (props: SearchProps) => {
           />
         )}
       </AnimatePresence>
-      <YStack flex={1} justifyContent="center">
+      <YStack alignSelf="flex-start" flex={1} justifyContent="center">
         <XStack alignSelf="flex-end">
           <Button
             title="Filter"

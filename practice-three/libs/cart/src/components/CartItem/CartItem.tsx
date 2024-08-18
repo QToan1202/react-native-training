@@ -4,13 +4,13 @@ import { GestureResponderEvent, ImageURISource } from 'react-native'
 import isEqual from 'react-fast-compare'
 import { useStore } from 'zustand'
 
-import { TProduct } from '@shared/types'
-import { AlertDialog, IconButton, Image, Text } from '@shared/components'
-import { useAuthStore } from '@shared/contexts'
+import { TProduct } from '@practice-three/types'
+import { AlertDialog, IconButton, Image, Text } from '@practice-three/components'
+import { useAuthStore } from '@practice-three/contexts'
 
 import { Heart, Trash } from '../../assets/images'
 import { Counter } from '../Counter'
-import { CartContext } from '../../context'
+import { CartContext } from '../../contexts'
 import { useDeleteCartItem } from '../../hooks'
 
 type TCartItem = 'id' | 'name' | 'price'

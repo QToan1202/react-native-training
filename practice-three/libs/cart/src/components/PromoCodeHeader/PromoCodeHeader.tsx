@@ -1,8 +1,8 @@
 import { XStack, Heading, XStackProps } from 'tamagui'
 import { NativeStackScreenProps } from '@react-navigation/native-stack'
 
-import { IconButton } from '@shared/components'
-import { CartStack } from '@shared/types'
+import { IconButton } from '@practice-three/components'
+import { CartStack } from '@practice-three/types'
 
 import { HeaderHeart, Bag, ArrowLeft, Search } from '../../assets/images'
 

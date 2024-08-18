@@ -1,14 +1,14 @@
 import { H2, Separator, Square, Stack, XStack, YStack, isWeb } from 'tamagui'
-import { SubmitHandler, useForm } from 'react-hook-form'
+import { Controller, SubmitHandler, useForm } from 'react-hook-form'
 import { NativeStackScreenProps } from '@react-navigation/native-stack'
 import { redirect } from 'react-router-dom'
 
-import { Button, Form, Input, Text } from '@shared/components'
-import { AuthenticationStack, TRegisterForm } from '@shared/types'
+import { Button, Form, Input, Text } from '@practice-three/components'
+import { AuthenticationStack, TRegisterForm } from '@practice-three/types'
 
-import { Apple, Facebook, Google, Lock, Logo, Mail, User } from '../../assets/images'
+import { Apple, Facebook, Google, Logo } from '../../assets/images'
 import useRegister from '../../hooks/useRegister'
-import { VALIDATION_RULES } from '../../constants'
+import { REGISTER_FORM, REGISTER_FORM_DEFAULT_VALUES } from '../../constants'
 
 type RegisterScreenProps = Partial<NativeStackScreenProps<AuthenticationStack, 'Register'>>
 
@@ -20,7 +20,9 @@ const Register = ({ navigation }: RegisterScreenProps) => {
     reset,
     handleSubmit,
     formState: { isSubmitting, isDirty, errors },
-  } = useForm<TRegisterForm>()
+  } = useForm<TRegisterForm>({
+    defaultValues: REGISTER_FORM_DEFAULT_VALUES,
+  })
   const watchPassword = watch('password', '')
   const handleOnSubmit: SubmitHandler<TRegisterForm> = (data) => {
     mutateRegister(data, {
@@ -55,42 +57,37 @@ const Register = ({ navigation }: RegisterScreenProps) => {
       </Stack>
 
       <Form formControlProp={control} onSubmit={handleSubmit(handleOnSubmit)} gap={10}>
-        <Input
-          startIcon={(color) => <User stroke={color} />}
-          label="name"
-          placeholder="Name"
-          isError={!!errors.name}
-          options={VALIDATION_RULES.NAME}
-        />
-        <Input
-          startIcon={(color) => <Mail stroke={color} />}
-          label="account"
-          placeholder="Your Email / Phone Number"
-          isError={!!errors.account}
-          options={VALIDATION_RULES.ACCOUNT}
-        />
-        <Input
-          secureTextEntry
-          startIcon={(color) => <Lock stroke={color} />}
-          label="password"
-          placeholder="Password"
-          isError={!!errors.password}
-          options={VALIDATION_RULES.PASSWORD}
-        />
-        <Input
-          secureTextEntry
-          startIcon={(color) => <Lock stroke={color} />}
-          label="confirmPassword"
-          placeholder="Confirm Password"
-          isError={!!errors.confirmPassword}
-          options={{
-            ...VALIDATION_RULES.PASSWORD,
-            ...{
-              validate: (value: string) =>
-                watchPassword === value || 'Your type in password do not match',
-            },
-          }}
-        />
+        {Object.keys(REGISTER_FORM).map((key: string) => {
+          const covertKey = key as keyof typeof REGISTER_FORM
+          const inputLabel = REGISTER_FORM[covertKey].label
+
+          return (
+            <Controller
+              key={covertKey}
+              control={control}
+              name={inputLabel}
+              rules={
+                inputLabel === 'confirmPassword'
+                  ? REGISTER_FORM[covertKey].rules
+                  : {
+                      validate: (value: string) =>
+                        watchPassword === value || 'Your type in password do not match',
+                    }
+              }
+              render={({ field: { value, onChange, onBlur } }) => (
+                <Input
+                  secureTextEntry={inputLabel === 'confirmPassword' || inputLabel === 'password'}
+                  startIcon={REGISTER_FORM[covertKey].startIcon}
+                  placeholder={REGISTER_FORM[covertKey].placeholder}
+                  isError={!!errors.name}
+                  value={value}
+                  onChangeText={onChange}
+                  onBlur={onBlur}
+                />
+              )}
+            />
+          )
+        })}
 
         <Form.Trigger asChild="web">
           <Button

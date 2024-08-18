@@ -1,4 +1,4 @@
-import { TFeatureConfig } from '@shared/types'
+import { TFeatureConfig } from '@practice-three/types'
 
 const PRE_DEFINED_FEATURES: Array<Omit<TFeatureConfig, 'active'>> = [
   {
@@ -15,6 +15,11 @@ const PRE_DEFINED_FEATURES: Array<Omit<TFeatureConfig, 'active'>> = [
     name: 'cart',
     description:
       'The Cart feature flag controls the visibility and functionality of the shopping cart within the application. When enabled, users can add items to their cart, view the cart contents, update item quantities, and proceed to checkout.',
+  },
+  {
+    name: 'checkout',
+    description:
+      'The Checkout feature flag controls the access to the checkout process within the application. When enabled, users can review their final order, enter shipping information, choose a delivery method, and place their order.',
   },
 ]
 
