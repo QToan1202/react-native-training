@@ -14,7 +14,10 @@
     "skipLibCheck": true,
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
-    "paths": {}
+    "paths": {
+      "components": ["libs/shared/src/components/index.ts"],
+      "config": ["libs/shared/src/config/index.ts"]
+    }
   },
   "exclude": ["node_modules", "tmp"]
 }

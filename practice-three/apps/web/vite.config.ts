@@ -1,7 +1,14 @@
 /// <reference types='vitest' />
-import { defineConfig } from 'vite';
-import react from '@vitejs/plugin-react';
-import { nxViteTsPaths } from '@nx/vite/plugins/nx-tsconfig-paths.plugin';
+import { defineConfig } from 'vite'
+import react from '@vitejs/plugin-react'
+import { nxViteTsPaths } from '@nx/vite/plugins/nx-tsconfig-paths.plugin'
+
+import { tamaguiPlugin } from '@tamagui/vite-plugin'
+
+const tamaguiConfig = {
+  components: ['tamagui'],
+  config: '../../libs/config/src/lib/tamagui.config.ts',
+}
 
 export default defineConfig({
   root: __dirname,
@@ -17,7 +24,7 @@ export default defineConfig({
     host: 'localhost',
   },
 
-  plugins: [react(), nxViteTsPaths()],
+  plugins: [react(), tamaguiPlugin(tamaguiConfig), nxViteTsPaths()],
 
   // Uncomment this if you are using workers.
   // worker: {
@@ -46,4 +53,4 @@ export default defineConfig({
       provider: 'v8',
     },
   },
-});
+})
