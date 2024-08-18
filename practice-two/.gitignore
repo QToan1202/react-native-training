@@ -39,5 +39,3 @@ coverage
 
 #tamagui config json
 .tamagui/
-
-.env
