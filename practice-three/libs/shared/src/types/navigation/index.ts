@@ -8,6 +8,13 @@ export type AuthenticationStack = {
   ResetPassword: undefined
 }
 
+export type ProductStack = {
+  Search: undefined
+  ProductDetail: { id: string }
+  Wishlist: undefined
+}
+
 export type RootStackParamList = {
   AuthStack: NavigatorScreenParams<AuthenticationStack>
+  ProductStack: NavigatorScreenParams<ProductStack>
 }

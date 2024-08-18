@@ -20,10 +20,8 @@ const config: StorybookConfig = {
   viteFinal: async (config) =>
     mergeConfig(config, {
       plugins: [
+        svgr(),
         nxViteTsPaths(),
-        svgr({
-          include: '**/*.svg',
-        }),
         tamaguiPlugin({
           components: ['tamagui'],
           config: '../src/tamagui.config.ts',

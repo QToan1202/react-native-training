@@ -21,6 +21,17 @@ export const Default: Story = {
   },
 }
 
+export const CustomTextButton: Story = {
+  args: {
+    title: 'click me',
+    variant: 'outlined',
+    color: '$red_100',
+    fontWeight: '700',
+    fontSize: '$4',
+    onPress: action('press'),
+  },
+}
+
 export const DisableButton: Story = {
   args: {
     title: 'add to cart',

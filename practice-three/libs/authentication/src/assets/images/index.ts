@@ -1,3 +1,5 @@
+/// <reference types="vite-plugin-svgr/client" />
+
 export { default as Apple } from './apple.svg?react'
 export { default as Facebook } from './facebook.svg?react'
 export { default as Google } from './google.svg?react'

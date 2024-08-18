@@ -1,11 +1,14 @@
-import StyledText, { StyledTextProps } from './styles'
+import { GetProps, Text as TText, styled } from 'tamagui'
 
-const Text = StyledText.styleable<StyledTextProps>(({ children, ...rest }, ref) => {
-  return (
-    <StyledText ref={ref} {...rest}>
-      {children}
-    </StyledText>
-  )
+const Text = styled(TText, {
+  name: 'Text',
+  tag: 'p',
+  fontSize: '$true',
+  fontWeight: '400',
+  fontFamily: '$body',
+  color: '$color.black',
 })
+
+export type TextProps = GetProps<typeof Text>
 
 export default Text

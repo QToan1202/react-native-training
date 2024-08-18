@@ -9,13 +9,13 @@ export type RadioItemProps = RadioGroupItemProps & {
 const StyledItem = styled(RadioGroup.Item, {
   size: '$6',
   backgroundColor: '$white',
+  borderWidth: 1,
   borderColor: '$transparent',
 
   hoverStyle: {
-    backgroundColor: '$gray_100',
+    backgroundColor: '$gray_50',
   },
   focusStyle: {
-    borderWidth: 1,
     borderColor: '$gray_50',
     backgroundColor: '$white',
   },

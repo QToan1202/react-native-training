@@ -1,35 +1,35 @@
 import { ReactNode, useCallback, useMemo, useRef } from 'react'
-import { Control, Path, UseControllerProps, useController } from 'react-hook-form'
+import { Control, FieldValues, Path, UseControllerProps, useController } from 'react-hook-form'
 import { Square, SquareProps, Input as TInput } from 'tamagui'
 import { getTokenValue } from '@tamagui/core'
 
 import StyledInput, { StyledInputProps } from './StyledInput'
-import { TFormValues } from '../../types'
-import InputWrapper from './StyledWrapper'
+import InputWrapper, { StyledWrapperProps } from './StyledWrapper'
 
-export type InputProps = StyledInputProps & {
-  label: Path<TFormValues>
-  control?: Control<TFormValues>
+export type InputProps<T extends FieldValues> = StyledInputProps & {
+  label: Path<T>
+  control?: Control<T>
   options?: UseControllerProps['rules']
   iconScaling?: number
+  isError?: boolean
+  containerStyle?: StyledWrapperProps
   startIcon?: ReactNode | ((color: string) => ReactNode)
   endIcon?: ReactNode | ((color: string) => ReactNode)
-  isError?: boolean
 }
 
-const Input = ({
+const Input = <T extends FieldValues>({
   label,
   options,
   control,
+  containerStyle,
   iconScaling = 1,
   isError = false,
   startIcon: startIconProp,
   endIcon: endIconProp,
   ...rest
-}: InputProps) => {
-  const { field } = useController<TFormValues>({
+}: InputProps<T>) => {
+  const { field } = useController<T>({
     control,
-    defaultValue: '',
     name: label,
     rules: options,
   })
@@ -66,6 +66,7 @@ const Input = ({
   return (
     <InputWrapper
       variant={isError ? 'error' : 'normal'}
+      {...containerStyle}
       onPress={() => {
         inputRef.current?.focus()
       }}

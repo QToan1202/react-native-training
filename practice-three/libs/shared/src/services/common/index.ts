@@ -28,7 +28,7 @@ export const add = async <T>(path: string, options: Partial<T>): Promise<T> => {
   return res.data
 }
 
-export const edit = async <T>(path: string, id: number, options: Partial<T>): Promise<T> => {
+export const edit = async <T>(path: string, id: string, options: Partial<T>): Promise<T> => {
   const res = await request.patch(`${path}/${id}`, options).catch((error) => {
     throw error
   })
@@ -36,7 +36,7 @@ export const edit = async <T>(path: string, id: number, options: Partial<T>): Pr
   return res.data
 }
 
-export const remove = async (path: string, id: number): Promise<AxiosResponse['status']> => {
+export const remove = async (path: string, id: string): Promise<AxiosResponse['status']> => {
   const res = await request.delete(`${path}/${id}`).catch((error) => {
     throw error
   })

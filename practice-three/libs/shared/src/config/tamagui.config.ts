@@ -11,25 +11,60 @@ const customTokens = createTokens({
     white: '#f5f5f5',
     black: '#272727',
     pure_black: '#000',
-    transparent: '00ffffff',
+    transparent: 'transparent',
     primary: '#002482',
-    indigo: '#223263',
-    blue: '#0081de',
+    blue_50: '#0081de',
+    blue_100: '#223263',
+    blue_200: '#00398f',
+    blue_300: '#002482',
     green_50: '#0eb000',
     green_100: '#0a8200',
     gray_50: '#f0f0f0',
     gray_100: '#848484',
     gray_200: '#646464',
     gray_300: '#565656',
+    gray_400: '#7c7c7c',
     yellow: '#f2c94c',
     red_50: '#fb7181',
     red_100: '#e90000',
     red_200: '#ff0000',
     border: '#e1e2e7',
+    separate: '#eaeaea',
   },
   zIndex: {
     ...tokens.zIndex,
     selectContent: 10000,
+  },
+  card: {
+    width: 410,
+    height: 420,
+  },
+  cardMobile: {
+    width: 185,
+    height: 320,
+  },
+  commentImage: {
+    width: 140,
+    height: 140,
+  },
+  category: {
+    width: 590,
+    height: 330,
+  },
+  categoryMobile: {
+    width: 62,
+    height: 62,
+  },
+  deal: {
+    width: 490,
+    height: 570,
+  },
+  wishlistImg: {
+    width: 87,
+    height: 77,
+  },
+  bottomTabBar: {
+    height: 65,
   },
 })
 

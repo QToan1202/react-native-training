@@ -17,5 +17,5 @@ const Wrapper = styled(XStack, {
   defaultVariants: { variant: 'normal' },
 })
 
-export type StyledInputProps = GetProps<typeof Wrapper>
+export type StyledWrapperProps = GetProps<typeof Wrapper>
 export default Wrapper

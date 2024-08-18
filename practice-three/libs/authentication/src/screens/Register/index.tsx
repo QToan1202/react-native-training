@@ -1,7 +1,7 @@
 import { H2, Separator, Square, Stack, XStack, YStack, isWeb } from 'tamagui'
 import { SubmitHandler, useForm } from 'react-hook-form'
 import { NativeStackScreenProps } from '@react-navigation/native-stack'
-import { useNavigate } from 'react-router-dom'
+import { redirect } from 'react-router-dom'
 
 import { Button, Form, Input, Text } from '@shared/components'
 import { AuthenticationStack, TRegisterForm } from '@shared/types'
@@ -14,7 +14,6 @@ type RegisterScreenProps = Partial<NativeStackScreenProps<AuthenticationStack, '
 
 const Register = ({ navigation }: RegisterScreenProps) => {
   const { mutate: mutateRegister } = useRegister('/users')
-  const navigate = useNavigate()
   const {
     control,
     watch,
@@ -28,10 +27,16 @@ const Register = ({ navigation }: RegisterScreenProps) => {
       onSuccess: () => reset(),
     })
   }
-  const handleMoveToLogin = () => (isWeb ? navigate('/login') : navigation?.navigate('Login'))
+  const handleMoveToLogin = () => (isWeb ? redirect('/login') : navigation?.navigate('Login'))
 
   return (
-    <YStack gap={5} paddingHorizontal={36}>
+    <YStack
+      gap={5}
+      paddingHorizontal={36}
+      justifyContent="center"
+      backgroundColor="$white"
+      fullscreen
+    >
       <Square alignItems="center">
         <Logo />
       </Square>
@@ -42,7 +47,7 @@ const Register = ({ navigation }: RegisterScreenProps) => {
       </YStack>
 
       <Stack marginVertical={17}>
-        {Object.keys(errors).length && (
+        {!!Object.keys(errors).length && (
           <Text color="$red_50" textAlign="center">
             {errors.confirmPassword?.message || 'You need to fill all information'}
           </Text>
@@ -101,7 +106,7 @@ const Register = ({ navigation }: RegisterScreenProps) => {
         <Text
           position="absolute"
           top={-8}
-          backgroundColor="$pure_white"
+          backgroundColor="$white"
           paddingHorizontal={20}
           textTransform="uppercase"
           color="$gray_100"

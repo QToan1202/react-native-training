@@ -2,7 +2,7 @@ import type { Meta, StoryObj } from '@storybook/react'
 import { UseControllerProps, useForm } from 'react-hook-form'
 
 import Input, { InputProps } from './Input'
-import { TFormValues } from '../../types'
+import { TFormValues, TLoginForm } from '../../types'
 import { Lock } from '../../assets/images'
 
 const meta: Meta<typeof Input> = {
@@ -16,7 +16,7 @@ type Story = StoryObj<typeof Input>
 const UncontrolledInput = ({
   options = {},
   ...restProps
-}: Omit<InputProps, 'label' | 'control'>) => {
+}: Omit<InputProps<TLoginForm>, 'label' | 'control'>) => {
   const { control } = useForm<TFormValues>()
 
   return (

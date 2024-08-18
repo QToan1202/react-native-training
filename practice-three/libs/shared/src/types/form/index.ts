@@ -12,4 +12,8 @@ export type TRegisterForm = {
   confirmPassword: string
 }
 
-export type TFormValues = TLoginForm & TRegisterForm
+export type TSearchField = {
+  search: string
+}
+
+export type TFormValues = TLoginForm & TRegisterForm & TSearchField

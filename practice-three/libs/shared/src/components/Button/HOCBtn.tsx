@@ -46,9 +46,7 @@ const Button = forwardRef<TamaguiElement, ButtonProps>(
       >
         {startIcon ? <StyledButton.Icon>{startIcon}</StyledButton.Icon> : null}
         {loading ? Loading : null}
-        <StyledButton.Text style={loading ? { color: 'transparent' } : {}}>
-          {title}
-        </StyledButton.Text>
+        <StyledButton.Text {...(loading && { color: '$transparent' })}>{title}</StyledButton.Text>
         {endIcon ? <StyledButton.Icon>{endIcon}</StyledButton.Icon> : null}
       </StyledButton>
     )

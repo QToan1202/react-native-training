@@ -1,8 +1,8 @@
-import { ReactNode } from 'react'
+import { RouteObject } from 'react-router-dom'
 
 export type THOCsProps = {
   category: string[]
-  navigatorData: (() => ReactNode)[]
+  navigatorData: RouteObject[]
 }
 
 export type TFeatureConfig = {

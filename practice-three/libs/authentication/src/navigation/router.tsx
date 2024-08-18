@@ -1,4 +1,4 @@
-import { RouterProvider, createBrowserRouter } from 'react-router-dom'
+import { RouteObject } from 'react-router-dom'
 
 import {
   ForgotPasswordScreen,
@@ -8,7 +8,7 @@ import {
   VerificationScreen,
 } from '../screens'
 
-const authRouter = createBrowserRouter([
+const authRouter: RouteObject[] = [
   {
     path: '/login',
     index: true,
@@ -30,8 +30,6 @@ const authRouter = createBrowserRouter([
     path: '/reset-password',
     element: <ResetPasswordScreen />,
   },
-])
+]
 
-const AuthRouterProvider = () => <RouterProvider router={authRouter} />
-
-export default AuthRouterProvider
+export default authRouter
