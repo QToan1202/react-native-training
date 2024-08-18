@@ -2,7 +2,7 @@ import { UseMutationResult, useMutation } from '@tanstack/react-query'
 import { useToastController } from '@tamagui/toast'
 
 import { TUser } from '@shared/types'
-import { useAuthStore } from '@shared/stores'
+import { useAuthStore } from '@shared/contexts'
 
 import { register } from '../services'
 

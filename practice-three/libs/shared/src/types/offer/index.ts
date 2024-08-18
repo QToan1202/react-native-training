@@ -2,5 +2,9 @@ export type TOffer = {
   id: string
   name: string
   code: string
-  discount: number
+  discountPercentage: number
+  description: string
+  validFrom: string
+  validTo: string
+  minimumPurchaseAmount: number
 }

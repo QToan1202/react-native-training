@@ -15,13 +15,14 @@ import {
   Toast,
 } from '@shared/components'
 import { TOffer, TProduct, TReview, TUser, TWishlistBase } from '@shared/types'
-import { useAuthStore } from '@shared/stores'
+import { useAuthStore } from '@shared/contexts'
 import { getOffersQuery } from '@shared/queries'
 
 import {
   findProductQuery,
   getProductsQuery,
   getWishlistQuery,
+  useAddToCart,
   useAddToWishlist,
   useDeleteFromWishlist,
 } from '../../hooks'
@@ -83,8 +84,20 @@ const ProductDetail = () => {
   const toast = useToastController()
   const { mutate: addToWishlist } = useAddToWishlist('/wishlists', userId || '')
   const { mutate: deleteFromWishlist } = useDeleteFromWishlist('/wishlists', userId || '')
+  const { mutate: addToCart, isPending: isAddingToCart } = useAddToCart('/carts', userId || '')
   const handleAddToCart = () => {
-    throw new Error('Function not implement')
+    addToCart(product, {
+      onSuccess: () => {
+        toast.show(`Product have add to cart`, {
+          message: `You have successfully added ${product.name} to cart!`,
+        })
+      },
+      onError: () => {
+        toast.show(`Something went wrong`, {
+          message: `Can't not add ${product.name} to cart. Reload and try again.`,
+        })
+      },
+    })
   }
   const handlePressLikeBtn = () => {
     if (!isProductInWishlist)
@@ -236,13 +249,13 @@ const ProductDetail = () => {
   }, [similarProducts])
   const renderOffers = useMemo(
     () =>
-      offers.map(({ id, name, discount }: TOffer) => (
+      offers.map(({ id, name, discountPercentage }: TOffer) => (
         <Fragment key={id}>
           <Text>
             <Text tag="span" fontWeight="bold">
               {name} offer
             </Text>
-            &nbsp;get {discount}&#37; off &nbsp;
+            &nbsp;get {discountPercentage}&#37; off &nbsp;
             <Text tag="span" color="$primary" hoverStyle={{ textDecorationLine: 'underline' }}>
               T&#38;C
             </Text>
@@ -335,7 +348,7 @@ const ProductDetail = () => {
           </Text>
           {renderOffers}
           <XStack>
-            <Button title="add to cart" onPress={handleAddToCart} />
+            <Button title="add to cart" loading={isAddingToCart} onPress={handleAddToCart} />
             <IconButton onPress={handlePressLikeBtn}>
               {isProductInWishlist ? <HeartFill /> : <Heart />}
             </IconButton>

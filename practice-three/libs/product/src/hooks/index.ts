@@ -6,3 +6,5 @@ export { default as findProductQuery } from './useFindProduct'
 export { default as getWishlistQuery } from './useGetWishlist'
 export { default as useAddToWishlist } from './useAddWishlist'
 export { default as useDeleteFromWishlist } from './useDeleteWishlist'
+
+export { default as useAddToCart } from './useAddToCart'

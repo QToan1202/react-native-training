@@ -5,7 +5,7 @@ import { NativeStackScreenProps } from '@react-navigation/native-stack'
 import { QueryClient, useQuery } from '@tanstack/react-query'
 
 import { ProductStack, TUser, TWishlistExpand } from '@shared/types'
-import { useAuthStore } from '@shared/stores'
+import { useAuthStore } from '@shared/contexts'
 import { TResolveLoaderReturn } from '@shared/utils'
 import { Button, Text } from '@shared/components'
 
@@ -23,7 +23,7 @@ const Heading = styled(H2, {
 
 export const wishlistLoader = (queryClient: QueryClient) => async () => {
   const user: TUser | undefined = useAuthStore.getState().user
-  queryClient.ensureQueryData(getWishlistQuery('/wishlists', user?.id || 'd3d1', true))
+  queryClient.ensureQueryData(getWishlistQuery('/wishlists', user?.id || '', true))
 
   return { userId: user?.id }
 }

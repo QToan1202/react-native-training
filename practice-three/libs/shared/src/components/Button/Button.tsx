@@ -88,6 +88,7 @@ const ButtonFrame = styled(View, {
 
 const BaseButtonText = styled(Text, {
   name: 'ButtonText',
+  tag: 'span',
   userSelect: 'none',
   textTransform: 'capitalize',
   textAlign: 'center',

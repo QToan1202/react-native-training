@@ -250,35 +250,61 @@
   "orders": [],
   "offers": [
     {
+      "code": "summer2024",
       "name": "Summer Sale",
-      "code": "SPECIAL25",
-      "discount": 25,
-      "id": "akOH"
+      "description": "Get 20% off on all summer products!",
+      "discountPercentage": 20,
+      "validFrom": "2024-07-01T00:00:00Z",
+      "validTo": "2024-09-01T23:59:59Z",
+      "minimumPurchaseAmount": 50,
+      "id": "sumr"
     },
     {
-      "name": "Holiday Discount",
-      "code": "SAVE10",
-      "discount": 10,
-      "id": "ymnk"
+      "code": "winter2024",
+      "name": "Winter Clothing Discount",
+      "description": "Save 15% on winter clothing!",
+      "discountPercentage": 15,
+      "validFrom": "2024-11-01T00:00:00Z",
+      "validTo": "2024-12-31T23:59:59Z",
+      "minimumPurchaseAmount": 75,
+      "id": "wint"
     },
     {
-      "name": "Mid-Year Sale",
-      "code": "HALFOFF",
-      "discount": 50,
-      "id": "qmgG"
+      "code": "spring2024",
+      "name": "Spring Accessories Deal",
+      "description": "Enjoy 10% off on all spring accessories!",
+      "discountPercentage": 10,
+      "validFrom": "2024-03-01T00:00:00Z",
+      "validTo": "2024-05-31T23:59:59Z",
+      "minimumPurchaseAmount": 30,
+      "id": "spr1"
     },
     {
-      "name": "Welcome Offer",
-      "code": "WELCOME5",
-      "discount": 5,
-      "id": "ioxc"
+      "code": "fall2024",
+      "name": "Fall Products Promotion",
+      "description": "Get 25% off on selected fall products!",
+      "discountPercentage": 25,
+      "validFrom": "2024-09-15T00:00:00Z",
+      "validTo": "2024-11-15T23:59:59Z",
+      "minimumPurchaseAmount": 100,
+      "id": "fall"
     }
   ],
   "wishlists": [
     {
-      "productId": 1,
-      "userId": 1,
-      "id": 1
+      "productId": "p005",
+      "userId": "d3d1",
+      "id": "1"
+    }
+  ],
+  "carts": [
+    {
+      "userId": "d3d1",
+      "items": {
+        "p001": 1,
+        "p003": 1
+      },
+      "id": "aqJT"
     }
   ]
 }

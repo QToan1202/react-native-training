@@ -6,10 +6,12 @@ export type IconButtonProps = ButtonProps & {
   scaleIconSize?: number
 }
 
-const IconButton = ({ children, scaleIconSize, ...rest }: IconButtonProps) => (
-  <ButtonStyled variant="outlined" borderRadius={0} boc="transparent" p={6} {...rest}>
-    <ButtonStyled.Icon scaleIcon={scaleIconSize}>{children}</ButtonStyled.Icon>
-  </ButtonStyled>
+const IconButton = ButtonStyled.styleable<IconButtonProps>(
+  ({ children, scaleIconSize, ...rest }: IconButtonProps, ref) => (
+    <ButtonStyled ref={ref} variant="outlined" borderRadius={0} boc="transparent" p={6} {...rest}>
+      <ButtonStyled.Icon scaleIcon={scaleIconSize}>{children}</ButtonStyled.Icon>
+    </ButtonStyled>
+  )
 )
 
 export default IconButton

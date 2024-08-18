@@ -21,12 +21,13 @@ import {
 import { calculateDiscountPrice } from '@shared/utils'
 import { getOffersQuery } from '@shared/queries'
 import { ProductStack, TOffer, TProduct, TReview, TWishlistBase } from '@shared/types'
-import { useAuthStore } from '@shared/stores'
+import { useAuthStore } from '@shared/contexts'
 
 import {
   findProductQuery,
   getProductsQuery,
   getWishlistQuery,
+  useAddToCart,
   useAddToWishlist,
   useDeleteFromWishlist,
 } from '../../hooks'
@@ -42,7 +43,12 @@ export type ProductDetailScreenProps = Partial<
 const ProductDetail = ({ navigation, route }: ProductDetailScreenProps) => {
   const productId = route?.params.id || ''
   const user = useAuthStore((state) => state.user)
-  const { data: product, isPending, error } = useQuery(findProductQuery('/products', productId))
+  const {
+    data: product,
+    isSuccess: isGetProductDetailSuccess,
+    isPending,
+    error,
+  } = useQuery(findProductQuery('/products', productId))
   const { data: similarProducts, isSuccess: isGetProductsSuccess } = useQuery(
     getProductsQuery('/products')
   )
@@ -69,10 +75,10 @@ const ProductDetail = ({ navigation, route }: ProductDetailScreenProps) => {
   const renderOffers = useMemo(() => {
     if (!isGetOfferSuccess) return
 
-    return offers.map(({ id, name, discount }: TOffer) => (
+    return offers.map(({ id, name, discountPercentage }: TOffer) => (
       <XStack key={id} gap={10}>
         <Text>
-          {name} offer get {discount}&#37; off
+          {name} offer get {discountPercentage}&#37; off
         </Text>
         <Text color="$primary" hoverStyle={{ textDecorationLine: 'underline' }}>
           T&#38;C
@@ -116,7 +122,21 @@ const ProductDetail = ({ navigation, route }: ProductDetailScreenProps) => {
     ),
     [renderSimilarProducts]
   )
-
+  const { mutate: addToCart } = useAddToCart('/carts', user?.id || '')
+  const handleAddToCart = () => {
+    addToCart(isGetProductDetailSuccess ? product : null, {
+      onSuccess: () => {
+        toast.show(`Product have add to cart`, {
+          message: `You have successfully added ${product?.name} to cart!`,
+        })
+      },
+      onError: () => {
+        toast.show(`Something went wrong`, {
+          message: `Can't not add ${product?.name} to cart. Reload and try again.`,
+        })
+      },
+    })
+  }
   if (isPending) return <Text>Loading...</Text>
   if (error) return <Text>An error has occurred: {error.message}</Text>
 
@@ -143,9 +163,6 @@ const ProductDetail = ({ navigation, route }: ProductDetailScreenProps) => {
         },
       }
     )
-  }
-  const handleAddButtonToCart = () => {
-    throw new Error('Function not implement')
   }
   const [firstCol, secondCol] = renderSpecificationItem(PRODUCT_SPECIFICATIONS_LABELS, product)
   const renderProductContent = (label: string) => {
@@ -379,7 +396,7 @@ const ProductDetail = ({ navigation, route }: ProductDetailScreenProps) => {
           paddingHorizontal={36}
           title="add to bag"
           endIcon={<Bag />}
-          onPress={handleAddButtonToCart}
+          onPress={handleAddToCart}
         />
       </XStack>
       <Toast />
