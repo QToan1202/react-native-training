@@ -22,7 +22,7 @@
       "@practice-three/features/cart": ["libs/cart/src/index.ts"],
       "@practice-three/features/checkout": ["libs/checkout/src/index.ts"],
       "@practice-three/features/product": ["libs/product/src/index.ts"],
-      "@practice-three/profile": ["libs/profile/src/index.ts"],
+      "@practice-three/features/profile": ["libs/profile/src/index.ts"],
       "@practice-three/queries": ["libs/shared/src/queries/index.ts"],
       "@practice-three/screens": ["libs/shared/src/screens/index.ts"],
       "@practice-three/services": ["libs/shared/src/services/index.ts"],

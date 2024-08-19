@@ -6,6 +6,7 @@ import { withAuth } from '@practice-three/features/authentication'
 import { withProduct } from '@practice-three/features/product'
 import { withCart } from '@practice-three/features/cart'
 import { withCheckout } from '@practice-three/features/checkout'
+import { withProfile } from '@practice-three/features/profile'
 
 const INIT_NAVIGATOR_DATA: THOCsProps['navigatorData'] = []
 const initFeatures = featureShell(process.env.FEATURES)
@@ -13,7 +14,7 @@ const BaseApp = ({
   children,
   ...rest
 }: THOCsProps & { children?: (args: THOCsProps) => ReactNode }) => children?.(rest)
-const WrapHOC = withCheckout(withCart(withProduct(withAuth(BaseApp))))
+const WrapHOC = withProfile(withCheckout(withCart(withProduct(withAuth(BaseApp)))))
 
 export const App = () => {
   return (

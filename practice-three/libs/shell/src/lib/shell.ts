@@ -21,6 +21,11 @@ const PRE_DEFINED_FEATURES: Array<Omit<TFeatureConfig, 'active'>> = [
     description:
       'The Checkout feature flag controls the access to the checkout process within the application. When enabled, users can review their final order, enter shipping information, choose a delivery method, and place their order.',
   },
+  {
+    name: 'profile',
+    description:
+      "The Profile feature flag controls access to the user's profile management. When enabled, users can view and edit their personal information, update contact details, manage payment methods, and review their order history.",
+  },
 ]
 
 const features = (featureList: string | ReadonlyArray<string>): Array<string> => {
