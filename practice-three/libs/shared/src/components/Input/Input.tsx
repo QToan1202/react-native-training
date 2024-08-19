@@ -28,14 +28,14 @@ const Input = ({
 
       if (typeof iconProp === 'function') {
         return (
-          <Square {...iconContainerStyle} scale={iconScaling}>
+          <Square cursor="pointer" {...iconContainerStyle} scale={iconScaling}>
             {isError ? iconProp(getTokenValue('$color.red_50')) : iconProp('none')}
           </Square>
         )
       }
 
       return (
-        <Square {...iconContainerStyle} scale={iconScaling}>
+        <Square cursor="pointer" {...iconContainerStyle} scale={iconScaling}>
           {iconProp}
         </Square>
       )
