@@ -1,28 +1,11 @@
 {
   "users": [
     {
-      "firstName": "tradly",
-      "lastName": "team",
-      "email": "info@tradly.co",
+      "id": "d3d1",
+      "name": "toan",
+      "email": "toan@gmail.com",
       "phone": "+1 9998887776",
-      "password": "123456",
-      "id": 1
-    },
-    {
-      "firstName": "vegetable",
-      "lastName": "co.op",
-      "email": "info@vegetable.co",
-      "phone": "+1 9998887776",
-      "password": "123456",
-      "id": 2
-    },
-    {
-      "firstName": "Toan",
-      "lastName": "Nguyen",
-      "email": "info@tradly.co2",
-      "password": "123456",
-      "confirmPassword": "123456",
-      "id": 3
+      "password": "123456"
     }
   ],
   "addresses": [

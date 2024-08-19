@@ -1,39 +1,17 @@
 import { ReactNode } from 'react'
-import { GetProps, styled, VisuallyHidden, YStack } from 'tamagui'
+import { VisuallyHidden } from 'tamagui'
 
+import SkeletonFrame, { SkeletonFrameProps } from './SkeletonFrame'
 import styles from './styles.module.css'
 
-const SkeletonFrame = styled(YStack, {
-  name: 'Skeleton',
-  backgroundColor: '$backgroundHover',
-  overflow: 'hidden',
-  position: 'relative',
-
-  className: styles['skeleton'],
-  variants: {
-    variants: {
-      circular: {
-        aspectRatio: 1 / 1,
-        width: 50,
-        borderRadius: 50,
-      },
-      rectangular: {},
-      rounded: {
-        width: '100%',
-        borderRadius: 5,
-      },
-    } as const,
-  },
-  defaultVariants: { variants: 'rounded' },
-})
-
-export type SkeletonProps = GetProps<typeof SkeletonFrame> & {
+export type SkeletonProps = SkeletonFrameProps & {
+  animate?: 'wave' | 'pulse' | false
   children?: ReactNode
 }
 
-const Skeleton = ({ children, ...rest }: SkeletonProps) => {
+const Skeleton = ({ children, animate = 'wave', ...rest }: SkeletonProps) => {
   return (
-    <SkeletonFrame {...rest}>
+    <SkeletonFrame className={styles[animate || '']} {...rest}>
       <VisuallyHidden preserveDimensions>{children}</VisuallyHidden>
     </SkeletonFrame>
   )
