@@ -27,9 +27,14 @@ export type CheckoutStack = {
   Order: undefined
 }
 
+export type ProfileStack = {
+  Profile: undefined
+}
+
 export type RootStackParamList = {
   AuthStack: NavigatorScreenParams<AuthenticationStack>
   ProductStack: NavigatorScreenParams<ProductStack>
   CartStack: NavigatorScreenParams<CartStack>
   CheckoutStack: NavigatorScreenParams<CheckoutStack>
+  ProfileStack: NavigatorScreenParams<ProfileStack>
 }
