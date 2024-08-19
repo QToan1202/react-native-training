@@ -3,10 +3,10 @@ import { Avatar, styled, XStack } from 'tamagui'
 import { Link, useNavigate } from 'react-router-dom'
 
 import { IconButton, Search, Text as BaseText } from '@practice-three/components'
+import { useAuthStore } from '@practice-three/contexts'
 
 import { NAV_ITEMS } from '../../constants'
 import { Cart, Heart, Logo } from '../../assets/images'
-import { useAuthStore } from '@practice-three/contexts'
 
 const Text = styled(BaseText, {
   fontSize: '$3',

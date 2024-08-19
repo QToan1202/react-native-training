@@ -35,6 +35,7 @@ const customTokens = createTokens({
     dust: 'rgba(144, 152, 177, 0.4)',
     skeleton: 'rgba(0, 0, 0, 0.13)',
     skeletonIndicator: 'rgba(0, 0, 0, 0.2)',
+    footer: '#00071b',
   },
   zIndex: {
     ...tokens.zIndex,
