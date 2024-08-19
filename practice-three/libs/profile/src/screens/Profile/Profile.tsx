@@ -24,7 +24,9 @@ const Profile = ({ navigation }: ProfileScreenProps) => {
     [isGetUserDataSuccess, user, userData]
   )
   const renderListProfile = useMemo(() => {
-    return PROFILE_ITEMS.map((props: TProfileItems) => <ProfileItem {...props} />)
+    return PROFILE_ITEMS.map((props: TProfileItems, index: number) => (
+      <ProfileItem key={index} {...props} />
+    ))
   }, [])
   const renderUserInfo = useMemo(() => {
     return (
