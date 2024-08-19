@@ -3,10 +3,9 @@ import { useForm } from 'react-hook-form'
 import { NativeStackScreenProps } from '@react-navigation/native-stack'
 
 import { ProductStack, TSearchField } from '@practice-three/types'
-import { Button, Text } from '@practice-three/components'
+import { Button, Text, Search as SearchBar } from '@practice-three/components'
 
 import { Bell } from '../../assets/images'
-import { Search as SearchBar } from '../../components'
 import { CLOTH_CATEGORIES, TYPES } from '../../constants'
 
 export type SearchProps = Partial<NativeStackScreenProps<ProductStack, 'Search'>>
