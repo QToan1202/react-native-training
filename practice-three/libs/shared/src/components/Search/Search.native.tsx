@@ -1,5 +1,4 @@
-import { Input, InputProps } from '@practice-three/components'
-
+import { Input, InputProps } from '../Input'
 import { SearchMobile } from '../../assets/images'
 
 export type SearchProps = InputProps
