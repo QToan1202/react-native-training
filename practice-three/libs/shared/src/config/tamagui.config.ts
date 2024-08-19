@@ -28,6 +28,7 @@ const customTokens = createTokens({
     red_50: '#fb7181',
     red_100: '#e90000',
     red_200: '#ff0000',
+    red_300: '#db0b0b',
     border: '#e1e2e7',
     separate: '#eaeaea',
     pale: '#ebf0ff',
