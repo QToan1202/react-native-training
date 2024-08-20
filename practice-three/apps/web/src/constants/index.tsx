@@ -1,3 +1,5 @@
+import { Facebook, Instagram, Twitter, Whatsapp } from '../assets/images'
+
 export type TNavItem = {
   title: string
   link: string
@@ -51,3 +53,6 @@ export const FOOTER_CATEGORIES: TCategoryItem[] = [
     subCategory: ['Blogs', 'Gift center', 'Buying guides', 'New arrivals', 'Clearance'],
   },
 ]
+
+export type TSocialMedia = []
+export const SOCIAL_MEDIA_CONTACTS = [Facebook, Instagram, Whatsapp, Twitter]
