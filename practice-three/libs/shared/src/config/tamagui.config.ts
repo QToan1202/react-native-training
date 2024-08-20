@@ -82,6 +82,10 @@ const customTokens = createTokens({
     width: 750,
     height: 360,
   },
+  review: {
+    width: 950,
+    height: 480,
+  },
 })
 
 const fonts = createFont({

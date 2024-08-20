@@ -15,3 +15,5 @@ export { default as Instagram } from './instagram.svg?react'
 export { default as Whatsapp } from './whatsapp.svg?react'
 
 export { default as Twitter } from './twitter.svg?react'
+
+export { default as Star } from './star.svg?react'
