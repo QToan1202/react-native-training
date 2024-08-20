@@ -78,6 +78,10 @@ const customTokens = createTokens({
     width: 72,
     height: 72,
   },
+  blogCard: {
+    width: 750,
+    height: 360,
+  },
 })
 
 const fonts = createFont({
