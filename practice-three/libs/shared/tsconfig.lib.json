@@ -1,6 +1,7 @@
 {
   "extends": "./tsconfig.json",
   "compilerOptions": {
+    "target": "es2020",
     "outDir": "../../dist/out-tsc",
     "types": ["node", "@nx/react/typings/cssmodule.d.ts", "@nx/react/typings/image.d.ts"]
   },
