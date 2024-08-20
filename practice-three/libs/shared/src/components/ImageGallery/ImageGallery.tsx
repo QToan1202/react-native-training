@@ -1,10 +1,10 @@
+import { useMemo, useState } from 'react'
 import { ImageURISource } from 'react-native'
 import { View, XStack } from 'tamagui'
 
 import { Image, ImageProps } from '../Image'
-import styles from './ImageGallery.module.css'
+import styles from './styles'
 import { Text } from '../Text'
-import { useMemo, useState } from 'react'
 
 export type ImageGalleryProps = Omit<ImageProps, 'source'> & {
   images: Array<ImageURISource['uri']>
