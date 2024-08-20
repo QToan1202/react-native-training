@@ -1,11 +1,11 @@
 import { useMemo } from 'react'
-import { Avatar, Heading, XStack, YStack } from 'tamagui'
+import { Heading, XStack, YStack } from 'tamagui'
 import { useQuery } from '@tanstack/react-query'
 import { NativeStackScreenProps } from '@react-navigation/native-stack'
 
 import { ProfileStack } from '@practice-three/types'
 import { useAuthStore } from '@practice-three/contexts'
-import { Button, Text } from '@practice-three/components'
+import { Avatar, Button, Text } from '@practice-three/components'
 
 import { PROFILE_ITEMS, type TProfileItems } from '../../constants'
 import { ProfileItem } from '../../components'
@@ -31,10 +31,7 @@ const Profile = ({ navigation }: ProfileScreenProps) => {
   const renderUserInfo = useMemo(() => {
     return (
       <XStack gap={16}>
-        <Avatar circular width={57}>
-          <Avatar.Image source={{ uri: '' }} />
-          <Avatar.Fallback backgroundColor="$pale" />
-        </Avatar>
+        <Avatar circular width={57} image="" />
         <YStack justifyContent="space-between">
           <Heading color="$pure_black" fontSize="$3" fontWeight="700" textTransform="capitalize">
             {optimisticUser?.name}

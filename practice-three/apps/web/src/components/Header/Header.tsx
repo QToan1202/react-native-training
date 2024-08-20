@@ -1,8 +1,8 @@
 import { useMemo } from 'react'
-import { Avatar, styled, XStack } from 'tamagui'
+import { styled, XStack } from 'tamagui'
 import { Link, useNavigate } from 'react-router-dom'
 
-import { IconButton, Search, Text as BaseText } from '@practice-three/components'
+import { IconButton, Search, Text as BaseText, Avatar } from '@practice-three/components'
 import { useAuthStore } from '@practice-three/contexts'
 
 import { NAV_ITEMS } from '../../constants'
@@ -55,10 +55,7 @@ const Header = () => {
             <Cart />
           </IconButton>
           <XStack gap={12} alignItems="center">
-            <Avatar circular width={40}>
-              <Avatar.Image source={{ uri: '' }} />
-              <Avatar.Fallback backgroundColor="$pale" />
-            </Avatar>
+            <Avatar circular width={40} image="" />
             <Text color="$gray_200" textTransform="capitalize">
               {user?.name || 'Anne Doe'}
             </Text>
