@@ -1,4 +1,4 @@
-import bcrypt from 'bcrypt'
+import bcrypt from 'bcryptjs'
 
 import { add, get } from '@practice-three/services'
 import { TRegisterForm, TUser } from '@practice-three/types'
