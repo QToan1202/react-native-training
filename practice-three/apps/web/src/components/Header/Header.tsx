@@ -19,10 +19,8 @@ const Header = () => {
   const renderNavItems = useMemo(
     () =>
       NAV_ITEMS.map(({ link, title }, index) => (
-        <Text asChild>
-          <Link key={index} to={link}>
-            {title}
-          </Link>
+        <Text key={index} asChild="web">
+          <Link to={link}>{title}</Link>
         </Text>
       )),
     []
