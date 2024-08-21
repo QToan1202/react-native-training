@@ -1,7 +1,4 @@
 import type { Meta, StoryObj } from '@storybook/react'
-import { useForm } from 'react-hook-form'
-
-import { TSearchField } from '@practice-three/types'
 
 import Search from './Search'
 
@@ -14,17 +11,6 @@ export default meta
 
 type Story = StoryObj<typeof Search>
 
-const SearchWithHook = () => {
-  const { control } = useForm<TSearchField>({
-    defaultValues: {
-      search: '',
-    },
-  })
-
-  return <Search label="search" control={control} />
-}
-
 export const Default: Story = {
   args: {},
-  render: () => <SearchWithHook />,
 }
