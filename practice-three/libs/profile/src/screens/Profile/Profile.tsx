@@ -31,7 +31,11 @@ const Profile = ({ navigation }: ProfileScreenProps) => {
   const renderUserInfo = useMemo(() => {
     return (
       <XStack gap={16}>
-        <Avatar circular width={57} image="" />
+        <Avatar
+          circular
+          width={57}
+          image="https://images.unsplash.com/photo-1723979304121-b581868e6521"
+        />
         <YStack justifyContent="space-between">
           <Heading color="$pure_black" fontSize="$3" fontWeight="700" textTransform="capitalize">
             {optimisticUser?.name}
