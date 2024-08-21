@@ -6,7 +6,7 @@ import { ProductDetailScreen, SearchScreen, WishlistScreen } from '../screens'
 
 const Stack = createNativeStackNavigator<ProductStack>()
 
-const ProductStack = () => (
+const ProductStacks = () => (
   <Stack.Navigator screenOptions={{ headerShown: false }}>
     <Stack.Screen name="Search" component={SearchScreen} />
     <Stack.Screen name="ProductDetail" component={ProductDetailScreen} />
@@ -14,4 +14,4 @@ const ProductStack = () => (
   </Stack.Navigator>
 )
 
-export default ProductStack
+export default ProductStacks
