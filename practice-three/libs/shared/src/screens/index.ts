@@ -1,1 +1,1 @@
-export { default as UnavailableScreen } from './Unavailable'
+export * from './Unavailable'

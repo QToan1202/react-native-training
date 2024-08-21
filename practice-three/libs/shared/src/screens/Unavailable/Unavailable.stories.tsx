@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react'
 
-import Unavailable from './index'
+import Unavailable from './Unavailable'
 
 const meta: Meta<typeof Unavailable> = {
   component: Unavailable,
