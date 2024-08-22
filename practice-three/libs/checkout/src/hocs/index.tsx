@@ -2,10 +2,11 @@ import { ComponentType, forwardRef } from 'react'
 import { isWeb } from 'tamagui'
 
 import { THOCsProps } from '@practice-three/types'
+import { CHECKOUT_FEATURE } from '@practice-three/shell'
 
 import { CheckoutRoute } from '../navigation'
 
-const FEATURE_NAME = 'checkout'
+const FEATURE_NAME = CHECKOUT_FEATURE
 
 export const withCheckout = <T extends THOCsProps>(Wrapper: ComponentType<T>) => {
   return forwardRef<unknown, T>((props, componentRef) => {

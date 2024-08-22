@@ -2,10 +2,11 @@ import { ComponentType, forwardRef } from 'react'
 import { isWeb } from 'tamagui'
 
 import { THOCsProps } from '@practice-three/types'
+import { PRODUCT_FEATURE } from '@practice-three/shell'
 
 import { ProductRoute } from '../navigation'
 
-const FEATURE_NAME = 'product'
+const FEATURE_NAME = PRODUCT_FEATURE
 
 export const withProduct = <T extends THOCsProps>(Wrapper: ComponentType<T>) => {
   return forwardRef<unknown, T>((props, componentRef) => {

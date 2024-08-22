@@ -1,0 +1,5 @@
+export const AUTH_FEATURE = 'authentication'
+export const PRODUCT_FEATURE = 'product'
+export const CART_FEATURE = 'cart'
+export const CHECKOUT_FEATURE = 'checkout'
+export const PROFILE_FEATURE = 'profile'

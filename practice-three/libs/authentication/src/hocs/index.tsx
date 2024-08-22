@@ -2,10 +2,11 @@ import { ComponentType, forwardRef } from 'react'
 import { isWeb } from 'tamagui'
 
 import { THOCsProps } from '@practice-three/types'
+import { AUTH_FEATURE } from '@practice-three/shell'
 
 import { AuthenticationRoute } from '../navigation'
 
-const FEATURE_NAME = 'authentication'
+const FEATURE_NAME = AUTH_FEATURE
 
 export const withAuth = <T extends THOCsProps>(Wrapper: ComponentType<T>) => {
   return forwardRef<unknown, T>((props, componentRef) => {
