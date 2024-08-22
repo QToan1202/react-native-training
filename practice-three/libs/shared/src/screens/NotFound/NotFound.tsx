@@ -3,7 +3,7 @@ import { Heading, YStack } from 'tamagui'
 import { Text } from '../../components'
 
 const NotFound = () => (
-  <YStack justifyContent="center" alignItems="center" gap={16} backgroundColor="$white" fullscreen>
+  <YStack flex={1} justifyContent="center" alignItems="center" gap={16} backgroundColor="$white">
     <Heading color="$pure_black" fontSize={80} fontWeight="700">
       404
     </Heading>
