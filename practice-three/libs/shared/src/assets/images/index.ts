@@ -11,3 +11,5 @@ export { default as Star } from './star.svg?react'
 
 export { default as Search } from './search.svg?react'
 export { default as SearchMobile } from './search-mobile.svg?react'
+
+export { default as Computer } from './computer.svg?react'

@@ -9,3 +9,5 @@ export { default as Star } from './star.svg'
 
 export { default as Search } from './search.svg'
 export { default as SearchMobile } from './search-mobile.svg'
+
+export { default as Computer } from './computer.svg'
