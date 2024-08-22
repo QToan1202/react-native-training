@@ -1,4 +1,7 @@
+'use client'
+
 import { ReactNode } from 'react'
+import { withErrorBoundary } from 'react-error-boundary'
 
 import { featureShell } from '@practice-three/shell'
 import { THOCsProps } from '@practice-three/types'
@@ -7,6 +10,7 @@ import { withProduct } from '@practice-three/features/product'
 import { withCart } from '@practice-three/features/cart'
 import { withCheckout } from '@practice-three/features/checkout'
 import { withProfile } from '@practice-three/features/profile'
+import { ErrorScreen } from '@practice-three/screens'
 
 const INIT_NAVIGATOR_DATA: THOCsProps['navigatorData'] = []
 const initFeatures = featureShell(process.env.FEATURES)
@@ -28,4 +32,4 @@ export const App = () => {
   )
 }
 
-export default App
+export default withErrorBoundary(App, { FallbackComponent: ErrorScreen })
