@@ -2,6 +2,8 @@ import React, { ReactNode } from 'react'
 import { Control, FieldValues } from 'react-hook-form'
 import { Form as TForm, FormProps as TFormProps, withStaticProperties } from 'tamagui'
 
+import { getValidChildren } from '../../utils'
+
 export type FormProps<T extends FieldValues> = TFormProps & {
   children: ReactNode
   formControlProp: Control<T>
@@ -14,19 +16,17 @@ const FormFrame = <T extends FieldValues>({
 }: FormProps<T>) => {
   return (
     <TForm {...rest}>
-      {Array.isArray(children)
-        ? children.map((child) =>
-            child.props.label
-              ? React.createElement(child.type, {
-                  ...{
-                    ...child.props,
-                    control,
-                    key: child.props.label,
-                  },
-                })
-              : child
-          )
-        : children}
+      {getValidChildren(children).map((child) =>
+        child.props.label
+          ? React.createElement(child.type, {
+              ...{
+                ...child.props,
+                control,
+                key: child.props.label,
+              },
+            })
+          : child
+      )}
     </TForm>
   )
 }
