@@ -14,22 +14,21 @@ import { ErrorScreen, NotFoundScreen } from '@practice-three/screens'
 import { RootLayout } from '../layout'
 import { ErrorPage } from '../pages'
 
-const INIT_NAVIGATOR_DATA: THOCsProps['navigatorData'] = []
+const INIT_NAVIGATOR_DATA: THOCsProps['navigatorData'] = {}
 const routerLayout: RouteObject[] = [
   {
     path: '/',
     element: <RootLayout />,
     errorElement: <ErrorPage />,
-    children: [
-      {
-        path: '*',
-        element: <NotFoundScreen />,
-      },
-    ],
+    children: [],
+  },
+  {
+    path: '*',
+    element: <NotFoundScreen />,
   },
 ]
 
-const initFeatures = featureShell(import.meta.env.VITE_FEATURES)
+const initFeatureCategories = featureShell(import.meta.env.VITE_FEATURES)
 const BaseApp = ({
   children,
   ...rest
@@ -37,14 +36,18 @@ const BaseApp = ({
 const WrapHOC = withCheckout(withProduct(withAuth(BaseApp)))
 
 const App = () => (
-  <WrapHOC category={initFeatures} navigatorData={INIT_NAVIGATOR_DATA}>
-    {(props) => {
+  <WrapHOC category={initFeatureCategories} navigatorData={INIT_NAVIGATOR_DATA}>
+    {({ navigatorData }) => {
       const getLayoutRoute = routerLayout.at(0)
+      const featureRoute = Object.keys(navigatorData).reduce<RouteObject[]>(
+        (routeData: RouteObject[], featureName: string) =>
+          routeData.concat(navigatorData[featureName]),
+        []
+      )
 
       if (!getLayoutRoute || !getLayoutRoute.children) throw new Error('Missing base route data')
 
-      const mergeChildren = [...getLayoutRoute.children, ...props.navigatorData]
-      getLayoutRoute.children = mergeChildren
+      getLayoutRoute.children = [...getLayoutRoute.children, ...featureRoute]
       const router = createBrowserRouter(routerLayout)
 
       return <RouterProvider router={router} />

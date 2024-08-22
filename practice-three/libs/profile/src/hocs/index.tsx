@@ -19,7 +19,11 @@ export const withProfile = <T extends THOCsProps>(Wrapper: ComponentType<T>) => 
         ref={componentRef}
         {...(rest as T)}
         category={category}
-        navigatorData={isFeatureActive ? [...navigatorData, ProfileStack] : navigatorData}
+        navigatorData={
+          isFeatureActive
+            ? { ...navigatorData, ...{ [FEATURE_NAME]: ProfileStack } }
+            : navigatorData
+        }
       />
     )
   })

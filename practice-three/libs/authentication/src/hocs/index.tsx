@@ -16,14 +16,18 @@ export const withAuth = <T extends THOCsProps>(Wrapper: ComponentType<T>) => {
     )
     const convertAuthRoute = isWeb
       ? AuthenticationRoute
-      : [AuthenticationRoute as unknown as JSX.Element]
+      : (AuthenticationRoute as unknown as JSX.Element)
 
     return (
       <Wrapper
         ref={componentRef}
         {...(rest as T)}
         category={category}
-        navigatorData={isFeatureActive ? [...navigatorData, ...convertAuthRoute] : navigatorData}
+        navigatorData={
+          isFeatureActive
+            ? { ...navigatorData, ...{ [FEATURE_NAME]: convertAuthRoute } }
+            : navigatorData
+        }
       />
     )
   })

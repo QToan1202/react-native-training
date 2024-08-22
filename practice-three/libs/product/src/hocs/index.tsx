@@ -14,14 +14,18 @@ export const withProduct = <T extends THOCsProps>(Wrapper: ComponentType<T>) => 
     const isFeatureActive = category.find(
       (feat) => !feat.localeCompare(FEATURE_NAME, undefined, { sensitivity: 'base' })
     )
-    const convertProductRoute = isWeb ? ProductRoute : [ProductRoute as unknown as JSX.Element]
+    const convertProductRoute = isWeb ? ProductRoute : (ProductRoute as unknown as JSX.Element)
 
     return (
       <Wrapper
         ref={componentRef}
         {...(rest as T)}
         category={category}
-        navigatorData={isFeatureActive ? [...navigatorData, ...convertProductRoute] : navigatorData}
+        navigatorData={
+          isFeatureActive
+            ? { ...navigatorData, ...{ [FEATURE_NAME]: convertProductRoute } }
+            : navigatorData
+        }
       />
     )
   })

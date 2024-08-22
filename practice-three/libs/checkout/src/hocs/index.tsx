@@ -14,7 +14,7 @@ export const withCheckout = <T extends THOCsProps>(Wrapper: ComponentType<T>) =>
     const isFeatureActive = category.find(
       (feat) => !feat.localeCompare(FEATURE_NAME, undefined, { sensitivity: 'base' })
     )
-    const convertCheckoutRoute = isWeb ? CheckoutRoute : [CheckoutRoute as unknown as JSX.Element]
+    const convertCheckoutRoute = isWeb ? CheckoutRoute : (CheckoutRoute as unknown as JSX.Element)
 
     return (
       <Wrapper
@@ -22,7 +22,9 @@ export const withCheckout = <T extends THOCsProps>(Wrapper: ComponentType<T>) =>
         {...(rest as T)}
         category={category}
         navigatorData={
-          isFeatureActive ? [...navigatorData, ...convertCheckoutRoute] : navigatorData
+          isFeatureActive
+            ? { ...navigatorData, ...{ [FEATURE_NAME]: convertCheckoutRoute } }
+            : navigatorData
         }
       />
     )
