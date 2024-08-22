@@ -35,7 +35,7 @@ const Footer = () => {
           </Heading>
           <YStack gap={20}>
             {subCategory.map((value) => (
-              <Text asChild isLink key={value}>
+              <Text asChild="web" isLink key={value}>
                 <Link to="#">{value}</Link>
               </Text>
             ))}
