@@ -10,8 +10,11 @@ import {
 
 const authRouter: RouteObject[] = [
   {
-    path: '/login',
     index: true,
+    element: <LoginScreen />,
+  },
+  {
+    path: '/login',
     element: <LoginScreen />,
   },
   {
