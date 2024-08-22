@@ -9,12 +9,14 @@ import { withCheckout } from '@practice-three/features/checkout'
 import { NotFoundScreen } from '@practice-three/screens'
 
 import { RootLayout } from '../layout'
+import { ErrorPage } from '../pages'
 
 const INIT_NAVIGATOR_DATA: THOCsProps['navigatorData'] = []
 const routerLayout: RouteObject[] = [
   {
     path: '/',
     element: <RootLayout />,
+    errorElement: <ErrorPage />,
     children: [
       {
         path: '*',
