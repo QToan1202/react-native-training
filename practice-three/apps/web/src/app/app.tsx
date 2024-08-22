@@ -1,12 +1,15 @@
+'use client'
+
 import { ReactNode } from 'react'
 import { createBrowserRouter, RouteObject, RouterProvider } from 'react-router-dom'
+import { withErrorBoundary } from 'react-error-boundary'
 
 import { featureShell } from '@practice-three/shell'
 import { withAuth } from '@practice-three/features/authentication'
 import { withProduct } from '@practice-three/features/product'
 import { THOCsProps } from '@practice-three/types'
 import { withCheckout } from '@practice-three/features/checkout'
-import { NotFoundScreen } from '@practice-three/screens'
+import { ErrorScreen, NotFoundScreen } from '@practice-three/screens'
 
 import { RootLayout } from '../layout'
 import { ErrorPage } from '../pages'
@@ -49,4 +52,4 @@ const App = () => (
   </WrapHOC>
 )
 
-export default App
+export default withErrorBoundary(App, { fallbackRender: ErrorScreen })
