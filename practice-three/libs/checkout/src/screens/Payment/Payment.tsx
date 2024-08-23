@@ -1,8 +1,7 @@
 import { Fragment } from 'react'
 import { ScrollView, Separator, YStack } from 'tamagui'
-import { NativeStackScreenProps } from '@react-navigation/native-stack'
 
-import { CheckoutStack } from '@practice-three/types'
+import { OrderTabScreenProps } from '@practice-three/types'
 import { Accordion, AccordionItem, Button } from '@practice-three/components'
 
 import { CardList, Header, PaymentItem, Step, StepLabel, Stepper } from '../../components'
@@ -11,7 +10,7 @@ import { useAddressStore } from '../../contexts'
 import { getStepIndex } from '../../utils'
 import { Debit } from '../../assets/images'
 
-type PaymentScreenProps = NativeStackScreenProps<CheckoutStack, 'Payment'>
+type PaymentScreenProps = OrderTabScreenProps<'Payment'>
 
 const Payment = ({ navigation }: PaymentScreenProps) => {
   const handleGoBack = () => navigation.goBack()

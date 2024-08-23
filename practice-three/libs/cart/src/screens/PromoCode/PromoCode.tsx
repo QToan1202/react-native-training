@@ -1,15 +1,14 @@
 import { Fragment, useMemo } from 'react'
 import { Heading, Separator, YStack } from 'tamagui'
-import { NativeStackScreenProps } from '@react-navigation/native-stack'
 import { useQuery } from '@tanstack/react-query'
 
-import { CartStack, TOffer } from '@practice-three/types'
+import { OrderTabScreenProps, TOffer } from '@practice-three/types'
 import { getOffersQuery } from '@practice-three/queries'
 import { Text } from '@practice-three/components'
 
 import { PromoCodeHeader, PromoCode as PromoCodeItem, Search } from '../../components'
 
-type CartScreenProps = NativeStackScreenProps<CartStack, 'PromoCode'>
+type CartScreenProps = OrderTabScreenProps<'PromoCode'>
 
 const PromoCode = (props: CartScreenProps) => {
   const { data: offers, isSuccess } = useQuery(getOffersQuery('/offers'))

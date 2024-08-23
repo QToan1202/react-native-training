@@ -1,16 +1,15 @@
 import { Heading, YStack } from 'tamagui'
 import { useEffect } from 'react'
 import { useStore } from 'zustand'
-import { NativeStackScreenProps } from '@react-navigation/native-stack'
 
 import { Button } from '@practice-three/components'
-import type { CartStack } from '@practice-three/types'
+import type { OrderTabScreenProps } from '@practice-three/types'
 
 import { CartItemList, CartItemSkeleton, Search, Summary } from '../../components'
 import { useFindProducts } from '../../hooks'
 import { cartStore, CartContext } from '../../contexts'
 
-type CartScreenProps = NativeStackScreenProps<CartStack, 'Cart'>
+type CartScreenProps = OrderTabScreenProps<'Cart'>
 
 const Cart = ({ navigation }: CartScreenProps) => {
   const [isLoading, data] = useFindProducts()
@@ -20,7 +19,6 @@ const Cart = ({ navigation }: CartScreenProps) => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [data, isLoading])
   const handleSeeMoreOffers = () => navigation.navigate('PromoCode')
-  // @ts-expect-error: Update composite navigator
   const handleNavigateToAddress = () => navigation.navigate('Address')
 
   return (

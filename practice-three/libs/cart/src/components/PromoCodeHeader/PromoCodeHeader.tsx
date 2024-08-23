@@ -1,12 +1,11 @@
 import { XStack, Heading, XStackProps } from 'tamagui'
-import { NativeStackScreenProps } from '@react-navigation/native-stack'
 
 import { IconButton } from '@practice-three/components'
-import { CartStack } from '@practice-three/types'
+import { OrderTabScreenProps } from '@practice-three/types'
 
 import { HeaderHeart, Bag, ArrowLeft, Search } from '../../assets/images'
 
-export type PromoCodeHeaderProps = XStackProps & NativeStackScreenProps<CartStack, 'PromoCode'>
+export type PromoCodeHeaderProps = XStackProps & OrderTabScreenProps<'PromoCode'>
 
 const PromoCodeHeader = ({ navigation, route, ...rest }: PromoCodeHeaderProps) => {
   const handlePressArrowLeft = () => navigation.goBack()

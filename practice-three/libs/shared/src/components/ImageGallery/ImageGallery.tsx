@@ -3,7 +3,7 @@ import { ImageURISource } from 'react-native'
 import { View, XStack } from 'tamagui'
 
 import { Image, ImageProps } from '../Image'
-import styles from './styles'
+// import styles from './styles'
 import { Text } from '../Text'
 
 export type ImageGalleryProps = Omit<ImageProps, 'source'> & {
@@ -70,7 +70,7 @@ const ImageGallery = ({ images, width, height, numberOfImg = 3, ...rest }: Image
   )
 
   return (
-    <XStack gap={12} flexWrap="nowrap" className={styles['scroll']} onPress={handleToggleImages}>
+    <XStack gap={12} flexWrap="nowrap" className={'scroll'} onPress={handleToggleImages}>
       {renderGallery}
       {isExpand ? null : images.length > numberOfImg && renderOverlayOnLastImage}
     </XStack>
