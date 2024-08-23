@@ -1,0 +1,5 @@
+export { default as Bag } from './bag.svg'
+export { default as Heart } from './heart.svg'
+export { default as Home } from './home.svg'
+export { default as Search } from './search.svg'
+export { default as User } from './user.svg'

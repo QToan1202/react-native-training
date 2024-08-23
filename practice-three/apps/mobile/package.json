@@ -36,6 +36,7 @@
     "axios": "*",
     "@react-native-async-storage/async-storage": "*",
     "@react-navigation/native": "*",
+    "@react-navigation/bottom-tabs": "*",
     "storybook-addon-remix-react-router": "*",
     "@tanstack/react-query": "*",
     "@react-navigation/native-stack": "*",
