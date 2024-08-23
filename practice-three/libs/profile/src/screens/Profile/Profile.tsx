@@ -1,9 +1,8 @@
 import { useMemo } from 'react'
 import { Heading, XStack, YStack } from 'tamagui'
 import { useQuery } from '@tanstack/react-query'
-import { NativeStackScreenProps } from '@react-navigation/native-stack'
 
-import { ProfileStack } from '@practice-three/types'
+import { ProfileTabScreenProps } from '@practice-three/types'
 import { useAuthStore } from '@practice-three/contexts'
 import { Avatar, Button, Text } from '@practice-three/components'
 
@@ -12,7 +11,7 @@ import { ProfileItem } from '../../components'
 import { findUserQuery } from '../../hooks'
 import { Logout } from '../../assets/images'
 
-type ProfileScreenProps = NativeStackScreenProps<ProfileStack, 'Profile'>
+type ProfileScreenProps = ProfileTabScreenProps<'Profile'>
 
 const Profile = ({ navigation }: ProfileScreenProps) => {
   const [user, handleLogout] = useAuthStore((state) => [state.user, state.clearAuth])
