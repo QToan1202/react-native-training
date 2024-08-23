@@ -1,14 +1,13 @@
 import { View, XStack, YStack } from 'tamagui'
 import { useForm } from 'react-hook-form'
-import { NativeStackScreenProps } from '@react-navigation/native-stack'
 
-import { ProductStack, TSearchField } from '@practice-three/types'
+import { ProductTabScreenProps, TSearchField } from '@practice-three/types'
 import { Button, Text, Search as SearchBar } from '@practice-three/components'
 
 import { Bell } from '../../assets/images'
 import { CLOTH_CATEGORIES, TYPES } from '../../constants'
 
-export type SearchProps = Partial<NativeStackScreenProps<ProductStack, 'Search'>>
+export type SearchProps = ProductTabScreenProps<'Search'>
 
 const Search = (props: SearchProps) => {
   const { control } = useForm<TSearchField>()
