@@ -4,10 +4,10 @@ import { RootStackScreenProps } from '../../types'
 
 import { Button, Text } from '../../components'
 
-type NotFoundScreenProps = RootStackScreenProps<'NotFound'>
+type NotFoundScreenProps = Partial<RootStackScreenProps<'NotFound'>>
 
 const NotFound = ({ navigation }: NotFoundScreenProps) => {
-  const handleGoBack = () => navigation.goBack()
+  const handleGoBack = () => navigation?.goBack()
 
   return (
     <YStack flex={1} justifyContent="center" alignItems="center" gap={16} backgroundColor="$white">
