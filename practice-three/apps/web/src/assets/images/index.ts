@@ -17,3 +17,15 @@ export { default as Whatsapp } from './whatsapp.svg?react'
 export { default as Twitter } from './twitter.svg?react'
 
 export { default as Star } from './star.svg?react'
+
+export { default as aboutUs } from './about-us.svg'
+
+export { default as Flag } from './flag.svg?react'
+
+export { default as Delivery } from './delivery.svg?react'
+
+export { default as ShippingBox } from './shipping-box.svg?react'
+
+export { default as Headphone } from './headphone.svg?react'
+
+export { default as Discount } from './discount.svg?react'

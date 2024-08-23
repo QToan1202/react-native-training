@@ -1,3 +1,4 @@
 export * from './Header'
 export * from './Footer'
 export * from './BlogCard'
+export * from './Home'

@@ -1,4 +1,14 @@
-import { Facebook, Instagram, Twitter, Whatsapp } from '../assets/images'
+import {
+  Delivery,
+  Discount,
+  Facebook,
+  Flag,
+  Headphone,
+  Instagram,
+  ShippingBox,
+  Twitter,
+  Whatsapp,
+} from '../assets/images'
 
 export type TNavItem = {
   title: string
@@ -54,5 +64,32 @@ export const FOOTER_CATEGORIES: TCategoryItem[] = [
   },
 ]
 
-export type TSocialMedia = []
 export const SOCIAL_MEDIA_CONTACTS = [Facebook, Instagram, Whatsapp, Twitter]
+
+export const QUALITY_CARDS_DATA = [
+  {
+    icon: <Flag />,
+    title: 'Locally Owned',
+    description: 'We have local business and sell best quality clothes',
+  },
+  {
+    icon: <Delivery />,
+    title: 'Fast Delivery',
+    description: 'We provide fast delivery to our customers',
+  },
+  {
+    icon: <ShippingBox />,
+    title: 'Easy Return',
+    description: 'We provide easy return policy. ',
+  },
+  {
+    icon: <Headphone />,
+    title: 'Online Support',
+    description: 'We give 24/7 online support',
+  },
+  {
+    icon: <Discount />,
+    title: 'Best Offers',
+    description: 'We give best offers to our customers',
+  },
+]
