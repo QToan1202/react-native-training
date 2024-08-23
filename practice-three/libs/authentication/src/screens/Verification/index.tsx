@@ -1,11 +1,10 @@
 import { Controller, SubmitHandler, useForm } from 'react-hook-form'
 import { H2, YStack } from 'tamagui'
-import { NativeStackScreenProps } from '@react-navigation/native-stack'
 
 import { Button, Form, Input, Text } from '@practice-three/components'
-import { AuthenticationStack, TFormValues } from '@practice-three/types'
+import { AuthStackScreenProps, TFormValues } from '@practice-three/types'
 
-type VerificationScreenProps = Partial<NativeStackScreenProps<AuthenticationStack, 'Verification'>>
+type VerificationScreenProps = Partial<AuthStackScreenProps<'Verification'>>
 
 const Verification = ({ navigation }: VerificationScreenProps) => {
   const {

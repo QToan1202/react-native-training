@@ -1,15 +1,12 @@
 import { Controller, SubmitHandler, useForm } from 'react-hook-form'
 import { H2, Square, YStack } from 'tamagui'
-import { NativeStackScreenProps } from '@react-navigation/native-stack'
 
 import { Button, Form, Input, Text } from '@practice-three/components'
-import { AuthenticationStack, TFormValues } from '@practice-three/types'
+import { AuthStackScreenProps, TFormValues } from '@practice-three/types'
 
 import { Logo, User } from '../../assets/images'
 
-type ForgotPasswordScreenProps = Partial<
-  NativeStackScreenProps<AuthenticationStack, 'ForgotPassword'>
->
+type ForgotPasswordScreenProps = Partial<AuthStackScreenProps<'ForgotPassword'>>
 
 const ForgotPassword = ({ navigation }: ForgotPasswordScreenProps) => {
   const {

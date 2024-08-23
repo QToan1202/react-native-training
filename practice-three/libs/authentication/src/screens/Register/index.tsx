@@ -1,16 +1,15 @@
 import { H2, Separator, Square, Stack, XStack, YStack, isWeb } from 'tamagui'
 import { Controller, SubmitHandler, useForm } from 'react-hook-form'
-import { NativeStackScreenProps } from '@react-navigation/native-stack'
 import { redirect } from 'react-router-dom'
 
 import { Button, Form, Input, Text } from '@practice-three/components'
-import { AuthenticationStack, TRegisterForm } from '@practice-three/types'
+import { AuthStackScreenProps, TRegisterForm } from '@practice-three/types'
 
 import { Apple, Facebook, Google, Logo } from '../../assets/images'
 import useRegister from '../../hooks/useRegister'
 import { REGISTER_FORM, REGISTER_FORM_DEFAULT_VALUES } from '../../constants'
 
-type RegisterScreenProps = Partial<NativeStackScreenProps<AuthenticationStack, 'Register'>>
+type RegisterScreenProps = Partial<AuthStackScreenProps<'Register'>>
 
 const Register = ({ navigation }: RegisterScreenProps) => {
   const { mutate: mutateRegister } = useRegister('/users')
