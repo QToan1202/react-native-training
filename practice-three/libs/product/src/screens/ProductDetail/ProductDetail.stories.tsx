@@ -1,7 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/react'
 import { reactRouterParameters, withRouter } from 'storybook-addon-remix-react-router'
 
-import ProductDetail, { loader as getProDetailLoader } from './ProductDetail'
+import ProductDetail, { productLoader as getProDetailLoader } from './ProductDetail'
 import { queryClient } from '../../../.storybook/preview'
 
 const meta: Meta<typeof ProductDetail> = {
