@@ -32,7 +32,7 @@ import { PRODUCT_SPECIFICATIONS_LABELS } from '../../constants'
 import { renderSpecificationItem } from '../../utils'
 
 // Called by router so don't useHook here
-export const loader =
+export const productLoader =
   (queryClient: QueryClient) =>
   async ({ params }: LoaderFunctionArgs) => {
     const { id } = params
@@ -50,7 +50,7 @@ const Text = styled(BaseText, {
 })
 
 const ProductDetail = () => {
-  const { id: productId, userId } = useLoaderData() as TResolveLoaderReturn<typeof loader>
+  const { id: productId, userId } = useLoaderData() as TResolveLoaderReturn<typeof productLoader>
   const { data: product } = useSuspenseQuery(findProductQuery('/products', productId || ''))
   const { data: similarProducts } = useSuspenseQuery(getProductsQuery('/products'))
   const { data: wishlists } = useSuspenseQuery(getWishlistQuery('/wishlists', userId || ''))
