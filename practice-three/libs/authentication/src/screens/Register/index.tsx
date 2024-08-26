@@ -1,4 +1,5 @@
-import { H2, Separator, Square, Stack, XStack, YStack, isWeb } from 'tamagui'
+import { useId } from 'react'
+import { AnimatePresence, H2, Separator, Square, Stack, XStack, YStack, isWeb } from 'tamagui'
 import { Controller, SubmitHandler, useForm } from 'react-hook-form'
 import { redirect } from 'react-router-dom'
 
@@ -12,7 +13,7 @@ import { REGISTER_FORM, REGISTER_FORM_DEFAULT_VALUES } from '../../constants'
 type RegisterScreenProps = Partial<AuthStackScreenProps<'Register'>>
 
 const Register = ({ navigation }: RegisterScreenProps) => {
-  const { mutate: mutateRegister } = useRegister('/users')
+  const { mutate: mutateRegister, isPending: isRegistering } = useRegister('/users')
   const {
     control,
     watch,
@@ -22,13 +23,13 @@ const Register = ({ navigation }: RegisterScreenProps) => {
   } = useForm<TRegisterForm>({
     defaultValues: REGISTER_FORM_DEFAULT_VALUES,
   })
-  const watchPassword = watch('password', '')
   const handleOnSubmit: SubmitHandler<TRegisterForm> = (data) => {
     mutateRegister(data, {
       onSuccess: () => reset(),
     })
   }
   const handleMoveToLogin = () => (isWeb ? redirect('/login') : navigation?.navigate('Login'))
+  const errorMessagesId = useId()
 
   return (
     <YStack
@@ -47,15 +48,37 @@ const Register = ({ navigation }: RegisterScreenProps) => {
         <Text color="$gray_100">Let&#39;s make your account</Text>
       </YStack>
 
-      <Stack marginVertical={17}>
-        {!!Object.keys(errors).length && (
-          <Text color="$red_50" textAlign="center">
-            {errors.confirmPassword?.message || 'You need to fill all information'}
-          </Text>
-        )}
-      </Stack>
-
-      <Form formControlProp={control} onSubmit={handleSubmit(handleOnSubmit)} gap={10}>
+      <Form
+        formControlProp={control}
+        onSubmit={handleSubmit(handleOnSubmit)}
+        gap={10}
+        paddingTop={40}
+      >
+        <Stack position="absolute" top={0} left={0} right={0}>
+          <AnimatePresence>
+            {!!Object.keys(errors).length && (
+              <Text
+                key={errorMessagesId}
+                animation="medium"
+                enterStyle={{
+                  x: 20,
+                  opacity: 0,
+                }}
+                exitStyle={{
+                  x: -20,
+                  opacity: 0,
+                }}
+                color="$red_50"
+                textAlign="center"
+              >
+                {errors.account?.message ||
+                  errors.password?.message ||
+                  errors.confirmPassword?.message ||
+                  'You need to fill all information'}
+              </Text>
+            )}
+          </AnimatePresence>
+        </Stack>
         {Object.keys(REGISTER_FORM).map((key: string) => {
           const covertKey = key as keyof typeof REGISTER_FORM
           const inputLabel = REGISTER_FORM[covertKey].label
@@ -66,11 +89,11 @@ const Register = ({ navigation }: RegisterScreenProps) => {
               control={control}
               name={inputLabel}
               rules={
-                inputLabel === 'confirmPassword'
+                inputLabel !== 'confirmPassword'
                   ? REGISTER_FORM[covertKey].rules
                   : {
                       validate: (value: string) =>
-                        watchPassword === value || 'Your type in password do not match',
+                        watch('password') === value || 'Your type in password do not match',
                     }
               }
               render={({ field: { value, onChange, onBlur } }) => (
@@ -80,6 +103,7 @@ const Register = ({ navigation }: RegisterScreenProps) => {
                   placeholder={REGISTER_FORM[covertKey].placeholder}
                   isError={!!errors.name}
                   value={value}
+                  disabled={isRegistering}
                   onChangeText={onChange}
                   onBlur={onBlur}
                 />
@@ -93,7 +117,7 @@ const Register = ({ navigation }: RegisterScreenProps) => {
             title="login"
             borderRadius={5}
             isDisable={!isDirty || !!Object.keys(errors).length}
-            loading={isSubmitting}
+            loading={isSubmitting || isRegistering}
           />
         </Form.Trigger>
       </Form>
