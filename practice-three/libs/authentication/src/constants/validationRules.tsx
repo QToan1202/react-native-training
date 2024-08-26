@@ -110,7 +110,7 @@ export const REGISTER_FORM: TRegisterFormFields = {
             return true
 
           default:
-            return 'Credential not allowed'
+            return 'Account you just enter is not email or phone number'
         }
       },
     },
@@ -121,8 +121,14 @@ export const REGISTER_FORM: TRegisterFormFields = {
     title: '',
     placeholder: 'Password',
     rules: {
-      required: true,
-      minLength: 6,
+      required: {
+        value: true,
+        message: 'Password is required. Please enter your security password!',
+      },
+      minLength: {
+        value: 6,
+        message: 'Password is too short. Try longer password for more security!',
+      },
     },
     startIcon: (color) => <Lock stroke={color} />,
   },
