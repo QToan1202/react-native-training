@@ -1,3 +1,5 @@
+export { default as Arrow } from './arrow.svg'
+
 export { default as Lock } from './lock.svg'
 export { default as User } from './user.svg'
 

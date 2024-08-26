@@ -1,5 +1,7 @@
 /// <reference types="vite-plugin-svgr/client" />
 
+export { default as Arrow } from './arrow.svg?react'
+
 export { default as Lock } from './lock.svg?react'
 export { default as User } from './user.svg?react'
 

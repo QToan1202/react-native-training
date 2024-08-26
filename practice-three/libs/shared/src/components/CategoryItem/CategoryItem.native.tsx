@@ -1,7 +1,7 @@
 import { ImageURISource } from 'react-native'
-import { Card, CardProps, Heading, Image, getTokenValue } from 'tamagui'
+import { Card, CardProps, Heading, getTokenValue } from 'tamagui'
 
-import { placeholderImagePath } from '../../assets/images'
+import { Image } from '../Image'
 
 export type CategoryItemProps = CardProps & {
   title: string
@@ -20,18 +20,11 @@ export const CategoryItem = ({ title, image, ...rest }: CategoryItemProps) => {
       {...rest}
     >
       <Image
-        resizeMode="cover"
-        alignSelf="center"
         borderRadius={50}
         source={{
           width: getTokenValue('$categoryMobile.width'),
           height: getTokenValue('$categoryMobile.height'),
           uri: image,
-        }}
-        defaultSource={{
-          width: getTokenValue('$categoryMobile.width'),
-          height: getTokenValue('$categoryMobile.height'),
-          uri: placeholderImagePath,
         }}
       />
       <Card.Footer justifyContent="center" paddingVertical={10}>

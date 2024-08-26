@@ -1,9 +1,9 @@
 import { ImageURISource } from 'react-native'
-import { Card, CardProps, H2, Image, XStack, YStack, getTokenValue } from 'tamagui'
+import { Card, CardProps, H2, XStack, YStack, getTokenValue } from 'tamagui'
 
-import { Text } from '@practice-three/components'
-
-import { Arrow, placeholderImagePath } from '../../assets/images'
+import { Text } from '../Text'
+import { Image } from '../Image'
+import { Arrow } from '../../assets/images'
 
 export type CategoryItemProps = CardProps & {
   title: string
@@ -41,18 +41,11 @@ const CategoryItem = ({ title, image, ...rest }: CategoryItemProps) => {
       </Card.Header>
       <Card.Background $platform-web={{ filter: 'brightness(50%)' }}>
         <Image
-          resizeMode="cover"
-          alignSelf="center"
           borderRadius={10}
           source={{
             width: getTokenValue('$category.width'),
             height: getTokenValue('$category.height'),
             uri: image,
-          }}
-          defaultSource={{
-            width: getTokenValue('$category.width'),
-            height: getTokenValue('$category.height'),
-            uri: placeholderImagePath,
           }}
         />
       </Card.Background>

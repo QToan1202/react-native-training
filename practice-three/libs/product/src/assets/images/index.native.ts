@@ -1,8 +1,6 @@
 export { default as PlaceholderImage } from './placeholder.svg'
 export { default as placeholderImagePath } from './placeholder.svg'
 
-export { default as Arrow } from './arrow.svg'
-
 export { default as HeartFill } from './heart-fill.svg'
 export { default as Heart } from './heart.svg'
 
