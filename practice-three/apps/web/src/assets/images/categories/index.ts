@@ -1,0 +1,6 @@
+export { default as menJacket } from './men-jacket.svg'
+export { default as pant } from './pants.svg'
+export { default as sweater } from './sweater.svg'
+export { default as womenJacket } from './women-jacket.svg'
+export { default as womenPant } from './women-pant.svg'
+export { default as womenTop } from './women-tops.svg'

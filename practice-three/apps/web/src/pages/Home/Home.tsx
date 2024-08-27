@@ -1,8 +1,10 @@
-import { ScrollView, YStack } from 'tamagui'
+import { Heading, ScrollView, YStack } from 'tamagui'
 
-import { Carousel } from '@practice-three/components'
+import { Carousel, CategoryItem } from '@practice-three/components'
 
 import { AboutUs, QualitySection, TrendingSection } from '../../components'
+import { Grid } from '../../layout'
+import { CATEGORY_ITEMS } from '../../constants'
 
 const Home = () => {
   return (
@@ -16,6 +18,16 @@ const Home = () => {
       <ScrollView contentContainerStyle={{ flex: 1, flexDirection: 'row', gap: 40 }}>
         <TrendingSection />
       </ScrollView>
+      <YStack gap={26}>
+        <Heading color="$black" fontSize="$6" fontWeight="700">
+          Shop by Categories
+        </Heading>
+        <Grid>
+          {CATEGORY_ITEMS.map((item) => (
+            <CategoryItem key={item.title} {...item} />
+          ))}
+        </Grid>
+      </YStack>
       <QualitySection />
       <AboutUs />
     </YStack>

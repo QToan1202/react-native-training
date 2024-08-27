@@ -31,3 +31,5 @@ export { default as Headphone } from './headphone.svg?react'
 export { default as Discount } from './discount.svg?react'
 
 export { default as placeholderImagePath } from './placeholder.svg'
+
+export * from './categories'
