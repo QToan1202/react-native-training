@@ -19,6 +19,8 @@ import {
   sweaterDeal,
   dressDeal,
   reviewerAvatar,
+  rackBlog,
+  clothesBlog,
 } from '../assets/images'
 
 export type TNavItem = {
@@ -177,5 +179,26 @@ export const REVIEW_ITEMS_DATA = [
     rating: 4.4,
     content:
       'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Dui vel morbi cursus sed sodales molestie proin dictum gravida. Porttitor maecenas tincidunt ipsum semper malesuada. In sapien feugiat laoreet convallis eu sed. Sapien et montes, duis tempor euismod augue cras eu eget. Risus suspendisse mauris ullamcorper',
+  },
+]
+
+export const BLOG_ITEMS_DATA = [
+  {
+    title: 'Discover new way to decorate your home .',
+    content: 'Lorem ipsum dolor sit amet, aliqua consectetur adipiscing elit ut ...',
+    author: 'By Souha . H',
+    image: rackBlog,
+  },
+  {
+    title: 'Discover new way to decorate your home .',
+    content: 'Lorem ipsum dolor sit amet, aliqua consectetur adipiscing elit ut ...',
+    author: 'By Souha . H',
+    image: clothesBlog,
+  },
+  {
+    title: 'Discover new way to decorate your home .',
+    content: 'Lorem ipsum dolor sit amet, aliqua consectetur adipiscing elit ut ...',
+    author: 'By Souha . H',
+    image: rackBlog,
   },
 ]

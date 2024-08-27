@@ -43,3 +43,5 @@ export { default as leviLogo } from './levi-logo.svg'
 export * from './deals'
 
 export { default as reviewerAvatar } from './reviewer.svg'
+
+export * from './blogs'

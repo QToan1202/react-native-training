@@ -28,7 +28,7 @@ const BlogCard = ({
       backgroundColor="$pure_white"
       {...rest}
     >
-      <Image flex={1} source={{ uri: image, height: 360 }} />
+      <Image flex={1} source={{ uri: image, height: 360, width: 500 }} />
       <YStack
         justifyContent="space-evenly"
         alignItems="flex-start"

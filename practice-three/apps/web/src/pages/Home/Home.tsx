@@ -5,6 +5,7 @@ import { Carousel } from '@practice-three/components'
 import {
   AboutUs,
   BannerSection,
+  BlogSection,
   CategorySection,
   DealSection,
   QualitySection,
@@ -33,6 +34,7 @@ const Home = () => {
       <BannerSection />
       <CategorySection />
       <ReviewSection />
+      <BlogSection />
       <QualitySection />
       <AboutUs />
     </YStack>
