@@ -6,6 +6,7 @@ import {
   AboutUs,
   BannerSection,
   CategorySection,
+  DealSection,
   QualitySection,
   TrendingSection,
 } from '../../components'
@@ -22,6 +23,7 @@ const Home = () => {
       <ScrollView contentContainerStyle={{ flex: 1, flexDirection: 'row', gap: 40 }}>
         <TrendingSection />
       </ScrollView>
+      <DealSection />
       <BannerSection />
       <CategorySection />
       <QualitySection />

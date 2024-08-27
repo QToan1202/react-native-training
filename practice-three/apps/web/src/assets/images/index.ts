@@ -37,3 +37,7 @@ export * from './categories'
 export { default as banner } from './banner.svg'
 
 export { default as foreverLogo } from './forever-logo.svg'
+
+export { default as leviLogo } from './levi-logo.svg'
+
+export * from './deals'

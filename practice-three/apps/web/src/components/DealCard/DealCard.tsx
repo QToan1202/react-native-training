@@ -1,9 +1,7 @@
 import { ImageURISource } from 'react-native'
-import { Card, CardProps, H5, Image, YStack, getTokenValue } from 'tamagui'
+import { Card, CardProps, H5, YStack, getTokenValue } from 'tamagui'
 
-import { Text } from '@practice-three/components'
-
-import { placeholderImagePath } from '../../assets/images'
+import { Image, Text } from '@practice-three/components'
 
 export type DealCardProps = CardProps & {
   image: ImageURISource['uri']
@@ -24,32 +22,17 @@ const DealCard = ({ image, brandImage, title, description, ...rest }: DealCardPr
     >
       <YStack gap={30}>
         <Image
-          resizeMode="cover"
-          alignSelf="center"
           source={{
             width: getTokenValue('$deal.width'),
             height: 300,
             uri: image,
           }}
-          defaultSource={{
-            width: getTokenValue('$deal.width'),
-            height: 300,
-            uri: placeholderImagePath,
-          }}
         />
         <Image
-          resizeMode="cover"
-          alignSelf="center"
-          borderRadius={10}
           source={{
-            width: 150,
+            width: 155,
             height: 62,
             uri: brandImage,
-          }}
-          defaultSource={{
-            width: 150,
-            height: 62,
-            uri: placeholderImagePath,
           }}
         />
       </YStack>

@@ -14,6 +14,10 @@ import {
   womenTop,
   pant,
   womenJacket,
+  leviLogo,
+  jacketDeal,
+  sweaterDeal,
+  dressDeal,
 } from '../assets/images'
 
 export type TNavItem = {
@@ -124,5 +128,32 @@ export const CATEGORY_ITEMS = [
   {
     title: 'Womens Jackets',
     image: womenJacket,
+  },
+]
+
+export const DEAL_ITEMS_DATA = [
+  {
+    image: jacketDeal,
+    brandImage: leviLogo,
+    title: 'Best of Styles',
+    description: 'Under Rs.799',
+  },
+  {
+    image: sweaterDeal,
+    brandImage: leviLogo,
+    title: 'Best of Styles',
+    description: 'Under Rs.799',
+  },
+  {
+    image: dressDeal,
+    brandImage: leviLogo,
+    title: 'Best of Styles',
+    description: 'Under Rs.799',
+  },
+  {
+    image: jacketDeal,
+    brandImage: leviLogo,
+    title: 'Best of Styles',
+    description: 'Under Rs.799',
   },
 ]
