@@ -11,8 +11,8 @@ const Review = () => {
         What Our Customer Says
       </Heading>
       <XStack gap={60}>
-        {REVIEW_ITEMS_DATA.map((itemProps) => (
-          <ReviewCard {...itemProps} />
+        {REVIEW_ITEMS_DATA.map((itemProps, index) => (
+          <ReviewCard key={index} {...itemProps} />
         ))}
       </XStack>
     </ScrollView>

@@ -11,8 +11,8 @@ const Deal = () => {
         Deals of the Day
       </Heading>
       <XStack gap={70}>
-        {DEAL_ITEMS_DATA.map((itemProps) => (
-          <DealCard {...itemProps} />
+        {DEAL_ITEMS_DATA.map((itemProps, index) => (
+          <DealCard key={index} {...itemProps} />
         ))}
       </XStack>
     </ScrollView>
