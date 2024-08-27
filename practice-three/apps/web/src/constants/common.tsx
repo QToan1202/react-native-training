@@ -18,6 +18,7 @@ import {
   jacketDeal,
   sweaterDeal,
   dressDeal,
+  reviewerAvatar,
 } from '../assets/images'
 
 export type TNavItem = {
@@ -155,5 +156,26 @@ export const DEAL_ITEMS_DATA = [
     brandImage: leviLogo,
     title: 'Best of Styles',
     description: 'Under Rs.799',
+  },
+]
+
+export const REVIEW_ITEMS_DATA = [
+  {
+    image: reviewerAvatar,
+    rating: 4.4,
+    content:
+      'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Dui vel morbi cursus sed sodales molestie proin dictum gravida. Porttitor maecenas tincidunt ipsum semper malesuada. In sapien feugiat laoreet convallis eu sed. Sapien et montes, duis tempor euismod augue cras eu eget. Risus suspendisse mauris ullamcorper',
+  },
+  {
+    image: reviewerAvatar,
+    rating: 4.4,
+    content:
+      'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Dui vel morbi cursus sed sodales molestie proin dictum gravida. Porttitor maecenas tincidunt ipsum semper malesuada. In sapien feugiat laoreet convallis eu sed. Sapien et montes, duis tempor euismod augue cras eu eget. Risus suspendisse mauris ullamcorper',
+  },
+  {
+    image: reviewerAvatar,
+    rating: 4.4,
+    content:
+      'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Dui vel morbi cursus sed sodales molestie proin dictum gravida. Porttitor maecenas tincidunt ipsum semper malesuada. In sapien feugiat laoreet convallis eu sed. Sapien et montes, duis tempor euismod augue cras eu eget. Risus suspendisse mauris ullamcorper',
   },
 ]

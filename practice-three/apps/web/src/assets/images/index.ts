@@ -41,3 +41,5 @@ export { default as foreverLogo } from './forever-logo.svg'
 export { default as leviLogo } from './levi-logo.svg'
 
 export * from './deals'
+
+export { default as reviewerAvatar } from './reviewer.svg'

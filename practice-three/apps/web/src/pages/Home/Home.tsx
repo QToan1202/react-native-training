@@ -8,6 +8,7 @@ import {
   CategorySection,
   DealSection,
   QualitySection,
+  ReviewSection,
   TrendingSection,
 } from '../../components'
 
@@ -31,6 +32,7 @@ const Home = () => {
       <DealSection />
       <BannerSection />
       <CategorySection />
+      <ReviewSection />
       <QualitySection />
       <AboutUs />
     </YStack>
