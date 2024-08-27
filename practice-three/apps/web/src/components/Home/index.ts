@@ -1,3 +1,5 @@
 export * from './AboutUs'
 export * from './Quality'
 export * from './Trending'
+export * from './Category'
+export * from './Banner'
