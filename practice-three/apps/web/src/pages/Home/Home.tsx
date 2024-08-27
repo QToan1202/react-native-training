@@ -1,4 +1,4 @@
-import { ScrollView, YStack } from 'tamagui'
+import { Heading, ScrollView, XStack, YStack } from 'tamagui'
 
 import { Carousel } from '@practice-three/components'
 
@@ -20,8 +20,13 @@ const Home = () => {
           'https://images.dog.ceo/breeds/setter-english/n02100735_4040.jpg',
         ]}
       />
-      <ScrollView contentContainerStyle={{ flex: 1, flexDirection: 'row', gap: 40 }}>
-        <TrendingSection />
+      <ScrollView contentContainerStyle={{ flex: 1, gap: 25 }}>
+        <Heading color="$black" fontSize="$6" fontWeight="700">
+          Trending Now
+        </Heading>
+        <XStack gap={40}>
+          <TrendingSection />
+        </XStack>
       </ScrollView>
       <DealSection />
       <BannerSection />
