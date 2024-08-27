@@ -33,3 +33,7 @@ export { default as Discount } from './discount.svg?react'
 export { default as placeholderImagePath } from './placeholder.svg'
 
 export * from './categories'
+
+export { default as banner } from './banner.svg'
+
+export { default as foreverLogo } from './forever-logo.svg'
