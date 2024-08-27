@@ -1,18 +1,18 @@
 import { ReactNode } from 'react'
-import { XStack, YStack } from 'tamagui'
+import { XStack, XStackProps, YStack } from 'tamagui'
 
 import { getValidChildren } from '@practice-three/utils'
 
-type GridLayoutProps = {
+type GridLayoutProps = XStackProps & {
   layout?: 3 | 6
   children?: ReactNode
 }
 
-const Grid = ({ children, layout = 6 }: GridLayoutProps) => {
+const Grid = ({ children, layout = 6, ...rest }: GridLayoutProps) => {
   const [item1, item2, item3, item4, item5, item6] = getValidChildren(children).slice(0, layout)
 
   return (
-    <XStack gap={25} height={686}>
+    <XStack gap={25} {...rest}>
       <YStack flex={1} flexBasis={0}>
         {item1}
       </YStack>

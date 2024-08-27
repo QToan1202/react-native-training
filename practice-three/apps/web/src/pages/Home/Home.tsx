@@ -22,7 +22,7 @@ const Home = () => {
         <Heading color="$black" fontSize="$6" fontWeight="700">
           Shop by Categories
         </Heading>
-        <Grid>
+        <Grid height={686}>
           {CATEGORY_ITEMS.map((item) => (
             <CategoryItem key={item.title} {...item} />
           ))}
