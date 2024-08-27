@@ -56,10 +56,6 @@ const customTokens = createTokens({
     height: 140,
   },
   category: {
-    width: 590,
-    height: 330,
-  },
-  categoryMobile: {
     width: 62,
     height: 62,
   },

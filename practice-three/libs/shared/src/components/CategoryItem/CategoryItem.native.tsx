@@ -11,8 +11,8 @@ export type CategoryItemProps = CardProps & {
 export const CategoryItem = ({ title, image, ...rest }: CategoryItemProps) => {
   return (
     <Card
-      maxWidth={getTokenValue('$categoryMobile.width')}
-      maxHeight={getTokenValue('$categoryMobile.height')}
+      maxWidth={getTokenValue('$category.width')}
+      maxHeight={getTokenValue('$category.height')}
       borderRadius={50}
       hoverStyle={{
         cursor: 'pointer',
@@ -22,8 +22,8 @@ export const CategoryItem = ({ title, image, ...rest }: CategoryItemProps) => {
       <Image
         borderRadius={50}
         source={{
-          width: getTokenValue('$categoryMobile.width'),
-          height: getTokenValue('$categoryMobile.height'),
+          width: getTokenValue('$category.width'),
+          height: getTokenValue('$category.height'),
           uri: image,
         }}
       />

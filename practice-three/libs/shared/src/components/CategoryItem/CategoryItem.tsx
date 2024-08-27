@@ -1,55 +1,46 @@
 import { ImageURISource } from 'react-native'
-import { Card, CardProps, H2, XStack, YStack, getTokenValue } from 'tamagui'
+import { H2, XStack, YStack, YStackProps } from 'tamagui'
 
 import { Text } from '../Text'
 import { Image } from '../Image'
 import { Arrow } from '../../assets/images'
 
-export type CategoryItemProps = CardProps & {
+export type CategoryItemProps = YStackProps & {
   title: string
   image: ImageURISource['uri']
 }
 
 const CategoryItem = ({ title, image, ...rest }: CategoryItemProps) => {
   return (
-    <Card
-      maxWidth={getTokenValue('$category.width')}
-      maxHeight={getTokenValue('$category.height')}
+    <YStack
       hoverStyle={{
         cursor: 'pointer',
       }}
+      flex={1}
+      width={'100%'}
       {...rest}
     >
-      <Card.Header>
-        <YStack>
-          <H2
-            ellipse
-            color="$pure_white"
-            fontSize="$5"
-            fontWeight="bold"
-            textTransform="capitalize"
-          >
-            {title}
-          </H2>
-          <XStack alignItems="center" gap={5}>
-            <Text color="$pure_white" fontSize="$3" fontWeight="bold">
-              Explore
-            </Text>
-            <Arrow />
-          </XStack>
-        </YStack>
-      </Card.Header>
-      <Card.Background $platform-web={{ filter: 'brightness(50%)' }}>
-        <Image
-          borderRadius={10}
-          source={{
-            width: getTokenValue('$category.width'),
-            height: getTokenValue('$category.height'),
-            uri: image,
-          }}
-        />
-      </Card.Background>
-    </Card>
+      <YStack position="absolute" top={24} left={30} zIndex={10}>
+        <H2 ellipse color="$pure_white" fontSize="$5" fontWeight="bold" textTransform="capitalize">
+          {title}
+        </H2>
+        <XStack alignItems="center" gap={5}>
+          <Text color="$pure_white" fontSize="$3" fontWeight="bold">
+            Explore
+          </Text>
+          <Arrow />
+        </XStack>
+      </YStack>
+      <Image
+        $platform-web={{ filter: 'brightness(70%)' }}
+        borderRadius={10}
+        flex={1}
+        width="100%"
+        source={{
+          uri: image,
+        }}
+      />
+    </YStack>
   )
 }
 
