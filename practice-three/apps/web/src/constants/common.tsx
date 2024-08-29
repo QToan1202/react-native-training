@@ -24,6 +24,7 @@ import {
   jacketOffer,
   foreverLogo,
   leviOffer,
+  foreverOffer,
 } from '../assets/images'
 
 export type TNavItem = {
@@ -210,7 +211,7 @@ export const OFFER_ITEMS_DATA = [
   {
     title: 'Min 50% off',
     image: jacketOffer,
-    brandImage: foreverLogo,
+    brandImage: foreverOffer,
     size: 'sm',
   },
   {
@@ -222,7 +223,7 @@ export const OFFER_ITEMS_DATA = [
   {
     title: 'Min 50% off',
     image: jacketOffer,
-    brandImage: foreverLogo,
+    brandImage: foreverOffer,
     size: 'sm',
   },
 ] as const

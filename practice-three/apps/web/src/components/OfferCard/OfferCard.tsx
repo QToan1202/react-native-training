@@ -27,8 +27,10 @@ const OfferCard = ({ image, brandImage, title, size = 'normal', ...rest }: DealC
         gap={size === 'normal' ? 60 : 40}
       >
         <Image
+          resizeMode="contain"
+          width="100%"
+          maxWidth={300}
           source={{
-            width: 175,
             height: 72,
             uri: brandImage,
           }}
