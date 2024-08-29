@@ -21,6 +21,9 @@ import {
   reviewerAvatar,
   rackBlog,
   clothesBlog,
+  jacketOffer,
+  foreverLogo,
+  leviOffer,
 } from '../assets/images'
 
 export type TNavItem = {
@@ -202,3 +205,24 @@ export const BLOG_ITEMS_DATA = [
     image: rackBlog,
   },
 ]
+
+export const OFFER_ITEMS_DATA = [
+  {
+    title: 'Min 50% off',
+    image: jacketOffer,
+    brandImage: foreverLogo,
+    size: 'sm',
+  },
+  {
+    title: 'Min 60% off',
+    image: leviOffer,
+    brandImage: leviLogo,
+    size: 'normal',
+  },
+  {
+    title: 'Min 50% off',
+    image: jacketOffer,
+    brandImage: foreverLogo,
+    size: 'sm',
+  },
+] as const

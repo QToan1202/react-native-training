@@ -45,3 +45,5 @@ export * from './deals'
 export { default as reviewerAvatar } from './reviewer.svg'
 
 export * from './blogs'
+
+export * from './offers'
