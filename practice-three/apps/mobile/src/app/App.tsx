@@ -4,6 +4,7 @@ import { JSX } from 'react'
 import { withErrorBoundary } from 'react-error-boundary'
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs'
 import { createNativeStackNavigator } from '@react-navigation/native-stack'
+import { gestureHandlerRootHOC } from 'react-native-gesture-handler'
 
 import {
   AUTH_FEATURE,
@@ -70,4 +71,6 @@ export const App = () => {
   )
 }
 
-export default withErrorBoundary(App, { FallbackComponent: ErrorScreen })
+export default withErrorBoundary(gestureHandlerRootHOC(App, { flex: 1 }), {
+  FallbackComponent: ErrorScreen,
+})
