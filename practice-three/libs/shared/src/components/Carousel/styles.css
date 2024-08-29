@@ -1,0 +1,24 @@
+:root {
+  --swiper-pagination-bullet-size: 10px;
+  --swiper-navigation-size: 20px;
+  --swiper-pagination-color: #002482;
+  --swiper-navigation-color: #fff;
+}
+
+.swiper-pagination {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.swiper-pagination-bullet-active {
+  --swiper-pagination-bullet-size: 14px;
+}
+
+.swiper-button-next,
+.swiper-button-prev {
+  padding: 18px;
+  width: var(--swiper-navigation-size);
+  border-radius: 50%;
+  background-color: rgba(39, 39, 39, 0.8);
+}

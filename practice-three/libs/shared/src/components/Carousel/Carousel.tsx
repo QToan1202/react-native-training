@@ -1,146 +1,77 @@
-import { useCallback, useEffect, useMemo, useState } from 'react'
-import { GestureResponderEvent } from 'react-native'
-import { AnimatePresence, getTokenValue, isWeb, styled, XStack, YStack, YStackProps } from 'tamagui'
+import { GetProps, styled } from 'tamagui'
+import { ReactNode, useMemo, useState } from 'react'
+import { Swiper as BaseSwiper, SwiperSlide as BaseSwiperSlide } from 'swiper/react'
+import { FreeMode, Pagination, Navigation } from 'swiper/modules'
 
-import { Image } from '../Image'
-import { Dot } from '../../assets/images'
-import { IconButton } from '../Button'
+// Import Swiper styles
+import 'swiper/css'
+import 'swiper/css/free-mode'
+import 'swiper/css/pagination'
+import 'swiper/css/navigation'
 
-export type CarouselProps = YStackProps & {
-  data: string[]
-  autoplay?: boolean
-}
+import './styles.css'
 
-const AUTOPLAY_TIMING = 2 * 1000 // seconds
-const CAROUSEL_SLIDE_DIRECTION = {
-  RIGHT: 1,
-  LEFT: -1,
-  STAY: 0,
-}
+import { getValidChildren } from '@practice-three/utils'
 
-const GalleryImage = styled(YStack, {
-  zIndex: 1,
-  x: 0,
-  opacity: 1,
-  fullscreen: true,
-
-  variants: {
-    going: {
-      ':number': (going) => ({
-        enterStyle: {
-          x: going > CAROUSEL_SLIDE_DIRECTION.STAY ? '100%' : '-100%',
-          opacity: 0,
-        },
-        exitStyle: {
-          zIndex: 0,
-          x: going < CAROUSEL_SLIDE_DIRECTION.STAY ? '100%' : '-100%',
-          opacity: 0,
-        },
-      }),
-    },
-  } as const,
+const Swiper = styled(BaseSwiper, {
+  acceptsClassName: true,
+  width: '100%',
+  height: '100%',
 })
 
-const wrap = (min: number, max: number, v: number) => {
-  const rangeSize = max - min
-  return ((((v - min) % rangeSize) + rangeSize) % rangeSize) + min
+const SwiperSlide = styled(BaseSwiperSlide, {
+  acceptsClassName: true,
+  display: 'flex',
+  justifyContent: 'center',
+  alignItems: 'center',
+  backgroundColor: '$pure_white',
+  paddingBottom: 40,
+})
+
+type SwiperProps = GetProps<typeof Swiper>
+type CarouselProps = SwiperProps & {
+  children: ReactNode
+  isShowNavigation?: boolean
+  isShowIndex?: boolean
 }
 
 const Carousel = ({
-  data,
-  autoplay = false,
-  width = '100%',
-  height = 300,
+  children,
+  isShowNavigation = false,
+  isShowIndex = true,
   ...rest
 }: CarouselProps) => {
-  const [[page, going], setPage] = useState<[number, number]>([0, 0])
-  const paginate = useCallback(
-    (going: number) => {
-      setPage([page + going, going])
-    },
-    [page]
+  const [childrenArr] = useState(() =>
+    getValidChildren(children).map((child, index) => (
+      <SwiperSlide slot="wrapper-start" key={index}>
+        {child}
+      </SwiperSlide>
+    ))
   )
-  const [coordinate, setCoordinate] = useState<number>(0)
-  const imageIndex = useMemo(() => wrap(0, data.length, page), [data.length, page])
-  const renderDots = useMemo(
-    () =>
-      data.map((value: string) => {
-        const dotIndex = data.findIndex((_value) => value === _value)
-        const handlePressIconButton = () => paginate(dotIndex - imageIndex)
+  const transformProps = useMemo((): SwiperProps => {
+    const baseProps: Omit<SwiperProps, 'modules'> = { freeMode: true }
+    const modules: SwiperProps['modules'] = [FreeMode]
 
-        return (
-          <IconButton key={value} onPress={handlePressIconButton}>
-            <Dot
-              {...(isWeb && {
-                width: 10,
-                height: 10,
-              })}
-              {...(imageIndex === dotIndex && {
-                fill: getTokenValue('$color.primary'),
-                width: isWeb ? 14 : 7,
-                height: isWeb ? 14 : 7,
-              })}
-            />
-          </IconButton>
-        )
-      }),
-    [data, imageIndex, paginate]
-  )
-
-  useEffect(() => {
-    const timing = autoplay
-      ? setInterval(() => {
-          paginate(CAROUSEL_SLIDE_DIRECTION.RIGHT)
-        }, AUTOPLAY_TIMING)
-      : undefined
-
-    return () => {
-      clearInterval(timing)
+    if (isShowIndex) {
+      baseProps.pagination = {
+        enabled: true,
+        clickable: true,
+      }
+      modules.push(Pagination)
     }
-  }, [autoplay, paginate])
-  const handleStartTouch = (event: GestureResponderEvent) => {
-    const { pageX } = event.nativeEvent.changedTouches[0]
 
-    setCoordinate(pageX)
-  }
-  const handleFinishTouch = (event: GestureResponderEvent) => {
-    const { pageX } = event.nativeEvent.changedTouches[0]
+    if (isShowNavigation) {
+      baseProps.navigation = true
+      modules.push(Navigation)
+    }
 
-    paginate(
-      coordinate - pageX > 0
-        ? CAROUSEL_SLIDE_DIRECTION.RIGHT
-        : coordinate - pageX < 0
-        ? CAROUSEL_SLIDE_DIRECTION.LEFT
-        : CAROUSEL_SLIDE_DIRECTION.STAY
-    )
-  }
+    return { ...baseProps, modules }
+  }, [])
 
   return (
-    <YStack gap={20} justifyContent="center" alignItems="center" overflow="hidden" {...rest}>
-      <XStack height={height} width={width} backgroundColor="$gray_50">
-        <XStack fullscreen>
-          <AnimatePresence initial={false} custom={{ going }}>
-            <GalleryImage
-              key={page}
-              animation="slow"
-              going={going}
-              onTouchStart={handleStartTouch}
-              onTouchEnd={handleFinishTouch}
-            >
-              <Image
-                flex={1}
-                resizeMode="contain"
-                alignSelf="stretch"
-                source={{
-                  uri: data[imageIndex],
-                }}
-              />
-            </GalleryImage>
-          </AnimatePresence>
-        </XStack>
-      </XStack>
-      <XStack gap={4}>{renderDots}</XStack>
-    </YStack>
+    <Swiper slidesPerView={2} {...transformProps} {...rest}>
+      {childrenArr}
+    </Swiper>
   )
 }
 
