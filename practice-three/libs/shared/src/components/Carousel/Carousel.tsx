@@ -11,7 +11,7 @@ import 'swiper/css/navigation'
 
 import './styles.css'
 
-import { getValidChildren } from '@practice-three/utils'
+import { getValidChildren } from '../../utils'
 
 const Swiper = styled(BaseSwiper, {
   acceptsClassName: true,
@@ -66,7 +66,7 @@ const Carousel = ({
     }
 
     return { ...baseProps, modules }
-  }, [])
+  }, [isShowIndex, isShowNavigation])
 
   return (
     <Swiper slidesPerView={2} {...transformProps} {...rest}>
