@@ -2,7 +2,7 @@ import { Heading, YStack } from 'tamagui'
 
 import { CategoryItem } from '@practice-three/components'
 
-import { Grid } from '../../../layout'
+import { Grid } from '@practice-three/layouts'
 import { CATEGORY_ITEMS } from '../../../constants'
 
 const Category = () => (

@@ -1,7 +1,7 @@
 import { ReactNode } from 'react'
 import { XStack, XStackProps, YStack } from 'tamagui'
 
-import { getValidChildren } from '@practice-three/utils'
+import { getValidChildren } from '../../utils'
 
 type GridLayoutProps = XStackProps & {
   layout?: 3 | 6
