@@ -1,5 +1,5 @@
 import { GetProps, styled } from 'tamagui'
-import { ReactNode, useMemo, useState } from 'react'
+import { useMemo } from 'react'
 import { Swiper as BaseSwiper, SwiperSlide as BaseSwiperSlide } from 'swiper/react'
 import { FreeMode, Pagination, Navigation } from 'swiper/modules'
 
@@ -10,8 +10,7 @@ import 'swiper/css/pagination'
 import 'swiper/css/navigation'
 
 import './styles.css'
-
-import { getValidChildren } from '../../utils'
+import { BaseCarouselProps } from './types'
 
 const Swiper = styled(BaseSwiper, {
   acceptsClassName: true,
@@ -29,25 +28,23 @@ const SwiperSlide = styled(BaseSwiperSlide, {
 })
 
 type SwiperProps = GetProps<typeof Swiper>
-type CarouselProps = SwiperProps & {
-  children: ReactNode
-  isShowNavigation?: boolean
-  isShowIndex?: boolean
-}
+export type CarouselProps<T> = SwiperProps & BaseCarouselProps<T>
 
-const Carousel = ({
-  children,
+const Carousel = <T,>({
+  data,
   isShowNavigation = false,
   isShowIndex = true,
+  renderItem,
   ...rest
-}: CarouselProps) => {
-  const [childrenArr] = useState(() =>
-    getValidChildren(children).map((child, index) => (
+}: CarouselProps<T>) => {
+  const renderItemWithLayout = useMemo(() => {
+    return data.map((item, index) => (
       <SwiperSlide slot="wrapper-start" key={index}>
-        {child}
+        {renderItem({ item, index })}
       </SwiperSlide>
     ))
-  )
+  }, [data, renderItem])
+
   const transformProps = useMemo((): SwiperProps => {
     const baseProps: Omit<SwiperProps, 'modules'> = { freeMode: true }
     const modules: SwiperProps['modules'] = [FreeMode]
@@ -70,7 +67,7 @@ const Carousel = ({
 
   return (
     <Swiper slidesPerView={2} {...transformProps} {...rest}>
-      {childrenArr}
+      {renderItemWithLayout}
     </Swiper>
   )
 }
