@@ -14,6 +14,8 @@
     "bcryptjs": "*",
     "dayjs": "*",
     "react-native-reanimated": "*",
+    "react-native-gesture-handler": "*",
+    "react-native-reanimated-carousel": "*",
     "metro-config": "*",
     "@storybook/react-webpack5": "*",
     "react-native-svg-transformer": "*",
