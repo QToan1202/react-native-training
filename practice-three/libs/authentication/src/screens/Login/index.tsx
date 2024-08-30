@@ -85,6 +85,7 @@ const Login = ({ navigation }: LoginScreenProps) => {
             <Input
               startIcon={(color) => <Lock stroke={color} />}
               placeholder={LOGIN_FORM.PASSWORD.placeholder}
+              secureTextEntry
               isError={!!errors.password}
               value={value}
               onChangeText={onChange}
