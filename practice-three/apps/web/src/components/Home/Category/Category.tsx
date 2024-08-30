@@ -1,8 +1,8 @@
 import { Heading, YStack } from 'tamagui'
 
 import { CategoryItem } from '@practice-three/components'
+import { Grid, GridItem } from '@practice-three/layouts'
 
-import { Grid } from '@practice-three/layouts'
 import { CATEGORY_ITEMS } from '../../../constants'
 
 const Category = () => (
@@ -12,7 +12,9 @@ const Category = () => (
     </Heading>
     <Grid height={686}>
       {CATEGORY_ITEMS.map((item) => (
-        <CategoryItem key={item.title} {...item} />
+        <GridItem key={item.title}>
+          <CategoryItem {...item} />
+        </GridItem>
       ))}
     </Grid>
   </YStack>
