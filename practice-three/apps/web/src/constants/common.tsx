@@ -5,15 +5,9 @@ import {
   Flag,
   Headphone,
   Instagram,
-  menJacket,
-  sweater,
   ShippingBox,
   Twitter,
   Whatsapp,
-  womenPant,
-  womenTop,
-  pant,
-  womenJacket,
   leviLogo,
   jacketDeal,
   sweaterDeal,
@@ -22,7 +16,6 @@ import {
   rackBlog,
   clothesBlog,
   jacketOffer,
-  foreverLogo,
   leviOffer,
   foreverOffer,
 } from '../assets/images'
@@ -108,33 +101,6 @@ export const QUALITY_CARDS_DATA = [
     icon: <Discount />,
     title: 'Best Offers',
     description: 'We give best offers to our customers',
-  },
-]
-
-export const CATEGORY_ITEMS = [
-  {
-    title: 'Womens Pants',
-    image: womenPant,
-  },
-  {
-    title: 'Mens Jacket',
-    image: menJacket,
-  },
-  {
-    title: 'Womens Tops',
-    image: womenTop,
-  },
-  {
-    title: 'Sweater',
-    image: sweater,
-  },
-  {
-    title: 'Pants',
-    image: pant,
-  },
-  {
-    title: 'Womens Jackets',
-    image: womenJacket,
   },
 ]
 

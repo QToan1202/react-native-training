@@ -26,7 +26,6 @@
       "@practice-three/queries": ["libs/shared/src/queries/index.ts"],
       "@practice-three/screens": ["libs/shared/src/screens/index.ts"],
       "@practice-three/services": ["libs/shared/src/services/index.ts"],
-      "@practice-three/layouts": ["libs/shared/src/layouts/index.ts"],
       "@practice-three/shell": ["libs/shell/src/index.ts"],
       "@practice-three/types": ["libs/shared/src/types/index.ts"],
       "@practice-three/utils": ["libs/shared/src/utils/index.ts"]
