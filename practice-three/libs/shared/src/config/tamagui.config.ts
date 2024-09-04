@@ -1,7 +1,8 @@
 import { createFont, createMedia, createTamagui, createTokens } from 'tamagui'
 import { shorthands } from '@tamagui/shorthands'
 import { themes, tokens } from '@tamagui/themes'
-import { createAnimations } from '@tamagui/animations-css'
+
+import { animations } from './animations'
 
 const customTokens = createTokens({
   ...tokens,
@@ -109,13 +110,6 @@ const mediaQueries = createMedia({
   md: { minWidth: 992 + 1 },
   lg: { minWidth: 1200 + 1 },
   xl: { minWidth: 1400 + 1 },
-})
-
-const animations = createAnimations({
-  fast: 'ease-in 150ms',
-  medium: 'ease-in 300ms',
-  slow: 'ease-in 450ms',
-  quick: `cubic-bezier( 0.215, 0.610, 0.355, 1.000 ) 400ms`,
 })
 
 const config = createTamagui({
