@@ -66,7 +66,7 @@ const Carousel = <T,>({
   }, [isShowIndex, isShowNavigation])
 
   return (
-    <Swiper slidesPerView={2} {...transformProps} {...rest}>
+    <Swiper slidesPerView={1} {...transformProps} {...rest}>
       {renderItemWithLayout}
     </Swiper>
   )
