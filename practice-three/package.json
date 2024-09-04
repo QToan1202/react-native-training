@@ -89,7 +89,7 @@
     "@react-navigation/native": "^6.1.17",
     "@react-navigation/native-stack": "^6.9.26",
     "@tamagui/animations-css": "^1.96.0",
-    "@tamagui/animations-moti": "^1.108.4",
+    "@tamagui/animations-moti": "^1.96.0",
     "@tamagui/babel-plugin": "^1.96.0",
     "@tamagui/config": "^1.96.0",
     "@tamagui/core": "^1.96.0",
