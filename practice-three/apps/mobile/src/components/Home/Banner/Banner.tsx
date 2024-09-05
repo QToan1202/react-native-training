@@ -17,10 +17,10 @@ const Banner = () => (
       gap={18}
     >
       <ForeverLogo height={30} width={175} />
-      <Heading color="$pure_white" fontSize="$5" fontWeight="700" textAlign="center">
+      <Heading color="$pure_white" fontSize="$5" fontWeight="700">
         Big Fashion Festival
       </Heading>
-      <Heading color="$pure_white" fontSize="$5" fontWeight="700" textAlign="center">
+      <Heading color="$pure_white" fontSize="$5" fontWeight="700">
         70&#37; &#45; 80&#37; off
       </Heading>
       <Button
