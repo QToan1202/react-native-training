@@ -1,0 +1,5 @@
+export { default as Category } from './category.svg'
+export { default as Kids } from './kids.svg'
+export { default as Men } from './men.svg'
+export { default as Western } from './western.svg'
+export { default as Women } from './women.svg'

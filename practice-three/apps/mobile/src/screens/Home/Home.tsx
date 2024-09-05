@@ -1,7 +1,13 @@
-import { BannerSection } from '../../components'
+import { YStack } from 'tamagui'
+import { BannerSection, CategorySection } from '../../components'
 
 const Home = () => {
-  return <BannerSection />
+  return (
+    <YStack>
+      <CategorySection />
+      <BannerSection />
+    </YStack>
+  )
 }
 
 export default Home

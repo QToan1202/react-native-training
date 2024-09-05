@@ -60,6 +60,8 @@ const customTokens = createTokens({
   category: {
     width: 62,
     height: 62,
+    containerWidth: 90,
+    containerHeight: 90,
   },
   deal: {
     width: 490,
