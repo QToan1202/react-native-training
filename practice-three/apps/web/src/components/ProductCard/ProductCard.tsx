@@ -18,7 +18,7 @@ const ProductCard = ({
   id,
   name,
   brandName,
-  image,
+  images,
   rating,
   price,
   discountPercent,
@@ -56,7 +56,7 @@ const ProductCard = ({
         source={{
           width: getTokenValue('$card.width'),
           height: 300,
-          uri: image,
+          uri: images[0],
         }}
         defaultSource={{
           width: getTokenValue('$card.width'),

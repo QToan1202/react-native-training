@@ -76,14 +76,14 @@ export const useFindProducts = (isPreOrder = !isWeb): [boolean, TOrderItem[]] =>
 
           const { items }: TCart | TOrder = firstItem
 
-          const { id, name, image, brandName, price: productPrice, discountPercent } = product
+          const { id, name, images, brandName, price: productPrice, discountPercent } = product
 
           if (getProductsQuery.length - 1 === index) isFetchingProduct.current = false
 
           return {
             id,
             name,
-            image,
+            image: images[0],
             size: items[id].size,
             quantity: items[id].quantity,
             price: isOrder(firstItem)

@@ -18,7 +18,7 @@ export type ProductCardProps = CardProps & Omit<TProduct, TOmitProductProps>
 const ProductCard = ({
   name,
   brandName,
-  image,
+  images,
   rating,
   price,
   discountPercent,
@@ -54,7 +54,7 @@ const ProductCard = ({
         source={{
           width: getTokenValue('$cardMobile.width'),
           height: 250,
-          uri: image,
+          uri: images[0],
         }}
         defaultSource={{
           width: getTokenValue('$cardMobile.width'),

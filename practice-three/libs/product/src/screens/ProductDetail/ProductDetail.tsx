@@ -70,7 +70,7 @@ const ProductDetail = () => {
           source={{
             width: 165,
             height: 165,
-            uri: product.image,
+            uri: product.images[0],
           }}
           defaultSource={{
             width: 180,
@@ -79,7 +79,7 @@ const ProductDetail = () => {
           }}
         />
       )),
-    [product.image]
+    [product.images]
   )
   const [selectedSize, setSelectedSize] = useState<string | null>(null)
   const toast = useToastController()
@@ -283,7 +283,7 @@ const ProductDetail = () => {
             flex={1}
             borderRadius={10}
             source={{
-              uri: product.image,
+              uri: product.images[0],
             }}
             defaultSource={{
               uri: placeholderImagePath,

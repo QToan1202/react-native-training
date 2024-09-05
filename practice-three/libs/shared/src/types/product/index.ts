@@ -3,7 +3,7 @@ import { TUser } from '../user'
 export type TProduct = {
   id: string
   name: string
-  image: string
+  images: string[]
   price: number
   discountPercent: number
   brandName: string
