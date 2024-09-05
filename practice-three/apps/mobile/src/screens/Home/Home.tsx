@@ -1,5 +1,5 @@
 import { YStack } from 'tamagui'
-import { BannerSection, CategorySection, ProductSection } from '../../components'
+import { BannerSection, CategorySection, DealSection, ProductSection } from '../../components'
 
 const Home = () => {
   return (
@@ -7,6 +7,7 @@ const Home = () => {
       <CategorySection />
       <BannerSection />
       <ProductSection />
+      <DealSection />
     </YStack>
   )
 }

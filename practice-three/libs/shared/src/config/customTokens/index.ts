@@ -20,6 +20,8 @@ const customTokens = {
   deal: {
     width: 490,
     height: 570,
+    mobileWidth: 180,
+    mobileHeight: 195,
   },
   wishlistImg: {
     width: 87,
