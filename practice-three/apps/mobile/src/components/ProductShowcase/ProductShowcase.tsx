@@ -1,10 +1,11 @@
+import { Fragment } from 'react'
 import { Heading, XStack, YStack } from 'tamagui'
 
 import { Button, Image, Text } from '@practice-three/components'
 import { TProduct } from '@practice-three/types'
 import { calculateDiscountPrice } from '@practice-three/utils'
+
 import { ProductBag, ProductHeart } from '../../assets/images'
-import { Fragment } from 'react'
 
 type TRemoveProps = 'description' | 'sellerName' | 'sizes' | 'reviews' | 'specifications' | 'rating'
 type ProductShowcaseProps = Omit<TProduct, TRemoveProps>
