@@ -1,5 +1,6 @@
+import { FC } from 'react'
 import { ImageURISource } from 'react-native'
-import { H2, XStack, YStack, YStackProps } from 'tamagui'
+import { H2, Square, XStack, YStack, YStackProps } from 'tamagui'
 
 import { Text } from '../Text'
 import { Image } from '../Image'
@@ -7,10 +8,29 @@ import { Arrow } from '../../assets/images'
 
 export type CategoryItemProps = YStackProps & {
   title: string
-  image: ImageURISource['uri']
+  image: ImageURISource['uri'] | FC
 }
+const imageStyles = {
+  '$platform-web': { filter: 'brightness(70%)' },
+  borderRadius: 10,
+  flex: 1,
+  width: '100%',
+}
+const CategoryItem = ({ title, image: ImageSvg, ...rest }: CategoryItemProps) => {
+  const renderImage =
+    typeof ImageSvg === 'function' ? (
+      <Square {...imageStyles}>
+        <ImageSvg />
+      </Square>
+    ) : (
+      <Image
+        {...imageStyles}
+        source={{
+          uri: ImageSvg,
+        }}
+      />
+    )
 
-const CategoryItem = ({ title, image, ...rest }: CategoryItemProps) => {
   return (
     <YStack
       hoverStyle={{
@@ -31,15 +51,7 @@ const CategoryItem = ({ title, image, ...rest }: CategoryItemProps) => {
           <Arrow />
         </XStack>
       </YStack>
-      <Image
-        $platform-web={{ filter: 'brightness(70%)' }}
-        borderRadius={10}
-        flex={1}
-        width="100%"
-        source={{
-          uri: image,
-        }}
-      />
+      {renderImage}
     </YStack>
   )
 }

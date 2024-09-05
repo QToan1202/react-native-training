@@ -1,38 +1,53 @@
+import { FC } from 'react'
 import { ImageURISource } from 'react-native'
-import { Card, CardProps, Heading, getTokenValue } from 'tamagui'
+import { CardProps, getTokenValue, Heading, Square, YStack } from 'tamagui'
 
 import { Image } from '../Image'
 
 export type CategoryItemProps = CardProps & {
   title: string
-  image: ImageURISource['uri']
+  image: ImageURISource['uri'] | FC
 }
 
-export const CategoryItem = ({ title, image, ...rest }: CategoryItemProps) => {
+export const CategoryItem = ({ title, image: ImageSvg, ...rest }: CategoryItemProps) => {
+  const imageSizes = {
+    width: getTokenValue('$category.width'),
+    height: getTokenValue('$category.height'),
+  }
+  const renderImage =
+    typeof ImageSvg === 'function' ? (
+      <Square overflow="hidden" borderRadius={50} {...imageSizes}>
+        <ImageSvg />
+      </Square>
+    ) : (
+      <Image
+        overflow="hidden"
+        borderRadius={50}
+        source={{
+          ...imageSizes,
+          uri: ImageSvg,
+        }}
+      />
+    )
+
   return (
-    <Card
-      maxWidth={getTokenValue('$category.width')}
-      maxHeight={getTokenValue('$category.height')}
+    <YStack
       borderRadius={50}
+      width={getTokenValue('$category.containerWidth')}
+      height={getTokenValue('$category.containerHeight')}
+      justifyContent="center"
+      alignItems="center"
       hoverStyle={{
         cursor: 'pointer',
       }}
+      gap={10}
       {...rest}
     >
-      <Image
-        borderRadius={50}
-        source={{
-          width: getTokenValue('$category.width'),
-          height: getTokenValue('$category.height'),
-          uri: image,
-        }}
-      />
-      <Card.Footer justifyContent="center" paddingVertical={10}>
-        <Heading ellipse color="$pure_black" textTransform="capitalize">
-          {title}
-        </Heading>
-      </Card.Footer>
-    </Card>
+      {renderImage}
+      <Heading ellipse numberOfLines={1} color="$pure_black" textTransform="capitalize">
+        {title}
+      </Heading>
+    </YStack>
   )
 }
 
