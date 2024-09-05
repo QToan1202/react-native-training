@@ -6,6 +6,8 @@ import {
   DealWoman,
   Kids,
   Men,
+  Offer,
+  OfferHMLogo,
   Western,
   Women,
 } from '../assets/images'
@@ -23,4 +25,10 @@ export const DEAL_DATA = [
   { preTitle: 'tops', title: 'Under Rs. 799', image: DealBottom },
   { preTitle: 'tops', title: 'Under Rs. 799', image: DealWoman },
   { preTitle: 'tops', title: 'Under Rs. 799', image: DealDress },
+]
+
+export const TRENDING_DATA = [
+  { title: 'Min 30% Off', image: Offer, brandImage: OfferHMLogo },
+  { title: 'Min 30% Off', image: Offer, brandImage: OfferHMLogo },
+  { title: 'Min 30% Off', image: Offer, brandImage: OfferHMLogo },
 ]

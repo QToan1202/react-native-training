@@ -6,7 +6,7 @@ import { Image, Text } from '@practice-three/components'
 
 type DealCardHeading =
   | {
-      brandImage: ImageURISource['uri']
+      brandImage: ImageURISource['uri'] | FC
       preTitle?: never
     }
   | {
@@ -21,6 +21,7 @@ export type DealCardProps = YStackProps &
 
 const DealCard = ({ image, preTitle, brandImage, title, ...rest }: DealCardProps) => {
   const MainImage = image
+  const SubImage = brandImage
 
   return (
     <YStack
@@ -46,12 +47,17 @@ const DealCard = ({ image, preTitle, brandImage, title, ...rest }: DealCardProps
           }}
         />
       )}
-      {brandImage && (
+      {typeof SubImage === 'function' ? (
+        cloneElement(<SubImage />, {
+          width: 35,
+          height: 25,
+        })
+      ) : (
         <Image
           source={{
             width: 35,
             height: 25,
-            uri: brandImage,
+            uri: SubImage,
           }}
         />
       )}
