@@ -13,13 +13,13 @@ import { LOGIN_FORM, LOGIN_FORM_DEFAULT_VALUES } from '../../constants'
 type LoginScreenProps = Partial<AuthStackScreenProps<'Login'>>
 
 const Login = ({ navigation }: LoginScreenProps) => {
-  const { mutate: mutateLogin } = useLogin('/users')
+  const { mutate: mutateLogin, isPending: isLoginUser } = useLogin('/users')
   const {
     control,
     handleSubmit,
     reset,
     resetField,
-    formState: { isSubmitting, isDirty, isValid, errors },
+    formState: { isDirty, isValid, errors },
   } = useForm<TLoginForm>({
     defaultValues: LOGIN_FORM_DEFAULT_VALUES,
   })
@@ -70,6 +70,7 @@ const Login = ({ navigation }: LoginScreenProps) => {
               startIcon={(color) => <User stroke={color} />}
               placeholder={LOGIN_FORM.ACCOUNT.placeholder}
               isError={!!errors.account}
+              disabled={isLoginUser}
               value={value}
               onChangeText={onChange}
               onBlur={onBlur}
@@ -87,6 +88,7 @@ const Login = ({ navigation }: LoginScreenProps) => {
               placeholder={LOGIN_FORM.PASSWORD.placeholder}
               secureTextEntry
               isError={!!errors.password}
+              disabled={isLoginUser}
               value={value}
               onChangeText={onChange}
               onBlur={onBlur}
@@ -105,7 +107,7 @@ const Login = ({ navigation }: LoginScreenProps) => {
             title="login"
             borderRadius={5}
             isDisable={!isDirty || !isValid}
-            loading={isSubmitting}
+            loading={isLoginUser}
           />
         </Form.Trigger>
       </Form>
