@@ -1,26 +1,25 @@
 import { H2, Separator, Square, XStack, YStack, isWeb } from 'tamagui'
 import { Controller, SubmitHandler, useForm } from 'react-hook-form'
-import { NativeStackScreenProps } from '@react-navigation/native-stack'
 import { redirect } from 'react-router-dom'
 import { AxiosError } from 'axios'
 
 import { Button, Checkbox, Form, Input, Text } from '@practice-three/components'
-import { AuthenticationStack, TLoginForm } from '@practice-three/types'
+import { AuthStackScreenProps, TLoginForm } from '@practice-three/types'
 
 import { Apple, Facebook, Google, Lock, Logo, User } from '../../assets/images'
 import useLogin from '../../hooks/useLogin'
 import { LOGIN_FORM, LOGIN_FORM_DEFAULT_VALUES } from '../../constants'
 
-type LoginScreenProps = Partial<NativeStackScreenProps<AuthenticationStack, 'Login'>>
+type LoginScreenProps = Partial<AuthStackScreenProps<'Login'>>
 
 const Login = ({ navigation }: LoginScreenProps) => {
-  const { mutate: mutateLogin } = useLogin('/users')
+  const { mutate: mutateLogin, isPending: isLoginUser } = useLogin('/users')
   const {
     control,
     handleSubmit,
     reset,
     resetField,
-    formState: { isSubmitting, isDirty, isValid, errors },
+    formState: { isDirty, isValid, errors },
   } = useForm<TLoginForm>({
     defaultValues: LOGIN_FORM_DEFAULT_VALUES,
   })
@@ -71,6 +70,7 @@ const Login = ({ navigation }: LoginScreenProps) => {
               startIcon={(color) => <User stroke={color} />}
               placeholder={LOGIN_FORM.ACCOUNT.placeholder}
               isError={!!errors.account}
+              disabled={isLoginUser}
               value={value}
               onChangeText={onChange}
               onBlur={onBlur}
@@ -86,7 +86,9 @@ const Login = ({ navigation }: LoginScreenProps) => {
             <Input
               startIcon={(color) => <Lock stroke={color} />}
               placeholder={LOGIN_FORM.PASSWORD.placeholder}
+              secureTextEntry
               isError={!!errors.password}
+              disabled={isLoginUser}
               value={value}
               onChangeText={onChange}
               onBlur={onBlur}
@@ -105,7 +107,7 @@ const Login = ({ navigation }: LoginScreenProps) => {
             title="login"
             borderRadius={5}
             isDisable={!isDirty || !isValid}
-            loading={isSubmitting}
+            loading={isLoginUser}
           />
         </Form.Trigger>
       </Form>

@@ -1,28 +1,36 @@
 import { TFeatureConfig } from '@practice-three/types'
 
-const PRE_DEFINED_FEATURES: Array<Omit<TFeatureConfig, 'active'>> = [
+import {
+  AUTH_FEATURE,
+  CART_FEATURE,
+  CHECKOUT_FEATURE,
+  PRODUCT_FEATURE,
+  PROFILE_FEATURE,
+} from './featuresName'
+
+const PRE_DEFINED_FEATURES: Array<TFeatureConfig> = [
   {
-    name: 'authentication',
+    name: AUTH_FEATURE,
     description:
       'Enjoy a secure and reliable authentication experience with advanced encryption and multi-factor authentication options.',
   },
   {
-    name: 'product',
+    name: PRODUCT_FEATURE,
     description:
       'The "Product" feature flag controls the availability of product-related functionalities within the application. It allows administrators to enable or disable product listings, detail pages, and associated features, facilitating a controlled rollout of updates and ensuring a smooth user experience.',
   },
   {
-    name: 'cart',
+    name: CART_FEATURE,
     description:
       'The Cart feature flag controls the visibility and functionality of the shopping cart within the application. When enabled, users can add items to their cart, view the cart contents, update item quantities, and proceed to checkout.',
   },
   {
-    name: 'checkout',
+    name: CHECKOUT_FEATURE,
     description:
       'The Checkout feature flag controls the access to the checkout process within the application. When enabled, users can review their final order, enter shipping information, choose a delivery method, and place their order.',
   },
   {
-    name: 'profile',
+    name: PROFILE_FEATURE,
     description:
       "The Profile feature flag controls access to the user's profile management. When enabled, users can view and edit their personal information, update contact details, manage payment methods, and review their order history.",
   },

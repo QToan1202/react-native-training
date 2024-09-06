@@ -6,11 +6,11 @@ import { CartScreen, PromoCodeScreen } from '../screens'
 
 const Stack = createNativeStackNavigator<CartStack>()
 
-const CartStack = () => (
+const CartStacks = () => (
   <Stack.Navigator screenOptions={{ headerShown: false }}>
     <Stack.Screen name="Cart" component={CartScreen} />
     <Stack.Screen name="PromoCode" component={PromoCodeScreen} />
   </Stack.Navigator>
 )
 
-export default CartStack
+export default CartStacks

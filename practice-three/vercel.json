@@ -1,0 +1,14 @@
+{
+  "functions": {
+    "server/server.js": {
+      "memory": 1024,
+      "includeFiles": "server/db.json"
+    }
+  },
+  "rewrites": [
+    {
+      "source": "/(.*)",
+      "destination": "server/server.js"
+    }
+  ]
+}

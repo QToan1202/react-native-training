@@ -6,10 +6,10 @@ import { ProfileScreen } from '../screens'
 
 const Stack = createNativeStackNavigator<ProfileStack>()
 
-const ProfileStack = () => (
+const ProfileStacks = () => (
   <Stack.Navigator screenOptions={{ headerShown: false }}>
     <Stack.Screen name="Profile" component={ProfileScreen} />
   </Stack.Navigator>
 )
 
-export default ProfileStack
+export default ProfileStacks

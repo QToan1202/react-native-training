@@ -6,6 +6,13 @@
       "email": "toan@gmail.com",
       "phone": "+1 9998887776",
       "password": "123456"
+    },
+    {
+      "name": "test",
+      "email": "123@gmail.com",
+      "phone": "",
+      "password": "$2a$10$HMx88yqW3ch3mMwHb5SDIuUEQjksz/80QraOP4hB9sc4/n0l0RQhC",
+      "id": "QVHZuDL"
     }
   ],
   "addresses": [
@@ -97,7 +104,13 @@
     {
       "id": "p001",
       "name": "Casual T-Shirt",
-      "image": "https://example.com/images/tshirt.jpg",
+      "images": [
+        "https://plus.unsplash.com/premium_photo-1675896084254-dcb626387e1e",
+        "https://plus.unsplash.com/premium_photo-1664392147011-2a720f214e01",
+        "https://images.unsplash.com/photo-1523275335684-37898b6baf30",
+        "https://images.unsplash.com/photo-1556228578-8c89e6adf883",
+        "https://images.unsplash.com/photo-1556228578-567ba127e37f"
+      ],
       "price": 19.99,
       "discountPercent": 0,
       "brandName": "FashionCo",
@@ -135,7 +148,7 @@
     {
       "id": "p002",
       "name": "Elegant Evening Dress",
-      "image": "https://example.com/images/eveningdress.jpg",
+      "images": ["https://example.com/images/eveningdress.jpg"],
       "price": 89.99,
       "discountPercent": 20,
       "brandName": "Glamour",
@@ -173,7 +186,7 @@
     {
       "id": "p003",
       "name": "Running Shoes",
-      "image": "https://example.com/images/runningshoes.jpg",
+      "images": ["https://example.com/images/runningshoes.jpg"],
       "price": 59.99,
       "discountPercent": 15,
       "brandName": "Sportify",
@@ -211,7 +224,7 @@
     {
       "id": "p004",
       "name": "Leather Jacket",
-      "image": "https://example.com/images/leatherjacket.jpg",
+      "images": ["https://example.com/images/leatherjacket.jpg"],
       "price": 149.99,
       "discountPercent": 25,
       "brandName": "MotoStyle",
@@ -249,7 +262,7 @@
     {
       "id": "p005",
       "name": "Smartwatch",
-      "image": "https://example.com/images/smartwatch.jpg",
+      "images": ["https://example.com/images/smartwatch.jpg"],
       "price": 199.99,
       "discountPercent": 5,
       "brandName": "TechTime",

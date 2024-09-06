@@ -1,10 +1,11 @@
 import { ComponentType, forwardRef } from 'react'
 
 import { THOCsProps } from '@practice-three/types'
+import { CART_FEATURE } from '@practice-three/shell'
 
 import { CartRoute } from '../navigation'
 
-const FEATURE_NAME = 'cart'
+const FEATURE_NAME = CART_FEATURE
 
 export const withCart = <T extends THOCsProps>(Wrapper: ComponentType<T>) => {
   return forwardRef<unknown, T>((props, componentRef) => {
@@ -18,7 +19,9 @@ export const withCart = <T extends THOCsProps>(Wrapper: ComponentType<T>) => {
         ref={componentRef}
         {...(rest as T)}
         category={category}
-        navigatorData={isFeatureActive ? [...navigatorData, CartRoute] : navigatorData}
+        navigatorData={
+          isFeatureActive ? { ...navigatorData, ...{ [FEATURE_NAME]: CartRoute } } : navigatorData
+        }
       />
     )
   })

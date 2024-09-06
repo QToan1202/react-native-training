@@ -2,10 +2,11 @@ import { ComponentType, forwardRef } from 'react'
 import { isWeb } from 'tamagui'
 
 import { THOCsProps } from '@practice-three/types'
+import { AUTH_FEATURE } from '@practice-three/shell'
 
 import { AuthenticationRoute } from '../navigation'
 
-const FEATURE_NAME = 'authentication'
+const FEATURE_NAME = AUTH_FEATURE
 
 export const withAuth = <T extends THOCsProps>(Wrapper: ComponentType<T>) => {
   return forwardRef<unknown, T>((props, componentRef) => {
@@ -15,14 +16,18 @@ export const withAuth = <T extends THOCsProps>(Wrapper: ComponentType<T>) => {
     )
     const convertAuthRoute = isWeb
       ? AuthenticationRoute
-      : [AuthenticationRoute as unknown as JSX.Element]
+      : (AuthenticationRoute as unknown as JSX.Element)
 
     return (
       <Wrapper
         ref={componentRef}
         {...(rest as T)}
         category={category}
-        navigatorData={isFeatureActive ? [...navigatorData, ...convertAuthRoute] : navigatorData}
+        navigatorData={
+          isFeatureActive
+            ? { ...navigatorData, ...{ [FEATURE_NAME]: convertAuthRoute } }
+            : navigatorData
+        }
       />
     )
   })

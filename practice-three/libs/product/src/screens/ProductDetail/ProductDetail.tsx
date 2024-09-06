@@ -32,7 +32,7 @@ import { PRODUCT_SPECIFICATIONS_LABELS } from '../../constants'
 import { renderSpecificationItem } from '../../utils'
 
 // Called by router so don't useHook here
-export const loader =
+export const productLoader =
   (queryClient: QueryClient) =>
   async ({ params }: LoaderFunctionArgs) => {
     const { id } = params
@@ -50,7 +50,7 @@ const Text = styled(BaseText, {
 })
 
 const ProductDetail = () => {
-  const { id: productId, userId } = useLoaderData() as TResolveLoaderReturn<typeof loader>
+  const { id: productId, userId } = useLoaderData() as TResolveLoaderReturn<typeof productLoader>
   const { data: product } = useSuspenseQuery(findProductQuery('/products', productId || ''))
   const { data: similarProducts } = useSuspenseQuery(getProductsQuery('/products'))
   const { data: wishlists } = useSuspenseQuery(getWishlistQuery('/wishlists', userId || ''))
@@ -70,7 +70,7 @@ const ProductDetail = () => {
           source={{
             width: 165,
             height: 165,
-            uri: product.image,
+            uri: product.images[0],
           }}
           defaultSource={{
             width: 180,
@@ -79,7 +79,7 @@ const ProductDetail = () => {
           }}
         />
       )),
-    [product.image]
+    [product.images]
   )
   const [selectedSize, setSelectedSize] = useState<string | null>(null)
   const toast = useToastController()
@@ -283,7 +283,7 @@ const ProductDetail = () => {
             flex={1}
             borderRadius={10}
             source={{
-              uri: product.image,
+              uri: product.images[0],
             }}
             defaultSource={{
               uri: placeholderImagePath,

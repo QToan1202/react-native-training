@@ -1,16 +1,15 @@
 import { useCallback, useMemo } from 'react'
 import { Heading, YStack } from 'tamagui'
-import { NativeStackScreenProps } from '@react-navigation/native-stack'
 import { useQuery } from '@tanstack/react-query'
 
-import { ProductStack, TUser, TWishlistExpand } from '@practice-three/types'
+import { TUser, TWishlistExpand, WishlistTabScreenProps } from '@practice-three/types'
 import { useAuthStore } from '@practice-three/contexts'
 import { Button, Text } from '@practice-three/components'
 
 import { getWishlistQuery } from '../../hooks'
 import { WishlistItem, WishlistItemSkeleton } from '../../components'
 
-type WishlistScreenProps = NativeStackScreenProps<ProductStack, 'Wishlist'>
+type WishlistScreenProps = WishlistTabScreenProps<'Wishlist'>
 
 const Wishlist = ({ navigation }: WishlistScreenProps) => {
   const user: TUser | undefined = useAuthStore((state) => state.user)
@@ -24,7 +23,7 @@ const Wishlist = ({ navigation }: WishlistScreenProps) => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
   const handlePressLink = useCallback(
-    () => navigation.navigate('Search'),
+    () => navigation.navigate('ProductTab', { screen: 'Search' }),
     // eslint-disable-next-line react-hooks/exhaustive-deps
     []
   )

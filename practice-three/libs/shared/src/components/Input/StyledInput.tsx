@@ -8,6 +8,7 @@ const StyledInput = styled(TInput, {
   paddingHorizontal: 15,
   borderRadius: 5,
   width: '100%',
+  color: '$pure_black',
   focusStyle: {
     outlineWidth: 0,
   },

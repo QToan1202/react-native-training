@@ -1,11 +1,10 @@
 import { YStack } from 'tamagui'
-import { NativeStackScreenProps } from '@react-navigation/native-stack'
 
-import { CheckoutStack } from '@practice-three/types'
+import { OrderTabScreenProps } from '@practice-three/types'
 
 import { CardForm, Header } from '../../components'
 
-type AddPaymentScreenProps = NativeStackScreenProps<CheckoutStack, 'AddPayment'>
+type AddPaymentScreenProps = OrderTabScreenProps<'AddPayment'>
 
 const AddCard = ({ navigation }: AddPaymentScreenProps) => {
   const handleGoBack = () => navigation.goBack()

@@ -2,10 +2,11 @@ import { ComponentType, forwardRef } from 'react'
 import { isWeb } from 'tamagui'
 
 import { THOCsProps } from '@practice-three/types'
+import { CHECKOUT_FEATURE } from '@practice-three/shell'
 
 import { CheckoutRoute } from '../navigation'
 
-const FEATURE_NAME = 'checkout'
+const FEATURE_NAME = CHECKOUT_FEATURE
 
 export const withCheckout = <T extends THOCsProps>(Wrapper: ComponentType<T>) => {
   return forwardRef<unknown, T>((props, componentRef) => {
@@ -13,7 +14,7 @@ export const withCheckout = <T extends THOCsProps>(Wrapper: ComponentType<T>) =>
     const isFeatureActive = category.find(
       (feat) => !feat.localeCompare(FEATURE_NAME, undefined, { sensitivity: 'base' })
     )
-    const convertCheckoutRoute = isWeb ? CheckoutRoute : [CheckoutRoute as unknown as JSX.Element]
+    const convertCheckoutRoute = isWeb ? CheckoutRoute : (CheckoutRoute as unknown as JSX.Element)
 
     return (
       <Wrapper
@@ -21,7 +22,9 @@ export const withCheckout = <T extends THOCsProps>(Wrapper: ComponentType<T>) =>
         {...(rest as T)}
         category={category}
         navigatorData={
-          isFeatureActive ? [...navigatorData, ...convertCheckoutRoute] : navigatorData
+          isFeatureActive
+            ? { ...navigatorData, ...{ [FEATURE_NAME]: convertCheckoutRoute } }
+            : navigatorData
         }
       />
     )

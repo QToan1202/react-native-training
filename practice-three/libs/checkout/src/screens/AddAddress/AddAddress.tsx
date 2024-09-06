@@ -1,12 +1,11 @@
 import { YStack } from 'tamagui'
-import { NativeStackScreenProps } from '@react-navigation/native-stack'
 import { KeyboardAvoidingView } from 'react-native'
 
-import { CheckoutStack } from '@practice-three/types'
+import { OrderTabScreenProps } from '@practice-three/types'
 
 import { AddressForm, Header } from '../../components'
 
-type AddAddressScreenProps = NativeStackScreenProps<CheckoutStack, 'AddAddress'>
+type AddAddressScreenProps = OrderTabScreenProps<'AddAddress'>
 
 const AddAddress = ({ navigation, route }: AddAddressScreenProps) => {
   const params = route.params

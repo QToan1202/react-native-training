@@ -5,6 +5,7 @@ import {
   ProductDetailScreen,
   SearchScreen,
   WishlistScreen,
+  productLoader,
   searchLoader,
   wishlistLoader,
 } from '../screens'
@@ -20,6 +21,7 @@ const productRouter: RouteObject[] = [
   {
     path: '/product/:id',
     element: <ProductDetailScreen />,
+    loader: productLoader(queryClient),
   },
   {
     path: '/wishlist',

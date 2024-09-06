@@ -1,0 +1,37 @@
+import { tokens } from '@tamagui/themes'
+
+const colors = {
+  ...tokens.color,
+  pure_white: '#fff',
+  white: '#f5f5f5',
+  black: '#272727',
+  pure_black: '#000',
+  transparent: 'transparent',
+  primary: '#002482',
+  blue_50: '#0081de',
+  blue_100: '#223263',
+  blue_200: '#00398f',
+  blue_300: '#40bfff',
+  green_50: '#0eb000',
+  green_100: '#0a8200',
+  gray_50: '#f0f0f0',
+  gray_100: '#848484',
+  gray_200: '#646464',
+  gray_300: '#565656',
+  gray_400: '#7c7c7c',
+  yellow: '#f2c94c',
+  red_50: '#fb7181',
+  red_100: '#e90000',
+  red_200: '#ff0000',
+  red_300: '#db0b0b',
+  border: '#e1e2e7',
+  separate: '#eaeaea',
+  pale: '#ebf0ff',
+  dust: 'rgba(144, 152, 177, 0.4)',
+  skeleton: 'rgba(0, 0, 0, 0.13)',
+  skeletonIndicator: 'rgba(0, 0, 0, 0.2)',
+  imageOverlay: 'rgba(0, 0, 0, 0.5)',
+  footer: '#00071b',
+}
+
+export default colors

@@ -2,7 +2,6 @@ import { useQuery } from '@tanstack/react-query'
 import { getTokenValue, ScrollView, Separator, XStack, YStack } from 'tamagui'
 import { Fragment, useCallback, useMemo, useState } from 'react'
 import { Controller, useForm } from 'react-hook-form'
-import { NativeStackScreenProps } from '@react-navigation/native-stack'
 import { useToastController } from '@tamagui/toast'
 
 import {
@@ -20,7 +19,13 @@ import {
 } from '@practice-three/components'
 import { calculateDiscountPrice } from '@practice-three/utils'
 import { getOffersQuery } from '@practice-three/queries'
-import { ProductStack, TOffer, TProduct, TReview, TWishlistBase } from '@practice-three/types'
+import {
+  ProductTabScreenProps,
+  TOffer,
+  TProduct,
+  TReview,
+  TWishlistBase,
+} from '@practice-three/types'
 import { useAuthStore } from '@practice-three/contexts'
 
 import {
@@ -36,12 +41,10 @@ import { PRODUCT_LABELS, PRODUCT_SPECIFICATIONS_LABELS } from '../../constants'
 import { renderSpecificationItem } from '../../utils'
 import { Comment, ProductCard } from '../../components'
 
-export type ProductDetailScreenProps = Partial<
-  NativeStackScreenProps<ProductStack, 'ProductDetail'>
->
+export type ProductDetailScreenProps = ProductTabScreenProps<'ProductDetail'>
 
 const ProductDetail = ({ navigation, route }: ProductDetailScreenProps) => {
-  const productId = route?.params.id || ''
+  const productId = route.params.id
   const user = useAuthStore((state) => state.user)
   const {
     data: product,
@@ -86,7 +89,7 @@ const ProductDetail = ({ navigation, route }: ProductDetailScreenProps) => {
     ))
   }, [isGetOfferSuccess, offers])
   const handlePressProductCard = useCallback(
-    (id: string) => navigation?.navigate('ProductDetail', { id }),
+    (id: string) => navigation.navigate('ProductDetail', { id }),
     // eslint-disable-next-line react-hooks/exhaustive-deps
     []
   )

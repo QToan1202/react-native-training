@@ -12,7 +12,7 @@ import {
 
 const Stack = createNativeStackNavigator<CheckoutStack>()
 
-const CheckoutStack = () => (
+const CheckoutStacks = () => (
   <Stack.Navigator screenOptions={{ headerShown: false }}>
     <Stack.Screen name="AddAddress" component={AddAddressScreen} />
     <Stack.Screen name="AddPayment" component={AddCardScreen} />
@@ -22,4 +22,4 @@ const CheckoutStack = () => (
   </Stack.Navigator>
 )
 
-export default CheckoutStack
+export default CheckoutStacks

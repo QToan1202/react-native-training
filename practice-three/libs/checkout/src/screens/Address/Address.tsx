@@ -1,10 +1,9 @@
 import { useState } from 'react'
 import { ScrollView, YStack } from 'tamagui'
-import { NativeStackScreenProps } from '@react-navigation/native-stack'
 import { useToastController } from '@tamagui/toast'
 
 import { AlertDialog, Button, Toast } from '@practice-three/components'
-import { CheckoutStack } from '@practice-three/types'
+import { OrderTabScreenProps } from '@practice-three/types'
 import { useAuthStore } from '@practice-three/contexts'
 
 import { Header, Step, StepLabel, Stepper } from '../../components'
@@ -14,7 +13,7 @@ import { useAddressStore } from '../../contexts'
 import { useDeleteAddress } from '../../hooks'
 import { getStepIndex } from '../../utils'
 
-type AddressScreenProps = NativeStackScreenProps<CheckoutStack, 'Address'>
+type AddressScreenProps = OrderTabScreenProps<'Address'>
 
 const Address = ({ navigation }: AddressScreenProps) => {
   const handleGoBack = () => navigation.goBack()

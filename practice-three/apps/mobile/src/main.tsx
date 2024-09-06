@@ -8,20 +8,23 @@ import { Toast } from '@practice-three/components'
 
 import App from './app/App'
 import { tamaguiConfig } from './config'
+import { SafeAreaProvider } from 'react-native-safe-area-context'
 
 const queryClient = new QueryClient()
 
 const MobileApp = () => (
   <QueryClientProvider client={queryClient}>
-    <TamaguiProvider config={tamaguiConfig}>
-      <ToastProvider>
-        <ToastViewport flexDirection="column" bottom={50} left={0} right={0} />
-        <Toast />
-        <NavigationContainer>
-          <App />
-        </NavigationContainer>
-      </ToastProvider>
-    </TamaguiProvider>
+    <SafeAreaProvider>
+      <TamaguiProvider config={tamaguiConfig}>
+        <ToastProvider>
+          <ToastViewport flexDirection="column" bottom={50} left={0} right={0} />
+          <Toast />
+          <NavigationContainer>
+            <App />
+          </NavigationContainer>
+        </ToastProvider>
+      </TamaguiProvider>
+    </SafeAreaProvider>
   </QueryClientProvider>
 )
 

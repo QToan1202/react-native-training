@@ -5,7 +5,6 @@ import { OrderScreen } from '../screens'
 const checkoutRouter: RouteObject[] = [
   {
     path: '/orders',
-    index: true,
     element: <OrderScreen />,
   },
 ]

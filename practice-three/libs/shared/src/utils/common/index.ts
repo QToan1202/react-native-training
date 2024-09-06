@@ -1,3 +1,4 @@
+import { Children, isValidElement, ReactElement, ReactNode } from 'react'
 import { FieldPath, UseControllerProps } from 'react-hook-form'
 
 export const convertToLowerStr = (str: string | number, locales: Intl.LocalesArgument = 'en-US') =>
@@ -123,3 +124,6 @@ export type TTransformFields<
     rules?: UseControllerProps<T, FieldPath<T>>['rules']
   } & ExtraProps
 }
+
+export const getValidChildren = (children: ReactNode) =>
+  Children.toArray(children).filter((child) => isValidElement(child)) as ReactElement[]

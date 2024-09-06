@@ -47,12 +47,12 @@ export const useFindProducts = (): [boolean, TCartItem[]] => {
 
           if (!isGetProductSuccess) return null
 
-          const { id, name, price, image } = product
+          const { id, name, price, images } = product
           const { color, quantity, size } = items[id]
 
           if (getProductsQuery.length - 1 === index) isFetchingProduct.current = false
 
-          return { id, name, price, image, quantity, color, size } as TCartItem
+          return { id, name, price, image: images[0], quantity, color, size } as TCartItem
         }
       )
       .filter((item) => item) as TCartItem[]

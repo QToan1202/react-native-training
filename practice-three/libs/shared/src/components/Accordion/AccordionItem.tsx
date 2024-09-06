@@ -28,9 +28,9 @@ const AccordionItem = ({ label: heading, children, ...rest }: AccordionItemProps
           )}
         </Accordion.Trigger>
       </Accordion.Header>
-      <Accordion.HeightAnimator animation="fast">
+      <Accordion.HeightAnimator animation="150ms">
         <Accordion.Content
-          animation="fast"
+          animation="150ms"
           exitStyle={{ opacity: 0 }}
           backgroundColor="$transparent"
           paddingVertical={15}

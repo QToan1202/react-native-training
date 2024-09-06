@@ -1,8 +1,8 @@
-import type { StorybookConfig } from '@storybook/react-vite';
+import type { StorybookConfig } from '@storybook/react-vite'
 
 const config: StorybookConfig = {
-  stories: ['../src/app/**/*.stories.@(js|jsx|ts|tsx|mdx)'],
-  addons: ['@storybook/addon-essentials'],
+  stories: ['../src/**/*.stories.@(js|jsx|ts|tsx|mdx)'],
+  addons: ['@storybook/addon-essentials', 'storybook-addon-remix-react-router'],
   framework: {
     name: '@storybook/react-vite',
     options: {
@@ -11,9 +11,9 @@ const config: StorybookConfig = {
       },
     },
   },
-};
+}
 
-export default config;
+export default config
 
 // To customize your Vite configuration you can use the viteFinal field.
 // Check https://storybook.js.org/docs/react/builders/vite#configuration
