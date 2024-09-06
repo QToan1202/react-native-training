@@ -47,12 +47,12 @@ const DealCard = ({ image, preTitle, brandImage, title, ...rest }: DealCardProps
           }}
         />
       )}
-      {typeof SubImage === 'function' ? (
+      {typeof SubImage === 'function' &&
         cloneElement(<SubImage />, {
           width: 35,
           height: 25,
-        })
-      ) : (
+        })}
+      {typeof SubImage === 'string' && (
         <Image
           source={{
             width: 35,
