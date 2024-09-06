@@ -1,7 +1,6 @@
-import { CreateTokens } from '@tamagui/core'
 import { tokens } from '@tamagui/themes'
 
-const colors: CreateTokens['color'] = {
+const colors = {
   ...tokens.color,
   pure_white: '#fff',
   white: '#f5f5f5',
