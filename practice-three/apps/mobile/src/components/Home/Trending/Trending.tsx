@@ -12,6 +12,7 @@ const Trending = () => {
       </Heading>
       <FlatList
         horizontal
+        showsHorizontalScrollIndicator={false}
         contentContainerStyle={{ gap: 12 }}
         data={TRENDING_DATA}
         renderItem={({ item: itemProps }) => <DealCard flex={1} {...itemProps} />}

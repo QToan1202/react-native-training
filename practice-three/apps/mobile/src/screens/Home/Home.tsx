@@ -1,4 +1,4 @@
-import { YStack } from 'tamagui'
+import { ScrollView } from 'tamagui'
 import {
   BannerSection,
   CategorySection,
@@ -9,13 +9,13 @@ import {
 
 const Home = () => {
   return (
-    <YStack>
+    <ScrollView>
       <CategorySection />
       <BannerSection />
       <TrendingSection />
-      <ProductSection />
       <DealSection />
-    </YStack>
+      <ProductSection />
+    </ScrollView>
   )
 }
 

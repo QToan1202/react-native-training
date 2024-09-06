@@ -11,6 +11,7 @@ const Deal = () => {
         Deals Of The Day
       </Heading>
       <FlatList
+        scrollEnabled={false}
         numColumns={2}
         contentContainerStyle={{ gap: 16 }}
         data={DEAL_DATA}

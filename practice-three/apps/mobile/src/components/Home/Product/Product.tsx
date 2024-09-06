@@ -13,6 +13,7 @@ const Product = () => {
     if (isGettingProduct)
       return (
         <FlatList
+          scrollEnabled={false}
           contentContainerStyle={{ gap: 10 }}
           data={[...Array(3).keys()]}
           renderItem={() => <ProductShowcaseSkeleton />}
@@ -21,6 +22,7 @@ const Product = () => {
 
     return (
       <FlatList
+        scrollEnabled={false}
         contentContainerStyle={{ gap: 10 }}
         data={products}
         renderItem={({
