@@ -1,4 +1,7 @@
 import { ScrollView } from 'tamagui'
+
+import { HomeTabScreenProps } from '@practice-three/types'
+
 import {
   BannerSection,
   CategorySection,
@@ -7,7 +10,9 @@ import {
   TrendingSection,
 } from '../../components'
 
-const Home = () => {
+type HomeScreenProps = HomeTabScreenProps<'Home'>
+
+const Home = ({ navigation }: HomeScreenProps) => {
   return (
     <ScrollView>
       <CategorySection />

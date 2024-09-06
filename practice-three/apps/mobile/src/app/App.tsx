@@ -23,6 +23,7 @@ import { ErrorScreen, NotFoundScreen } from '@practice-three/screens'
 import { useAuthStore } from '@practice-three/contexts'
 
 import { BottomNav } from '../navigation'
+import { HomeScreen } from '../screens'
 
 const INIT_NAVIGATOR_DATA: THOCsProps['navigatorData'] = {}
 const initFeatures = featureShell(process.env.FEATURES)
@@ -48,7 +49,7 @@ export const App = () => {
         const convertNavigatorData = navigatorData as unknown as () => JSX.Element
         const PrivateStack = () => (
           <BottomNav>
-            <Tab.Screen name="HomeTab" component={convertNavigatorData[PRODUCT_FEATURE]} />
+            <Tab.Screen name="HomeTab" component={HomeScreen} />
             <Tab.Screen name="ProductTab" component={convertNavigatorData[PRODUCT_FEATURE]} />
             <Tab.Screen name="WishlistTab" component={convertNavigatorData[PRODUCT_FEATURE]} />
             <Tab.Screen name="CartTab" component={convertNavigatorData[CART_FEATURE]} />
