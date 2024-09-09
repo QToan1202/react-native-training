@@ -13,6 +13,10 @@ const StyledItem = styled(RadioGroup.Item, {
   borderWidth: 1,
   borderColor: '$transparent',
 
+  pressStyle: {
+    borderColor: '$transparent',
+    backgroundColor: '$transparent',
+  },
   hoverStyle: {
     backgroundColor: '$gray_50',
   },
