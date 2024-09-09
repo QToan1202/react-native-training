@@ -12,6 +12,7 @@
     "react-native-safe-area-context": "*",
     "react-native-screens": "*",
     "bcryptjs": "*",
+    "burnt": "*",
     "dayjs": "*",
     "moti": "*",
     "@tamagui/animations-moti": "*",
