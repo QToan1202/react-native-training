@@ -10,12 +10,12 @@ import {
   Button,
   Carousel,
   Heading,
+  Image,
   Input,
   Radio,
   RadioItem,
   Rating,
   Text,
-  Toast,
 } from '@practice-three/components'
 import { calculateDiscountPrice } from '@practice-three/utils'
 import { getOffersQuery } from '@practice-three/queries'
@@ -243,18 +243,17 @@ const ProductDetail = ({ navigation, route }: ProductDetailScreenProps) => {
   const handleSelectSize = (value: string) => setSelectedSize(value)
 
   return (
-    <YStack gap={15}>
-      <Carousel
-        {...{
-          data: [
-            'https://picsum.photos/500/300',
-            'https://picsum.photos/501/300',
-            'https://picsum.photos/502/300',
-            'https://images.dog.ceo/breeds/husky/n02110185_14479.jpg',
-            'https://images.dog.ceo/breeds/setter-english/n02100735_4040.jpg',
-          ],
-        }}
-      />
+    <ScrollView
+      contentContainerStyle={{ gap: 15, paddingHorizontal: 20, backgroundColor: 'white' }}
+    >
+      <YStack marginHorizontal={-20}>
+        <Carousel
+          data={product.images}
+          renderItem={({ item: imageLink }) => (
+            <Image source={{ uri: imageLink, width: 400, height: 600 }} />
+          )}
+        />
+      </YStack>
       <XStack justifyContent="space-between">
         <YStack gap={6}>
           <Heading color="$black" fontSize="$4" fontWeight="500">
@@ -298,25 +297,11 @@ const ProductDetail = ({ navigation, route }: ProductDetailScreenProps) => {
                 <RadioItem
                   key={size}
                   value={size}
-                  padding={18}
+                  width={40}
+                  height={40}
                   borderRadius={0}
-                  backgroundColor="$transparent"
-                  hoverStyle={{
-                    borderColor: '$gray_50',
-                  }}
-                  $platform-android={{
-                    elevation: 5,
-                  }}
-                  $platform-ios={{
-                    shadowColor: '$pure_black',
-                    shadowOffset: {
-                      width: 0,
-                      height: 2,
-                    },
-                    shadowOpacity: 0.25,
-                    shadowRadius: 4,
-                  }}
-                  elevation={5}
+                  backgroundColor="$pure_white"
+                  elevation={1}
                 >
                   <Text>{size}</Text>
                 </RadioItem>
@@ -414,8 +399,7 @@ const ProductDetail = ({ navigation, route }: ProductDetailScreenProps) => {
           onPress={handleAddToCart}
         />
       </XStack>
-      <Toast />
-    </YStack>
+    </ScrollView>
   )
 }
 
