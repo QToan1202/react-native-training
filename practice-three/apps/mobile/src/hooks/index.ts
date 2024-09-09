@@ -1,2 +1,5 @@
 export { default as getProductsQuery } from './getProductsQuery'
 export { default as findUserQuery } from './findUserQuery'
+export { default as getWishlistQuery } from './getWishlistQuery'
+export { default as useAddToCart } from './useAddToCart'
+export { default as useAddToWishlist } from './useAddToWishlist'

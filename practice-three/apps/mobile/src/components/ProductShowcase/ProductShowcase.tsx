@@ -1,5 +1,6 @@
 import { Fragment } from 'react'
-import { Heading, XStack, YStack } from 'tamagui'
+import { GestureResponderEvent } from 'react-native'
+import { Heading, XStack, YStack, YStackProps } from 'tamagui'
 
 import { Button, Image, Text } from '@practice-three/components'
 import { TProduct } from '@practice-three/types'
@@ -8,19 +9,38 @@ import { calculateDiscountPrice } from '@practice-three/utils'
 import { ProductBag, ProductHeart } from '../../assets/images'
 
 type TRemoveProps = 'description' | 'sellerName' | 'sizes' | 'reviews' | 'specifications' | 'rating'
-type ProductShowcaseProps = Omit<TProduct, TRemoveProps>
+type ProductShowcaseProps = YStackProps &
+  Omit<TProduct, TRemoveProps> & {
+    isDisabledActions?: boolean
+    onPressProduct?: (id: string) => void
+    onAddProductToCart?: (id: string) => void
+    onAddProductToWishlist?: (id: string) => void
+  }
 
 const ProductShowcase = ({
+  id,
   images,
   name,
   brandName,
   discountPercent,
   price,
+  isDisabledActions = false,
+  onPress,
+  onPressProduct,
+  onAddProductToCart,
+  onAddProductToWishlist,
+  ...rest
 }: ProductShowcaseProps) => {
   const [mainImage, ...otherImages] = images
+  const handlePressProduct = (event: GestureResponderEvent) => {
+    onPress?.(event)
+    onPressProduct?.(id)
+  }
+  const handleAddProductToCart = () => onAddProductToCart?.(id)
+  const handleAddProductToWishlist = () => onAddProductToWishlist?.(id)
 
   return (
-    <YStack>
+    <YStack {...rest} onPress={handlePressProduct}>
       <XStack gap={8}>
         <Image flex={2} width="100%" source={{ uri: mainImage, height: 200 }} borderRadius={8} />
         <YStack flex={1} justifyContent="space-between" gap={10}>
@@ -78,6 +98,8 @@ const ProductShowcase = ({
           paddingVertical={10}
           paddingHorizontal={48}
           title="wishlist"
+          isDisable={isDisabledActions}
+          onPress={handleAddProductToWishlist}
           endIcon={<ProductHeart width={15} height={17} />}
         />
         <Button
@@ -86,6 +108,8 @@ const ProductShowcase = ({
           paddingVertical={10}
           paddingHorizontal={36}
           title="add to bag"
+          isDisable={isDisabledActions}
+          onPress={handleAddProductToCart}
           endIcon={<ProductBag />}
         />
       </XStack>
