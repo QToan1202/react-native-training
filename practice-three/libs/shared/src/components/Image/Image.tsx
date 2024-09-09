@@ -14,13 +14,12 @@ const Image = ({ fallbackImage = placeholderImagePath, ...props }: ImageProps) =
     <TImage
       resizeMode="cover"
       alignSelf="center"
-      defaultSource={{
-        width: props.source.width,
-        height: props.source.height,
-        uri: fallbackImage,
-      }}
-      {...(isAndroid && {
-        defaultSource: require('../../assets/images/placeholder.png'),
+      {...(!isAndroid && {
+        defaultSource: {
+          width: props.source.width,
+          height: props.source.height,
+          uri: fallbackImage,
+        },
       })}
       {...props}
     />

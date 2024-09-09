@@ -1,7 +1,7 @@
 import { Fragment, useMemo, useState } from 'react'
 import { QueryClient, useSuspenseQuery } from '@tanstack/react-query'
 import { LoaderFunctionArgs, redirect, useLoaderData } from 'react-router-dom'
-import { H2, H4, Image, ScrollView, Stack, styled, XStack, YStack } from 'tamagui'
+import { H2, H4, ScrollView, Stack, styled, XStack, YStack } from 'tamagui'
 import { useToastController } from '@tamagui/toast'
 
 import { calculateDiscountPrice, TResolveLoaderReturn } from '@practice-three/utils'
@@ -13,6 +13,7 @@ import {
   Rating,
   Text as BaseText,
   Toast,
+  Image,
 } from '@practice-three/components'
 import { TOffer, TProduct, TReview, TUser, TWishlistBase } from '@practice-three/types'
 import { useAuthStore } from '@practice-three/contexts'
@@ -63,19 +64,12 @@ const ProductDetail = () => {
     () =>
       [...Array(4).keys()].map((item) => (
         <Image
-          resizeMode="cover"
-          alignSelf="center"
           borderRadius={10}
           key={item}
           source={{
             width: 165,
             height: 165,
             uri: product.images[0],
-          }}
-          defaultSource={{
-            width: 180,
-            height: 180,
-            uri: placeholderImagePath,
           }}
         />
       )),
@@ -278,15 +272,11 @@ const ProductDetail = () => {
         <YStack gap={15}>{renderImages}</YStack>
         <Stack flex={2} alignSelf="stretch">
           <Image
-            resizeMode="cover"
             alignSelf="auto"
             flex={1}
             borderRadius={10}
             source={{
               uri: product.images[0],
-            }}
-            defaultSource={{
-              uri: placeholderImagePath,
             }}
           />
         </Stack>
