@@ -1,3 +1,4 @@
+import { isWeb } from 'tamagui'
 import { UseQueryResult, queryOptions, useQuery } from '@tanstack/react-query'
 
 import { TProduct } from '@practice-three/types'
@@ -8,7 +9,7 @@ import { STALE_TIMES } from '../../constants'
 
 export const getProductsQuery = (path: string) => {
   const [, filterQuery] = path.split('?')
-  const convertedFilterQuery = parseURLSearchParams(filterQuery)
+  const convertedFilterQuery = isWeb ? parseURLSearchParams(filterQuery) : ''
 
   return queryOptions<TProduct[], Error, TProduct[], (string | Record<string, unknown>)[]>({
     queryKey: ['products', convertedFilterQuery],
