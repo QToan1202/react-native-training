@@ -1,7 +1,9 @@
 import axios, { AxiosInstance, AxiosRequestConfig, AxiosResponse } from 'axios'
+import { isWeb } from 'tamagui'
 
 const request: AxiosInstance = axios.create({
-  baseURL: process.env['BASE_URL'] || 'http://localhost:3000/',
+  baseURL:
+    (isWeb ? process.env['VITE_BASE_URL'] : process.env['BASE_URL']) || 'http://localhost:3000/',
 })
 
 export const get = async <T>(path: string, options: AxiosRequestConfig = {}): Promise<T[]> => {
