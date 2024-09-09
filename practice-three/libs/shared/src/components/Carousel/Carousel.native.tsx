@@ -9,7 +9,7 @@ import { BaseCarouselProps } from './types'
 
 export type CarouselProps<T> = TCarouselProps<T> & Omit<BaseCarouselProps<T>, 'isShowNavigation'>
 
-const Carousel = <T,>({ isShowIndex, ...props }: CarouselProps<T>) => {
+const Carousel = <T,>({ isShowIndex = true, ...props }: CarouselProps<T>) => {
   const { data, defaultIndex = 0, height } = props
   const { width } = useWindowDimensions()
   const [defaultSize] = useState(() => ({
@@ -47,7 +47,7 @@ const Carousel = <T,>({ isShowIndex, ...props }: CarouselProps<T>) => {
   )
 
   return (
-    <YStack gap={10}>
+    <YStack gap={10} justifyContent="center" alignItems="center">
       {/* Wrap with Stack since Carousel overlay on another layer */}
       <YStack width={width || defaultSize.width} height={height || defaultSize.height}>
         <RNCarousel
