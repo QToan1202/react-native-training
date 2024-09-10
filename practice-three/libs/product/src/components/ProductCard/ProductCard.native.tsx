@@ -46,7 +46,6 @@ const ProductCard = ({
       {...rest}
     >
       <Image
-        resizeMode="contain"
         borderRadius={10}
         source={{
           width: getTokenValue('$cardMobile.width'),

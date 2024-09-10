@@ -113,11 +113,11 @@ const ProductDetail = ({ navigation, route }: ProductDetailScreenProps) => {
   }, [handlePressProductCard, isGetProductsSuccess, similarProducts])
   const renderProducts = useCallback(
     (title: string) => (
-      <YStack gap={15}>
+      <YStack gap={8}>
         <Text fontSize="$3" fontWeight="500" textTransform="capitalize">
           {title}
         </Text>
-        <ScrollView horizontal>
+        <ScrollView horizontal contentContainerStyle={{ padding: 7 }}>
           <XStack gap={6}>{renderSimilarProducts}</XStack>
         </ScrollView>
       </YStack>
@@ -248,133 +248,140 @@ const ProductDetail = ({ navigation, route }: ProductDetailScreenProps) => {
   const handleSelectSize = (value: string) => setSelectedSize(value)
 
   return (
-    <ScrollView
-      contentContainerStyle={{ gap: 15, paddingHorizontal: 20, backgroundColor: 'white' }}
-    >
-      <YStack marginHorizontal={-20}>
-        <Carousel
-          data={product.images}
-          renderItem={({ item: imageLink }) => (
-            <Image source={{ uri: imageLink, width: 400, height: 600 }} />
-          )}
-        />
-      </YStack>
-      <XStack justifyContent="space-between">
-        <YStack gap={6}>
-          <Heading color="$black" fontSize="$4" fontWeight="500">
-            {product.name}
-          </Heading>
-          <Text fontSize="$3">{product.brandName}</Text>
-          <XStack alignItems="center" gap={14}>
-            {!!product.discountPercent && (
-              <Text textDecorationLine="line-through" fontSize="$1">
-                Rs.{product.price}
-              </Text>
+    <>
+      <ScrollView
+        contentContainerStyle={{
+          gap: 15,
+          paddingHorizontal: 20,
+          paddingBottom: getTokenValue('$bottomTabBar.height'),
+          backgroundColor: '$pure_white',
+        }}
+      >
+        <YStack marginHorizontal={-20}>
+          <Carousel
+            data={product.images}
+            renderItem={({ item: imageLink }) => (
+              <Image source={{ uri: imageLink, width: 400, height: 600 }} />
             )}
-            <Text fontSize="$3">
-              Rs.
-              {product.discountPercent
-                ? calculateDiscountPrice(product.price, product.discountPercent)
-                : product.price}
-            </Text>
-            {!!product.discountPercent && (
-              <Text color="$green_50" fontSize="$1">
-                ({product.discountPercent}% off)
-              </Text>
-            )}
-          </XStack>
+          />
         </YStack>
-        <Share />
-      </XStack>
-      <YStack>
-        <Heading color="black" fontSize="$3">
-          Color
-        </Heading>
-      </YStack>
-      <XStack justifyContent="space-between">
+        <XStack justifyContent="space-between">
+          <YStack gap={6}>
+            <Heading color="$black" fontSize="$4" fontWeight="500">
+              {product.name}
+            </Heading>
+            <Text fontSize="$3">{product.brandName}</Text>
+            <XStack alignItems="center" gap={14}>
+              {!!product.discountPercent && (
+                <Text textDecorationLine="line-through" fontSize="$1">
+                  Rs.{product.price}
+                </Text>
+              )}
+              <Text fontSize="$3">
+                Rs.
+                {product.discountPercent
+                  ? calculateDiscountPrice(product.price, product.discountPercent)
+                  : product.price}
+              </Text>
+              {!!product.discountPercent && (
+                <Text color="$green_50" fontSize="$1">
+                  ({product.discountPercent}% off)
+                </Text>
+              )}
+            </XStack>
+          </YStack>
+          <Share />
+        </XStack>
+        <YStack>
+          <Heading color="black" fontSize="$3">
+            Color
+          </Heading>
+        </YStack>
+        <XStack justifyContent="space-between">
+          <YStack gap={6}>
+            <Heading color="black" fontSize="$3" fontWeight="500">
+              Select Size
+            </Heading>
+            <Radio onValueChange={handleSelectSize}>
+              <XStack gap={16}>
+                {product.sizes.map((size: string) => (
+                  <RadioItem
+                    key={size}
+                    value={size}
+                    width={40}
+                    height={40}
+                    borderRadius={0}
+                    backgroundColor="$pure_white"
+                    elevation={1}
+                  >
+                    <Text>{size}</Text>
+                  </RadioItem>
+                ))}
+              </XStack>
+            </Radio>
+          </YStack>
+          <Text color="$primary" fontSize="$1">
+            Size Chart
+          </Text>
+        </XStack>
         <YStack gap={6}>
           <Heading color="black" fontSize="$3" fontWeight="500">
-            Select Size
+            Best Offers
           </Heading>
-          <Radio onValueChange={handleSelectSize}>
-            <XStack gap={16}>
-              {product.sizes.map((size: string) => (
-                <RadioItem
-                  key={size}
-                  value={size}
-                  width={40}
-                  height={40}
-                  borderRadius={0}
-                  backgroundColor="$pure_white"
-                  elevation={1}
-                >
-                  <Text>{size}</Text>
-                </RadioItem>
-              ))}
-            </XStack>
-          </Radio>
+          {renderOffers}
         </YStack>
-        <Text color="$primary" fontSize="$1">
-          Size Chart
-        </Text>
-      </XStack>
-      <YStack gap={6}>
-        <Heading color="black" fontSize="$3" fontWeight="500">
-          Best Offers
-        </Heading>
-        {renderOffers}
-      </YStack>
-      <YStack gap={6}>
-        <Heading color="black" fontSize="$3" fontWeight="500">
-          Delivery Details
-        </Heading>
-        <Controller
-          name="pinCode"
-          control={control}
-          render={({ field: { value, onBlur, onChange } }) => (
-            <Input
-              value={value}
-              onChangeText={onChange}
-              onBlur={onBlur}
-              placeholder="Enter Pincode"
-              placeholderTextColor="$black"
-              paddingHorizontal={22}
-              endIcon={<Button title="Check" variant="text" color="$white" />}
-              containerStyle={{
-                borderRadius: 10,
-                maxWidth: 300,
-              }}
-            />
-          )}
-        />
-      </YStack>
-      <Accordion type="multiple">
-        {PRODUCT_LABELS.map((label: string) => (
-          <Fragment key={label}>
-            <Separator borderColor="$separate" marginVertical={20} />
-            <AccordionItem
-              label={
-                <Text ellipse fontSize="$3" fontWeight="500" textTransform="capitalize">
-                  {label}
-                </Text>
-              }
-              padding={5}
-              borderWidth={0}
-              backgroundColor="$transparent"
-              focusStyle={{
-                backgroundColor: '$transparent',
-              }}
-              hoverStyle={{
-                backgroundColor: '$transparent',
-              }}
-            >
-              {renderProductContent(label)}
-            </AccordionItem>
-          </Fragment>
-        ))}
-      </Accordion>
-      {renderProducts('similar products')}
-      {renderProducts('customer also like')}
+        <YStack gap={6}>
+          <Heading color="black" fontSize="$3" fontWeight="500">
+            Delivery Details
+          </Heading>
+          <Controller
+            name="pinCode"
+            control={control}
+            render={({ field: { value, onBlur, onChange } }) => (
+              <Input
+                value={value}
+                onChangeText={onChange}
+                onBlur={onBlur}
+                placeholder="Enter Pincode"
+                placeholderTextColor="$black"
+                paddingHorizontal={22}
+                endIcon={<Button title="Check" variant="text" color="$white" />}
+                containerStyle={{
+                  borderRadius: 10,
+                  maxWidth: 300,
+                }}
+              />
+            )}
+          />
+        </YStack>
+        <Accordion type="multiple">
+          {PRODUCT_LABELS.map((label: string) => (
+            <Fragment key={label}>
+              <Separator borderColor="$separate" marginVertical={20} />
+              <AccordionItem
+                label={
+                  <Text ellipse fontSize="$3" fontWeight="500" textTransform="capitalize">
+                    {label}
+                  </Text>
+                }
+                padding={5}
+                borderWidth={0}
+                backgroundColor="$transparent"
+                focusStyle={{
+                  backgroundColor: '$transparent',
+                }}
+                hoverStyle={{
+                  backgroundColor: '$transparent',
+                }}
+              >
+                {renderProductContent(label)}
+              </AccordionItem>
+            </Fragment>
+          ))}
+        </Accordion>
+        {renderProducts('similar products')}
+        {renderProducts('customer also like')}
+      </ScrollView>
       <XStack
         position="absolute"
         bottom={0}
@@ -404,7 +411,7 @@ const ProductDetail = ({ navigation, route }: ProductDetailScreenProps) => {
           onPress={handleAddToCart}
         />
       </XStack>
-    </ScrollView>
+    </>
   )
 }
 
