@@ -21,7 +21,7 @@ export const ReadMore = ({ maxLength = 50, children, ...rest }: ReadMoreProps) =
 
   return (
     <Text {...rest}>
-      {isExpand ? children : convertString}
+      {isExpand ? children : convertString}&nbsp;
       {String(children).split(' ').length > maxLength ? (
         !isExpand ? (
           <ReadMoreText onPress={toggleReadMore} {...rest}>
