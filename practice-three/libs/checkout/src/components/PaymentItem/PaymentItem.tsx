@@ -1,7 +1,7 @@
 import { ReactNode } from 'react'
 import { Square, XStack, XStackProps } from 'tamagui'
 
-import { Text } from '@practice-three/components'
+import { Text } from '@practice-three/shared/ui'
 
 export type PaymentItemProps = XStackProps & {
   icon: ReactNode

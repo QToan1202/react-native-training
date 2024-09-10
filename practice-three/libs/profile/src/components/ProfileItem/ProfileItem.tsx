@@ -1,7 +1,7 @@
 import { ReactNode } from 'react'
 import { XStack, XStackProps } from 'tamagui'
 
-import { IconButton, Text } from '@practice-three/components'
+import { IconButton, Text } from '@practice-three/shared/ui'
 
 import { ArrowRight } from '../../assets/images'
 

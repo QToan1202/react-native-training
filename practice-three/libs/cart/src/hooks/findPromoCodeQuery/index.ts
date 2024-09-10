@@ -1,7 +1,7 @@
 import { queryOptions } from '@tanstack/react-query'
 
-import { get } from '@practice-three/services'
-import { TOffer } from '@practice-three/types'
+import { get } from '@practice-three/shared/service'
+import { TOffer } from '@practice-three/shared/types'
 
 import { STALE_TIMES } from '../../constants'
 

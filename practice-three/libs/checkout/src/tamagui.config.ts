@@ -1,3 +1,3 @@
-import { tamaguiConfig } from '@practice-three/config'
+import { tamaguiConfig } from '@practice-three/shared/config'
 
 export default tamaguiConfig

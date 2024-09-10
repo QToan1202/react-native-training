@@ -1,7 +1,7 @@
 import { useMemo } from 'react'
 import { H2, styled, XStack, YStack } from 'tamagui'
 
-import { Text } from '@practice-three/components'
+import { Text } from '@practice-three/shared/ui'
 
 import { OrderItem, OrderItemSkeleton } from '../../components'
 import { useFindProducts } from '../../hooks'

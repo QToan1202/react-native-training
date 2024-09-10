@@ -1,6 +1,6 @@
 import { createNativeStackNavigator } from '@react-navigation/native-stack'
 
-import { CheckoutStack } from '@practice-three/types'
+import { CheckoutStack } from '@practice-three/shared/types'
 
 import {
   AddAddressScreen,

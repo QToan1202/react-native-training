@@ -2,9 +2,9 @@ import { Fragment, useMemo } from 'react'
 import { Heading, Separator, YStack } from 'tamagui'
 import { useQuery } from '@tanstack/react-query'
 
-import { OrderTabScreenProps, TOffer } from '@practice-three/types'
-import { getOffersQuery } from '@practice-three/queries'
-import { Text } from '@practice-three/components'
+import { OrderTabScreenProps, TOffer } from '@practice-three/shared/types'
+import { getOffersQuery } from '@practice-three/shared/query'
+import { Text } from '@practice-three/shared/ui'
 
 import { PromoCodeHeader, PromoCode as PromoCodeItem, Search } from '../../components'
 

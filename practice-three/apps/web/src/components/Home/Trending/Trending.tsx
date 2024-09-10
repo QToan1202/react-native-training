@@ -3,7 +3,7 @@ import { useToastController } from '@tamagui/toast'
 
 import { getProductsQuery } from '../../../hooks'
 import { ProductCard, ProductCardSkeleton } from '../../ProductCard'
-import { TProduct } from '@practice-three/types'
+import { TProduct } from '@practice-three/shared/types'
 import { useNavigate } from 'react-router-dom'
 
 const Trending = () => {

@@ -1,6 +1,6 @@
 import { YStack } from 'tamagui'
 
-import { OrderTabScreenProps } from '@practice-three/types'
+import { OrderTabScreenProps } from '@practice-three/shared/types'
 
 import { CardForm, Header } from '../../components'
 

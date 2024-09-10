@@ -1,8 +1,8 @@
 import { Controller, SubmitHandler, useForm } from 'react-hook-form'
 import { H2, Square, YStack } from 'tamagui'
 
-import { Button, Form, Input, Text } from '@practice-three/components'
-import { AuthStackScreenProps, TResetPassword } from '@practice-three/types'
+import { Button, Form, Input, Text } from '@practice-three/shared/ui'
+import { AuthStackScreenProps, TResetPassword } from '@practice-three/shared/types'
 
 import { Lock, Logo } from '../../assets/images'
 import { RESET_PASSWORD_FORM, RESET_PASSWORD_FORM_DEFAULT_VALUES } from '../../constants'

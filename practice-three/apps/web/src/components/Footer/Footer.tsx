@@ -2,7 +2,7 @@ import { useMemo } from 'react'
 import { Heading, Separator, styled, XStack, YGroup, YStack } from 'tamagui'
 import { Link, useNavigate } from 'react-router-dom'
 
-import { IconButton, Text as BaseText, Input } from '@practice-three/components'
+import { IconButton, Text as BaseText, Input } from '@practice-three/shared/ui'
 
 import { Logo, Mail } from '../../assets/images'
 import { FOOTER_CATEGORIES, SOCIAL_MEDIA_CONTACTS } from '../../constants'

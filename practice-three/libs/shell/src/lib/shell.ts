@@ -1,4 +1,4 @@
-import { TFeatureConfig } from '@practice-three/types'
+import { TFeatureConfig } from '@practice-three/shared/types'
 
 import {
   AUTH_FEATURE,

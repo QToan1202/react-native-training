@@ -1,7 +1,7 @@
 import { getTokenValue, ScrollView } from 'tamagui'
 import { StyleSheet } from 'react-native'
 
-import { HomeTabScreenProps } from '@practice-three/types'
+import { HomeTabScreenProps } from '@practice-three/shared/types'
 
 import {
   BannerSection,

@@ -2,8 +2,8 @@ import { useStore } from 'zustand'
 import { useContext, useMemo } from 'react'
 import { YStack, XStack, Heading, styled } from 'tamagui'
 
-import { Skeleton, Text as BaseText } from '@practice-three/components'
-import { TCartItem } from '@practice-three/types'
+import { Skeleton, Text as BaseText } from '@practice-three/shared/ui'
+import { TCartItem } from '@practice-three/shared/types'
 
 import { FEES } from '../../constants'
 import { CartContext, useOfferStore } from '../../contexts'

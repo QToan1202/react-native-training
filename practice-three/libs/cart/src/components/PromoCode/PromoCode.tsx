@@ -2,8 +2,8 @@ import { XStack, YStack, YStackProps } from 'tamagui'
 import dayjs from 'dayjs'
 import advancedFormat from 'dayjs/plugin/advancedFormat'
 
-import { Button, Text } from '@practice-three/components'
-import { TOffer } from '@practice-three/types'
+import { Button, Text } from '@practice-three/shared/ui'
+import { TOffer } from '@practice-three/shared/types'
 
 export type PromoCodeProps = YStackProps & TOffer
 

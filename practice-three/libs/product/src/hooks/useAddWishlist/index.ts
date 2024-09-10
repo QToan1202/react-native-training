@@ -1,7 +1,7 @@
 import { useMutation, UseMutationResult, useQueryClient } from '@tanstack/react-query'
 
-import { add } from '@practice-three/services'
-import { TWishlistBase } from '@practice-three/types'
+import { add } from '@practice-three/shared/service'
+import { TWishlistBase } from '@practice-three/shared/types'
 
 type TOmitProps = 'id' | 'userId'
 type TMutationDFn = Partial<Omit<TWishlistBase, TOmitProps>>

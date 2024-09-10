@@ -1,9 +1,9 @@
 import { useMemo, useRef } from 'react'
 import { queryOptions, useQueries, useQuery, UseQueryResult } from '@tanstack/react-query'
 
-import { find } from '@practice-three/services'
-import { TProduct, TCartItem, TCart } from '@practice-three/types'
-import { useAuthStore } from '@practice-three/contexts'
+import { find } from '@practice-three/shared/service'
+import { TProduct, TCartItem, TCart } from '@practice-three/shared/types'
+import { useAuthStore } from '@practice-three/shared/context'
 
 import { STALE_TIMES } from '../../constants'
 import getCartQuery from '../getCartQuery'

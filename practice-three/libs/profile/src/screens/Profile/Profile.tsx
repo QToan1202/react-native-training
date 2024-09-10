@@ -2,9 +2,9 @@ import { useMemo } from 'react'
 import { Heading, XStack, YStack } from 'tamagui'
 import { useQuery } from '@tanstack/react-query'
 
-import { ProfileTabScreenProps } from '@practice-three/types'
-import { useAuthStore } from '@practice-three/contexts'
-import { Avatar, Button, Text } from '@practice-three/components'
+import { ProfileTabScreenProps } from '@practice-three/shared/types'
+import { useAuthStore } from '@practice-three/shared/context'
+import { Avatar, Button, Text } from '@practice-three/shared/ui'
 
 import { PROFILE_ITEMS, type TProfileItems } from '../../constants'
 import { ProfileItem } from '../../components'

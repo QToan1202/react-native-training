@@ -1,9 +1,9 @@
 import { isWeb } from 'tamagui'
 import { UseQueryResult, queryOptions, useQuery } from '@tanstack/react-query'
 
-import { TProduct } from '@practice-three/types'
-import { get } from '@practice-three/services'
-import { parseURLSearchParams } from '@practice-three/utils'
+import { TProduct } from '@practice-three/shared/types'
+import { get } from '@practice-three/shared/service'
+import { parseURLSearchParams } from '@practice-three/shared/util'
 
 import { STALE_TIMES } from '../../constants'
 

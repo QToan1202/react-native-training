@@ -1,6 +1,6 @@
 import { queryOptions } from '@tanstack/react-query'
 
-import { get } from '@practice-three/services'
+import { get } from '@practice-three/shared/service'
 
 import { STALE_TIMES } from '../../constants'
 import { TOrder } from '../../types'

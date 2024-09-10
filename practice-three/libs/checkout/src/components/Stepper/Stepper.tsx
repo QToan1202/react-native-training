@@ -1,7 +1,7 @@
 import { XStack, YStackProps } from 'tamagui'
 import { cloneElement, createContext, ReactElement, ReactNode, useMemo, useState } from 'react'
 
-import { getValidChildren } from '@practice-three/utils'
+import { getValidChildren } from '@practice-three/shared/util'
 
 import StepConnector from './StepConnector'
 

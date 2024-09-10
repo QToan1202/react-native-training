@@ -1,7 +1,7 @@
 import { AxiosResponse } from 'axios'
 import { useMutation, UseMutationResult, useQueryClient } from '@tanstack/react-query'
 
-import { remove } from '@practice-three/services'
+import { remove } from '@practice-three/shared/service'
 
 import { TAddress } from '../../types'
 import { useAddressStore } from '../../contexts'

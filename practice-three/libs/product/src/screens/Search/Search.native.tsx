@@ -1,8 +1,8 @@
 import { View, XStack, YStack } from 'tamagui'
 import { useForm } from 'react-hook-form'
 
-import { ProductTabScreenProps, TSearchField } from '@practice-three/types'
-import { Button, Text, Search as SearchBar } from '@practice-three/components'
+import { ProductTabScreenProps, TSearchField } from '@practice-three/shared/types'
+import { Button, Text, Search as SearchBar } from '@practice-three/shared/ui'
 
 import { Bell } from '../../assets/images'
 import { CLOTH_CATEGORIES, TYPES } from '../../constants'

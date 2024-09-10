@@ -4,7 +4,7 @@ import { TamaguiProvider } from 'tamagui'
 import { ToastProvider, ToastViewport } from '@tamagui/toast'
 import { NavigationContainer } from '@react-navigation/native'
 
-import { Toast } from '@practice-three/components'
+import { Toast } from '@practice-three/shared/ui'
 
 import App from './app/App'
 import { tamaguiConfig } from './config'

@@ -4,9 +4,9 @@ import { NativeStackScreenProps } from '@react-navigation/native-stack'
 import { LoaderFunctionArgs, redirect, useLoaderData } from 'react-router-dom'
 import type { QueryClient } from '@tanstack/react-query'
 
-import { ProductStack, TProduct } from '@practice-three/types'
-import { Button, Text } from '@practice-three/components'
-import { TResolveLoaderReturn } from '@practice-three/utils'
+import { ProductStack, TProduct } from '@practice-three/shared/types'
+import { Button, Text } from '@practice-three/shared/ui'
+import { TResolveLoaderReturn } from '@practice-three/shared/util'
 
 import { Filter, ProductCard, ProductCardSkeleton } from '../../components'
 import { useGetProducts, getProductsQuery } from '../../hooks'

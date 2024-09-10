@@ -2,7 +2,7 @@ import { cloneElement, FC } from 'react'
 import { ImageURISource } from 'react-native'
 import { Heading, YStack, YStackProps, getTokenValue } from 'tamagui'
 
-import { Image, Text } from '@practice-three/components'
+import { Image, Text } from '@practice-three/shared/ui'
 
 type DealCardHeading =
   | {

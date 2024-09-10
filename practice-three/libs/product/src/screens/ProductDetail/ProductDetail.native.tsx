@@ -16,17 +16,17 @@ import {
   RadioItem,
   Rating,
   Text,
-} from '@practice-three/components'
-import { calculateDiscountPrice } from '@practice-three/utils'
-import { getOffersQuery } from '@practice-three/queries'
+} from '@practice-three/shared/ui'
+import { calculateDiscountPrice } from '@practice-three/shared/util'
+import { getOffersQuery } from '@practice-three/shared/query'
 import {
   ProductTabScreenProps,
   TOffer,
   TProduct,
   TReview,
   TWishlistBase,
-} from '@practice-three/types'
-import { useAuthStore } from '@practice-three/contexts'
+} from '@practice-three/shared/types'
+import { useAuthStore } from '@practice-three/shared/context'
 
 import {
   findProductQuery,

@@ -2,9 +2,9 @@ import { useCallback, useMemo } from 'react'
 import { Heading, YStack } from 'tamagui'
 import { useQuery } from '@tanstack/react-query'
 
-import { TUser, TWishlistExpand, WishlistTabScreenProps } from '@practice-three/types'
-import { useAuthStore } from '@practice-three/contexts'
-import { Button, Text } from '@practice-three/components'
+import { TUser, TWishlistExpand, WishlistTabScreenProps } from '@practice-three/shared/types'
+import { useAuthStore } from '@practice-three/shared/context'
+import { Button, Text } from '@practice-three/shared/ui'
 
 import { getWishlistQuery } from '../../hooks'
 import { WishlistItem, WishlistItemSkeleton } from '../../components'

@@ -3,8 +3,8 @@ import { AnimatePresence, Heading, XStack, YStack } from 'tamagui'
 import { Controller, SubmitHandler, useForm } from 'react-hook-form'
 import { useToastController } from '@tamagui/toast'
 
-import { Button, Form, Input, Text, Toast } from '@practice-three/components'
-import { useAuthStore } from '@practice-three/contexts'
+import { Button, Form, Input, Text, Toast } from '@practice-three/shared/ui'
+import { useAuthStore } from '@practice-three/shared/context'
 
 import { TCardForm } from '../../types'
 import { CARD_FORM, DEFAULT_CARD_VALUES } from '../../constants'

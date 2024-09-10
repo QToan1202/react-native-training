@@ -5,9 +5,9 @@ import {
   useSuspenseQuery,
 } from '@tanstack/react-query'
 
-import { add } from '@practice-three/services'
-import { TWishlistBase } from '@practice-three/types'
-import { useAuthStore } from '@practice-three/contexts'
+import { add } from '@practice-three/shared/service'
+import { TWishlistBase } from '@practice-three/shared/types'
+import { useAuthStore } from '@practice-three/shared/context'
 
 import getWishlistQuery from '../getWishlistQuery'
 

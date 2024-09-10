@@ -2,8 +2,8 @@ import { Heading, YStack } from 'tamagui'
 import { useEffect } from 'react'
 import { useStore } from 'zustand'
 
-import { Button } from '@practice-three/components'
-import type { OrderTabScreenProps } from '@practice-three/types'
+import { Button } from '@practice-three/shared/ui'
+import type { OrderTabScreenProps } from '@practice-three/shared/types'
 
 import { CartItemList, CartItemSkeleton, Search, Summary } from '../../components'
 import { useFindProducts } from '../../hooks'

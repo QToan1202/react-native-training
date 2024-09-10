@@ -8,8 +8,8 @@ import {
   IconButton as BaseIconButton,
   BaseInput,
   BaseInputProps,
-} from '@practice-three/components'
-import { useAuthStore } from '@practice-three/contexts'
+} from '@practice-three/shared/ui'
+import { useAuthStore } from '@practice-three/shared/context'
 
 import { Minus, Plus } from '../../assets/images'
 import { CartContext } from '../../contexts'

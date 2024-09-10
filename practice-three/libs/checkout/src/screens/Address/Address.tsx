@@ -2,9 +2,9 @@ import { useState } from 'react'
 import { ScrollView, YStack } from 'tamagui'
 import { useToastController } from '@tamagui/toast'
 
-import { AlertDialog, Button, Toast } from '@practice-three/components'
-import { OrderTabScreenProps } from '@practice-three/types'
-import { useAuthStore } from '@practice-three/contexts'
+import { AlertDialog, Button, Toast } from '@practice-three/shared/ui'
+import { OrderTabScreenProps } from '@practice-three/shared/types'
+import { useAuthStore } from '@practice-three/shared/context'
 
 import { Header, Step, StepLabel, Stepper } from '../../components'
 import { STEPPER_LABELS } from '../../constants'

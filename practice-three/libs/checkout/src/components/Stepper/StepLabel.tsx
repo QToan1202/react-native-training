@@ -1,7 +1,7 @@
 import { ReactNode, useContext } from 'react'
 import { useWindowDimensions } from 'react-native'
 
-import { Text, TextProps } from '@practice-three/components'
+import { Text, TextProps } from '@practice-three/shared/ui'
 
 import { StepperContext } from './Stepper'
 

@@ -1,7 +1,7 @@
 import bcrypt from 'bcryptjs'
 
-import { add, get } from '@practice-three/services'
-import { TRegisterForm, TUser } from '@practice-three/types'
+import { add, get } from '@practice-three/shared/service'
+import { TRegisterForm, TUser } from '@practice-three/shared/types'
 
 import { REGEX } from '../constants'
 

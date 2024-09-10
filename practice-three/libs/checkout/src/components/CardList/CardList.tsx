@@ -2,8 +2,8 @@ import { Fragment } from 'react'
 import { Heading, Separator } from 'tamagui'
 import { useQuery } from '@tanstack/react-query'
 
-import { useAuthStore } from '@practice-three/contexts'
-import { Skeleton } from '@practice-three/components'
+import { useAuthStore } from '@practice-three/shared/context'
+import { Skeleton } from '@practice-three/shared/ui'
 
 import { getCardsQuery } from '../../hooks'
 import { Debit, MasterCard, Visa } from '../../assets/images'

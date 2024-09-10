@@ -1,6 +1,6 @@
 import { getTokenValue, XStack, YStack, YStackProps } from 'tamagui'
 
-import { Avatar, Rating, Text } from '@practice-three/components'
+import { Avatar, Rating, Text } from '@practice-three/shared/ui'
 
 import { Star } from '../../assets/images'
 

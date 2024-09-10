@@ -1,6 +1,6 @@
 import { XStack, XStackProps, YStack } from 'tamagui'
 
-import { Skeleton } from '@practice-three/components'
+import { Skeleton } from '@practice-three/shared/ui'
 
 type OrderItemSkeletonProps = XStackProps
 

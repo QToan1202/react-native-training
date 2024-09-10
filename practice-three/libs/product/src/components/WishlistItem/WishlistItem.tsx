@@ -1,8 +1,8 @@
 import { Heading, XStack, XStackProps, YStack, getTokenValue } from 'tamagui'
 import { GestureResponderEvent, ImageURISource } from 'react-native'
 
-import { TProduct } from '@practice-three/types'
-import { Image, Text } from '@practice-three/components'
+import { TProduct } from '@practice-three/shared/types'
+import { Image, Text } from '@practice-three/shared/ui'
 
 import { HeartFill } from '../../assets/images'
 

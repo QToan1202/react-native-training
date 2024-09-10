@@ -1,7 +1,7 @@
 import { createContext } from 'react'
 import { createStore, StoreApi } from 'zustand'
 
-import { TCartItem, TProduct } from '@practice-three/types'
+import { TCartItem, TProduct } from '@practice-three/shared/types'
 
 export type CartState = {
   cart: TCartItem[]

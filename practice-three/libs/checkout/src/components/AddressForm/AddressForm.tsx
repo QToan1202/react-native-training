@@ -4,8 +4,8 @@ import { useId, useMemo } from 'react'
 import { useToastController } from '@tamagui/toast'
 import { useQueryClient } from '@tanstack/react-query'
 
-import { Button, Form, Input, Select, SelectItem, Text, Toast } from '@practice-three/components'
-import { useAuthStore } from '@practice-three/contexts'
+import { Button, Form, Input, Select, SelectItem, Text, Toast } from '@practice-three/shared/ui'
+import { useAuthStore } from '@practice-three/shared/context'
 
 import { TAddressForm } from '../../types'
 import { ADDRESS_FORM, COUNTRIES, DEFAULT_ADDRESS_VALUES } from '../../constants'

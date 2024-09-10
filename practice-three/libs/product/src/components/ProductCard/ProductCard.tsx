@@ -2,9 +2,9 @@ import { Card, CardProps, H2, XStack, getTokenValue } from 'tamagui'
 import { StarFull } from '@tamagui/lucide-icons'
 import { GestureResponderEvent } from 'react-native'
 
-import { Image, Text } from '@practice-three/components'
-import { TProduct } from '@practice-three/types'
-import { calculateDiscountPrice } from '@practice-three/utils'
+import { Image, Text } from '@practice-three/shared/ui'
+import { TProduct } from '@practice-three/shared/types'
+import { calculateDiscountPrice } from '@practice-three/shared/util'
 
 type TOmitProductProps = 'description' | 'sellerName' | 'sizes' | 'reviews' | 'specifications'
 export type ProductCardProps = CardProps &

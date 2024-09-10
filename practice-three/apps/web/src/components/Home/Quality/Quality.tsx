@@ -1,6 +1,6 @@
 import { Heading, Square, XStack, YStack } from 'tamagui'
 
-import { Text } from '@practice-three/components'
+import { Text } from '@practice-three/shared/ui'
 
 import { QUALITY_CARDS_DATA } from '../../../constants'
 

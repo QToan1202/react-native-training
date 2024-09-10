@@ -15,20 +15,20 @@
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
     "paths": {
-      "@practice-three/components": ["libs/shared/src/components/index.ts"],
-      "@practice-three/config": ["libs/shared/src/config/index.ts"],
-      "@practice-three/contexts": ["libs/shared/src/contexts/index.ts"],
       "@practice-three/features/authentication": ["libs/authentication/src/index.ts"],
       "@practice-three/features/cart": ["libs/cart/src/index.ts"],
       "@practice-three/features/checkout": ["libs/checkout/src/index.ts"],
       "@practice-three/features/product": ["libs/product/src/index.ts"],
       "@practice-three/features/profile": ["libs/profile/src/index.ts"],
-      "@practice-three/queries": ["libs/shared/src/queries/index.ts"],
-      "@practice-three/screens": ["libs/shared/src/screens/index.ts"],
-      "@practice-three/services": ["libs/shared/src/services/index.ts"],
-      "@practice-three/shell": ["libs/shell/src/index.ts"],
-      "@practice-three/types": ["libs/shared/src/types/index.ts"],
-      "@practice-three/utils": ["libs/shared/src/utils/index.ts"]
+      "@practice-three/shared/asset": ["libs/shared/asset/src/index.ts"],
+      "@practice-three/shared/config": ["libs/shared/config/src/index.ts"],
+      "@practice-three/shared/context": ["libs/shared/context/src/index.ts"],
+      "@practice-three/shared/query": ["libs/shared/query/src/index.ts"],
+      "@practice-three/shared/service": ["libs/shared/service/src/index.ts"],
+      "@practice-three/shared/types": ["libs/shared/types/src/index.ts"],
+      "@practice-three/shared/ui": ["libs/shared/ui/src/index.ts"],
+      "@practice-three/shared/util": ["libs/shared/util/src/index.ts"],
+      "@practice-three/shell": ["libs/shell/src/index.ts"]
     }
   },
   "exclude": ["node_modules", "tmp"]

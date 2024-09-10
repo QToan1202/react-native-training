@@ -5,7 +5,7 @@ import { Heading, YStack } from 'tamagui'
 import { useToastController } from '@tamagui/toast'
 import { useNavigation } from '@react-navigation/native'
 
-import { useAuthStore } from '@practice-three/contexts'
+import { useAuthStore } from '@practice-three/shared/context'
 
 import { getProductsQuery, useAddToCart, useAddToWishlist } from '../../../hooks'
 import { ProductShowcase, ProductShowcaseSkeleton } from '../../ProductShowcase'

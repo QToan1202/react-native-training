@@ -13,14 +13,14 @@ import {
   PRODUCT_FEATURE,
   PROFILE_FEATURE,
 } from '@practice-three/shell'
-import { BottomTabParamsList, RootStackParamList, THOCsProps } from '@practice-three/types'
+import { BottomTabParamsList, RootStackParamList, THOCsProps } from '@practice-three/shared/types'
 import { withAuth } from '@practice-three/features/authentication'
 import { withProduct } from '@practice-three/features/product'
 import { withCart } from '@practice-three/features/cart'
 import { withCheckout } from '@practice-three/features/checkout'
 import { withProfile } from '@practice-three/features/profile'
-import { ErrorScreen, NotFoundScreen } from '@practice-three/screens'
-import { useAuthStore } from '@practice-three/contexts'
+import { ErrorScreen, NotFoundScreen } from '@practice-three/shared/ui'
+import { useAuthStore } from '@practice-three/shared/context'
 
 import { BottomNav } from '../navigation'
 import { HomeScreen } from '../screens'

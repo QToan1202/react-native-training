@@ -1,8 +1,8 @@
 import { Card, CardProps, XStack, getTokenValue } from 'tamagui'
 
-import { Heading, Image, Text } from '@practice-three/components'
-import { TProduct } from '@practice-three/types'
-import { calculateDiscountPrice } from '@practice-three/utils'
+import { Heading, Image, Text } from '@practice-three/shared/ui'
+import { TProduct } from '@practice-three/shared/types'
+import { calculateDiscountPrice } from '@practice-three/shared/util'
 
 type TOmitProductProps =
   | 'id'

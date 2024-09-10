@@ -9,8 +9,8 @@ import {
 } from 'tamagui'
 import dayjs from 'dayjs'
 
-import { ImageGallery, Rating, ReadMore, Text } from '@practice-three/components'
-import { TReview } from '@practice-three/types'
+import { ImageGallery, Rating, ReadMore, Text } from '@practice-three/shared/ui'
+import { TReview } from '@practice-three/shared/types'
 import { Star } from '../../assets/images'
 
 export type CommentProps = YStackProps &

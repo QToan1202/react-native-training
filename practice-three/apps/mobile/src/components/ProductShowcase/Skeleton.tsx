@@ -1,6 +1,6 @@
 import { XStack, YStack } from 'tamagui'
 
-import { Skeleton } from '@practice-three/components'
+import { Skeleton } from '@practice-three/shared/ui'
 
 const ProductShowcaseSkeleton = () => (
   <YStack gap={10}>

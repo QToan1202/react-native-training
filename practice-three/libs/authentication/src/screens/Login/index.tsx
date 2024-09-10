@@ -3,8 +3,8 @@ import { Controller, SubmitHandler, useForm } from 'react-hook-form'
 import { redirect } from 'react-router-dom'
 import { AxiosError } from 'axios'
 
-import { Button, Checkbox, Form, Input, Text } from '@practice-three/components'
-import { AuthStackScreenProps, TLoginForm } from '@practice-three/types'
+import { Button, Checkbox, Form, Input, Text } from '@practice-three/shared/ui'
+import { AuthStackScreenProps, TLoginForm } from '@practice-three/shared/types'
 
 import { Apple, Facebook, Google, Lock, Logo, User } from '../../assets/images'
 import useLogin from '../../hooks/useLogin'

@@ -1,6 +1,6 @@
 import { getTokenValue, Heading, Separator, styled, XStack, XStackProps, YStack } from 'tamagui'
 
-import { Image, Text as BaseText } from '@practice-three/components'
+import { Image, Text as BaseText } from '@practice-three/shared/ui'
 
 export type BlogCardProps = XStackProps & {
   title: string

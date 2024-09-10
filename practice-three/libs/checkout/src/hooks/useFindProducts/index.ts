@@ -3,8 +3,8 @@ import { useQueries, useQuery, UseQueryResult } from '@tanstack/react-query'
 import { isWeb } from 'tamagui'
 import dayjs from 'dayjs'
 
-import { TCart, TProduct } from '@practice-three/types'
-import { useAuthStore } from '@practice-three/contexts'
+import { TCart, TProduct } from '@practice-three/shared/types'
+import { useAuthStore } from '@practice-three/shared/context'
 
 import getOrdersQuery from '../getOrdersQuery'
 import { TOrder, TOrderItem } from '../../types'

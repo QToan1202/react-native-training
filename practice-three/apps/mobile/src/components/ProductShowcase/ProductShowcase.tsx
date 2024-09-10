@@ -2,9 +2,9 @@ import { Fragment } from 'react'
 import { GestureResponderEvent } from 'react-native'
 import { Heading, XStack, YStack, YStackProps } from 'tamagui'
 
-import { Button, Image, Text } from '@practice-three/components'
-import { TProduct } from '@practice-three/types'
-import { calculateDiscountPrice } from '@practice-three/utils'
+import { Button, Image, Text } from '@practice-three/shared/ui'
+import { TProduct } from '@practice-three/shared/types'
+import { calculateDiscountPrice } from '@practice-three/shared/util'
 
 import { ProductBag, ProductHeart } from '../../assets/images'
 

@@ -1,6 +1,6 @@
 import { Heading, Stack, styled, XStack, YStack } from 'tamagui'
 
-import { Button, Image, Text as BaseText } from '@practice-three/components'
+import { Button, Image, Text as BaseText } from '@practice-three/shared/ui'
 
 import { aboutUs } from '../../../assets/images'
 

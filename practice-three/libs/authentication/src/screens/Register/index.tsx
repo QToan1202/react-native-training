@@ -3,8 +3,8 @@ import { AnimatePresence, H2, Separator, Square, Stack, XStack, YStack, isWeb } 
 import { Controller, SubmitHandler, useForm } from 'react-hook-form'
 import { redirect } from 'react-router-dom'
 
-import { Button, Form, Input, Text } from '@practice-three/components'
-import { AuthStackScreenProps, TRegisterForm } from '@practice-three/types'
+import { Button, Form, Input, Text } from '@practice-three/shared/ui'
+import { AuthStackScreenProps, TRegisterForm } from '@practice-three/shared/types'
 
 import { Apple, Facebook, Google, Logo } from '../../assets/images'
 import useRegister from '../../hooks/useRegister'
