@@ -6,7 +6,7 @@ settings:
 
 patchedDependencies:
   '@tamagui/accordion@1.96.0':
-    hash: rgvqa2d7uge67mlnz6f6sa3gwy
+    hash: 3bqp3oztxaxwevedenj4p2tjie
     path: patches/@tamagui__accordion@1.96.0.patch
 
 importers:
@@ -17849,7 +17849,7 @@ snapshots:
     dependencies:
       defer-to-connect: 2.0.1
 
-  '@tamagui/accordion@1.96.0(patch_hash=rgvqa2d7uge67mlnz6f6sa3gwy)(react@18.2.0)':
+  '@tamagui/accordion@1.96.0(patch_hash=3bqp3oztxaxwevedenj4p2tjie)(react@18.2.0)':
     dependencies:
       '@tamagui/collapsible': 1.96.0(react@18.2.0)
       '@tamagui/collection': 1.96.0(react@18.2.0)
@@ -26331,7 +26331,7 @@ snapshots:
 
   tamagui@1.96.0(@types/react@18.2.73)(react-dom@18.2.0(react@18.2.0))(react-native-web@0.19.10(react-dom@18.2.0(react@18.2.0))(react@18.2.0))(react-native@0.73.2(@babel/core@7.24.3)(@babel/preset-env@7.24.3(@babel/core@7.24.3))(react@18.2.0))(react@18.2.0):
     dependencies:
-      '@tamagui/accordion': 1.96.0(patch_hash=rgvqa2d7uge67mlnz6f6sa3gwy)(react@18.2.0)
+      '@tamagui/accordion': 1.96.0(patch_hash=3bqp3oztxaxwevedenj4p2tjie)(react@18.2.0)
       '@tamagui/adapt': 1.96.0(react@18.2.0)
       '@tamagui/alert-dialog': 1.96.0(@types/react@18.2.73)(react-native@0.73.2(@babel/core@7.24.3)(@babel/preset-env@7.24.3(@babel/core@7.24.3))(react@18.2.0))(react@18.2.0)
       '@tamagui/animate-presence': 1.96.0(react@18.2.0)
