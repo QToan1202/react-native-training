@@ -187,9 +187,14 @@ const ProductDetail = ({ navigation, route }: ProductDetailScreenProps) => {
       case 'ratings & reviews':
         return (
           <YStack gap={15}>
-            <XStack alignItems="baseline" gap={16}>
+            <XStack alignItems="center" gap={16}>
               <Text fontSize={28}>{product.rating}</Text>
-              <Rating defaultValue={product.rating} icon={<Star fill="black" />} isDisabled />
+              <Rating
+                size="$7"
+                defaultValue={product.rating}
+                icon={<Star fill="black" />}
+                isDisabled
+              />
             </XStack>
             <Text color="$gray_100">
               {product.reviews.length}{' '}

@@ -10,6 +10,8 @@ const customTokens = {
   commentImage: {
     width: 140,
     height: 140,
+    mobileWidth: 95,
+    mobileHeight: 90,
   },
   category: {
     width: 62,
