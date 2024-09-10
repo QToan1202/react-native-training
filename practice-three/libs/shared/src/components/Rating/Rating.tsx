@@ -1,6 +1,6 @@
 import { ReactNode, useId, useState } from 'react'
 import { styled } from 'tamagui'
-import { getTokenValue } from '@tamagui/core'
+import { getTokenValue, SizeTokens } from '@tamagui/core'
 
 import { Radio, RadioItem } from '../Radio'
 import { Star } from '../../assets/images'
@@ -8,7 +8,7 @@ import { Star } from '../../assets/images'
 const Item = styled(RadioItem, {
   borderWidth: 0,
   backgroundColor: 'transparent',
-  animation: 'fast',
+  animation: '200ms',
   cursor: 'pointer',
 
   focusStyle: {
@@ -34,6 +34,7 @@ export type RatingProps = {
   isDisabled?: boolean
   defaultValue?: number
   numberOfStarts?: number
+  size?: SizeTokens
   icon?: ReactNode
   emptyIcon?: ReactNode
 }
@@ -42,6 +43,7 @@ const Rating = ({
   isDisabled = false,
   defaultValue = 0,
   numberOfStarts = 5,
+  size = '$true',
   icon = <Star fill={getTokenValue('$yellow')} stroke={getTokenValue('$yellow')} />,
   emptyIcon = <Star />,
 }: RatingProps) => {
@@ -52,7 +54,7 @@ const Rating = ({
   return (
     <Radio value={String(rating)} onValueChange={handleChange} flexDirection="row" gap="$1">
       {[...Array(Math.floor(numberOfStarts) + 1).keys()].slice(1).map((value: number) => (
-        <Item disabled={isDisabled} key={key + value} value={value.toString()}>
+        <Item size={size} disabled={isDisabled} key={key + value} value={value.toString()}>
           {rating < value ? emptyIcon : icon}
         </Item>
       ))}
