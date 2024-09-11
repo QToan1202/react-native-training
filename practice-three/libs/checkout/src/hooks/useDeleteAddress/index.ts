@@ -5,6 +5,7 @@ import { remove } from '@practice-three/shared/service'
 
 import { TAddress } from '../../types'
 import { useAddressStore } from '../../contexts'
+import { addressKeys } from '../../factories'
 
 type TPickProps = 'id'
 type TMutationFn = Pick<TAddress, TPickProps>
@@ -21,7 +22,7 @@ const useDeleteAddress = (
       return remove(path, id)
     },
     onSuccess: (deleteStatus: number, { id }: TMutationFn) => {
-      queryClient.setQueryData(['addresses', userId], (oldData: TAddress[]) =>
+      queryClient.setQueryData(addressKeys.list(userId), (oldData: TAddress[]) =>
         deleteStatus === 200 && oldData
           ? oldData.filter((value: TAddress) => value.id !== id)
           : oldData

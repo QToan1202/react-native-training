@@ -3,6 +3,7 @@ import { useMutation, UseMutationResult, useQueryClient } from '@tanstack/react-
 import { edit } from '@practice-three/shared/service'
 
 import { TAddress } from '../../types'
+import { addressKeys } from '../../factories'
 
 type TOmitProps = 'id'
 type TMutationDFn = Partial<Omit<TAddress, TOmitProps>>
@@ -19,7 +20,7 @@ const useEditAddress = (
       return edit<TAddress>(path, id, data)
     },
     onSuccess: (data: TAddress) => {
-      queryClient.setQueryData(['address', id], (oldData: TAddress) =>
+      queryClient.setQueryData(addressKeys.detail(id), (oldData: TAddress) =>
         oldData ? { ...oldData, ...data } : oldData
       )
     },
