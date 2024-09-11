@@ -1,4 +1,4 @@
-import { UseMutationResult, useMutation } from '@tanstack/react-query'
+import { UseMutationResult, useMutation, useQueryClient } from '@tanstack/react-query'
 import { useToastController } from '@tamagui/toast'
 
 import { TUser, TLoginForm } from '@practice-three/shared/types'
@@ -9,10 +9,11 @@ import { login } from '../services'
 const useLogin = (path: string): UseMutationResult<TUser, Error, TLoginForm, unknown> => {
   const toast = useToastController()
   const setUser = useAuthStore((state) => state.setUser)
+  const queryClient = useQueryClient()
 
   return useMutation<TUser, Error, TLoginForm, unknown>({
     mutationFn: ({ account, password }: TLoginForm): Promise<TUser> =>
-      login(path, account, password),
+      login(queryClient)(path, account, password),
     onError: (error) => {
       if (error instanceof Error)
         toast.show('Login fail!!!', {
