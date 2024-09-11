@@ -6,6 +6,7 @@ import {
   YStack,
 } from 'tamagui'
 import { Button } from '../Button'
+import { Text } from '../Text'
 
 export type AlertDialogProps = TAlertDialogProps & {
   title: string
@@ -46,9 +47,11 @@ const AlertDialog = ({
           backgroundColor="$white"
         >
           <YStack gap={12}>
-            <TAlertDialog.Title color="$black">{title}</TAlertDialog.Title>
-            <TAlertDialog.Description id={descriptionId} color="$black">
-              {description}
+            <TAlertDialog.Title color="$black" fontSize="$4" fontWeight="700" asChild>
+              <Text>{title}</Text>
+            </TAlertDialog.Title>
+            <TAlertDialog.Description id={descriptionId} color="$black" asChild>
+              <Text>{description}</Text>
             </TAlertDialog.Description>
 
             <XStack gap="$3" justifyContent="flex-end">
