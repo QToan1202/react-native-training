@@ -27,7 +27,7 @@ const AlertDialog = ({
   const descriptionId = useId()
 
   return (
-    <TAlertDialog native {...rest}>
+    <TAlertDialog {...rest}>
       <TAlertDialog.Portal>
         <TAlertDialog.Overlay
           key="overlay"
