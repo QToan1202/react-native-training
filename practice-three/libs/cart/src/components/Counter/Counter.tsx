@@ -131,13 +131,15 @@ const Counter = ({
         <Plus />
       </IconButton>
 
-      <AlertDialog
-        title="Remove product"
-        open={isOpen}
-        description="Are you sure you want to delete this item from your cart? This action cannot be undone."
-        onCancel={handleCancelAlert}
-        onSuccess={handleSuccessAlert}
-      />
+      {isOpen && (
+        <AlertDialog
+          title="Remove product"
+          open={isOpen}
+          description="Are you sure you want to delete this item from your cart? This action cannot be undone."
+          onCancel={handleCancelAlert}
+          onSuccess={handleSuccessAlert}
+        />
+      )}
     </XStack>
   )
 }

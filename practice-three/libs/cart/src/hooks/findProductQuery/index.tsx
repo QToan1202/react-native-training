@@ -7,10 +7,11 @@ import { useAuthStore } from '@practice-three/shared/context'
 
 import { STALE_TIMES } from '../../constants'
 import getCartQuery from '../getCartQuery'
+import { productKeys } from '../../factories'
 
 export const findProductQuery = (path: string, id: string) =>
-  queryOptions<TProduct, Error, TProduct, string[]>({
-    queryKey: ['product', id],
+  queryOptions<TProduct, Error, TProduct, ReadonlyArray<string>>({
+    queryKey: productKeys.detail(id),
     queryFn: () => find(`${path}/${id}`),
     staleTime: STALE_TIMES.PRODUCT_INFO,
   })
