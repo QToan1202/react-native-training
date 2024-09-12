@@ -1,28 +1,35 @@
-import { ReactNode } from 'react'
+import { ReactNode, useState } from 'react'
 import { RadioGroup, RadioGroupProps } from 'tamagui'
-import { useShallow } from 'zustand/react/shallow'
+import { createStore } from 'zustand'
 
-import useRadio from './useRadio'
+import { RadioAction, RadioContext, RadioState } from './useRadio'
 
 export type RadioProps = RadioGroupProps & {
   children: ReactNode
 }
 
-const Radio = ({ children, onValueChange, ...rest }: RadioProps) => {
-  const [value, setValue] = useRadio(useShallow((state) => [state.value, state.onChangeValue]))
+const Radio = ({ defaultValue, children, onValueChange, ...rest }: RadioProps) => {
+  const [radioStore] = useState(() =>
+    createStore<RadioState & RadioAction>()((set) => ({
+      value: defaultValue,
+      onChangeValue: (value) => set({ value }),
+    }))
+  )
   const handleValueChange = (value: string) => {
     // Run the onChange fn that pass through props
-    onValueChange && onValueChange(value)
+    onValueChange?.(value)
 
     // Run the setter fn from the useRadio hook
     // so that the RadioItem component can detected change value
-    setValue(value)
+    radioStore.getState().onChangeValue(value)
   }
 
   return (
-    <RadioGroup value={value} onValueChange={handleValueChange} {...rest}>
-      {children}
-    </RadioGroup>
+    <RadioContext.Provider value={radioStore}>
+      <RadioGroup onValueChange={handleValueChange} {...rest}>
+        {children}
+      </RadioGroup>
+    </RadioContext.Provider>
   )
 }
 

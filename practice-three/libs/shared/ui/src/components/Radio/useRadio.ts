@@ -1,20 +1,20 @@
-import { create } from 'zustand'
+import { createContext, useContext } from 'react'
+import { StoreApi, useStore } from 'zustand'
 
-type RadioState = {
+export type RadioState = {
   value?: string
 }
 
-interface RadioAction {
+export type RadioAction = {
   onChangeValue: (value: string) => void
 }
 
-const initState: RadioState = {
-  value: undefined,
+export const RadioContext = createContext<StoreApi<RadioState & RadioAction> | null>(null)
+export const useRadioContext = <T>(selector: (state: RadioState & RadioAction) => T) => {
+  const store = useContext(RadioContext)
+  if (!store) {
+    throw new Error('Missing RadioStoreProvider')
+  }
+
+  return useStore(store, selector)
 }
-
-export const useOrderStore = create<RadioState & RadioAction>()((set) => ({
-  ...initState,
-  onChangeValue: (value) => set({ value }),
-}))
-
-export default useOrderStore

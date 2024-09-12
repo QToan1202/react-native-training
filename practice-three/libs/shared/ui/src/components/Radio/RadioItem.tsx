@@ -1,7 +1,7 @@
 import { useId } from 'react'
 import { RadioGroup, XStack, RadioGroupItemProps, Label, styled } from 'tamagui'
 
-import useRadio from './useRadio'
+import { useRadioContext } from './useRadio'
 
 export type RadioItemProps = RadioGroupItemProps & {
   label?: string
@@ -29,7 +29,7 @@ const StyledItem = styled(RadioGroup.Item, {
 const RadioItem = StyledItem.styleable<RadioItemProps>(
   ({ label, children, ...restProps }: RadioItemProps, ref) => {
     const radioId = useId()
-    const selectValue = useRadio((state) => state.value)
+    const selectValue = useRadioContext((state) => state.value)
 
     return (
       <XStack>
