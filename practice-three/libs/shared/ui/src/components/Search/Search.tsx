@@ -1,5 +1,6 @@
-import { Input, InputProps } from '../Input'
 import { Search as SearchIcon } from '@practice-three/shared/asset'
+
+import { Input, InputProps } from '../Input'
 
 export type SearchProps = InputProps
 

@@ -2,9 +2,10 @@ import type { Meta, StoryObj } from '@storybook/react'
 import { action } from '@storybook/addon-actions'
 import { useForm } from 'react-hook-form'
 
+import { TLoginForm } from '@practice-three/shared/types'
+
 import FormFrame from './Form'
 import { Input } from '../Input'
-import { TLoginForm } from '../../types/form'
 import { Button } from '../Button'
 
 const meta: Meta<typeof FormFrame> = {

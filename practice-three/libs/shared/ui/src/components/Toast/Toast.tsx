@@ -1,5 +1,6 @@
 import { Toast as TToast, ToastProps as TToastProps, useToastState } from '@tamagui/toast'
 import { Heading, YStack } from 'tamagui'
+
 import { Text } from '../Text'
 
 export type ToastProps = TToastProps

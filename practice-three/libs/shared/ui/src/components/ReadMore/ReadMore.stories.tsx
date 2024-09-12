@@ -1,4 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react'
+
 import ReadMore from './ReadMore'
 
 const meta: Meta<typeof ReadMore> = {

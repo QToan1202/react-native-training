@@ -1,5 +1,6 @@
-import { Input, InputProps } from '../Input'
 import { SearchMobile } from '@practice-three/shared/asset'
+
+import { Input, InputProps } from '../Input'
 
 export type SearchProps = InputProps
 

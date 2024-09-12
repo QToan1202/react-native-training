@@ -2,8 +2,9 @@ import { ReactNode, useId, useState } from 'react'
 import { styled } from 'tamagui'
 import { getTokenValue, SizeTokens } from '@tamagui/core'
 
-import { Radio, RadioItem } from '../Radio'
 import { Star } from '@practice-three/shared/asset'
+
+import { Radio, RadioItem } from '../Radio'
 
 const Item = styled(RadioItem, {
   borderWidth: 0,

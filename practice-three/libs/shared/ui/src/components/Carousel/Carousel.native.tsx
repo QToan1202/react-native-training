@@ -2,9 +2,9 @@ import { useCallback, useMemo, useRef, useState } from 'react'
 import RNCarousel, { ICarouselInstance, TCarouselProps } from 'react-native-reanimated-carousel'
 import { getTokenValue, useWindowDimensions, XStack, YStack } from 'tamagui'
 
-import { IconButton } from '../Button'
 import { Dot } from '@practice-three/shared/asset'
 
+import { IconButton } from '../Button'
 import { BaseCarouselProps } from './types'
 
 export type CarouselProps<T> = TCarouselProps<T> & Omit<BaseCarouselProps<T>, 'isShowNavigation'>

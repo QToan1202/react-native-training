@@ -1,6 +1,6 @@
 import { Heading, isWeb, YStack } from 'tamagui'
 
-import { RootStackScreenProps } from '../../types'
+import { RootStackScreenProps } from '@practice-three/shared/types'
 
 import { Button, Text } from '../../components'
 

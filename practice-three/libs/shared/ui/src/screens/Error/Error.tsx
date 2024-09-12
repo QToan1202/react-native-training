@@ -1,8 +1,9 @@
 import { FallbackProps } from 'react-error-boundary'
 import { getTokenValue, Square, styled, YStack } from 'tamagui'
 
-import { Heading, Text as BaseText, Button } from '../../components'
 import { Computer } from '@practice-three/shared/asset'
+
+import { Heading, Text as BaseText, Button } from '../../components'
 
 export type ErrorPageProps = FallbackProps
 

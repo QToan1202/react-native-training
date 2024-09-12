@@ -2,9 +2,10 @@ import { FC } from 'react'
 import { ImageURISource } from 'react-native'
 import { H2, Square, XStack, YStack, YStackProps } from 'tamagui'
 
+import { Arrow } from '@practice-three/shared/asset'
+
 import { Text } from '../Text'
 import { Image } from '../Image'
-import { Arrow } from '@practice-three/shared/asset'
 
 export type CategoryItemProps = YStackProps & {
   title: string

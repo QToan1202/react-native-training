@@ -2,6 +2,7 @@ import { useContext } from 'react'
 import {
   ButtonIcon,
   GetProps,
+  SizableText,
   TextContextStyles,
   View,
   createStyledContext,
@@ -86,7 +87,7 @@ const ButtonFrame = styled(View, {
   },
 })
 
-const BaseButtonText = styled(Text, {
+const BaseButtonText = styled(SizableText, {
   name: 'ButtonText',
   tag: 'span',
   userSelect: 'none',

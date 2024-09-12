@@ -2,7 +2,7 @@ import AsyncStorage from '@react-native-async-storage/async-storage'
 import { create } from 'zustand'
 import { createJSONStorage, persist } from 'zustand/middleware'
 
-import { TUser } from '../types'
+import { TUser } from '@practice-three/shared/types'
 
 interface AuthState {
   isHydrated: boolean
@@ -34,8 +34,8 @@ export const useAuthStore = create<AuthState & AuthActions>()(
     {
       name: 'user.storage',
       storage: createJSONStorage(() => AsyncStorage),
-      onRehydrateStorage: () => (state: (AuthState & AuthActions) | undefined) => {
-        state?.setIsHydrated(true)
+      onRehydrateStorage: (state: AuthState & AuthActions) => () => {
+        state.setIsHydrated(true)
       },
     }
   )
