@@ -1,6 +1,6 @@
 import { Fragment, useMemo, useState } from 'react'
 import { QueryClient, useSuspenseQuery } from '@tanstack/react-query'
-import { LoaderFunctionArgs, redirect, useLoaderData } from 'react-router-dom'
+import { LoaderFunctionArgs, useLoaderData, useNavigate } from 'react-router-dom'
 import { H2, H4, ScrollView, Stack, styled, XStack, YStack } from 'tamagui'
 import { useToastController } from '@tamagui/toast'
 
@@ -51,6 +51,7 @@ const Text = styled(BaseText, {
 })
 
 const ProductDetail = () => {
+  const navigate = useNavigate()
   const { id: productId, userId } = useLoaderData() as TResolveLoaderReturn<typeof productLoader>
   const { data: product } = useSuspenseQuery(findProductQuery('/products', productId || ''))
   const { data: similarProducts } = useSuspenseQuery(getProductsQuery('/products'))
@@ -227,9 +228,7 @@ const ProductDetail = () => {
       />
     )
   }, [ProductDetailContent, RatingAndReviewContent, SpecificationContent])
-  const handlePressProductCard = (id: string) => {
-    redirect(`/product/${id}`)
-  }
+  const handlePressProductCard = (id: string) => navigate(`/product/${id}`)
   const renderSimilarProducts = useMemo(() => {
     if (!similarProducts.length)
       return (

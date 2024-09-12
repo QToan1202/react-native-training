@@ -1,10 +1,9 @@
 import { useId, useMemo, useState } from 'react'
 import { AnimatePresence, H2, XStack, YStack } from 'tamagui'
-import { NativeStackScreenProps } from '@react-navigation/native-stack'
-import { LoaderFunctionArgs, redirect, useLoaderData } from 'react-router-dom'
+import { LoaderFunctionArgs, useLoaderData, useNavigate } from 'react-router-dom'
 import type { QueryClient } from '@tanstack/react-query'
 
-import { ProductStack, TProduct } from '@practice-three/shared/types'
+import { TProduct } from '@practice-three/shared/types'
 import { Button, Text } from '@practice-three/shared/ui'
 import { TResolveLoaderReturn } from '@practice-three/shared/util'
 
@@ -12,8 +11,6 @@ import { Filter, ProductCard, ProductCardSkeleton } from '../../components'
 import { useGetProducts, getProductsQuery } from '../../hooks'
 import { DownArrow, Filter as FilterIcon } from '../../assets/images'
 import { SortModal } from '../../components/SortModal'
-
-export type SearchProps = Partial<NativeStackScreenProps<ProductStack, 'Search'>>
 
 export const searchLoader =
   (queryClient: QueryClient) =>
@@ -25,12 +22,12 @@ export const searchLoader =
     return { path }
   }
 
-const Search = (props: SearchProps) => {
+const Search = () => {
+  const navigate = useNavigate()
   const { path } = useLoaderData() as TResolveLoaderReturn<typeof searchLoader>
   const { data, isPending, isSuccess } = useGetProducts(path)
-  const handlePressProductCard = (id: string) => {
-    redirect(`/product/${id}`)
-  }
+  const handlePressProductCard = (id: string) => navigate(`/product/${id}`)
+
   const renderProduct = useMemo(() => {
     if (isPending) return [...Array(4).keys()].map((item) => <ProductCardSkeleton key={item} />)
     if (!isSuccess) return
