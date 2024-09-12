@@ -10,7 +10,7 @@ import { ENDPOINTS } from '@practice-three/shared/constant'
 
 import { Apple, Facebook, Google, Lock, Logo, User } from '../../assets/images'
 import { useLogin } from '../../hooks'
-import { LOGIN_FORM, LOGIN_FORM_DEFAULT_VALUES } from '../../constants'
+import { LOGIN_FORM, LOGIN_FORM_DEFAULT_VALUES, ROUTER_PATHS } from '../../constants'
 
 const Login = () => {
   const navigate = useNavigate()
@@ -42,7 +42,7 @@ const Login = () => {
       },
     })
   }
-  const handleMoveToRegister = () => navigate('/register')
+  const handleMoveToRegister = () => navigate(ROUTER_PATHS.REGISTER)
 
   return (
     <YStack

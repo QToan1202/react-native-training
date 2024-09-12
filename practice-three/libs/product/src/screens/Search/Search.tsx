@@ -11,6 +11,7 @@ import { ENDPOINTS } from '@practice-three/shared/constant'
 import { Filter, ProductCard, ProductCardSkeleton, SortModal } from '../../components'
 import { useGetProducts, getProductsQuery } from '../../hooks'
 import { DownArrow, Filter as FilterIcon } from '../../assets/images'
+import { ROUTER_PATHS } from '../../constants'
 
 export const searchLoader =
   (queryClient: QueryClient) =>
@@ -26,7 +27,7 @@ const Search = () => {
   const navigate = useNavigate()
   const { path } = useLoaderData() as TResolveLoaderReturn<typeof searchLoader>
   const { data, isPending, isSuccess } = useGetProducts(path)
-  const handlePressProductCard = (id: string) => navigate(`/product/${id}`)
+  const handlePressProductCard = (id: string) => navigate(ROUTER_PATHS.PRODUCT_DETAIL.DYNAMIC(id))
 
   const renderProduct = useMemo(() => {
     if (isPending) return [...Array(4).keys()].map((item) => <ProductCardSkeleton key={item} />)

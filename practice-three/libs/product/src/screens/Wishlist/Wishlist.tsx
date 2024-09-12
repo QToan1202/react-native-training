@@ -12,6 +12,7 @@ import { ENDPOINTS } from '@practice-three/shared/constant'
 
 import { getWishlistQuery } from '../../hooks'
 import { ProductCard, ProductCardSkeleton } from '../../components'
+import { ROUTER_PATHS } from '../../constants'
 
 type WishlistScreenProps = Partial<NativeStackScreenProps<ProductStack, 'Wishlist'>>
 
@@ -38,11 +39,11 @@ const Wishlist = (props: WishlistScreenProps) => {
     isSuccess,
   } = useQuery(getWishlistQuery(ENDPOINTS.WISHLIST, userId || '', true))
   const handlePressProductCard = useCallback((id: string) => {
-    navigate(`/product/${id}`)
+    navigate(ROUTER_PATHS.PRODUCT_DETAIL.DYNAMIC(id))
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
   const handlePressLink = useCallback(
-    () => navigate('/search'),
+    () => navigate(ROUTER_PATHS.SEARCH),
     // eslint-disable-next-line react-hooks/exhaustive-deps
     []
   )

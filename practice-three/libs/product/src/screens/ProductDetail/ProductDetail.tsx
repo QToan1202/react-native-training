@@ -29,7 +29,7 @@ import {
 } from '../../hooks'
 import { Heart, HeartFill, placeholderImagePath, Star } from '../../assets/images'
 import { Comment, createTab, ProductCard, Tabs } from '../../components'
-import { PRODUCT_SPECIFICATIONS_LABELS } from '../../constants'
+import { PRODUCT_SPECIFICATIONS_LABELS, ROUTER_PATHS } from '../../constants'
 import { renderSpecificationItem } from '../../utils'
 
 // Called by router so don't useHook here
@@ -231,7 +231,7 @@ const ProductDetail = () => {
       />
     )
   }, [ProductDetailContent, RatingAndReviewContent, SpecificationContent])
-  const handlePressProductCard = (id: string) => navigate(`/product/${id}`)
+  const handlePressProductCard = (id: string) => navigate(ROUTER_PATHS.PRODUCT_DETAIL.DYNAMIC(id))
   const renderSimilarProducts = useMemo(() => {
     if (!similarProducts.length)
       return (

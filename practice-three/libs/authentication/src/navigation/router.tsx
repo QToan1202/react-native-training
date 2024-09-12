@@ -7,26 +7,27 @@ import {
   ResetPasswordScreen,
   VerificationScreen,
 } from '../screens'
+import { ROUTER_PATHS } from '../constants'
 
 const authRouter: RouteObject[] = [
   {
-    path: '/login',
+    path: ROUTER_PATHS.LOGIN,
     element: <LoginScreen />,
   },
   {
-    path: '/register',
+    path: ROUTER_PATHS.REGISTER,
     element: <RegisterScreen />,
   },
   {
-    path: '/verification',
+    path: ROUTER_PATHS.VERIFICATION,
     element: <VerificationScreen />,
   },
   {
-    path: '/forgot-password',
+    path: ROUTER_PATHS.FORGOT_PASS,
     element: <ForgotPasswordScreen />,
   },
   {
-    path: '/reset-password',
+    path: ROUTER_PATHS.RESET_PASS,
     element: <ResetPasswordScreen />,
   },
 ]

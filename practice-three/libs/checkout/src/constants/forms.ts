@@ -1,56 +1,13 @@
-import { ReactNode } from 'react'
 import dayjs from 'dayjs'
 import customParseFormat from 'dayjs/plugin/customParseFormat'
 
 import { TTransformFields } from '@practice-three/shared/util'
 
-import { Bank, Cash, GooglePay, Paypal } from '../assets/images'
 import { TAddressForm, TCardForm } from '../types'
 import { checkCreditCardNumber } from '../utils'
+import { REGEX } from './regex'
 
 dayjs.extend(customParseFormat)
-
-export const STEPPER_LABELS = ['Cart', 'Address', 'Payment', 'Summary']
-
-export const STALE_TIMES = {
-  ADDRESS: 24 * 60 * 60 * 1000, // 1 day
-  CARD: 24 * 60 * 60 * 1000, // 1 day
-  PRODUCT_INFO: 24 * 60 * 60 * 1000, // 1 day
-  ORDER: 30 * 60 * 1000, // 30 mins
-  CART: 3 * 60 * 1000, // 3 mins
-}
-
-export const FEES = {
-  SHIP: 40,
-  IMPORT: 128,
-}
-
-export const EXPECTED_DELIVERY_TIME = 3
-
-export const REGEX = {
-  CARD_NUMBER: {
-    INPUT: /(\d{4})(?=\d)/g,
-    OUTPUT: /\s/g,
-  },
-  EXPIRED: {
-    INPUT: /(\d{2})(\d{2})/,
-    OUTPUT: /\//g,
-  },
-}
-
-export const COUNTRIES = [
-  'United States',
-  'Canada',
-  'United Kingdom',
-  'Australia',
-  'Germany',
-  'France',
-  'Japan',
-  'China',
-  'India',
-  'Brazil',
-]
-
 type TAddressFields = TTransformFields<TAddressForm>
 export const ADDRESS_FORM: TAddressFields = {
   COUNTRY: {
@@ -186,33 +143,6 @@ export const DEFAULT_ADDRESS_VALUES: TAddressForm = {
   zipCode: '',
   phone: '',
 }
-
-export type TPaymentMethod = {
-  icon: ReactNode
-  label: string
-}
-export const PAYMENT_METHODS: TPaymentMethod[] = [
-  // {
-  //   icon: <Debit />,
-  //   label: 'Debit or Credit Card',
-  // },
-  {
-    icon: <Paypal />,
-    label: 'Paypal',
-  },
-  {
-    icon: <Bank />,
-    label: 'Bank Transfer',
-  },
-  {
-    icon: <Cash />,
-    label: 'Cash on Delivery',
-  },
-  {
-    icon: <GooglePay />,
-    label: 'Google Pay',
-  },
-]
 
 type TCardFields = TTransformFields<TCardForm, { placeholder?: string }>
 export const CARD_FORM: TCardFields = {

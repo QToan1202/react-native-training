@@ -10,7 +10,7 @@ import { ENDPOINTS } from '@practice-three/shared/constant'
 
 import { Apple, Facebook, Google, Logo } from '../../assets/images'
 import { useRegister } from '../../hooks'
-import { REGISTER_FORM, REGISTER_FORM_DEFAULT_VALUES } from '../../constants'
+import { REGISTER_FORM, REGISTER_FORM_DEFAULT_VALUES, ROUTER_PATHS } from '../../constants'
 
 const Register = () => {
   const navigate = useNavigate()
@@ -40,7 +40,7 @@ const Register = () => {
       },
     })
   }
-  const handleMoveToLogin = () => navigate('/login')
+  const handleMoveToLogin = () => navigate(ROUTER_PATHS.LOGIN)
   const errorMessagesId = useId()
 
   return (
