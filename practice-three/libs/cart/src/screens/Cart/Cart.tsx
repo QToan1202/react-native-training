@@ -23,7 +23,7 @@ const Cart = ({ navigation }: CartScreenProps) => {
 
   return (
     <CartContext.Provider value={cartStore}>
-      <YStack gap={16}>
+      <YStack gap={16} paddingTop={55} paddingHorizontal={35} backgroundColor="$pure_white">
         <Heading
           color="$primary"
           textTransform="capitalize"

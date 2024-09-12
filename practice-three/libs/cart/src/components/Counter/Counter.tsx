@@ -24,7 +24,8 @@ export type CounterProps = Omit<BaseInputProps, 'defaultValue'> & {
 const IconButton = styled(BaseIconButton, {
   borderWidth: 1,
   borderColor: '$pale',
-  padding: 12,
+  padding: 0,
+  paddingHorizontal: 12,
   backgroundColor: '$pure_white',
   variants: {
     border: {
@@ -113,13 +114,14 @@ const Counter = ({
   }
 
   return (
-    <XStack display="inline-flex" borderRadius={7} backgroundColor="$pale" {...containerStyle}>
+    <XStack alignSelf="baseline" borderRadius={7} backgroundColor="$pale" {...containerStyle}>
       <IconButton border="left" onPress={handleMinus}>
         <Minus />
       </IconButton>
       <BaseInput
-        maxWidth={40}
-        paddingHorizontal={0}
+        width={40}
+        height={24}
+        padding={0}
         textAlign="center"
         inputMode="numeric"
         keyboardType="number-pad"
