@@ -12,7 +12,6 @@ import {
   RadioItem,
   Rating,
   Text as BaseText,
-  Toast,
   Image,
 } from '@practice-three/shared/ui'
 import { TOffer, TProduct, TReview, TUser, TWishlistBase } from '@practice-three/shared/types'
@@ -369,7 +368,6 @@ const ProductDetail = () => {
           <XStack gap={40}>{renderSimilarProducts}</XStack>
         </ScrollView>
       </YStack>
-      <Toast />
     </YStack>
   )
 }

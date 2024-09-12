@@ -4,7 +4,7 @@ import { useId, useMemo } from 'react'
 import { useToastController } from '@tamagui/toast'
 import { useQueryClient } from '@tanstack/react-query'
 
-import { Button, Form, Input, Select, SelectItem, Text, Toast } from '@practice-three/shared/ui'
+import { Button, Form, Input, Select, SelectItem, Text } from '@practice-three/shared/ui'
 import { useAuthStore } from '@practice-three/shared/context'
 
 import { TAddressForm } from '../../types'
@@ -184,7 +184,6 @@ const AddressForm = ({ id }: AddressFormProps) => {
           />
         </Form.Trigger>
       </XStack>
-      <Toast />
     </Form>
   )
 }

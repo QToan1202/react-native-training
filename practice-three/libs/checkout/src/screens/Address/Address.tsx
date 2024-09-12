@@ -2,7 +2,7 @@ import { useState } from 'react'
 import { ScrollView, YStack } from 'tamagui'
 import { useToastController } from '@tamagui/toast'
 
-import { AlertDialog, Button, Toast } from '@practice-three/shared/ui'
+import { AlertDialog, Button } from '@practice-three/shared/ui'
 import { OrderTabScreenProps } from '@practice-three/shared/types'
 import { useAuthStore } from '@practice-three/shared/context'
 
@@ -87,7 +87,6 @@ const Address = ({ navigation }: AddressScreenProps) => {
         onCancel={handleCancelAlert}
         onSuccess={handleSuccessAlert}
       />
-      <Toast />
     </YStack>
   )
 }

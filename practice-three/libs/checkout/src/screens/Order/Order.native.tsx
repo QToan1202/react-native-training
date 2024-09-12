@@ -4,7 +4,7 @@ import dayjs from 'dayjs'
 import { useQuery } from '@tanstack/react-query'
 import { useToastController } from '@tamagui/toast'
 
-import { Button, Heading, IconButton, Skeleton, Text, Toast } from '@practice-three/shared/ui'
+import { Button, Heading, IconButton, Skeleton, Text } from '@practice-three/shared/ui'
 import { OrderTabScreenProps } from '@practice-three/shared/types'
 
 import { Header, OrderItem, OrderItemSkeleton, Step, StepLabel, Stepper } from '../../components'
@@ -186,7 +186,6 @@ const Order = ({ navigation }: OrderScreenProps) => {
           onPress={handleCheckoutOrder}
         />
       </XStack>
-      <Toast />
     </YStack>
   )
 }
