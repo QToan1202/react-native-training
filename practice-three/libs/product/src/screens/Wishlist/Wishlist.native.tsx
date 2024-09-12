@@ -5,6 +5,7 @@ import { useQuery } from '@tanstack/react-query'
 import { TUser, TWishlistExpand, WishlistTabScreenProps } from '@practice-three/shared/types'
 import { useAuthStore } from '@practice-three/shared/context'
 import { Button, Text } from '@practice-three/shared/ui'
+import { ENDPOINTS } from '@practice-three/shared/constant'
 
 import { getWishlistQuery } from '../../hooks'
 import { WishlistItem, WishlistItemSkeleton } from '../../components'
@@ -17,7 +18,7 @@ const Wishlist = ({ navigation }: WishlistScreenProps) => {
     data: wishlists,
     isPending,
     isSuccess,
-  } = useQuery(getWishlistQuery('/wishlists', user?.id || '', true))
+  } = useQuery(getWishlistQuery(ENDPOINTS.WISHLIST, user?.id || '', true))
   const handlePressProductCard = useCallback((id: string) => {
     navigation.navigate('ProductDetail', { id })
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -51,10 +52,18 @@ const Wishlist = ({ navigation }: WishlistScreenProps) => {
           rating,
           discountPercent,
           id,
+          images,
           ...rest
         },
       }: TWishlistExpand) => (
-        <WishlistItem key={id} id={id} {...rest} onPressItem={handlePressProductCard} flex={1} />
+        <WishlistItem
+          key={id}
+          id={id}
+          image={images[0]}
+          {...rest}
+          onPressItem={handlePressProductCard}
+          flex={1}
+        />
       )
     )
   }, [isPending, isSuccess, wishlists, handlePressLink, handlePressProductCard])

@@ -8,6 +8,7 @@ import {
 import { add } from '@practice-three/shared/service'
 import { TWishlistBase } from '@practice-three/shared/types'
 import { useAuthStore } from '@practice-three/shared/context'
+import { ENDPOINTS } from '@practice-three/shared/constant'
 
 import getWishlistQuery from '../getWishlistQuery'
 
@@ -20,7 +21,7 @@ const useAddToWishlist = (
 ): UseMutationResult<TWishlistBase, Error, TMutationDFn, unknown> => {
   const queryClient = useQueryClient()
   const user = useAuthStore((state) => state.user)
-  const { data: wishlists } = useSuspenseQuery(getWishlistQuery('/wishlists', user?.id || ''))
+  const { data: wishlists } = useSuspenseQuery(getWishlistQuery(ENDPOINTS.WISHLIST, user?.id || ''))
 
   return useMutation<TWishlistBase, Error, TMutationDFn, unknown>({
     mutationFn: (data: TMutationDFn): Promise<TWishlistBase> => {

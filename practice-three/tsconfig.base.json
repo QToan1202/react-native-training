@@ -23,6 +23,7 @@
       "@practice-three/shared/asset": ["libs/shared/asset/src/index.ts"],
       "@practice-three/shared/config": ["libs/shared/config/src/index.ts"],
       "@practice-three/shared/context": ["libs/shared/context/src/index.ts"],
+      "@practice-three/shared/constant": ["libs/shared/constant/src/index.ts"],
       "@practice-three/shared/query": ["libs/shared/query/src/index.ts"],
       "@practice-three/shared/service": ["libs/shared/service/src/index.ts"],
       "@practice-three/shared/types": ["libs/shared/types/src/index.ts"],

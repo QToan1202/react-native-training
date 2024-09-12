@@ -6,17 +6,17 @@ import type { QueryClient } from '@tanstack/react-query'
 import { TProduct } from '@practice-three/shared/types'
 import { Button, Text } from '@practice-three/shared/ui'
 import { TResolveLoaderReturn } from '@practice-three/shared/util'
+import { ENDPOINTS } from '@practice-three/shared/constant'
 
-import { Filter, ProductCard, ProductCardSkeleton } from '../../components'
+import { Filter, ProductCard, ProductCardSkeleton, SortModal } from '../../components'
 import { useGetProducts, getProductsQuery } from '../../hooks'
 import { DownArrow, Filter as FilterIcon } from '../../assets/images'
-import { SortModal } from '../../components/SortModal'
 
 export const searchLoader =
   (queryClient: QueryClient) =>
   async ({ request }: LoaderFunctionArgs) => {
     const searchQuery = new URL(request.url).search
-    const path = `/products${searchQuery}`
+    const path = `/${ENDPOINTS.PRODUCT}${searchQuery}`
     await queryClient.ensureQueryData(getProductsQuery(path))
 
     return { path }

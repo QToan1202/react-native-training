@@ -6,6 +6,7 @@ import { useNavigate } from 'react-router-dom'
 
 import { Button, Checkbox, Form, Input, Text } from '@practice-three/shared/ui'
 import { TLoginForm, TUser } from '@practice-three/shared/types'
+import { ENDPOINTS } from '@practice-three/shared/constant'
 
 import { Apple, Facebook, Google, Lock, Logo, User } from '../../assets/images'
 import { useLogin } from '../../hooks'
@@ -14,7 +15,7 @@ import { LOGIN_FORM, LOGIN_FORM_DEFAULT_VALUES } from '../../constants'
 const Login = () => {
   const navigate = useNavigate()
   const toast = useToastController()
-  const { mutate: mutateLogin, isPending: isLoginUser } = useLogin('/users')
+  const { mutate: mutateLogin, isPending: isLoginUser } = useLogin(ENDPOINTS.USER)
   const {
     control,
     handleSubmit,

@@ -6,6 +6,7 @@ import { useToastController } from '@tamagui/toast'
 import { useNavigation } from '@react-navigation/native'
 
 import { useAuthStore } from '@practice-three/shared/context'
+import { ENDPOINTS } from '@practice-three/shared/constant'
 
 import { getProductsQuery, useAddToCart, useAddToWishlist } from '../../../hooks'
 import { ProductShowcase, ProductShowcaseSkeleton } from '../../ProductShowcase'
@@ -13,10 +14,12 @@ import { ProductShowcase, ProductShowcaseSkeleton } from '../../ProductShowcase'
 const Product = () => {
   const navigation = useNavigation()
   const user = useAuthStore((state) => state.user)
-  const { data: products, isPending: isGettingProduct } = useQuery(getProductsQuery('/products'))
+  const { data: products, isPending: isGettingProduct } = useQuery(
+    getProductsQuery(ENDPOINTS.PRODUCT)
+  )
   const toast = useToastController()
   const { mutate: addToCart, isPending: isAddingProductToCart } = useAddToCart(
-    '/carts',
+    ENDPOINTS.CART,
     user?.id || ''
   )
   const handleOnAddProduct = (size: string, color: string) => (id: string) => {
@@ -37,7 +40,7 @@ const Product = () => {
     )
   }
   const { mutate: addToWishlist, isPending: isAddingProductToWishlist } = useAddToWishlist(
-    '/wishlists',
+    ENDPOINTS.WISHLIST,
     user?.id || ''
   )
   const handleAddProductToWishlist = (id: string) => {

@@ -5,6 +5,7 @@ import { useToastController } from '@tamagui/toast'
 
 import { Button, Form, Input, Text } from '@practice-three/shared/ui'
 import { AuthStackScreenProps, TRegisterForm } from '@practice-three/shared/types'
+import { ENDPOINTS } from '@practice-three/shared/constant'
 
 import { Apple, Facebook, Google, Logo } from '../../assets/images'
 import { useRegister } from '../../hooks'
@@ -14,7 +15,7 @@ type RegisterScreenProps = AuthStackScreenProps<'Register'>
 
 const Register = ({ navigation }: RegisterScreenProps) => {
   const toast = useToastController()
-  const { mutate: mutateRegister, isPending: isRegistering } = useRegister('/users')
+  const { mutate: mutateRegister, isPending: isRegistering } = useRegister(ENDPOINTS.USER)
   const {
     control,
     watch,

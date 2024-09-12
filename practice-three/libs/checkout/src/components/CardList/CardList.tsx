@@ -4,6 +4,7 @@ import { useQuery } from '@tanstack/react-query'
 
 import { useAuthStore } from '@practice-three/shared/context'
 import { Skeleton } from '@practice-three/shared/ui'
+import { ENDPOINTS } from '@practice-three/shared/constant'
 
 import { getCardsQuery } from '../../hooks'
 import { Debit, MasterCard, Visa } from '../../assets/images'
@@ -17,7 +18,7 @@ const CardList = () => {
     data: cards,
     isPending: isGetCard,
     error: errorWhenGetCards,
-  } = useQuery(getCardsQuery('/cards', user?.id || 'd3d1'))
+  } = useQuery(getCardsQuery(ENDPOINTS.CARD, user?.id || ''))
 
   if (isGetCard)
     return [...Array(3).keys()].map((item) => (

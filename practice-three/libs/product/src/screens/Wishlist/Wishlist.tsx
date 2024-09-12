@@ -8,6 +8,7 @@ import { ProductStack, TUser, TWishlistExpand } from '@practice-three/shared/typ
 import { useAuthStore } from '@practice-three/shared/context'
 import { TResolveLoaderReturn } from '@practice-three/shared/util'
 import { Button, Text } from '@practice-three/shared/ui'
+import { ENDPOINTS } from '@practice-three/shared/constant'
 
 import { getWishlistQuery } from '../../hooks'
 import { ProductCard, ProductCardSkeleton } from '../../components'
@@ -23,7 +24,7 @@ const Heading = styled(H2, {
 
 export const wishlistLoader = (queryClient: QueryClient) => async () => {
   const user: TUser | undefined = useAuthStore.getState().user
-  queryClient.ensureQueryData(getWishlistQuery('/wishlists', user?.id || '', true))
+  queryClient.ensureQueryData(getWishlistQuery(ENDPOINTS.WISHLIST, user?.id || '', true))
 
   return { userId: user?.id }
 }
@@ -35,7 +36,7 @@ const Wishlist = (props: WishlistScreenProps) => {
     data: wishlists,
     isPending,
     isSuccess,
-  } = useQuery(getWishlistQuery('/wishlists', userId || '', true))
+  } = useQuery(getWishlistQuery(ENDPOINTS.WISHLIST, userId || '', true))
   const handlePressProductCard = useCallback((id: string) => {
     navigate(`/product/${id}`)
     // eslint-disable-next-line react-hooks/exhaustive-deps

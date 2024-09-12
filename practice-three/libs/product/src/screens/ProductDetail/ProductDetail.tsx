@@ -17,6 +17,7 @@ import {
 import { TOffer, TProduct, TReview, TUser, TWishlistBase } from '@practice-three/shared/types'
 import { useAuthStore } from '@practice-three/shared/context'
 import { getOffersQuery } from '@practice-three/shared/query'
+import { ENDPOINTS } from '@practice-three/shared/constant'
 
 import {
   findProductQuery,
@@ -37,10 +38,10 @@ export const productLoader =
   async ({ params }: LoaderFunctionArgs) => {
     const { id } = params
     const user: TUser | undefined = useAuthStore.getState().user
-    await queryClient.ensureQueryData(findProductQuery('/products', id || ''))
-    queryClient.ensureQueryData(getProductsQuery('/products'))
-    queryClient.ensureQueryData(getWishlistQuery('/wishlists', user?.id || ''))
-    queryClient.ensureQueryData(getOffersQuery('/offers'))
+    await queryClient.ensureQueryData(findProductQuery(ENDPOINTS.PRODUCT, id || ''))
+    queryClient.ensureQueryData(getProductsQuery(ENDPOINTS.PRODUCT))
+    queryClient.ensureQueryData(getWishlistQuery(ENDPOINTS.WISHLIST, user?.id || ''))
+    queryClient.ensureQueryData(getOffersQuery(ENDPOINTS.OFFER))
 
     return { id, userId: user?.id }
   }
@@ -52,10 +53,10 @@ const Text = styled(BaseText, {
 const ProductDetail = () => {
   const navigate = useNavigate()
   const { id: productId, userId } = useLoaderData() as TResolveLoaderReturn<typeof productLoader>
-  const { data: product } = useSuspenseQuery(findProductQuery('/products', productId || ''))
-  const { data: similarProducts } = useSuspenseQuery(getProductsQuery('/products'))
-  const { data: wishlists } = useSuspenseQuery(getWishlistQuery('/wishlists', userId || ''))
-  const { data: offers } = useSuspenseQuery(getOffersQuery('/offers'))
+  const { data: product } = useSuspenseQuery(findProductQuery(ENDPOINTS.PRODUCT, productId || ''))
+  const { data: similarProducts } = useSuspenseQuery(getProductsQuery(ENDPOINTS.PRODUCT))
+  const { data: wishlists } = useSuspenseQuery(getWishlistQuery(ENDPOINTS.WISHLIST, userId || ''))
+  const { data: offers } = useSuspenseQuery(getOffersQuery(ENDPOINTS.OFFER))
   const [isProductInWishlist, wishlistItem] = useMemo(() => {
     const item = wishlists.find((item: TWishlistBase) => item.productId === productId)
     return [!!item, item]
@@ -77,9 +78,12 @@ const ProductDetail = () => {
   )
   const [selectedSize, setSelectedSize] = useState<string | null>(null)
   const toast = useToastController()
-  const { mutate: addToWishlist } = useAddToWishlist('/wishlists', userId || '')
-  const { mutate: deleteFromWishlist } = useDeleteFromWishlist('/wishlists', userId || '')
-  const { mutate: addToCart, isPending: isAddingToCart } = useAddToCart('/carts', userId || '')
+  const { mutate: addToWishlist } = useAddToWishlist(ENDPOINTS.WISHLIST, userId || '')
+  const { mutate: deleteFromWishlist } = useDeleteFromWishlist(ENDPOINTS.WISHLIST, userId || '')
+  const { mutate: addToCart, isPending: isAddingToCart } = useAddToCart(
+    ENDPOINTS.CART,
+    userId || ''
+  )
   const handleAddToCart = () => {
     addToCart(
       { id: product.id, size: selectedSize, color: null },

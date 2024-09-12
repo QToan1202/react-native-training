@@ -27,6 +27,7 @@ import {
   TWishlistBase,
 } from '@practice-three/shared/types'
 import { useAuthStore } from '@practice-three/shared/context'
+import { ENDPOINTS } from '@practice-three/shared/constant'
 
 import {
   findProductQuery,
@@ -50,13 +51,13 @@ const ProductDetail = ({ navigation, route }: ProductDetailScreenProps) => {
     data: product,
     isPending: isGetProductDetail,
     error: errorWhenGetProduct,
-  } = useQuery(findProductQuery('/products', productId))
+  } = useQuery(findProductQuery(ENDPOINTS.PRODUCT, productId))
   const { data: similarProducts, isSuccess: isGetProductsSuccess } = useQuery(
-    getProductsQuery('/products')
+    getProductsQuery(ENDPOINTS.PRODUCT)
   )
-  const { data: offers, isSuccess: isGetOfferSuccess } = useQuery(getOffersQuery('/offers'))
+  const { data: offers, isSuccess: isGetOfferSuccess } = useQuery(getOffersQuery(ENDPOINTS.OFFER))
   const { data: wishlists, isSuccess: isGetWishlistSuccess } = useQuery(
-    getWishlistQuery('/wishlists', user?.id || '')
+    getWishlistQuery(ENDPOINTS.WISHLIST, user?.id || '')
   )
   const [isProductInWishlist, wishlistItem] = useMemo(() => {
     if (!isGetWishlistSuccess) return []
@@ -64,8 +65,8 @@ const ProductDetail = ({ navigation, route }: ProductDetailScreenProps) => {
     const item = wishlists.find((item: TWishlistBase) => item.productId === productId)
     return [!!item, item]
   }, [isGetWishlistSuccess, productId, wishlists])
-  const { mutate: addToWishlist } = useAddToWishlist('/wishlists', user?.id || '')
-  const { mutate: deleteFromWishlist } = useDeleteFromWishlist('/wishlists', user?.id || '')
+  const { mutate: addToWishlist } = useAddToWishlist(ENDPOINTS.WISHLIST, user?.id || '')
+  const { mutate: deleteFromWishlist } = useDeleteFromWishlist(ENDPOINTS.WISHLIST, user?.id || '')
   const toast = useToastController()
   const { control } = useForm<{
     pinCode: string
@@ -124,7 +125,7 @@ const ProductDetail = ({ navigation, route }: ProductDetailScreenProps) => {
     ),
     [renderSimilarProducts]
   )
-  const { mutate: addToCart } = useAddToCart('/carts', user?.id || '')
+  const { mutate: addToCart } = useAddToCart(ENDPOINTS.CART, user?.id || '')
   const [selectedSize, setSelectedSize] = useState<string | null>(null)
   const handleAddToCart = () => {
     addToCart(

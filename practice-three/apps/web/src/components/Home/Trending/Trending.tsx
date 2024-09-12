@@ -1,17 +1,19 @@
 import { useQuery } from '@tanstack/react-query'
 import { useToastController } from '@tamagui/toast'
+import { useNavigate } from 'react-router-dom'
+
+import { TProduct } from '@practice-three/shared/types'
+import { ENDPOINTS } from '@practice-three/shared/constant'
 
 import { getProductsQuery } from '../../../hooks'
 import { ProductCard, ProductCardSkeleton } from '../../ProductCard'
-import { TProduct } from '@practice-three/shared/types'
-import { useNavigate } from 'react-router-dom'
 
 const Trending = () => {
   const {
     data: products,
     isPending,
     error,
-  } = useQuery(getProductsQuery('products', { params: { _page: 1, _limit: 5 } }))
+  } = useQuery(getProductsQuery(ENDPOINTS.PRODUCT, { params: { _page: 1, _limit: 5 } }))
   const toast = useToastController()
   const navigate = useNavigate()
 

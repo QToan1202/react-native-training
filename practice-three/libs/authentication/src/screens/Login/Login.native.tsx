@@ -5,6 +5,7 @@ import { useToastController } from '@tamagui/toast'
 
 import { Button, Checkbox, Form, Input, Text } from '@practice-three/shared/ui'
 import { AuthStackScreenProps, TLoginForm, TUser } from '@practice-three/shared/types'
+import { ENDPOINTS } from '@practice-three/shared/constant'
 
 import { Apple, Facebook, Google, Lock, Logo, User } from '../../assets/images'
 import { useLogin } from '../../hooks'
@@ -14,7 +15,7 @@ type LoginScreenProps = AuthStackScreenProps<'Login'>
 
 const Login = ({ navigation }: LoginScreenProps) => {
   const toast = useToastController()
-  const { mutate: mutateLogin, isPending: isLoginUser } = useLogin('/users')
+  const { mutate: mutateLogin, isPending: isLoginUser } = useLogin(ENDPOINTS.USER)
   const {
     control,
     handleSubmit,

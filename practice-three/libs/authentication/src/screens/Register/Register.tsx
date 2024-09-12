@@ -6,6 +6,7 @@ import { useNavigate } from 'react-router-dom'
 
 import { Button, Form, Input, Text } from '@practice-three/shared/ui'
 import { TRegisterForm } from '@practice-three/shared/types'
+import { ENDPOINTS } from '@practice-three/shared/constant'
 
 import { Apple, Facebook, Google, Logo } from '../../assets/images'
 import { useRegister } from '../../hooks'
@@ -14,7 +15,7 @@ import { REGISTER_FORM, REGISTER_FORM_DEFAULT_VALUES } from '../../constants'
 const Register = () => {
   const navigate = useNavigate()
   const toast = useToastController()
-  const { mutate: mutateRegister, isPending: isRegistering } = useRegister('/users')
+  const { mutate: mutateRegister, isPending: isRegistering } = useRegister(ENDPOINTS.USER)
   const {
     control,
     watch,

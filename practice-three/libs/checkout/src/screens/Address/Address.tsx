@@ -5,6 +5,7 @@ import { useToastController } from '@tamagui/toast'
 import { AlertDialog, Button } from '@practice-three/shared/ui'
 import { OrderTabScreenProps } from '@practice-three/shared/types'
 import { useAuthStore } from '@practice-three/shared/context'
+import { ENDPOINTS } from '@practice-three/shared/constant'
 
 import { Header, Step, StepLabel, Stepper } from '../../components'
 import { STEPPER_LABELS } from '../../constants'
@@ -22,7 +23,7 @@ const Address = ({ navigation }: AddressScreenProps) => {
   const user = useAuthStore((state) => state.user)
   const toast = useToastController()
   const { mutate: deleteAddress, isPending: isDeletingAddress } = useDeleteAddress(
-    '/addresses',
+    ENDPOINTS.ADDRESS,
     user?.id || ''
   )
   const [isOpen, setIsOpen] = useState<boolean>(false)
