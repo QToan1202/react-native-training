@@ -16,9 +16,7 @@ const config: StorybookConfig = {
     mergeConfig(config, {
       plugins: [
         nxViteTsPaths(),
-        svgr({
-          include: '**/*.svg?react',
-        }),
+        svgr(),
         tamaguiPlugin({
           components: ['tamagui'],
           config: '../src/tamagui.config.ts',

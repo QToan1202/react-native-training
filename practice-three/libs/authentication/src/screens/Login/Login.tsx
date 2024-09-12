@@ -72,7 +72,7 @@ const Login = () => {
           rules={LOGIN_FORM.ACCOUNT.rules}
           render={({ field: { value, onChange, onBlur } }) => (
             <Input
-              startIcon={(color) => <User stroke={color} />}
+              startIcon={(color) => <User fill={color} />}
               placeholder={LOGIN_FORM.ACCOUNT.placeholder}
               isError={!!errors.account}
               disabled={isLoginUser}
@@ -89,7 +89,7 @@ const Login = () => {
           rules={LOGIN_FORM.PASSWORD.rules}
           render={({ field: { value, onChange, onBlur } }) => (
             <Input
-              startIcon={(color) => <Lock stroke={color} />}
+              startIcon={(color) => <Lock fill={color} />}
               placeholder={LOGIN_FORM.PASSWORD.placeholder}
               secureTextEntry
               isError={!!errors.password}

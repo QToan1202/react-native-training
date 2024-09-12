@@ -29,7 +29,9 @@ const Input = ({
       if (typeof iconProp === 'function') {
         return (
           <Square cursor="pointer" {...iconContainerStyle} scale={iconScaling}>
-            {isError ? iconProp(getTokenValue('$color.red_50')) : iconProp('none')}
+            {isError
+              ? iconProp(getTokenValue('$color.red_50'))
+              : iconProp(getTokenValue('$color.gray_100'))}
           </Square>
         )
       }

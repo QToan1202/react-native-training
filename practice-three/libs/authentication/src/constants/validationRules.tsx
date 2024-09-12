@@ -87,7 +87,7 @@ export const REGISTER_FORM: TRegisterFormFields = {
       required: true,
       maxLength: 40,
     },
-    startIcon: (color) => <User stroke={color} />,
+    startIcon: (color) => <User fill={color} />,
   },
   ACCOUNT: {
     label: 'account',
@@ -114,7 +114,7 @@ export const REGISTER_FORM: TRegisterFormFields = {
         }
       },
     },
-    startIcon: (color) => <Mail stroke={color} />,
+    startIcon: (color) => <Mail fill={color} />,
   },
   PASSWORD: {
     label: 'password',
@@ -130,7 +130,7 @@ export const REGISTER_FORM: TRegisterFormFields = {
         message: 'Password is too short. Try longer password for more security!',
       },
     },
-    startIcon: (color) => <Lock stroke={color} />,
+    startIcon: (color) => <Lock fill={color} />,
   },
   CONFIRM_PASSWORD: {
     label: 'confirmPassword',
@@ -139,7 +139,7 @@ export const REGISTER_FORM: TRegisterFormFields = {
     rules: {
       required: true,
     },
-    startIcon: (color) => <Lock stroke={color} />,
+    startIcon: (color) => <Lock fill={color} />,
   },
 }
 export const REGISTER_FORM_DEFAULT_VALUES: TRegisterForm = {
