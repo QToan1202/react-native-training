@@ -135,9 +135,10 @@ const ProductDetail = ({ navigation, route }: ProductDetailScreenProps) => {
             message: `You have successfully added ${product?.name} to cart!`,
           })
         },
-        onError: () => {
+        onError: (error) => {
           toast.show(`Something went wrong`, {
-            message: `Can't not add ${product?.name} to cart. Reload and try again.`,
+            message:
+              error.message || `Can't not add ${product?.name} to cart. Reload and try again.`,
           })
         },
       }
