@@ -6,7 +6,7 @@ import { AUTH_FEATURE } from '@practice-three/shell'
 
 import { AuthenticationRoute } from '../navigation'
 
-const FEATURE_NAME = AUTH_FEATURE
+const FEATURE_NAME = AUTH_FEATURE.NAME
 
 export const withAuth = <T extends THOCsProps>(Wrapper: ComponentType<T>) => {
   return forwardRef<unknown, T>((props, componentRef) => {

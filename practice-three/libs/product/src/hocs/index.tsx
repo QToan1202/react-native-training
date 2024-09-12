@@ -6,7 +6,7 @@ import { PRODUCT_FEATURE } from '@practice-three/shell'
 
 import { ProductRoute } from '../navigation'
 
-const FEATURE_NAME = PRODUCT_FEATURE
+const FEATURE_NAME = PRODUCT_FEATURE.NAME
 
 export const withProduct = <T extends THOCsProps>(Wrapper: ComponentType<T>) => {
   return forwardRef<unknown, T>((props, componentRef) => {

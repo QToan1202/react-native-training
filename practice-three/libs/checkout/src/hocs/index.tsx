@@ -6,7 +6,7 @@ import { CHECKOUT_FEATURE } from '@practice-three/shell'
 
 import { CheckoutRoute } from '../navigation'
 
-const FEATURE_NAME = CHECKOUT_FEATURE
+const FEATURE_NAME = CHECKOUT_FEATURE.NAME
 
 export const withCheckout = <T extends THOCsProps>(Wrapper: ComponentType<T>) => {
   return forwardRef<unknown, T>((props, componentRef) => {

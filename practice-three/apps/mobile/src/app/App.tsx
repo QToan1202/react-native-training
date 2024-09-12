@@ -50,17 +50,17 @@ export const App = () => {
         const PrivateStack = () => (
           <BottomNav>
             <Tab.Screen name="HomeTab" component={HomeScreen} />
-            <Tab.Screen name="ProductTab" component={convertNavigatorData[PRODUCT_FEATURE]} />
-            <Tab.Screen name="WishlistTab" component={convertNavigatorData[PRODUCT_FEATURE]} />
-            <Tab.Screen name="CartTab" component={convertNavigatorData[CART_FEATURE]} />
-            <Tab.Screen name="ProfileTab" component={convertNavigatorData[PROFILE_FEATURE]} />
+            <Tab.Screen name="ProductTab" component={convertNavigatorData[PRODUCT_FEATURE.NAME]} />
+            <Tab.Screen name="WishlistTab" component={convertNavigatorData[PRODUCT_FEATURE.NAME]} />
+            <Tab.Screen name="CartTab" component={convertNavigatorData[CART_FEATURE.NAME]} />
+            <Tab.Screen name="ProfileTab" component={convertNavigatorData[PROFILE_FEATURE.NAME]} />
           </BottomNav>
         )
 
         return (
           <Stack.Navigator screenOptions={{ headerShown: false }}>
             {!isAuthenticated ? (
-              <Stack.Screen name="AuthStack" component={convertNavigatorData[AUTH_FEATURE]} />
+              <Stack.Screen name="AuthStack" component={convertNavigatorData[AUTH_FEATURE.NAME]} />
             ) : (
               <Stack.Screen name="BottomTabs" component={PrivateStack} />
             )}

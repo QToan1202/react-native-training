@@ -55,10 +55,12 @@ const App = () => (
   <WrapHOC category={initFeatureCategories} navigatorData={INIT_NAVIGATOR_DATA}>
     {({ navigatorData }) => {
       const getLayoutRoute = routerLayout.at(0)
-      const publicRoute = navigatorData[AUTH_FEATURE]
+      const publicRoute = navigatorData[AUTH_FEATURE.NAME]
       const protectedRoute = Object.keys(navigatorData).reduce<RouteObject[]>(
         (routeData: RouteObject[], featureName: string) =>
-          featureName !== AUTH_FEATURE ? routeData.concat(navigatorData[featureName]) : routeData,
+          featureName !== AUTH_FEATURE.NAME
+            ? routeData.concat(navigatorData[featureName])
+            : routeData,
         []
       )
 

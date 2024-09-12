@@ -5,7 +5,7 @@ import { CART_FEATURE } from '@practice-three/shell'
 
 import { CartRoute } from '../navigation'
 
-const FEATURE_NAME = CART_FEATURE
+const FEATURE_NAME = CART_FEATURE.NAME
 
 export const withCart = <T extends THOCsProps>(Wrapper: ComponentType<T>) => {
   return forwardRef<unknown, T>((props, componentRef) => {
