@@ -1,3 +1,4 @@
+import './wdyr'
 import '@tamagui/core/reset.css'
 
 import { StrictMode } from 'react'
@@ -15,15 +16,15 @@ const queryClient = new QueryClient()
 
 const root = ReactDOM.createRoot(document.getElementById('root') as HTMLElement)
 root.render(
-  <StrictMode>
-    <QueryClientProvider client={queryClient}>
-      <TamaguiProvider config={tamaguiConfig}>
-        <ToastProvider>
-          <ToastViewport flexDirection="column" bottom={50} left={0} right={0} />
-          <Toast />
-          <App />
-        </ToastProvider>
-      </TamaguiProvider>
-    </QueryClientProvider>
-  </StrictMode>
+  // <StrictMode>
+  <QueryClientProvider client={queryClient}>
+    <TamaguiProvider config={tamaguiConfig}>
+      <ToastProvider>
+        <ToastViewport flexDirection="column" bottom={50} left={0} right={0} />
+        <Toast />
+        <App />
+      </ToastProvider>
+    </TamaguiProvider>
+  </QueryClientProvider>
+  // </StrictMode>
 )

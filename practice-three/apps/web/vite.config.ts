@@ -26,7 +26,14 @@ export default defineConfig({
     host: 'localhost',
   },
 
-  plugins: [react(), svgr(), tamaguiPlugin(tamaguiConfig), nxViteTsPaths()],
+  plugins: [
+    react({
+      jsxImportSource: '@welldone-software/why-did-you-render',
+    }),
+    svgr(),
+    tamaguiPlugin(tamaguiConfig),
+    nxViteTsPaths(),
+  ],
 
   // Uncomment this if you are using workers.
   // worker: {
