@@ -32,6 +32,7 @@ const Register = () => {
         toast.show('Register success!!!', {
           message: 'Welcome to E-com',
         })
+        navigate(0)
       },
       onError: (error: Error) => {
         toast.show('Register fail!!!', {

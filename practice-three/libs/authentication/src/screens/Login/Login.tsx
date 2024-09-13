@@ -39,6 +39,7 @@ const Login = () => {
         toast.show('Login success!!!', {
           message: `Welcome back ${name}`,
         })
+        navigate(0)
       },
     })
   }
