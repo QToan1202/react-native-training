@@ -76,7 +76,7 @@ export const parseURLSearchParams = (
  *  console.log(result); // Output: { foo: {'1': true, '3': true}, bar: {'2': true, '4': true} }
  *  ```
  */
-export const convertQueryStr = (query: string) => {
+export const convertQueryStr = (query: string): Record<string, Record<string, boolean>> => {
   const transform = query.replace('?', '').split('&')
   const result: Record<string, Record<string, boolean>> = {}
 

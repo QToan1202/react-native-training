@@ -35,7 +35,7 @@ const Filter = ({ isDisabled = false, ...rest }: FilterProps) => {
   const [, setSearchParams] = useSearchParams(DEFAULT_SEARCH_PARAMS)
   const { control, getValues, reset } = useForm<Record<string, Record<string, boolean>>>({
     disabled: isDisabled,
-    defaultValues: { ...parseSearchParams },
+    defaultValues: parseSearchParams,
   })
   const handleFilterBrandName = () => {
     setSearchParams((prev) => ({
@@ -57,9 +57,9 @@ const Filter = ({ isDisabled = false, ...rest }: FilterProps) => {
       ...{
         discountPercent: resolveValues(
           getValues('discountPercent'),
-          discountPercent.map((item) => `${item}%`),
+          discountPercent.map((item) => String(item)),
           true
-        ).map((item: string) => item.replace('%', '')),
+        ),
       },
     }))
   }
@@ -73,13 +73,13 @@ const Filter = ({ isDisabled = false, ...rest }: FilterProps) => {
         return brandNames.map((item: string) => (
           <Controller
             key={item}
-            name={`brandName[${convertToLowerStr(item)}]`}
-            defaultValue={{ [convertToLowerStr(item)]: false }}
+            name={`brandName.${convertToLowerStr(item)}`}
+            defaultValue={false}
             control={control}
-            render={({ field: { value, name, onChange, ...restFieldProps } }) => (
+            render={({ field: { value, onChange, ...restFieldProps } }) => (
               <Checkbox
                 label={item}
-                checked={value[name]}
+                checked={value}
                 onCheckedChange={onChange}
                 onChecked={handleFilterBrandName}
                 {...restFieldProps}
@@ -92,13 +92,13 @@ const Filter = ({ isDisabled = false, ...rest }: FilterProps) => {
         return colors.map((item: string) => (
           <Controller
             key={item}
-            name={`color[${convertToLowerStr(item)}]`}
-            defaultValue={{ [convertToLowerStr(item)]: false }}
+            name={`color.${convertToLowerStr(item)}`}
+            defaultValue={false}
             control={control}
-            render={({ field: { value, name, onChange, ...restFieldProps } }) => (
+            render={({ field: { value, onChange, ...restFieldProps } }) => (
               <Checkbox
                 label={item}
-                checked={value[name]}
+                checked={value}
                 onCheckedChange={onChange}
                 onChecked={handleFilterColor}
                 {...restFieldProps}
@@ -113,13 +113,13 @@ const Filter = ({ isDisabled = false, ...rest }: FilterProps) => {
           .map((item: string) => (
             <Controller
               key={item}
-              name={`discountPercent[${convertToLowerStr(item)}%]`}
-              defaultValue={{ [convertToLowerStr(item)]: false }}
+              name={`discountPercent.${convertToLowerStr(item)}`}
+              defaultValue={false}
               control={control}
-              render={({ field: { value, name, onChange, ...restFieldProps } }) => (
+              render={({ field: { value, onChange, ...restFieldProps } }) => (
                 <Checkbox
                   label={`${item}% and above`}
-                  checked={value[name]}
+                  checked={value}
                   onCheckedChange={onChange}
                   onChecked={handleFilterDiscount}
                   {...restFieldProps}

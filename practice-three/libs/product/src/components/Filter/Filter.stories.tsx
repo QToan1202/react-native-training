@@ -12,9 +12,5 @@ export default meta
 type Story = StoryObj<typeof Comment>
 
 export const Default: Story = {
-  args: {
-    brandNames: ['google'],
-    colors: ['red'],
-    discountPercent: [10],
-  },
+  args: {},
 }
