@@ -1,7 +1,7 @@
 import { ReactNode } from 'react'
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs'
 
-import { BottomTabParamsList } from '@practice-three/types'
+import { BottomTabParamsList } from '@practice-three/shared/types'
 import { Bag, Heart, Home, Search, User } from '../../assets/images'
 import { getTokenValue } from 'tamagui'
 

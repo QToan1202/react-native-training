@@ -1,8 +1,8 @@
 import { Controller, SubmitHandler, useForm } from 'react-hook-form'
 import { H2, YStack } from 'tamagui'
 
-import { Button, Form, Input, Text } from '@practice-three/components'
-import { AuthStackScreenProps, TFormValues } from '@practice-three/types'
+import { Button, Form, Input, Text } from '@practice-three/shared/ui'
+import { AuthStackScreenProps, TFormValues } from '@practice-three/shared/types'
 
 type VerificationScreenProps = Partial<AuthStackScreenProps<'Verification'>>
 

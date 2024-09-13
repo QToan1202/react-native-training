@@ -2,7 +2,8 @@ import { useCallback, useEffect } from 'react'
 import { useQuery } from '@tanstack/react-query'
 import { Heading } from 'tamagui'
 
-import { useAuthStore } from '@practice-three/contexts'
+import { useAuthStore } from '@practice-three/shared/context'
+import { ENDPOINTS } from '@practice-three/shared/constant'
 
 import { getAddressesQuery } from '../../hooks'
 import { TAddress } from '../../types'
@@ -23,7 +24,7 @@ const AddressList = (addressActions: AddressListProps) => {
     data: addresses,
     isPending: isGetAddress,
     error: errorWhenGetAddress,
-  } = useQuery(getAddressesQuery('/addresses', user?.id || ''))
+  } = useQuery(getAddressesQuery(ENDPOINTS.ADDRESS, user?.id || ''))
 
   const handleSelectAddress = useCallback(
     (id: string) => {

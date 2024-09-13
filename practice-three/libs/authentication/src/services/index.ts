@@ -1,57 +1,75 @@
+import { AxiosRequestConfig } from 'axios'
 import bcrypt from 'bcryptjs'
+import { QueryClient, queryOptions } from '@tanstack/react-query'
 
-import { add, get } from '@practice-three/services'
-import { TRegisterForm, TUser } from '@practice-three/types'
+import { add, get } from '@practice-three/shared/service'
+import { TRegisterForm, TUser } from '@practice-three/shared/types'
 
-import { REGEX } from '../constants'
+import { REGEX, STALE_TIMES } from '../constants'
+import { authKeys } from '../factories'
 
-export const register = async (path: string, data: TRegisterForm): Promise<TUser> => {
-  const { account, password, name } = data
-  const isEmail = REGEX.EMAIL.test(account)
-  const transformAccount = isEmail ? { email: account } : { phone: account }
-  const users: TUser[] = await get(path, { params: transformAccount })
-  const expectReturnUser: TUser | undefined = users.at(0)
+const getUsersQuery = (path: string, options?: AxiosRequestConfig) =>
+  queryOptions<TUser[], Error, TUser[], ReadonlyArray<string | object>>({
+    queryKey: authKeys.list(JSON.stringify(options)),
+    queryFn: () => get<TUser>(path, options),
+    staleTime: STALE_TIMES.USER_INFO,
+  })
 
-  // Check register Email exist
-  if (expectReturnUser)
-    throw Error('This information already use by other client, try will other account')
+export const register =
+  (queryClient: QueryClient) =>
+  async (path: string, data: TRegisterForm): Promise<TUser> => {
+    const { account, password, name } = data
+    const isEmail = REGEX.EMAIL.test(account)
+    const transformAccount = isEmail ? { email: account } : { phone: account }
+    const users: TUser[] = await queryClient.ensureQueryData(
+      getUsersQuery(path, { params: transformAccount })
+    )
+    const expectReturnUser: TUser | undefined = users.at(0)
 
-  const saltRounds = 10
-  const salt = await bcrypt.genSalt(saltRounds)
-  const hashedPassword = await bcrypt.hash(password, salt)
+    // Check register Email exist
+    if (expectReturnUser)
+      throw Error('This information already use by other client, try will other account')
 
-  const userData: Omit<TUser, 'id'> = isEmail
-    ? {
-        name,
-        email: account,
-        phone: '',
-        password: hashedPassword,
-      }
-    : {
-        name,
-        email: '',
-        phone: account,
-        password: hashedPassword,
-      }
+    const saltRounds = 10
+    const salt = await bcrypt.genSalt(saltRounds)
+    const hashedPassword = await bcrypt.hash(password, salt)
 
-  return add<TUser>(path, userData)
-}
+    const userData: Omit<TUser, 'id'> = isEmail
+      ? {
+          name,
+          email: account,
+          phone: '',
+          password: hashedPassword,
+        }
+      : {
+          name,
+          email: '',
+          phone: account,
+          password: hashedPassword,
+        }
 
-export const login = async (path: string, account: string, password: string): Promise<TUser> => {
-  const isEmail = REGEX.EMAIL.test(account)
-  const transformData = isEmail
-    ? {
-        email: account,
-      }
-    : { phone: account }
-  const users: TUser[] = await get(path, { params: transformData })
-  const expectReturnUser: TUser | undefined = users.at(0)
+    return add<TUser>(path, userData)
+  }
 
-  if (!expectReturnUser) throw Error('Login fail, check email or password')
+export const login =
+  (queryClient: QueryClient) =>
+  async (path: string, account: string, password: string): Promise<TUser> => {
+    const isEmail = REGEX.EMAIL.test(account)
+    const transformData = isEmail
+      ? {
+          email: account,
+        }
+      : { phone: account }
+    const users: TUser[] = await queryClient.ensureQueryData(
+      getUsersQuery(path, { params: transformData })
+    )
+    const expectReturnUser: TUser | undefined = users.at(0)
 
-  const isMatchPassword = await bcrypt.compare(password, expectReturnUser.password)
+    if (!expectReturnUser) throw Error('Login fail, check email or password')
 
-  if (!isMatchPassword) throw Error('Login fail, check email or password')
+    const isMatchPassword = await bcrypt.compare(password, expectReturnUser.password)
 
-  return expectReturnUser
-}
+    if (!isMatchPassword) throw Error('Login fail, check email or password')
+
+    return expectReturnUser
+  }

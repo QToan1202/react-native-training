@@ -1,12 +1,10 @@
-import { Card, CardProps, H2, Image, XStack, getTokenValue } from 'tamagui'
+import { Card, CardProps, H2, XStack, getTokenValue } from 'tamagui'
 import { StarFull } from '@tamagui/lucide-icons'
 import { GestureResponderEvent } from 'react-native'
 
-import { Text } from '@practice-three/components'
-import { TProduct } from '@practice-three/types'
-import { calculateDiscountPrice } from '@practice-three/utils'
-
-import { placeholderImagePath } from '../../assets/images'
+import { Image, Text } from '@practice-three/shared/ui'
+import { TProduct } from '@practice-three/shared/types'
+import { calculateDiscountPrice } from '@practice-three/shared/util'
 
 type TOmitProductProps = 'description' | 'sellerName' | 'sizes' | 'reviews' | 'specifications'
 export type ProductCardProps = CardProps &
@@ -37,7 +35,7 @@ const ProductCard = ({
       maxHeight={getTokenValue('$card.height')}
       borderRadius={10}
       overflow="hidden"
-      backgroundColor="$white"
+      backgroundColor="$pure_white"
       animation="slow"
       enterStyle={{
         opacity: 0,
@@ -51,20 +49,13 @@ const ProductCard = ({
       {...rest}
     >
       <Image
-        resizeMode="contain"
-        alignSelf="center"
         source={{
           width: getTokenValue('$card.width'),
           height: 300,
           uri: images[0],
         }}
-        defaultSource={{
-          width: getTokenValue('$card.width'),
-          height: 300,
-          uri: placeholderImagePath,
-        }}
       />
-      <Card.Header paddingHorizontal={21} paddingVertical={10} gap={12}>
+      <Card.Header paddingHorizontal={21} paddingVertical={10}>
         <H2 ellipse color="$black" fontSize="$5" fontWeight="bold">
           {name}
         </H2>

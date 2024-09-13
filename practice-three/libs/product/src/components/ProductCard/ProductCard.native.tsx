@@ -1,10 +1,8 @@
-import { Card, CardProps, Image, XStack, getTokenValue } from 'tamagui'
+import { Card, CardProps, XStack, getTokenValue } from 'tamagui'
 
-import { Heading, Text } from '@practice-three/components'
-import { TProduct } from '@practice-three/types'
-import { calculateDiscountPrice } from '@practice-three/utils'
-
-import { placeholderImagePath } from '../../assets/images'
+import { Heading, Image, Text } from '@practice-three/shared/ui'
+import { TProduct } from '@practice-three/shared/types'
+import { calculateDiscountPrice } from '@practice-three/shared/util'
 
 type TOmitProductProps =
   | 'id'
@@ -48,18 +46,11 @@ const ProductCard = ({
       {...rest}
     >
       <Image
-        resizeMode="contain"
-        alignSelf="center"
         borderRadius={10}
         source={{
           width: getTokenValue('$cardMobile.width'),
           height: 250,
           uri: images[0],
-        }}
-        defaultSource={{
-          width: getTokenValue('$cardMobile.width'),
-          height: 250,
-          uri: placeholderImagePath,
         }}
       />
       <Card.Header paddingHorizontal={6} paddingVertical={9}>

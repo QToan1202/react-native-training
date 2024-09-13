@@ -1,7 +1,7 @@
 import { XStack, Heading, XStackProps } from 'tamagui'
 
-import { IconButton } from '@practice-three/components'
-import { OrderTabScreenProps } from '@practice-three/types'
+import { IconButton } from '@practice-three/shared/ui'
+import { OrderTabScreenProps } from '@practice-three/shared/types'
 
 import { HeaderHeart, Bag, ArrowLeft, Search } from '../../assets/images'
 

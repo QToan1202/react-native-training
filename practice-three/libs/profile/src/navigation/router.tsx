@@ -1,6 +1,6 @@
 import { createNativeStackNavigator } from '@react-navigation/native-stack'
 
-import { ProfileStack } from '@practice-three/types'
+import { ProfileStack } from '@practice-three/shared/types'
 
 import { ProfileScreen } from '../screens'
 

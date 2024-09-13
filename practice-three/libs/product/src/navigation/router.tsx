@@ -9,22 +9,23 @@ import {
   searchLoader,
   wishlistLoader,
 } from '../screens'
+import { ROUTER_PATHS } from '../constants'
 
 const queryClient = new QueryClient()
 
 const productRouter: RouteObject[] = [
   {
-    path: '/search',
+    path: ROUTER_PATHS.SEARCH,
     element: <SearchScreen />,
     loader: searchLoader(queryClient),
   },
   {
-    path: '/product/:id',
+    path: ROUTER_PATHS.PRODUCT_DETAIL.STATIC,
     element: <ProductDetailScreen />,
     loader: productLoader(queryClient),
   },
   {
-    path: '/wishlist',
+    path: ROUTER_PATHS.WISHLIST,
     element: <WishlistScreen />,
     loader: wishlistLoader(queryClient),
   },

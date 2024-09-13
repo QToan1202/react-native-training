@@ -1,6 +1,6 @@
 import { Heading, ScrollView, XStack, YStack } from 'tamagui'
 
-import { Carousel, Image } from '@practice-three/components'
+import { Carousel, Image } from '@practice-three/shared/ui'
 
 import {
   AboutUs,

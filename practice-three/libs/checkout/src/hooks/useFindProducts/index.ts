@@ -3,8 +3,9 @@ import { useQueries, useQuery, UseQueryResult } from '@tanstack/react-query'
 import { isWeb } from 'tamagui'
 import dayjs from 'dayjs'
 
-import { TCart, TProduct } from '@practice-three/types'
-import { useAuthStore } from '@practice-three/contexts'
+import { TCart, TProduct } from '@practice-three/shared/types'
+import { useAuthStore } from '@practice-three/shared/context'
+import { ENDPOINTS } from '@practice-three/shared/constant'
 
 import getOrdersQuery from '../getOrdersQuery'
 import { TOrder, TOrderItem } from '../../types'
@@ -29,11 +30,11 @@ export const useFindProducts = (isPreOrder = !isWeb): [boolean, TOrderItem[]] =>
   const isFetchingProduct = useRef<boolean>(true)
   // TODO: Might optimize Json-server to prevent request waterfall
   const { data: orders, isSuccess: isGetOrdersSuccess } = useQuery({
-    ...getOrdersQuery('orders', user?.id || 'd3d1'),
+    ...getOrdersQuery(ENDPOINTS.ORDER, user?.id || ''),
     enabled: !isPreOrder,
   })
   const { data: carts, isSuccess: isGetCartsSuccess } = useQuery({
-    ...getCartQuery('carts', user?.id || 'd3d1'),
+    ...getCartQuery(ENDPOINTS.CART, user?.id || ''),
     enabled: isPreOrder,
   })
   const isOrder = useCallback(
@@ -50,12 +51,12 @@ export const useFindProducts = (isPreOrder = !isWeb): [boolean, TOrderItem[]] =>
   )
   const getProductsQuery = useQueries({
     queries: firstItem
-      ? Object.keys(firstItem.items).map((item) => findProductQuery('/products', item))
+      ? Object.keys(firstItem.items).map((item) => findProductQuery(ENDPOINTS.PRODUCT, item))
       : [],
   })
 
   const { data: address, isSuccess: isGetAddressSuccess } = useQuery(
-    findAddressQuery('/addresses', isOrder(firstItem) ? firstItem?.addressId : '')
+    findAddressQuery(ENDPOINTS.ADDRESS, isOrder(firstItem) ? firstItem?.addressId : '')
   )
   if (!firstItem || !Object.keys(firstItem.items).length) {
     isFetchingProduct.current = false

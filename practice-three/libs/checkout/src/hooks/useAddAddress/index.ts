@@ -1,9 +1,10 @@
 import { useMutation, UseMutationResult, useQueryClient } from '@tanstack/react-query'
 
-import { add } from '@practice-three/services'
+import { add } from '@practice-three/shared/service'
 
 import { TAddress } from '../../types'
 import { useAddressStore } from '../../contexts'
+import { addressKeys } from '../../factories'
 
 type TOmitProps = 'id'
 type TMutationDFn = Partial<Omit<TAddress, TOmitProps>>
@@ -20,7 +21,7 @@ const useAddAddress = (
       return add<TAddress>(path, data)
     },
     onSuccess: (data: TAddress) => {
-      queryClient.setQueryData(['addresses', userId], (oldData: TAddress[]) =>
+      queryClient.setQueryData(addressKeys.list(userId), (oldData: TAddress[]) =>
         oldData ? [...oldData, data] : oldData
       )
 

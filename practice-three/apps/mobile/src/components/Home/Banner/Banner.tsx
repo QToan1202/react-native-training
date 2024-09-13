@@ -1,6 +1,6 @@
 import { Heading, YStack } from 'tamagui'
 
-import { Button } from '@practice-three/components'
+import { Button } from '@practice-three/shared/ui'
 
 import { Banner as BannerLogo, ForeverLogo } from '../../../assets/images'
 

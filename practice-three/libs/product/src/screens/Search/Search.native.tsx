@@ -1,8 +1,7 @@
 import { View, XStack, YStack } from 'tamagui'
-import { useForm } from 'react-hook-form'
 
-import { ProductTabScreenProps, TSearchField } from '@practice-three/types'
-import { Button, Text, Search as SearchBar } from '@practice-three/components'
+import { ProductTabScreenProps } from '@practice-three/shared/types'
+import { Button, Text, Search as SearchBar } from '@practice-three/shared/ui'
 
 import { Bell } from '../../assets/images'
 import { CLOTH_CATEGORIES, TYPES } from '../../constants'
@@ -10,7 +9,6 @@ import { CLOTH_CATEGORIES, TYPES } from '../../constants'
 export type SearchProps = ProductTabScreenProps<'Search'>
 
 const Search = (props: SearchProps) => {
-  const { control } = useForm<TSearchField>()
   const renderListOfSearchCategory = (title: string, data: string[]) => (
     <>
       <Text color="$blue_100">{title}</Text>
@@ -32,7 +30,7 @@ const Search = (props: SearchProps) => {
   return (
     <View padding={12}>
       <XStack gap={22} alignItems="center" marginBottom={10}>
-        <SearchBar containerStyle={{ flex: 1 }} label="search" control={control} />
+        <SearchBar containerStyle={{ flex: 1 }} />
         <Bell />
       </XStack>
       <YStack gap={20} marginVertical={32}>

@@ -8,9 +8,10 @@ import {
 } from '@tanstack/react-query'
 import dayjs from 'dayjs'
 
-import { add } from '@practice-three/services'
-import { useAuthStore } from '@practice-three/contexts'
-import { TCart, TProduct } from '@practice-three/types'
+import { add } from '@practice-three/shared/service'
+import { useAuthStore } from '@practice-three/shared/context'
+import { TCart, TProduct } from '@practice-three/shared/types'
+import { ENDPOINTS } from '@practice-three/shared/constant'
 
 import { TOrder } from '../../types'
 import { useCheckoutStore } from '../../contexts'
@@ -32,7 +33,7 @@ const useCheckoutOrder = (
     state.reset,
   ])
   const { data: carts, isSuccess: isGetUserCartSuccess } = useQuery(
-    getCartQuery('/carts', user?.id || 'd3d1')
+    getCartQuery(ENDPOINTS.CART, user?.id || '')
   )
   const firstCartItem: TCart | undefined = useMemo(
     () => (isGetUserCartSuccess ? carts.at(0) : undefined),
@@ -40,10 +41,10 @@ const useCheckoutOrder = (
   )
   const getProductsQuery = useQueries({
     queries: firstCartItem
-      ? Object.keys(firstCartItem.items).map((item) => findProductQuery('/products', item))
+      ? Object.keys(firstCartItem.items).map((item) => findProductQuery(ENDPOINTS.PRODUCT, item))
       : [],
   })
-  const { mutate: clearCartItems } = useClearCartItem('/carts', user?.id || '')
+  const { mutate: clearCartItems } = useClearCartItem(ENDPOINTS.CART, user?.id || '')
 
   return useMutation<TOrder, Error, TMutationDFn, unknown>({
     mutationFn: (): Promise<TOrder> => {

@@ -1,6 +1,6 @@
 import { createNativeStackNavigator } from '@react-navigation/native-stack'
 
-import { CartStack } from '@practice-three/types'
+import { CartStack } from '@practice-three/shared/types'
 
 import { CartScreen, PromoCodeScreen } from '../screens'
 

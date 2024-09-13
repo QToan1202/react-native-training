@@ -3,8 +3,9 @@ import { AnimatePresence, Heading, XStack, YStack } from 'tamagui'
 import { Controller, SubmitHandler, useForm } from 'react-hook-form'
 import { useToastController } from '@tamagui/toast'
 
-import { Button, Form, Input, Text, Toast } from '@practice-three/components'
-import { useAuthStore } from '@practice-three/contexts'
+import { Button, Form, Input, Text } from '@practice-three/shared/ui'
+import { useAuthStore } from '@practice-three/shared/context'
+import { ENDPOINTS } from '@practice-three/shared/constant'
 
 import { TCardForm } from '../../types'
 import { CARD_FORM, DEFAULT_CARD_VALUES } from '../../constants'
@@ -25,7 +26,7 @@ const CardForm = () => {
   const errorTextId = useId()
   const user = useAuthStore((state) => state.user)
   const toast = useToastController()
-  const { mutate: addCard, isPending: isAddingCard } = useAddCard('/cards', user?.id || 'd3d1')
+  const { mutate: addCard, isPending: isAddingCard } = useAddCard(ENDPOINTS.CARD, user?.id || '')
   const handleSubmitCardForm: SubmitHandler<TCardForm> = (data) => {
     addCard(data, {
       onSuccess: () => {
@@ -134,7 +135,6 @@ const CardForm = () => {
           </Form.Trigger>
         </XStack>
       </Form>
-      <Toast />
     </YStack>
   )
 }

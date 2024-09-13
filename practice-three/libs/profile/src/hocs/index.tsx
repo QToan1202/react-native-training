@@ -1,11 +1,11 @@
 import { ComponentType, forwardRef } from 'react'
 
-import { THOCsProps } from '@practice-three/types'
+import { THOCsProps } from '@practice-three/shared/types'
 import { PROFILE_FEATURE } from '@practice-three/shell'
 
 import { ProfileStack } from '../navigation'
 
-const FEATURE_NAME = PROFILE_FEATURE
+const FEATURE_NAME = PROFILE_FEATURE.NAME
 
 export const withProfile = <T extends THOCsProps>(Wrapper: ComponentType<T>) => {
   return forwardRef<unknown, T>((props, componentRef) => {

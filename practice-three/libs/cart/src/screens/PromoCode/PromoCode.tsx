@@ -2,16 +2,17 @@ import { Fragment, useMemo } from 'react'
 import { Heading, Separator, YStack } from 'tamagui'
 import { useQuery } from '@tanstack/react-query'
 
-import { OrderTabScreenProps, TOffer } from '@practice-three/types'
-import { getOffersQuery } from '@practice-three/queries'
-import { Text } from '@practice-three/components'
+import { OrderTabScreenProps, TOffer } from '@practice-three/shared/types'
+import { getOffersQuery } from '@practice-three/shared/query'
+import { Text } from '@practice-three/shared/ui'
+import { ENDPOINTS } from '@practice-three/shared/constant'
 
 import { PromoCodeHeader, PromoCode as PromoCodeItem, Search } from '../../components'
 
 type CartScreenProps = OrderTabScreenProps<'PromoCode'>
 
 const PromoCode = (props: CartScreenProps) => {
-  const { data: offers, isSuccess } = useQuery(getOffersQuery('/offers'))
+  const { data: offers, isSuccess } = useQuery(getOffersQuery(ENDPOINTS.OFFER))
   const renderListOfOffers = useMemo(() => {
     if (!isSuccess) return null
     if (!offers.length)

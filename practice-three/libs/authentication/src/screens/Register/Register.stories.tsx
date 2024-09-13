@@ -1,7 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/react'
 import { reactRouterParameters } from 'storybook-addon-remix-react-router'
 
-import Register from './index'
+import Register from './Register'
 
 const meta: Meta<typeof Register> = {
   component: Register,

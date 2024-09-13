@@ -2,8 +2,8 @@ import { Heading, YStack } from 'tamagui'
 import { useEffect } from 'react'
 import { useStore } from 'zustand'
 
-import { Button } from '@practice-three/components'
-import type { OrderTabScreenProps } from '@practice-three/types'
+import { Button } from '@practice-three/shared/ui'
+import type { OrderTabScreenProps } from '@practice-three/shared/types'
 
 import { CartItemList, CartItemSkeleton, Search, Summary } from '../../components'
 import { useFindProducts } from '../../hooks'
@@ -23,7 +23,7 @@ const Cart = ({ navigation }: CartScreenProps) => {
 
   return (
     <CartContext.Provider value={cartStore}>
-      <YStack gap={16}>
+      <YStack gap={16} paddingTop={55} paddingHorizontal={35} backgroundColor="$pure_white">
         <Heading
           color="$primary"
           textTransform="capitalize"

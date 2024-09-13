@@ -1,7 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/react'
 import { reactRouterParameters } from 'storybook-addon-remix-react-router'
 
-import Login from './index'
+import Login from './Login'
 
 const meta: Meta<typeof Login> = {
   component: Login,

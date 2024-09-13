@@ -2,8 +2,8 @@ import { useMemo } from 'react'
 import { styled, XStack } from 'tamagui'
 import { Link, useNavigate } from 'react-router-dom'
 
-import { IconButton, Search, Text as BaseText, Avatar } from '@practice-three/components'
-import { useAuthStore } from '@practice-three/contexts'
+import { IconButton, Search, Text as BaseText, Avatar } from '@practice-three/shared/ui'
+import { useAuthStore } from '@practice-three/shared/context'
 
 import { NAV_ITEMS } from '../../constants'
 import { Cart, Heart, Logo } from '../../assets/images'
@@ -26,8 +26,8 @@ const Header = () => {
     []
   )
   const handleOnPressLogo = () => navigate('/')
-  const handleOnPressHeart = () => navigate('wishlists')
-  const handleOnPressCart = () => navigate('carts')
+  const handleOnPressHeart = () => navigate('wishlist')
+  const handleOnPressCart = () => navigate('orders')
 
   return (
     <XStack

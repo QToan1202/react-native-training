@@ -2,12 +2,12 @@ import { useMemo } from 'react'
 import { Heading, XStack } from 'tamagui'
 import { useQuery } from '@tanstack/react-query'
 
-import { useAuthStore } from '@practice-three/contexts'
-import { Avatar, IconButton } from '@practice-three/components'
+import { useAuthStore } from '@practice-three/shared/context'
+import { Avatar, IconButton } from '@practice-three/shared/ui'
 
 import { findUserQuery } from '../../../hooks'
 import { Search } from '../../../assets/images'
-import { TUser } from '@practice-three/types'
+import { TUser } from '@practice-three/shared/types'
 
 const Header = () => {
   const user: TUser | undefined = useAuthStore((state) => state.user)

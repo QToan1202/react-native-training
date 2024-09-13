@@ -4,9 +4,9 @@ import { GestureResponderEvent, ImageURISource } from 'react-native'
 import isEqual from 'react-fast-compare'
 import { useStore } from 'zustand'
 
-import { TProduct } from '@practice-three/types'
-import { AlertDialog, IconButton, Image, Text } from '@practice-three/components'
-import { useAuthStore } from '@practice-three/contexts'
+import { TProduct } from '@practice-three/shared/types'
+import { AlertDialog, IconButton, Image, Text } from '@practice-three/shared/ui'
+import { useAuthStore } from '@practice-three/shared/context'
 
 import { Heart, Trash } from '../../assets/images'
 import { Counter } from '../Counter'
@@ -104,17 +104,19 @@ const CartItem = ({
       {...rest}
     >
       {renderContent}
-      <YStack gap={8} alignSelf="flex-end" justifyContent="space-evenly">
+      <YStack gap={8} justifyContent="space-evenly">
         {renderIcons}
         <Counter productId={id} defaultValue={quantity} />
       </YStack>
-      <AlertDialog
-        title="Remove product"
-        open={isOpen}
-        description="Are you sure you want to delete this item from your cart? This action cannot be undone."
-        onCancel={handleCancelAlert}
-        onSuccess={handleSuccessAlert}
-      />
+      {isOpen && (
+        <AlertDialog
+          title="Remove product"
+          open={isOpen}
+          description="Are you sure you want to delete this item from your cart? This action cannot be undone."
+          onCancel={handleCancelAlert}
+          onSuccess={handleSuccessAlert}
+        />
+      )}
     </XStack>
   )
 }

@@ -2,8 +2,9 @@ import { Fragment } from 'react'
 import { Heading, Separator } from 'tamagui'
 import { useQuery } from '@tanstack/react-query'
 
-import { useAuthStore } from '@practice-three/contexts'
-import { Skeleton } from '@practice-three/components'
+import { useAuthStore } from '@practice-three/shared/context'
+import { Skeleton } from '@practice-three/shared/ui'
+import { ENDPOINTS } from '@practice-three/shared/constant'
 
 import { getCardsQuery } from '../../hooks'
 import { Debit, MasterCard, Visa } from '../../assets/images'
@@ -17,7 +18,7 @@ const CardList = () => {
     data: cards,
     isPending: isGetCard,
     error: errorWhenGetCards,
-  } = useQuery(getCardsQuery('/cards', user?.id || 'd3d1'))
+  } = useQuery(getCardsQuery(ENDPOINTS.CARD, user?.id || ''))
 
   if (isGetCard)
     return [...Array(3).keys()].map((item) => (

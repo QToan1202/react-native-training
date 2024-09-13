@@ -1,6 +1,6 @@
 import { create } from 'zustand'
 
-import { TOffer } from '@practice-three/types'
+import { TOffer } from '@practice-three/shared/types'
 
 type OfferState = {
   value?: TOffer

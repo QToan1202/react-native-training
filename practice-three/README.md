@@ -54,7 +54,7 @@ Open Windows PowerShell or cmd or [Windows Terminal](https://www.microsoft.com/e
 **_Step 1:_** Clone develop branch
 
 ```bash
-git clone --single-branch --branch develop git@github.com:QToan1202/react-native-training.git
+git clone --single-branch --branch feature/practice-three git@github.com:QToan1202/react-native-training.git
 ```
 
 **_Step 2:_** Move to _practice-three_ folder
@@ -71,6 +71,26 @@ pnpm i
 
 **_Step 4:_** Run applications
 
+- For mobile
+
 ```bash
-pnpm start
+pnpm start:mobile
+```
+
+- For web
+
+```bash
+pnpm start:web
+```
+
+- For json-server
+
+```bash
+pnpm run server
+```
+
+- For storybook
+
+```bash
+pnpm storybook:ui
 ```

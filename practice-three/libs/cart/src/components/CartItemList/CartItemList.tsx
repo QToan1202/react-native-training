@@ -2,7 +2,7 @@ import { AnimatePresence } from 'tamagui'
 import { memo, useContext, useMemo } from 'react'
 import { useStore } from 'zustand'
 
-import { TCartItem } from '@practice-three/types'
+import { TCartItem } from '@practice-three/shared/types'
 
 import { CartItem } from '../CartItem'
 import { CartContext } from '../../contexts'

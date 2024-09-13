@@ -1,8 +1,9 @@
 import { useMutation, UseMutationResult, useQueryClient } from '@tanstack/react-query'
 
-import { add } from '@practice-three/services'
+import { add } from '@practice-three/shared/service'
 
 import { TCard } from '../../types'
+import { cardKeys } from '../../factories'
 
 type TOmitProps = 'id'
 type TMutationDFn = Partial<Omit<TCard, TOmitProps>>
@@ -18,7 +19,7 @@ const useAddCard = (
       return add<TCard>(path, { ...data, userId })
     },
     onSuccess: (data: TCard) => {
-      queryClient.setQueryData(['cards', userId], (oldData: TCard[]) =>
+      queryClient.setQueryData(cardKeys.list(userId), (oldData: TCard[]) =>
         oldData ? [...oldData, data] : oldData
       )
     },

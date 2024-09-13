@@ -1,7 +1,7 @@
 import { Heading, styled, XStack, XStackProps, YStack } from 'tamagui'
 import dayjs from 'dayjs'
 
-import { Button, Image, Text as BaseText } from '@practice-three/components'
+import { Button, Image, Text as BaseText } from '@practice-three/shared/ui'
 import { TOrderItem } from '../../types'
 
 type TRemoveProps = 'address'

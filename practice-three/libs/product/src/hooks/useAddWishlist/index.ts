@@ -1,7 +1,9 @@
 import { useMutation, UseMutationResult, useQueryClient } from '@tanstack/react-query'
 
-import { add } from '@practice-three/services'
-import { TWishlistBase } from '@practice-three/types'
+import { add } from '@practice-three/shared/service'
+import { TWishlistBase } from '@practice-three/shared/types'
+
+import { wishlistKeys } from '../../factories'
 
 type TOmitProps = 'id' | 'userId'
 type TMutationDFn = Partial<Omit<TWishlistBase, TOmitProps>>
@@ -20,7 +22,7 @@ const useAddToWishlist = (
       return add<TWishlistBase>(path, _data)
     },
     onSuccess: (data: TWishlistBase) => {
-      queryClient.setQueryData(['wishlist', userId], (oldData: TWishlistBase[]) =>
+      queryClient.setQueryData(wishlistKeys.detail(userId), (oldData: TWishlistBase[]) =>
         oldData ? [...oldData, data] : oldData
       )
     },

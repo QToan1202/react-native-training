@@ -1,6 +1,6 @@
 import { FlatList } from 'react-native'
 
-import { CategoryItem } from '@practice-three/components'
+import { CategoryItem } from '@practice-three/shared/ui'
 
 import { CATEGORY_DATA } from '../../../constants'
 

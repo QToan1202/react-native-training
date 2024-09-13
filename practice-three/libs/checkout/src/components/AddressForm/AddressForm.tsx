@@ -4,8 +4,9 @@ import { useId, useMemo } from 'react'
 import { useToastController } from '@tamagui/toast'
 import { useQueryClient } from '@tanstack/react-query'
 
-import { Button, Form, Input, Select, SelectItem, Text, Toast } from '@practice-three/components'
-import { useAuthStore } from '@practice-three/contexts'
+import { Button, Form, Input, Select, SelectItem, Text } from '@practice-three/shared/ui'
+import { useAuthStore } from '@practice-three/shared/context'
+import { ENDPOINTS } from '@practice-three/shared/constant'
 
 import { TAddressForm } from '../../types'
 import { ADDRESS_FORM, COUNTRIES, DEFAULT_ADDRESS_VALUES } from '../../constants'
@@ -25,7 +26,7 @@ const AddressForm = ({ id }: AddressFormProps) => {
       if (!id) return DEFAULT_ADDRESS_VALUES
 
       const { id: _, ...rest } = await queryClient.ensureQueryData(
-        findAddressQuery('/addresses', id)
+        findAddressQuery(ENDPOINTS.ADDRESS, id)
       )
       return { ...rest }
     },
@@ -33,16 +34,16 @@ const AddressForm = ({ id }: AddressFormProps) => {
   const toast = useToastController()
   const user = useAuthStore((state) => state.user)
   const { mutate: addAddress, isPending: isAddingAddress } = useAddAddress(
-    '/addresses',
+    ENDPOINTS.ADDRESS,
     user?.id || ''
   )
   const { mutate: editAddress, isPending: isEditingAddress } = useEditAddress(
-    '/addresses',
+    ENDPOINTS.ADDRESS,
     id || '',
     user?.id || ''
   )
   const { mutate: deleteAddress, isPending: isDeletingAddress } = useDeleteAddress(
-    '/addresses',
+    ENDPOINTS.ADDRESS,
     user?.id || ''
   )
   const isActionFiring = useMemo(
@@ -54,7 +55,9 @@ const AddressForm = ({ id }: AddressFormProps) => {
 
     actions(data, {
       onSuccess: async () => {
-        id ? reset(await queryClient.ensureQueryData(findAddressQuery('/addresses', id))) : reset()
+        id
+          ? reset(await queryClient.ensureQueryData(findAddressQuery(ENDPOINTS.ADDRESS, id)))
+          : reset()
         toast.show(
           id ? 'Address have edited successfully!' : 'New address have added successfully!'
         )
@@ -184,7 +187,6 @@ const AddressForm = ({ id }: AddressFormProps) => {
           />
         </Form.Trigger>
       </XStack>
-      <Toast />
     </Form>
   )
 }

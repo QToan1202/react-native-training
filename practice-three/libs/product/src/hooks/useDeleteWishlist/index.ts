@@ -1,8 +1,10 @@
 import { AxiosResponse } from 'axios'
 import { useMutation, UseMutationResult, useQueryClient } from '@tanstack/react-query'
 
-import { remove } from '@practice-three/services'
-import { TWishlistBase } from '@practice-three/types'
+import { remove } from '@practice-three/shared/service'
+import { TWishlistBase } from '@practice-three/shared/types'
+
+import { wishlistKeys } from '../../factories'
 
 type TPickProps = 'id'
 type TMutationFn = Partial<Pick<TWishlistBase, TPickProps>>
@@ -20,7 +22,7 @@ const useDeleteFromWishlist = (
       return remove(path, '')
     },
     onSuccess: (deleteStatus: number, { id }: TMutationFn) => {
-      queryClient.setQueryData(['wishlist', userId], (oldData: TWishlistBase[]) =>
+      queryClient.setQueryData(wishlistKeys.detail(userId), (oldData: TWishlistBase[]) =>
         deleteStatus === 200 ? oldData.filter((value: TWishlistBase) => value.id !== id) : oldData
       )
     },

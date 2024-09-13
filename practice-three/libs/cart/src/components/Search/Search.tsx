@@ -3,7 +3,7 @@ import { AnimatePresence, XStack, XStackProps } from 'tamagui'
 import { Controller, useForm, useWatch } from 'react-hook-form'
 import { useQuery } from '@tanstack/react-query'
 
-import { Button, Input, Text } from '@practice-three/components'
+import { Button, Input, Text } from '@practice-three/shared/ui'
 
 import { findPromoCodeQuery, useDebounceValue } from '../../hooks'
 import { useOfferStore } from '../../contexts'

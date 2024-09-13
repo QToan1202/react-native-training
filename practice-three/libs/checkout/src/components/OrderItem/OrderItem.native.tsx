@@ -1,6 +1,6 @@
 import { Heading, XStack, XStackProps, YStack } from 'tamagui'
 
-import { IconButton, Image, Text } from '@practice-three/components'
+import { IconButton, Image, Text } from '@practice-three/shared/ui'
 
 import { TOrderItem } from '../../types'
 import { ArrowRight } from '../../assets/images'

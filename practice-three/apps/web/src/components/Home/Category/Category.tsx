@@ -1,6 +1,6 @@
 import { Heading, XStack, YStack } from 'tamagui'
 
-import { CategoryItem } from '@practice-three/components'
+import { CategoryItem } from '@practice-three/shared/ui'
 
 import { menJacket, pant, sweater, womenJacket, womenPant, womenTop } from '../../../assets/images'
 

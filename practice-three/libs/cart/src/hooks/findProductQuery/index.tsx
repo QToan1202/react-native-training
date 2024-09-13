@@ -1,16 +1,18 @@
 import { useMemo, useRef } from 'react'
 import { queryOptions, useQueries, useQuery, UseQueryResult } from '@tanstack/react-query'
 
-import { find } from '@practice-three/services'
-import { TProduct, TCartItem, TCart } from '@practice-three/types'
-import { useAuthStore } from '@practice-three/contexts'
+import { find } from '@practice-three/shared/service'
+import { TProduct, TCartItem, TCart } from '@practice-three/shared/types'
+import { useAuthStore } from '@practice-three/shared/context'
+import { ENDPOINTS } from '@practice-three/shared/constant'
 
 import { STALE_TIMES } from '../../constants'
 import getCartQuery from '../getCartQuery'
+import { productKeys } from '../../factories'
 
 export const findProductQuery = (path: string, id: string) =>
-  queryOptions<TProduct, Error, TProduct, string[]>({
-    queryKey: ['product', id],
+  queryOptions<TProduct, Error, TProduct, ReadonlyArray<string>>({
+    queryKey: productKeys.detail(id),
     queryFn: () => find(`${path}/${id}`),
     staleTime: STALE_TIMES.PRODUCT_INFO,
   })
@@ -19,7 +21,7 @@ export const useFindProducts = (): [boolean, TCartItem[]] => {
   const user = useAuthStore((state) => state.user)
   const isFetchingProduct = useRef<boolean>(true)
   const { data: carts, isSuccess: isGetCartsSuccess } = useQuery(
-    getCartQuery('carts', user?.id || '')
+    getCartQuery(ENDPOINTS.CART, user?.id || '')
   )
   const firstCartItem: TCart | undefined = useMemo(
     () => (isGetCartsSuccess ? carts.at(0) : undefined),
@@ -27,7 +29,7 @@ export const useFindProducts = (): [boolean, TCartItem[]] => {
   )
   const getProductsQuery = useQueries({
     queries: firstCartItem
-      ? Object.keys(firstCartItem.items).map((item) => findProductQuery('/products', item))
+      ? Object.keys(firstCartItem.items).map((item) => findProductQuery(ENDPOINTS.PRODUCT, item))
       : [],
   })
   if (!firstCartItem || !Object.keys(firstCartItem.items).length) {

@@ -1,8 +1,8 @@
 import { Fragment } from 'react'
 import { ScrollView, Separator, YStack } from 'tamagui'
 
-import { OrderTabScreenProps } from '@practice-three/types'
-import { Accordion, AccordionItem, Button } from '@practice-three/components'
+import { OrderTabScreenProps } from '@practice-three/shared/types'
+import { Accordion, AccordionItem, Button } from '@practice-three/shared/ui'
 
 import { CardList, Header, PaymentItem, Step, StepLabel, Stepper } from '../../components'
 import { PAYMENT_METHODS, STEPPER_LABELS, type TPaymentMethod } from '../../constants'

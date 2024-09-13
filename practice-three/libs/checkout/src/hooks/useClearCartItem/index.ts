@@ -1,7 +1,9 @@
 import { useMutation, UseMutationResult, useQueryClient } from '@tanstack/react-query'
 
-import { edit } from '@practice-three/services'
-import { TCart } from '@practice-three/types'
+import { edit } from '@practice-three/shared/service'
+import { TCart } from '@practice-three/shared/types'
+
+import { cartKeys } from '../../factories'
 
 type TMutationDFn = TCart
 
@@ -25,7 +27,9 @@ const useClearCartItem = (
        * Set the new cache data MUST BE in array
        * since the [query key] ['carts', userId] control carts data return ARRAY of carts
        */
-      queryClient.setQueryData(['carts', userId], (oldData: TCart[]) => (data ? [data] : oldData))
+      queryClient.setQueryData(cartKeys.list(userId), (oldData: TCart[]) =>
+        data ? [data] : oldData
+      )
     },
   })
 }

@@ -1,10 +1,10 @@
 import { Fragment, useMemo, useState } from 'react'
 import { QueryClient, useSuspenseQuery } from '@tanstack/react-query'
-import { LoaderFunctionArgs, redirect, useLoaderData } from 'react-router-dom'
-import { H2, H4, Image, ScrollView, Stack, styled, XStack, YStack } from 'tamagui'
+import { LoaderFunctionArgs, useLoaderData, useNavigate } from 'react-router-dom'
+import { H2, H4, ScrollView, Stack, styled, XStack, YStack } from 'tamagui'
 import { useToastController } from '@tamagui/toast'
 
-import { calculateDiscountPrice, TResolveLoaderReturn } from '@practice-three/utils'
+import { calculateDiscountPrice, TResolveLoaderReturn } from '@practice-three/shared/util'
 import {
   Button,
   IconButton,
@@ -12,11 +12,12 @@ import {
   RadioItem,
   Rating,
   Text as BaseText,
-  Toast,
-} from '@practice-three/components'
-import { TOffer, TProduct, TReview, TUser, TWishlistBase } from '@practice-three/types'
-import { useAuthStore } from '@practice-three/contexts'
-import { getOffersQuery } from '@practice-three/queries'
+  Image,
+} from '@practice-three/shared/ui'
+import { TOffer, TProduct, TReview, TUser, TWishlistBase } from '@practice-three/shared/types'
+import { useAuthStore } from '@practice-three/shared/context'
+import { getOffersQuery } from '@practice-three/shared/query'
+import { ENDPOINTS } from '@practice-three/shared/constant'
 
 import {
   findProductQuery,
@@ -28,7 +29,7 @@ import {
 } from '../../hooks'
 import { Heart, HeartFill, placeholderImagePath, Star } from '../../assets/images'
 import { Comment, createTab, ProductCard, Tabs } from '../../components'
-import { PRODUCT_SPECIFICATIONS_LABELS } from '../../constants'
+import { PRODUCT_SPECIFICATIONS_LABELS, ROUTER_PATHS } from '../../constants'
 import { renderSpecificationItem } from '../../utils'
 
 // Called by router so don't useHook here
@@ -37,10 +38,10 @@ export const productLoader =
   async ({ params }: LoaderFunctionArgs) => {
     const { id } = params
     const user: TUser | undefined = useAuthStore.getState().user
-    await queryClient.ensureQueryData(findProductQuery('/products', id || ''))
-    queryClient.ensureQueryData(getProductsQuery('/products'))
-    queryClient.ensureQueryData(getWishlistQuery('/wishlists', user?.id || ''))
-    queryClient.ensureQueryData(getOffersQuery('/offers'))
+    await queryClient.ensureQueryData(findProductQuery(ENDPOINTS.PRODUCT, id || ''))
+    queryClient.ensureQueryData(getProductsQuery(ENDPOINTS.PRODUCT))
+    queryClient.ensureQueryData(getWishlistQuery(ENDPOINTS.WISHLIST, user?.id || ''))
+    queryClient.ensureQueryData(getOffersQuery(ENDPOINTS.OFFER))
 
     return { id, userId: user?.id }
   }
@@ -50,11 +51,12 @@ const Text = styled(BaseText, {
 })
 
 const ProductDetail = () => {
+  const navigate = useNavigate()
   const { id: productId, userId } = useLoaderData() as TResolveLoaderReturn<typeof productLoader>
-  const { data: product } = useSuspenseQuery(findProductQuery('/products', productId || ''))
-  const { data: similarProducts } = useSuspenseQuery(getProductsQuery('/products'))
-  const { data: wishlists } = useSuspenseQuery(getWishlistQuery('/wishlists', userId || ''))
-  const { data: offers } = useSuspenseQuery(getOffersQuery('/offers'))
+  const { data: product } = useSuspenseQuery(findProductQuery(ENDPOINTS.PRODUCT, productId || ''))
+  const { data: similarProducts } = useSuspenseQuery(getProductsQuery(ENDPOINTS.PRODUCT))
+  const { data: wishlists } = useSuspenseQuery(getWishlistQuery(ENDPOINTS.WISHLIST, userId || ''))
+  const { data: offers } = useSuspenseQuery(getOffersQuery(ENDPOINTS.OFFER))
   const [isProductInWishlist, wishlistItem] = useMemo(() => {
     const item = wishlists.find((item: TWishlistBase) => item.productId === productId)
     return [!!item, item]
@@ -63,8 +65,6 @@ const ProductDetail = () => {
     () =>
       [...Array(4).keys()].map((item) => (
         <Image
-          resizeMode="cover"
-          alignSelf="center"
           borderRadius={10}
           key={item}
           source={{
@@ -72,20 +72,18 @@ const ProductDetail = () => {
             height: 165,
             uri: product.images[0],
           }}
-          defaultSource={{
-            width: 180,
-            height: 180,
-            uri: placeholderImagePath,
-          }}
         />
       )),
     [product.images]
   )
   const [selectedSize, setSelectedSize] = useState<string | null>(null)
   const toast = useToastController()
-  const { mutate: addToWishlist } = useAddToWishlist('/wishlists', userId || '')
-  const { mutate: deleteFromWishlist } = useDeleteFromWishlist('/wishlists', userId || '')
-  const { mutate: addToCart, isPending: isAddingToCart } = useAddToCart('/carts', userId || '')
+  const { mutate: addToWishlist } = useAddToWishlist(ENDPOINTS.WISHLIST, userId || '')
+  const { mutate: deleteFromWishlist } = useDeleteFromWishlist(ENDPOINTS.WISHLIST, userId || '')
+  const { mutate: addToCart, isPending: isAddingToCart } = useAddToCart(
+    ENDPOINTS.CART,
+    userId || ''
+  )
   const handleAddToCart = () => {
     addToCart(
       { id: product.id, size: selectedSize, color: null },
@@ -233,9 +231,7 @@ const ProductDetail = () => {
       />
     )
   }, [ProductDetailContent, RatingAndReviewContent, SpecificationContent])
-  const handlePressProductCard = (id: string) => {
-    redirect(`/product/${id}`)
-  }
+  const handlePressProductCard = (id: string) => navigate(ROUTER_PATHS.PRODUCT_DETAIL.DYNAMIC(id))
   const renderSimilarProducts = useMemo(() => {
     if (!similarProducts.length)
       return (
@@ -278,15 +274,11 @@ const ProductDetail = () => {
         <YStack gap={15}>{renderImages}</YStack>
         <Stack flex={2} alignSelf="stretch">
           <Image
-            resizeMode="cover"
             alignSelf="auto"
             flex={1}
             borderRadius={10}
             source={{
               uri: product.images[0],
-            }}
-            defaultSource={{
-              uri: placeholderImagePath,
             }}
           />
         </Stack>
@@ -380,7 +372,6 @@ const ProductDetail = () => {
           <XStack gap={40}>{renderSimilarProducts}</XStack>
         </ScrollView>
       </YStack>
-      <Toast />
     </YStack>
   )
 }

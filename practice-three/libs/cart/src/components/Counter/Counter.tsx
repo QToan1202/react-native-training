@@ -8,8 +8,8 @@ import {
   IconButton as BaseIconButton,
   BaseInput,
   BaseInputProps,
-} from '@practice-three/components'
-import { useAuthStore } from '@practice-three/contexts'
+} from '@practice-three/shared/ui'
+import { useAuthStore } from '@practice-three/shared/context'
 
 import { Minus, Plus } from '../../assets/images'
 import { CartContext } from '../../contexts'
@@ -24,7 +24,8 @@ export type CounterProps = Omit<BaseInputProps, 'defaultValue'> & {
 const IconButton = styled(BaseIconButton, {
   borderWidth: 1,
   borderColor: '$pale',
-  padding: 12,
+  padding: 0,
+  paddingHorizontal: 12,
   backgroundColor: '$pure_white',
   variants: {
     border: {
@@ -113,13 +114,14 @@ const Counter = ({
   }
 
   return (
-    <XStack display="inline-flex" borderRadius={7} backgroundColor="$pale" {...containerStyle}>
+    <XStack alignSelf="baseline" borderRadius={7} backgroundColor="$pale" {...containerStyle}>
       <IconButton border="left" onPress={handleMinus}>
         <Minus />
       </IconButton>
       <BaseInput
-        maxWidth={40}
-        paddingHorizontal={0}
+        width={40}
+        height={24}
+        padding={0}
         textAlign="center"
         inputMode="numeric"
         keyboardType="number-pad"
@@ -131,13 +133,15 @@ const Counter = ({
         <Plus />
       </IconButton>
 
-      <AlertDialog
-        title="Remove product"
-        open={isOpen}
-        description="Are you sure you want to delete this item from your cart? This action cannot be undone."
-        onCancel={handleCancelAlert}
-        onSuccess={handleSuccessAlert}
-      />
+      {isOpen && (
+        <AlertDialog
+          title="Remove product"
+          open={isOpen}
+          description="Are you sure you want to delete this item from your cart? This action cannot be undone."
+          onCancel={handleCancelAlert}
+          onSuccess={handleSuccessAlert}
+        />
+      )}
     </XStack>
   )
 }

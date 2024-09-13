@@ -1,0 +1,51 @@
+import { useId } from 'react'
+import { RadioGroup, XStack, RadioGroupItemProps, Label, styled } from 'tamagui'
+
+import { useRadioContext } from './useRadio'
+
+export type RadioItemProps = RadioGroupItemProps & {
+  label?: string
+}
+
+const StyledItem = styled(RadioGroup.Item, {
+  size: '$6',
+  backgroundColor: '$transparent',
+  borderWidth: 1,
+  borderColor: '$transparent',
+
+  pressStyle: {
+    borderColor: '$transparent',
+    backgroundColor: '$transparent',
+  },
+  hoverStyle: {
+    backgroundColor: '$gray_50',
+  },
+  focusStyle: {
+    borderColor: '$primary',
+    backgroundColor: '$pale',
+  },
+})
+
+const RadioItem = StyledItem.styleable<RadioItemProps>(
+  ({ label, children, ...restProps }: RadioItemProps, ref) => {
+    const radioId = useId()
+    const selectValue = useRadioContext((state) => state.value)
+
+    return (
+      <XStack>
+        <StyledItem
+          id={radioId}
+          forceStyle={selectValue === restProps.value ? 'focus' : undefined}
+          ref={ref}
+          {...restProps}
+        >
+          {children ? children : <RadioGroup.Indicator scale={2} backgroundColor="$primary" />}
+        </StyledItem>
+
+        {label && <Label htmlFor={radioId}>{label}</Label>}
+      </XStack>
+    )
+  }
+)
+
+export default RadioItem

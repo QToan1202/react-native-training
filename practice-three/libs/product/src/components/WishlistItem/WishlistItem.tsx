@@ -1,10 +1,10 @@
-import { Heading, Image, XStack, XStackProps, YStack, getTokenValue } from 'tamagui'
+import { Heading, XStack, XStackProps, YStack, getTokenValue } from 'tamagui'
 import { GestureResponderEvent, ImageURISource } from 'react-native'
 
-import { TProduct } from '@practice-three/types'
-import { Text } from '@practice-three/components'
+import { TProduct } from '@practice-three/shared/types'
+import { Image, Text } from '@practice-three/shared/ui'
 
-import { HeartFill, placeholderImagePath } from '../../assets/images'
+import { HeartFill } from '../../assets/images'
 
 type TWishlistItem = 'id' | 'name' | 'brandName' | 'price'
 export type WishlistItemProps = XStackProps &
@@ -32,17 +32,11 @@ const WishlistItem = ({
     <XStack alignItems="center" onPress={handlePressItemAction} {...rest}>
       <Image
         resizeMode="contain"
-        alignSelf="center"
         borderRadius={5}
         source={{
           width: getTokenValue('$wishlistImg.width'),
           height: getTokenValue('$wishlistImg.height'),
           uri: image,
-        }}
-        defaultSource={{
-          width: getTokenValue('$wishlistImg.width'),
-          height: getTokenValue('$wishlistImg.height'),
-          uri: placeholderImagePath,
         }}
       />
       <YStack gap={8} marginLeft={18}>

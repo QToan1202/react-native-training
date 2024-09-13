@@ -3,7 +3,7 @@
 import { useErrorBoundary } from 'react-error-boundary'
 import { useRouteError } from 'react-router-dom'
 
-import { ErrorScreen } from '@practice-three/screens'
+import { ErrorScreen } from '@practice-three/shared/ui'
 
 const Error = () => {
   const { resetBoundary } = useErrorBoundary()

@@ -4,13 +4,15 @@ import { H2, styled, XStack, YStack } from 'tamagui'
 import { NativeStackScreenProps } from '@react-navigation/native-stack'
 import { QueryClient, useQuery } from '@tanstack/react-query'
 
-import { ProductStack, TUser, TWishlistExpand } from '@practice-three/types'
-import { useAuthStore } from '@practice-three/contexts'
-import { TResolveLoaderReturn } from '@practice-three/utils'
-import { Button, Text } from '@practice-three/components'
+import { ProductStack, TUser, TWishlistExpand } from '@practice-three/shared/types'
+import { useAuthStore } from '@practice-three/shared/context'
+import { TResolveLoaderReturn } from '@practice-three/shared/util'
+import { Button, Text } from '@practice-three/shared/ui'
+import { ENDPOINTS } from '@practice-three/shared/constant'
 
 import { getWishlistQuery } from '../../hooks'
 import { ProductCard, ProductCardSkeleton } from '../../components'
+import { ROUTER_PATHS } from '../../constants'
 
 type WishlistScreenProps = Partial<NativeStackScreenProps<ProductStack, 'Wishlist'>>
 
@@ -23,7 +25,7 @@ const Heading = styled(H2, {
 
 export const wishlistLoader = (queryClient: QueryClient) => async () => {
   const user: TUser | undefined = useAuthStore.getState().user
-  queryClient.ensureQueryData(getWishlistQuery('/wishlists', user?.id || '', true))
+  queryClient.ensureQueryData(getWishlistQuery(ENDPOINTS.WISHLIST, user?.id || '', true))
 
   return { userId: user?.id }
 }
@@ -35,13 +37,13 @@ const Wishlist = (props: WishlistScreenProps) => {
     data: wishlists,
     isPending,
     isSuccess,
-  } = useQuery(getWishlistQuery('/wishlists', userId || '', true))
+  } = useQuery(getWishlistQuery(ENDPOINTS.WISHLIST, userId || '', true))
   const handlePressProductCard = useCallback((id: string) => {
-    navigate(`/product/${id}`)
+    navigate(ROUTER_PATHS.PRODUCT_DETAIL.DYNAMIC(id))
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
   const handlePressLink = useCallback(
-    () => navigate('/search'),
+    () => navigate(ROUTER_PATHS.SEARCH),
     // eslint-disable-next-line react-hooks/exhaustive-deps
     []
   )
@@ -78,7 +80,13 @@ const Wishlist = (props: WishlistScreenProps) => {
   }, [isPending, isSuccess, wishlists, handlePressLink, handlePressProductCard])
 
   return (
-    <YStack justifyContent="center" alignItems="center" gap={26}>
+    <YStack
+      justifyContent="center"
+      alignItems="center"
+      gap={26}
+      paddingVertical={56}
+      paddingHorizontal={50}
+    >
       <XStack gap={4} alignSelf="flex-start">
         <Heading>
           my

@@ -1,8 +1,8 @@
 import { queryOptions } from '@tanstack/react-query'
 import { AxiosRequestConfig } from 'axios'
 
-import { TProduct } from '@practice-three/types'
-import { get } from '@practice-three/services'
+import { TProduct } from '@practice-three/shared/types'
+import { get } from '@practice-three/shared/service'
 
 import { STALE_TIMES } from '../../constants'
 

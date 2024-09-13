@@ -7,10 +7,10 @@ import { withErrorBoundary } from 'react-error-boundary'
 import { AUTH_FEATURE, featureShell } from '@practice-three/shell'
 import { withAuth } from '@practice-three/features/authentication'
 import { withProduct } from '@practice-three/features/product'
-import { THOCsProps } from '@practice-three/types'
+import { THOCsProps } from '@practice-three/shared/types'
 import { withCheckout } from '@practice-three/features/checkout'
-import { ErrorScreen, NotFoundScreen } from '@practice-three/screens'
-import { useAuthStore } from '@practice-three/contexts'
+import { ErrorScreen, NotFoundScreen } from '@practice-three/shared/ui'
+import { useAuthStore } from '@practice-three/shared/context'
 
 import { RootLayout } from '../layout'
 import { ErrorPage, HomePage } from '../pages'
@@ -55,10 +55,12 @@ const App = () => (
   <WrapHOC category={initFeatureCategories} navigatorData={INIT_NAVIGATOR_DATA}>
     {({ navigatorData }) => {
       const getLayoutRoute = routerLayout.at(0)
-      const publicRoute = navigatorData[AUTH_FEATURE]
+      const publicRoute = navigatorData[AUTH_FEATURE.NAME]
       const protectedRoute = Object.keys(navigatorData).reduce<RouteObject[]>(
         (routeData: RouteObject[], featureName: string) =>
-          featureName !== AUTH_FEATURE ? routeData.concat(navigatorData[featureName]) : routeData,
+          featureName !== AUTH_FEATURE.NAME
+            ? routeData.concat(navigatorData[featureName])
+            : routeData,
         []
       )
 

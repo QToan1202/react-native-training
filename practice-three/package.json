@@ -3,7 +3,10 @@
   "version": "1.0.0",
   "description": "",
   "scripts": {
-    "server": "json-server --watch server/db.json --delay 3000"
+    "server": "json-server --watch server/db.json",
+    "start:mobile": "pnpm nx start mobile",
+    "start:web": "pnpm nx serve web",
+    "storybook:ui": "pnpm nx storybook ui"
   },
   "keywords": [],
   "author": "",

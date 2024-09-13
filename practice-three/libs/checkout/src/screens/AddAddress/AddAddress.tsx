@@ -1,7 +1,7 @@
 import { YStack } from 'tamagui'
 import { KeyboardAvoidingView } from 'react-native'
 
-import { OrderTabScreenProps } from '@practice-three/types'
+import { OrderTabScreenProps } from '@practice-three/shared/types'
 
 import { AddressForm, Header } from '../../components'
 

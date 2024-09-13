@@ -5,10 +5,11 @@ import {
   useSuspenseQuery,
 } from '@tanstack/react-query'
 
-import { edit } from '@practice-three/services'
-import { TCart, TCartItem } from '@practice-three/types'
+import { edit } from '@practice-three/shared/service'
+import { TCart, TCartItem } from '@practice-three/shared/types'
 
 import getCartQuery from '../getCartQuery'
+import { cartKeys } from '../../factories'
 
 type TUpdateProps = 'quantity' | 'id'
 type TMutationDFn = Pick<TCartItem, TUpdateProps>
@@ -27,7 +28,12 @@ const useUpdateCartQuantity = (
 
       return edit<TCart>(path, firstCartItem.id, {
         ...firstCartItem,
-        ...{ items: { ...items, ...{ [productId]: quantity } } },
+        items: {
+          ...items,
+          ...{
+            [productId]: { quantity, color: items[productId].color, size: items[productId].size },
+          },
+        },
       })
     },
     onSuccess: (data: TCart) => {
@@ -35,7 +41,9 @@ const useUpdateCartQuantity = (
        * Set the new cache data MUST BE in array
        * since the [query key] ['carts', userId] control carts data return ARRAY of carts
        */
-      queryClient.setQueryData(['carts', userId], (oldData: TCart[]) => (data ? [data] : oldData))
+      queryClient.setQueryData(cartKeys.detail(userId), (oldData: TCart[]) =>
+        data ? [data] : oldData
+      )
     },
   })
 }

@@ -1,6 +1,0 @@
-export * from './components'
-export * from './config'
-export * from './types'
-export * from './screens'
-export * from './utils'
-export * from './queries'

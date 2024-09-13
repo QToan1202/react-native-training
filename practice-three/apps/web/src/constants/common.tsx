@@ -27,19 +27,19 @@ export type TNavItem = {
 export const NAV_ITEMS: TNavItem[] = [
   {
     title: 'Men',
-    link: '#',
+    link: '/search',
   },
   {
     title: 'Women',
-    link: '#',
+    link: '/search',
   },
   {
     title: 'Kids',
-    link: '#',
+    link: '/search',
   },
   {
     title: 'Shop',
-    link: '#',
+    link: '/search',
   },
   {
     title: 'Contact us',
