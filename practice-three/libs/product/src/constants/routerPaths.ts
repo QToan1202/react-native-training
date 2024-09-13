@@ -1,8 +1,8 @@
 export const ROUTER_PATHS = {
-  SEARCH: 'search',
+  SEARCH: '/search',
   PRODUCT_DETAIL: {
-    STATIC: 'product/:id',
+    STATIC: '/product/:id',
     DYNAMIC: (id: string) => `/product/${id}`,
   },
-  WISHLIST: 'wishlist',
+  WISHLIST: '/wishlist',
 }
