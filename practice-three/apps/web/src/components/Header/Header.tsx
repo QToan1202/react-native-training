@@ -26,8 +26,8 @@ const Header = () => {
     []
   )
   const handleOnPressLogo = () => navigate('/')
-  const handleOnPressHeart = () => navigate('wishlists')
-  const handleOnPressCart = () => navigate('carts')
+  const handleOnPressHeart = () => navigate('wishlist')
+  const handleOnPressCart = () => navigate('orders')
 
   return (
     <XStack

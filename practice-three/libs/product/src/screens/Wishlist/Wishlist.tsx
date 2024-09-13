@@ -80,7 +80,13 @@ const Wishlist = (props: WishlistScreenProps) => {
   }, [isPending, isSuccess, wishlists, handlePressLink, handlePressProductCard])
 
   return (
-    <YStack justifyContent="center" alignItems="center" gap={26}>
+    <YStack
+      justifyContent="center"
+      alignItems="center"
+      gap={26}
+      paddingVertical={56}
+      paddingHorizontal={50}
+    >
       <XStack gap={4} alignSelf="flex-start">
         <Heading>
           my

@@ -17,7 +17,7 @@ const getWishlistQuery = <T extends boolean = false>(path: string, userId: strin
     Array<TWishlistMode<T>>,
     ReadonlyArray<string>
   >({
-    queryKey: wishlistKeys.detail(userId),
+    queryKey: wishlistKeys.detail(userId, expand),
     queryFn: () => get(path, { params: { userId, ...expandWishlistParams } }),
     staleTime: STALE_TIMES.USER_WISHLIST,
   })
