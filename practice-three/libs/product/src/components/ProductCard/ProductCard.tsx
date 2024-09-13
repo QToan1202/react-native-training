@@ -35,7 +35,7 @@ const ProductCard = ({
       maxHeight={getTokenValue('$card.height')}
       borderRadius={10}
       overflow="hidden"
-      backgroundColor="$white"
+      backgroundColor="$pure_white"
       animation="slow"
       enterStyle={{
         opacity: 0,
@@ -49,14 +49,13 @@ const ProductCard = ({
       {...rest}
     >
       <Image
-        resizeMode="contain"
         source={{
           width: getTokenValue('$card.width'),
           height: 300,
           uri: images[0],
         }}
       />
-      <Card.Header paddingHorizontal={21} paddingVertical={10} gap={12}>
+      <Card.Header paddingHorizontal={21} paddingVertical={10}>
         <H2 ellipse color="$black" fontSize="$5" fontWeight="bold">
           {name}
         </H2>

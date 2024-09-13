@@ -1,4 +1,4 @@
-import { useId, useMemo, useState } from 'react'
+import { useCallback, useId, useMemo, useState } from 'react'
 import { AnimatePresence, H2, XStack, YStack } from 'tamagui'
 import { LoaderFunctionArgs, useLoaderData, useNavigate } from 'react-router-dom'
 import type { QueryClient } from '@tanstack/react-query'
@@ -27,7 +27,11 @@ const Search = () => {
   const navigate = useNavigate()
   const { path } = useLoaderData() as TResolveLoaderReturn<typeof searchLoader>
   const { data, isPending, isSuccess } = useGetProducts(path)
-  const handlePressProductCard = (id: string) => navigate(ROUTER_PATHS.PRODUCT_DETAIL.DYNAMIC(id))
+  const handlePressProductCard = useCallback(
+    (id: string) => navigate(ROUTER_PATHS.PRODUCT_DETAIL.DYNAMIC(id)),
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    []
+  )
 
   const renderProduct = useMemo(() => {
     if (isPending) return [...Array(4).keys()].map((item) => <ProductCardSkeleton key={item} />)
@@ -47,7 +51,7 @@ const Search = () => {
         <ProductCard key={id} id={id} {...rest} onPressCard={handlePressProductCard} />
       )
     )
-  }, [data, isPending, isSuccess])
+  }, [data, handlePressProductCard, isPending, isSuccess])
   const [isShowFilterPanel, setShowFilterPanel] = useState<boolean>(false)
   const [isShowSortModal, setShowSortModal] = useState<boolean>(false)
   const filterPanel = useId()
@@ -56,7 +60,7 @@ const Search = () => {
   const handleToggleSortModal = () => setShowSortModal((modalShown) => !modalShown)
 
   return (
-    <XStack gap={43}>
+    <XStack gap={43} paddingVertical={56} paddingHorizontal={50} backgroundColor="$white">
       <AnimatePresence>
         {isShowFilterPanel && (
           <Filter
