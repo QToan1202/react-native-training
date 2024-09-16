@@ -22,7 +22,7 @@ const Wishlist = ({ navigation }: WishlistScreenProps) => {
     isSuccess,
   } = useQuery(getWishlistQuery(ENDPOINTS.WISHLIST, user?.id || '', true))
   const handlePressProductCard = useCallback((id: string) => {
-    navigation.navigate('ProductDetail', { id })
+    navigation.navigate('ProductTab', { screen: 'ProductDetail', params: { id } })
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
   const handlePressLink = useCallback(
@@ -100,7 +100,7 @@ const Wishlist = ({ navigation }: WishlistScreenProps) => {
         wishlist
       </Heading>
       {renderProducts}
-      {wishlists?.length && <Button title="add all to cart" onPress={handleAddWishlistItems} />}
+      {!!wishlists?.length && <Button title="add all to cart" onPress={handleAddWishlistItems} />}
     </YStack>
   )
 }
