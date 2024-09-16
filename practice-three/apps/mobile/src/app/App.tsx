@@ -5,6 +5,8 @@ import { withErrorBoundary } from 'react-error-boundary'
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs'
 import { createNativeStackNavigator } from '@react-navigation/native-stack'
 import { gestureHandlerRootHOC } from 'react-native-gesture-handler'
+import { NavigationContainer } from '@react-navigation/native'
+import BootSplash from 'react-native-bootsplash'
 
 import {
   AUTH_FEATURE,
@@ -40,6 +42,9 @@ export const App = () => {
     state.isHydrated,
     state.isAuthenticated,
   ])
+  const handleRenderAppOnHydrated = async () => {
+    isHydrated && (await BootSplash.hide({ fade: true }))
+  }
 
   if (!isHydrated) return null
 
@@ -58,14 +63,19 @@ export const App = () => {
         )
 
         return (
-          <Stack.Navigator screenOptions={{ headerShown: false }}>
-            {!isAuthenticated ? (
-              <Stack.Screen name="AuthStack" component={convertNavigatorData[AUTH_FEATURE.NAME]} />
-            ) : (
-              <Stack.Screen name="BottomTabs" component={PrivateStack} />
-            )}
-            <Stack.Screen name="NotFound" component={NotFoundScreen} />
-          </Stack.Navigator>
+          <NavigationContainer onReady={handleRenderAppOnHydrated}>
+            <Stack.Navigator screenOptions={{ headerShown: false }}>
+              {!isAuthenticated ? (
+                <Stack.Screen
+                  name="AuthStack"
+                  component={convertNavigatorData[AUTH_FEATURE.NAME]}
+                />
+              ) : (
+                <Stack.Screen name="BottomTabs" component={PrivateStack} />
+              )}
+              <Stack.Screen name="NotFound" component={NotFoundScreen} />
+            </Stack.Navigator>
+          </NavigationContainer>
         )
       }}
     </WrapHOC>

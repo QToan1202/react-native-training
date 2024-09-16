@@ -20,9 +20,7 @@ const MobileApp = () => (
           <ToastProvider>
             <ToastViewport flexDirection="column" bottom={50} left={0} right={0} />
             <Toast />
-            <NavigationContainer>
-              <App />
-            </NavigationContainer>
+            <App />
           </ToastProvider>
         </PortalProvider>
       </TamaguiProvider>
