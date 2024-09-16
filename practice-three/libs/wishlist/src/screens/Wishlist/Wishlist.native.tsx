@@ -1,19 +1,21 @@
 import { useCallback, useMemo } from 'react'
 import { Heading, YStack } from 'tamagui'
 import { useQuery } from '@tanstack/react-query'
+import { useToastController } from '@tamagui/toast'
 
 import { TUser, TWishlistExpand, WishlistTabScreenProps } from '@practice-three/shared/types'
 import { useAuthStore } from '@practice-three/shared/context'
 import { Button, Text } from '@practice-three/shared/ui'
 import { ENDPOINTS } from '@practice-three/shared/constant'
 
-import { getWishlistQuery } from '../../hooks'
+import { getWishlistQuery, useDeleteWishlist } from '../../hooks'
 import { WishlistItem, WishlistItemSkeleton } from '../../components'
 
 type WishlistScreenProps = WishlistTabScreenProps<'Wishlist'>
 
 const Wishlist = ({ navigation }: WishlistScreenProps) => {
   const user: TUser | undefined = useAuthStore((state) => state.user)
+  const toast = useToastController()
   const {
     data: wishlists,
     isPending,
@@ -28,6 +30,27 @@ const Wishlist = ({ navigation }: WishlistScreenProps) => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
     []
   )
+  const { mutate: deleteWishlistItem } = useDeleteWishlist(ENDPOINTS.WISHLIST, user?.id || '')
+  const handleDeleteWishlistItems = useCallback(() => {
+    deleteWishlistItem(
+      { id: '' },
+      {
+        onSuccess: () => {
+          toast.show('Item Removed', {
+            message: 'The item has been successfully removed from your wishlist',
+          })
+        },
+        onError: (error) => {
+          toast.show('Removal Failed', {
+            message:
+              error.message ||
+              'There was an error removing the item from your wishlist. Please try again.',
+          })
+        },
+      }
+    )
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [])
   const renderProducts = useMemo(() => {
     if (isPending) return [...Array(4).keys()].map((item) => <WishlistItemSkeleton key={item} />)
     if (!isSuccess) return
