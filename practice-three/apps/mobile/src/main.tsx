@@ -2,7 +2,6 @@ import { AppRegistry } from 'react-native'
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
 import { PortalProvider, TamaguiProvider } from 'tamagui'
 import { ToastProvider, ToastViewport } from '@tamagui/toast'
-import { NavigationContainer } from '@react-navigation/native'
 import { SafeAreaProvider } from 'react-native-safe-area-context'
 
 import { Toast } from '@practice-three/shared/ui'
