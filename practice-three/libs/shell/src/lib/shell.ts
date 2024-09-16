@@ -6,6 +6,7 @@ import {
   CHECKOUT_FEATURE,
   PRODUCT_FEATURE,
   PROFILE_FEATURE,
+  WISHLIST_FEATURE,
 } from './features'
 
 const PRE_DEFINED_FEATURES: Array<TFeatureConfig> = [
@@ -28,6 +29,10 @@ const PRE_DEFINED_FEATURES: Array<TFeatureConfig> = [
   {
     name: PROFILE_FEATURE.NAME,
     description: PRODUCT_FEATURE.DESC,
+  },
+  {
+    name: WISHLIST_FEATURE.NAME,
+    description: WISHLIST_FEATURE.DESC,
   },
 ]
 
