@@ -16,8 +16,8 @@
     "baseUrl": ".",
     "paths": {
       "@practice-three/features/authentication": ["libs/authentication/src/index.ts"],
-      "@practice-three/features/cart": ["libs/cart/src/index.ts"],
       "@practice-three/features/checkout": ["libs/checkout/src/index.ts"],
+      "@practice-three/features/order": ["libs/order/src/index.ts"],
       "@practice-three/features/product": ["libs/product/src/index.ts"],
       "@practice-three/features/profile": ["libs/profile/src/index.ts"],
       "@practice-three/features/wishlist": ["libs/wishlist/src/index.ts"],
