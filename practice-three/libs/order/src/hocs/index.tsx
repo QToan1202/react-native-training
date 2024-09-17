@@ -1,18 +1,21 @@
 import { ComponentType, forwardRef } from 'react'
+import { isWeb } from 'tamagui'
 
 import { THOCsProps } from '@practice-three/shared/types'
-import { CART_FEATURE } from '@practice-three/shell'
+import { CHECKOUT_FEATURE } from '@practice-three/shell'
 
-import { CartRoute } from '../navigation'
+import { OrderRoute } from '../navigation'
 
-const FEATURE_NAME = CART_FEATURE.NAME
+// TODO: Change feature name
+const FEATURE_NAME = CHECKOUT_FEATURE.NAME
 
-export const withCart = <T extends THOCsProps>(Wrapper: ComponentType<T>) => {
+export const withOrder = <T extends THOCsProps>(Wrapper: ComponentType<T>) => {
   return forwardRef<unknown, T>((props, componentRef) => {
     const { category, navigatorData, ...rest } = props
     const isFeatureActive = category.find(
       (feat) => !feat.localeCompare(FEATURE_NAME, undefined, { sensitivity: 'base' })
     )
+    const convertOrderRoute = isWeb ? OrderRoute : (OrderRoute as unknown as JSX.Element)
 
     return (
       <Wrapper
@@ -20,11 +23,13 @@ export const withCart = <T extends THOCsProps>(Wrapper: ComponentType<T>) => {
         {...(rest as T)}
         category={category}
         navigatorData={
-          isFeatureActive ? { ...navigatorData, ...{ [FEATURE_NAME]: CartRoute } } : navigatorData
+          isFeatureActive
+            ? { ...navigatorData, ...{ [FEATURE_NAME]: convertOrderRoute } }
+            : navigatorData
         }
       />
     )
   })
 }
 
-export default withCart
+export default withOrder

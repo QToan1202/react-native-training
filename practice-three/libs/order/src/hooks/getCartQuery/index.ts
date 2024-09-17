@@ -7,8 +7,8 @@ import { STALE_TIMES } from '../../constants'
 import { cartKeys } from '../../factories'
 
 const getCartQuery = (path: string, userId: string) =>
-  queryOptions<TCart[], Error, TCart[], ReadonlyArray<string>>({
-    queryKey: cartKeys.detail(userId),
+  queryOptions<TCart[], Error, TCart[], ReadonlyArray<string | object>>({
+    queryKey: cartKeys.list(userId),
     queryFn: () => get(path, { params: { userId } }),
     staleTime: STALE_TIMES.CART,
   })

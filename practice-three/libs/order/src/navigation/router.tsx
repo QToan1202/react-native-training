@@ -1,16 +1,13 @@
-import { createNativeStackNavigator } from '@react-navigation/native-stack'
+import { RouteObject } from 'react-router-dom'
 
-import { CartStack } from '@practice-three/shared/types'
+import { OrderScreen } from '../screens'
+import { ROUTER_PATHS } from '../constants'
 
-import { CartScreen, PromoCodeScreen } from '../screens'
+const orderRouter: RouteObject[] = [
+  {
+    path: ROUTER_PATHS.ORDER,
+    element: <OrderScreen />,
+  },
+]
 
-const Stack = createNativeStackNavigator<CartStack>()
-
-const CartStacks = () => (
-  <Stack.Navigator screenOptions={{ headerShown: false }}>
-    <Stack.Screen name="Cart" component={CartScreen} />
-    <Stack.Screen name="PromoCode" component={PromoCodeScreen} />
-  </Stack.Navigator>
-)
-
-export default CartStacks
+export default orderRouter
