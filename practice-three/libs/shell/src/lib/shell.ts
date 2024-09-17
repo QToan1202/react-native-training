@@ -2,8 +2,7 @@ import { TFeatureConfig } from '@practice-three/shared/types'
 
 import {
   AUTH_FEATURE,
-  CART_FEATURE,
-  CHECKOUT_FEATURE,
+  ORDER_FEATURE,
   PRODUCT_FEATURE,
   PROFILE_FEATURE,
   WISHLIST_FEATURE,
@@ -19,12 +18,8 @@ const PRE_DEFINED_FEATURES: Array<TFeatureConfig> = [
     description: PRODUCT_FEATURE.DESC,
   },
   {
-    name: CART_FEATURE.NAME,
-    description: CART_FEATURE.DESC,
-  },
-  {
-    name: CHECKOUT_FEATURE.NAME,
-    description: CHECKOUT_FEATURE.DESC,
+    name: ORDER_FEATURE.NAME,
+    description: ORDER_FEATURE.DESC,
   },
   {
     name: PROFILE_FEATURE.NAME,

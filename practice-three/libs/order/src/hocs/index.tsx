@@ -2,12 +2,11 @@ import { ComponentType, forwardRef } from 'react'
 import { isWeb } from 'tamagui'
 
 import { THOCsProps } from '@practice-three/shared/types'
-import { CHECKOUT_FEATURE } from '@practice-three/shell'
+import { ORDER_FEATURE } from '@practice-three/shell'
 
 import { OrderRoute } from '../navigation'
 
-// TODO: Change feature name
-const FEATURE_NAME = CHECKOUT_FEATURE.NAME
+const FEATURE_NAME = ORDER_FEATURE.NAME
 
 export const withOrder = <T extends THOCsProps>(Wrapper: ComponentType<T>) => {
   return forwardRef<unknown, T>((props, componentRef) => {

@@ -10,8 +10,8 @@ import BootSplash from 'react-native-bootsplash'
 
 import {
   AUTH_FEATURE,
-  CART_FEATURE,
   featureShell,
+  ORDER_FEATURE,
   PRODUCT_FEATURE,
   PROFILE_FEATURE,
   WISHLIST_FEATURE,
@@ -19,12 +19,11 @@ import {
 import { BottomTabParamsList, RootStackParamList, THOCsProps } from '@practice-three/shared/types'
 import { withAuth } from '@practice-three/features/authentication'
 import { withProduct } from '@practice-three/features/product'
-import { withCart } from '@practice-three/features/cart'
-import { withCheckout } from '@practice-three/features/checkout'
 import { withProfile } from '@practice-three/features/profile'
 import { ErrorScreen, NotFoundScreen } from '@practice-three/shared/ui'
 import { useAuthStore } from '@practice-three/shared/context'
 import { withWishlist } from '@practice-three/features/wishlist'
+import { withOrder } from '@practice-three/features/order'
 
 import { BottomNav } from '../navigation'
 import { HomeScreen } from '../screens'
@@ -35,7 +34,7 @@ const BaseApp = ({
   children,
   ...rest
 }: THOCsProps & { children?: (args: THOCsProps) => JSX.Element }) => children?.(rest)
-const WrapHOC = withWishlist(withProfile(withCheckout(withCart(withProduct(withAuth(BaseApp))))))
+const WrapHOC = withWishlist(withProfile(withOrder(withProduct(withAuth(BaseApp)))))
 const Tab = createBottomTabNavigator<BottomTabParamsList>()
 const Stack = createNativeStackNavigator<RootStackParamList>()
 
@@ -62,7 +61,7 @@ export const App = () => {
               name="WishlistTab"
               component={convertNavigatorData[WISHLIST_FEATURE.NAME]}
             />
-            <Tab.Screen name="CartTab" component={convertNavigatorData[CART_FEATURE.NAME]} />
+            <Tab.Screen name="CartTab" component={convertNavigatorData[ORDER_FEATURE.NAME]} />
             <Tab.Screen name="ProfileTab" component={convertNavigatorData[PROFILE_FEATURE.NAME]} />
           </BottomNav>
         )
