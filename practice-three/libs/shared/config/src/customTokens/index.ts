@@ -44,6 +44,9 @@ const customTokens = {
     width: 950,
     height: 480,
   },
+  tabs: {
+    width: 1500,
+  },
 }
 
 export default customTokens
