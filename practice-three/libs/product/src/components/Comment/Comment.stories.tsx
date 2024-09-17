@@ -1,7 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/react'
 
 import Comment from './Comment'
-import { placeholderImagePath } from '../../assets/images'
+import { placeholderImagePath } from '@practice-three/shared/asset'
 
 const meta: Meta<typeof Comment> = {
   component: Comment,

@@ -5,7 +5,7 @@ export { default as Arrow } from './arrow.svg?react'
 export { default as Lock } from './lock.svg?react'
 export { default as User } from './user.svg?react'
 
-export { default as PlaceholderImage } from './placeholder.svg'
+export { default as PlaceholderImage } from './placeholder.svg?react'
 export { default as placeholderImagePath } from './placeholder.png'
 
 export { default as Dot } from './dot.svg?react'

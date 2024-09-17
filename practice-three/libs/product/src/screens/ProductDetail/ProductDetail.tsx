@@ -18,6 +18,7 @@ import { TOffer, TProduct, TReview, TUser, TWishlistBase } from '@practice-three
 import { useAuthStore } from '@practice-three/shared/context'
 import { getOffersQuery } from '@practice-three/shared/query'
 import { ENDPOINTS } from '@practice-three/shared/constant'
+import { placeholderImagePath } from '@practice-three/shared/asset'
 
 import {
   findProductQuery,
@@ -27,7 +28,7 @@ import {
   useAddToWishlist,
   useDeleteFromWishlist,
 } from '../../hooks'
-import { Heart, HeartFill, placeholderImagePath, Star } from '../../assets/images'
+import { Heart, HeartFill, Star } from '../../assets/images'
 import { Comment, createTab, ProductCard, Tabs } from '../../components'
 import { PRODUCT_SPECIFICATIONS_LABELS, ROUTER_PATHS } from '../../constants'
 import { renderSpecificationItem } from '../../utils'
