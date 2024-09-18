@@ -27,7 +27,7 @@ const useClearCartItem = (
        * Set the new cache data MUST BE in array
        * since the [query key] ['carts', userId] control carts data return ARRAY of carts
        */
-      queryClient.setQueryData(cartKeys.list(userId), (oldData: TCart[]) =>
+      queryClient.setQueryData(cartKeys.detail(userId), (oldData: TCart[]) =>
         data ? [data] : oldData
       )
     },
