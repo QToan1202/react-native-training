@@ -2,7 +2,15 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack'
 
 import { OrderStack } from '@practice-three/shared/types'
 
-import { CartScreen, PromoCodeScreen } from '../screens'
+import {
+  AddAddressScreen,
+  AddCardScreen,
+  AddressScreen,
+  CartScreen,
+  OrderScreen,
+  PaymentScreen,
+  PromoCodeScreen,
+} from '../screens'
 
 const Stack = createNativeStackNavigator<OrderStack>()
 
