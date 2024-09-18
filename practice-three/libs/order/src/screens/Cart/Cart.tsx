@@ -1,6 +1,4 @@
 import { Heading, YStack } from 'tamagui'
-import { useEffect } from 'react'
-import { useStore } from 'zustand'
 
 import { Button } from '@practice-three/shared/ui'
 import type { OrderTabScreenProps } from '@practice-three/shared/types'
@@ -13,11 +11,6 @@ type CartScreenProps = OrderTabScreenProps<'Cart'>
 
 const Cart = ({ navigation }: CartScreenProps) => {
   const [isLoading, data] = useFindProducts()
-  const set = useStore(cartStore, (state) => state.set)
-  useEffect(() => {
-    !isLoading && set(data)
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [data, isLoading])
   const handleSeeMoreOffers = () => navigation.navigate('PromoCode')
   const handleNavigateToAddress = () => navigation.navigate('Address')
 
@@ -36,7 +29,7 @@ const Cart = ({ navigation }: CartScreenProps) => {
         {isLoading ? (
           [...Array(2).keys()].map((item) => <CartItemSkeleton key={item} />)
         ) : (
-          <CartItemList />
+          <CartItemList data={data} />
         )}
         <Search />
         <Button

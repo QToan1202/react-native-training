@@ -1,18 +1,17 @@
 import { AnimatePresence } from 'tamagui'
-import { memo, useContext, useMemo } from 'react'
-import { useStore } from 'zustand'
-
-import { TCartItem } from '@practice-three/shared/types'
+import { memo, useMemo } from 'react'
 
 import { CartItem } from '../CartItem'
-import { CartContext } from '../../contexts'
+import { TOrderItem } from '../../types'
 
-const CartItemList = () => {
-  const store = useContext(CartContext)
-  const cart = useStore(store, (state) => state.cart)
+type CartItemListProps = {
+  data: TOrderItem[]
+}
+
+const CartItemList = ({ data }: CartItemListProps) => {
   const renderListItem = useMemo(
     () =>
-      cart.map((product: TCartItem) => (
+      data.map((product: TOrderItem) => (
         <CartItem
           animation="slow"
           enterStyle={{
@@ -27,7 +26,7 @@ const CartItemList = () => {
           {...product}
         />
       )),
-    [cart]
+    [data]
   )
 
   return <AnimatePresence>{renderListItem}</AnimatePresence>

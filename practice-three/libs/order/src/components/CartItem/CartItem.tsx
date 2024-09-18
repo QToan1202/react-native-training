@@ -1,16 +1,15 @@
-import { memo, useCallback, useContext, useMemo, useState } from 'react'
-import { Heading, XStack, XStackProps, YStack, getTokenValue } from 'tamagui'
+import { memo, useCallback, useState } from 'react'
+import { AnimatePresence, Heading, XStack, XStackProps, YStack, getTokenValue } from 'tamagui'
 import { GestureResponderEvent, ImageURISource } from 'react-native'
 import isEqual from 'react-fast-compare'
-import { useStore } from 'zustand'
 
 import { TProduct } from '@practice-three/shared/types'
 import { AlertDialog, IconButton, Image, Text } from '@practice-three/shared/ui'
 import { useAuthStore } from '@practice-three/shared/context'
+import { ENDPOINTS } from '@practice-three/shared/constant'
 
 import { Heart, Trash } from '../../assets/images'
 import { Counter } from '../Counter'
-import { CartContext } from '../../contexts'
 import { useDeleteCartItem } from '../../hooks'
 
 type TCartItem = 'id' | 'name' | 'price'
@@ -43,24 +42,28 @@ const CartItem = ({
     onPressItem?.(id)
   }
   const [isOpen, setIsOpen] = useState<boolean>(false)
-  const store = useContext(CartContext)
-  const remove = useStore(store, (state) => state.remove)
-  const { mutate: removeItemFromCart } = useDeleteCartItem('/carts', user?.id || '')
+  const { mutate: removeItemFromCart } = useDeleteCartItem(ENDPOINTS.CART, user?.id || '')
   const handleCancelAlert = () => {
     setIsOpen(false)
   }
   const handleSuccessAlert = () => {
     handleCancelAlert()
-    removeItemFromCart(id, {
-      onSuccess: () => remove(id),
-    })
+    removeItemFromCart(id)
   }
   const handlePressDeleteIcon = useCallback(() => {
     setIsOpen(true)
   }, [])
-  const renderContent = useMemo(
-    () => (
-      <XStack>
+
+  return (
+    <XStack
+      borderRadius={5}
+      borderWidth={1}
+      borderColor="$pale"
+      padding={16}
+      onPress={handlePressItemAction}
+      {...rest}
+    >
+      <XStack flex={1}>
         <Image
           borderRadius={5}
           source={{
@@ -69,54 +72,46 @@ const CartItem = ({
             uri: image,
           }}
         />
-        <YStack gap={8} marginLeft={18} justifyContent="space-evenly">
-          <Heading ellipse color="$black" fontSize="$1" fontWeight="700" textTransform="capitalize">
-            {name}
-          </Heading>
-          <Text color="$primary" fontWeight="700">
-            ${price.toFixed(2)}
-          </Text>
+        <YStack marginLeft={12} flex={1}>
+          <XStack flex={1} alignItems="flex-start" justifyContent="space-between">
+            <Heading
+              numberOfLines={2}
+              ellipsizeMode="tail"
+              maxWidth={125}
+              color="$black"
+              fontSize="$1"
+              fontWeight="700"
+              textTransform="capitalize"
+            >
+              {name}
+            </Heading>
+            <XStack>
+              <IconButton paddingVertical={0}>{isLiked ? <HeartFill /> : <Heart />}</IconButton>
+              <IconButton paddingVertical={0} onPress={handlePressDeleteIcon}>
+                <Trash />
+              </IconButton>
+            </XStack>
+          </XStack>
+          <XStack flex={1} alignItems="flex-end" justifyContent="space-between">
+            <Text color="$primary" fontWeight="700">
+              ${price.toFixed(2)}
+            </Text>
+            <Counter productId={id} defaultValue={quantity} />
+          </XStack>
         </YStack>
       </XStack>
-    ),
-    [image, name, price]
-  )
-  const renderIcons = useMemo(
-    () => (
-      <XStack justifyContent="flex-end">
-        <IconButton>{isLiked ? <HeartFill /> : <Heart />}</IconButton>
-        <IconButton onPress={handlePressDeleteIcon}>
-          <Trash />
-        </IconButton>
-      </XStack>
-    ),
-    [isLiked, handlePressDeleteIcon]
-  )
 
-  return (
-    <XStack
-      borderRadius={5}
-      borderWidth={1}
-      borderColor="$pale"
-      padding={16}
-      justifyContent="space-between"
-      onPress={handlePressItemAction}
-      {...rest}
-    >
-      {renderContent}
-      <YStack gap={8} justifyContent="space-evenly">
-        {renderIcons}
-        <Counter productId={id} defaultValue={quantity} />
-      </YStack>
-      {isOpen && (
-        <AlertDialog
-          title="Remove product"
-          open={isOpen}
-          description="Are you sure you want to delete this item from your cart? This action cannot be undone."
-          onCancel={handleCancelAlert}
-          onSuccess={handleSuccessAlert}
-        />
-      )}
+      <AnimatePresence>
+        {isOpen && (
+          <AlertDialog
+            title="Remove product"
+            open={isOpen}
+            description="Are you sure you want to delete this item from your cart? This action cannot be undone."
+            onCancel={handleCancelAlert}
+            onSuccess={handleSuccessAlert}
+          />
+        )}
+      </AnimatePresence>
     </XStack>
   )
 }

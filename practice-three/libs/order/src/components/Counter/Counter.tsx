@@ -1,7 +1,5 @@
-import { useContext, useState } from 'react'
+import { useState } from 'react'
 import { styled, useDebounce, XStack, XStackProps } from 'tamagui'
-import { useStore } from 'zustand'
-import { useShallow } from 'zustand/react/shallow'
 
 import {
   AlertDialog,
@@ -10,9 +8,9 @@ import {
   BaseInputProps,
 } from '@practice-three/shared/ui'
 import { useAuthStore } from '@practice-three/shared/context'
+import { ENDPOINTS } from '@practice-three/shared/constant'
 
 import { Minus, Plus } from '../../assets/images'
-import { CartContext } from '../../contexts'
 import { useDeleteCartItem, useUpdateCartQuantity } from '../../hooks'
 
 export type CounterProps = Omit<BaseInputProps, 'defaultValue'> & {
@@ -51,16 +49,11 @@ const Counter = ({
   productId,
   ...rest
 }: CounterProps) => {
-  const store = useContext(CartContext)
-  const [remove, update] = useStore(
-    store,
-    useShallow((state) => [state.remove, state.update])
-  )
   const user = useAuthStore((state) => state.user)
   const [num, setNum] = useState<number>(defaultValue)
   const [isOpen, setIsOpen] = useState<boolean>(false)
-  const { mutate: updateItemQuantity } = useUpdateCartQuantity('/carts', user?.id || '')
-  const { mutate: removeItemFromCart } = useDeleteCartItem('/carts', user?.id || '')
+  const { mutate: updateItemQuantity } = useUpdateCartQuantity(ENDPOINTS.CART, user?.id || '')
+  const { mutate: removeItemFromCart } = useDeleteCartItem(ENDPOINTS.CART, user?.id || '')
   const debounceUpdateItemQuantity = useDebounce(updateItemQuantity, 500)
 
   const handleMinus = () =>
@@ -70,35 +63,20 @@ const Counter = ({
         return prevNum
       }
 
-      debounceUpdateItemQuantity(
-        { id: productId, quantity: prevNum - 1 },
-        {
-          onSuccess: () => update(productId, prevNum - 1),
-        }
-      )
+      debounceUpdateItemQuantity({ id: productId, quantity: prevNum - 1 })
 
       return prevNum - 1
     })
   const handleAdd = () =>
     setNum((prevNum) => {
-      debounceUpdateItemQuantity(
-        { id: productId, quantity: prevNum + 1 },
-        {
-          onSuccess: () => update(productId, prevNum + 1),
-        }
-      )
+      debounceUpdateItemQuantity({ id: productId, quantity: prevNum + 1 })
 
       return prevNum + 1
     })
   const handleEnterCounter = (value: string) => {
     onChangeText?.(value)
 
-    debounceUpdateItemQuantity(
-      { id: productId, quantity: +value },
-      {
-        onSuccess: () => update(productId, +value),
-      }
-    )
+    debounceUpdateItemQuantity({ id: productId, quantity: +value })
 
     setNum(+value)
   }
@@ -108,9 +86,7 @@ const Counter = ({
 
   const handleSuccessAlert = () => {
     handleCancelAlert()
-    removeItemFromCart(productId, {
-      onSuccess: () => remove(productId),
-    })
+    removeItemFromCart(productId)
   }
 
   return (
