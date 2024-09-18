@@ -1,7 +1,6 @@
 export * from './findProductQuery'
 export { default as getCartQuery } from './getCartQuery'
 export { default as findPromoCodeQuery } from './findPromoCodeQuery'
-export { default as useDebounceValue } from './useDebounceValue'
 export { default as useDeleteCartItem } from './useDeleteCartItem'
 export { default as useUpdateCartQuantity } from './useUpdateCartQuantity'
 export { default as getAddressesQuery } from './getAddressesQuery'

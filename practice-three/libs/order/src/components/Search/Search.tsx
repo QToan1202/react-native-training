@@ -4,8 +4,9 @@ import { Controller, useForm, useWatch } from 'react-hook-form'
 import { useQuery } from '@tanstack/react-query'
 
 import { Button, Input, Text } from '@practice-three/shared/ui'
+import { useDebounceValue } from '@practice-three/shared/hook'
 
-import { findPromoCodeQuery, useDebounceValue } from '../../hooks'
+import { findPromoCodeQuery } from '../../hooks'
 import { useOfferStore } from '../../contexts'
 
 export type SearchProps = XStackProps & {
