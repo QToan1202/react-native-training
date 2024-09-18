@@ -12,6 +12,7 @@ import { TOrder, TOrderItem } from '../../types'
 import findAddressQuery from '../findAddressQuery'
 import findProductQuery from '../findProductQuery'
 import getCartQuery from '../getCartQuery'
+import { DEFAULT_ADDRESS } from '../../constants'
 
 /**
  * Fetches product details based on the platform context.
@@ -56,7 +57,7 @@ export const useFindProducts = (isPreOrder = !isWeb): [boolean, TOrderItem[]] =>
   })
 
   const { data: address, isSuccess: isGetAddressSuccess } = useQuery(
-    findAddressQuery(ENDPOINTS.ADDRESS, isOrder(firstItem) ? firstItem?.addressId : '')
+    findAddressQuery(ENDPOINTS.ADDRESS, isOrder(firstItem) ? firstItem.addressId : '')
   )
   if (!firstItem || !Object.keys(firstItem.items).length) {
     isFetchingProduct.current = false
@@ -64,7 +65,6 @@ export const useFindProducts = (isPreOrder = !isWeb): [boolean, TOrderItem[]] =>
 
   const returnData = useMemo(() => {
     if (!firstItem) return []
-    if (!isGetAddressSuccess) return []
 
     return getProductsQuery
       .map(
@@ -91,7 +91,7 @@ export const useFindProducts = (isPreOrder = !isWeb): [boolean, TOrderItem[]] =>
               ? firstItem.items[id].price
               : productPrice * (1 - discountPercent / 100),
             date: isOrder(firstItem) ? firstItem.date : dayjs().toISOString(),
-            address,
+            address: isGetAddressSuccess ? address : DEFAULT_ADDRESS,
             brandName,
           }
         }
