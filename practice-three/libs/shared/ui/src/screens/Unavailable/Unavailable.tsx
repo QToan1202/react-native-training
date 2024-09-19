@@ -5,12 +5,14 @@ import { Text, Button } from '../../components'
 export type UnavailableScreenProps = {
   title?: string
   message?: string
+  btnLabel?: string
   onPressBtn: () => void
 }
 
 const Unavailable = ({
   title = 'Coming Soon',
   message = 'This feature is currently under development and will be available in the near future. Stay tuned for updates!',
+  btnLabel = 'Go to home',
   onPressBtn,
 }: UnavailableScreenProps) => {
   return (
@@ -27,7 +29,7 @@ const Unavailable = ({
       <Text textAlign="center" fontSize="$2">
         {message}
       </Text>
-      <Button title="Go to home" paddingHorizontal={10} onPress={onPressBtn} />
+      <Button title={btnLabel} paddingHorizontal={10} onPress={onPressBtn} />
     </YStack>
   )
 }
