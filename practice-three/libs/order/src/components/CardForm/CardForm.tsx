@@ -19,6 +19,7 @@ const CardForm = () => {
     control,
     reset,
     handleSubmit,
+    setFocus,
     formState: { errors, isDirty },
   } = useForm<TCardForm>({
     defaultValues: DEFAULT_CARD_VALUES,
@@ -45,60 +46,70 @@ const CardForm = () => {
     })
   }
   const handleResetData = () => reset()
+  const handleMoveToNextInput = (label: keyof TCardForm) => () => setFocus(label)
   const { CARD_HOLDER, CARD_NUMBER, EXPIRED, SECURITY_CODE } = Object.keys(
     CARD_FORM
-  ).reduce<TAddCardFields>((acc: TAddCardFields, key: string) => {
-    const convertKey = key as keyof typeof CARD_FORM
-    const inputLabel = CARD_FORM[convertKey].label
-    const element = (
-      <YStack key={inputLabel} gap={12}>
-        <Heading color="$blue_100" fontWeight="700">
-          {CARD_FORM[convertKey].title}
-        </Heading>
-        <Controller
-          name={inputLabel}
-          control={control}
-          rules={CARD_FORM[convertKey].rules}
-          render={({ field: { value, name, onChange, onBlur } }) => (
-            <Input
-              placeholder={CARD_FORM[convertKey].placeholder}
-              isError={!!errors[inputLabel]}
-              disabled={isAddingCard}
-              value={transformAddCardForm(name, value, onChange).input}
-              onChangeText={transformAddCardForm(name, value, onChange).output}
-              onBlur={onBlur}
-            />
-          )}
-        />
-        <AnimatePresence>
-          {errors[inputLabel] && (
-            <Text
-              position="absolute"
-              left={0}
-              bottom={-20}
-              color="$red_50"
-              textAlign="left"
-              key={errorTextId}
-              animation="slow"
-              enterStyle={{
-                bottom: 0,
-                opacity: 0,
-              }}
-              exitStyle={{
-                bottom: -40,
-                opacity: 0,
-              }}
-            >
-              {errors[inputLabel]?.message}
-            </Text>
-          )}
-        </AnimatePresence>
-      </YStack>
-    )
-    acc[convertKey] = element
+  ).reduce<TAddCardFields>(
+    (acc: TAddCardFields, key: string, index: number, elements: string[]) => {
+      const convertKey = key as keyof typeof CARD_FORM
+      const inputLabel = CARD_FORM[convertKey].label
+      const nextInputLabel: keyof TCardForm | undefined =
+        CARD_FORM[elements[index + 1] as keyof typeof CARD_FORM]?.label
+      const element = (
+        <YStack key={inputLabel} gap={12}>
+          <Heading color="$blue_100" fontWeight="700">
+            {CARD_FORM[convertKey].title}
+          </Heading>
+          <Controller
+            name={inputLabel}
+            control={control}
+            rules={CARD_FORM[convertKey].rules}
+            render={({ field: { value, name, onChange, onBlur, ref } }) => (
+              <Input
+                placeholder={CARD_FORM[convertKey].placeholder}
+                isError={!!errors[inputLabel]}
+                disabled={isAddingCard}
+                returnKeyType={nextInputLabel ? 'next' : 'default'}
+                onSubmitEditing={nextInputLabel ? handleMoveToNextInput(nextInputLabel) : undefined}
+                blurOnSubmit={nextInputLabel ? false : true}
+                value={transformAddCardForm(name, value, onChange).input}
+                onChangeText={transformAddCardForm(name, value, onChange).output}
+                onBlur={onBlur}
+                ref={ref}
+              />
+            )}
+          />
+          <AnimatePresence>
+            {errors[inputLabel] && (
+              <Text
+                position="absolute"
+                left={0}
+                bottom={-20}
+                color="$red_50"
+                textAlign="left"
+                key={errorTextId}
+                animation="slow"
+                enterStyle={{
+                  bottom: 0,
+                  opacity: 0,
+                }}
+                exitStyle={{
+                  bottom: -40,
+                  opacity: 0,
+                }}
+              >
+                {errors[inputLabel]?.message}
+              </Text>
+            )}
+          </AnimatePresence>
+        </YStack>
+      )
+      acc[convertKey] = element
 
-    return acc
-  }, {} as TAddCardFields)
+      return acc
+    },
+    {} as TAddCardFields
+  )
 
   return (
     <YStack flex={1}>

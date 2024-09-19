@@ -21,6 +21,7 @@ const Login = ({ navigation }: LoginScreenProps) => {
     handleSubmit,
     reset,
     resetField,
+    setFocus,
     formState: { isDirty, isValid, errors },
   } = useForm<TLoginForm>({
     defaultValues: LOGIN_FORM_DEFAULT_VALUES,
@@ -43,6 +44,7 @@ const Login = ({ navigation }: LoginScreenProps) => {
     })
   }
   const handleMoveToRegister = () => navigation.navigate('Register')
+  const handleMoveToNextInput = () => setFocus('password')
 
   return (
     <YStack
@@ -71,15 +73,19 @@ const Login = ({ navigation }: LoginScreenProps) => {
           name={LOGIN_FORM.ACCOUNT.label}
           control={control}
           rules={LOGIN_FORM.ACCOUNT.rules}
-          render={({ field: { value, onChange, onBlur } }) => (
+          render={({ field: { value, onChange, onBlur, ref } }) => (
             <Input
               startIcon={(color) => <User fill={color} />}
               placeholder={LOGIN_FORM.ACCOUNT.placeholder}
               isError={!!errors.account}
               disabled={isLoginUser}
+              returnKeyType="next"
+              blurOnSubmit={false}
+              onSubmitEditing={handleMoveToNextInput}
               value={value}
               onChangeText={onChange}
               onBlur={onBlur}
+              ref={ref}
             />
           )}
         />
@@ -88,7 +94,7 @@ const Login = ({ navigation }: LoginScreenProps) => {
           name={LOGIN_FORM.PASSWORD.label}
           control={control}
           rules={LOGIN_FORM.PASSWORD.rules}
-          render={({ field: { value, onChange, onBlur } }) => (
+          render={({ field: { value, onChange, onBlur, ref } }) => (
             <Input
               startIcon={(color) => <Lock fill={color} />}
               placeholder={LOGIN_FORM.PASSWORD.placeholder}
@@ -98,6 +104,7 @@ const Login = ({ navigation }: LoginScreenProps) => {
               value={value}
               onChangeText={onChange}
               onBlur={onBlur}
+              ref={ref}
             />
           )}
         />
