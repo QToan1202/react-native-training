@@ -41,6 +41,7 @@ const Select = forwardRef<TamaguiElement, SelectProps>(
           borderColor="$border"
           borderRadius={5}
           hoverStyle={{ backgroundColor: 'none', borderColor: '$primary' }}
+          pressStyle={{ backgroundColor: '$gray_200', borderColor: '$primary' }}
           iconAfter={<ChevronDown color="$black" />}
           disabled={disabled}
           disabledStyle={{ backgroundColor: '$gray_50' }}
@@ -49,14 +50,24 @@ const Select = forwardRef<TamaguiElement, SelectProps>(
           <TSelect.Value color="$black" placeholder={placeholder} />
         </TSelect.Trigger>
 
-        <Adapt when="xs" platform="touch">
-          <Sheet native={!!native} modal dismissOnSnapToBottom>
+        <Adapt platform="touch">
+          <Sheet
+            native={!!native}
+            modal
+            dismissOnSnapToBottom
+            snapPoints={[50, 50, 25]}
+            snapPointsMode="percent"
+          >
             <Sheet.Frame>
               <Sheet.ScrollView>
                 <Adapt.Contents />
               </Sheet.ScrollView>
             </Sheet.Frame>
-            <Sheet.Overlay enterStyle={{ opacity: 0 }} exitStyle={{ opacity: 0 }} />
+            <Sheet.Overlay
+              animation="lazy"
+              enterStyle={{ opacity: 0 }}
+              exitStyle={{ opacity: 0 }}
+            />
           </Sheet>
         </Adapt>
 
