@@ -1,18 +1,14 @@
-import { useStore } from 'zustand'
-import { useContext, useMemo } from 'react'
+import { useMemo } from 'react'
 import { YStack, XStack, Heading, styled } from 'tamagui'
 
 import { Skeleton, Text as BaseText } from '@practice-three/shared/ui'
-import { TCartItem } from '@practice-three/shared/types'
 
 import { FEES } from '../../constants'
-import { CartContext, useOfferStore } from '../../contexts'
+import { useOfferStore } from '../../contexts'
+import { useFindProducts } from '../../hooks'
+import { TOrderItem } from '../../types'
 
-export type SummaryProps = {
-  isLoading: boolean
-}
-
-const calculatePrice = (data: TCartItem[]) => {
+const calculatePrice = (data: TOrderItem[]) => {
   return data.reduce((prev, curr) => (prev += curr.price * curr.quantity), 0)
 }
 
@@ -21,9 +17,8 @@ const Text = styled(BaseText, {
   letterSpacing: 0.5,
 })
 
-const Summary = ({ isLoading }: SummaryProps) => {
-  const store = useContext(CartContext)
-  const data = useStore(store, (state) => state.cart)
+const Summary = () => {
+  const [isLoading, data] = useFindProducts()
   const offerCode = useOfferStore((state) => state.value)
   const offerDiscountValue = useMemo(() => {
     if (!offerCode) return 0
