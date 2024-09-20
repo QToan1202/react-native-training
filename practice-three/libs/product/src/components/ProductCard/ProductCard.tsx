@@ -36,6 +36,7 @@ const ProductCard = ({
       borderRadius={10}
       overflow="hidden"
       backgroundColor="$pure_white"
+      animateOnly={['opacity']}
       animation="slow"
       enterStyle={{
         opacity: 0,
