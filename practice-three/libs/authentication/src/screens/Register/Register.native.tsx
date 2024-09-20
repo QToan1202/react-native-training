@@ -21,6 +21,7 @@ const Register = ({ navigation }: RegisterScreenProps) => {
     watch,
     reset,
     handleSubmit,
+    setFocus,
     formState: { isSubmitting, isDirty, errors },
   } = useForm<TRegisterForm>({
     defaultValues: REGISTER_FORM_DEFAULT_VALUES,
@@ -42,6 +43,7 @@ const Register = ({ navigation }: RegisterScreenProps) => {
   }
   const handleMoveToLogin = () => navigation.navigate('Login')
   const errorMessagesId = useId()
+  const handleMoveToNextInput = (label: keyof TRegisterForm) => () => setFocus(label)
 
   return (
     <YStack
@@ -91,9 +93,11 @@ const Register = ({ navigation }: RegisterScreenProps) => {
             )}
           </AnimatePresence>
         </Stack>
-        {Object.keys(REGISTER_FORM).map((key: string) => {
+        {Object.keys(REGISTER_FORM).map((key: string, index: number, elements: string[]) => {
           const covertKey = key as keyof typeof REGISTER_FORM
-          const inputLabel = REGISTER_FORM[covertKey].label
+          const inputLabel: keyof TRegisterForm = REGISTER_FORM[covertKey].label
+          const nextInputLabel: keyof TRegisterForm | undefined =
+            REGISTER_FORM[elements[index + 1] as keyof typeof REGISTER_FORM]?.label
 
           return (
             <Controller
@@ -108,7 +112,7 @@ const Register = ({ navigation }: RegisterScreenProps) => {
                         watch('password') === value || 'Your type in password do not match',
                     }
               }
-              render={({ field: { value, onChange, onBlur } }) => (
+              render={({ field: { value, onChange, onBlur, ref } }) => (
                 <Input
                   secureTextEntry={inputLabel === 'confirmPassword' || inputLabel === 'password'}
                   startIcon={REGISTER_FORM[covertKey].startIcon}
@@ -116,8 +120,15 @@ const Register = ({ navigation }: RegisterScreenProps) => {
                   isError={!!errors.name}
                   value={value}
                   disabled={isRegistering}
+                  // nextInputLabel === undefined on the last TextInput
+                  returnKeyType={nextInputLabel ? 'next' : 'default'}
+                  onSubmitEditing={
+                    nextInputLabel ? handleMoveToNextInput(nextInputLabel) : undefined
+                  }
+                  blurOnSubmit={nextInputLabel ? false : true}
                   onChangeText={onChange}
                   onBlur={onBlur}
+                  ref={ref}
                 />
               )}
             />

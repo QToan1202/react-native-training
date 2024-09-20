@@ -21,10 +21,10 @@ const Swiper = styled(BaseSwiper, {
 const SwiperSlide = styled(BaseSwiperSlide, {
   acceptsClassName: true,
   display: 'flex',
+  width: 'auto',
   justifyContent: 'center',
   alignItems: 'center',
   backgroundColor: '$pure_white',
-  paddingBottom: 40,
 })
 
 type SwiperProps = GetProps<typeof Swiper>

@@ -14,6 +14,7 @@ import {
   parseURLSearchParams,
   resolveValues,
 } from '@practice-three/shared/util'
+import { ENDPOINTS } from '@practice-three/shared/constant'
 
 import { FILTER_LABELS } from '../../constants'
 import { useGetProducts } from '../../hooks'
@@ -25,7 +26,7 @@ export type FilterProps = YStackProps & {
 const DEFAULT_SEARCH_PARAMS = {}
 
 const Filter = ({ isDisabled = false, ...rest }: FilterProps) => {
-  const { data: products } = useGetProducts(`/products`)
+  const { data: products } = useGetProducts(ENDPOINTS.PRODUCT)
   const { search } = useLocation()
   const parseSearchParams = convertQueryStr(search)
   const [min, max] = getMinMaxPrices(products || [])

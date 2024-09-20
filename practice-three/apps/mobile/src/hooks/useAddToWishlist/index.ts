@@ -11,6 +11,7 @@ import { useAuthStore } from '@practice-three/shared/context'
 import { ENDPOINTS } from '@practice-three/shared/constant'
 
 import getWishlistQuery from '../getWishlistQuery'
+import { wishlistKeys } from '../../factories'
 
 type TOmitProps = 'id' | 'userId'
 type TMutationDFn = Partial<Omit<TWishlistBase, TOmitProps>>
@@ -39,10 +40,10 @@ const useAddToWishlist = (
       return add<TWishlistBase>(path, _data)
     },
     onSuccess: (data: TWishlistBase) => {
-      queryClient.setQueryData(['wishlist', userId], (oldData: TWishlistBase[]) =>
+      queryClient.setQueryData(wishlistKeys.detail(userId), (oldData: TWishlistBase[]) =>
         oldData
           ? [...oldData, data]
-          : queryClient.invalidateQueries({ queryKey: ['wishlist', userId] })
+          : queryClient.invalidateQueries({ queryKey: wishlistKeys.detail(userId) })
       )
     },
   })

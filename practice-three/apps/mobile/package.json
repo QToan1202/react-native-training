@@ -15,6 +15,7 @@
     "burnt": "*",
     "dayjs": "*",
     "moti": "*",
+    "react-native-bootsplash": "*",
     "@tamagui/animations-moti": "*",
     "react-native-linear-gradient": "*",
     "react-native-reanimated": "*",

@@ -54,26 +54,14 @@ const Search = () => {
   }, [data, handlePressProductCard, isPending, isSuccess])
   const [isShowFilterPanel, setShowFilterPanel] = useState<boolean>(false)
   const [isShowSortModal, setShowSortModal] = useState<boolean>(false)
-  const filterPanel = useId()
-  const sortModal = useId()
   const handleToggleFilterPanel = () => setShowFilterPanel((filterShown) => !filterShown)
   const handleToggleSortModal = () => setShowSortModal((modalShown) => !modalShown)
 
   return (
     <XStack gap={43} paddingVertical={56} paddingHorizontal={50} backgroundColor="$white">
-      <AnimatePresence>
-        {isShowFilterPanel && (
-          <Filter
-            key={filterPanel}
-            animation="slow"
-            enterStyle={{ opacity: 0, x: '-100%' }}
-            exitStyle={{ opacity: 0, x: '-100%' }}
-            backgroundColor="$pure_white"
-            width={460}
-            isDisabled={isPending}
-          />
-        )}
-      </AnimatePresence>
+      {isShowFilterPanel && (
+        <Filter backgroundColor="$pure_white" width={460} isDisabled={isPending} />
+      )}
       <YStack alignSelf="flex-start" flex={1} justifyContent="center">
         <XStack alignSelf="flex-end">
           <Button
@@ -90,16 +78,7 @@ const Search = () => {
             onPress={handleToggleSortModal}
             endIcon={<DownArrow />}
           />
-          <AnimatePresence initial={false}>
-            {isShowSortModal && (
-              <SortModal
-                key={sortModal}
-                animation="slow"
-                enterStyle={{ opacity: 0, y: '-100%' }}
-                exitStyle={{ opacity: 0, y: '-100%' }}
-              />
-            )}
-          </AnimatePresence>
+          {isShowSortModal && <SortModal />}
         </XStack>
         <XStack flexWrap="wrap" justifyContent="flex-start" gap={12}>
           {renderProduct}

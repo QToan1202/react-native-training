@@ -1,6 +1,5 @@
 export * from './ProductCard'
 export * from './Comment'
-export * from './WishlistItem'
 export * from './Filter'
 export * from './Tabs'
 export * from './SortModal'

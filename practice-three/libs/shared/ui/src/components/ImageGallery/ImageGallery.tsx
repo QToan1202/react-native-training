@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import { ImageURISource } from 'react-native'
-import { useWindowDimensions, XStack } from 'tamagui'
+import { getTokenValue, isWeb, useWindowDimensions, XStack } from 'tamagui'
 
 import { Image, ImageProps } from '../Image'
 import { Text } from '../Text'
@@ -27,12 +27,17 @@ const ImageGallery = ({ images, width, height, numberOfImg = 3, ...rest }: Image
     <Carousel
       isShowIndex={false}
       loop={false}
-      width={width + 10}
-      height={height}
       data={transformData}
-      style={{
-        width: windowWidth,
-      }}
+      backgroundColor="red"
+      // For web
+      {...(isWeb && {
+        slidesPerView: 'auto',
+        width: '100%',
+        spaceBetween: 10,
+        maxWidth: getTokenValue('$tabs.width'),
+      })}
+      // For native
+      {...(!isWeb && { width: width + 10, height, style: { width: windowWidth } })}
       renderItem={({ item, index }) => (
         <XStack borderRadius={10} overflow="hidden" width={width}>
           <Image

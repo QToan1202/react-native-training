@@ -40,7 +40,6 @@ export type ProfileStack = {
 }
 
 export type WishlistStack = {
-  ProductDetail: { id: string }
   Wishlist: undefined
 }
 

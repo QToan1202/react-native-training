@@ -8,9 +8,10 @@ import { AUTH_FEATURE, featureShell } from '@practice-three/shell'
 import { withAuth } from '@practice-three/features/authentication'
 import { withProduct } from '@practice-three/features/product'
 import { THOCsProps } from '@practice-three/shared/types'
-import { withCheckout } from '@practice-three/features/checkout'
+import { withWishlist } from '@practice-three/features/wishlist'
 import { ErrorScreen, NotFoundScreen } from '@practice-three/shared/ui'
 import { useAuthStore } from '@practice-three/shared/context'
+import { withOrder } from '@practice-three/features/order'
 
 import { RootLayout } from '../layout'
 import { ErrorPage, HomePage } from '../pages'
@@ -49,7 +50,7 @@ const BaseApp = ({
   children,
   ...rest
 }: THOCsProps & { children?: (args: THOCsProps) => ReactNode }) => children?.(rest)
-const WrapHOC = withCheckout(withProduct(withAuth(BaseApp)))
+const WrapHOC = withWishlist(withOrder(withProduct(withAuth(BaseApp))))
 
 const App = () => (
   <WrapHOC category={initFeatureCategories} navigatorData={INIT_NAVIGATOR_DATA}>

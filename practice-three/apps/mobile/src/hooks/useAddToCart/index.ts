@@ -10,6 +10,7 @@ import { add, edit, get } from '@practice-three/shared/service'
 import { TCart, TCartItemProps, TProduct } from '@practice-three/shared/types'
 
 import { STALE_TIMES } from '../../constants'
+import { cartKeys } from '../../factories'
 
 type TMutationDFn = (Pick<TProduct, 'id'> | null) & {
   size: string | null
@@ -17,8 +18,8 @@ type TMutationDFn = (Pick<TProduct, 'id'> | null) & {
 }
 
 const getCartQuery = (path: string, userId: string) =>
-  queryOptions<TCart[], Error, TCart[], string[]>({
-    queryKey: ['carts', userId],
+  queryOptions<TCart[], Error, TCart[], ReadonlyArray<string>>({
+    queryKey: cartKeys.detail(userId),
     queryFn: () => get(path, { params: { userId } }),
     staleTime: STALE_TIMES.CART,
   })
@@ -107,7 +108,7 @@ const useAddToCart = (
     onSuccess: (data: TCart) => {
       // queryClient.setQueryData(['carts', userId], (oldData: TCart[]) => (oldData ? data : oldData))
 
-      queryClient.invalidateQueries({ queryKey: ['carts', userId] })
+      queryClient.invalidateQueries({ queryKey: cartKeys.detail(userId) })
     },
   })
 }

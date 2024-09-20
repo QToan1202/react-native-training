@@ -1,4 +1,4 @@
-import { Fragment, useMemo, useState } from 'react'
+import { Fragment, useCallback, useMemo, useState } from 'react'
 import { QueryClient, useSuspenseQuery } from '@tanstack/react-query'
 import { LoaderFunctionArgs, useLoaderData, useNavigate } from 'react-router-dom'
 import { H2, H4, ScrollView, Stack, styled, XStack, YStack } from 'tamagui'
@@ -27,7 +27,7 @@ import {
   useAddToWishlist,
   useDeleteFromWishlist,
 } from '../../hooks'
-import { Heart, HeartFill, placeholderImagePath, Star } from '../../assets/images'
+import { Heart, HeartFill, Star } from '../../assets/images'
 import { Comment, createTab, ProductCard, Tabs } from '../../components'
 import { PRODUCT_SPECIFICATIONS_LABELS, ROUTER_PATHS } from '../../constants'
 import { renderSpecificationItem } from '../../utils'
@@ -187,7 +187,13 @@ const ProductDetail = () => {
             key={date.toString()}
             date={date}
             {...itemProps}
-            images={[placeholderImagePath]}
+            images={[
+              'https://plus.unsplash.com/premium_photo-1675896084254-dcb626387e1e',
+              'https://plus.unsplash.com/premium_photo-1664392147011-2a720f214e01',
+              'https://images.unsplash.com/photo-1523275335684-37898b6baf30',
+              'https://images.unsplash.com/photo-1556228578-8c89e6adf883',
+              'https://images.unsplash.com/photo-1556228578-567ba127e37f',
+            ]}
           />
         ))}
       </YStack>
@@ -231,7 +237,11 @@ const ProductDetail = () => {
       />
     )
   }, [ProductDetailContent, RatingAndReviewContent, SpecificationContent])
-  const handlePressProductCard = (id: string) => navigate(ROUTER_PATHS.PRODUCT_DETAIL.DYNAMIC(id))
+  const handlePressProductCard = useCallback(
+    (id: string) => navigate(ROUTER_PATHS.PRODUCT_DETAIL.DYNAMIC(id)),
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    []
+  )
   const renderSimilarProducts = useMemo(() => {
     if (!similarProducts.length)
       return (
@@ -248,7 +258,7 @@ const ProductDetail = () => {
         <ProductCard key={id} id={id} {...rest} onPressCard={handlePressProductCard} />
       )
     )
-  }, [similarProducts])
+  }, [handlePressProductCard, similarProducts])
   const renderOffers = useMemo(
     () =>
       offers.map(({ id, name, discountPercentage }: TOffer) => (
